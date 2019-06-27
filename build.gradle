@@ -1,0 +1,33 @@
+buildscript {
+    repositories {
+        mavenCentral()
+	jcenter()
+    }
+    dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:2.1.4.RELEASE")
+    }
+}
+
+apply plugin: 'io.spring.dependency-management'
+apply plugin: 'java'
+apply plugin: 'eclipse'
+apply plugin: 'org.springframework.boot'
+apply plugin: 'io.spring.dependency-management'
+
+
+group = 'masterarbeit'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '1.8'
+
+repositories {
+	mavenCentral()
+}
+
+dependencies {
+//compile group: 'org.sosy-lab', name: 'javasmt-solver-z3', version: 'z3-4.4.1-788-g8df145d', ext: 'pom'
+	implementation 'org.springframework.boot:spring-boot-starter-data-neo4j'
+	compile group: 'io.github.classgraph', name: 'classgraph', version: '4.8.38'
+	//compile group: 'de.opal-project', name: 'common_2.12', version: '2.0.1'
+	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+	implementation 'ca.mcgill.sable:soot:3.3.0'
+}

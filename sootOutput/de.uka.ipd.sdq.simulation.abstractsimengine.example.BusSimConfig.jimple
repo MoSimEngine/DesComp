@@ -1,0 +1,23 @@
+public class de.uka.ipd.sdq.simulation.abstractsimengine.example.BusSimConfig extends java.lang.Object implements de.uka.ipd.sdq.simulation.abstractsimengine.ISimulationConfig
+{
+
+    public void <init>()
+    {
+        de.uka.ipd.sdq.simulation.abstractsimengine.example.BusSimConfig r0;
+
+        r0 := @this: de.uka.ipd.sdq.simulation.abstractsimengine.example.BusSimConfig;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    public java.lang.String getNameExperimentRun()
+    {
+        de.uka.ipd.sdq.simulation.abstractsimengine.example.BusSimConfig r0;
+
+        r0 := @this: de.uka.ipd.sdq.simulation.abstractsimengine.example.BusSimConfig;
+
+        return "Bus Simulation";
+    }
+}

@@ -1,0 +1,59 @@
+public class de.uka.ipd.sdq.simulation.abstractsimengine.example.entities.BusStop extends de.uka.ipd.sdq.simulation.abstractsimengine.AbstractSimEntityDelegator
+{
+    private int waitingPassengers;
+
+    public void <init>(de.uka.ipd.sdq.simulation.abstractsimengine.ISimulationModel, java.lang.String)
+    {
+        de.uka.ipd.sdq.simulation.abstractsimengine.example.entities.BusStop r0;
+        de.uka.ipd.sdq.simulation.abstractsimengine.ISimulationModel r1;
+        java.lang.String r2;
+
+        r0 := @this: de.uka.ipd.sdq.simulation.abstractsimengine.example.entities.BusStop;
+
+        r1 := @parameter0: de.uka.ipd.sdq.simulation.abstractsimengine.ISimulationModel;
+
+        r2 := @parameter1: java.lang.String;
+
+        specialinvoke r0.<de.uka.ipd.sdq.simulation.abstractsimengine.AbstractSimEntityDelegator: void <init>(de.uka.ipd.sdq.simulation.abstractsimengine.ISimulationModel,java.lang.String)>(r1, r2);
+
+        return;
+    }
+
+    public int getWaitingPassengers()
+    {
+        de.uka.ipd.sdq.simulation.abstractsimengine.example.entities.BusStop r0;
+        int $i0;
+
+        r0 := @this: de.uka.ipd.sdq.simulation.abstractsimengine.example.entities.BusStop;
+
+        $i0 = r0.<de.uka.ipd.sdq.simulation.abstractsimengine.example.entities.BusStop: int waitingPassengers>;
+
+        return $i0;
+    }
+
+    public void setWaitingPassengers(int)
+    {
+        de.uka.ipd.sdq.simulation.abstractsimengine.example.entities.BusStop r0;
+        int i0;
+
+        r0 := @this: de.uka.ipd.sdq.simulation.abstractsimengine.example.entities.BusStop;
+
+        i0 := @parameter0: int;
+
+        r0.<de.uka.ipd.sdq.simulation.abstractsimengine.example.entities.BusStop: int waitingPassengers> = i0;
+
+        return;
+    }
+
+    public java.lang.String toString()
+    {
+        de.uka.ipd.sdq.simulation.abstractsimengine.example.entities.BusStop r0;
+        java.lang.String $r1;
+
+        r0 := @this: de.uka.ipd.sdq.simulation.abstractsimengine.example.entities.BusStop;
+
+        $r1 = virtualinvoke r0.<de.uka.ipd.sdq.simulation.abstractsimengine.example.entities.BusStop: java.lang.String getName()>();
+
+        return $r1;
+    }
+}

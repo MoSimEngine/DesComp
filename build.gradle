@@ -30,4 +30,5 @@ dependencies {
 	//compile group: 'de.opal-project', name: 'common_2.12', version: '2.0.1'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 	implementation 'ca.mcgill.sable:soot:3.3.0'
+	compile files('lib/javacg-0.1-SNAPSHOT-static.jar')
 }

@@ -19,20 +19,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import soot.Body;
-import soot.Hierarchy;
-import soot.MethodOrMethodContext;
+import masterarbeit.simulator.soot.AbstractSimEngineSceneTransformer;
 import soot.PackManager;
-import soot.Scene;
 import soot.SceneTransformer;
-import soot.SootClass;
-import soot.SootField;
-import soot.SootMethod;
 import soot.Transform;
-import soot.jimple.toolkits.callgraph.CHATransformer;
-import soot.jimple.toolkits.callgraph.CallGraph;
-import soot.jimple.toolkits.pointer.RWSet;
-import soot.jimple.toolkits.pointer.SideEffectAnalysis;
 import soot.options.Options;
 
 @RunWith(SpringRunner.class)
@@ -47,25 +37,7 @@ public class ImportTest {
 		simulatorRepository.cleanAll();
 
 		importBusViaSoot();
-		BufferedWriter writer = new BufferedWriter(new FileWriter("result.txt"));
-
-		writer.write("Similarity Entitys:");
-		writer.newLine();
-		Iterable<Map<String, Object>> a = simulatorRepository.computeJaccardCoeffincyForEntitys();
-		for (Map<String, Object> map : a) {
-			writer.write("FROM: " + map.get("from") + " TO " + map.get("to") + " SIMILARITY: " + map.get("similarity"));
-			writer.newLine();
-		}
-
-		writer.write("Similarity Events:");
-		writer.newLine();
-
-		Iterable<Map<String, Object>> b = simulatorRepository.computeJaccardCoeffincyForEvents();
-		for (Map<String, Object> map : b) {
-			writer.write("FROM: " + map.get("from") + " TO " + map.get("to") + " SIMILARITY: " + map.get("similarity"));
-			writer.newLine();
-		}
-		writer.close();
+		printSimilarityResult();
 	}
 
 	public void importBusViaSoot() throws IOException {
@@ -79,88 +51,23 @@ public class ImportTest {
 		Options.v().set_allow_phantom_refs(true);
 		Options.v().set_whole_program(true);
 
-		List<Event> events = new ArrayList<Event>();
-
-		List<Entity> entities = new ArrayList<Entity>();
-
-		PackManager.v().getPack("wjtp").add(new Transform("wjtp.myTrans", new SceneTransformer() {
-
-			@Override
-			protected void internalTransform(String phaseName, Map options) {
-				CHATransformer.v().transform();
-				CallGraph cg = Scene.v().getCallGraph();
-
-				System.out.println(cg.size());
-
-				Iterator<MethodOrMethodContext> sourceMethods = cg.sourceMethods();
-
-				Hierarchy classHierarchy = Scene.v().getActiveHierarchy();
-				SootClass eventClass = Scene.v()
-						.getSootClass("de.uka.ipd.sdq.simulation.abstractsimengine.AbstractSimEventDelegator");
-				List<SootClass> eventList = classHierarchy.getDirectSubclassesOf(eventClass);
-
-				for (SootClass event : eventList) {
-					event.setApplicationClass();
-					SideEffectAnalysis sideEffectAnalysis = Scene.v().getSideEffectAnalysis();
-
-					for (SootMethod sootMethod : event.getMethods()) {
-
-						if (sootMethod.getSignature().contains("eventRoutine")) {
-
-							Body retrieveActiveBody = sootMethod.retrieveActiveBody();
-
-							Event currEvent = new Event(event.getJavaStyleName(), retrieveActiveBody.toString());
-
-							RWSet nonTransitiveReadSet = sideEffectAnalysis.nonTransitiveReadSet(sootMethod);
-							RWSet nonTransitiveWriteSet = sideEffectAnalysis.nonTransitiveWriteSet(sootMethod);
-
-							if (null != nonTransitiveReadSet) {
-								for (Object string : nonTransitiveReadSet.getGlobals()) {
-									System.out.println("Global READ:" + ((SootField) string).getName());
-									currEvent.addReadProperty(new Property(((SootField) string).getName()));
-								}
-
-								for (Object object : nonTransitiveReadSet.getFields()) {
-									System.out.println("FIELD READ:" + object);
-									currEvent.addReadAttribute(new Attribute(((SootField) object).getName()));
-								}
-							}
-
-							if (null != nonTransitiveWriteSet) {
-								for (Object string : nonTransitiveWriteSet.getGlobals()) {
-									currEvent.addWriteProperty(new Property(((SootField) string).getName()));
-									System.out.println("Global WRTIE:" + ((SootField) string).getName());
-								}
-
-								for (Object object : nonTransitiveWriteSet.getFields()) {
-									System.out.println("FIELD WRITE:" + object);
-									currEvent.addWriteAttribute(new Attribute(((SootField) object).getName()));
-								}
-
-							}
-
-							events.add(currEvent);
-
-						}
-
-					}
-
-				}
-
-			}
-		}));
+		AbstractSimEngineSceneTransformer transformer = new AbstractSimEngineSceneTransformer();
+		PackManager.v().getPack("wjtp").add(new Transform("wjtp.myTrans", transformer));
 
 		soot.Main.main(args1);
 
 		Simulator importBussim = new Simulator("IMPORT_BUSSUM", "Tolle Bussimulation");
-		for (Event event2 : events) {
-			System.out.println(event2.name);
 
-			importBussim.addEvents(event2);
-		}
+		transformer.getEvents().forEach(event -> importBussim.addEvents(event));
+		transformer.getEntities().forEach(entity -> importBussim.addEntitys(entity));
 
 		simulatorRepository.save(importBussim);
 
+		printSimilarityResult();
+
+	}
+
+	private void printSimilarityResult() throws IOException {
 		BufferedWriter writer = new BufferedWriter(new FileWriter("result.txt"));
 
 		writer.write("Similarity Entitys:");
@@ -180,7 +87,6 @@ public class ImportTest {
 			writer.newLine();
 		}
 		writer.close();
-
 	}
 
 	public <T> Stream<T> enumerationAsStream(Enumeration<T> e) {

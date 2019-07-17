@@ -1,0 +1,1211 @@
+public class edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.entities.Human extends de.uka.ipd.sdq.simulation.abstractsimengine.AbstractSimEntityDelegator
+{
+    private edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.entities.Human$HumanState state;
+    private edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.entities.Human$HumanBehaviour behaviour;
+    private edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.entities.Position position;
+    private edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.entities.Position destination;
+    private volatile boolean collected;
+    public edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.Duration HOME_TO_STATION;
+    public edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.Duration WORK_TO_STATION;
+    public edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.Duration WALK_DIRECTLY;
+    public final edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.Duration WORKTIME;
+    private java.util.ArrayList workway;
+    private int positionIndex;
+    private int direction;
+    public edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.Duration FREETIME;
+    private edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.Duration timeDriven;
+    private java.util.ArrayList awayFromHomeTimes;
+    private java.util.ArrayList busWaitingTimes;
+    private java.util.ArrayList drivingTimes;
+    private java.util.ArrayList freeTimes;
+    private edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.Duration timeWaitedAtBusStop;
+    private double timePointAtBusStop;
+    private double timePointCollected;
+
+    public void <init>(edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.entities.BusStop, edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.entities.BusStop, de.uka.ipd.sdq.simulation.abstractsimengine.ISimulationModel, java.lang.String)
+    {
+        edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.entities.Human r0;
+        edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.entities.BusStop r1, r2;
+        de.uka.ipd.sdq.simulation.abstractsimengine.ISimulationModel r3;
+        java.lang.String r4, $r42, $r45, $r48, $r50;
+        java.util.Random $r5, $r7, $r9;
+        int $i0, $i1, $i2, $i3, $i4, $i5, $i6, $i7, $i8;
+        double $d0, $d1, $d2, $d3;
+        edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.Duration $r6, $r8, $r10, $r11, $r12, $r14, $r15, $r16, $r33, $r34, $r35;
+        java.util.ArrayList $r13, $r21, $r26, $r27, $r30, $r36, $r37, $r38, $r39, $r51, $r52;
+        edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.entities.Human$HumanState $r17;
+        edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.entities.Human$HumanBehaviour $r18, $r22, $r23;
+        edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.entities.Position $r19, $r24, $r29, $r32;
+        edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.entities.Position$PositionType $r20, $r25;
+        boolean $z1;
+        java.lang.Object $r28, $r31;
+        java.lang.StringBuilder $r40, $r43, $r44, $r46, $r47, $r49;
+        java.io.PrintStream $r41;
+
+        r0 := @this: edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.entities.Human;
+
+        r1 := @parameter0: edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.entities.BusStop;
+
+        r2 := @parameter1: edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.entities.BusStop;
+
+        r3 := @parameter2: de.uka.ipd.sdq.simulation.abstractsimengine.ISimulationModel;
+
+        r4 := @parameter3: java.lang.String;
+
+        specialinvoke r0.<de.uka.ipd.sdq.simulation.abstractsimengine.AbstractSimEntityDelegator: void <init>(de.uka.ipd.sdq.simulation.abstractsimengine.ISimulationModel,java.lang.String)>(r3, r4);
+
+        $r5 = new java.util.Random;
+
+        specialinvoke $r5.<java.util.Random: void <init>()>();
+
+        $i0 = virtualinvoke $r5.<java.util.Random: int nextInt(int)>(60);
+
+        $i1 = $i0 + 1;
+
+        $d0 = (double) $i1;
+
+        $r6 = staticinvoke <edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.Duration: edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.Duration minutes(double)>($d0);
+
+        r0.<edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.entities.Human: edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.Duration HOME_TO_STATION> = $r6;
+
+        $r7 = new java.util.Random;
+
+        specialinvoke $r7.<java.util.Random: void <init>()>();
+
+        $i2 = virtualinvoke $r7.<java.util.Random: int nextInt(int)>(60);
+
+        $i3 = $i2 + 1;
+
+        $d1 = (double) $i3;
+
+        $r8 = staticinvoke <edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.Duration: edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.Duration minutes(double)>($d1);
+
+        r0.<edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.entities.Human: edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.Duration WORK_TO_STATION> = $r8;
+
+        $r9 = new java.util.Random;
+
+        specialinvoke $r9.<java.util.Random: void <init>()>();
+
+        $i4 = virtualinvoke $r9.<java.util.Random: int nextInt(int)>(200);
+
+        $i5 = $i4 + 1;
+
+        $d2 = (double) $i5;
+
+        $r10 = staticinvoke <edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.Duration: edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.Duration minutes(double)>($d2);
+
+        $d3 = virtualinvoke $r10.<edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.Duration: double value()>();
+
+        $r11 = staticinvoke <edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.Duration: edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.Duration minutes(double)>($d3);
+
+        r0.<edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.entities.Human: edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.Duration WALK_DIRECTLY> = $r11;
+
+        $r12 = staticinvoke <edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.Duration: edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.Duration hours(double)>(8.0);
+
+        r0.<edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.entities.Human: edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.Duration WORKTIME> = $r12;
+
+        $r13 = new java.util.ArrayList;
+
+        specialinvoke $r13.<java.util.ArrayList: void <init>()>();
+
+        r0.<edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.entities.Human: java.util.ArrayList workway> = $r13;
+
+        r0.<edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.entities.Human: int positionIndex> = 0;
+
+        r0.<edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.entities.Human: int direction> = 1;
+
+        $r14 = staticinvoke <edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.Duration: edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.Duration hours(double)>(0.0);
+
+        r0.<edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.entities.Human: edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.Duration FREETIME> = $r14;
+
+        $r15 = staticinvoke <edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.Duration: edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.Duration seconds(double)>(0.0);
+
+        r0.<edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.entities.Human: edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.Duration timeDriven> = $r15;
+
+        $r16 = staticinvoke <edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.Duration: edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.Duration seconds(double)>(0.0);
+
+        r0.<edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.entities.Human: edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.Duration timeWaitedAtBusStop> = $r16;
+
+        r0.<edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.entities.Human: double timePointAtBusStop> = 0.0;
+
+        r0.<edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.entities.Human: double timePointCollected> = 0.0;
+
+        $r17 = <edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.entities.Human$HumanState: edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.entities.Human$HumanState AT_HOME>;
+
+        r0.<edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.entities.Human: edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.entities.Human$HumanState state> = $r17;
+
+        $r18 = <edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.entities.Human$HumanBehaviour: edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.entities.Human$HumanBehaviour DRIVING_BY_BUS>;
+
+        r0.<edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.entities.Human: edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.entities.Human$HumanBehaviour behaviour> = $r18;
+
+        $r21 = r0.<edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.entities.Human: java.util.ArrayList workway>;
+
+        $r19 = new edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.entities.Position;
+
+        $r20 = <edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.entities.Position$PositionType: edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.entities.Position$PositionType HOME>;
+
+        specialinvoke $r19.<edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.entities.Position: void <init>(de.uka.ipd.sdq.simulation.abstractsimengine.ISimulationModel,java.lang.String,edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.entities.Position$PositionType)>(r3, "Home", $r20);
+
+        virtualinvoke $r21.<java.util.ArrayList: boolean add(java.lang.Object)>($r19);
+
+        $r23 = r0.<edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.entities.Human: edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.entities.Human$HumanBehaviour behaviour>;
+
+        $r22 = <edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.entities.Human$HumanBehaviour: edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.entities.Human$HumanBehaviour WALKING_DIRECTLY>;
+
+        $z1 = virtualinvoke $r23.<edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.entities.Human$HumanBehaviour: boolean equals(java.lang.Object)>($r22);
+
+        if $z1 != 0 goto label1;
+
+        $r51 = r0.<edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.entities.Human: java.util.ArrayList workway>;
+
+        virtualinvoke $r51.<java.util.ArrayList: boolean add(java.lang.Object)>(r1);
+
+        $r52 = r0.<edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.entities.Human: java.util.ArrayList workway>;
+
+        virtualinvoke $r52.<java.util.ArrayList: boolean add(java.lang.Object)>(r2);
+
+     label1:
+        $r26 = r0.<edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.entities.Human: java.util.ArrayList workway>;
+
+        $r24 = new edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.entities.Position;
+
+        $r25 = <edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.entities.Position$PositionType: edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.entities.Position$PositionType WORK>;
+
+        specialinvoke $r24.<edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.entities.Position: void <init>(de.uka.ipd.sdq.simulation.abstractsimengine.ISimulationModel,java.lang.String,edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.entities.Position$PositionType)>(r3, "Work", $r25);
+
+        virtualinvoke $r26.<java.util.ArrayList: boolean add(java.lang.Object)>($r24);
+
+        $r27 = r0.<edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.entities.Human: java.util.ArrayList workway>;
+
+        $i6 = r0.<edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.entities.Human: int positionIndex>;
+
+        $r28 = virtualinvoke $r27.<java.util.ArrayList: java.lang.Object get(int)>($i6);
+
+        $r29 = (edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.entities.Position) $r28;
+
+        r0.<edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.entities.Human: edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.entities.Position position> = $r29;
+
+        $r30 = r0.<edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.entities.Human: java.util.ArrayList workway>;
+
+        $i7 = r0.<edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.entities.Human: int positionIndex>;
+
+        $i8 = $i7 + 1;
+
+        $r31 = virtualinvoke $r30.<java.util.ArrayList: java.lang.Object get(int)>($i8);
+
+        $r32 = (edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.entities.Position) $r31;
+
+        r0.<edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.entities.Human: edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.entities.Position destination> = $r32;
+
+        $r33 = staticinvoke <edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.Duration: edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.Duration minutes(double)>(30.0);
+
+        r0.<edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.entities.Human: edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.Duration HOME_TO_STATION> = $r33;
+
+        $r34 = staticinvoke <edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.Duration: edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.Duration minutes(double)>(30.0);
+
+        r0.<edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.entities.Human: edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.Duration WORK_TO_STATION> = $r34;
+
+        $r35 = staticinvoke <edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.Duration: edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.Duration minutes(double)>(90.0);
+
+        r0.<edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.entities.Human: edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.Duration WALK_DIRECTLY> = $r35;
+
+        $r36 = new java.util.ArrayList;
+
+        specialinvoke $r36.<java.util.ArrayList: void <init>()>();
+
+        r0.<edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.entities.Human: java.util.ArrayList awayFromHomeTimes> = $r36;
+
+        $r37 = new java.util.ArrayList;
+
+        specialinvoke $r37.<java.util.ArrayList: void <init>()>();
+
+        r0.<edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.entities.Human: java.util.ArrayList busWaitingTimes> = $r37;
+
+        $r38 = new java.util.ArrayList;
+
+        specialinvoke $r38.<java.util.ArrayList: void <init>()>();
+
+        r0.<edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.entities.Human: java.util.ArrayList drivingTimes> = $r38;
+
+        $r39 = new java.util.ArrayList;
+
+        specialinvoke $r39.<java.util.ArrayList: void <init>()>();
+
+        r0.<edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.entities.Human: java.util.ArrayList freeTimes> = $r39;
+
+        $r41 = <java.lang.System: java.io.PrintStream out>;
+
+        $r40 = new java.lang.StringBuilder;
+
+        specialinvoke $r40.<java.lang.StringBuilder: void <init>(java.lang.String)>("Person: ");
+
+        $r42 = virtualinvoke r0.<edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.entities.Human: java.lang.String getName()>();
+
+        $r43 = virtualinvoke $r40.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r42);
+
+        $r44 = virtualinvoke $r43.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("HomeBS: ");
+
+        $r45 = virtualinvoke r1.<edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.entities.BusStop: java.lang.String getName()>();
+
+        $r46 = virtualinvoke $r44.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r45);
+
+        $r47 = virtualinvoke $r46.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(" WorkBS:");
+
+        $r48 = virtualinvoke r2.<edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.entities.BusStop: java.lang.String getName()>();
+
+        $r49 = virtualinvoke $r47.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r48);
+
+        $r50 = virtualinvoke $r49.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        virtualinvoke $r41.<java.io.PrintStream: void println(java.lang.String)>($r50);
+
+        return;
+    }
+
+    public void <init>(java.util.ArrayList, de.uka.ipd.sdq.simulation.abstractsimengine.ISimulationModel, java.lang.String)
+    {
+        edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.entities.Human r0;
+        java.util.ArrayList r1, $r12, $r18, $r21, $r27, $r28, $r29, $r30;
+        de.uka.ipd.sdq.simulation.abstractsimengine.ISimulationModel r2;
+        java.lang.String r3;
+        java.util.Random $r4, $r6, $r8;
+        int $i0, $i1, $i2, $i3, $i4, $i5, $i6, $i7, $i8;
+        double $d0, $d1, $d2, $d3;
+        edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.Duration $r5, $r7, $r9, $r10, $r11, $r13, $r14, $r15, $r24, $r25, $r26;
+        edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.entities.Human$HumanState $r16;
+        edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.entities.Human$HumanBehaviour $r17;
+        java.lang.Object $r19, $r22;
+        edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.entities.Position $r20, $r23;
+
+        r0 := @this: edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.entities.Human;
+
+        r1 := @parameter0: java.util.ArrayList;
+
+        r2 := @parameter1: de.uka.ipd.sdq.simulation.abstractsimengine.ISimulationModel;
+
+        r3 := @parameter2: java.lang.String;
+
+        specialinvoke r0.<de.uka.ipd.sdq.simulation.abstractsimengine.AbstractSimEntityDelegator: void <init>(de.uka.ipd.sdq.simulation.abstractsimengine.ISimulationModel,java.lang.String)>(r2, r3);
+
+        $r4 = new java.util.Random;
+
+        specialinvoke $r4.<java.util.Random: void <init>()>();
+
+        $i0 = virtualinvoke $r4.<java.util.Random: int nextInt(int)>(60);
+
+        $i1 = $i0 + 1;
+
+        $d0 = (double) $i1;
+
+        $r5 = staticinvoke <edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.Duration: edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.Duration minutes(double)>($d0);
+
+        r0.<edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.entities.Human: edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.Duration HOME_TO_STATION> = $r5;
+
+        $r6 = new java.util.Random;
+
+        specialinvoke $r6.<java.util.Random: void <init>()>();
+
+        $i2 = virtualinvoke $r6.<java.util.Random: int nextInt(int)>(60);
+
+        $i3 = $i2 + 1;
+
+        $d1 = (double) $i3;
+
+        $r7 = staticinvoke <edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.Duration: edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.Duration minutes(double)>($d1);
+
+        r0.<edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.entities.Human: edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.Duration WORK_TO_STATION> = $r7;
+
+        $r8 = new java.util.Random;
+
+        specialinvoke $r8.<java.util.Random: void <init>()>();
+
+        $i4 = virtualinvoke $r8.<java.util.Random: int nextInt(int)>(200);
+
+        $i5 = $i4 + 1;
+
+        $d2 = (double) $i5;
+
+        $r9 = staticinvoke <edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.Duration: edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.Duration minutes(double)>($d2);
+
+        $d3 = virtualinvoke $r9.<edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.Duration: double value()>();
+
+        $r10 = staticinvoke <edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.Duration: edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.Duration minutes(double)>($d3);
+
+        r0.<edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.entities.Human: edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.Duration WALK_DIRECTLY> = $r10;
+
+        $r11 = staticinvoke <edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.Duration: edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.Duration hours(double)>(8.0);
+
+        r0.<edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.entities.Human: edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.Duration WORKTIME> = $r11;
+
+        $r12 = new java.util.ArrayList;
+
+        specialinvoke $r12.<java.util.ArrayList: void <init>()>();
+
+        r0.<edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.entities.Human: java.util.ArrayList workway> = $r12;
+
+        r0.<edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.entities.Human: int positionIndex> = 0;
+
+        r0.<edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.entities.Human: int direction> = 1;
+
+        $r13 = staticinvoke <edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.Duration: edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.Duration hours(double)>(0.0);
+
+        r0.<edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.entities.Human: edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.Duration FREETIME> = $r13;
+
+        $r14 = staticinvoke <edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.Duration: edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.Duration seconds(double)>(0.0);
+
+        r0.<edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.entities.Human: edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.Duration timeDriven> = $r14;
+
+        $r15 = staticinvoke <edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.Duration: edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.Duration seconds(double)>(0.0);
+
+        r0.<edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.entities.Human: edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.Duration timeWaitedAtBusStop> = $r15;
+
+        r0.<edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.entities.Human: double timePointAtBusStop> = 0.0;
+
+        r0.<edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.entities.Human: double timePointCollected> = 0.0;
+
+        $r16 = <edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.entities.Human$HumanState: edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.entities.Human$HumanState AT_HOME>;
+
+        r0.<edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.entities.Human: edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.entities.Human$HumanState state> = $r16;
+
+        $r17 = <edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.entities.Human$HumanBehaviour: edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.entities.Human$HumanBehaviour DRIVING_BY_BUS>;
+
+        r0.<edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.entities.Human: edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.entities.Human$HumanBehaviour behaviour> = $r17;
+
+        r0.<edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.entities.Human: java.util.ArrayList workway> = r1;
+
+        $r18 = r0.<edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.entities.Human: java.util.ArrayList workway>;
+
+        $i6 = r0.<edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.entities.Human: int positionIndex>;
+
+        $r19 = virtualinvoke $r18.<java.util.ArrayList: java.lang.Object get(int)>($i6);
+
+        $r20 = (edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.entities.Position) $r19;
+
+        r0.<edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.entities.Human: edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.entities.Position position> = $r20;
+
+        $r21 = r0.<edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.entities.Human: java.util.ArrayList workway>;
+
+        $i7 = r0.<edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.entities.Human: int positionIndex>;
+
+        $i8 = $i7 + 1;
+
+        $r22 = virtualinvoke $r21.<java.util.ArrayList: java.lang.Object get(int)>($i8);
+
+        $r23 = (edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.entities.Position) $r22;
+
+        r0.<edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.entities.Human: edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.entities.Position destination> = $r23;
+
+        $r24 = staticinvoke <edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.Duration: edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.Duration minutes(double)>(30.0);
+
+        r0.<edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.entities.Human: edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.Duration HOME_TO_STATION> = $r24;
+
+        $r25 = staticinvoke <edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.Duration: edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.Duration minutes(double)>(30.0);
+
+        r0.<edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.entities.Human: edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.Duration WORK_TO_STATION> = $r25;
+
+        $r26 = staticinvoke <edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.Duration: edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.Duration minutes(double)>(90.0);
+
+        r0.<edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.entities.Human: edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.Duration WALK_DIRECTLY> = $r26;
+
+        $r27 = new java.util.ArrayList;
+
+        specialinvoke $r27.<java.util.ArrayList: void <init>()>();
+
+        r0.<edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.entities.Human: java.util.ArrayList awayFromHomeTimes> = $r27;
+
+        $r28 = new java.util.ArrayList;
+
+        specialinvoke $r28.<java.util.ArrayList: void <init>()>();
+
+        r0.<edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.entities.Human: java.util.ArrayList busWaitingTimes> = $r28;
+
+        $r29 = new java.util.ArrayList;
+
+        specialinvoke $r29.<java.util.ArrayList: void <init>()>();
+
+        r0.<edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.entities.Human: java.util.ArrayList drivingTimes> = $r29;
+
+        $r30 = new java.util.ArrayList;
+
+        specialinvoke $r30.<java.util.ArrayList: void <init>()>();
+
+        r0.<edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.entities.Human: java.util.ArrayList freeTimes> = $r30;
+
+        return;
+    }
+
+    public void walkToNext()
+    {
+        edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.entities.Human r0;
+        edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.entities.Human$HumanState $r1, $r2, $r3, $r4, $r5, $r6, $r9, $r13;
+        boolean $z0, $z1, $z2;
+        java.lang.IllegalStateException $r7;
+        java.lang.StringBuilder $r8, $r11;
+        java.lang.String $r10, $r12;
+
+        r0 := @this: edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.entities.Human;
+
+        $r2 = r0.<edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.entities.Human: edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.entities.Human$HumanState state>;
+
+        $r1 = <edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.entities.Human$HumanState: edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.entities.Human$HumanState AT_HOME>;
+
+        $z0 = virtualinvoke $r2.<edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.entities.Human$HumanState: boolean equals(java.lang.Object)>($r1);
+
+        if $z0 != 0 goto label1;
+
+        $r4 = r0.<edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.entities.Human: edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.entities.Human$HumanState state>;
+
+        $r3 = <edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.entities.Human$HumanState: edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.entities.Human$HumanState AT_WORK>;
+
+        $z1 = virtualinvoke $r4.<edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.entities.Human$HumanState: boolean equals(java.lang.Object)>($r3);
+
+        if $z1 != 0 goto label1;
+
+        $r6 = r0.<edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.entities.Human: edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.entities.Human$HumanState state>;
+
+        $r5 = <edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.entities.Human$HumanState: edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.entities.Human$HumanState AT_BUSSTOP>;
+
+        $z2 = virtualinvoke $r6.<edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.entities.Human$HumanState: boolean equals(java.lang.Object)>($r5);
+
+        if $z2 == 0 goto label2;
+
+     label1:
+        $r13 = <edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.entities.Human$HumanState: edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.entities.Human$HumanState WALKING>;
+
+        r0.<edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.entities.Human: edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.entities.Human$HumanState state> = $r13;
+
+        goto label3;
+
+     label2:
+        $r7 = new java.lang.IllegalStateException;
+
+        $r8 = new java.lang.StringBuilder;
+
+        specialinvoke $r8.<java.lang.StringBuilder: void <init>(java.lang.String)>("Human cannot walk!CurrentState: ");
+
+        $r9 = r0.<edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.entities.Human: edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.entities.Human$HumanState state>;
+
+        $r10 = virtualinvoke $r9.<edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.entities.Human$HumanState: java.lang.String toString()>();
+
+        $r11 = virtualinvoke $r8.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r10);
+
+        $r12 = virtualinvoke $r11.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        specialinvoke $r7.<java.lang.IllegalStateException: void <init>(java.lang.String)>($r12);
+
+        throw $r7;
+
+     label3:
+        return;
+    }
+
+    public void travellingToNext()
+    {
+        edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.entities.Human r0;
+        edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.entities.Human$HumanState $r1, $r2, $r5, $r9;
+        boolean $z0;
+        java.lang.IllegalStateException $r3;
+        java.lang.StringBuilder $r4, $r7;
+        java.lang.String $r6, $r8;
+
+        r0 := @this: edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.entities.Human;
+
+        $r2 = r0.<edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.entities.Human: edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.entities.Human$HumanState state>;
+
+        $r1 = <edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.entities.Human$HumanState: edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.entities.Human$HumanState AT_BUSSTOP>;
+
+        $z0 = virtualinvoke $r2.<edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.entities.Human$HumanState: boolean equals(java.lang.Object)>($r1);
+
+        if $z0 == 0 goto label1;
+
+        $r9 = <edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.entities.Human$HumanState: edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.entities.Human$HumanState TRAVELLING>;
+
+        r0.<edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.entities.Human: edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.entities.Human$HumanState state> = $r9;
+
+        goto label2;
+
+     label1:
+        $r3 = new java.lang.IllegalStateException;
+
+        $r4 = new java.lang.StringBuilder;
+
+        specialinvoke $r4.<java.lang.StringBuilder: void <init>(java.lang.String)>("How to drive by bus when not at BusStop???CurrentState: ");
+
+        $r5 = r0.<edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.entities.Human: edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.entities.Human$HumanState state>;
+
+        $r6 = virtualinvoke $r5.<edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.entities.Human$HumanState: java.lang.String toString()>();
+
+        $r7 = virtualinvoke $r4.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r6);
+
+        $r8 = virtualinvoke $r7.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        specialinvoke $r3.<java.lang.IllegalStateException: void <init>(java.lang.String)>($r8);
+
+        throw $r3;
+
+     label2:
+        return;
+    }
+
+    public void arriveAtWork()
+    {
+        edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.entities.Human r0;
+        edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.entities.Human$HumanState $r1, $r2, $r5, $r9;
+        boolean $z0;
+        java.lang.IllegalStateException $r3;
+        java.lang.StringBuilder $r4, $r7;
+        java.lang.String $r6, $r8;
+
+        r0 := @this: edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.entities.Human;
+
+        $r2 = r0.<edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.entities.Human: edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.entities.Human$HumanState state>;
+
+        $r1 = <edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.entities.Human$HumanState: edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.entities.Human$HumanState WALKING>;
+
+        $z0 = virtualinvoke $r2.<edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.entities.Human$HumanState: boolean equals(java.lang.Object)>($r1);
+
+        if $z0 == 0 goto label1;
+
+        $r9 = <edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.entities.Human$HumanState: edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.entities.Human$HumanState AT_WORK>;
+
+        r0.<edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.entities.Human: edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.entities.Human$HumanState state> = $r9;
+
+        goto label2;
+
+     label1:
+        $r3 = new java.lang.IllegalStateException;
+
+        $r4 = new java.lang.StringBuilder;
+
+        specialinvoke $r4.<java.lang.StringBuilder: void <init>(java.lang.String)>("There is no teleportation to work!CurrentState: ");
+
+        $r5 = r0.<edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.entities.Human: edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.entities.Human$HumanState state>;
+
+        $r6 = virtualinvoke $r5.<edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.entities.Human$HumanState: java.lang.String toString()>();
+
+        $r7 = virtualinvoke $r4.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r6);
+
+        $r8 = virtualinvoke $r7.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        specialinvoke $r3.<java.lang.IllegalStateException: void <init>(java.lang.String)>($r8);
+
+        throw $r3;
+
+     label2:
+        return;
+    }
+
+    public void arriveAtHome()
+    {
+        edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.entities.Human r0;
+        edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.entities.Human$HumanState $r1, $r2, $r5, $r9;
+        boolean $z0;
+        java.lang.IllegalStateException $r3;
+        java.lang.StringBuilder $r4, $r7;
+        java.lang.String $r6, $r8;
+
+        r0 := @this: edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.entities.Human;
+
+        $r2 = r0.<edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.entities.Human: edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.entities.Human$HumanState state>;
+
+        $r1 = <edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.entities.Human$HumanState: edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.entities.Human$HumanState WALKING>;
+
+        $z0 = virtualinvoke $r2.<edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.entities.Human$HumanState: boolean equals(java.lang.Object)>($r1);
+
+        if $z0 == 0 goto label1;
+
+        $r9 = <edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.entities.Human$HumanState: edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.entities.Human$HumanState AT_HOME>;
+
+        r0.<edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.entities.Human: edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.entities.Human$HumanState state> = $r9;
+
+        r0.<edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.entities.Human: int direction> = 1;
+
+        goto label2;
+
+     label1:
+        $r3 = new java.lang.IllegalStateException;
+
+        $r4 = new java.lang.StringBuilder;
+
+        specialinvoke $r4.<java.lang.StringBuilder: void <init>(java.lang.String)>("There is no teleportation to home!CurrentState: ");
+
+        $r5 = r0.<edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.entities.Human: edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.entities.Human$HumanState state>;
+
+        $r6 = virtualinvoke $r5.<edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.entities.Human$HumanState: java.lang.String toString()>();
+
+        $r7 = virtualinvoke $r4.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r6);
+
+        $r8 = virtualinvoke $r7.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        specialinvoke $r3.<java.lang.IllegalStateException: void <init>(java.lang.String)>($r8);
+
+        throw $r3;
+
+     label2:
+        return;
+    }
+
+    public void arriveAtBusStop()
+    {
+        edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.entities.Human r0;
+        edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.entities.Human$HumanState $r1, $r2, $r3, $r4, $r5, $r8;
+        boolean $z0, $z1;
+        java.lang.IllegalStateException $r6;
+        java.lang.StringBuilder $r7, $r10;
+        java.lang.String $r9, $r11;
+
+        r0 := @this: edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.entities.Human;
+
+        $r2 = r0.<edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.entities.Human: edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.entities.Human$HumanState state>;
+
+        $r1 = <edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.entities.Human$HumanState: edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.entities.Human$HumanState WALKING>;
+
+        $z0 = virtualinvoke $r2.<edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.entities.Human$HumanState: boolean equals(java.lang.Object)>($r1);
+
+        if $z0 != 0 goto label1;
+
+        $r5 = r0.<edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.entities.Human: edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.entities.Human$HumanState state>;
+
+        $r4 = <edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.entities.Human$HumanState: edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.entities.Human$HumanState TRAVELLING>;
+
+        $z1 = virtualinvoke $r5.<edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.entities.Human$HumanState: boolean equals(java.lang.Object)>($r4);
+
+        if $z1 == 0 goto label2;
+
+     label1:
+        $r3 = <edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.entities.Human$HumanState: edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.entities.Human$HumanState AT_BUSSTOP>;
+
+        r0.<edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.entities.Human: edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.entities.Human$HumanState state> = $r3;
+
+        goto label3;
+
+     label2:
+        $r6 = new java.lang.IllegalStateException;
+
+        $r7 = new java.lang.StringBuilder;
+
+        specialinvoke $r7.<java.lang.StringBuilder: void <init>(java.lang.String)>("There is no teleportation to a BusStop!CurrentState: ");
+
+        $r8 = r0.<edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.entities.Human: edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.entities.Human$HumanState state>;
+
+        $r9 = virtualinvoke $r8.<edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.entities.Human$HumanState: java.lang.String toString()>();
+
+        $r10 = virtualinvoke $r7.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r9);
+
+        $r11 = virtualinvoke $r10.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        specialinvoke $r6.<java.lang.IllegalStateException: void <init>(java.lang.String)>($r11);
+
+        throw $r6;
+
+     label3:
+        return;
+    }
+
+    public java.util.ArrayList getFreeTimes()
+    {
+        edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.entities.Human r0;
+        java.util.ArrayList $r1;
+
+        r0 := @this: edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.entities.Human;
+
+        $r1 = r0.<edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.entities.Human: java.util.ArrayList freeTimes>;
+
+        return $r1;
+    }
+
+    public edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.entities.Position getPosition()
+    {
+        edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.entities.Human r0;
+        edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.entities.Position $r1;
+
+        r0 := @this: edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.entities.Human;
+
+        $r1 = r0.<edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.entities.Human: edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.entities.Position position>;
+
+        return $r1;
+    }
+
+    public edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.entities.Position getDestination()
+    {
+        edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.entities.Human r0;
+        edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.entities.Position $r1;
+
+        r0 := @this: edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.entities.Human;
+
+        $r1 = r0.<edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.entities.Human: edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.entities.Position destination>;
+
+        return $r1;
+    }
+
+    public boolean isCollected()
+    {
+        edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.entities.Human r0;
+        boolean $z0;
+
+        r0 := @this: edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.entities.Human;
+
+        $z0 = r0.<edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.entities.Human: boolean collected>;
+
+        return $z0;
+    }
+
+    public void setCollected(boolean)
+    {
+        edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.entities.Human r0;
+        boolean z0;
+
+        r0 := @this: edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.entities.Human;
+
+        z0 := @parameter0: boolean;
+
+        r0.<edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.entities.Human: boolean collected> = z0;
+
+        return;
+    }
+
+    public edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.entities.Human$HumanState getState()
+    {
+        edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.entities.Human r0;
+        edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.entities.Human$HumanState $r1;
+
+        r0 := @this: edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.entities.Human;
+
+        $r1 = r0.<edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.entities.Human: edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.entities.Human$HumanState state>;
+
+        return $r1;
+    }
+
+    public edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.entities.Human$HumanBehaviour getBehaviour()
+    {
+        edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.entities.Human r0;
+        edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.entities.Human$HumanBehaviour $r1;
+
+        r0 := @this: edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.entities.Human;
+
+        $r1 = r0.<edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.entities.Human: edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.entities.Human$HumanBehaviour behaviour>;
+
+        return $r1;
+    }
+
+    public java.util.ArrayList getBusWaitingTimes()
+    {
+        edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.entities.Human r0;
+        java.util.ArrayList $r1;
+
+        r0 := @this: edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.entities.Human;
+
+        $r1 = r0.<edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.entities.Human: java.util.ArrayList busWaitingTimes>;
+
+        return $r1;
+    }
+
+    public java.util.ArrayList getDrivingTimes()
+    {
+        edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.entities.Human r0;
+        java.util.ArrayList $r1;
+
+        r0 := @this: edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.entities.Human;
+
+        $r1 = r0.<edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.entities.Human: java.util.ArrayList drivingTimes>;
+
+        return $r1;
+    }
+
+    public java.util.ArrayList getAwayFromHomeTimes()
+    {
+        edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.entities.Human r0;
+        java.util.ArrayList $r1;
+
+        r0 := @this: edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.entities.Human;
+
+        $r1 = r0.<edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.entities.Human: java.util.ArrayList awayFromHomeTimes>;
+
+        return $r1;
+    }
+
+    public java.util.ArrayList getWorkway()
+    {
+        edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.entities.Human r0;
+        java.util.ArrayList $r1;
+
+        r0 := @this: edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.entities.Human;
+
+        $r1 = r0.<edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.entities.Human: java.util.ArrayList workway>;
+
+        return $r1;
+    }
+
+    public void arriveAtBusStopWalkingTimePointLog()
+    {
+        edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.entities.Human r0;
+        double $d0, $d1;
+        byte $b0;
+        de.uka.ipd.sdq.simulation.abstractsimengine.ISimulationModel $r1;
+        de.uka.ipd.sdq.simulation.abstractsimengine.ISimulationControl $r2;
+        java.lang.IllegalStateException $r3;
+
+        r0 := @this: edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.entities.Human;
+
+        $d0 = r0.<edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.entities.Human: double timePointAtBusStop>;
+
+        $b0 = $d0 cmpl 0.0;
+
+        if $b0 == 0 goto label1;
+
+        $r3 = new java.lang.IllegalStateException;
+
+        specialinvoke $r3.<java.lang.IllegalStateException: void <init>(java.lang.String)>("time point arrived at bus stop was not zero");
+
+        throw $r3;
+
+     label1:
+        $r1 = virtualinvoke r0.<edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.entities.Human: de.uka.ipd.sdq.simulation.abstractsimengine.ISimulationModel getModel()>();
+
+        $r2 = interfaceinvoke $r1.<de.uka.ipd.sdq.simulation.abstractsimengine.ISimulationModel: de.uka.ipd.sdq.simulation.abstractsimengine.ISimulationControl getSimulationControl()>();
+
+        $d1 = interfaceinvoke $r2.<de.uka.ipd.sdq.simulation.abstractsimengine.ISimulationControl: double getCurrentSimulationTime()>();
+
+        r0.<edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.entities.Human: double timePointAtBusStop> = $d1;
+
+        return;
+    }
+
+    public void calculateWaitedTime()
+    {
+        edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.entities.Human r0;
+        edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.Duration $r1, $r2, $r5, $r6;
+        double $d0, $d1, $d2, $d3, $d4, $d5;
+        de.uka.ipd.sdq.simulation.abstractsimengine.ISimulationModel $r3;
+        de.uka.ipd.sdq.simulation.abstractsimengine.ISimulationControl $r4;
+
+        r0 := @this: edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.entities.Human;
+
+        $r1 = r0.<edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.entities.Human: edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.Duration timeWaitedAtBusStop>;
+
+        $r2 = virtualinvoke $r1.<edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.Duration: edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.Duration toSeconds()>();
+
+        $d0 = virtualinvoke $r2.<edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.Duration: double value()>();
+
+        $r3 = virtualinvoke r0.<edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.entities.Human: de.uka.ipd.sdq.simulation.abstractsimengine.ISimulationModel getModel()>();
+
+        $r4 = interfaceinvoke $r3.<de.uka.ipd.sdq.simulation.abstractsimengine.ISimulationModel: de.uka.ipd.sdq.simulation.abstractsimengine.ISimulationControl getSimulationControl()>();
+
+        $d1 = interfaceinvoke $r4.<de.uka.ipd.sdq.simulation.abstractsimengine.ISimulationControl: double getCurrentSimulationTime()>();
+
+        $d2 = r0.<edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.entities.Human: double timePointAtBusStop>;
+
+        $d3 = $d1 - $d2;
+
+        $r5 = staticinvoke <edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.Duration: edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.Duration seconds(double)>($d3);
+
+        $d4 = virtualinvoke $r5.<edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.Duration: double value()>();
+
+        $d5 = $d0 + $d4;
+
+        $r6 = staticinvoke <edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.Duration: edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.Duration seconds(double)>($d5);
+
+        r0.<edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.entities.Human: edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.Duration timeWaitedAtBusStop> = $r6;
+
+        r0.<edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.entities.Human: double timePointAtBusStop> = 0.0;
+
+        return;
+    }
+
+    public void humanIsCollected()
+    {
+        edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.entities.Human r0;
+        double $d0, $d1, $d2;
+        byte $b0;
+        de.uka.ipd.sdq.simulation.abstractsimengine.ISimulationModel $r1;
+        de.uka.ipd.sdq.simulation.abstractsimengine.ISimulationControl $r2;
+        java.lang.IllegalStateException $r3;
+        java.lang.StringBuilder $r4, $r5;
+        java.lang.String $r6;
+
+        r0 := @this: edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.entities.Human;
+
+        $d0 = r0.<edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.entities.Human: double timePointCollected>;
+
+        $b0 = $d0 cmpl 0.0;
+
+        if $b0 == 0 goto label1;
+
+        $r3 = new java.lang.IllegalStateException;
+
+        $r4 = new java.lang.StringBuilder;
+
+        specialinvoke $r4.<java.lang.StringBuilder: void <init>(java.lang.String)>("time point arrived at bus stop was not zero, was:");
+
+        $d2 = r0.<edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.entities.Human: double timePointCollected>;
+
+        $r5 = virtualinvoke $r4.<java.lang.StringBuilder: java.lang.StringBuilder append(double)>($d2);
+
+        $r6 = virtualinvoke $r5.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        specialinvoke $r3.<java.lang.IllegalStateException: void <init>(java.lang.String)>($r6);
+
+        throw $r3;
+
+     label1:
+        $r1 = virtualinvoke r0.<edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.entities.Human: de.uka.ipd.sdq.simulation.abstractsimengine.ISimulationModel getModel()>();
+
+        $r2 = interfaceinvoke $r1.<de.uka.ipd.sdq.simulation.abstractsimengine.ISimulationModel: de.uka.ipd.sdq.simulation.abstractsimengine.ISimulationControl getSimulationControl()>();
+
+        $d1 = interfaceinvoke $r2.<de.uka.ipd.sdq.simulation.abstractsimengine.ISimulationControl: double getCurrentSimulationTime()>();
+
+        r0.<edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.entities.Human: double timePointCollected> = $d1;
+
+        return;
+    }
+
+    public void calculateDrivingTime()
+    {
+        edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.entities.Human r0;
+        edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.Duration $r1, $r2, $r5, $r6;
+        double $d0, $d1, $d2, $d3, $d4, $d5;
+        de.uka.ipd.sdq.simulation.abstractsimengine.ISimulationModel $r3;
+        de.uka.ipd.sdq.simulation.abstractsimengine.ISimulationControl $r4;
+
+        r0 := @this: edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.entities.Human;
+
+        $r1 = r0.<edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.entities.Human: edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.Duration timeDriven>;
+
+        $r2 = virtualinvoke $r1.<edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.Duration: edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.Duration toSeconds()>();
+
+        $d0 = virtualinvoke $r2.<edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.Duration: double value()>();
+
+        $r3 = virtualinvoke r0.<edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.entities.Human: de.uka.ipd.sdq.simulation.abstractsimengine.ISimulationModel getModel()>();
+
+        $r4 = interfaceinvoke $r3.<de.uka.ipd.sdq.simulation.abstractsimengine.ISimulationModel: de.uka.ipd.sdq.simulation.abstractsimengine.ISimulationControl getSimulationControl()>();
+
+        $d1 = interfaceinvoke $r4.<de.uka.ipd.sdq.simulation.abstractsimengine.ISimulationControl: double getCurrentSimulationTime()>();
+
+        $d2 = r0.<edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.entities.Human: double timePointCollected>;
+
+        $d3 = $d1 - $d2;
+
+        $r5 = staticinvoke <edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.Duration: edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.Duration seconds(double)>($d3);
+
+        $d4 = virtualinvoke $r5.<edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.Duration: double value()>();
+
+        $d5 = $d0 + $d4;
+
+        $r6 = staticinvoke <edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.Duration: edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.Duration seconds(double)>($d5);
+
+        r0.<edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.entities.Human: edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.Duration timeDriven> = $r6;
+
+        r0.<edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.entities.Human: double timePointCollected> = 0.0;
+
+        return;
+    }
+
+    public void calculateFreeTime()
+    {
+        edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.entities.Human r0;
+        double d0, $d1, $d2, $d3, $d4, $d5, $d6, $d7, $d8, $d9, $d10, $d11, $d12, $d13, $d14, $d15, $d16;
+        edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.entities.Human$HumanBehaviour $r1, $r2, $r3, $r4;
+        boolean $z0, $z1;
+        edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.Duration $r5, $r6, $r7, $r8, $r9, $r10, $r11, $r12, $r13, $r14, $r15, $r16, $r17, r18, $r21, $r23, $r24, $r25, $r27, $r28, $r29, $r30;
+        java.util.ArrayList $r19, $r20, $r22, $r26;
+
+        r0 := @this: edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.entities.Human;
+
+        r18 = staticinvoke <edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.Duration: edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.Duration seconds(double)>(0.0);
+
+        $r2 = r0.<edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.entities.Human: edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.entities.Human$HumanBehaviour behaviour>;
+
+        $r1 = <edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.entities.Human$HumanBehaviour: edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.entities.Human$HumanBehaviour WALKING_DIRECTLY>;
+
+        $z0 = virtualinvoke $r2.<edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.entities.Human$HumanBehaviour: boolean equals(java.lang.Object)>($r1);
+
+        if $z0 == 0 goto label1;
+
+        $r14 = r0.<edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.entities.Human: edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.Duration WORKTIME>;
+
+        $r15 = virtualinvoke $r14.<edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.Duration: edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.Duration toSeconds()>();
+
+        $d12 = virtualinvoke $r15.<edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.Duration: double value()>();
+
+        $r16 = r0.<edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.entities.Human: edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.Duration WALK_DIRECTLY>;
+
+        $r17 = virtualinvoke $r16.<edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.Duration: edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.Duration toSeconds()>();
+
+        $d13 = virtualinvoke $r17.<edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.Duration: double value()>();
+
+        $d14 = 2.0 * $d13;
+
+        $d15 = $d12 + $d14;
+
+        r18 = staticinvoke <edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.Duration: edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.Duration seconds(double)>($d15);
+
+        goto label2;
+
+     label1:
+        $r4 = r0.<edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.entities.Human: edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.entities.Human$HumanBehaviour behaviour>;
+
+        $r3 = <edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.entities.Human$HumanBehaviour: edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.entities.Human$HumanBehaviour DRIVING_BY_BUS>;
+
+        $z1 = virtualinvoke $r4.<edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.entities.Human$HumanBehaviour: boolean equals(java.lang.Object)>($r3);
+
+        if $z1 == 0 goto label2;
+
+        $r5 = r0.<edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.entities.Human: edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.Duration WORKTIME>;
+
+        $r6 = virtualinvoke $r5.<edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.Duration: edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.Duration toSeconds()>();
+
+        $d1 = virtualinvoke $r6.<edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.Duration: double value()>();
+
+        $r7 = r0.<edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.entities.Human: edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.Duration HOME_TO_STATION>;
+
+        $r8 = virtualinvoke $r7.<edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.Duration: edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.Duration toSeconds()>();
+
+        $d2 = virtualinvoke $r8.<edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.Duration: double value()>();
+
+        $d3 = 2.0 * $d2;
+
+        $d4 = $d1 + $d3;
+
+        $r9 = r0.<edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.entities.Human: edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.Duration WORK_TO_STATION>;
+
+        $r10 = virtualinvoke $r9.<edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.Duration: edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.Duration toSeconds()>();
+
+        $d5 = virtualinvoke $r10.<edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.Duration: double value()>();
+
+        $d6 = 2.0 * $d5;
+
+        $d7 = $d4 + $d6;
+
+        $r11 = r0.<edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.entities.Human: edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.Duration timeDriven>;
+
+        $r12 = virtualinvoke $r11.<edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.Duration: edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.Duration toSeconds()>();
+
+        $d8 = virtualinvoke $r12.<edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.Duration: double value()>();
+
+        $d9 = $d7 + $d8;
+
+        $r13 = r0.<edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.entities.Human: edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.Duration timeWaitedAtBusStop>;
+
+        $d10 = virtualinvoke $r13.<edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.Duration: double value()>();
+
+        $d11 = $d9 + $d10;
+
+        r18 = staticinvoke <edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.Duration: edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.Duration seconds(double)>($d11);
+
+     label2:
+        $r19 = r0.<edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.entities.Human: java.util.ArrayList awayFromHomeTimes>;
+
+        virtualinvoke $r19.<java.util.ArrayList: boolean add(java.lang.Object)>(r18);
+
+        $r20 = r0.<edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.entities.Human: java.util.ArrayList busWaitingTimes>;
+
+        $r21 = r0.<edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.entities.Human: edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.Duration timeWaitedAtBusStop>;
+
+        virtualinvoke $r20.<java.util.ArrayList: boolean add(java.lang.Object)>($r21);
+
+        $r22 = r0.<edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.entities.Human: java.util.ArrayList drivingTimes>;
+
+        $r23 = r0.<edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.entities.Human: edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.Duration timeDriven>;
+
+        virtualinvoke $r22.<java.util.ArrayList: boolean add(java.lang.Object)>($r23);
+
+        $r24 = virtualinvoke r18.<edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.Duration: edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.Duration toHours()>();
+
+        $d16 = virtualinvoke $r24.<edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.Duration: double value()>();
+
+        d0 = 24.0 - $d16;
+
+        $r25 = staticinvoke <edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.Duration: edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.Duration hours(double)>(d0);
+
+        r0.<edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.entities.Human: edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.Duration FREETIME> = $r25;
+
+        $r26 = r0.<edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.entities.Human: java.util.ArrayList freeTimes>;
+
+        $r27 = r0.<edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.entities.Human: edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.Duration FREETIME>;
+
+        $r28 = virtualinvoke $r27.<edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.Duration: edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.Duration toHours()>();
+
+        virtualinvoke $r26.<java.util.ArrayList: boolean add(java.lang.Object)>($r28);
+
+        $r29 = staticinvoke <edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.Duration: edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.Duration seconds(double)>(0.0);
+
+        r0.<edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.entities.Human: edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.Duration timeDriven> = $r29;
+
+        r0.<edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.entities.Human: double timePointAtBusStop> = 0.0;
+
+        $r30 = staticinvoke <edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.Duration: edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.Duration seconds(double)>(0.0);
+
+        r0.<edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.entities.Human: edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.Duration timeWaitedAtBusStop> = $r30;
+
+        return;
+    }
+
+    public edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.entities.Position nextPosition()
+    {
+        edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.entities.Human r0;
+        edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.entities.Position $r1, $r5, $r6;
+        int $i0, $i1, $i2, $i3, $i4, $i5, $i6, $i7, $i8, $i9, $i10, $i11, $i12;
+        java.util.ArrayList $r2, $r3;
+        java.lang.Object $r4;
+
+        r0 := @this: edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.entities.Human;
+
+        $r1 = r0.<edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.entities.Human: edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.entities.Position destination>;
+
+        r0.<edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.entities.Human: edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.entities.Position position> = $r1;
+
+        $i1 = r0.<edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.entities.Human: int positionIndex>;
+
+        $i0 = r0.<edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.entities.Human: int direction>;
+
+        $i2 = $i1 + $i0;
+
+        r0.<edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.entities.Human: int positionIndex> = $i2;
+
+        $i4 = r0.<edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.entities.Human: int positionIndex>;
+
+        $i3 = r0.<edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.entities.Human: int direction>;
+
+        $i5 = $i4 + $i3;
+
+        $r2 = r0.<edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.entities.Human: java.util.ArrayList workway>;
+
+        $i6 = virtualinvoke $r2.<java.util.ArrayList: int size()>();
+
+        if $i5 < $i6 goto label1;
+
+        r0.<edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.entities.Human: int direction> = -1;
+
+        goto label2;
+
+     label1:
+        $i8 = r0.<edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.entities.Human: int positionIndex>;
+
+        $i7 = r0.<edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.entities.Human: int direction>;
+
+        $i9 = $i8 + $i7;
+
+        if $i9 >= 0 goto label2;
+
+        r0.<edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.entities.Human: int direction> = 1;
+
+     label2:
+        $r3 = r0.<edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.entities.Human: java.util.ArrayList workway>;
+
+        $i10 = r0.<edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.entities.Human: int positionIndex>;
+
+        $i11 = r0.<edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.entities.Human: int direction>;
+
+        $i12 = $i10 + $i11;
+
+        $r4 = virtualinvoke $r3.<java.util.ArrayList: java.lang.Object get(int)>($i12);
+
+        $r5 = (edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.entities.Position) $r4;
+
+        r0.<edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.entities.Human: edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.entities.Position destination> = $r5;
+
+        $r6 = r0.<edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.entities.Human: edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.entities.Position position>;
+
+        return $r6;
+    }
+}

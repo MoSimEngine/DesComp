@@ -35,6 +35,8 @@ public class AbstractSimEngineSceneTransformer extends SceneTransformer {
 	private List<Entity> entities = new ArrayList<Entity>();
 
 	public AbstractSimEngineSceneTransformer() {
+		events = new ArrayList<Event>();
+		entities = new ArrayList<Entity>();
 	}
 
 	@Override
@@ -48,8 +50,8 @@ public class AbstractSimEngineSceneTransformer extends SceneTransformer {
 
 		Hierarchy classHierarchy = Scene.v().getActiveHierarchy();
 
-		extractEvents(getEvents(), classHierarchy);
-		extractEntities(getEntities(), classHierarchy);
+		extractEvents(events, classHierarchy);
+		extractEntities(entities, classHierarchy);
 
 	}
 
@@ -60,7 +62,7 @@ public class AbstractSimEngineSceneTransformer extends SceneTransformer {
 		for (SootClass entity : entityList) {
 			entity.setApplicationClass();
 
-			Entity currEntity = new Entity(entity.getName());
+			Entity currEntity = new Entity(entity.getShortName());
 			Chain<SootField> fields = entity.getFields();
 			fields.forEach(
 					field -> currEntity.addWriteAttribute(new Attribute(field.getName(), field.getType().toString())));
@@ -71,7 +73,7 @@ public class AbstractSimEngineSceneTransformer extends SceneTransformer {
 
 	private void extractEvents(List<Event> events, Hierarchy classHierarchy) {
 		SootClass eventClass = Scene.v().getSootClass(EVENT_CLASS);
-		List<SootClass> eventList = classHierarchy.getDirectSubclassesOf(eventClass);
+		List<SootClass> eventList = classHierarchy.getSubclassesOf(eventClass);
 
 		for (SootClass event : eventList) {
 			event.setApplicationClass();
@@ -117,9 +119,12 @@ public class AbstractSimEngineSceneTransformer extends SceneTransformer {
 						}
 
 						for (Object object : nonTransitiveReadSet.getFields()) {
+							System.out.println(object);
 
-							SootField field = (SootField) object;
-							currEvent.addReadAttribute(new Attribute(field.getName(), field.getType().toString()));
+							if (object instanceof SootField) {
+								SootField field = (SootField) object;
+								currEvent.addReadAttribute(new Attribute(field.getName(), field.getType().toString()));
+							}
 						}
 					}
 

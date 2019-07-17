@@ -1,0 +1,72 @@
+public class edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.events.HumanTravelEvents.HumanLivingHisLifeEvent extends de.uka.ipd.sdq.simulation.abstractsimengine.AbstractSimEventDelegator
+{
+
+    protected void <init>(de.uka.ipd.sdq.simulation.abstractsimengine.ISimulationModel, java.lang.String)
+    {
+        edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.events.HumanTravelEvents.HumanLivingHisLifeEvent r0;
+        de.uka.ipd.sdq.simulation.abstractsimengine.ISimulationModel r1;
+        java.lang.String r2;
+
+        r0 := @this: edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.events.HumanTravelEvents.HumanLivingHisLifeEvent;
+
+        r1 := @parameter0: de.uka.ipd.sdq.simulation.abstractsimengine.ISimulationModel;
+
+        r2 := @parameter1: java.lang.String;
+
+        specialinvoke r0.<de.uka.ipd.sdq.simulation.abstractsimengine.AbstractSimEventDelegator: void <init>(de.uka.ipd.sdq.simulation.abstractsimengine.ISimulationModel,java.lang.String)>(r1, r2);
+
+        return;
+    }
+
+    public void eventRoutine(edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.entities.Human)
+    {
+        edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.events.HumanTravelEvents.HumanLivingHisLifeEvent r0;
+        edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.entities.Human r1;
+        double d0;
+        edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.Duration $r3, $r4;
+        de.uka.ipd.sdq.simulation.abstractsimengine.ISimulationModel $r6;
+        edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.events.HumanTravelEvents.HumanStopsLivingHisLifeEvent r7;
+        de.uka.ipd.sdq.simulation.abstractsimengine.IEntity r8;
+
+        r0 := @this: edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.events.HumanTravelEvents.HumanLivingHisLifeEvent;
+
+        r1 := @parameter0: edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.entities.Human;
+
+        virtualinvoke r1.<edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.entities.Human: void calculateFreeTime()>();
+
+        $r3 = r1.<edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.entities.Human: edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.Duration FREETIME>;
+
+        $r4 = virtualinvoke $r3.<edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.Duration: edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.Duration toSeconds()>();
+
+        d0 = virtualinvoke $r4.<edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.Duration: double value()>();
+
+        r7 = new edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.events.HumanTravelEvents.HumanStopsLivingHisLifeEvent;
+
+        $r6 = virtualinvoke r1.<edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.entities.Human: de.uka.ipd.sdq.simulation.abstractsimengine.ISimulationModel getModel()>();
+
+        specialinvoke r7.<edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.events.HumanTravelEvents.HumanStopsLivingHisLifeEvent: void <init>(de.uka.ipd.sdq.simulation.abstractsimengine.ISimulationModel,java.lang.String)>($r6, "Human stops living his life");
+
+        r8 = (de.uka.ipd.sdq.simulation.abstractsimengine.IEntity) r1;
+
+        virtualinvoke r7.<edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.events.HumanTravelEvents.HumanStopsLivingHisLifeEvent: void schedule(de.uka.ipd.sdq.simulation.abstractsimengine.IEntity,double)>(r8, d0);
+
+        return;
+    }
+
+    public volatile void eventRoutine(de.uka.ipd.sdq.simulation.abstractsimengine.IEntity)
+    {
+        edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.events.HumanTravelEvents.HumanLivingHisLifeEvent r0;
+        de.uka.ipd.sdq.simulation.abstractsimengine.IEntity r1;
+        edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.entities.Human $r2;
+
+        r0 := @this: edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.events.HumanTravelEvents.HumanLivingHisLifeEvent;
+
+        r1 := @parameter0: de.uka.ipd.sdq.simulation.abstractsimengine.IEntity;
+
+        $r2 = (edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.entities.Human) r1;
+
+        virtualinvoke r0.<edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.events.HumanTravelEvents.HumanLivingHisLifeEvent: void eventRoutine(edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.entities.Human)>($r2);
+
+        return;
+    }
+}

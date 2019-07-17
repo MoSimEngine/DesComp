@@ -1,0 +1,84 @@
+public class edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.events.TravelEvent extends de.uka.ipd.sdq.simulation.abstractsimengine.AbstractSimEventDelegator
+{
+
+    public void <init>(de.uka.ipd.sdq.simulation.abstractsimengine.ISimulationModel, java.lang.String)
+    {
+        edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.events.TravelEvent r0;
+        de.uka.ipd.sdq.simulation.abstractsimengine.ISimulationModel r1;
+        java.lang.String r2;
+
+        r0 := @this: edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.events.TravelEvent;
+
+        r1 := @parameter0: de.uka.ipd.sdq.simulation.abstractsimengine.ISimulationModel;
+
+        r2 := @parameter1: java.lang.String;
+
+        specialinvoke r0.<de.uka.ipd.sdq.simulation.abstractsimengine.AbstractSimEventDelegator: void <init>(de.uka.ipd.sdq.simulation.abstractsimengine.ISimulationModel,java.lang.String)>(r1, r2);
+
+        return;
+    }
+
+    public void eventRoutine(edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.entities.Bus)
+    {
+        edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.events.TravelEvent r0;
+        edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.entities.Bus r1;
+        edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.Route$RouteSegment r2;
+        double d0, $d1, $d2, $d3;
+        int $i0, $i1;
+        edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.Duration $r4, $r5;
+        de.uka.ipd.sdq.simulation.abstractsimengine.ISimulationModel $r7;
+        edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.events.ArriveEvent r8;
+        de.uka.ipd.sdq.simulation.abstractsimengine.IEntity r9;
+
+        r0 := @this: edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.events.TravelEvent;
+
+        r1 := @parameter0: edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.entities.Bus;
+
+        r2 = virtualinvoke r1.<edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.entities.Bus: edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.Route$RouteSegment travel()>();
+
+        $i0 = virtualinvoke r2.<edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.Route$RouteSegment: int getDistance()>();
+
+        $d1 = (double) $i0;
+
+        $i1 = virtualinvoke r2.<edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.Route$RouteSegment: int getAverageSpeed()>();
+
+        $d2 = (double) $i1;
+
+        $d3 = $d1 / $d2;
+
+        $r4 = staticinvoke <edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.Duration: edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.Duration hours(double)>($d3);
+
+        $r5 = virtualinvoke $r4.<edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.Duration: edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.Duration toSeconds()>();
+
+        d0 = virtualinvoke $r5.<edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.Duration: double value()>();
+
+        r8 = new edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.events.ArriveEvent;
+
+        $r7 = virtualinvoke r0.<edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.events.TravelEvent: de.uka.ipd.sdq.simulation.abstractsimengine.ISimulationModel getModel()>();
+
+        specialinvoke r8.<edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.events.ArriveEvent: void <init>(double,de.uka.ipd.sdq.simulation.abstractsimengine.ISimulationModel,java.lang.String)>(d0, $r7, "Arrive Event");
+
+        r9 = (de.uka.ipd.sdq.simulation.abstractsimengine.IEntity) r1;
+
+        virtualinvoke r8.<edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.events.ArriveEvent: void schedule(de.uka.ipd.sdq.simulation.abstractsimengine.IEntity,double)>(r9, d0);
+
+        return;
+    }
+
+    public volatile void eventRoutine(de.uka.ipd.sdq.simulation.abstractsimengine.IEntity)
+    {
+        edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.events.TravelEvent r0;
+        de.uka.ipd.sdq.simulation.abstractsimengine.IEntity r1;
+        edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.entities.Bus $r2;
+
+        r0 := @this: edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.events.TravelEvent;
+
+        r1 := @parameter0: de.uka.ipd.sdq.simulation.abstractsimengine.IEntity;
+
+        $r2 = (edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.entities.Bus) r1;
+
+        virtualinvoke r0.<edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.events.TravelEvent: void eventRoutine(edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.entities.Bus)>($r2);
+
+        return;
+    }
+}

@@ -1,0 +1,74 @@
+public class edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.events.LoadFinishedEvent extends de.uka.ipd.sdq.simulation.abstractsimengine.AbstractSimEventDelegator
+{
+    private int remainingPassengers;
+    private double loadingTime;
+
+    public void <init>(double, int, de.uka.ipd.sdq.simulation.abstractsimengine.ISimulationModel, java.lang.String)
+    {
+        edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.events.LoadFinishedEvent r0;
+        double d0;
+        int i0;
+        de.uka.ipd.sdq.simulation.abstractsimengine.ISimulationModel r1;
+        java.lang.String r2;
+
+        r0 := @this: edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.events.LoadFinishedEvent;
+
+        d0 := @parameter0: double;
+
+        i0 := @parameter1: int;
+
+        r1 := @parameter2: de.uka.ipd.sdq.simulation.abstractsimengine.ISimulationModel;
+
+        r2 := @parameter3: java.lang.String;
+
+        specialinvoke r0.<de.uka.ipd.sdq.simulation.abstractsimengine.AbstractSimEventDelegator: void <init>(de.uka.ipd.sdq.simulation.abstractsimengine.ISimulationModel,java.lang.String)>(r1, r2);
+
+        r0.<edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.events.LoadFinishedEvent: double loadingTime> = d0;
+
+        r0.<edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.events.LoadFinishedEvent: int remainingPassengers> = i0;
+
+        return;
+    }
+
+    public void eventRoutine(edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.entities.Bus)
+    {
+        edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.events.LoadFinishedEvent r0;
+        edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.entities.Bus r1;
+        de.uka.ipd.sdq.simulation.abstractsimengine.ISimulationModel $r4;
+        edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.events.TravelEvent r5;
+        de.uka.ipd.sdq.simulation.abstractsimengine.IEntity r6;
+
+        r0 := @this: edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.events.LoadFinishedEvent;
+
+        r1 := @parameter0: edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.entities.Bus;
+
+        r5 = new edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.events.TravelEvent;
+
+        $r4 = virtualinvoke r0.<edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.events.LoadFinishedEvent: de.uka.ipd.sdq.simulation.abstractsimengine.ISimulationModel getModel()>();
+
+        specialinvoke r5.<edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.events.TravelEvent: void <init>(de.uka.ipd.sdq.simulation.abstractsimengine.ISimulationModel,java.lang.String)>($r4, "Travel");
+
+        r6 = (de.uka.ipd.sdq.simulation.abstractsimengine.IEntity) r1;
+
+        virtualinvoke r5.<edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.events.TravelEvent: void schedule(de.uka.ipd.sdq.simulation.abstractsimengine.IEntity,double)>(r6, 0.0);
+
+        return;
+    }
+
+    public volatile void eventRoutine(de.uka.ipd.sdq.simulation.abstractsimengine.IEntity)
+    {
+        edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.events.LoadFinishedEvent r0;
+        de.uka.ipd.sdq.simulation.abstractsimengine.IEntity r1;
+        edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.entities.Bus $r2;
+
+        r0 := @this: edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.events.LoadFinishedEvent;
+
+        r1 := @parameter0: de.uka.ipd.sdq.simulation.abstractsimengine.IEntity;
+
+        $r2 = (edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.entities.Bus) r1;
+
+        virtualinvoke r0.<edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.events.LoadFinishedEvent: void eventRoutine(edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.entities.Bus)>($r2);
+
+        return;
+    }
+}

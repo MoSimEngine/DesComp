@@ -1,0 +1,41 @@
+public class edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.HumanSimValues extends java.lang.Object
+{
+    public static final int NUM_BUSSTOPS;
+    public static final int NUM_HUMANS;
+    public static final edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.Duration MAX_SIM_TIME;
+    public static final boolean WALKING_ENABLED;
+    public static final boolean RANDOMIZED_HUMAN_VALUES;
+    public static final boolean RANDOMIZED_HUMAN_STATIONS;
+
+    static void <clinit>()
+    {
+        edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.Duration $r0;
+
+        <edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.HumanSimValues: boolean RANDOMIZED_HUMAN_STATIONS> = 0;
+
+        <edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.HumanSimValues: boolean RANDOMIZED_HUMAN_VALUES> = 0;
+
+        <edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.HumanSimValues: boolean WALKING_ENABLED> = 0;
+
+        <edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.HumanSimValues: int NUM_HUMANS> = 1000;
+
+        <edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.HumanSimValues: int NUM_BUSSTOPS> = 6;
+
+        $r0 = staticinvoke <edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.Duration: edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.Duration hours(double)>(24.0);
+
+        <edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.HumanSimValues: edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.Duration MAX_SIM_TIME> = $r0;
+
+        return;
+    }
+
+    public void <init>()
+    {
+        edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.HumanSimValues r0;
+
+        r0 := @this: edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.HumanSimValues;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+}

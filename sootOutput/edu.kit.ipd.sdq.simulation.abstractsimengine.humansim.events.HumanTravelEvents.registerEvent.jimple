@@ -1,0 +1,57 @@
+public class edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.events.HumanTravelEvents.registerEvent extends de.uka.ipd.sdq.simulation.abstractsimengine.AbstractSimEventDelegator
+{
+
+    protected void <init>(de.uka.ipd.sdq.simulation.abstractsimengine.ISimulationModel, java.lang.String)
+    {
+        edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.events.HumanTravelEvents.registerEvent r0;
+        de.uka.ipd.sdq.simulation.abstractsimengine.ISimulationModel r1;
+        java.lang.String r2;
+
+        r0 := @this: edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.events.HumanTravelEvents.registerEvent;
+
+        r1 := @parameter0: de.uka.ipd.sdq.simulation.abstractsimengine.ISimulationModel;
+
+        r2 := @parameter1: java.lang.String;
+
+        specialinvoke r0.<de.uka.ipd.sdq.simulation.abstractsimengine.AbstractSimEventDelegator: void <init>(de.uka.ipd.sdq.simulation.abstractsimengine.ISimulationModel,java.lang.String)>(r1, r2);
+
+        return;
+    }
+
+    public void eventRoutine(edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.entities.Human)
+    {
+        edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.events.HumanTravelEvents.registerEvent r0;
+        edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.entities.Human r1;
+        edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.entities.Position $r2;
+        edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.entities.BusStop $r3;
+
+        r0 := @this: edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.events.HumanTravelEvents.registerEvent;
+
+        r1 := @parameter0: edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.entities.Human;
+
+        $r2 = virtualinvoke r1.<edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.entities.Human: edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.entities.Position getPosition()>();
+
+        $r3 = (edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.entities.BusStop) $r2;
+
+        virtualinvoke $r3.<edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.entities.BusStop: void setHuman(edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.entities.Human)>(r1);
+
+        return;
+    }
+
+    public volatile void eventRoutine(de.uka.ipd.sdq.simulation.abstractsimengine.IEntity)
+    {
+        edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.events.HumanTravelEvents.registerEvent r0;
+        de.uka.ipd.sdq.simulation.abstractsimengine.IEntity r1;
+        edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.entities.Human $r2;
+
+        r0 := @this: edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.events.HumanTravelEvents.registerEvent;
+
+        r1 := @parameter0: de.uka.ipd.sdq.simulation.abstractsimengine.IEntity;
+
+        $r2 = (edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.entities.Human) r1;
+
+        virtualinvoke r0.<edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.events.HumanTravelEvents.registerEvent: void eventRoutine(edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.entities.Human)>($r2);
+
+        return;
+    }
+}

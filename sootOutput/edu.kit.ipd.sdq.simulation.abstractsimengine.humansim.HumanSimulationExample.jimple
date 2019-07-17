@@ -1,0 +1,107 @@
+public class edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.HumanSimulationExample extends java.lang.Object implements org.eclipse.equinox.app.IApplication
+{
+    private edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.HumanSimConfig config;
+    private edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.HumanModel model;
+    private de.uka.ipd.sdq.simulation.abstractsimengine.ISimulationControl simControl;
+    private static final edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.Duration MAX_SIMULATION_TIME;
+
+    static void <clinit>()
+    {
+        edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.Duration $r0;
+
+        $r0 = <edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.HumanSimValues: edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.Duration MAX_SIM_TIME>;
+
+        <edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.HumanSimulationExample: edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.Duration MAX_SIMULATION_TIME> = $r0;
+
+        return;
+    }
+
+    public void <init>()
+    {
+        edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.HumanSimulationExample r0;
+        edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.HumanSimConfig $r1, $r2;
+        edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.HumanModel $r3, $r4;
+        de.uka.ipd.sdq.simulation.abstractsimengine.ISimulationControl $r5, $r7;
+        edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.Duration $r6, $r8;
+        double $d0;
+        long $l0;
+
+        r0 := @this: edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.HumanSimulationExample;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        $r1 = new edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.HumanSimConfig;
+
+        specialinvoke $r1.<edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.HumanSimConfig: void <init>()>();
+
+        r0.<edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.HumanSimulationExample: edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.HumanSimConfig config> = $r1;
+
+        $r2 = r0.<edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.HumanSimulationExample: edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.HumanSimConfig config>;
+
+        $r3 = staticinvoke <edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.HumanModel: edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.HumanModel create(edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.HumanSimConfig)>($r2);
+
+        r0.<edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.HumanSimulationExample: edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.HumanModel model> = $r3;
+
+        $r4 = r0.<edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.HumanSimulationExample: edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.HumanModel model>;
+
+        $r5 = virtualinvoke $r4.<edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.HumanModel: de.uka.ipd.sdq.simulation.abstractsimengine.ISimulationControl getSimulationControl()>();
+
+        r0.<edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.HumanSimulationExample: de.uka.ipd.sdq.simulation.abstractsimengine.ISimulationControl simControl> = $r5;
+
+        $r7 = r0.<edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.HumanSimulationExample: de.uka.ipd.sdq.simulation.abstractsimengine.ISimulationControl simControl>;
+
+        $r6 = <edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.HumanSimulationExample: edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.Duration MAX_SIMULATION_TIME>;
+
+        $r8 = virtualinvoke $r6.<edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.Duration: edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.Duration toSeconds()>();
+
+        $d0 = virtualinvoke $r8.<edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.Duration: double value()>();
+
+        $l0 = (long) $d0;
+
+        interfaceinvoke $r7.<de.uka.ipd.sdq.simulation.abstractsimengine.ISimulationControl: void setMaxSimTime(long)>($l0);
+
+        return;
+    }
+
+    public java.lang.Object start(org.eclipse.equinox.app.IApplicationContext) throws java.lang.Exception
+    {
+        edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.HumanSimulationExample r0;
+        org.eclipse.equinox.app.IApplicationContext r1;
+        org.apache.log4j.Logger $r2;
+        org.apache.log4j.Level $r3;
+        edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.HumanModel $r4;
+        de.uka.ipd.sdq.simulation.abstractsimengine.ISimulationControl $r5;
+        java.lang.Integer $r6;
+
+        r0 := @this: edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.HumanSimulationExample;
+
+        r1 := @parameter0: org.eclipse.equinox.app.IApplicationContext;
+
+        staticinvoke <org.apache.log4j.BasicConfigurator: void configure()>();
+
+        $r2 = staticinvoke <org.apache.log4j.Logger: org.apache.log4j.Logger getRootLogger()>();
+
+        $r3 = <org.apache.log4j.Level: org.apache.log4j.Level INFO>;
+
+        virtualinvoke $r2.<org.apache.log4j.Logger: void setLevel(org.apache.log4j.Level)>($r3);
+
+        $r4 = r0.<edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.HumanSimulationExample: edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.HumanModel model>;
+
+        $r5 = virtualinvoke $r4.<edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.HumanModel: de.uka.ipd.sdq.simulation.abstractsimengine.ISimulationControl getSimulationControl()>();
+
+        interfaceinvoke $r5.<de.uka.ipd.sdq.simulation.abstractsimengine.ISimulationControl: void start()>();
+
+        $r6 = <edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.HumanSimulationExample: java.lang.Integer EXIT_OK>;
+
+        return $r6;
+    }
+
+    public void stop()
+    {
+        edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.HumanSimulationExample r0;
+
+        r0 := @this: edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.HumanSimulationExample;
+
+        return;
+    }
+}

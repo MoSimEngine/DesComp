@@ -34,7 +34,7 @@ public class ImportTest {
 
 	@Test
 	public void importBusSim() throws IOException {
-		simulatorRepository.cleanAll();
+		// simulatorRepository.cleanAll();
 
 		importBusViaSoot();
 		printSimilarityResult();

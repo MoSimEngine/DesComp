@@ -27,12 +27,12 @@ public class SimulatorApplicationTests {
 		simulatorRepository.cleanAll();
 
 		simulatorRepository.save(busSim1());
-		simulatorRepository.save(busSim2());
-		simulatorRepository.save(busSim3());
-		simulatorRepository.save(busSim4());
-		simulatorRepository.save(busSim5());
-		simulatorRepository.save(busSim6());
-		simulatorRepository.save(busSim7());
+//		simulatorRepository.save(busSim2());
+//		simulatorRepository.save(busSim3());
+//		simulatorRepository.save(busSim4());
+//		simulatorRepository.save(busSim5());
+//		simulatorRepository.save(busSim6());
+//		simulatorRepository.save(busSim7());
 
 		BufferedWriter writer = new BufferedWriter(new FileWriter("result.txt"));
 

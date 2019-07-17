@@ -15,6 +15,12 @@ import soot.SceneTransformer;
 import soot.SootClass;
 import soot.SootField;
 import soot.SootMethod;
+import soot.SootMethodRef;
+import soot.Unit;
+import soot.Value;
+import soot.ValueBox;
+import soot.jimple.internal.JInvokeStmt;
+import soot.jimple.internal.JVirtualInvokeExpr;
 import soot.jimple.toolkits.callgraph.CHATransformer;
 import soot.jimple.toolkits.pointer.RWSet;
 import soot.jimple.toolkits.pointer.SideEffectAnalysis;
@@ -78,6 +84,29 @@ public class AbstractSimEngineSceneTransformer extends SceneTransformer {
 					Body retrieveActiveBody = sootMethod.retrieveActiveBody();
 
 					Event currEvent = new Event(event.getJavaStyleName(), retrieveActiveBody.toString());
+
+					for (Unit unit : retrieveActiveBody.getUnits()) {
+
+						if (unit instanceof JInvokeStmt) {
+
+							ValueBox invokeExprBox = ((JInvokeStmt) unit).getInvokeExprBox();
+							Value value = invokeExprBox.getValue();
+
+							if (value instanceof JVirtualInvokeExpr) {
+								value = (JVirtualInvokeExpr) value;
+								SootMethodRef methodRef = ((JVirtualInvokeExpr) value).getMethodRef();
+
+								if (eventList.contains(methodRef.getDeclaringClass())) {
+
+									if (methodRef.getName().startsWith("schedule")) {
+										currEvent.addSchedulesEvent(
+												new Event(methodRef.getDeclaringClass().getShortName(), null));
+									}
+								}
+
+							}
+						}
+					}
 
 					RWSet nonTransitiveReadSet = sideEffectAnalysis.nonTransitiveReadSet(sootMethod);
 					RWSet nonTransitiveWriteSet = sideEffectAnalysis.nonTransitiveWriteSet(sootMethod);

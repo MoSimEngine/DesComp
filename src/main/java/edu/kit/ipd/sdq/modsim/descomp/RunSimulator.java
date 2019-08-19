@@ -21,9 +21,9 @@ public class RunSimulator {
 
 	@ShellMethod("Extract structural Information from existing Simulation")
 	public String runSimulator(String name) {
-		Simulator simulator = repository.findByName(name);
+		// Simulator simulator = repository.findByName(name);
 
-		executor.executeSimulator(simulator);
+		executor.executeSimulator(null);
 
 		return "AWESOME!!!";
 	}

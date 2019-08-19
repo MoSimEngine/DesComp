@@ -16,8 +16,8 @@ public class Event {
 	@Relationship(type = "ENTITY", direction = Relationship.UNDIRECTED)
 	private Set<Entity> entitys = new HashSet<Entity>();
 
-	@Relationship(type = "SCHEDULES", direction = Relationship.DIRECTION)
-	private Set<Event> events = new HashSet<Event>();
+	// @Relationship(type = "SCHEDULES", direction = Relationship.DIRECTION)
+	private Set<Schedules> events = new HashSet<Schedules>();
 
 	@Relationship(type = "READ_PROPERTIES", direction = Relationship.DIRECTION)
 	private Set<Property> readProperties = new HashSet<Property>();
@@ -38,16 +38,22 @@ public class Event {
 		this.setEventRoutine(eventRoutine);
 	}
 
-	public void addSchedulesEvent(Event event) {
-		events.add(event);
+	public void addSchedulesEvent(Event event, String condition, String delay) {
+		Schedules schedules = new Schedules();
+		schedules.setCondition(condition);
+		schedules.setDelay(delay);
+		schedules.setStartEvent(this);
+		schedules.setEndEvent(event);
+
+		getEvents().add(schedules);
 	}
 
 	public void addEntity(Entity entity) {
-		entitys.add(entity);
+		getEntitys().add(entity);
 	}
 
 	public void addReadProperty(Property property) {
-		readProperties.add(property);
+		getReadProperties().add(property);
 	}
 
 	public void addWriteProperty(Property property) {
@@ -63,11 +69,51 @@ public class Event {
 	}
 
 	public void addReadAttribute(Attribute attribute) {
-		readAttribute.add(attribute);
+		getReadAttribute().add(attribute);
 
 	}
 
 	public void addWriteAttribute(Attribute attribute) {
-		writeAttribute.add(attribute);
+		getWriteAttribute().add(attribute);
+	}
+
+	public Set<Entity> getEntitys() {
+		return entitys;
+	}
+
+	public void setEntitys(Set<Entity> entitys) {
+		this.entitys = entitys;
+	}
+
+	public Set<Schedules> getEvents() {
+		return events;
+	}
+
+	public void setEvents(Set<Schedules> events) {
+		this.events = events;
+	}
+
+	public Set<Property> getReadProperties() {
+		return readProperties;
+	}
+
+	public void setReadProperties(Set<Property> readProperties) {
+		this.readProperties = readProperties;
+	}
+
+	public Set<Attribute> getReadAttribute() {
+		return readAttribute;
+	}
+
+	public void setReadAttribute(Set<Attribute> readAttribute) {
+		this.readAttribute = readAttribute;
+	}
+
+	public Set<Attribute> getWriteAttribute() {
+		return writeAttribute;
+	}
+
+	public void setWriteAttribute(Set<Attribute> writeAttribute) {
+		this.writeAttribute = writeAttribute;
 	}
 }

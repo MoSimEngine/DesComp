@@ -106,7 +106,7 @@ public class AbstractSimEngineSceneTransformer extends SceneTransformer {
 
 									if (methodRef.getName().startsWith("schedule")) {
 										currEvent.addSchedulesEvent(
-												new Event(methodRef.getDeclaringClass().getShortName(), null));
+												new Event(methodRef.getDeclaringClass().getShortName(), null), "", "");
 									}
 								}
 

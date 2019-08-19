@@ -13,3 +13,25 @@
 1566205723013:extract-structural-information --simulator examples/workwaysim/workwaySim.jar --name "Workway Simulation"
 1566205759133:print-simulators
 1566207485820:exit
+1566208891136:run-simulator
+1566208900407:run-simulator --name Bus Sim
+1566208906972:run-simulator --name "Bus Sim"
+1566208922866:print-simulators
+1566208931126:run-simulator --name "Bus Simulation"
+1566208954496:exit
+1566208968246:run-simulator --name "Bus Simulation"
+1566210797814:exit
+1566210924609:clean-all-database
+1566210937417:extract-structural-information --simulator examples/workwaysim/workwaySim.jar --name "Workway Simulation"
+1566211816685:print-simulators
+1566211819696:ls
+1566211827884:run-simulator
+1566211836101:run-simulator --name "123"
+1566212029083:run-simulator
+1566212034130:run-simulator --name 123
+1566212050291:run-simulator --name "123"
+1566212054837:exit
+1566212085926:run-simulator --name "123"
+1566212479507:[A
+1566212480530:run-simulator --name "123"
+1566214716341:exit

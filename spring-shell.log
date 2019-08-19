@@ -1,0 +1,15 @@
+1566204447969:ls
+1566204471106:extract-structural-information --simulator examples/bussim/bussim.jar
+1566205095869:clean-all-database
+1566205102932:extract-structural-information --simulator examples/bussim/bussim.jar
+1566205116991:extract-structural-information --simulator examples/bussim/bussim.jar --name Bus Simulation
+1566205120702:extract-structural-information --simulator examples/bussim/bussim.jar --name "Bus Simulation"
+1566205258423:print-simulators
+1566205396577:extract-structural-information --simulator examples/bussim/bussim.jar --name "Bus Simulation"
+1566205431867:print-simulators
+1566205610424:exit
+1566205661121:help
+1566205685405:exit
+1566205723013:extract-structural-information --simulator examples/workwaysim/workwaySim.jar --name "Workway Simulation"
+1566205759133:print-simulators
+1566207485820:exit

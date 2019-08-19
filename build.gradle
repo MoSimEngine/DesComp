@@ -15,7 +15,7 @@ apply plugin: 'org.springframework.boot'
 apply plugin: 'io.spring.dependency-management'
 
 
-group = 'masterarbeit'
+group = 'edu.kit.ipd.sdq.modsim'
 version = '0.0.1-SNAPSHOT'
 sourceCompatibility = '1.8'
 
@@ -24,11 +24,8 @@ repositories {
 }
 
 dependencies {
-//compile group: 'org.sosy-lab', name: 'javasmt-solver-z3', version: 'z3-4.4.1-788-g8df145d', ext: 'pom'
 	implementation 'org.springframework.boot:spring-boot-starter-data-neo4j'
-	compile group: 'io.github.classgraph', name: 'classgraph', version: '4.8.38'
-	//compile group: 'de.opal-project', name: 'common_2.12', version: '2.0.1'
+	compile 'org.springframework.shell:spring-shell-starter:2.0.1.RELEASE'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 	implementation 'ca.mcgill.sable:soot:3.3.0'
-	compile files('lib/javacg-0.1-SNAPSHOT-static.jar')
 }

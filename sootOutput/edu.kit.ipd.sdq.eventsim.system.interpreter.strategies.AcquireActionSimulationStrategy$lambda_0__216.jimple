@@ -1,0 +1,72 @@
+public final class edu.kit.ipd.sdq.eventsim.system.interpreter.strategies.AcquireActionSimulationStrategy$lambda_0__216 extends java.lang.Object implements edu.kit.ipd.sdq.eventsim.api.Procedure
+{
+    java.util.function.Consumer cap0;
+    edu.kit.ipd.sdq.eventsim.system.entities.Request cap1;
+    org.palladiosimulator.pcm.seff.AcquireAction cap2;
+
+    public static edu.kit.ipd.sdq.eventsim.api.Procedure bootstrap$(java.util.function.Consumer, edu.kit.ipd.sdq.eventsim.system.entities.Request, org.palladiosimulator.pcm.seff.AcquireAction)
+    {
+        java.util.function.Consumer $r0;
+        edu.kit.ipd.sdq.eventsim.system.entities.Request $r1;
+        org.palladiosimulator.pcm.seff.AcquireAction $r2;
+        edu.kit.ipd.sdq.eventsim.system.interpreter.strategies.AcquireActionSimulationStrategy$lambda_0__216 $r3;
+
+        $r0 := @parameter0: java.util.function.Consumer;
+
+        $r1 := @parameter1: edu.kit.ipd.sdq.eventsim.system.entities.Request;
+
+        $r2 := @parameter2: org.palladiosimulator.pcm.seff.AcquireAction;
+
+        $r3 = new edu.kit.ipd.sdq.eventsim.system.interpreter.strategies.AcquireActionSimulationStrategy$lambda_0__216;
+
+        specialinvoke $r3.<edu.kit.ipd.sdq.eventsim.system.interpreter.strategies.AcquireActionSimulationStrategy$lambda_0__216: void <init>(java.util.function.Consumer,edu.kit.ipd.sdq.eventsim.system.entities.Request,org.palladiosimulator.pcm.seff.AcquireAction)>($r0, $r1, $r2);
+
+        return $r3;
+    }
+
+    public void <init>(java.util.function.Consumer, edu.kit.ipd.sdq.eventsim.system.entities.Request, org.palladiosimulator.pcm.seff.AcquireAction)
+    {
+        edu.kit.ipd.sdq.eventsim.system.interpreter.strategies.AcquireActionSimulationStrategy$lambda_0__216 $r0;
+        java.util.function.Consumer $r1;
+        edu.kit.ipd.sdq.eventsim.system.entities.Request $r2;
+        org.palladiosimulator.pcm.seff.AcquireAction $r3;
+
+        $r0 := @this: edu.kit.ipd.sdq.eventsim.system.interpreter.strategies.AcquireActionSimulationStrategy$lambda_0__216;
+
+        $r1 := @parameter0: java.util.function.Consumer;
+
+        $r2 := @parameter1: edu.kit.ipd.sdq.eventsim.system.entities.Request;
+
+        $r3 := @parameter2: org.palladiosimulator.pcm.seff.AcquireAction;
+
+        specialinvoke $r0.<java.lang.Object: void <init>()>();
+
+        $r0.<edu.kit.ipd.sdq.eventsim.system.interpreter.strategies.AcquireActionSimulationStrategy$lambda_0__216: java.util.function.Consumer cap0> = $r1;
+
+        $r0.<edu.kit.ipd.sdq.eventsim.system.interpreter.strategies.AcquireActionSimulationStrategy$lambda_0__216: edu.kit.ipd.sdq.eventsim.system.entities.Request cap1> = $r2;
+
+        $r0.<edu.kit.ipd.sdq.eventsim.system.interpreter.strategies.AcquireActionSimulationStrategy$lambda_0__216: org.palladiosimulator.pcm.seff.AcquireAction cap2> = $r3;
+
+        return;
+    }
+
+    public void execute()
+    {
+        edu.kit.ipd.sdq.eventsim.system.interpreter.strategies.AcquireActionSimulationStrategy$lambda_0__216 $r0;
+        java.util.function.Consumer $r1;
+        edu.kit.ipd.sdq.eventsim.system.entities.Request $r2;
+        org.palladiosimulator.pcm.seff.AcquireAction $r3;
+
+        $r0 := @this: edu.kit.ipd.sdq.eventsim.system.interpreter.strategies.AcquireActionSimulationStrategy$lambda_0__216;
+
+        $r1 = $r0.<edu.kit.ipd.sdq.eventsim.system.interpreter.strategies.AcquireActionSimulationStrategy$lambda_0__216: java.util.function.Consumer cap0>;
+
+        $r2 = $r0.<edu.kit.ipd.sdq.eventsim.system.interpreter.strategies.AcquireActionSimulationStrategy$lambda_0__216: edu.kit.ipd.sdq.eventsim.system.entities.Request cap1>;
+
+        $r3 = $r0.<edu.kit.ipd.sdq.eventsim.system.interpreter.strategies.AcquireActionSimulationStrategy$lambda_0__216: org.palladiosimulator.pcm.seff.AcquireAction cap2>;
+
+        staticinvoke <edu.kit.ipd.sdq.eventsim.system.interpreter.strategies.AcquireActionSimulationStrategy: void lambda$0(java.util.function.Consumer,edu.kit.ipd.sdq.eventsim.system.entities.Request,org.palladiosimulator.pcm.seff.AcquireAction)>($r1, $r2, $r3);
+
+        return;
+    }
+}

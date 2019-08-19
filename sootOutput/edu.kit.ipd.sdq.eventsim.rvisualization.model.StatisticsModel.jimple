@@ -1,0 +1,675 @@
+public class edu.kit.ipd.sdq.eventsim.rvisualization.model.StatisticsModel extends java.lang.Object
+{
+    private final java.beans.PropertyChangeSupport pcs;
+    private int observations;
+    private double min;
+    private double firstQuartile;
+    private double median;
+    private double mean;
+    private double thirdQuartile;
+    private double max;
+    private double quantile1;
+    private double quantile2;
+    private double quantile3;
+    private double quantile4;
+    private double quantile5;
+    private double quantile6;
+    private double quantile7;
+    private double quantile8;
+    private double quantile9;
+
+    public void <init>()
+    {
+        edu.kit.ipd.sdq.eventsim.rvisualization.model.StatisticsModel r0;
+        java.beans.PropertyChangeSupport $r1;
+
+        r0 := @this: edu.kit.ipd.sdq.eventsim.rvisualization.model.StatisticsModel;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        $r1 = new java.beans.PropertyChangeSupport;
+
+        specialinvoke $r1.<java.beans.PropertyChangeSupport: void <init>(java.lang.Object)>(r0);
+
+        r0.<edu.kit.ipd.sdq.eventsim.rvisualization.model.StatisticsModel: java.beans.PropertyChangeSupport pcs> = $r1;
+
+        return;
+    }
+
+    public void addPropertyChangeListener(java.beans.PropertyChangeListener)
+    {
+        edu.kit.ipd.sdq.eventsim.rvisualization.model.StatisticsModel r0;
+        java.beans.PropertyChangeListener r1;
+        java.beans.PropertyChangeSupport $r2;
+
+        r0 := @this: edu.kit.ipd.sdq.eventsim.rvisualization.model.StatisticsModel;
+
+        r1 := @parameter0: java.beans.PropertyChangeListener;
+
+        $r2 = r0.<edu.kit.ipd.sdq.eventsim.rvisualization.model.StatisticsModel: java.beans.PropertyChangeSupport pcs>;
+
+        virtualinvoke $r2.<java.beans.PropertyChangeSupport: void addPropertyChangeListener(java.beans.PropertyChangeListener)>(r1);
+
+        return;
+    }
+
+    public void removePropertyChangeListener(java.beans.PropertyChangeListener)
+    {
+        edu.kit.ipd.sdq.eventsim.rvisualization.model.StatisticsModel r0;
+        java.beans.PropertyChangeListener r1;
+        java.beans.PropertyChangeSupport $r2;
+
+        r0 := @this: edu.kit.ipd.sdq.eventsim.rvisualization.model.StatisticsModel;
+
+        r1 := @parameter0: java.beans.PropertyChangeListener;
+
+        $r2 = r0.<edu.kit.ipd.sdq.eventsim.rvisualization.model.StatisticsModel: java.beans.PropertyChangeSupport pcs>;
+
+        virtualinvoke $r2.<java.beans.PropertyChangeSupport: void removePropertyChangeListener(java.beans.PropertyChangeListener)>(r1);
+
+        return;
+    }
+
+    public int getObservations()
+    {
+        edu.kit.ipd.sdq.eventsim.rvisualization.model.StatisticsModel r0;
+        int $i0;
+
+        r0 := @this: edu.kit.ipd.sdq.eventsim.rvisualization.model.StatisticsModel;
+
+        $i0 = r0.<edu.kit.ipd.sdq.eventsim.rvisualization.model.StatisticsModel: int observations>;
+
+        return $i0;
+    }
+
+    public void setObservations(int)
+    {
+        edu.kit.ipd.sdq.eventsim.rvisualization.model.StatisticsModel r0;
+        int i0, i1;
+        java.beans.PropertyChangeSupport $r1;
+
+        r0 := @this: edu.kit.ipd.sdq.eventsim.rvisualization.model.StatisticsModel;
+
+        i0 := @parameter0: int;
+
+        i1 = r0.<edu.kit.ipd.sdq.eventsim.rvisualization.model.StatisticsModel: int observations>;
+
+        r0.<edu.kit.ipd.sdq.eventsim.rvisualization.model.StatisticsModel: int observations> = i0;
+
+        $r1 = r0.<edu.kit.ipd.sdq.eventsim.rvisualization.model.StatisticsModel: java.beans.PropertyChangeSupport pcs>;
+
+        virtualinvoke $r1.<java.beans.PropertyChangeSupport: void firePropertyChange(java.lang.String,int,int)>("observations", i1, i0);
+
+        return;
+    }
+
+    public double getMin()
+    {
+        edu.kit.ipd.sdq.eventsim.rvisualization.model.StatisticsModel r0;
+        double $d0;
+
+        r0 := @this: edu.kit.ipd.sdq.eventsim.rvisualization.model.StatisticsModel;
+
+        $d0 = r0.<edu.kit.ipd.sdq.eventsim.rvisualization.model.StatisticsModel: double min>;
+
+        return $d0;
+    }
+
+    public void setMin(double)
+    {
+        edu.kit.ipd.sdq.eventsim.rvisualization.model.StatisticsModel r0;
+        double d0, d1;
+        java.beans.PropertyChangeSupport $r1;
+        java.lang.Double $r2, $r3;
+
+        r0 := @this: edu.kit.ipd.sdq.eventsim.rvisualization.model.StatisticsModel;
+
+        d0 := @parameter0: double;
+
+        d1 = r0.<edu.kit.ipd.sdq.eventsim.rvisualization.model.StatisticsModel: double min>;
+
+        r0.<edu.kit.ipd.sdq.eventsim.rvisualization.model.StatisticsModel: double min> = d0;
+
+        $r1 = r0.<edu.kit.ipd.sdq.eventsim.rvisualization.model.StatisticsModel: java.beans.PropertyChangeSupport pcs>;
+
+        $r2 = staticinvoke <java.lang.Double: java.lang.Double valueOf(double)>(d1);
+
+        $r3 = staticinvoke <java.lang.Double: java.lang.Double valueOf(double)>(d0);
+
+        virtualinvoke $r1.<java.beans.PropertyChangeSupport: void firePropertyChange(java.lang.String,java.lang.Object,java.lang.Object)>("min", $r2, $r3);
+
+        return;
+    }
+
+    public double getFirstQuartile()
+    {
+        edu.kit.ipd.sdq.eventsim.rvisualization.model.StatisticsModel r0;
+        double $d0;
+
+        r0 := @this: edu.kit.ipd.sdq.eventsim.rvisualization.model.StatisticsModel;
+
+        $d0 = r0.<edu.kit.ipd.sdq.eventsim.rvisualization.model.StatisticsModel: double firstQuartile>;
+
+        return $d0;
+    }
+
+    public void setFirstQuartile(double)
+    {
+        edu.kit.ipd.sdq.eventsim.rvisualization.model.StatisticsModel r0;
+        double d0, d1;
+        java.beans.PropertyChangeSupport $r1;
+        java.lang.Double $r2, $r3;
+
+        r0 := @this: edu.kit.ipd.sdq.eventsim.rvisualization.model.StatisticsModel;
+
+        d0 := @parameter0: double;
+
+        d1 = r0.<edu.kit.ipd.sdq.eventsim.rvisualization.model.StatisticsModel: double firstQuartile>;
+
+        r0.<edu.kit.ipd.sdq.eventsim.rvisualization.model.StatisticsModel: double firstQuartile> = d0;
+
+        $r1 = r0.<edu.kit.ipd.sdq.eventsim.rvisualization.model.StatisticsModel: java.beans.PropertyChangeSupport pcs>;
+
+        $r2 = staticinvoke <java.lang.Double: java.lang.Double valueOf(double)>(d1);
+
+        $r3 = staticinvoke <java.lang.Double: java.lang.Double valueOf(double)>(d0);
+
+        virtualinvoke $r1.<java.beans.PropertyChangeSupport: void firePropertyChange(java.lang.String,java.lang.Object,java.lang.Object)>("firstQuartile", $r2, $r3);
+
+        return;
+    }
+
+    public double getMedian()
+    {
+        edu.kit.ipd.sdq.eventsim.rvisualization.model.StatisticsModel r0;
+        double $d0;
+
+        r0 := @this: edu.kit.ipd.sdq.eventsim.rvisualization.model.StatisticsModel;
+
+        $d0 = r0.<edu.kit.ipd.sdq.eventsim.rvisualization.model.StatisticsModel: double median>;
+
+        return $d0;
+    }
+
+    public void setMedian(double)
+    {
+        edu.kit.ipd.sdq.eventsim.rvisualization.model.StatisticsModel r0;
+        double d0, d1;
+        java.beans.PropertyChangeSupport $r1;
+        java.lang.Double $r2, $r3;
+
+        r0 := @this: edu.kit.ipd.sdq.eventsim.rvisualization.model.StatisticsModel;
+
+        d0 := @parameter0: double;
+
+        d1 = r0.<edu.kit.ipd.sdq.eventsim.rvisualization.model.StatisticsModel: double median>;
+
+        r0.<edu.kit.ipd.sdq.eventsim.rvisualization.model.StatisticsModel: double median> = d0;
+
+        $r1 = r0.<edu.kit.ipd.sdq.eventsim.rvisualization.model.StatisticsModel: java.beans.PropertyChangeSupport pcs>;
+
+        $r2 = staticinvoke <java.lang.Double: java.lang.Double valueOf(double)>(d1);
+
+        $r3 = staticinvoke <java.lang.Double: java.lang.Double valueOf(double)>(d0);
+
+        virtualinvoke $r1.<java.beans.PropertyChangeSupport: void firePropertyChange(java.lang.String,java.lang.Object,java.lang.Object)>("median", $r2, $r3);
+
+        return;
+    }
+
+    public double getMean()
+    {
+        edu.kit.ipd.sdq.eventsim.rvisualization.model.StatisticsModel r0;
+        double $d0;
+
+        r0 := @this: edu.kit.ipd.sdq.eventsim.rvisualization.model.StatisticsModel;
+
+        $d0 = r0.<edu.kit.ipd.sdq.eventsim.rvisualization.model.StatisticsModel: double mean>;
+
+        return $d0;
+    }
+
+    public void setMean(double)
+    {
+        edu.kit.ipd.sdq.eventsim.rvisualization.model.StatisticsModel r0;
+        double d0, d1;
+        java.beans.PropertyChangeSupport $r1;
+        java.lang.Double $r2, $r3;
+
+        r0 := @this: edu.kit.ipd.sdq.eventsim.rvisualization.model.StatisticsModel;
+
+        d0 := @parameter0: double;
+
+        d1 = r0.<edu.kit.ipd.sdq.eventsim.rvisualization.model.StatisticsModel: double mean>;
+
+        r0.<edu.kit.ipd.sdq.eventsim.rvisualization.model.StatisticsModel: double mean> = d0;
+
+        $r1 = r0.<edu.kit.ipd.sdq.eventsim.rvisualization.model.StatisticsModel: java.beans.PropertyChangeSupport pcs>;
+
+        $r2 = staticinvoke <java.lang.Double: java.lang.Double valueOf(double)>(d1);
+
+        $r3 = staticinvoke <java.lang.Double: java.lang.Double valueOf(double)>(d0);
+
+        virtualinvoke $r1.<java.beans.PropertyChangeSupport: void firePropertyChange(java.lang.String,java.lang.Object,java.lang.Object)>("mean", $r2, $r3);
+
+        return;
+    }
+
+    public double getThirdQuartile()
+    {
+        edu.kit.ipd.sdq.eventsim.rvisualization.model.StatisticsModel r0;
+        double $d0;
+
+        r0 := @this: edu.kit.ipd.sdq.eventsim.rvisualization.model.StatisticsModel;
+
+        $d0 = r0.<edu.kit.ipd.sdq.eventsim.rvisualization.model.StatisticsModel: double thirdQuartile>;
+
+        return $d0;
+    }
+
+    public void setThirdQuartile(double)
+    {
+        edu.kit.ipd.sdq.eventsim.rvisualization.model.StatisticsModel r0;
+        double d0, d1;
+        java.beans.PropertyChangeSupport $r1;
+        java.lang.Double $r2, $r3;
+
+        r0 := @this: edu.kit.ipd.sdq.eventsim.rvisualization.model.StatisticsModel;
+
+        d0 := @parameter0: double;
+
+        d1 = r0.<edu.kit.ipd.sdq.eventsim.rvisualization.model.StatisticsModel: double thirdQuartile>;
+
+        r0.<edu.kit.ipd.sdq.eventsim.rvisualization.model.StatisticsModel: double thirdQuartile> = d0;
+
+        $r1 = r0.<edu.kit.ipd.sdq.eventsim.rvisualization.model.StatisticsModel: java.beans.PropertyChangeSupport pcs>;
+
+        $r2 = staticinvoke <java.lang.Double: java.lang.Double valueOf(double)>(d1);
+
+        $r3 = staticinvoke <java.lang.Double: java.lang.Double valueOf(double)>(d0);
+
+        virtualinvoke $r1.<java.beans.PropertyChangeSupport: void firePropertyChange(java.lang.String,java.lang.Object,java.lang.Object)>("thirdQuartile", $r2, $r3);
+
+        return;
+    }
+
+    public double getMax()
+    {
+        edu.kit.ipd.sdq.eventsim.rvisualization.model.StatisticsModel r0;
+        double $d0;
+
+        r0 := @this: edu.kit.ipd.sdq.eventsim.rvisualization.model.StatisticsModel;
+
+        $d0 = r0.<edu.kit.ipd.sdq.eventsim.rvisualization.model.StatisticsModel: double max>;
+
+        return $d0;
+    }
+
+    public void setMax(double)
+    {
+        edu.kit.ipd.sdq.eventsim.rvisualization.model.StatisticsModel r0;
+        double d0, d1;
+        java.beans.PropertyChangeSupport $r1;
+        java.lang.Double $r2, $r3;
+
+        r0 := @this: edu.kit.ipd.sdq.eventsim.rvisualization.model.StatisticsModel;
+
+        d0 := @parameter0: double;
+
+        d1 = r0.<edu.kit.ipd.sdq.eventsim.rvisualization.model.StatisticsModel: double max>;
+
+        r0.<edu.kit.ipd.sdq.eventsim.rvisualization.model.StatisticsModel: double max> = d0;
+
+        $r1 = r0.<edu.kit.ipd.sdq.eventsim.rvisualization.model.StatisticsModel: java.beans.PropertyChangeSupport pcs>;
+
+        $r2 = staticinvoke <java.lang.Double: java.lang.Double valueOf(double)>(d1);
+
+        $r3 = staticinvoke <java.lang.Double: java.lang.Double valueOf(double)>(d0);
+
+        virtualinvoke $r1.<java.beans.PropertyChangeSupport: void firePropertyChange(java.lang.String,java.lang.Object,java.lang.Object)>("max", $r2, $r3);
+
+        return;
+    }
+
+    public double getQuantile1()
+    {
+        edu.kit.ipd.sdq.eventsim.rvisualization.model.StatisticsModel r0;
+        double $d0;
+
+        r0 := @this: edu.kit.ipd.sdq.eventsim.rvisualization.model.StatisticsModel;
+
+        $d0 = r0.<edu.kit.ipd.sdq.eventsim.rvisualization.model.StatisticsModel: double quantile1>;
+
+        return $d0;
+    }
+
+    public void setQuantile1(double)
+    {
+        edu.kit.ipd.sdq.eventsim.rvisualization.model.StatisticsModel r0;
+        double d0, d1;
+        java.beans.PropertyChangeSupport $r1;
+        java.lang.Double $r2, $r3;
+
+        r0 := @this: edu.kit.ipd.sdq.eventsim.rvisualization.model.StatisticsModel;
+
+        d0 := @parameter0: double;
+
+        d1 = r0.<edu.kit.ipd.sdq.eventsim.rvisualization.model.StatisticsModel: double quantile1>;
+
+        r0.<edu.kit.ipd.sdq.eventsim.rvisualization.model.StatisticsModel: double quantile1> = d0;
+
+        $r1 = r0.<edu.kit.ipd.sdq.eventsim.rvisualization.model.StatisticsModel: java.beans.PropertyChangeSupport pcs>;
+
+        $r2 = staticinvoke <java.lang.Double: java.lang.Double valueOf(double)>(d1);
+
+        $r3 = staticinvoke <java.lang.Double: java.lang.Double valueOf(double)>(d0);
+
+        virtualinvoke $r1.<java.beans.PropertyChangeSupport: void firePropertyChange(java.lang.String,java.lang.Object,java.lang.Object)>("quantile1", $r2, $r3);
+
+        return;
+    }
+
+    public double getQuantile2()
+    {
+        edu.kit.ipd.sdq.eventsim.rvisualization.model.StatisticsModel r0;
+        double $d0;
+
+        r0 := @this: edu.kit.ipd.sdq.eventsim.rvisualization.model.StatisticsModel;
+
+        $d0 = r0.<edu.kit.ipd.sdq.eventsim.rvisualization.model.StatisticsModel: double quantile2>;
+
+        return $d0;
+    }
+
+    public void setQuantile2(double)
+    {
+        edu.kit.ipd.sdq.eventsim.rvisualization.model.StatisticsModel r0;
+        double d0, d1;
+        java.beans.PropertyChangeSupport $r1;
+        java.lang.Double $r2, $r3;
+
+        r0 := @this: edu.kit.ipd.sdq.eventsim.rvisualization.model.StatisticsModel;
+
+        d0 := @parameter0: double;
+
+        d1 = r0.<edu.kit.ipd.sdq.eventsim.rvisualization.model.StatisticsModel: double quantile2>;
+
+        r0.<edu.kit.ipd.sdq.eventsim.rvisualization.model.StatisticsModel: double quantile2> = d0;
+
+        $r1 = r0.<edu.kit.ipd.sdq.eventsim.rvisualization.model.StatisticsModel: java.beans.PropertyChangeSupport pcs>;
+
+        $r2 = staticinvoke <java.lang.Double: java.lang.Double valueOf(double)>(d1);
+
+        $r3 = staticinvoke <java.lang.Double: java.lang.Double valueOf(double)>(d0);
+
+        virtualinvoke $r1.<java.beans.PropertyChangeSupport: void firePropertyChange(java.lang.String,java.lang.Object,java.lang.Object)>("quantile2", $r2, $r3);
+
+        return;
+    }
+
+    public double getQuantile3()
+    {
+        edu.kit.ipd.sdq.eventsim.rvisualization.model.StatisticsModel r0;
+        double $d0;
+
+        r0 := @this: edu.kit.ipd.sdq.eventsim.rvisualization.model.StatisticsModel;
+
+        $d0 = r0.<edu.kit.ipd.sdq.eventsim.rvisualization.model.StatisticsModel: double quantile3>;
+
+        return $d0;
+    }
+
+    public void setQuantile3(double)
+    {
+        edu.kit.ipd.sdq.eventsim.rvisualization.model.StatisticsModel r0;
+        double d0, d1;
+        java.beans.PropertyChangeSupport $r1;
+        java.lang.Double $r2, $r3;
+
+        r0 := @this: edu.kit.ipd.sdq.eventsim.rvisualization.model.StatisticsModel;
+
+        d0 := @parameter0: double;
+
+        d1 = r0.<edu.kit.ipd.sdq.eventsim.rvisualization.model.StatisticsModel: double quantile3>;
+
+        r0.<edu.kit.ipd.sdq.eventsim.rvisualization.model.StatisticsModel: double quantile3> = d0;
+
+        $r1 = r0.<edu.kit.ipd.sdq.eventsim.rvisualization.model.StatisticsModel: java.beans.PropertyChangeSupport pcs>;
+
+        $r2 = staticinvoke <java.lang.Double: java.lang.Double valueOf(double)>(d1);
+
+        $r3 = staticinvoke <java.lang.Double: java.lang.Double valueOf(double)>(d0);
+
+        virtualinvoke $r1.<java.beans.PropertyChangeSupport: void firePropertyChange(java.lang.String,java.lang.Object,java.lang.Object)>("quantile3", $r2, $r3);
+
+        return;
+    }
+
+    public double getQuantile4()
+    {
+        edu.kit.ipd.sdq.eventsim.rvisualization.model.StatisticsModel r0;
+        double $d0;
+
+        r0 := @this: edu.kit.ipd.sdq.eventsim.rvisualization.model.StatisticsModel;
+
+        $d0 = r0.<edu.kit.ipd.sdq.eventsim.rvisualization.model.StatisticsModel: double quantile4>;
+
+        return $d0;
+    }
+
+    public void setQuantile4(double)
+    {
+        edu.kit.ipd.sdq.eventsim.rvisualization.model.StatisticsModel r0;
+        double d0, d1;
+        java.beans.PropertyChangeSupport $r1;
+        java.lang.Double $r2, $r3;
+
+        r0 := @this: edu.kit.ipd.sdq.eventsim.rvisualization.model.StatisticsModel;
+
+        d0 := @parameter0: double;
+
+        d1 = r0.<edu.kit.ipd.sdq.eventsim.rvisualization.model.StatisticsModel: double quantile4>;
+
+        r0.<edu.kit.ipd.sdq.eventsim.rvisualization.model.StatisticsModel: double quantile4> = d0;
+
+        $r1 = r0.<edu.kit.ipd.sdq.eventsim.rvisualization.model.StatisticsModel: java.beans.PropertyChangeSupport pcs>;
+
+        $r2 = staticinvoke <java.lang.Double: java.lang.Double valueOf(double)>(d1);
+
+        $r3 = staticinvoke <java.lang.Double: java.lang.Double valueOf(double)>(d0);
+
+        virtualinvoke $r1.<java.beans.PropertyChangeSupport: void firePropertyChange(java.lang.String,java.lang.Object,java.lang.Object)>("quantile4", $r2, $r3);
+
+        return;
+    }
+
+    public double getQuantile5()
+    {
+        edu.kit.ipd.sdq.eventsim.rvisualization.model.StatisticsModel r0;
+        double $d0;
+
+        r0 := @this: edu.kit.ipd.sdq.eventsim.rvisualization.model.StatisticsModel;
+
+        $d0 = r0.<edu.kit.ipd.sdq.eventsim.rvisualization.model.StatisticsModel: double quantile5>;
+
+        return $d0;
+    }
+
+    public void setQuantile5(double)
+    {
+        edu.kit.ipd.sdq.eventsim.rvisualization.model.StatisticsModel r0;
+        double d0, d1;
+        java.beans.PropertyChangeSupport $r1;
+        java.lang.Double $r2, $r3;
+
+        r0 := @this: edu.kit.ipd.sdq.eventsim.rvisualization.model.StatisticsModel;
+
+        d0 := @parameter0: double;
+
+        d1 = r0.<edu.kit.ipd.sdq.eventsim.rvisualization.model.StatisticsModel: double quantile5>;
+
+        r0.<edu.kit.ipd.sdq.eventsim.rvisualization.model.StatisticsModel: double quantile5> = d0;
+
+        $r1 = r0.<edu.kit.ipd.sdq.eventsim.rvisualization.model.StatisticsModel: java.beans.PropertyChangeSupport pcs>;
+
+        $r2 = staticinvoke <java.lang.Double: java.lang.Double valueOf(double)>(d1);
+
+        $r3 = staticinvoke <java.lang.Double: java.lang.Double valueOf(double)>(d0);
+
+        virtualinvoke $r1.<java.beans.PropertyChangeSupport: void firePropertyChange(java.lang.String,java.lang.Object,java.lang.Object)>("quantile5", $r2, $r3);
+
+        return;
+    }
+
+    public double getQuantile6()
+    {
+        edu.kit.ipd.sdq.eventsim.rvisualization.model.StatisticsModel r0;
+        double $d0;
+
+        r0 := @this: edu.kit.ipd.sdq.eventsim.rvisualization.model.StatisticsModel;
+
+        $d0 = r0.<edu.kit.ipd.sdq.eventsim.rvisualization.model.StatisticsModel: double quantile6>;
+
+        return $d0;
+    }
+
+    public void setQuantile6(double)
+    {
+        edu.kit.ipd.sdq.eventsim.rvisualization.model.StatisticsModel r0;
+        double d0, d1;
+        java.beans.PropertyChangeSupport $r1;
+        java.lang.Double $r2, $r3;
+
+        r0 := @this: edu.kit.ipd.sdq.eventsim.rvisualization.model.StatisticsModel;
+
+        d0 := @parameter0: double;
+
+        d1 = r0.<edu.kit.ipd.sdq.eventsim.rvisualization.model.StatisticsModel: double quantile6>;
+
+        r0.<edu.kit.ipd.sdq.eventsim.rvisualization.model.StatisticsModel: double quantile6> = d0;
+
+        $r1 = r0.<edu.kit.ipd.sdq.eventsim.rvisualization.model.StatisticsModel: java.beans.PropertyChangeSupport pcs>;
+
+        $r2 = staticinvoke <java.lang.Double: java.lang.Double valueOf(double)>(d1);
+
+        $r3 = staticinvoke <java.lang.Double: java.lang.Double valueOf(double)>(d0);
+
+        virtualinvoke $r1.<java.beans.PropertyChangeSupport: void firePropertyChange(java.lang.String,java.lang.Object,java.lang.Object)>("quantile6", $r2, $r3);
+
+        return;
+    }
+
+    public double getQuantile7()
+    {
+        edu.kit.ipd.sdq.eventsim.rvisualization.model.StatisticsModel r0;
+        double $d0;
+
+        r0 := @this: edu.kit.ipd.sdq.eventsim.rvisualization.model.StatisticsModel;
+
+        $d0 = r0.<edu.kit.ipd.sdq.eventsim.rvisualization.model.StatisticsModel: double quantile7>;
+
+        return $d0;
+    }
+
+    public void setQuantile7(double)
+    {
+        edu.kit.ipd.sdq.eventsim.rvisualization.model.StatisticsModel r0;
+        double d0, d1;
+        java.beans.PropertyChangeSupport $r1;
+        java.lang.Double $r2, $r3;
+
+        r0 := @this: edu.kit.ipd.sdq.eventsim.rvisualization.model.StatisticsModel;
+
+        d0 := @parameter0: double;
+
+        d1 = r0.<edu.kit.ipd.sdq.eventsim.rvisualization.model.StatisticsModel: double quantile7>;
+
+        r0.<edu.kit.ipd.sdq.eventsim.rvisualization.model.StatisticsModel: double quantile7> = d0;
+
+        $r1 = r0.<edu.kit.ipd.sdq.eventsim.rvisualization.model.StatisticsModel: java.beans.PropertyChangeSupport pcs>;
+
+        $r2 = staticinvoke <java.lang.Double: java.lang.Double valueOf(double)>(d1);
+
+        $r3 = staticinvoke <java.lang.Double: java.lang.Double valueOf(double)>(d0);
+
+        virtualinvoke $r1.<java.beans.PropertyChangeSupport: void firePropertyChange(java.lang.String,java.lang.Object,java.lang.Object)>("quantile7", $r2, $r3);
+
+        return;
+    }
+
+    public double getQuantile8()
+    {
+        edu.kit.ipd.sdq.eventsim.rvisualization.model.StatisticsModel r0;
+        double $d0;
+
+        r0 := @this: edu.kit.ipd.sdq.eventsim.rvisualization.model.StatisticsModel;
+
+        $d0 = r0.<edu.kit.ipd.sdq.eventsim.rvisualization.model.StatisticsModel: double quantile8>;
+
+        return $d0;
+    }
+
+    public void setQuantile8(double)
+    {
+        edu.kit.ipd.sdq.eventsim.rvisualization.model.StatisticsModel r0;
+        double d0, d1;
+        java.beans.PropertyChangeSupport $r1;
+        java.lang.Double $r2, $r3;
+
+        r0 := @this: edu.kit.ipd.sdq.eventsim.rvisualization.model.StatisticsModel;
+
+        d0 := @parameter0: double;
+
+        d1 = r0.<edu.kit.ipd.sdq.eventsim.rvisualization.model.StatisticsModel: double quantile8>;
+
+        r0.<edu.kit.ipd.sdq.eventsim.rvisualization.model.StatisticsModel: double quantile8> = d0;
+
+        $r1 = r0.<edu.kit.ipd.sdq.eventsim.rvisualization.model.StatisticsModel: java.beans.PropertyChangeSupport pcs>;
+
+        $r2 = staticinvoke <java.lang.Double: java.lang.Double valueOf(double)>(d1);
+
+        $r3 = staticinvoke <java.lang.Double: java.lang.Double valueOf(double)>(d0);
+
+        virtualinvoke $r1.<java.beans.PropertyChangeSupport: void firePropertyChange(java.lang.String,java.lang.Object,java.lang.Object)>("quantile8", $r2, $r3);
+
+        return;
+    }
+
+    public double getQuantile9()
+    {
+        edu.kit.ipd.sdq.eventsim.rvisualization.model.StatisticsModel r0;
+        double $d0;
+
+        r0 := @this: edu.kit.ipd.sdq.eventsim.rvisualization.model.StatisticsModel;
+
+        $d0 = r0.<edu.kit.ipd.sdq.eventsim.rvisualization.model.StatisticsModel: double quantile9>;
+
+        return $d0;
+    }
+
+    public void setQuantile9(double)
+    {
+        edu.kit.ipd.sdq.eventsim.rvisualization.model.StatisticsModel r0;
+        double d0, d1;
+        java.beans.PropertyChangeSupport $r1;
+        java.lang.Double $r2, $r3;
+
+        r0 := @this: edu.kit.ipd.sdq.eventsim.rvisualization.model.StatisticsModel;
+
+        d0 := @parameter0: double;
+
+        d1 = r0.<edu.kit.ipd.sdq.eventsim.rvisualization.model.StatisticsModel: double quantile9>;
+
+        r0.<edu.kit.ipd.sdq.eventsim.rvisualization.model.StatisticsModel: double quantile9> = d0;
+
+        $r1 = r0.<edu.kit.ipd.sdq.eventsim.rvisualization.model.StatisticsModel: java.beans.PropertyChangeSupport pcs>;
+
+        $r2 = staticinvoke <java.lang.Double: java.lang.Double valueOf(double)>(d1);
+
+        $r3 = staticinvoke <java.lang.Double: java.lang.Double valueOf(double)>(d0);
+
+        virtualinvoke $r1.<java.beans.PropertyChangeSupport: void firePropertyChange(java.lang.String,java.lang.Object,java.lang.Object)>("quantile9", $r2, $r3);
+
+        return;
+    }
+}

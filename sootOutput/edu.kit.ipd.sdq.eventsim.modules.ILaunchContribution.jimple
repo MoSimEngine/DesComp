@@ -1,0 +1,7 @@
+public interface  edu.kit.ipd.sdq.eventsim.modules.ILaunchContribution extends java.lang.Object implements org.eclipse.debug.ui.ILaunchConfigurationTab2
+{
+
+    public abstract void addDirtyListener(java.util.Observer);
+
+    public abstract void removeDirtyListener(java.util.Observer);
+}

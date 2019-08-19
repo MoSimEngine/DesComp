@@ -1,0 +1,57 @@
+class edu.kit.ipd.sdq.eventsim.system.interpreter.strategies.ForkActionSimulationStrategy$CountDownBarrier extends java.lang.Object
+{
+    private int count;
+    private edu.kit.ipd.sdq.eventsim.api.Procedure onZeroCallback;
+
+    public void <init>(int, edu.kit.ipd.sdq.eventsim.api.Procedure)
+    {
+        edu.kit.ipd.sdq.eventsim.system.interpreter.strategies.ForkActionSimulationStrategy$CountDownBarrier r0;
+        int i0;
+        edu.kit.ipd.sdq.eventsim.api.Procedure r1;
+
+        r0 := @this: edu.kit.ipd.sdq.eventsim.system.interpreter.strategies.ForkActionSimulationStrategy$CountDownBarrier;
+
+        i0 := @parameter0: int;
+
+        r1 := @parameter1: edu.kit.ipd.sdq.eventsim.api.Procedure;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        r0.<edu.kit.ipd.sdq.eventsim.system.interpreter.strategies.ForkActionSimulationStrategy$CountDownBarrier: int count> = i0;
+
+        r0.<edu.kit.ipd.sdq.eventsim.system.interpreter.strategies.ForkActionSimulationStrategy$CountDownBarrier: edu.kit.ipd.sdq.eventsim.api.Procedure onZeroCallback> = r1;
+
+        if i0 != 0 goto label1;
+
+        interfaceinvoke r1.<edu.kit.ipd.sdq.eventsim.api.Procedure: void execute()>();
+
+     label1:
+        return;
+    }
+
+    public void countDown()
+    {
+        edu.kit.ipd.sdq.eventsim.system.interpreter.strategies.ForkActionSimulationStrategy$CountDownBarrier r0;
+        int $i0, $i1, $i2;
+        edu.kit.ipd.sdq.eventsim.api.Procedure $r1;
+
+        r0 := @this: edu.kit.ipd.sdq.eventsim.system.interpreter.strategies.ForkActionSimulationStrategy$CountDownBarrier;
+
+        $i0 = r0.<edu.kit.ipd.sdq.eventsim.system.interpreter.strategies.ForkActionSimulationStrategy$CountDownBarrier: int count>;
+
+        $i1 = $i0 - 1;
+
+        r0.<edu.kit.ipd.sdq.eventsim.system.interpreter.strategies.ForkActionSimulationStrategy$CountDownBarrier: int count> = $i1;
+
+        $i2 = r0.<edu.kit.ipd.sdq.eventsim.system.interpreter.strategies.ForkActionSimulationStrategy$CountDownBarrier: int count>;
+
+        if $i2 != 0 goto label1;
+
+        $r1 = r0.<edu.kit.ipd.sdq.eventsim.system.interpreter.strategies.ForkActionSimulationStrategy$CountDownBarrier: edu.kit.ipd.sdq.eventsim.api.Procedure onZeroCallback>;
+
+        interfaceinvoke $r1.<edu.kit.ipd.sdq.eventsim.api.Procedure: void execute()>();
+
+     label1:
+        return;
+    }
+}

@@ -1,0 +1,3 @@
+public interface  edu.kit.ipd.sdq.eventsim.command.IPCMCommand extends java.lang.Object implements edu.kit.ipd.sdq.eventsim.command.ICommand
+{
+}

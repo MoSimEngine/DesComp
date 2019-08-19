@@ -1,0 +1,7 @@
+public interface  edu.kit.ipd.sdq.eventsim.measurement.calculator.BinaryCalculator extends java.lang.Object implements edu.kit.ipd.sdq.eventsim.measurement.MeasurementProducer
+{
+
+    public abstract void setup(edu.kit.ipd.sdq.eventsim.measurement.probe.IProbe, edu.kit.ipd.sdq.eventsim.measurement.probe.IProbe);
+
+    public abstract edu.kit.ipd.sdq.eventsim.measurement.Measurement calculate(edu.kit.ipd.sdq.eventsim.measurement.Measurement, edu.kit.ipd.sdq.eventsim.measurement.Measurement);
+}

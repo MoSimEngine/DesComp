@@ -1,0 +1,62 @@
+public class edu.kit.ipd.sdq.eventsim.system.probes.SeffActionExitTimeProbe extends edu.kit.ipd.sdq.eventsim.measurement.probe.AbstractProbe
+{
+
+    public void <init>(edu.kit.ipd.sdq.eventsim.measurement.MeasuringPoint, edu.kit.ipd.sdq.eventsim.system.SystemMeasurementConfiguration)
+    {
+        edu.kit.ipd.sdq.eventsim.system.probes.SeffActionExitTimeProbe r0;
+        edu.kit.ipd.sdq.eventsim.measurement.MeasuringPoint r1, $r4;
+        edu.kit.ipd.sdq.eventsim.system.SystemMeasurementConfiguration r2;
+        edu.kit.ipd.sdq.eventsim.interpreter.TraversalListenerRegistry $r3;
+        java.lang.Object $r5;
+        edu.kit.ipd.sdq.eventsim.system.probes.SeffActionExitTimeProbe$1 $r6;
+        org.palladiosimulator.pcm.seff.AbstractAction $r7;
+
+        r0 := @this: edu.kit.ipd.sdq.eventsim.system.probes.SeffActionExitTimeProbe;
+
+        r1 := @parameter0: edu.kit.ipd.sdq.eventsim.measurement.MeasuringPoint;
+
+        r2 := @parameter1: edu.kit.ipd.sdq.eventsim.system.SystemMeasurementConfiguration;
+
+        specialinvoke r0.<edu.kit.ipd.sdq.eventsim.measurement.probe.AbstractProbe: void <init>(edu.kit.ipd.sdq.eventsim.measurement.MeasuringPoint,edu.kit.ipd.sdq.eventsim.measurement.ProbeConfiguration)>(r1, r2);
+
+        $r3 = virtualinvoke r2.<edu.kit.ipd.sdq.eventsim.system.SystemMeasurementConfiguration: edu.kit.ipd.sdq.eventsim.interpreter.TraversalListenerRegistry getInterpreterConfiguration()>();
+
+        $r4 = virtualinvoke r0.<edu.kit.ipd.sdq.eventsim.system.probes.SeffActionExitTimeProbe: edu.kit.ipd.sdq.eventsim.measurement.MeasuringPoint getMeasuringPoint()>();
+
+        $r5 = virtualinvoke $r4.<edu.kit.ipd.sdq.eventsim.measurement.MeasuringPoint: java.lang.Object getElement()>();
+
+        $r7 = (org.palladiosimulator.pcm.seff.AbstractAction) $r5;
+
+        $r6 = new edu.kit.ipd.sdq.eventsim.system.probes.SeffActionExitTimeProbe$1;
+
+        specialinvoke $r6.<edu.kit.ipd.sdq.eventsim.system.probes.SeffActionExitTimeProbe$1: void <init>(edu.kit.ipd.sdq.eventsim.system.probes.SeffActionExitTimeProbe,edu.kit.ipd.sdq.eventsim.measurement.MeasuringPoint)>(r0, r1);
+
+        virtualinvoke $r3.<edu.kit.ipd.sdq.eventsim.interpreter.TraversalListenerRegistry: void addTraversalListener(org.palladiosimulator.pcm.core.entity.Entity,edu.kit.ipd.sdq.eventsim.interpreter.listener.ITraversalListener)>($r7, $r6);
+
+        return;
+    }
+
+    static edu.kit.ipd.sdq.eventsim.measurement.probe.MeasurementCache access$0(edu.kit.ipd.sdq.eventsim.system.probes.SeffActionExitTimeProbe)
+    {
+        edu.kit.ipd.sdq.eventsim.system.probes.SeffActionExitTimeProbe r0;
+        edu.kit.ipd.sdq.eventsim.measurement.probe.MeasurementCache $r1;
+
+        r0 := @parameter0: edu.kit.ipd.sdq.eventsim.system.probes.SeffActionExitTimeProbe;
+
+        $r1 = r0.<edu.kit.ipd.sdq.eventsim.system.probes.SeffActionExitTimeProbe: edu.kit.ipd.sdq.eventsim.measurement.probe.MeasurementCache cache>;
+
+        return $r1;
+    }
+
+    static java.util.List access$1(edu.kit.ipd.sdq.eventsim.system.probes.SeffActionExitTimeProbe)
+    {
+        edu.kit.ipd.sdq.eventsim.system.probes.SeffActionExitTimeProbe r0;
+        java.util.List $r1;
+
+        r0 := @parameter0: edu.kit.ipd.sdq.eventsim.system.probes.SeffActionExitTimeProbe;
+
+        $r1 = r0.<edu.kit.ipd.sdq.eventsim.system.probes.SeffActionExitTimeProbe: java.util.List measurementListener>;
+
+        return $r1;
+    }
+}

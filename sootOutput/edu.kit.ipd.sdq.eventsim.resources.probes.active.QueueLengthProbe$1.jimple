@@ -1,0 +1,93 @@
+class edu.kit.ipd.sdq.eventsim.resources.probes.active.QueueLengthProbe$1 extends java.lang.Object implements edu.kit.ipd.sdq.eventsim.resources.listener.IStateListener
+{
+    final edu.kit.ipd.sdq.eventsim.resources.probes.active.QueueLengthProbe this$0;
+    private final edu.kit.ipd.sdq.eventsim.resources.entities.AbstractActiveResource val$resource;
+
+    void <init>(edu.kit.ipd.sdq.eventsim.resources.probes.active.QueueLengthProbe, edu.kit.ipd.sdq.eventsim.resources.entities.AbstractActiveResource)
+    {
+        edu.kit.ipd.sdq.eventsim.resources.probes.active.QueueLengthProbe$1 r0;
+        edu.kit.ipd.sdq.eventsim.resources.probes.active.QueueLengthProbe r1;
+        edu.kit.ipd.sdq.eventsim.resources.entities.AbstractActiveResource r2;
+
+        r0 := @this: edu.kit.ipd.sdq.eventsim.resources.probes.active.QueueLengthProbe$1;
+
+        r1 := @parameter0: edu.kit.ipd.sdq.eventsim.resources.probes.active.QueueLengthProbe;
+
+        r2 := @parameter1: edu.kit.ipd.sdq.eventsim.resources.entities.AbstractActiveResource;
+
+        r0.<edu.kit.ipd.sdq.eventsim.resources.probes.active.QueueLengthProbe$1: edu.kit.ipd.sdq.eventsim.resources.probes.active.QueueLengthProbe this$0> = r1;
+
+        r0.<edu.kit.ipd.sdq.eventsim.resources.probes.active.QueueLengthProbe$1: edu.kit.ipd.sdq.eventsim.resources.entities.AbstractActiveResource val$resource> = r2;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    public void stateChanged(long, int)
+    {
+        edu.kit.ipd.sdq.eventsim.resources.probes.active.QueueLengthProbe$1 r0;
+        long l0;
+        int i1;
+        double d0, $d1;
+        edu.kit.ipd.sdq.eventsim.resources.entities.AbstractActiveResource $r2;
+        de.uka.ipd.sdq.simulation.abstractsimengine.ISimulationModel $r3;
+        de.uka.ipd.sdq.simulation.abstractsimengine.ISimulationControl $r4;
+        edu.kit.ipd.sdq.eventsim.measurement.Measurement $r5;
+        edu.kit.ipd.sdq.eventsim.resources.probes.active.QueueLengthProbe $r6, $r9;
+        edu.kit.ipd.sdq.eventsim.measurement.MeasuringPoint $r7;
+        edu.kit.ipd.sdq.eventsim.measurement.Metadata[] $r8;
+        java.util.List $r10;
+        java.util.function.Consumer $r11;
+
+        r0 := @this: edu.kit.ipd.sdq.eventsim.resources.probes.active.QueueLengthProbe$1;
+
+        l0 := @parameter0: long;
+
+        i1 := @parameter1: int;
+
+        $r2 = r0.<edu.kit.ipd.sdq.eventsim.resources.probes.active.QueueLengthProbe$1: edu.kit.ipd.sdq.eventsim.resources.entities.AbstractActiveResource val$resource>;
+
+        $r3 = virtualinvoke $r2.<edu.kit.ipd.sdq.eventsim.resources.entities.AbstractActiveResource: de.uka.ipd.sdq.simulation.abstractsimengine.ISimulationModel getModel()>();
+
+        $r4 = interfaceinvoke $r3.<de.uka.ipd.sdq.simulation.abstractsimengine.ISimulationModel: de.uka.ipd.sdq.simulation.abstractsimengine.ISimulationControl getSimulationControl()>();
+
+        d0 = interfaceinvoke $r4.<de.uka.ipd.sdq.simulation.abstractsimengine.ISimulationControl: double getCurrentSimulationTime()>();
+
+        $r5 = new edu.kit.ipd.sdq.eventsim.measurement.Measurement;
+
+        $r6 = r0.<edu.kit.ipd.sdq.eventsim.resources.probes.active.QueueLengthProbe$1: edu.kit.ipd.sdq.eventsim.resources.probes.active.QueueLengthProbe this$0>;
+
+        $r7 = virtualinvoke $r6.<edu.kit.ipd.sdq.eventsim.resources.probes.active.QueueLengthProbe: edu.kit.ipd.sdq.eventsim.measurement.MeasuringPoint getMeasuringPoint()>();
+
+        $d1 = (double) l0;
+
+        $r8 = newarray (edu.kit.ipd.sdq.eventsim.measurement.Metadata)[0];
+
+        specialinvoke $r5.<edu.kit.ipd.sdq.eventsim.measurement.Measurement: void <init>(java.lang.Object,edu.kit.ipd.sdq.eventsim.measurement.MeasuringPoint,java.lang.Object,double,double,edu.kit.ipd.sdq.eventsim.measurement.Metadata[])>("QUEUE_LENGTH", $r7, null, $d1, d0, $r8);
+
+        $r9 = r0.<edu.kit.ipd.sdq.eventsim.resources.probes.active.QueueLengthProbe$1: edu.kit.ipd.sdq.eventsim.resources.probes.active.QueueLengthProbe this$0>;
+
+        $r10 = staticinvoke <edu.kit.ipd.sdq.eventsim.resources.probes.active.QueueLengthProbe: java.util.List access$0(edu.kit.ipd.sdq.eventsim.resources.probes.active.QueueLengthProbe)>($r9);
+
+        $r11 = staticinvoke <edu.kit.ipd.sdq.eventsim.resources.probes.active.QueueLengthProbe$1$lambda_0__155: java.util.function.Consumer bootstrap$(edu.kit.ipd.sdq.eventsim.measurement.Measurement)>($r5);
+
+        interfaceinvoke $r10.<java.util.List: void forEach(java.util.function.Consumer)>($r11);
+
+        return;
+    }
+
+    public static void lambda$0(edu.kit.ipd.sdq.eventsim.measurement.Measurement, edu.kit.ipd.sdq.eventsim.measurement.MeasurementListener)
+    {
+        edu.kit.ipd.sdq.eventsim.measurement.Measurement r0;
+        edu.kit.ipd.sdq.eventsim.measurement.MeasurementListener r1;
+
+        r0 := @parameter0: edu.kit.ipd.sdq.eventsim.measurement.Measurement;
+
+        r1 := @parameter1: edu.kit.ipd.sdq.eventsim.measurement.MeasurementListener;
+
+        interfaceinvoke r1.<edu.kit.ipd.sdq.eventsim.measurement.MeasurementListener: void notify(edu.kit.ipd.sdq.eventsim.measurement.Measurement)>(r0);
+
+        return;
+    }
+}

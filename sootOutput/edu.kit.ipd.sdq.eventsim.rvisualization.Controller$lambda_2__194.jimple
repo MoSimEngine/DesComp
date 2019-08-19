@@ -1,0 +1,60 @@
+public final class edu.kit.ipd.sdq.eventsim.rvisualization.Controller$lambda_2__194 extends java.lang.Object implements edu.kit.ipd.sdq.eventsim.rvisualization.util.Procedure
+{
+    edu.kit.ipd.sdq.eventsim.rvisualization.Controller cap0;
+    java.lang.String cap1;
+
+    public static edu.kit.ipd.sdq.eventsim.rvisualization.util.Procedure bootstrap$(edu.kit.ipd.sdq.eventsim.rvisualization.Controller, java.lang.String)
+    {
+        edu.kit.ipd.sdq.eventsim.rvisualization.Controller $r0;
+        java.lang.String $r1;
+        edu.kit.ipd.sdq.eventsim.rvisualization.Controller$lambda_2__194 $r2;
+
+        $r0 := @parameter0: edu.kit.ipd.sdq.eventsim.rvisualization.Controller;
+
+        $r1 := @parameter1: java.lang.String;
+
+        $r2 = new edu.kit.ipd.sdq.eventsim.rvisualization.Controller$lambda_2__194;
+
+        specialinvoke $r2.<edu.kit.ipd.sdq.eventsim.rvisualization.Controller$lambda_2__194: void <init>(edu.kit.ipd.sdq.eventsim.rvisualization.Controller,java.lang.String)>($r0, $r1);
+
+        return $r2;
+    }
+
+    public void <init>(edu.kit.ipd.sdq.eventsim.rvisualization.Controller, java.lang.String)
+    {
+        edu.kit.ipd.sdq.eventsim.rvisualization.Controller$lambda_2__194 $r0;
+        edu.kit.ipd.sdq.eventsim.rvisualization.Controller $r1;
+        java.lang.String $r2;
+
+        $r0 := @this: edu.kit.ipd.sdq.eventsim.rvisualization.Controller$lambda_2__194;
+
+        $r1 := @parameter0: edu.kit.ipd.sdq.eventsim.rvisualization.Controller;
+
+        $r2 := @parameter1: java.lang.String;
+
+        specialinvoke $r0.<java.lang.Object: void <init>()>();
+
+        $r0.<edu.kit.ipd.sdq.eventsim.rvisualization.Controller$lambda_2__194: edu.kit.ipd.sdq.eventsim.rvisualization.Controller cap0> = $r1;
+
+        $r0.<edu.kit.ipd.sdq.eventsim.rvisualization.Controller$lambda_2__194: java.lang.String cap1> = $r2;
+
+        return;
+    }
+
+    public void execute()
+    {
+        edu.kit.ipd.sdq.eventsim.rvisualization.Controller$lambda_2__194 $r0;
+        edu.kit.ipd.sdq.eventsim.rvisualization.Controller $r1;
+        java.lang.String $r2;
+
+        $r0 := @this: edu.kit.ipd.sdq.eventsim.rvisualization.Controller$lambda_2__194;
+
+        $r1 = $r0.<edu.kit.ipd.sdq.eventsim.rvisualization.Controller$lambda_2__194: edu.kit.ipd.sdq.eventsim.rvisualization.Controller cap0>;
+
+        $r2 = $r0.<edu.kit.ipd.sdq.eventsim.rvisualization.Controller$lambda_2__194: java.lang.String cap1>;
+
+        virtualinvoke $r1.<edu.kit.ipd.sdq.eventsim.rvisualization.Controller: void lambda$2(java.lang.String)>($r2);
+
+        return;
+    }
+}

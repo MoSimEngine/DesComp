@@ -1,0 +1,173 @@
+public class edu.kit.ipd.sdq.eventsim.command.action.FindAllActionsByType extends java.lang.Object implements edu.kit.ipd.sdq.eventsim.command.IPCMCommand
+{
+    private java.lang.Class actionType;
+
+    public void <init>(java.lang.Class)
+    {
+        edu.kit.ipd.sdq.eventsim.command.action.FindAllActionsByType r0;
+        java.lang.Class r1;
+
+        r0 := @this: edu.kit.ipd.sdq.eventsim.command.action.FindAllActionsByType;
+
+        r1 := @parameter0: java.lang.Class;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        r0.<edu.kit.ipd.sdq.eventsim.command.action.FindAllActionsByType: java.lang.Class actionType> = r1;
+
+        return;
+    }
+
+    public java.util.List execute(edu.kit.ipd.sdq.eventsim.api.PCMModel, edu.kit.ipd.sdq.eventsim.command.ICommandExecutor)
+    {
+        edu.kit.ipd.sdq.eventsim.command.action.FindAllActionsByType r0;
+        edu.kit.ipd.sdq.eventsim.api.PCMModel r1;
+        edu.kit.ipd.sdq.eventsim.command.ICommandExecutor r2;
+        org.palladiosimulator.pcm.allocation.AllocationContext r4;
+        java.util.Iterator r5, r10;
+        org.palladiosimulator.pcm.core.composition.AssemblyContext r6;
+        java.util.List r7;
+        org.palladiosimulator.pcm.seff.ResourceDemandingSEFF r9;
+        java.util.ArrayList $r11, $r17;
+        org.palladiosimulator.pcm.allocation.Allocation $r12;
+        org.eclipse.emf.common.util.EList $r13;
+        boolean $z0, $z1;
+        java.lang.Object $r14, $r16, $r18, $r21;
+        edu.kit.ipd.sdq.eventsim.command.action.FindSeffsForAssemblyContext $r15;
+        edu.kit.ipd.sdq.eventsim.command.action.FindActionsInSeff $r19;
+        java.lang.Class $r20;
+        java.util.Collection $r22;
+        java.util.function.Consumer $r23;
+
+        r0 := @this: edu.kit.ipd.sdq.eventsim.command.action.FindAllActionsByType;
+
+        r1 := @parameter0: edu.kit.ipd.sdq.eventsim.api.PCMModel;
+
+        r2 := @parameter1: edu.kit.ipd.sdq.eventsim.command.ICommandExecutor;
+
+        $r11 = new java.util.ArrayList;
+
+        specialinvoke $r11.<java.util.ArrayList: void <init>()>();
+
+        $r12 = virtualinvoke r1.<edu.kit.ipd.sdq.eventsim.api.PCMModel: org.palladiosimulator.pcm.allocation.Allocation getAllocationModel()>();
+
+        $r13 = interfaceinvoke $r12.<org.palladiosimulator.pcm.allocation.Allocation: org.eclipse.emf.common.util.EList getAllocationContexts_Allocation()>();
+
+        r5 = interfaceinvoke $r13.<org.eclipse.emf.common.util.EList: java.util.Iterator iterator()>();
+
+        goto label4;
+
+     label1:
+        $r14 = interfaceinvoke r5.<java.util.Iterator: java.lang.Object next()>();
+
+        r4 = (org.palladiosimulator.pcm.allocation.AllocationContext) $r14;
+
+        r6 = interfaceinvoke r4.<org.palladiosimulator.pcm.allocation.AllocationContext: org.palladiosimulator.pcm.core.composition.AssemblyContext getAssemblyContext_AllocationContext()>();
+
+        $r15 = new edu.kit.ipd.sdq.eventsim.command.action.FindSeffsForAssemblyContext;
+
+        specialinvoke $r15.<edu.kit.ipd.sdq.eventsim.command.action.FindSeffsForAssemblyContext: void <init>(org.palladiosimulator.pcm.core.composition.AssemblyContext)>(r6);
+
+        $r16 = interfaceinvoke r2.<edu.kit.ipd.sdq.eventsim.command.ICommandExecutor: java.lang.Object execute(edu.kit.ipd.sdq.eventsim.command.ICommand)>($r15);
+
+        r7 = (java.util.List) $r16;
+
+        $r17 = new java.util.ArrayList;
+
+        specialinvoke $r17.<java.util.ArrayList: void <init>()>();
+
+        r10 = interfaceinvoke r7.<java.util.List: java.util.Iterator iterator()>();
+
+        goto label3;
+
+     label2:
+        $r18 = interfaceinvoke r10.<java.util.Iterator: java.lang.Object next()>();
+
+        r9 = (org.palladiosimulator.pcm.seff.ResourceDemandingSEFF) $r18;
+
+        $r19 = new edu.kit.ipd.sdq.eventsim.command.action.FindActionsInSeff;
+
+        $r20 = r0.<edu.kit.ipd.sdq.eventsim.command.action.FindAllActionsByType: java.lang.Class actionType>;
+
+        specialinvoke $r19.<edu.kit.ipd.sdq.eventsim.command.action.FindActionsInSeff: void <init>(org.palladiosimulator.pcm.seff.ResourceDemandingSEFF,java.lang.Class)>(r9, $r20);
+
+        $r21 = interfaceinvoke r2.<edu.kit.ipd.sdq.eventsim.command.ICommandExecutor: java.lang.Object execute(edu.kit.ipd.sdq.eventsim.command.ICommand)>($r19);
+
+        $r22 = (java.util.Collection) $r21;
+
+        interfaceinvoke $r17.<java.util.List: boolean addAll(java.util.Collection)>($r22);
+
+     label3:
+        $z1 = interfaceinvoke r10.<java.util.Iterator: boolean hasNext()>();
+
+        if $z1 != 0 goto label2;
+
+        $r23 = staticinvoke <edu.kit.ipd.sdq.eventsim.command.action.FindAllActionsByType$lambda_0__129: java.util.function.Consumer bootstrap$(java.util.List,org.palladiosimulator.pcm.allocation.AllocationContext,org.palladiosimulator.pcm.core.composition.AssemblyContext)>($r11, r4, r6);
+
+        interfaceinvoke $r17.<java.util.List: void forEach(java.util.function.Consumer)>($r23);
+
+     label4:
+        $z0 = interfaceinvoke r5.<java.util.Iterator: boolean hasNext()>();
+
+        if $z0 != 0 goto label1;
+
+        return $r11;
+    }
+
+    public boolean cachable()
+    {
+        edu.kit.ipd.sdq.eventsim.command.action.FindAllActionsByType r0;
+
+        r0 := @this: edu.kit.ipd.sdq.eventsim.command.action.FindAllActionsByType;
+
+        return 0;
+    }
+
+    public volatile java.lang.Object execute(java.lang.Object, edu.kit.ipd.sdq.eventsim.command.ICommandExecutor)
+    {
+        edu.kit.ipd.sdq.eventsim.command.action.FindAllActionsByType r0;
+        java.lang.Object r1;
+        edu.kit.ipd.sdq.eventsim.command.ICommandExecutor r2, $r3;
+        edu.kit.ipd.sdq.eventsim.api.PCMModel $r4;
+        java.util.List $r5;
+
+        r0 := @this: edu.kit.ipd.sdq.eventsim.command.action.FindAllActionsByType;
+
+        r1 := @parameter0: java.lang.Object;
+
+        r2 := @parameter1: edu.kit.ipd.sdq.eventsim.command.ICommandExecutor;
+
+        $r4 = (edu.kit.ipd.sdq.eventsim.api.PCMModel) r1;
+
+        $r3 = (edu.kit.ipd.sdq.eventsim.command.ICommandExecutor) r2;
+
+        $r5 = virtualinvoke r0.<edu.kit.ipd.sdq.eventsim.command.action.FindAllActionsByType: java.util.List execute(edu.kit.ipd.sdq.eventsim.api.PCMModel,edu.kit.ipd.sdq.eventsim.command.ICommandExecutor)>($r4, $r3);
+
+        return $r5;
+    }
+
+    public static void lambda$0(java.util.List, org.palladiosimulator.pcm.allocation.AllocationContext, org.palladiosimulator.pcm.core.composition.AssemblyContext, org.palladiosimulator.pcm.seff.AbstractAction)
+    {
+        java.util.List r0;
+        org.palladiosimulator.pcm.allocation.AllocationContext r1;
+        org.palladiosimulator.pcm.core.composition.AssemblyContext r2;
+        org.palladiosimulator.pcm.seff.AbstractAction r3;
+        edu.kit.ipd.sdq.eventsim.command.action.ActionContext $r4;
+
+        r0 := @parameter0: java.util.List;
+
+        r1 := @parameter1: org.palladiosimulator.pcm.allocation.AllocationContext;
+
+        r2 := @parameter2: org.palladiosimulator.pcm.core.composition.AssemblyContext;
+
+        r3 := @parameter3: org.palladiosimulator.pcm.seff.AbstractAction;
+
+        $r4 = new edu.kit.ipd.sdq.eventsim.command.action.ActionContext;
+
+        specialinvoke $r4.<edu.kit.ipd.sdq.eventsim.command.action.ActionContext: void <init>(org.palladiosimulator.pcm.allocation.AllocationContext,org.palladiosimulator.pcm.core.composition.AssemblyContext,org.palladiosimulator.pcm.seff.AbstractAction)>(r1, r2, r3);
+
+        interfaceinvoke r0.<java.util.List: boolean add(java.lang.Object)>($r4);
+
+        return;
+    }
+}

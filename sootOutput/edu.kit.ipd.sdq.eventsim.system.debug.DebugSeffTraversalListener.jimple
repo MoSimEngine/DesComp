@@ -1,0 +1,196 @@
+public class edu.kit.ipd.sdq.eventsim.system.debug.DebugSeffTraversalListener extends java.lang.Object implements edu.kit.ipd.sdq.eventsim.interpreter.listener.ITraversalListener
+{
+    private static final org.apache.log4j.Logger logger;
+
+    static void <clinit>()
+    {
+        org.apache.log4j.Logger $r0;
+
+        $r0 = staticinvoke <org.apache.log4j.Logger: org.apache.log4j.Logger getLogger(java.lang.Class)>(class "Ledu/kit/ipd/sdq/eventsim/system/debug/DebugSeffTraversalListener;");
+
+        <edu.kit.ipd.sdq.eventsim.system.debug.DebugSeffTraversalListener: org.apache.log4j.Logger logger> = $r0;
+
+        return;
+    }
+
+    public void <init>()
+    {
+        edu.kit.ipd.sdq.eventsim.system.debug.DebugSeffTraversalListener r0;
+
+        r0 := @this: edu.kit.ipd.sdq.eventsim.system.debug.DebugSeffTraversalListener;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    public void before(org.palladiosimulator.pcm.seff.AbstractAction, edu.kit.ipd.sdq.eventsim.system.entities.Request)
+    {
+        edu.kit.ipd.sdq.eventsim.system.debug.DebugSeffTraversalListener r0;
+        org.palladiosimulator.pcm.seff.AbstractAction r1;
+        edu.kit.ipd.sdq.eventsim.system.entities.Request r2;
+        java.lang.String r3, $r7, $r9, $r14;
+        de.uka.ipd.sdq.simulation.abstractsimengine.ISimulationModel $r4;
+        java.lang.StringBuilder $r5, $r8, $r10, $r11, $r12, $r13;
+        org.apache.log4j.Logger $r6;
+
+        r0 := @this: edu.kit.ipd.sdq.eventsim.system.debug.DebugSeffTraversalListener;
+
+        r1 := @parameter0: org.palladiosimulator.pcm.seff.AbstractAction;
+
+        r2 := @parameter1: edu.kit.ipd.sdq.eventsim.system.entities.Request;
+
+        $r4 = virtualinvoke r2.<edu.kit.ipd.sdq.eventsim.system.entities.Request: de.uka.ipd.sdq.simulation.abstractsimengine.ISimulationModel getModel()>();
+
+        r3 = specialinvoke r0.<edu.kit.ipd.sdq.eventsim.system.debug.DebugSeffTraversalListener: java.lang.String simulationTimeString(de.uka.ipd.sdq.simulation.abstractsimengine.ISimulationModel)>($r4);
+
+        $r6 = <edu.kit.ipd.sdq.eventsim.system.debug.DebugSeffTraversalListener: org.apache.log4j.Logger logger>;
+
+        $r5 = new java.lang.StringBuilder;
+
+        $r7 = staticinvoke <java.lang.String: java.lang.String valueOf(java.lang.Object)>(r3);
+
+        specialinvoke $r5.<java.lang.StringBuilder: void <init>(java.lang.String)>($r7);
+
+        $r8 = virtualinvoke $r5.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("BEFORE ");
+
+        $r9 = staticinvoke <edu.kit.ipd.sdq.eventsim.util.PCMEntityHelper: java.lang.String toString(org.palladiosimulator.pcm.core.entity.Entity)>(r1);
+
+        $r10 = virtualinvoke $r8.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r9);
+
+        $r11 = virtualinvoke $r10.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("(Request: ");
+
+        $r12 = virtualinvoke $r11.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.Object)>(r2);
+
+        $r13 = virtualinvoke $r12.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(")");
+
+        $r14 = virtualinvoke $r13.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        virtualinvoke $r6.<org.apache.log4j.Logger: void debug(java.lang.Object)>($r14);
+
+        return;
+    }
+
+    public void after(org.palladiosimulator.pcm.seff.AbstractAction, edu.kit.ipd.sdq.eventsim.system.entities.Request)
+    {
+        edu.kit.ipd.sdq.eventsim.system.debug.DebugSeffTraversalListener r0;
+        org.palladiosimulator.pcm.seff.AbstractAction r1;
+        edu.kit.ipd.sdq.eventsim.system.entities.Request r2;
+        java.lang.String r3, $r7, $r9, $r14;
+        de.uka.ipd.sdq.simulation.abstractsimengine.ISimulationModel $r4;
+        java.lang.StringBuilder $r5, $r8, $r10, $r11, $r12, $r13;
+        org.apache.log4j.Logger $r6;
+
+        r0 := @this: edu.kit.ipd.sdq.eventsim.system.debug.DebugSeffTraversalListener;
+
+        r1 := @parameter0: org.palladiosimulator.pcm.seff.AbstractAction;
+
+        r2 := @parameter1: edu.kit.ipd.sdq.eventsim.system.entities.Request;
+
+        $r4 = virtualinvoke r2.<edu.kit.ipd.sdq.eventsim.system.entities.Request: de.uka.ipd.sdq.simulation.abstractsimengine.ISimulationModel getModel()>();
+
+        r3 = specialinvoke r0.<edu.kit.ipd.sdq.eventsim.system.debug.DebugSeffTraversalListener: java.lang.String simulationTimeString(de.uka.ipd.sdq.simulation.abstractsimengine.ISimulationModel)>($r4);
+
+        $r6 = <edu.kit.ipd.sdq.eventsim.system.debug.DebugSeffTraversalListener: org.apache.log4j.Logger logger>;
+
+        $r5 = new java.lang.StringBuilder;
+
+        $r7 = staticinvoke <java.lang.String: java.lang.String valueOf(java.lang.Object)>(r3);
+
+        specialinvoke $r5.<java.lang.StringBuilder: void <init>(java.lang.String)>($r7);
+
+        $r8 = virtualinvoke $r5.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("AFTER ");
+
+        $r9 = staticinvoke <edu.kit.ipd.sdq.eventsim.util.PCMEntityHelper: java.lang.String toString(org.palladiosimulator.pcm.core.entity.Entity)>(r1);
+
+        $r10 = virtualinvoke $r8.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r9);
+
+        $r11 = virtualinvoke $r10.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("(Request: ");
+
+        $r12 = virtualinvoke $r11.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.Object)>(r2);
+
+        $r13 = virtualinvoke $r12.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(")");
+
+        $r14 = virtualinvoke $r13.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        virtualinvoke $r6.<org.apache.log4j.Logger: void debug(java.lang.Object)>($r14);
+
+        return;
+    }
+
+    private java.lang.String simulationTimeString(de.uka.ipd.sdq.simulation.abstractsimengine.ISimulationModel)
+    {
+        edu.kit.ipd.sdq.eventsim.system.debug.DebugSeffTraversalListener r0;
+        de.uka.ipd.sdq.simulation.abstractsimengine.ISimulationModel r1;
+        double d0;
+        de.uka.ipd.sdq.simulation.abstractsimengine.ISimulationControl $r2;
+        java.lang.StringBuilder $r3, $r4, $r5;
+        java.lang.String $r6;
+
+        r0 := @this: edu.kit.ipd.sdq.eventsim.system.debug.DebugSeffTraversalListener;
+
+        r1 := @parameter0: de.uka.ipd.sdq.simulation.abstractsimengine.ISimulationModel;
+
+        $r2 = interfaceinvoke r1.<de.uka.ipd.sdq.simulation.abstractsimengine.ISimulationModel: de.uka.ipd.sdq.simulation.abstractsimengine.ISimulationControl getSimulationControl()>();
+
+        d0 = interfaceinvoke $r2.<de.uka.ipd.sdq.simulation.abstractsimengine.ISimulationControl: double getCurrentSimulationTime()>();
+
+        $r3 = new java.lang.StringBuilder;
+
+        specialinvoke $r3.<java.lang.StringBuilder: void <init>(java.lang.String)>("[t=");
+
+        $r4 = virtualinvoke $r3.<java.lang.StringBuilder: java.lang.StringBuilder append(double)>(d0);
+
+        $r5 = virtualinvoke $r4.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("] ");
+
+        $r6 = virtualinvoke $r5.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        return $r6;
+    }
+
+    public volatile void before(org.palladiosimulator.pcm.core.entity.Entity, edu.kit.ipd.sdq.eventsim.entities.EventSimEntity)
+    {
+        edu.kit.ipd.sdq.eventsim.system.debug.DebugSeffTraversalListener r0;
+        org.palladiosimulator.pcm.core.entity.Entity r1;
+        edu.kit.ipd.sdq.eventsim.entities.EventSimEntity r2;
+        edu.kit.ipd.sdq.eventsim.system.entities.Request $r3;
+        org.palladiosimulator.pcm.seff.AbstractAction $r4;
+
+        r0 := @this: edu.kit.ipd.sdq.eventsim.system.debug.DebugSeffTraversalListener;
+
+        r1 := @parameter0: org.palladiosimulator.pcm.core.entity.Entity;
+
+        r2 := @parameter1: edu.kit.ipd.sdq.eventsim.entities.EventSimEntity;
+
+        $r4 = (org.palladiosimulator.pcm.seff.AbstractAction) r1;
+
+        $r3 = (edu.kit.ipd.sdq.eventsim.system.entities.Request) r2;
+
+        virtualinvoke r0.<edu.kit.ipd.sdq.eventsim.system.debug.DebugSeffTraversalListener: void before(org.palladiosimulator.pcm.seff.AbstractAction,edu.kit.ipd.sdq.eventsim.system.entities.Request)>($r4, $r3);
+
+        return;
+    }
+
+    public volatile void after(org.palladiosimulator.pcm.core.entity.Entity, edu.kit.ipd.sdq.eventsim.entities.EventSimEntity)
+    {
+        edu.kit.ipd.sdq.eventsim.system.debug.DebugSeffTraversalListener r0;
+        org.palladiosimulator.pcm.core.entity.Entity r1;
+        edu.kit.ipd.sdq.eventsim.entities.EventSimEntity r2;
+        edu.kit.ipd.sdq.eventsim.system.entities.Request $r3;
+        org.palladiosimulator.pcm.seff.AbstractAction $r4;
+
+        r0 := @this: edu.kit.ipd.sdq.eventsim.system.debug.DebugSeffTraversalListener;
+
+        r1 := @parameter0: org.palladiosimulator.pcm.core.entity.Entity;
+
+        r2 := @parameter1: edu.kit.ipd.sdq.eventsim.entities.EventSimEntity;
+
+        $r4 = (org.palladiosimulator.pcm.seff.AbstractAction) r1;
+
+        $r3 = (edu.kit.ipd.sdq.eventsim.system.entities.Request) r2;
+
+        virtualinvoke r0.<edu.kit.ipd.sdq.eventsim.system.debug.DebugSeffTraversalListener: void after(org.palladiosimulator.pcm.seff.AbstractAction,edu.kit.ipd.sdq.eventsim.system.entities.Request)>($r4, $r3);
+
+        return;
+    }
+}

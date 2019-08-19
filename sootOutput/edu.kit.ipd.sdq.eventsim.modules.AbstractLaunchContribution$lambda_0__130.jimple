@@ -1,0 +1,42 @@
+public final class edu.kit.ipd.sdq.eventsim.modules.AbstractLaunchContribution$lambda_0__130 extends java.lang.Object implements java.util.function.Consumer
+{
+
+    public static java.util.function.Consumer bootstrap$()
+    {
+        edu.kit.ipd.sdq.eventsim.modules.AbstractLaunchContribution$lambda_0__130 $r0;
+
+        $r0 = new edu.kit.ipd.sdq.eventsim.modules.AbstractLaunchContribution$lambda_0__130;
+
+        specialinvoke $r0.<edu.kit.ipd.sdq.eventsim.modules.AbstractLaunchContribution$lambda_0__130: void <init>()>();
+
+        return $r0;
+    }
+
+    public void <init>()
+    {
+        edu.kit.ipd.sdq.eventsim.modules.AbstractLaunchContribution$lambda_0__130 $r0;
+
+        $r0 := @this: edu.kit.ipd.sdq.eventsim.modules.AbstractLaunchContribution$lambda_0__130;
+
+        specialinvoke $r0.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    public void accept(java.lang.Object)
+    {
+        edu.kit.ipd.sdq.eventsim.modules.AbstractLaunchContribution$lambda_0__130 $r0;
+        java.lang.Object $r1;
+        java.util.Observer $r2;
+
+        $r0 := @this: edu.kit.ipd.sdq.eventsim.modules.AbstractLaunchContribution$lambda_0__130;
+
+        $r1 := @parameter0: java.lang.Object;
+
+        $r2 = (java.util.Observer) $r1;
+
+        staticinvoke <edu.kit.ipd.sdq.eventsim.modules.AbstractLaunchContribution: void lambda$0(java.util.Observer)>($r2);
+
+        return;
+    }
+}

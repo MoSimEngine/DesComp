@@ -1,0 +1,72 @@
+public final class edu.kit.ipd.sdq.eventsim.system.interpreter.strategies.LoopActionSimulationStrategy$lambda_2__229 extends java.lang.Object implements edu.kit.ipd.sdq.eventsim.api.Procedure
+{
+    java.util.function.Consumer cap0;
+    edu.kit.ipd.sdq.eventsim.system.entities.Request cap1;
+    org.palladiosimulator.pcm.seff.LoopAction cap2;
+
+    public static edu.kit.ipd.sdq.eventsim.api.Procedure bootstrap$(java.util.function.Consumer, edu.kit.ipd.sdq.eventsim.system.entities.Request, org.palladiosimulator.pcm.seff.LoopAction)
+    {
+        java.util.function.Consumer $r0;
+        edu.kit.ipd.sdq.eventsim.system.entities.Request $r1;
+        org.palladiosimulator.pcm.seff.LoopAction $r2;
+        edu.kit.ipd.sdq.eventsim.system.interpreter.strategies.LoopActionSimulationStrategy$lambda_2__229 $r3;
+
+        $r0 := @parameter0: java.util.function.Consumer;
+
+        $r1 := @parameter1: edu.kit.ipd.sdq.eventsim.system.entities.Request;
+
+        $r2 := @parameter2: org.palladiosimulator.pcm.seff.LoopAction;
+
+        $r3 = new edu.kit.ipd.sdq.eventsim.system.interpreter.strategies.LoopActionSimulationStrategy$lambda_2__229;
+
+        specialinvoke $r3.<edu.kit.ipd.sdq.eventsim.system.interpreter.strategies.LoopActionSimulationStrategy$lambda_2__229: void <init>(java.util.function.Consumer,edu.kit.ipd.sdq.eventsim.system.entities.Request,org.palladiosimulator.pcm.seff.LoopAction)>($r0, $r1, $r2);
+
+        return $r3;
+    }
+
+    public void <init>(java.util.function.Consumer, edu.kit.ipd.sdq.eventsim.system.entities.Request, org.palladiosimulator.pcm.seff.LoopAction)
+    {
+        edu.kit.ipd.sdq.eventsim.system.interpreter.strategies.LoopActionSimulationStrategy$lambda_2__229 $r0;
+        java.util.function.Consumer $r1;
+        edu.kit.ipd.sdq.eventsim.system.entities.Request $r2;
+        org.palladiosimulator.pcm.seff.LoopAction $r3;
+
+        $r0 := @this: edu.kit.ipd.sdq.eventsim.system.interpreter.strategies.LoopActionSimulationStrategy$lambda_2__229;
+
+        $r1 := @parameter0: java.util.function.Consumer;
+
+        $r2 := @parameter1: edu.kit.ipd.sdq.eventsim.system.entities.Request;
+
+        $r3 := @parameter2: org.palladiosimulator.pcm.seff.LoopAction;
+
+        specialinvoke $r0.<java.lang.Object: void <init>()>();
+
+        $r0.<edu.kit.ipd.sdq.eventsim.system.interpreter.strategies.LoopActionSimulationStrategy$lambda_2__229: java.util.function.Consumer cap0> = $r1;
+
+        $r0.<edu.kit.ipd.sdq.eventsim.system.interpreter.strategies.LoopActionSimulationStrategy$lambda_2__229: edu.kit.ipd.sdq.eventsim.system.entities.Request cap1> = $r2;
+
+        $r0.<edu.kit.ipd.sdq.eventsim.system.interpreter.strategies.LoopActionSimulationStrategy$lambda_2__229: org.palladiosimulator.pcm.seff.LoopAction cap2> = $r3;
+
+        return;
+    }
+
+    public void execute()
+    {
+        edu.kit.ipd.sdq.eventsim.system.interpreter.strategies.LoopActionSimulationStrategy$lambda_2__229 $r0;
+        java.util.function.Consumer $r1;
+        edu.kit.ipd.sdq.eventsim.system.entities.Request $r2;
+        org.palladiosimulator.pcm.seff.LoopAction $r3;
+
+        $r0 := @this: edu.kit.ipd.sdq.eventsim.system.interpreter.strategies.LoopActionSimulationStrategy$lambda_2__229;
+
+        $r1 = $r0.<edu.kit.ipd.sdq.eventsim.system.interpreter.strategies.LoopActionSimulationStrategy$lambda_2__229: java.util.function.Consumer cap0>;
+
+        $r2 = $r0.<edu.kit.ipd.sdq.eventsim.system.interpreter.strategies.LoopActionSimulationStrategy$lambda_2__229: edu.kit.ipd.sdq.eventsim.system.entities.Request cap1>;
+
+        $r3 = $r0.<edu.kit.ipd.sdq.eventsim.system.interpreter.strategies.LoopActionSimulationStrategy$lambda_2__229: org.palladiosimulator.pcm.seff.LoopAction cap2>;
+
+        staticinvoke <edu.kit.ipd.sdq.eventsim.system.interpreter.strategies.LoopActionSimulationStrategy: void lambda$2(java.util.function.Consumer,edu.kit.ipd.sdq.eventsim.system.entities.Request,org.palladiosimulator.pcm.seff.LoopAction)>($r1, $r2, $r3);
+
+        return;
+    }
+}

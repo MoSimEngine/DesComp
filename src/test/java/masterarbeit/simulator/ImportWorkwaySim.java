@@ -31,7 +31,7 @@ public class ImportWorkwaySim {
 
 	@Test
 	public void importBusSim() throws IOException {
-		// simulatorRepository.cleanAll();
+		//simulatorRepository.cleanAll();
 
 		importWorkwaySimViaSoot();
 

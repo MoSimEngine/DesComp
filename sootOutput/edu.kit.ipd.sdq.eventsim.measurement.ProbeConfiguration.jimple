@@ -1,0 +1,3 @@
+public interface  edu.kit.ipd.sdq.eventsim.measurement.ProbeConfiguration extends java.lang.Object
+{
+}

@@ -1,0 +1,96 @@
+public class edu.kit.ipd.sdq.eventsim.resources.ProcessRegistry extends java.lang.Object
+{
+    private java.util.Map requestToSimulatedProcessMap;
+    private de.uka.ipd.sdq.simulation.abstractsimengine.ISimulationModel model;
+
+    public void <init>()
+    {
+        edu.kit.ipd.sdq.eventsim.resources.ProcessRegistry r0;
+        java.util.WeakHashMap $r1;
+
+        r0 := @this: edu.kit.ipd.sdq.eventsim.resources.ProcessRegistry;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        $r1 = new java.util.WeakHashMap;
+
+        specialinvoke $r1.<java.util.WeakHashMap: void <init>()>();
+
+        r0.<edu.kit.ipd.sdq.eventsim.resources.ProcessRegistry: java.util.Map requestToSimulatedProcessMap> = $r1;
+
+        return;
+    }
+
+    public edu.kit.ipd.sdq.eventsim.resources.entities.SimulatedProcess getOrCreateSimulatedProcess(edu.kit.ipd.sdq.eventsim.api.IRequest)
+    {
+        edu.kit.ipd.sdq.eventsim.resources.ProcessRegistry r0;
+        edu.kit.ipd.sdq.eventsim.api.IRequest r1, $r5, $r11;
+        edu.kit.ipd.sdq.eventsim.entities.EventSimEntity r3;
+        java.util.Map $r4, $r9, $r13;
+        boolean $z0;
+        edu.kit.ipd.sdq.eventsim.resources.entities.SimulatedProcess $r6, r12, $r15;
+        de.uka.ipd.sdq.simulation.abstractsimengine.ISimulationModel $r7;
+        edu.kit.ipd.sdq.eventsim.resources.ProcessRegistry$RequestFinishedHandler $r8;
+        java.lang.Object $r14;
+
+        r0 := @this: edu.kit.ipd.sdq.eventsim.resources.ProcessRegistry;
+
+        r1 := @parameter0: edu.kit.ipd.sdq.eventsim.api.IRequest;
+
+        $r4 = r0.<edu.kit.ipd.sdq.eventsim.resources.ProcessRegistry: java.util.Map requestToSimulatedProcessMap>;
+
+        $z0 = interfaceinvoke $r4.<java.util.Map: boolean containsKey(java.lang.Object)>(r1);
+
+        if $z0 != 0 goto label2;
+
+        r12 = null;
+
+        $r5 = interfaceinvoke r1.<edu.kit.ipd.sdq.eventsim.api.IRequest: edu.kit.ipd.sdq.eventsim.api.IRequest getParent()>();
+
+        if $r5 == null goto label1;
+
+        $r11 = interfaceinvoke r1.<edu.kit.ipd.sdq.eventsim.api.IRequest: edu.kit.ipd.sdq.eventsim.api.IRequest getParent()>();
+
+        r12 = virtualinvoke r0.<edu.kit.ipd.sdq.eventsim.resources.ProcessRegistry: edu.kit.ipd.sdq.eventsim.resources.entities.SimulatedProcess getOrCreateSimulatedProcess(edu.kit.ipd.sdq.eventsim.api.IRequest)>($r11);
+
+     label1:
+        $r6 = new edu.kit.ipd.sdq.eventsim.resources.entities.SimulatedProcess;
+
+        $r7 = r0.<edu.kit.ipd.sdq.eventsim.resources.ProcessRegistry: de.uka.ipd.sdq.simulation.abstractsimengine.ISimulationModel model>;
+
+        specialinvoke $r6.<edu.kit.ipd.sdq.eventsim.resources.entities.SimulatedProcess: void <init>(de.uka.ipd.sdq.simulation.abstractsimengine.ISimulationModel,edu.kit.ipd.sdq.eventsim.resources.entities.SimulatedProcess,edu.kit.ipd.sdq.eventsim.api.IRequest)>($r7, r12, r1);
+
+        r3 = (edu.kit.ipd.sdq.eventsim.entities.EventSimEntity) r1;
+
+        $r8 = new edu.kit.ipd.sdq.eventsim.resources.ProcessRegistry$RequestFinishedHandler;
+
+        specialinvoke $r8.<edu.kit.ipd.sdq.eventsim.resources.ProcessRegistry$RequestFinishedHandler: void <init>(edu.kit.ipd.sdq.eventsim.resources.ProcessRegistry,edu.kit.ipd.sdq.eventsim.resources.entities.SimulatedProcess)>(r0, $r6);
+
+        virtualinvoke r3.<edu.kit.ipd.sdq.eventsim.entities.EventSimEntity: void addEntityListener(edu.kit.ipd.sdq.eventsim.entities.IEntityListener)>($r8);
+
+        $r9 = r0.<edu.kit.ipd.sdq.eventsim.resources.ProcessRegistry: java.util.Map requestToSimulatedProcessMap>;
+
+        interfaceinvoke $r9.<java.util.Map: java.lang.Object put(java.lang.Object,java.lang.Object)>(r1, $r6);
+
+     label2:
+        $r13 = r0.<edu.kit.ipd.sdq.eventsim.resources.ProcessRegistry: java.util.Map requestToSimulatedProcessMap>;
+
+        $r14 = interfaceinvoke $r13.<java.util.Map: java.lang.Object get(java.lang.Object)>(r1);
+
+        $r15 = (edu.kit.ipd.sdq.eventsim.resources.entities.SimulatedProcess) $r14;
+
+        return $r15;
+    }
+
+    static java.util.Map access$0(edu.kit.ipd.sdq.eventsim.resources.ProcessRegistry)
+    {
+        edu.kit.ipd.sdq.eventsim.resources.ProcessRegistry r0;
+        java.util.Map $r1;
+
+        r0 := @parameter0: edu.kit.ipd.sdq.eventsim.resources.ProcessRegistry;
+
+        $r1 = r0.<edu.kit.ipd.sdq.eventsim.resources.ProcessRegistry: java.util.Map requestToSimulatedProcessMap>;
+
+        return $r1;
+    }
+}

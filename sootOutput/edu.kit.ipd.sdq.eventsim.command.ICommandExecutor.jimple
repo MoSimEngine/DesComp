@@ -1,0 +1,5 @@
+public interface  edu.kit.ipd.sdq.eventsim.command.ICommandExecutor extends java.lang.Object
+{
+
+    public abstract java.lang.Object execute(edu.kit.ipd.sdq.eventsim.command.ICommand);
+}

@@ -1,0 +1,36 @@
+public final class edu.kit.ipd.sdq.eventsim.system.interpreter.strategies.ForkActionSimulationStrategy$lambda_0__222 extends java.lang.Object implements edu.kit.ipd.sdq.eventsim.api.Procedure
+{
+
+    public static edu.kit.ipd.sdq.eventsim.api.Procedure bootstrap$()
+    {
+        edu.kit.ipd.sdq.eventsim.system.interpreter.strategies.ForkActionSimulationStrategy$lambda_0__222 $r0;
+
+        $r0 = new edu.kit.ipd.sdq.eventsim.system.interpreter.strategies.ForkActionSimulationStrategy$lambda_0__222;
+
+        specialinvoke $r0.<edu.kit.ipd.sdq.eventsim.system.interpreter.strategies.ForkActionSimulationStrategy$lambda_0__222: void <init>()>();
+
+        return $r0;
+    }
+
+    public void <init>()
+    {
+        edu.kit.ipd.sdq.eventsim.system.interpreter.strategies.ForkActionSimulationStrategy$lambda_0__222 $r0;
+
+        $r0 := @this: edu.kit.ipd.sdq.eventsim.system.interpreter.strategies.ForkActionSimulationStrategy$lambda_0__222;
+
+        specialinvoke $r0.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    public void execute()
+    {
+        edu.kit.ipd.sdq.eventsim.system.interpreter.strategies.ForkActionSimulationStrategy$lambda_0__222 $r0;
+
+        $r0 := @this: edu.kit.ipd.sdq.eventsim.system.interpreter.strategies.ForkActionSimulationStrategy$lambda_0__222;
+
+        staticinvoke <edu.kit.ipd.sdq.eventsim.system.interpreter.strategies.ForkActionSimulationStrategy: void lambda$0()>();
+
+        return;
+    }
+}

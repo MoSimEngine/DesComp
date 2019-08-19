@@ -1,0 +1,35 @@
+public class edu.kit.ipd.sdq.eventsim.measurement.r.jobs.FinalizeRProcessingJob extends java.lang.Object implements edu.kit.ipd.sdq.eventsim.measurement.r.RJob
+{
+
+    public void <init>()
+    {
+        edu.kit.ipd.sdq.eventsim.measurement.r.jobs.FinalizeRProcessingJob r0;
+
+        r0 := @this: edu.kit.ipd.sdq.eventsim.measurement.r.jobs.FinalizeRProcessingJob;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    public void process(edu.kit.ipd.sdq.eventsim.measurement.r.RContext)
+    {
+        edu.kit.ipd.sdq.eventsim.measurement.r.jobs.FinalizeRProcessingJob r0;
+        edu.kit.ipd.sdq.eventsim.measurement.r.RContext r1;
+
+        r0 := @this: edu.kit.ipd.sdq.eventsim.measurement.r.jobs.FinalizeRProcessingJob;
+
+        r1 := @parameter0: edu.kit.ipd.sdq.eventsim.measurement.r.RContext;
+
+        return;
+    }
+
+    public java.lang.String getName()
+    {
+        edu.kit.ipd.sdq.eventsim.measurement.r.jobs.FinalizeRProcessingJob r0;
+
+        r0 := @this: edu.kit.ipd.sdq.eventsim.measurement.r.jobs.FinalizeRProcessingJob;
+
+        return "Finalize R processing";
+    }
+}

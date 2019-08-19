@@ -1,0 +1,27 @@
+public interface  edu.kit.ipd.sdq.eventsim.api.ISimulationMiddleware extends java.lang.Object
+{
+
+    public abstract void startSimulation(de.uka.ipd.sdq.simulation.IStatusObserver);
+
+    public abstract void stopSimulation();
+
+    public abstract boolean isStopping();
+
+    public abstract edu.kit.ipd.sdq.eventsim.api.ISimulationConfiguration getSimulationConfiguration();
+
+    public abstract de.uka.ipd.sdq.simulation.abstractsimengine.ISimulationModel getSimulationModel();
+
+    public abstract de.uka.ipd.sdq.simulation.abstractsimengine.ISimulationControl getSimulationControl();
+
+    public abstract void triggerEvent(edu.kit.ipd.sdq.eventsim.api.events.SimulationEvent);
+
+    public abstract void registerEventHandler(java.lang.Class, edu.kit.ipd.sdq.eventsim.api.events.IEventHandler);
+
+    public abstract void registerEventHandler(java.lang.Class, edu.kit.ipd.sdq.eventsim.api.events.IEventHandler, java.lang.String);
+
+    public abstract int getMeasurementCount();
+
+    public abstract void increaseMeasurementCount();
+
+    public abstract de.uka.ipd.sdq.probfunction.math.IRandomGenerator getRandomGenerator();
+}

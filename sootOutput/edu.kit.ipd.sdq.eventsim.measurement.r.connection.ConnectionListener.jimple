@@ -1,0 +1,7 @@
+public interface  edu.kit.ipd.sdq.eventsim.measurement.r.connection.ConnectionListener extends java.lang.Object
+{
+
+    public abstract void connectionAdded(edu.kit.ipd.sdq.eventsim.measurement.r.connection.RserveConnection);
+
+    public abstract void connectionRemoved(edu.kit.ipd.sdq.eventsim.measurement.r.connection.RserveConnection);
+}

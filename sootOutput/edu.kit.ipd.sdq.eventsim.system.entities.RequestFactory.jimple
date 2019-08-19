@@ -1,0 +1,7 @@
+public interface  edu.kit.ipd.sdq.eventsim.system.entities.RequestFactory extends java.lang.Object
+{
+
+    public abstract edu.kit.ipd.sdq.eventsim.system.entities.Request createRequest(org.palladiosimulator.pcm.usagemodel.EntryLevelSystemCall, edu.kit.ipd.sdq.eventsim.api.IUser);
+
+    public abstract edu.kit.ipd.sdq.eventsim.system.entities.ForkedRequest createForkedRequest(org.palladiosimulator.pcm.seff.ForkedBehaviour, boolean, edu.kit.ipd.sdq.eventsim.system.entities.Request);
+}

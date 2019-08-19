@@ -1,0 +1,9 @@
+public interface  edu.kit.ipd.sdq.eventsim.measurement.r.connection.ui.ConnectionViewListener extends java.lang.Object
+{
+
+    public abstract void connectButtonSelected();
+
+    public abstract void disconnectButtonSelected();
+
+    public abstract void cancelButtonSelected();
+}

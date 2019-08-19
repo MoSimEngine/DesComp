@@ -1,0 +1,41 @@
+class edu.kit.ipd.sdq.eventsim.measurement.r.launch.RConfigurationTab$1 extends java.lang.Object implements org.eclipse.swt.events.ModifyListener
+{
+    final edu.kit.ipd.sdq.eventsim.measurement.r.launch.RConfigurationTab this$0;
+
+    void <init>(edu.kit.ipd.sdq.eventsim.measurement.r.launch.RConfigurationTab)
+    {
+        edu.kit.ipd.sdq.eventsim.measurement.r.launch.RConfigurationTab$1 r0;
+        edu.kit.ipd.sdq.eventsim.measurement.r.launch.RConfigurationTab r1;
+
+        r0 := @this: edu.kit.ipd.sdq.eventsim.measurement.r.launch.RConfigurationTab$1;
+
+        r1 := @parameter0: edu.kit.ipd.sdq.eventsim.measurement.r.launch.RConfigurationTab;
+
+        r0.<edu.kit.ipd.sdq.eventsim.measurement.r.launch.RConfigurationTab$1: edu.kit.ipd.sdq.eventsim.measurement.r.launch.RConfigurationTab this$0> = r1;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    public void modifyText(org.eclipse.swt.events.ModifyEvent)
+    {
+        edu.kit.ipd.sdq.eventsim.measurement.r.launch.RConfigurationTab$1 r0;
+        org.eclipse.swt.events.ModifyEvent r1;
+        edu.kit.ipd.sdq.eventsim.measurement.r.launch.RConfigurationTab $r2, $r3;
+
+        r0 := @this: edu.kit.ipd.sdq.eventsim.measurement.r.launch.RConfigurationTab$1;
+
+        r1 := @parameter0: org.eclipse.swt.events.ModifyEvent;
+
+        $r2 = r0.<edu.kit.ipd.sdq.eventsim.measurement.r.launch.RConfigurationTab$1: edu.kit.ipd.sdq.eventsim.measurement.r.launch.RConfigurationTab this$0>;
+
+        staticinvoke <edu.kit.ipd.sdq.eventsim.measurement.r.launch.RConfigurationTab: void access$0(edu.kit.ipd.sdq.eventsim.measurement.r.launch.RConfigurationTab,boolean)>($r2, 1);
+
+        $r3 = r0.<edu.kit.ipd.sdq.eventsim.measurement.r.launch.RConfigurationTab$1: edu.kit.ipd.sdq.eventsim.measurement.r.launch.RConfigurationTab this$0>;
+
+        staticinvoke <edu.kit.ipd.sdq.eventsim.measurement.r.launch.RConfigurationTab: void access$1(edu.kit.ipd.sdq.eventsim.measurement.r.launch.RConfigurationTab)>($r3);
+
+        return;
+    }
+}

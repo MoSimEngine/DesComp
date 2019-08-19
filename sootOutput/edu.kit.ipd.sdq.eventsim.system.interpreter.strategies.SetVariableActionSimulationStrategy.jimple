@@ -1,0 +1,102 @@
+public class edu.kit.ipd.sdq.eventsim.system.interpreter.strategies.SetVariableActionSimulationStrategy extends java.lang.Object implements edu.kit.ipd.sdq.eventsim.interpreter.SimulationStrategy
+{
+
+    public void <init>()
+    {
+        edu.kit.ipd.sdq.eventsim.system.interpreter.strategies.SetVariableActionSimulationStrategy r0;
+
+        r0 := @this: edu.kit.ipd.sdq.eventsim.system.interpreter.strategies.SetVariableActionSimulationStrategy;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    public void simulate(org.palladiosimulator.pcm.seff.AbstractAction, edu.kit.ipd.sdq.eventsim.system.entities.Request, java.util.function.Consumer)
+    {
+        edu.kit.ipd.sdq.eventsim.system.interpreter.strategies.SetVariableActionSimulationStrategy r0;
+        org.palladiosimulator.pcm.seff.AbstractAction r1;
+        edu.kit.ipd.sdq.eventsim.system.entities.Request r2;
+        java.util.function.Consumer r3;
+        org.palladiosimulator.pcm.seff.SetVariableAction r4;
+        de.uka.ipd.sdq.simucomframework.variables.StackContext r5;
+        de.uka.ipd.sdq.simucomframework.variables.stackframe.SimulatedStackframe r6;
+        edu.kit.ipd.sdq.eventsim.interpreter.state.EntityState $r7;
+        de.uka.ipd.sdq.simucomframework.variables.stackframe.SimulatedStack $r8;
+        org.eclipse.emf.common.util.EList $r9;
+        edu.kit.ipd.sdq.eventsim.interpreter.TraversalInstruction $r10;
+        java.util.List r11;
+
+        r0 := @this: edu.kit.ipd.sdq.eventsim.system.interpreter.strategies.SetVariableActionSimulationStrategy;
+
+        r1 := @parameter0: org.palladiosimulator.pcm.seff.AbstractAction;
+
+        r2 := @parameter1: edu.kit.ipd.sdq.eventsim.system.entities.Request;
+
+        r3 := @parameter2: java.util.function.Consumer;
+
+        r4 = (org.palladiosimulator.pcm.seff.SetVariableAction) r1;
+
+        $r7 = virtualinvoke r2.<edu.kit.ipd.sdq.eventsim.system.entities.Request: edu.kit.ipd.sdq.eventsim.interpreter.state.EntityState getRequestState()>();
+
+        r5 = virtualinvoke $r7.<edu.kit.ipd.sdq.eventsim.interpreter.state.EntityState: de.uka.ipd.sdq.simucomframework.variables.StackContext getStoExContext()>();
+
+        $r8 = virtualinvoke r5.<de.uka.ipd.sdq.simucomframework.variables.StackContext: de.uka.ipd.sdq.simucomframework.variables.stackframe.SimulatedStack getStack()>();
+
+        r6 = virtualinvoke $r8.<de.uka.ipd.sdq.simucomframework.variables.stackframe.SimulatedStack: de.uka.ipd.sdq.simucomframework.variables.stackframe.SimulatedStackframe currentStackFrame()>();
+
+        $r9 = interfaceinvoke r4.<org.palladiosimulator.pcm.seff.SetVariableAction: org.eclipse.emf.common.util.EList getLocalVariableUsages_SetVariableAction()>();
+
+        r11 = (java.util.List) $r9;
+
+        staticinvoke <edu.kit.ipd.sdq.eventsim.util.ParameterHelper: void evaluateParametersAndCopyToFrame(java.util.List,de.uka.ipd.sdq.simucomframework.variables.stackframe.SimulatedStackframe,de.uka.ipd.sdq.simucomframework.variables.stackframe.SimulatedStackframe)>(r11, r6, r6);
+
+        $r10 = staticinvoke <edu.kit.ipd.sdq.eventsim.system.interpreter.strategies.SetVariableActionSimulationStrategy$lambda_0__219: edu.kit.ipd.sdq.eventsim.interpreter.TraversalInstruction bootstrap$(edu.kit.ipd.sdq.eventsim.system.entities.Request,org.palladiosimulator.pcm.seff.AbstractAction)>(r2, r1);
+
+        interfaceinvoke r3.<java.util.function.Consumer: void accept(java.lang.Object)>($r10);
+
+        return;
+    }
+
+    public volatile void simulate(org.palladiosimulator.pcm.core.entity.Entity, edu.kit.ipd.sdq.eventsim.entities.EventSimEntity, java.util.function.Consumer)
+    {
+        edu.kit.ipd.sdq.eventsim.system.interpreter.strategies.SetVariableActionSimulationStrategy r0;
+        org.palladiosimulator.pcm.core.entity.Entity r1;
+        edu.kit.ipd.sdq.eventsim.entities.EventSimEntity r2;
+        java.util.function.Consumer r3;
+        edu.kit.ipd.sdq.eventsim.system.entities.Request $r4;
+        org.palladiosimulator.pcm.seff.AbstractAction $r5;
+
+        r0 := @this: edu.kit.ipd.sdq.eventsim.system.interpreter.strategies.SetVariableActionSimulationStrategy;
+
+        r1 := @parameter0: org.palladiosimulator.pcm.core.entity.Entity;
+
+        r2 := @parameter1: edu.kit.ipd.sdq.eventsim.entities.EventSimEntity;
+
+        r3 := @parameter2: java.util.function.Consumer;
+
+        $r5 = (org.palladiosimulator.pcm.seff.AbstractAction) r1;
+
+        $r4 = (edu.kit.ipd.sdq.eventsim.system.entities.Request) r2;
+
+        virtualinvoke r0.<edu.kit.ipd.sdq.eventsim.system.interpreter.strategies.SetVariableActionSimulationStrategy: void simulate(org.palladiosimulator.pcm.seff.AbstractAction,edu.kit.ipd.sdq.eventsim.system.entities.Request,java.util.function.Consumer)>($r5, $r4, r3);
+
+        return;
+    }
+
+    public static void lambda$0(edu.kit.ipd.sdq.eventsim.system.entities.Request, org.palladiosimulator.pcm.seff.AbstractAction)
+    {
+        edu.kit.ipd.sdq.eventsim.system.entities.Request r0;
+        org.palladiosimulator.pcm.seff.AbstractAction r1, $r2;
+
+        r0 := @parameter0: edu.kit.ipd.sdq.eventsim.system.entities.Request;
+
+        r1 := @parameter1: org.palladiosimulator.pcm.seff.AbstractAction;
+
+        $r2 = interfaceinvoke r1.<org.palladiosimulator.pcm.seff.AbstractAction: org.palladiosimulator.pcm.seff.AbstractAction getSuccessor_AbstractAction()>();
+
+        virtualinvoke r0.<edu.kit.ipd.sdq.eventsim.system.entities.Request: void simulateAction(org.palladiosimulator.pcm.seff.AbstractAction)>($r2);
+
+        return;
+    }
+}

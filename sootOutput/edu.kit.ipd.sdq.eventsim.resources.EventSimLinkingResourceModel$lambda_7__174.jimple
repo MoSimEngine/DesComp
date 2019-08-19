@@ -1,0 +1,54 @@
+public final class edu.kit.ipd.sdq.eventsim.resources.EventSimLinkingResourceModel$lambda_7__174 extends java.lang.Object implements java.util.function.Consumer
+{
+    edu.kit.ipd.sdq.eventsim.instrumentation.injection.Instrumentor cap0;
+
+    public static java.util.function.Consumer bootstrap$(edu.kit.ipd.sdq.eventsim.instrumentation.injection.Instrumentor)
+    {
+        edu.kit.ipd.sdq.eventsim.instrumentation.injection.Instrumentor $r0;
+        edu.kit.ipd.sdq.eventsim.resources.EventSimLinkingResourceModel$lambda_7__174 $r1;
+
+        $r0 := @parameter0: edu.kit.ipd.sdq.eventsim.instrumentation.injection.Instrumentor;
+
+        $r1 = new edu.kit.ipd.sdq.eventsim.resources.EventSimLinkingResourceModel$lambda_7__174;
+
+        specialinvoke $r1.<edu.kit.ipd.sdq.eventsim.resources.EventSimLinkingResourceModel$lambda_7__174: void <init>(edu.kit.ipd.sdq.eventsim.instrumentation.injection.Instrumentor)>($r0);
+
+        return $r1;
+    }
+
+    public void <init>(edu.kit.ipd.sdq.eventsim.instrumentation.injection.Instrumentor)
+    {
+        edu.kit.ipd.sdq.eventsim.resources.EventSimLinkingResourceModel$lambda_7__174 $r0;
+        edu.kit.ipd.sdq.eventsim.instrumentation.injection.Instrumentor $r1;
+
+        $r0 := @this: edu.kit.ipd.sdq.eventsim.resources.EventSimLinkingResourceModel$lambda_7__174;
+
+        $r1 := @parameter0: edu.kit.ipd.sdq.eventsim.instrumentation.injection.Instrumentor;
+
+        specialinvoke $r0.<java.lang.Object: void <init>()>();
+
+        $r0.<edu.kit.ipd.sdq.eventsim.resources.EventSimLinkingResourceModel$lambda_7__174: edu.kit.ipd.sdq.eventsim.instrumentation.injection.Instrumentor cap0> = $r1;
+
+        return;
+    }
+
+    public void accept(java.lang.Object)
+    {
+        edu.kit.ipd.sdq.eventsim.resources.EventSimLinkingResourceModel$lambda_7__174 $r0;
+        java.lang.Object $r1;
+        edu.kit.ipd.sdq.eventsim.resources.entities.SimLinkingResource $r2;
+        edu.kit.ipd.sdq.eventsim.instrumentation.injection.Instrumentor $r3;
+
+        $r0 := @this: edu.kit.ipd.sdq.eventsim.resources.EventSimLinkingResourceModel$lambda_7__174;
+
+        $r1 := @parameter0: java.lang.Object;
+
+        $r2 = (edu.kit.ipd.sdq.eventsim.resources.entities.SimLinkingResource) $r1;
+
+        $r3 = $r0.<edu.kit.ipd.sdq.eventsim.resources.EventSimLinkingResourceModel$lambda_7__174: edu.kit.ipd.sdq.eventsim.instrumentation.injection.Instrumentor cap0>;
+
+        staticinvoke <edu.kit.ipd.sdq.eventsim.resources.EventSimLinkingResourceModel: void lambda$7(edu.kit.ipd.sdq.eventsim.instrumentation.injection.Instrumentor,edu.kit.ipd.sdq.eventsim.resources.entities.SimLinkingResource)>($r3, $r2);
+
+        return;
+    }
+}

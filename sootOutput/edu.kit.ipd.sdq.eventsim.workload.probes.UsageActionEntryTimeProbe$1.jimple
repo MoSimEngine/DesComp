@@ -1,0 +1,150 @@
+class edu.kit.ipd.sdq.eventsim.workload.probes.UsageActionEntryTimeProbe$1 extends java.lang.Object implements edu.kit.ipd.sdq.eventsim.interpreter.listener.ITraversalListener
+{
+    final edu.kit.ipd.sdq.eventsim.workload.probes.UsageActionEntryTimeProbe this$0;
+
+    void <init>(edu.kit.ipd.sdq.eventsim.workload.probes.UsageActionEntryTimeProbe)
+    {
+        edu.kit.ipd.sdq.eventsim.workload.probes.UsageActionEntryTimeProbe$1 r0;
+        edu.kit.ipd.sdq.eventsim.workload.probes.UsageActionEntryTimeProbe r1;
+
+        r0 := @this: edu.kit.ipd.sdq.eventsim.workload.probes.UsageActionEntryTimeProbe$1;
+
+        r1 := @parameter0: edu.kit.ipd.sdq.eventsim.workload.probes.UsageActionEntryTimeProbe;
+
+        r0.<edu.kit.ipd.sdq.eventsim.workload.probes.UsageActionEntryTimeProbe$1: edu.kit.ipd.sdq.eventsim.workload.probes.UsageActionEntryTimeProbe this$0> = r1;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    public void before(org.palladiosimulator.pcm.usagemodel.AbstractUserAction, edu.kit.ipd.sdq.eventsim.workload.entities.User)
+    {
+        edu.kit.ipd.sdq.eventsim.workload.probes.UsageActionEntryTimeProbe$1 r0;
+        org.palladiosimulator.pcm.usagemodel.AbstractUserAction r1;
+        edu.kit.ipd.sdq.eventsim.workload.entities.User r2;
+        double d0;
+        de.uka.ipd.sdq.simulation.abstractsimengine.ISimulationModel $r4;
+        de.uka.ipd.sdq.simulation.abstractsimengine.ISimulationControl $r5;
+        edu.kit.ipd.sdq.eventsim.measurement.Measurement $r6;
+        edu.kit.ipd.sdq.eventsim.workload.probes.UsageActionEntryTimeProbe $r7, $r10, $r12;
+        edu.kit.ipd.sdq.eventsim.measurement.MeasuringPoint $r8;
+        edu.kit.ipd.sdq.eventsim.measurement.Metadata[] $r9;
+        edu.kit.ipd.sdq.eventsim.measurement.probe.MeasurementCache $r11;
+        java.util.List $r13;
+        java.util.function.Consumer $r14;
+
+        r0 := @this: edu.kit.ipd.sdq.eventsim.workload.probes.UsageActionEntryTimeProbe$1;
+
+        r1 := @parameter0: org.palladiosimulator.pcm.usagemodel.AbstractUserAction;
+
+        r2 := @parameter1: edu.kit.ipd.sdq.eventsim.workload.entities.User;
+
+        $r4 = virtualinvoke r2.<edu.kit.ipd.sdq.eventsim.workload.entities.User: de.uka.ipd.sdq.simulation.abstractsimengine.ISimulationModel getModel()>();
+
+        $r5 = interfaceinvoke $r4.<de.uka.ipd.sdq.simulation.abstractsimengine.ISimulationModel: de.uka.ipd.sdq.simulation.abstractsimengine.ISimulationControl getSimulationControl()>();
+
+        d0 = interfaceinvoke $r5.<de.uka.ipd.sdq.simulation.abstractsimengine.ISimulationControl: double getCurrentSimulationTime()>();
+
+        $r6 = new edu.kit.ipd.sdq.eventsim.measurement.Measurement;
+
+        $r7 = r0.<edu.kit.ipd.sdq.eventsim.workload.probes.UsageActionEntryTimeProbe$1: edu.kit.ipd.sdq.eventsim.workload.probes.UsageActionEntryTimeProbe this$0>;
+
+        $r8 = virtualinvoke $r7.<edu.kit.ipd.sdq.eventsim.workload.probes.UsageActionEntryTimeProbe: edu.kit.ipd.sdq.eventsim.measurement.MeasuringPoint getMeasuringPoint()>();
+
+        $r9 = newarray (edu.kit.ipd.sdq.eventsim.measurement.Metadata)[0];
+
+        specialinvoke $r6.<edu.kit.ipd.sdq.eventsim.measurement.Measurement: void <init>(java.lang.Object,edu.kit.ipd.sdq.eventsim.measurement.MeasuringPoint,java.lang.Object,double,double,edu.kit.ipd.sdq.eventsim.measurement.Metadata[])>("CURRENT_TIME", $r8, r2, d0, d0, $r9);
+
+        $r10 = r0.<edu.kit.ipd.sdq.eventsim.workload.probes.UsageActionEntryTimeProbe$1: edu.kit.ipd.sdq.eventsim.workload.probes.UsageActionEntryTimeProbe this$0>;
+
+        $r11 = staticinvoke <edu.kit.ipd.sdq.eventsim.workload.probes.UsageActionEntryTimeProbe: edu.kit.ipd.sdq.eventsim.measurement.probe.MeasurementCache access$0(edu.kit.ipd.sdq.eventsim.workload.probes.UsageActionEntryTimeProbe)>($r10);
+
+        virtualinvoke $r11.<edu.kit.ipd.sdq.eventsim.measurement.probe.MeasurementCache: void put(edu.kit.ipd.sdq.eventsim.measurement.Measurement)>($r6);
+
+        $r12 = r0.<edu.kit.ipd.sdq.eventsim.workload.probes.UsageActionEntryTimeProbe$1: edu.kit.ipd.sdq.eventsim.workload.probes.UsageActionEntryTimeProbe this$0>;
+
+        $r13 = staticinvoke <edu.kit.ipd.sdq.eventsim.workload.probes.UsageActionEntryTimeProbe: java.util.List access$1(edu.kit.ipd.sdq.eventsim.workload.probes.UsageActionEntryTimeProbe)>($r12);
+
+        $r14 = staticinvoke <edu.kit.ipd.sdq.eventsim.workload.probes.UsageActionEntryTimeProbe$1$lambda_0__250: java.util.function.Consumer bootstrap$(edu.kit.ipd.sdq.eventsim.measurement.Measurement)>($r6);
+
+        interfaceinvoke $r13.<java.util.List: void forEach(java.util.function.Consumer)>($r14);
+
+        return;
+    }
+
+    public void after(org.palladiosimulator.pcm.usagemodel.AbstractUserAction, edu.kit.ipd.sdq.eventsim.workload.entities.User)
+    {
+        edu.kit.ipd.sdq.eventsim.workload.probes.UsageActionEntryTimeProbe$1 r0;
+        org.palladiosimulator.pcm.usagemodel.AbstractUserAction r1;
+        edu.kit.ipd.sdq.eventsim.workload.entities.User r2;
+
+        r0 := @this: edu.kit.ipd.sdq.eventsim.workload.probes.UsageActionEntryTimeProbe$1;
+
+        r1 := @parameter0: org.palladiosimulator.pcm.usagemodel.AbstractUserAction;
+
+        r2 := @parameter1: edu.kit.ipd.sdq.eventsim.workload.entities.User;
+
+        return;
+    }
+
+    public volatile void before(org.palladiosimulator.pcm.core.entity.Entity, edu.kit.ipd.sdq.eventsim.entities.EventSimEntity)
+    {
+        edu.kit.ipd.sdq.eventsim.workload.probes.UsageActionEntryTimeProbe$1 r0;
+        org.palladiosimulator.pcm.core.entity.Entity r1;
+        edu.kit.ipd.sdq.eventsim.entities.EventSimEntity r2;
+        edu.kit.ipd.sdq.eventsim.workload.entities.User $r3;
+        org.palladiosimulator.pcm.usagemodel.AbstractUserAction $r4;
+
+        r0 := @this: edu.kit.ipd.sdq.eventsim.workload.probes.UsageActionEntryTimeProbe$1;
+
+        r1 := @parameter0: org.palladiosimulator.pcm.core.entity.Entity;
+
+        r2 := @parameter1: edu.kit.ipd.sdq.eventsim.entities.EventSimEntity;
+
+        $r4 = (org.palladiosimulator.pcm.usagemodel.AbstractUserAction) r1;
+
+        $r3 = (edu.kit.ipd.sdq.eventsim.workload.entities.User) r2;
+
+        virtualinvoke r0.<edu.kit.ipd.sdq.eventsim.workload.probes.UsageActionEntryTimeProbe$1: void before(org.palladiosimulator.pcm.usagemodel.AbstractUserAction,edu.kit.ipd.sdq.eventsim.workload.entities.User)>($r4, $r3);
+
+        return;
+    }
+
+    public volatile void after(org.palladiosimulator.pcm.core.entity.Entity, edu.kit.ipd.sdq.eventsim.entities.EventSimEntity)
+    {
+        edu.kit.ipd.sdq.eventsim.workload.probes.UsageActionEntryTimeProbe$1 r0;
+        org.palladiosimulator.pcm.core.entity.Entity r1;
+        edu.kit.ipd.sdq.eventsim.entities.EventSimEntity r2;
+        edu.kit.ipd.sdq.eventsim.workload.entities.User $r3;
+        org.palladiosimulator.pcm.usagemodel.AbstractUserAction $r4;
+
+        r0 := @this: edu.kit.ipd.sdq.eventsim.workload.probes.UsageActionEntryTimeProbe$1;
+
+        r1 := @parameter0: org.palladiosimulator.pcm.core.entity.Entity;
+
+        r2 := @parameter1: edu.kit.ipd.sdq.eventsim.entities.EventSimEntity;
+
+        $r4 = (org.palladiosimulator.pcm.usagemodel.AbstractUserAction) r1;
+
+        $r3 = (edu.kit.ipd.sdq.eventsim.workload.entities.User) r2;
+
+        virtualinvoke r0.<edu.kit.ipd.sdq.eventsim.workload.probes.UsageActionEntryTimeProbe$1: void after(org.palladiosimulator.pcm.usagemodel.AbstractUserAction,edu.kit.ipd.sdq.eventsim.workload.entities.User)>($r4, $r3);
+
+        return;
+    }
+
+    public static void lambda$0(edu.kit.ipd.sdq.eventsim.measurement.Measurement, edu.kit.ipd.sdq.eventsim.measurement.MeasurementListener)
+    {
+        edu.kit.ipd.sdq.eventsim.measurement.Measurement r0;
+        edu.kit.ipd.sdq.eventsim.measurement.MeasurementListener r1;
+
+        r0 := @parameter0: edu.kit.ipd.sdq.eventsim.measurement.Measurement;
+
+        r1 := @parameter1: edu.kit.ipd.sdq.eventsim.measurement.MeasurementListener;
+
+        interfaceinvoke r1.<edu.kit.ipd.sdq.eventsim.measurement.MeasurementListener: void notify(edu.kit.ipd.sdq.eventsim.measurement.Measurement)>(r0);
+
+        return;
+    }
+}

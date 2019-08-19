@@ -1,0 +1,125 @@
+public class edu.kit.ipd.sdq.eventsim.command.resource.FindAllPassiveResources extends java.lang.Object implements edu.kit.ipd.sdq.eventsim.command.IPCMCommand
+{
+
+    public void <init>()
+    {
+        edu.kit.ipd.sdq.eventsim.command.resource.FindAllPassiveResources r0;
+
+        r0 := @this: edu.kit.ipd.sdq.eventsim.command.resource.FindAllPassiveResources;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    public java.util.List execute(edu.kit.ipd.sdq.eventsim.api.PCMModel, edu.kit.ipd.sdq.eventsim.command.ICommandExecutor)
+    {
+        edu.kit.ipd.sdq.eventsim.command.resource.FindAllPassiveResources r0;
+        edu.kit.ipd.sdq.eventsim.api.PCMModel r1;
+        edu.kit.ipd.sdq.eventsim.command.ICommandExecutor r2;
+        org.palladiosimulator.pcm.allocation.AllocationContext r4;
+        java.util.Iterator r5, r8;
+        org.palladiosimulator.pcm.core.composition.AssemblyContext r6;
+        org.palladiosimulator.pcm.repository.PassiveResource r7;
+        java.util.ArrayList $r9;
+        org.palladiosimulator.pcm.allocation.Allocation $r10;
+        org.eclipse.emf.common.util.EList $r11;
+        boolean $z0, $z1;
+        java.lang.Object $r12, $r14, $r16;
+        edu.kit.ipd.sdq.eventsim.command.resource.FindPassiveResourcesInAssemblyContext $r13;
+        java.util.List $r15;
+        edu.kit.ipd.sdq.eventsim.command.resource.PassiveResourceContext $r17;
+
+        r0 := @this: edu.kit.ipd.sdq.eventsim.command.resource.FindAllPassiveResources;
+
+        r1 := @parameter0: edu.kit.ipd.sdq.eventsim.api.PCMModel;
+
+        r2 := @parameter1: edu.kit.ipd.sdq.eventsim.command.ICommandExecutor;
+
+        $r9 = new java.util.ArrayList;
+
+        specialinvoke $r9.<java.util.ArrayList: void <init>()>();
+
+        $r10 = virtualinvoke r1.<edu.kit.ipd.sdq.eventsim.api.PCMModel: org.palladiosimulator.pcm.allocation.Allocation getAllocationModel()>();
+
+        $r11 = interfaceinvoke $r10.<org.palladiosimulator.pcm.allocation.Allocation: org.eclipse.emf.common.util.EList getAllocationContexts_Allocation()>();
+
+        r5 = interfaceinvoke $r11.<org.eclipse.emf.common.util.EList: java.util.Iterator iterator()>();
+
+        goto label4;
+
+     label1:
+        $r12 = interfaceinvoke r5.<java.util.Iterator: java.lang.Object next()>();
+
+        r4 = (org.palladiosimulator.pcm.allocation.AllocationContext) $r12;
+
+        r6 = interfaceinvoke r4.<org.palladiosimulator.pcm.allocation.AllocationContext: org.palladiosimulator.pcm.core.composition.AssemblyContext getAssemblyContext_AllocationContext()>();
+
+        $r13 = new edu.kit.ipd.sdq.eventsim.command.resource.FindPassiveResourcesInAssemblyContext;
+
+        specialinvoke $r13.<edu.kit.ipd.sdq.eventsim.command.resource.FindPassiveResourcesInAssemblyContext: void <init>(org.palladiosimulator.pcm.core.composition.AssemblyContext)>(r6);
+
+        $r14 = interfaceinvoke r2.<edu.kit.ipd.sdq.eventsim.command.ICommandExecutor: java.lang.Object execute(edu.kit.ipd.sdq.eventsim.command.ICommand)>($r13);
+
+        $r15 = (java.util.List) $r14;
+
+        r8 = interfaceinvoke $r15.<java.util.List: java.util.Iterator iterator()>();
+
+        goto label3;
+
+     label2:
+        $r16 = interfaceinvoke r8.<java.util.Iterator: java.lang.Object next()>();
+
+        r7 = (org.palladiosimulator.pcm.repository.PassiveResource) $r16;
+
+        $r17 = new edu.kit.ipd.sdq.eventsim.command.resource.PassiveResourceContext;
+
+        specialinvoke $r17.<edu.kit.ipd.sdq.eventsim.command.resource.PassiveResourceContext: void <init>(org.palladiosimulator.pcm.repository.PassiveResource,org.palladiosimulator.pcm.core.composition.AssemblyContext)>(r7, r6);
+
+        interfaceinvoke $r9.<java.util.List: boolean add(java.lang.Object)>($r17);
+
+     label3:
+        $z1 = interfaceinvoke r8.<java.util.Iterator: boolean hasNext()>();
+
+        if $z1 != 0 goto label2;
+
+     label4:
+        $z0 = interfaceinvoke r5.<java.util.Iterator: boolean hasNext()>();
+
+        if $z0 != 0 goto label1;
+
+        return $r9;
+    }
+
+    public boolean cachable()
+    {
+        edu.kit.ipd.sdq.eventsim.command.resource.FindAllPassiveResources r0;
+
+        r0 := @this: edu.kit.ipd.sdq.eventsim.command.resource.FindAllPassiveResources;
+
+        return 0;
+    }
+
+    public volatile java.lang.Object execute(java.lang.Object, edu.kit.ipd.sdq.eventsim.command.ICommandExecutor)
+    {
+        edu.kit.ipd.sdq.eventsim.command.resource.FindAllPassiveResources r0;
+        java.lang.Object r1;
+        edu.kit.ipd.sdq.eventsim.command.ICommandExecutor r2, $r3;
+        edu.kit.ipd.sdq.eventsim.api.PCMModel $r4;
+        java.util.List $r5;
+
+        r0 := @this: edu.kit.ipd.sdq.eventsim.command.resource.FindAllPassiveResources;
+
+        r1 := @parameter0: java.lang.Object;
+
+        r2 := @parameter1: edu.kit.ipd.sdq.eventsim.command.ICommandExecutor;
+
+        $r4 = (edu.kit.ipd.sdq.eventsim.api.PCMModel) r1;
+
+        $r3 = (edu.kit.ipd.sdq.eventsim.command.ICommandExecutor) r2;
+
+        $r5 = virtualinvoke r0.<edu.kit.ipd.sdq.eventsim.command.resource.FindAllPassiveResources: java.util.List execute(edu.kit.ipd.sdq.eventsim.api.PCMModel,edu.kit.ipd.sdq.eventsim.command.ICommandExecutor)>($r4, $r3);
+
+        return $r5;
+    }
+}

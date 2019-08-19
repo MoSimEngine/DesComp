@@ -1,0 +1,365 @@
+public class edu.kit.ipd.sdq.eventsim.resources.ActiveResourceRegistry extends java.lang.Object
+{
+    private static final org.apache.log4j.Logger logger;
+    private java.util.Map containerToResourceMap;
+    private java.util.List registrationListeners;
+    private edu.kit.ipd.sdq.eventsim.resources.ResourceFactory resourceFactory;
+
+    static void <clinit>()
+    {
+        org.apache.log4j.Logger $r0;
+
+        $r0 = staticinvoke <org.apache.log4j.Logger: org.apache.log4j.Logger getLogger(java.lang.Class)>(class "Ledu/kit/ipd/sdq/eventsim/resources/EventSimActiveResourceModel;");
+
+        <edu.kit.ipd.sdq.eventsim.resources.ActiveResourceRegistry: org.apache.log4j.Logger logger> = $r0;
+
+        return;
+    }
+
+    public void <init>()
+    {
+        edu.kit.ipd.sdq.eventsim.resources.ActiveResourceRegistry r0;
+        java.util.HashMap $r1;
+        java.util.LinkedList $r2;
+
+        r0 := @this: edu.kit.ipd.sdq.eventsim.resources.ActiveResourceRegistry;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        $r1 = new java.util.HashMap;
+
+        specialinvoke $r1.<java.util.HashMap: void <init>()>();
+
+        r0.<edu.kit.ipd.sdq.eventsim.resources.ActiveResourceRegistry: java.util.Map containerToResourceMap> = $r1;
+
+        $r2 = new java.util.LinkedList;
+
+        specialinvoke $r2.<java.util.LinkedList: void <init>()>();
+
+        r0.<edu.kit.ipd.sdq.eventsim.resources.ActiveResourceRegistry: java.util.List registrationListeners> = $r2;
+
+        return;
+    }
+
+    public void addResourceRegistrationListener(java.util.function.Consumer)
+    {
+        edu.kit.ipd.sdq.eventsim.resources.ActiveResourceRegistry r0;
+        java.util.function.Consumer r1;
+        java.util.List $r2;
+
+        r0 := @this: edu.kit.ipd.sdq.eventsim.resources.ActiveResourceRegistry;
+
+        r1 := @parameter0: java.util.function.Consumer;
+
+        $r2 = r0.<edu.kit.ipd.sdq.eventsim.resources.ActiveResourceRegistry: java.util.List registrationListeners>;
+
+        interfaceinvoke $r2.<java.util.List: boolean add(java.lang.Object)>(r1);
+
+        return;
+    }
+
+    private void notifyRegistrationListeners(edu.kit.ipd.sdq.eventsim.resources.entities.SimActiveResource)
+    {
+        edu.kit.ipd.sdq.eventsim.resources.ActiveResourceRegistry r0;
+        edu.kit.ipd.sdq.eventsim.resources.entities.SimActiveResource r1;
+        java.util.List $r2;
+        java.util.function.Consumer $r3;
+
+        r0 := @this: edu.kit.ipd.sdq.eventsim.resources.ActiveResourceRegistry;
+
+        r1 := @parameter0: edu.kit.ipd.sdq.eventsim.resources.entities.SimActiveResource;
+
+        $r2 = r0.<edu.kit.ipd.sdq.eventsim.resources.ActiveResourceRegistry: java.util.List registrationListeners>;
+
+        $r3 = staticinvoke <edu.kit.ipd.sdq.eventsim.resources.ActiveResourceRegistry$lambda_0__166: java.util.function.Consumer bootstrap$(edu.kit.ipd.sdq.eventsim.resources.entities.SimActiveResource)>(r1);
+
+        interfaceinvoke $r2.<java.util.List: void forEach(java.util.function.Consumer)>($r3);
+
+        return;
+    }
+
+    public void finalise()
+    {
+        edu.kit.ipd.sdq.eventsim.resources.ActiveResourceRegistry r0;
+        edu.kit.ipd.sdq.eventsim.resources.entities.AbstractActiveResource r1;
+        java.util.Iterator r2;
+        java.util.Map $r3;
+        java.util.Collection $r4;
+        boolean $z0;
+        java.lang.Object $r5;
+
+        r0 := @this: edu.kit.ipd.sdq.eventsim.resources.ActiveResourceRegistry;
+
+        $r3 = r0.<edu.kit.ipd.sdq.eventsim.resources.ActiveResourceRegistry: java.util.Map containerToResourceMap>;
+
+        $r4 = interfaceinvoke $r3.<java.util.Map: java.util.Collection values()>();
+
+        r2 = interfaceinvoke $r4.<java.util.Collection: java.util.Iterator iterator()>();
+
+        goto label2;
+
+     label1:
+        $r5 = interfaceinvoke r2.<java.util.Iterator: java.lang.Object next()>();
+
+        r1 = (edu.kit.ipd.sdq.eventsim.resources.entities.AbstractActiveResource) $r5;
+
+        virtualinvoke r1.<edu.kit.ipd.sdq.eventsim.resources.entities.AbstractActiveResource: void deactivateResource()>();
+
+     label2:
+        $z0 = interfaceinvoke r2.<java.util.Iterator: boolean hasNext()>();
+
+        if $z0 != 0 goto label1;
+
+        return;
+    }
+
+    private void registerResource(org.palladiosimulator.pcm.resourceenvironment.ResourceContainer, org.palladiosimulator.pcm.resourcetype.ResourceType, edu.kit.ipd.sdq.eventsim.resources.entities.SimActiveResource)
+    {
+        edu.kit.ipd.sdq.eventsim.resources.ActiveResourceRegistry r0;
+        org.palladiosimulator.pcm.resourceenvironment.ResourceContainer r1;
+        org.palladiosimulator.pcm.resourcetype.ResourceType r2;
+        edu.kit.ipd.sdq.eventsim.resources.entities.SimActiveResource r3;
+        org.apache.log4j.Logger $r4, $r10, $r16;
+        boolean $z0, $z1;
+        java.util.Map $r5, $r6;
+        java.lang.String $r7, $r11, $r14, $r17, $r20, $r22;
+        java.lang.StringBuilder $r9, $r12, $r13, $r15, $r18, $r19, $r21;
+
+        r0 := @this: edu.kit.ipd.sdq.eventsim.resources.ActiveResourceRegistry;
+
+        r1 := @parameter0: org.palladiosimulator.pcm.resourceenvironment.ResourceContainer;
+
+        r2 := @parameter1: org.palladiosimulator.pcm.resourcetype.ResourceType;
+
+        r3 := @parameter2: edu.kit.ipd.sdq.eventsim.resources.entities.SimActiveResource;
+
+        $r4 = <edu.kit.ipd.sdq.eventsim.resources.ActiveResourceRegistry: org.apache.log4j.Logger logger>;
+
+        $z0 = virtualinvoke $r4.<org.apache.log4j.Logger: boolean isDebugEnabled()>();
+
+        if $z0 == 0 goto label1;
+
+        $r16 = <edu.kit.ipd.sdq.eventsim.resources.ActiveResourceRegistry: org.apache.log4j.Logger logger>;
+
+        $r15 = new java.lang.StringBuilder;
+
+        specialinvoke $r15.<java.lang.StringBuilder: void <init>(java.lang.String)>("Registering a ");
+
+        $r17 = interfaceinvoke r2.<org.palladiosimulator.pcm.resourcetype.ResourceType: java.lang.String getEntityName()>();
+
+        $r18 = virtualinvoke $r15.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r17);
+
+        $r19 = virtualinvoke $r18.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(" resource at ");
+
+        $r20 = staticinvoke <edu.kit.ipd.sdq.eventsim.util.PCMEntityHelper: java.lang.String toString(org.palladiosimulator.pcm.core.entity.Entity)>(r1);
+
+        $r21 = virtualinvoke $r19.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r20);
+
+        $r22 = virtualinvoke $r21.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        virtualinvoke $r16.<org.apache.log4j.Logger: void debug(java.lang.Object)>($r22);
+
+     label1:
+        $r5 = r0.<edu.kit.ipd.sdq.eventsim.resources.ActiveResourceRegistry: java.util.Map containerToResourceMap>;
+
+        $z1 = interfaceinvoke $r5.<java.util.Map: boolean containsKey(java.lang.Object)>(r2);
+
+        if $z1 == 0 goto label2;
+
+        $r10 = <edu.kit.ipd.sdq.eventsim.resources.ActiveResourceRegistry: org.apache.log4j.Logger logger>;
+
+        $r9 = new java.lang.StringBuilder;
+
+        specialinvoke $r9.<java.lang.StringBuilder: void <init>(java.lang.String)>("Registered a resource of type ");
+
+        $r11 = interfaceinvoke r2.<org.palladiosimulator.pcm.resourcetype.ResourceType: java.lang.String getEntityName()>();
+
+        $r12 = virtualinvoke $r9.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r11);
+
+        $r13 = virtualinvoke $r12.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(", but there was already a resource of this type. The existing resource has been overwritten.");
+
+        $r14 = virtualinvoke $r13.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        virtualinvoke $r10.<org.apache.log4j.Logger: void warn(java.lang.Object)>($r14);
+
+     label2:
+        $r6 = r0.<edu.kit.ipd.sdq.eventsim.resources.ActiveResourceRegistry: java.util.Map containerToResourceMap>;
+
+        $r7 = specialinvoke r0.<edu.kit.ipd.sdq.eventsim.resources.ActiveResourceRegistry: java.lang.String compoundKey(org.palladiosimulator.pcm.resourceenvironment.ResourceContainer,org.palladiosimulator.pcm.resourcetype.ResourceType)>(r1, r2);
+
+        interfaceinvoke $r6.<java.util.Map: java.lang.Object put(java.lang.Object,java.lang.Object)>($r7, r3);
+
+        specialinvoke r0.<edu.kit.ipd.sdq.eventsim.resources.ActiveResourceRegistry: void notifyRegistrationListeners(edu.kit.ipd.sdq.eventsim.resources.entities.SimActiveResource)>(r3);
+
+        return;
+    }
+
+    public edu.kit.ipd.sdq.eventsim.resources.entities.SimActiveResource findOrCreateResource(org.palladiosimulator.pcm.resourceenvironment.ResourceContainer, org.palladiosimulator.pcm.resourcetype.ResourceType)
+    {
+        edu.kit.ipd.sdq.eventsim.resources.ActiveResourceRegistry r0;
+        org.palladiosimulator.pcm.resourceenvironment.ResourceContainer r1;
+        org.palladiosimulator.pcm.resourcetype.ResourceType r2;
+        java.util.Iterator r3;
+        java.util.Map $r4, $r6;
+        java.lang.String $r5, $r7, $r16, $r18, $r19, $r20, $r22, $r23, r27;
+        boolean $z0, $z1, $z2;
+        java.lang.Object $r8, $r11;
+        edu.kit.ipd.sdq.eventsim.resources.entities.SimActiveResource $r9, r28;
+        org.eclipse.emf.common.util.EList $r10;
+        org.palladiosimulator.pcm.resourcetype.ProcessingResourceType $r12;
+        edu.kit.ipd.sdq.eventsim.resources.ResourceFactory $r13;
+        java.lang.Object[] $r14, $r21;
+        org.apache.log4j.Logger $r15;
+        org.palladiosimulator.pcm.resourcetype.SchedulingPolicy $r17;
+        edu.kit.ipd.sdq.eventsim.exceptions.unchecked.UnexpectedModelStructureException $r24;
+        org.palladiosimulator.pcm.resourceenvironment.ProcessingResourceSpecification r25, r26;
+
+        r0 := @this: edu.kit.ipd.sdq.eventsim.resources.ActiveResourceRegistry;
+
+        r1 := @parameter0: org.palladiosimulator.pcm.resourceenvironment.ResourceContainer;
+
+        r2 := @parameter1: org.palladiosimulator.pcm.resourcetype.ResourceType;
+
+        $r4 = r0.<edu.kit.ipd.sdq.eventsim.resources.ActiveResourceRegistry: java.util.Map containerToResourceMap>;
+
+        $r5 = specialinvoke r0.<edu.kit.ipd.sdq.eventsim.resources.ActiveResourceRegistry: java.lang.String compoundKey(org.palladiosimulator.pcm.resourceenvironment.ResourceContainer,org.palladiosimulator.pcm.resourcetype.ResourceType)>(r1, r2);
+
+        $z0 = interfaceinvoke $r4.<java.util.Map: boolean containsKey(java.lang.Object)>($r5);
+
+        if $z0 != 0 goto label5;
+
+        r25 = null;
+
+        $r10 = interfaceinvoke r1.<org.palladiosimulator.pcm.resourceenvironment.ResourceContainer: org.eclipse.emf.common.util.EList getActiveResourceSpecifications_ResourceContainer()>();
+
+        r3 = interfaceinvoke $r10.<org.eclipse.emf.common.util.EList: java.util.Iterator iterator()>();
+
+        goto label2;
+
+     label1:
+        $r11 = interfaceinvoke r3.<java.util.Iterator: java.lang.Object next()>();
+
+        r26 = (org.palladiosimulator.pcm.resourceenvironment.ProcessingResourceSpecification) $r11;
+
+        $r12 = interfaceinvoke r26.<org.palladiosimulator.pcm.resourceenvironment.ProcessingResourceSpecification: org.palladiosimulator.pcm.resourcetype.ProcessingResourceType getActiveResourceType_ActiveResourceSpecification()>();
+
+        $z2 = virtualinvoke $r12.<java.lang.Object: boolean equals(java.lang.Object)>(r2);
+
+        if $z2 == 0 goto label2;
+
+        r25 = r26;
+
+        goto label3;
+
+     label2:
+        $z1 = interfaceinvoke r3.<java.util.Iterator: boolean hasNext()>();
+
+        if $z1 != 0 goto label1;
+
+     label3:
+        if r25 != null goto label4;
+
+        $r21 = newarray (java.lang.Object)[2];
+
+        $r22 = staticinvoke <edu.kit.ipd.sdq.eventsim.util.PCMEntityHelper: java.lang.String toString(org.palladiosimulator.pcm.core.entity.Entity)>(r2);
+
+        $r21[0] = $r22;
+
+        $r23 = staticinvoke <edu.kit.ipd.sdq.eventsim.util.PCMEntityHelper: java.lang.String toString(org.palladiosimulator.pcm.core.entity.Entity)>(r1);
+
+        $r21[1] = $r23;
+
+        r27 = staticinvoke <java.lang.String: java.lang.String format(java.lang.String,java.lang.Object[])>("Missing resource type %s for resource container %s.", $r21);
+
+        $r24 = new edu.kit.ipd.sdq.eventsim.exceptions.unchecked.UnexpectedModelStructureException;
+
+        specialinvoke $r24.<edu.kit.ipd.sdq.eventsim.exceptions.unchecked.UnexpectedModelStructureException: void <init>(java.lang.String)>(r27);
+
+        throw $r24;
+
+     label4:
+        $r13 = r0.<edu.kit.ipd.sdq.eventsim.resources.ActiveResourceRegistry: edu.kit.ipd.sdq.eventsim.resources.ResourceFactory resourceFactory>;
+
+        r28 = virtualinvoke $r13.<edu.kit.ipd.sdq.eventsim.resources.ResourceFactory: edu.kit.ipd.sdq.eventsim.resources.entities.SimActiveResource createActiveResource(org.palladiosimulator.pcm.resourceenvironment.ProcessingResourceSpecification)>(r25);
+
+        specialinvoke r0.<edu.kit.ipd.sdq.eventsim.resources.ActiveResourceRegistry: void registerResource(org.palladiosimulator.pcm.resourceenvironment.ResourceContainer,org.palladiosimulator.pcm.resourcetype.ResourceType,edu.kit.ipd.sdq.eventsim.resources.entities.SimActiveResource)>(r1, r2, r28);
+
+        $r15 = <edu.kit.ipd.sdq.eventsim.resources.ActiveResourceRegistry: org.apache.log4j.Logger logger>;
+
+        $r14 = newarray (java.lang.Object)[3];
+
+        $r16 = interfaceinvoke r2.<org.palladiosimulator.pcm.resourcetype.ResourceType: java.lang.String getEntityName()>();
+
+        $r14[0] = $r16;
+
+        $r17 = virtualinvoke r28.<edu.kit.ipd.sdq.eventsim.resources.entities.SimActiveResource: org.palladiosimulator.pcm.resourcetype.SchedulingPolicy getSchedulingStrategy()>();
+
+        $r18 = interfaceinvoke $r17.<org.palladiosimulator.pcm.resourcetype.SchedulingPolicy: java.lang.String getEntityName()>();
+
+        $r14[1] = $r18;
+
+        $r19 = staticinvoke <edu.kit.ipd.sdq.eventsim.util.PCMEntityHelper: java.lang.String toString(org.palladiosimulator.pcm.core.entity.Entity)>(r1);
+
+        $r14[2] = $r19;
+
+        $r20 = staticinvoke <java.lang.String: java.lang.String format(java.lang.String,java.lang.Object[])>("Created %s resource with %s scheduling at %s", $r14);
+
+        virtualinvoke $r15.<org.apache.log4j.Logger: void info(java.lang.Object)>($r20);
+
+     label5:
+        $r6 = r0.<edu.kit.ipd.sdq.eventsim.resources.ActiveResourceRegistry: java.util.Map containerToResourceMap>;
+
+        $r7 = specialinvoke r0.<edu.kit.ipd.sdq.eventsim.resources.ActiveResourceRegistry: java.lang.String compoundKey(org.palladiosimulator.pcm.resourceenvironment.ResourceContainer,org.palladiosimulator.pcm.resourcetype.ResourceType)>(r1, r2);
+
+        $r8 = interfaceinvoke $r6.<java.util.Map: java.lang.Object get(java.lang.Object)>($r7);
+
+        $r9 = (edu.kit.ipd.sdq.eventsim.resources.entities.SimActiveResource) $r8;
+
+        return $r9;
+    }
+
+    private java.lang.String compoundKey(org.palladiosimulator.pcm.resourceenvironment.ResourceContainer, org.palladiosimulator.pcm.resourcetype.ResourceType)
+    {
+        edu.kit.ipd.sdq.eventsim.resources.ActiveResourceRegistry r0;
+        org.palladiosimulator.pcm.resourceenvironment.ResourceContainer r1;
+        org.palladiosimulator.pcm.resourcetype.ResourceType r2;
+        java.lang.StringBuilder $r3, $r7;
+        java.lang.String $r4, $r5, $r6, $r8;
+
+        r0 := @this: edu.kit.ipd.sdq.eventsim.resources.ActiveResourceRegistry;
+
+        r1 := @parameter0: org.palladiosimulator.pcm.resourceenvironment.ResourceContainer;
+
+        r2 := @parameter1: org.palladiosimulator.pcm.resourcetype.ResourceType;
+
+        $r3 = new java.lang.StringBuilder;
+
+        $r4 = interfaceinvoke r1.<org.palladiosimulator.pcm.resourceenvironment.ResourceContainer: java.lang.String getId()>();
+
+        $r5 = staticinvoke <java.lang.String: java.lang.String valueOf(java.lang.Object)>($r4);
+
+        specialinvoke $r3.<java.lang.StringBuilder: void <init>(java.lang.String)>($r5);
+
+        $r6 = interfaceinvoke r2.<org.palladiosimulator.pcm.resourcetype.ResourceType: java.lang.String getId()>();
+
+        $r7 = virtualinvoke $r3.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r6);
+
+        $r8 = virtualinvoke $r7.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        return $r8;
+    }
+
+    public static void lambda$0(edu.kit.ipd.sdq.eventsim.resources.entities.SimActiveResource, java.util.function.Consumer)
+    {
+        edu.kit.ipd.sdq.eventsim.resources.entities.SimActiveResource r0;
+        java.util.function.Consumer r1;
+
+        r0 := @parameter0: edu.kit.ipd.sdq.eventsim.resources.entities.SimActiveResource;
+
+        r1 := @parameter1: java.util.function.Consumer;
+
+        interfaceinvoke r1.<java.util.function.Consumer: void accept(java.lang.Object)>(r0);
+
+        return;
+    }
+}

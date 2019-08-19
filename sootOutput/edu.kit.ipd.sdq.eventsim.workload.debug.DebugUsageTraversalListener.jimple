@@ -1,0 +1,148 @@
+public class edu.kit.ipd.sdq.eventsim.workload.debug.DebugUsageTraversalListener extends java.lang.Object implements edu.kit.ipd.sdq.eventsim.interpreter.listener.ITraversalListener
+{
+    private static final org.apache.log4j.Logger logger;
+
+    static void <clinit>()
+    {
+        org.apache.log4j.Logger $r0;
+
+        $r0 = staticinvoke <org.apache.log4j.Logger: org.apache.log4j.Logger getLogger(java.lang.Class)>(class "Ledu/kit/ipd/sdq/eventsim/workload/debug/DebugUsageTraversalListener;");
+
+        <edu.kit.ipd.sdq.eventsim.workload.debug.DebugUsageTraversalListener: org.apache.log4j.Logger logger> = $r0;
+
+        return;
+    }
+
+    public void <init>()
+    {
+        edu.kit.ipd.sdq.eventsim.workload.debug.DebugUsageTraversalListener r0;
+
+        r0 := @this: edu.kit.ipd.sdq.eventsim.workload.debug.DebugUsageTraversalListener;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    public void before(org.palladiosimulator.pcm.usagemodel.AbstractUserAction, edu.kit.ipd.sdq.eventsim.workload.entities.User)
+    {
+        edu.kit.ipd.sdq.eventsim.workload.debug.DebugUsageTraversalListener r0;
+        org.palladiosimulator.pcm.usagemodel.AbstractUserAction r1;
+        edu.kit.ipd.sdq.eventsim.workload.entities.User r2;
+        java.lang.StringBuilder $r3, $r6, $r7, $r8, $r9;
+        org.apache.log4j.Logger $r4;
+        java.lang.String $r5, $r10;
+
+        r0 := @this: edu.kit.ipd.sdq.eventsim.workload.debug.DebugUsageTraversalListener;
+
+        r1 := @parameter0: org.palladiosimulator.pcm.usagemodel.AbstractUserAction;
+
+        r2 := @parameter1: edu.kit.ipd.sdq.eventsim.workload.entities.User;
+
+        $r4 = <edu.kit.ipd.sdq.eventsim.workload.debug.DebugUsageTraversalListener: org.apache.log4j.Logger logger>;
+
+        $r3 = new java.lang.StringBuilder;
+
+        specialinvoke $r3.<java.lang.StringBuilder: void <init>(java.lang.String)>("BEFORE ");
+
+        $r5 = staticinvoke <edu.kit.ipd.sdq.eventsim.util.PCMEntityHelper: java.lang.String toString(org.palladiosimulator.pcm.core.entity.Entity)>(r1);
+
+        $r6 = virtualinvoke $r3.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r5);
+
+        $r7 = virtualinvoke $r6.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("(User: ");
+
+        $r8 = virtualinvoke $r7.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.Object)>(r2);
+
+        $r9 = virtualinvoke $r8.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(")");
+
+        $r10 = virtualinvoke $r9.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        virtualinvoke $r4.<org.apache.log4j.Logger: void debug(java.lang.Object)>($r10);
+
+        return;
+    }
+
+    public void after(org.palladiosimulator.pcm.usagemodel.AbstractUserAction, edu.kit.ipd.sdq.eventsim.workload.entities.User)
+    {
+        edu.kit.ipd.sdq.eventsim.workload.debug.DebugUsageTraversalListener r0;
+        org.palladiosimulator.pcm.usagemodel.AbstractUserAction r1;
+        edu.kit.ipd.sdq.eventsim.workload.entities.User r2;
+        java.lang.StringBuilder $r3, $r6, $r7, $r8, $r9;
+        org.apache.log4j.Logger $r4;
+        java.lang.String $r5, $r10;
+
+        r0 := @this: edu.kit.ipd.sdq.eventsim.workload.debug.DebugUsageTraversalListener;
+
+        r1 := @parameter0: org.palladiosimulator.pcm.usagemodel.AbstractUserAction;
+
+        r2 := @parameter1: edu.kit.ipd.sdq.eventsim.workload.entities.User;
+
+        $r4 = <edu.kit.ipd.sdq.eventsim.workload.debug.DebugUsageTraversalListener: org.apache.log4j.Logger logger>;
+
+        $r3 = new java.lang.StringBuilder;
+
+        specialinvoke $r3.<java.lang.StringBuilder: void <init>(java.lang.String)>("AFTER ");
+
+        $r5 = staticinvoke <edu.kit.ipd.sdq.eventsim.util.PCMEntityHelper: java.lang.String toString(org.palladiosimulator.pcm.core.entity.Entity)>(r1);
+
+        $r6 = virtualinvoke $r3.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r5);
+
+        $r7 = virtualinvoke $r6.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("(User: ");
+
+        $r8 = virtualinvoke $r7.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.Object)>(r2);
+
+        $r9 = virtualinvoke $r8.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(")");
+
+        $r10 = virtualinvoke $r9.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        virtualinvoke $r4.<org.apache.log4j.Logger: void debug(java.lang.Object)>($r10);
+
+        return;
+    }
+
+    public volatile void before(org.palladiosimulator.pcm.core.entity.Entity, edu.kit.ipd.sdq.eventsim.entities.EventSimEntity)
+    {
+        edu.kit.ipd.sdq.eventsim.workload.debug.DebugUsageTraversalListener r0;
+        org.palladiosimulator.pcm.core.entity.Entity r1;
+        edu.kit.ipd.sdq.eventsim.entities.EventSimEntity r2;
+        edu.kit.ipd.sdq.eventsim.workload.entities.User $r3;
+        org.palladiosimulator.pcm.usagemodel.AbstractUserAction $r4;
+
+        r0 := @this: edu.kit.ipd.sdq.eventsim.workload.debug.DebugUsageTraversalListener;
+
+        r1 := @parameter0: org.palladiosimulator.pcm.core.entity.Entity;
+
+        r2 := @parameter1: edu.kit.ipd.sdq.eventsim.entities.EventSimEntity;
+
+        $r4 = (org.palladiosimulator.pcm.usagemodel.AbstractUserAction) r1;
+
+        $r3 = (edu.kit.ipd.sdq.eventsim.workload.entities.User) r2;
+
+        virtualinvoke r0.<edu.kit.ipd.sdq.eventsim.workload.debug.DebugUsageTraversalListener: void before(org.palladiosimulator.pcm.usagemodel.AbstractUserAction,edu.kit.ipd.sdq.eventsim.workload.entities.User)>($r4, $r3);
+
+        return;
+    }
+
+    public volatile void after(org.palladiosimulator.pcm.core.entity.Entity, edu.kit.ipd.sdq.eventsim.entities.EventSimEntity)
+    {
+        edu.kit.ipd.sdq.eventsim.workload.debug.DebugUsageTraversalListener r0;
+        org.palladiosimulator.pcm.core.entity.Entity r1;
+        edu.kit.ipd.sdq.eventsim.entities.EventSimEntity r2;
+        edu.kit.ipd.sdq.eventsim.workload.entities.User $r3;
+        org.palladiosimulator.pcm.usagemodel.AbstractUserAction $r4;
+
+        r0 := @this: edu.kit.ipd.sdq.eventsim.workload.debug.DebugUsageTraversalListener;
+
+        r1 := @parameter0: org.palladiosimulator.pcm.core.entity.Entity;
+
+        r2 := @parameter1: edu.kit.ipd.sdq.eventsim.entities.EventSimEntity;
+
+        $r4 = (org.palladiosimulator.pcm.usagemodel.AbstractUserAction) r1;
+
+        $r3 = (edu.kit.ipd.sdq.eventsim.workload.entities.User) r2;
+
+        virtualinvoke r0.<edu.kit.ipd.sdq.eventsim.workload.debug.DebugUsageTraversalListener: void after(org.palladiosimulator.pcm.usagemodel.AbstractUserAction,edu.kit.ipd.sdq.eventsim.workload.entities.User)>($r4, $r3);
+
+        return;
+    }
+}

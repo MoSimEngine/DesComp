@@ -1,0 +1,42 @@
+class edu.kit.ipd.sdq.eventsim.measurement.r.connection.ui.ConnectionView$5 extends java.lang.Object implements org.eclipse.swt.events.PaintListener
+{
+    final edu.kit.ipd.sdq.eventsim.measurement.r.connection.ui.ConnectionView this$0;
+
+    void <init>(edu.kit.ipd.sdq.eventsim.measurement.r.connection.ui.ConnectionView)
+    {
+        edu.kit.ipd.sdq.eventsim.measurement.r.connection.ui.ConnectionView$5 r0;
+        edu.kit.ipd.sdq.eventsim.measurement.r.connection.ui.ConnectionView r1;
+
+        r0 := @this: edu.kit.ipd.sdq.eventsim.measurement.r.connection.ui.ConnectionView$5;
+
+        r1 := @parameter0: edu.kit.ipd.sdq.eventsim.measurement.r.connection.ui.ConnectionView;
+
+        r0.<edu.kit.ipd.sdq.eventsim.measurement.r.connection.ui.ConnectionView$5: edu.kit.ipd.sdq.eventsim.measurement.r.connection.ui.ConnectionView this$0> = r1;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    public void paintControl(org.eclipse.swt.events.PaintEvent)
+    {
+        edu.kit.ipd.sdq.eventsim.measurement.r.connection.ui.ConnectionView$5 r0;
+        org.eclipse.swt.events.PaintEvent r1;
+        org.eclipse.swt.graphics.Image r2;
+        org.eclipse.swt.graphics.GC $r3;
+
+        r0 := @this: edu.kit.ipd.sdq.eventsim.measurement.r.connection.ui.ConnectionView$5;
+
+        r1 := @parameter0: org.eclipse.swt.events.PaintEvent;
+
+        r2 = staticinvoke <edu.kit.ipd.sdq.eventsim.measurement.r.connection.ui.ConnectionView: org.eclipse.swt.graphics.Image access$0(java.lang.String)>("bullet_red.png");
+
+        $r3 = r1.<org.eclipse.swt.events.PaintEvent: org.eclipse.swt.graphics.GC gc>;
+
+        virtualinvoke $r3.<org.eclipse.swt.graphics.GC: void drawImage(org.eclipse.swt.graphics.Image,int,int)>(r2, 0, 0);
+
+        virtualinvoke r2.<org.eclipse.swt.graphics.Image: void dispose()>();
+
+        return;
+    }
+}

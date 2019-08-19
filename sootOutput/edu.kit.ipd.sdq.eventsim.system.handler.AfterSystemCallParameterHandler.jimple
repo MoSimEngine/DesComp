@@ -1,0 +1,120 @@
+public class edu.kit.ipd.sdq.eventsim.system.handler.AfterSystemCallParameterHandler extends java.lang.Object implements edu.kit.ipd.sdq.eventsim.api.events.IEventHandler
+{
+    private static final org.apache.log4j.Logger logger;
+
+    static void <clinit>()
+    {
+        org.apache.log4j.Logger $r0;
+
+        $r0 = staticinvoke <org.apache.log4j.Logger: org.apache.log4j.Logger getLogger(java.lang.Class)>(class "Ledu/kit/ipd/sdq/eventsim/system/handler/AfterSystemCallParameterHandler;");
+
+        <edu.kit.ipd.sdq.eventsim.system.handler.AfterSystemCallParameterHandler: org.apache.log4j.Logger logger> = $r0;
+
+        return;
+    }
+
+    public void <init>()
+    {
+        edu.kit.ipd.sdq.eventsim.system.handler.AfterSystemCallParameterHandler r0;
+
+        r0 := @this: edu.kit.ipd.sdq.eventsim.system.handler.AfterSystemCallParameterHandler;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    public edu.kit.ipd.sdq.eventsim.api.events.IEventHandler$Registration handle(edu.kit.ipd.sdq.eventsim.api.events.SystemRequestFinishedEvent)
+    {
+        edu.kit.ipd.sdq.eventsim.system.handler.AfterSystemCallParameterHandler r0;
+        edu.kit.ipd.sdq.eventsim.api.events.SystemRequestFinishedEvent r1;
+        edu.kit.ipd.sdq.eventsim.system.entities.Request r2;
+        org.palladiosimulator.pcm.usagemodel.EntryLevelSystemCall r3;
+        de.uka.ipd.sdq.simucomframework.variables.StackContext r4;
+        de.uka.ipd.sdq.simucomframework.variables.stackframe.SimulatedStackframe r5, r7;
+        org.eclipse.emf.common.util.EList r6;
+        org.apache.log4j.Logger $r8, $r14, $r16, $r17;
+        boolean $z0, $z1;
+        edu.kit.ipd.sdq.eventsim.api.IRequest $r9;
+        edu.kit.ipd.sdq.eventsim.interpreter.state.EntityState $r10;
+        de.uka.ipd.sdq.simucomframework.variables.stackframe.SimulatedStack $r11, $r12, $r13;
+        edu.kit.ipd.sdq.eventsim.api.events.IEventHandler$Registration $r15;
+        java.util.List r18;
+
+        r0 := @this: edu.kit.ipd.sdq.eventsim.system.handler.AfterSystemCallParameterHandler;
+
+        r1 := @parameter0: edu.kit.ipd.sdq.eventsim.api.events.SystemRequestFinishedEvent;
+
+        $r8 = <edu.kit.ipd.sdq.eventsim.system.handler.AfterSystemCallParameterHandler: org.apache.log4j.Logger logger>;
+
+        $z0 = virtualinvoke $r8.<org.apache.log4j.Logger: boolean isDebugEnabled()>();
+
+        if $z0 == 0 goto label1;
+
+        $r17 = <edu.kit.ipd.sdq.eventsim.system.handler.AfterSystemCallParameterHandler: org.apache.log4j.Logger logger>;
+
+        virtualinvoke $r17.<org.apache.log4j.Logger: void debug(java.lang.Object)>("Begin handling system call output parameters");
+
+     label1:
+        $r9 = virtualinvoke r1.<edu.kit.ipd.sdq.eventsim.api.events.SystemRequestFinishedEvent: edu.kit.ipd.sdq.eventsim.api.IRequest getRequest()>();
+
+        r2 = (edu.kit.ipd.sdq.eventsim.system.entities.Request) $r9;
+
+        r3 = virtualinvoke r2.<edu.kit.ipd.sdq.eventsim.system.entities.Request: org.palladiosimulator.pcm.usagemodel.EntryLevelSystemCall getSystemCall()>();
+
+        $r10 = virtualinvoke r2.<edu.kit.ipd.sdq.eventsim.system.entities.Request: edu.kit.ipd.sdq.eventsim.interpreter.state.EntityState getRequestState()>();
+
+        r4 = virtualinvoke $r10.<edu.kit.ipd.sdq.eventsim.interpreter.state.EntityState: de.uka.ipd.sdq.simucomframework.variables.StackContext getStoExContext()>();
+
+        $r11 = virtualinvoke r4.<de.uka.ipd.sdq.simucomframework.variables.StackContext: de.uka.ipd.sdq.simucomframework.variables.stackframe.SimulatedStack getStack()>();
+
+        r5 = virtualinvoke $r11.<de.uka.ipd.sdq.simucomframework.variables.stackframe.SimulatedStack: de.uka.ipd.sdq.simucomframework.variables.stackframe.SimulatedStackframe currentStackFrame()>();
+
+        $r12 = virtualinvoke r4.<de.uka.ipd.sdq.simucomframework.variables.StackContext: de.uka.ipd.sdq.simucomframework.variables.stackframe.SimulatedStack getStack()>();
+
+        virtualinvoke $r12.<de.uka.ipd.sdq.simucomframework.variables.stackframe.SimulatedStack: void removeStackFrame()>();
+
+        r6 = interfaceinvoke r3.<org.palladiosimulator.pcm.usagemodel.EntryLevelSystemCall: org.eclipse.emf.common.util.EList getOutputParameterUsages_EntryLevelSystemCall()>();
+
+        $r13 = virtualinvoke r4.<de.uka.ipd.sdq.simucomframework.variables.StackContext: de.uka.ipd.sdq.simucomframework.variables.stackframe.SimulatedStack getStack()>();
+
+        r7 = virtualinvoke $r13.<de.uka.ipd.sdq.simucomframework.variables.stackframe.SimulatedStack: de.uka.ipd.sdq.simucomframework.variables.stackframe.SimulatedStackframe currentStackFrame()>();
+
+        r18 = (java.util.List) r6;
+
+        staticinvoke <edu.kit.ipd.sdq.eventsim.util.ParameterHelper: void evaluateParametersAndCopyToFrame(java.util.List,de.uka.ipd.sdq.simucomframework.variables.stackframe.SimulatedStackframe,de.uka.ipd.sdq.simucomframework.variables.stackframe.SimulatedStackframe)>(r18, r5, r7);
+
+        $r14 = <edu.kit.ipd.sdq.eventsim.system.handler.AfterSystemCallParameterHandler: org.apache.log4j.Logger logger>;
+
+        $z1 = virtualinvoke $r14.<org.apache.log4j.Logger: boolean isDebugEnabled()>();
+
+        if $z1 == 0 goto label2;
+
+        $r16 = <edu.kit.ipd.sdq.eventsim.system.handler.AfterSystemCallParameterHandler: org.apache.log4j.Logger logger>;
+
+        virtualinvoke $r16.<org.apache.log4j.Logger: void debug(java.lang.Object)>("Finished handling system call output parameters");
+
+     label2:
+        $r15 = <edu.kit.ipd.sdq.eventsim.api.events.IEventHandler$Registration: edu.kit.ipd.sdq.eventsim.api.events.IEventHandler$Registration KEEP_REGISTERED>;
+
+        return $r15;
+    }
+
+    public volatile edu.kit.ipd.sdq.eventsim.api.events.IEventHandler$Registration handle(edu.kit.ipd.sdq.eventsim.api.events.SimulationEvent)
+    {
+        edu.kit.ipd.sdq.eventsim.system.handler.AfterSystemCallParameterHandler r0;
+        edu.kit.ipd.sdq.eventsim.api.events.SimulationEvent r1;
+        edu.kit.ipd.sdq.eventsim.api.events.SystemRequestFinishedEvent $r2;
+        edu.kit.ipd.sdq.eventsim.api.events.IEventHandler$Registration $r3;
+
+        r0 := @this: edu.kit.ipd.sdq.eventsim.system.handler.AfterSystemCallParameterHandler;
+
+        r1 := @parameter0: edu.kit.ipd.sdq.eventsim.api.events.SimulationEvent;
+
+        $r2 = (edu.kit.ipd.sdq.eventsim.api.events.SystemRequestFinishedEvent) r1;
+
+        $r3 = virtualinvoke r0.<edu.kit.ipd.sdq.eventsim.system.handler.AfterSystemCallParameterHandler: edu.kit.ipd.sdq.eventsim.api.events.IEventHandler$Registration handle(edu.kit.ipd.sdq.eventsim.api.events.SystemRequestFinishedEvent)>($r2);
+
+        return $r3;
+    }
+}

@@ -1,0 +1,123 @@
+class edu.kit.ipd.sdq.eventsim.resources.probes.passive.ResourceDemandProbe$1 extends java.lang.Object implements edu.kit.ipd.sdq.eventsim.resources.listener.IPassiveResourceListener
+{
+    final edu.kit.ipd.sdq.eventsim.resources.probes.passive.ResourceDemandProbe this$0;
+    private final edu.kit.ipd.sdq.eventsim.resources.entities.SimPassiveResource val$resource;
+
+    void <init>(edu.kit.ipd.sdq.eventsim.resources.probes.passive.ResourceDemandProbe, edu.kit.ipd.sdq.eventsim.resources.entities.SimPassiveResource)
+    {
+        edu.kit.ipd.sdq.eventsim.resources.probes.passive.ResourceDemandProbe$1 r0;
+        edu.kit.ipd.sdq.eventsim.resources.probes.passive.ResourceDemandProbe r1;
+        edu.kit.ipd.sdq.eventsim.resources.entities.SimPassiveResource r2;
+
+        r0 := @this: edu.kit.ipd.sdq.eventsim.resources.probes.passive.ResourceDemandProbe$1;
+
+        r1 := @parameter0: edu.kit.ipd.sdq.eventsim.resources.probes.passive.ResourceDemandProbe;
+
+        r2 := @parameter1: edu.kit.ipd.sdq.eventsim.resources.entities.SimPassiveResource;
+
+        r0.<edu.kit.ipd.sdq.eventsim.resources.probes.passive.ResourceDemandProbe$1: edu.kit.ipd.sdq.eventsim.resources.probes.passive.ResourceDemandProbe this$0> = r1;
+
+        r0.<edu.kit.ipd.sdq.eventsim.resources.probes.passive.ResourceDemandProbe$1: edu.kit.ipd.sdq.eventsim.resources.entities.SimPassiveResource val$resource> = r2;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    public void request(edu.kit.ipd.sdq.eventsim.resources.entities.SimulatedProcess, long)
+    {
+        edu.kit.ipd.sdq.eventsim.resources.probes.passive.ResourceDemandProbe$1 r0;
+        edu.kit.ipd.sdq.eventsim.resources.entities.SimulatedProcess r1;
+        long l0;
+        double d0, $d1;
+        edu.kit.ipd.sdq.eventsim.resources.entities.SimPassiveResource $r3;
+        de.uka.ipd.sdq.simulation.abstractsimengine.ISimulationModel $r4;
+        de.uka.ipd.sdq.simulation.abstractsimengine.ISimulationControl $r5;
+        edu.kit.ipd.sdq.eventsim.measurement.Measurement $r6;
+        edu.kit.ipd.sdq.eventsim.resources.probes.passive.ResourceDemandProbe $r7, $r10;
+        edu.kit.ipd.sdq.eventsim.measurement.MeasuringPoint $r8;
+        edu.kit.ipd.sdq.eventsim.measurement.Metadata[] $r9;
+        java.util.List $r11;
+        java.util.function.Consumer $r12;
+
+        r0 := @this: edu.kit.ipd.sdq.eventsim.resources.probes.passive.ResourceDemandProbe$1;
+
+        r1 := @parameter0: edu.kit.ipd.sdq.eventsim.resources.entities.SimulatedProcess;
+
+        l0 := @parameter1: long;
+
+        $r3 = r0.<edu.kit.ipd.sdq.eventsim.resources.probes.passive.ResourceDemandProbe$1: edu.kit.ipd.sdq.eventsim.resources.entities.SimPassiveResource val$resource>;
+
+        $r4 = virtualinvoke $r3.<edu.kit.ipd.sdq.eventsim.resources.entities.SimPassiveResource: de.uka.ipd.sdq.simulation.abstractsimengine.ISimulationModel getModel()>();
+
+        $r5 = interfaceinvoke $r4.<de.uka.ipd.sdq.simulation.abstractsimengine.ISimulationModel: de.uka.ipd.sdq.simulation.abstractsimengine.ISimulationControl getSimulationControl()>();
+
+        d0 = interfaceinvoke $r5.<de.uka.ipd.sdq.simulation.abstractsimengine.ISimulationControl: double getCurrentSimulationTime()>();
+
+        $r6 = new edu.kit.ipd.sdq.eventsim.measurement.Measurement;
+
+        $r7 = r0.<edu.kit.ipd.sdq.eventsim.resources.probes.passive.ResourceDemandProbe$1: edu.kit.ipd.sdq.eventsim.resources.probes.passive.ResourceDemandProbe this$0>;
+
+        $r8 = virtualinvoke $r7.<edu.kit.ipd.sdq.eventsim.resources.probes.passive.ResourceDemandProbe: edu.kit.ipd.sdq.eventsim.measurement.MeasuringPoint getMeasuringPoint()>();
+
+        $d1 = (double) l0;
+
+        $r9 = newarray (edu.kit.ipd.sdq.eventsim.measurement.Metadata)[0];
+
+        specialinvoke $r6.<edu.kit.ipd.sdq.eventsim.measurement.Measurement: void <init>(java.lang.Object,edu.kit.ipd.sdq.eventsim.measurement.MeasuringPoint,java.lang.Object,double,double,edu.kit.ipd.sdq.eventsim.measurement.Metadata[])>("RESOURCE_DEMAND", $r8, r1, $d1, d0, $r9);
+
+        $r10 = r0.<edu.kit.ipd.sdq.eventsim.resources.probes.passive.ResourceDemandProbe$1: edu.kit.ipd.sdq.eventsim.resources.probes.passive.ResourceDemandProbe this$0>;
+
+        $r11 = staticinvoke <edu.kit.ipd.sdq.eventsim.resources.probes.passive.ResourceDemandProbe: java.util.List access$0(edu.kit.ipd.sdq.eventsim.resources.probes.passive.ResourceDemandProbe)>($r10);
+
+        $r12 = staticinvoke <edu.kit.ipd.sdq.eventsim.resources.probes.passive.ResourceDemandProbe$1$lambda_0__156: java.util.function.Consumer bootstrap$(edu.kit.ipd.sdq.eventsim.measurement.Measurement)>($r6);
+
+        interfaceinvoke $r11.<java.util.List: void forEach(java.util.function.Consumer)>($r12);
+
+        return;
+    }
+
+    public void release(edu.kit.ipd.sdq.eventsim.resources.entities.SimulatedProcess, long)
+    {
+        edu.kit.ipd.sdq.eventsim.resources.probes.passive.ResourceDemandProbe$1 r0;
+        edu.kit.ipd.sdq.eventsim.resources.entities.SimulatedProcess r1;
+        long l0;
+
+        r0 := @this: edu.kit.ipd.sdq.eventsim.resources.probes.passive.ResourceDemandProbe$1;
+
+        r1 := @parameter0: edu.kit.ipd.sdq.eventsim.resources.entities.SimulatedProcess;
+
+        l0 := @parameter1: long;
+
+        return;
+    }
+
+    public void acquire(edu.kit.ipd.sdq.eventsim.resources.entities.SimulatedProcess, long)
+    {
+        edu.kit.ipd.sdq.eventsim.resources.probes.passive.ResourceDemandProbe$1 r0;
+        edu.kit.ipd.sdq.eventsim.resources.entities.SimulatedProcess r1;
+        long l0;
+
+        r0 := @this: edu.kit.ipd.sdq.eventsim.resources.probes.passive.ResourceDemandProbe$1;
+
+        r1 := @parameter0: edu.kit.ipd.sdq.eventsim.resources.entities.SimulatedProcess;
+
+        l0 := @parameter1: long;
+
+        return;
+    }
+
+    public static void lambda$0(edu.kit.ipd.sdq.eventsim.measurement.Measurement, edu.kit.ipd.sdq.eventsim.measurement.MeasurementListener)
+    {
+        edu.kit.ipd.sdq.eventsim.measurement.Measurement r0;
+        edu.kit.ipd.sdq.eventsim.measurement.MeasurementListener r1;
+
+        r0 := @parameter0: edu.kit.ipd.sdq.eventsim.measurement.Measurement;
+
+        r1 := @parameter1: edu.kit.ipd.sdq.eventsim.measurement.MeasurementListener;
+
+        interfaceinvoke r1.<edu.kit.ipd.sdq.eventsim.measurement.MeasurementListener: void notify(edu.kit.ipd.sdq.eventsim.measurement.Measurement)>(r0);
+
+        return;
+    }
+}

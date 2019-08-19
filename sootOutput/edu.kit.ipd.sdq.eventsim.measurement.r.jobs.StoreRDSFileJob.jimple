@@ -1,0 +1,125 @@
+public class edu.kit.ipd.sdq.eventsim.measurement.r.jobs.StoreRDSFileJob extends java.lang.Object implements edu.kit.ipd.sdq.eventsim.measurement.r.RJob
+{
+    private static final org.apache.log4j.Logger log;
+    private java.lang.String rdsFilePath;
+
+    static void <clinit>()
+    {
+        org.apache.log4j.Logger $r0;
+
+        $r0 = staticinvoke <org.apache.log4j.Logger: org.apache.log4j.Logger getLogger(java.lang.Class)>(class "Ledu/kit/ipd/sdq/eventsim/measurement/r/jobs/StoreRDSFileJob;");
+
+        <edu.kit.ipd.sdq.eventsim.measurement.r.jobs.StoreRDSFileJob: org.apache.log4j.Logger log> = $r0;
+
+        return;
+    }
+
+    public void <init>(java.lang.String)
+    {
+        edu.kit.ipd.sdq.eventsim.measurement.r.jobs.StoreRDSFileJob r0;
+        java.lang.String r1;
+
+        r0 := @this: edu.kit.ipd.sdq.eventsim.measurement.r.jobs.StoreRDSFileJob;
+
+        r1 := @parameter0: java.lang.String;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        r0.<edu.kit.ipd.sdq.eventsim.measurement.r.jobs.StoreRDSFileJob: java.lang.String rdsFilePath> = r1;
+
+        return;
+    }
+
+    public void process(edu.kit.ipd.sdq.eventsim.measurement.r.RContext)
+    {
+        edu.kit.ipd.sdq.eventsim.measurement.r.jobs.StoreRDSFileJob r0;
+        edu.kit.ipd.sdq.eventsim.measurement.r.RContext r1;
+        org.apache.log4j.Logger $r3, $r13, $r17;
+        java.lang.String[] $r4;
+        java.lang.StringBuilder $r5, $r8, $r9;
+        java.lang.String $r6, $r7, $r10, $r12, $r14, $r15;
+        java.lang.Object[] $r11;
+        edu.kit.ipd.sdq.eventsim.measurement.r.jobs.EvaluationException $r16;
+
+        r0 := @this: edu.kit.ipd.sdq.eventsim.measurement.r.jobs.StoreRDSFileJob;
+
+        r1 := @parameter0: edu.kit.ipd.sdq.eventsim.measurement.r.RContext;
+
+        $r3 = <edu.kit.ipd.sdq.eventsim.measurement.r.jobs.StoreRDSFileJob: org.apache.log4j.Logger log>;
+
+        virtualinvoke $r3.<org.apache.log4j.Logger: void info(java.lang.Object)>("Saving measurements into RDS file. This can take a moment...");
+
+     label1:
+        $r4 = newarray (java.lang.String)[1];
+
+        $r5 = new java.lang.StringBuilder;
+
+        specialinvoke $r5.<java.lang.StringBuilder: void <init>(java.lang.String)>("saveRDS(mm, \'");
+
+        $r6 = r0.<edu.kit.ipd.sdq.eventsim.measurement.r.jobs.StoreRDSFileJob: java.lang.String rdsFilePath>;
+
+        $r7 = specialinvoke r0.<edu.kit.ipd.sdq.eventsim.measurement.r.jobs.StoreRDSFileJob: java.lang.String convertToRCompliantPath(java.lang.String)>($r6);
+
+        $r8 = virtualinvoke $r5.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r7);
+
+        $r9 = virtualinvoke $r8.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("\')");
+
+        $r10 = virtualinvoke $r9.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        $r4[0] = $r10;
+
+        staticinvoke <edu.kit.ipd.sdq.eventsim.measurement.r.jobs.EvaluationHelper: void evaluateVoid(edu.kit.ipd.sdq.eventsim.measurement.r.RContext,java.lang.String[])>(r1, $r4);
+
+     label2:
+        goto label4;
+
+     label3:
+        $r16 := @caughtexception;
+
+        $r17 = <edu.kit.ipd.sdq.eventsim.measurement.r.jobs.StoreRDSFileJob: org.apache.log4j.Logger log>;
+
+        virtualinvoke $r17.<org.apache.log4j.Logger: void error(java.lang.Object,java.lang.Throwable)>("Rserve reported an error while saving measurements to RDS file.", $r16);
+
+     label4:
+        $r13 = <edu.kit.ipd.sdq.eventsim.measurement.r.jobs.StoreRDSFileJob: org.apache.log4j.Logger log>;
+
+        $r11 = newarray (java.lang.Object)[1];
+
+        $r12 = r0.<edu.kit.ipd.sdq.eventsim.measurement.r.jobs.StoreRDSFileJob: java.lang.String rdsFilePath>;
+
+        $r14 = specialinvoke r0.<edu.kit.ipd.sdq.eventsim.measurement.r.jobs.StoreRDSFileJob: java.lang.String convertToRCompliantPath(java.lang.String)>($r12);
+
+        $r11[0] = $r14;
+
+        $r15 = staticinvoke <java.lang.String: java.lang.String format(java.lang.String,java.lang.Object[])>("Open the RDS file in R using \"mm <- readRDS(\'%s\')\"", $r11);
+
+        virtualinvoke $r13.<org.apache.log4j.Logger: void info(java.lang.Object)>($r15);
+
+        return;
+
+        catch edu.kit.ipd.sdq.eventsim.measurement.r.jobs.EvaluationException from label1 to label2 with label3;
+    }
+
+    private java.lang.String convertToRCompliantPath(java.lang.String)
+    {
+        edu.kit.ipd.sdq.eventsim.measurement.r.jobs.StoreRDSFileJob r0;
+        java.lang.String r1, $r2;
+
+        r0 := @this: edu.kit.ipd.sdq.eventsim.measurement.r.jobs.StoreRDSFileJob;
+
+        r1 := @parameter0: java.lang.String;
+
+        $r2 = virtualinvoke r1.<java.lang.String: java.lang.String replace(java.lang.CharSequence,java.lang.CharSequence)>("\\", "/");
+
+        return $r2;
+    }
+
+    public java.lang.String getName()
+    {
+        edu.kit.ipd.sdq.eventsim.measurement.r.jobs.StoreRDSFileJob r0;
+
+        r0 := @this: edu.kit.ipd.sdq.eventsim.measurement.r.jobs.StoreRDSFileJob;
+
+        return "Save measurements into RDS file";
+    }
+}

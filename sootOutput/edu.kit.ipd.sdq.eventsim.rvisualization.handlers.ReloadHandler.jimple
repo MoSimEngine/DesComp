@@ -1,0 +1,66 @@
+public class edu.kit.ipd.sdq.eventsim.rvisualization.handlers.ReloadHandler extends org.eclipse.core.commands.AbstractHandler
+{
+
+    public void <init>()
+    {
+        edu.kit.ipd.sdq.eventsim.rvisualization.handlers.ReloadHandler r0;
+
+        r0 := @this: edu.kit.ipd.sdq.eventsim.rvisualization.handlers.ReloadHandler;
+
+        specialinvoke r0.<org.eclipse.core.commands.AbstractHandler: void <init>()>();
+
+        return;
+    }
+
+    public java.lang.Object execute(org.eclipse.core.commands.ExecutionEvent) throws org.eclipse.core.commands.ExecutionException
+    {
+        edu.kit.ipd.sdq.eventsim.rvisualization.handlers.ReloadHandler r0;
+        org.eclipse.core.commands.ExecutionEvent r1;
+        edu.kit.ipd.sdq.eventsim.rvisualization.views.FilterView r2;
+        org.eclipse.ui.IWorkbench $r4;
+        org.eclipse.ui.IWorkbenchWindow $r5;
+        org.eclipse.ui.IWorkbenchPage $r6;
+        org.eclipse.ui.IViewPart $r7;
+        edu.kit.ipd.sdq.eventsim.rvisualization.Controller $r8;
+        java.lang.Throwable $r9, r12;
+        org.eclipse.core.commands.ExecutionException r11;
+
+        r0 := @this: edu.kit.ipd.sdq.eventsim.rvisualization.handlers.ReloadHandler;
+
+        r1 := @parameter0: org.eclipse.core.commands.ExecutionEvent;
+
+     label1:
+        $r4 = staticinvoke <org.eclipse.ui.PlatformUI: org.eclipse.ui.IWorkbench getWorkbench()>();
+
+        $r5 = interfaceinvoke $r4.<org.eclipse.ui.IWorkbench: org.eclipse.ui.IWorkbenchWindow getActiveWorkbenchWindow()>();
+
+        $r6 = interfaceinvoke $r5.<org.eclipse.ui.IWorkbenchWindow: org.eclipse.ui.IWorkbenchPage getActivePage()>();
+
+        $r7 = interfaceinvoke $r6.<org.eclipse.ui.IWorkbenchPage: org.eclipse.ui.IViewPart showView(java.lang.String)>("edu.kit.ipd.sdq.eventsim.rvisualization.filterview");
+
+        r2 = (edu.kit.ipd.sdq.eventsim.rvisualization.views.FilterView) $r7;
+
+     label2:
+        goto label4;
+
+     label3:
+        $r9 := @caughtexception;
+
+        r11 = new org.eclipse.core.commands.ExecutionException;
+
+        specialinvoke r11.<org.eclipse.core.commands.ExecutionException: void <init>(java.lang.String,java.lang.Throwable)>("Could not reload measurements", $r9);
+
+        r12 = (java.lang.Throwable) r11;
+
+        throw r12;
+
+     label4:
+        $r8 = virtualinvoke r2.<edu.kit.ipd.sdq.eventsim.rvisualization.views.FilterView: edu.kit.ipd.sdq.eventsim.rvisualization.Controller getController()>();
+
+        virtualinvoke $r8.<edu.kit.ipd.sdq.eventsim.rvisualization.Controller: void reload()>();
+
+        return null;
+
+        catch org.eclipse.ui.PartInitException from label1 to label2 with label3;
+    }
+}

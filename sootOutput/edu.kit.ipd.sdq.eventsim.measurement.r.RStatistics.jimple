@@ -1,0 +1,56 @@
+public class edu.kit.ipd.sdq.eventsim.measurement.r.RStatistics extends java.lang.Object
+{
+    private long timeSpentInR;
+
+    public void <init>()
+    {
+        edu.kit.ipd.sdq.eventsim.measurement.r.RStatistics r0;
+
+        r0 := @this: edu.kit.ipd.sdq.eventsim.measurement.r.RStatistics;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    public void captureTimeSpentInR(long)
+    {
+        edu.kit.ipd.sdq.eventsim.measurement.r.RStatistics r0;
+        long l0, $l1, $l2;
+
+        r0 := @this: edu.kit.ipd.sdq.eventsim.measurement.r.RStatistics;
+
+        l0 := @parameter0: long;
+
+        $l1 = r0.<edu.kit.ipd.sdq.eventsim.measurement.r.RStatistics: long timeSpentInR>;
+
+        $l2 = $l1 + l0;
+
+        r0.<edu.kit.ipd.sdq.eventsim.measurement.r.RStatistics: long timeSpentInR> = $l2;
+
+        return;
+    }
+
+    public long getTotalTimeSpentInR()
+    {
+        edu.kit.ipd.sdq.eventsim.measurement.r.RStatistics r0;
+        long $l0;
+
+        r0 := @this: edu.kit.ipd.sdq.eventsim.measurement.r.RStatistics;
+
+        $l0 = r0.<edu.kit.ipd.sdq.eventsim.measurement.r.RStatistics: long timeSpentInR>;
+
+        return $l0;
+    }
+
+    public void reset()
+    {
+        edu.kit.ipd.sdq.eventsim.measurement.r.RStatistics r0;
+
+        r0 := @this: edu.kit.ipd.sdq.eventsim.measurement.r.RStatistics;
+
+        r0.<edu.kit.ipd.sdq.eventsim.measurement.r.RStatistics: long timeSpentInR> = 0L;
+
+        return;
+    }
+}

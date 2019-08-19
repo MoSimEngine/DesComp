@@ -1,0 +1,17 @@
+public class edu.kit.ipd.sdq.eventsim.rvisualization.ggplot.Theme extends edu.kit.ipd.sdq.eventsim.rvisualization.ggplot.LayerImpl implements edu.kit.ipd.sdq.eventsim.rvisualization.ggplot.Layer
+{
+
+    public void <init>(java.lang.String)
+    {
+        edu.kit.ipd.sdq.eventsim.rvisualization.ggplot.Theme r0;
+        java.lang.String r1;
+
+        r0 := @this: edu.kit.ipd.sdq.eventsim.rvisualization.ggplot.Theme;
+
+        r1 := @parameter0: java.lang.String;
+
+        specialinvoke r0.<edu.kit.ipd.sdq.eventsim.rvisualization.ggplot.LayerImpl: void <init>(java.lang.String)>(r1);
+
+        return;
+    }
+}

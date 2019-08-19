@@ -1,0 +1,173 @@
+public class edu.kit.ipd.sdq.eventsim.measurement.r.RJobProcessor extends java.lang.Object
+{
+    private static final org.apache.log4j.Logger log;
+    private java.util.concurrent.BlockingQueue jobQueue;
+    private java.lang.Thread thread;
+    private edu.kit.ipd.sdq.eventsim.measurement.r.connection.RserveConnection connection;
+
+    static void <clinit>()
+    {
+        org.apache.log4j.Logger $r0;
+
+        $r0 = staticinvoke <org.apache.log4j.Logger: org.apache.log4j.Logger getLogger(java.lang.Class)>(class "Ledu/kit/ipd/sdq/eventsim/measurement/r/RJobProcessor;");
+
+        <edu.kit.ipd.sdq.eventsim.measurement.r.RJobProcessor: org.apache.log4j.Logger log> = $r0;
+
+        return;
+    }
+
+    public void <init>(edu.kit.ipd.sdq.eventsim.measurement.r.connection.RserveConnection)
+    {
+        edu.kit.ipd.sdq.eventsim.measurement.r.RJobProcessor r0;
+        edu.kit.ipd.sdq.eventsim.measurement.r.connection.RserveConnection r1;
+        java.util.concurrent.LinkedBlockingQueue $r2;
+
+        r0 := @this: edu.kit.ipd.sdq.eventsim.measurement.r.RJobProcessor;
+
+        r1 := @parameter0: edu.kit.ipd.sdq.eventsim.measurement.r.connection.RserveConnection;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        r0.<edu.kit.ipd.sdq.eventsim.measurement.r.RJobProcessor: edu.kit.ipd.sdq.eventsim.measurement.r.connection.RserveConnection connection> = r1;
+
+        $r2 = new java.util.concurrent.LinkedBlockingQueue;
+
+        specialinvoke $r2.<java.util.concurrent.LinkedBlockingQueue: void <init>()>();
+
+        r0.<edu.kit.ipd.sdq.eventsim.measurement.r.RJobProcessor: java.util.concurrent.BlockingQueue jobQueue> = $r2;
+
+        return;
+    }
+
+    public void enqueue(edu.kit.ipd.sdq.eventsim.measurement.r.RJob)
+    {
+        edu.kit.ipd.sdq.eventsim.measurement.r.RJobProcessor r0;
+        edu.kit.ipd.sdq.eventsim.measurement.r.RJob r1;
+        java.util.concurrent.BlockingQueue $r3;
+        java.lang.InterruptedException $r4;
+        org.apache.log4j.Logger $r5;
+
+        r0 := @this: edu.kit.ipd.sdq.eventsim.measurement.r.RJobProcessor;
+
+        r1 := @parameter0: edu.kit.ipd.sdq.eventsim.measurement.r.RJob;
+
+     label1:
+        $r3 = r0.<edu.kit.ipd.sdq.eventsim.measurement.r.RJobProcessor: java.util.concurrent.BlockingQueue jobQueue>;
+
+        interfaceinvoke $r3.<java.util.concurrent.BlockingQueue: void put(java.lang.Object)>(r1);
+
+     label2:
+        goto label4;
+
+     label3:
+        $r4 := @caughtexception;
+
+        $r5 = <edu.kit.ipd.sdq.eventsim.measurement.r.RJobProcessor: org.apache.log4j.Logger log>;
+
+        virtualinvoke $r5.<org.apache.log4j.Logger: void error(java.lang.Object)>($r4);
+
+     label4:
+        return;
+
+        catch java.lang.InterruptedException from label1 to label2 with label3;
+    }
+
+    public void start()
+    {
+        edu.kit.ipd.sdq.eventsim.measurement.r.RJobProcessor r0;
+        java.lang.Thread $r1, $r3;
+        edu.kit.ipd.sdq.eventsim.measurement.r.RJobProcessor$RJobProcessorRunnable $r2;
+
+        r0 := @this: edu.kit.ipd.sdq.eventsim.measurement.r.RJobProcessor;
+
+        $r1 = new java.lang.Thread;
+
+        $r2 = new edu.kit.ipd.sdq.eventsim.measurement.r.RJobProcessor$RJobProcessorRunnable;
+
+        specialinvoke $r2.<edu.kit.ipd.sdq.eventsim.measurement.r.RJobProcessor$RJobProcessorRunnable: void <init>(edu.kit.ipd.sdq.eventsim.measurement.r.RJobProcessor,edu.kit.ipd.sdq.eventsim.measurement.r.RJobProcessor$RJobProcessorRunnable)>(r0, null);
+
+        specialinvoke $r1.<java.lang.Thread: void <init>(java.lang.Runnable)>($r2);
+
+        r0.<edu.kit.ipd.sdq.eventsim.measurement.r.RJobProcessor: java.lang.Thread thread> = $r1;
+
+        $r3 = r0.<edu.kit.ipd.sdq.eventsim.measurement.r.RJobProcessor: java.lang.Thread thread>;
+
+        virtualinvoke $r3.<java.lang.Thread: void start()>();
+
+        return;
+    }
+
+    public void waitUntilFinished()
+    {
+        edu.kit.ipd.sdq.eventsim.measurement.r.RJobProcessor r0;
+        java.lang.Thread $r2, $r3;
+        java.lang.IllegalStateException $r4;
+        java.lang.InterruptedException $r5;
+        org.apache.log4j.Logger $r6;
+
+        r0 := @this: edu.kit.ipd.sdq.eventsim.measurement.r.RJobProcessor;
+
+        $r2 = r0.<edu.kit.ipd.sdq.eventsim.measurement.r.RJobProcessor: java.lang.Thread thread>;
+
+        if $r2 != null goto label1;
+
+        $r4 = new java.lang.IllegalStateException;
+
+        specialinvoke $r4.<java.lang.IllegalStateException: void <init>(java.lang.String)>("This job processor needs to be started first.");
+
+        throw $r4;
+
+     label1:
+        $r3 = r0.<edu.kit.ipd.sdq.eventsim.measurement.r.RJobProcessor: java.lang.Thread thread>;
+
+        virtualinvoke $r3.<java.lang.Thread: void join()>();
+
+     label2:
+        goto label4;
+
+     label3:
+        $r5 := @caughtexception;
+
+        $r6 = <edu.kit.ipd.sdq.eventsim.measurement.r.RJobProcessor: org.apache.log4j.Logger log>;
+
+        virtualinvoke $r6.<org.apache.log4j.Logger: void error(java.lang.Object)>($r5);
+
+     label4:
+        return;
+
+        catch java.lang.InterruptedException from label1 to label2 with label3;
+    }
+
+    static edu.kit.ipd.sdq.eventsim.measurement.r.connection.RserveConnection access$0(edu.kit.ipd.sdq.eventsim.measurement.r.RJobProcessor)
+    {
+        edu.kit.ipd.sdq.eventsim.measurement.r.RJobProcessor r0;
+        edu.kit.ipd.sdq.eventsim.measurement.r.connection.RserveConnection $r1;
+
+        r0 := @parameter0: edu.kit.ipd.sdq.eventsim.measurement.r.RJobProcessor;
+
+        $r1 = r0.<edu.kit.ipd.sdq.eventsim.measurement.r.RJobProcessor: edu.kit.ipd.sdq.eventsim.measurement.r.connection.RserveConnection connection>;
+
+        return $r1;
+    }
+
+    static org.apache.log4j.Logger access$1()
+    {
+        org.apache.log4j.Logger $r0;
+
+        $r0 = <edu.kit.ipd.sdq.eventsim.measurement.r.RJobProcessor: org.apache.log4j.Logger log>;
+
+        return $r0;
+    }
+
+    static java.util.concurrent.BlockingQueue access$2(edu.kit.ipd.sdq.eventsim.measurement.r.RJobProcessor)
+    {
+        edu.kit.ipd.sdq.eventsim.measurement.r.RJobProcessor r0;
+        java.util.concurrent.BlockingQueue $r1;
+
+        r0 := @parameter0: edu.kit.ipd.sdq.eventsim.measurement.r.RJobProcessor;
+
+        $r1 = r0.<edu.kit.ipd.sdq.eventsim.measurement.r.RJobProcessor: java.util.concurrent.BlockingQueue jobQueue>;
+
+        return $r1;
+    }
+}

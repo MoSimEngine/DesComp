@@ -1,0 +1,51 @@
+public final class edu.kit.ipd.sdq.eventsim.workload.EventSimWorkloadModel$lambda_5__280 extends java.lang.Object implements edu.kit.ipd.sdq.eventsim.measurement.MeasurementListener
+{
+    edu.kit.ipd.sdq.eventsim.workload.EventSimWorkloadModel cap0;
+
+    public static edu.kit.ipd.sdq.eventsim.measurement.MeasurementListener bootstrap$(edu.kit.ipd.sdq.eventsim.workload.EventSimWorkloadModel)
+    {
+        edu.kit.ipd.sdq.eventsim.workload.EventSimWorkloadModel $r0;
+        edu.kit.ipd.sdq.eventsim.workload.EventSimWorkloadModel$lambda_5__280 $r1;
+
+        $r0 := @parameter0: edu.kit.ipd.sdq.eventsim.workload.EventSimWorkloadModel;
+
+        $r1 = new edu.kit.ipd.sdq.eventsim.workload.EventSimWorkloadModel$lambda_5__280;
+
+        specialinvoke $r1.<edu.kit.ipd.sdq.eventsim.workload.EventSimWorkloadModel$lambda_5__280: void <init>(edu.kit.ipd.sdq.eventsim.workload.EventSimWorkloadModel)>($r0);
+
+        return $r1;
+    }
+
+    public void <init>(edu.kit.ipd.sdq.eventsim.workload.EventSimWorkloadModel)
+    {
+        edu.kit.ipd.sdq.eventsim.workload.EventSimWorkloadModel$lambda_5__280 $r0;
+        edu.kit.ipd.sdq.eventsim.workload.EventSimWorkloadModel $r1;
+
+        $r0 := @this: edu.kit.ipd.sdq.eventsim.workload.EventSimWorkloadModel$lambda_5__280;
+
+        $r1 := @parameter0: edu.kit.ipd.sdq.eventsim.workload.EventSimWorkloadModel;
+
+        specialinvoke $r0.<java.lang.Object: void <init>()>();
+
+        $r0.<edu.kit.ipd.sdq.eventsim.workload.EventSimWorkloadModel$lambda_5__280: edu.kit.ipd.sdq.eventsim.workload.EventSimWorkloadModel cap0> = $r1;
+
+        return;
+    }
+
+    public void notify(edu.kit.ipd.sdq.eventsim.measurement.Measurement)
+    {
+        edu.kit.ipd.sdq.eventsim.workload.EventSimWorkloadModel$lambda_5__280 $r0;
+        edu.kit.ipd.sdq.eventsim.measurement.Measurement $r1;
+        edu.kit.ipd.sdq.eventsim.workload.EventSimWorkloadModel $r2;
+
+        $r0 := @this: edu.kit.ipd.sdq.eventsim.workload.EventSimWorkloadModel$lambda_5__280;
+
+        $r1 := @parameter0: edu.kit.ipd.sdq.eventsim.measurement.Measurement;
+
+        $r2 = $r0.<edu.kit.ipd.sdq.eventsim.workload.EventSimWorkloadModel$lambda_5__280: edu.kit.ipd.sdq.eventsim.workload.EventSimWorkloadModel cap0>;
+
+        virtualinvoke $r2.<edu.kit.ipd.sdq.eventsim.workload.EventSimWorkloadModel: void lambda$5(edu.kit.ipd.sdq.eventsim.measurement.Measurement)>($r1);
+
+        return;
+    }
+}

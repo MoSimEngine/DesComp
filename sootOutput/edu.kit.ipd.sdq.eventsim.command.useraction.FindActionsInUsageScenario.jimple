@@ -1,0 +1,256 @@
+public class edu.kit.ipd.sdq.eventsim.command.useraction.FindActionsInUsageScenario extends java.lang.Object implements edu.kit.ipd.sdq.eventsim.command.IPCMCommand
+{
+    private org.palladiosimulator.pcm.usagemodel.UsageScenario scenario;
+    private java.lang.Class actionType;
+    private boolean recurse;
+
+    public void <init>(org.palladiosimulator.pcm.usagemodel.UsageScenario, java.lang.Class, boolean)
+    {
+        edu.kit.ipd.sdq.eventsim.command.useraction.FindActionsInUsageScenario r0;
+        org.palladiosimulator.pcm.usagemodel.UsageScenario r1;
+        java.lang.Class r2;
+        boolean z0;
+
+        r0 := @this: edu.kit.ipd.sdq.eventsim.command.useraction.FindActionsInUsageScenario;
+
+        r1 := @parameter0: org.palladiosimulator.pcm.usagemodel.UsageScenario;
+
+        r2 := @parameter1: java.lang.Class;
+
+        z0 := @parameter2: boolean;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        r0.<edu.kit.ipd.sdq.eventsim.command.useraction.FindActionsInUsageScenario: org.palladiosimulator.pcm.usagemodel.UsageScenario scenario> = r1;
+
+        r0.<edu.kit.ipd.sdq.eventsim.command.useraction.FindActionsInUsageScenario: java.lang.Class actionType> = r2;
+
+        r0.<edu.kit.ipd.sdq.eventsim.command.useraction.FindActionsInUsageScenario: boolean recurse> = z0;
+
+        return;
+    }
+
+    public java.util.List execute(edu.kit.ipd.sdq.eventsim.api.PCMModel, edu.kit.ipd.sdq.eventsim.command.ICommandExecutor)
+    {
+        edu.kit.ipd.sdq.eventsim.command.useraction.FindActionsInUsageScenario r0;
+        edu.kit.ipd.sdq.eventsim.api.PCMModel r1;
+        edu.kit.ipd.sdq.eventsim.command.ICommandExecutor r2;
+        org.palladiosimulator.pcm.usagemodel.ScenarioBehaviour r3;
+        org.palladiosimulator.pcm.usagemodel.UsageScenario $r4;
+        java.util.List $r5;
+
+        r0 := @this: edu.kit.ipd.sdq.eventsim.command.useraction.FindActionsInUsageScenario;
+
+        r1 := @parameter0: edu.kit.ipd.sdq.eventsim.api.PCMModel;
+
+        r2 := @parameter1: edu.kit.ipd.sdq.eventsim.command.ICommandExecutor;
+
+        $r4 = r0.<edu.kit.ipd.sdq.eventsim.command.useraction.FindActionsInUsageScenario: org.palladiosimulator.pcm.usagemodel.UsageScenario scenario>;
+
+        r3 = interfaceinvoke $r4.<org.palladiosimulator.pcm.usagemodel.UsageScenario: org.palladiosimulator.pcm.usagemodel.ScenarioBehaviour getScenarioBehaviour_UsageScenario()>();
+
+        $r5 = specialinvoke r0.<edu.kit.ipd.sdq.eventsim.command.useraction.FindActionsInUsageScenario: java.util.List findActionsByType(org.palladiosimulator.pcm.usagemodel.ScenarioBehaviour,edu.kit.ipd.sdq.eventsim.command.ICommandExecutor)>(r3, r2);
+
+        return $r5;
+    }
+
+    private java.util.List findActionsByType(org.palladiosimulator.pcm.usagemodel.ScenarioBehaviour, edu.kit.ipd.sdq.eventsim.command.ICommandExecutor)
+    {
+        edu.kit.ipd.sdq.eventsim.command.useraction.FindActionsInUsageScenario r0;
+        org.palladiosimulator.pcm.usagemodel.ScenarioBehaviour r1;
+        edu.kit.ipd.sdq.eventsim.command.ICommandExecutor r2;
+        java.util.ArrayList $r4;
+        edu.kit.ipd.sdq.eventsim.command.useraction.FindActionInUsageBehaviour $r5;
+        java.lang.Object $r6;
+        java.lang.Class $r7;
+        boolean $z0, $z1, $z2, $z3;
+        org.palladiosimulator.pcm.usagemodel.UsagemodelPackage $r8, $r10;
+        org.eclipse.emf.ecore.EClass $r9, $r11;
+        org.palladiosimulator.pcm.usagemodel.Loop $r12;
+        java.util.List $r13, $r15;
+        org.palladiosimulator.pcm.usagemodel.Branch $r14;
+        org.palladiosimulator.pcm.usagemodel.AbstractUserAction r16;
+
+        r0 := @this: edu.kit.ipd.sdq.eventsim.command.useraction.FindActionsInUsageScenario;
+
+        r1 := @parameter0: org.palladiosimulator.pcm.usagemodel.ScenarioBehaviour;
+
+        r2 := @parameter1: edu.kit.ipd.sdq.eventsim.command.ICommandExecutor;
+
+        $r4 = new java.util.ArrayList;
+
+        specialinvoke $r4.<java.util.ArrayList: void <init>()>();
+
+        $r5 = new edu.kit.ipd.sdq.eventsim.command.useraction.FindActionInUsageBehaviour;
+
+        specialinvoke $r5.<edu.kit.ipd.sdq.eventsim.command.useraction.FindActionInUsageBehaviour: void <init>(org.palladiosimulator.pcm.usagemodel.ScenarioBehaviour,java.lang.Class)>(r1, class "Lorg/palladiosimulator/pcm/usagemodel/Start;");
+
+        $r6 = interfaceinvoke r2.<edu.kit.ipd.sdq.eventsim.command.ICommandExecutor: java.lang.Object execute(edu.kit.ipd.sdq.eventsim.command.ICommand)>($r5);
+
+        r16 = (org.palladiosimulator.pcm.usagemodel.AbstractUserAction) $r6;
+
+        goto label5;
+
+     label1:
+        $r7 = r0.<edu.kit.ipd.sdq.eventsim.command.useraction.FindActionsInUsageScenario: java.lang.Class actionType>;
+
+        $z0 = virtualinvoke $r7.<java.lang.Class: boolean isInstance(java.lang.Object)>(r16);
+
+        if $z0 == 0 goto label2;
+
+        interfaceinvoke $r4.<java.util.List: boolean add(java.lang.Object)>(r16);
+
+     label2:
+        $z1 = r0.<edu.kit.ipd.sdq.eventsim.command.useraction.FindActionsInUsageScenario: boolean recurse>;
+
+        if $z1 == 0 goto label4;
+
+        $r8 = <org.palladiosimulator.pcm.usagemodel.UsagemodelPackage: org.palladiosimulator.pcm.usagemodel.UsagemodelPackage eINSTANCE>;
+
+        $r9 = interfaceinvoke $r8.<org.palladiosimulator.pcm.usagemodel.UsagemodelPackage: org.eclipse.emf.ecore.EClass getBranch()>();
+
+        $z2 = interfaceinvoke $r9.<org.eclipse.emf.ecore.EClass: boolean isInstance(java.lang.Object)>(r16);
+
+        if $z2 == 0 goto label3;
+
+        $r14 = (org.palladiosimulator.pcm.usagemodel.Branch) r16;
+
+        $r15 = specialinvoke r0.<edu.kit.ipd.sdq.eventsim.command.useraction.FindActionsInUsageScenario: java.util.List findActionsInBranch(org.palladiosimulator.pcm.usagemodel.Branch,edu.kit.ipd.sdq.eventsim.command.ICommandExecutor)>($r14, r2);
+
+        interfaceinvoke $r4.<java.util.List: boolean addAll(java.util.Collection)>($r15);
+
+        goto label4;
+
+     label3:
+        $r10 = <org.palladiosimulator.pcm.usagemodel.UsagemodelPackage: org.palladiosimulator.pcm.usagemodel.UsagemodelPackage eINSTANCE>;
+
+        $r11 = interfaceinvoke $r10.<org.palladiosimulator.pcm.usagemodel.UsagemodelPackage: org.eclipse.emf.ecore.EClass getLoop()>();
+
+        $z3 = interfaceinvoke $r11.<org.eclipse.emf.ecore.EClass: boolean isInstance(java.lang.Object)>(r16);
+
+        if $z3 == 0 goto label4;
+
+        $r12 = (org.palladiosimulator.pcm.usagemodel.Loop) r16;
+
+        $r13 = specialinvoke r0.<edu.kit.ipd.sdq.eventsim.command.useraction.FindActionsInUsageScenario: java.util.List findActionsInLoop(org.palladiosimulator.pcm.usagemodel.Loop,edu.kit.ipd.sdq.eventsim.command.ICommandExecutor)>($r12, r2);
+
+        interfaceinvoke $r4.<java.util.List: boolean addAll(java.util.Collection)>($r13);
+
+     label4:
+        r16 = interfaceinvoke r16.<org.palladiosimulator.pcm.usagemodel.AbstractUserAction: org.palladiosimulator.pcm.usagemodel.AbstractUserAction getSuccessor()>();
+
+     label5:
+        if r16 != null goto label1;
+
+        return $r4;
+    }
+
+    private java.util.List findActionsInBranch(org.palladiosimulator.pcm.usagemodel.Branch, edu.kit.ipd.sdq.eventsim.command.ICommandExecutor)
+    {
+        edu.kit.ipd.sdq.eventsim.command.useraction.FindActionsInUsageScenario r0;
+        org.palladiosimulator.pcm.usagemodel.Branch r1;
+        edu.kit.ipd.sdq.eventsim.command.ICommandExecutor r2;
+        org.palladiosimulator.pcm.usagemodel.BranchTransition r4;
+        java.util.Iterator r5;
+        org.palladiosimulator.pcm.usagemodel.ScenarioBehaviour r6;
+        java.util.ArrayList $r7;
+        org.eclipse.emf.common.util.EList $r8;
+        boolean $z0;
+        java.lang.Object $r9;
+        java.util.List $r10;
+
+        r0 := @this: edu.kit.ipd.sdq.eventsim.command.useraction.FindActionsInUsageScenario;
+
+        r1 := @parameter0: org.palladiosimulator.pcm.usagemodel.Branch;
+
+        r2 := @parameter1: edu.kit.ipd.sdq.eventsim.command.ICommandExecutor;
+
+        $r7 = new java.util.ArrayList;
+
+        specialinvoke $r7.<java.util.ArrayList: void <init>()>();
+
+        $r8 = interfaceinvoke r1.<org.palladiosimulator.pcm.usagemodel.Branch: org.eclipse.emf.common.util.EList getBranchTransitions_Branch()>();
+
+        r5 = interfaceinvoke $r8.<org.eclipse.emf.common.util.EList: java.util.Iterator iterator()>();
+
+        goto label2;
+
+     label1:
+        $r9 = interfaceinvoke r5.<java.util.Iterator: java.lang.Object next()>();
+
+        r4 = (org.palladiosimulator.pcm.usagemodel.BranchTransition) $r9;
+
+        r6 = interfaceinvoke r4.<org.palladiosimulator.pcm.usagemodel.BranchTransition: org.palladiosimulator.pcm.usagemodel.ScenarioBehaviour getBranchedBehaviour_BranchTransition()>();
+
+        $r10 = specialinvoke r0.<edu.kit.ipd.sdq.eventsim.command.useraction.FindActionsInUsageScenario: java.util.List findActionsByType(org.palladiosimulator.pcm.usagemodel.ScenarioBehaviour,edu.kit.ipd.sdq.eventsim.command.ICommandExecutor)>(r6, r2);
+
+        interfaceinvoke $r7.<java.util.List: boolean addAll(java.util.Collection)>($r10);
+
+     label2:
+        $z0 = interfaceinvoke r5.<java.util.Iterator: boolean hasNext()>();
+
+        if $z0 != 0 goto label1;
+
+        return $r7;
+    }
+
+    private java.util.List findActionsInLoop(org.palladiosimulator.pcm.usagemodel.Loop, edu.kit.ipd.sdq.eventsim.command.ICommandExecutor)
+    {
+        edu.kit.ipd.sdq.eventsim.command.useraction.FindActionsInUsageScenario r0;
+        org.palladiosimulator.pcm.usagemodel.Loop r1;
+        edu.kit.ipd.sdq.eventsim.command.ICommandExecutor r2;
+        org.palladiosimulator.pcm.usagemodel.ScenarioBehaviour r3;
+        java.util.List $r4, $r5;
+
+        r0 := @this: edu.kit.ipd.sdq.eventsim.command.useraction.FindActionsInUsageScenario;
+
+        r1 := @parameter0: org.palladiosimulator.pcm.usagemodel.Loop;
+
+        r2 := @parameter1: edu.kit.ipd.sdq.eventsim.command.ICommandExecutor;
+
+        r3 = interfaceinvoke r1.<org.palladiosimulator.pcm.usagemodel.Loop: org.palladiosimulator.pcm.usagemodel.ScenarioBehaviour getBodyBehaviour_Loop()>();
+
+        if r3 != null goto label1;
+
+        $r5 = staticinvoke <java.util.Collections: java.util.List emptyList()>();
+
+        return $r5;
+
+     label1:
+        $r4 = specialinvoke r0.<edu.kit.ipd.sdq.eventsim.command.useraction.FindActionsInUsageScenario: java.util.List findActionsByType(org.palladiosimulator.pcm.usagemodel.ScenarioBehaviour,edu.kit.ipd.sdq.eventsim.command.ICommandExecutor)>(r3, r2);
+
+        return $r4;
+    }
+
+    public boolean cachable()
+    {
+        edu.kit.ipd.sdq.eventsim.command.useraction.FindActionsInUsageScenario r0;
+
+        r0 := @this: edu.kit.ipd.sdq.eventsim.command.useraction.FindActionsInUsageScenario;
+
+        return 0;
+    }
+
+    public volatile java.lang.Object execute(java.lang.Object, edu.kit.ipd.sdq.eventsim.command.ICommandExecutor)
+    {
+        edu.kit.ipd.sdq.eventsim.command.useraction.FindActionsInUsageScenario r0;
+        java.lang.Object r1;
+        edu.kit.ipd.sdq.eventsim.command.ICommandExecutor r2, $r3;
+        edu.kit.ipd.sdq.eventsim.api.PCMModel $r4;
+        java.util.List $r5;
+
+        r0 := @this: edu.kit.ipd.sdq.eventsim.command.useraction.FindActionsInUsageScenario;
+
+        r1 := @parameter0: java.lang.Object;
+
+        r2 := @parameter1: edu.kit.ipd.sdq.eventsim.command.ICommandExecutor;
+
+        $r4 = (edu.kit.ipd.sdq.eventsim.api.PCMModel) r1;
+
+        $r3 = (edu.kit.ipd.sdq.eventsim.command.ICommandExecutor) r2;
+
+        $r5 = virtualinvoke r0.<edu.kit.ipd.sdq.eventsim.command.useraction.FindActionsInUsageScenario: java.util.List execute(edu.kit.ipd.sdq.eventsim.api.PCMModel,edu.kit.ipd.sdq.eventsim.command.ICommandExecutor)>($r4, $r3);
+
+        return $r5;
+    }
+}

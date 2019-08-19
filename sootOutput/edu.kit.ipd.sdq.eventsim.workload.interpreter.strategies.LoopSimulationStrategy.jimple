@@ -1,0 +1,185 @@
+public class edu.kit.ipd.sdq.eventsim.workload.interpreter.strategies.LoopSimulationStrategy extends java.lang.Object implements edu.kit.ipd.sdq.eventsim.interpreter.SimulationStrategy
+{
+    private edu.kit.ipd.sdq.eventsim.workload.WorkloadModelDiagnostics diagnostics;
+
+    public void <init>()
+    {
+        edu.kit.ipd.sdq.eventsim.workload.interpreter.strategies.LoopSimulationStrategy r0;
+
+        r0 := @this: edu.kit.ipd.sdq.eventsim.workload.interpreter.strategies.LoopSimulationStrategy;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    public void simulate(org.palladiosimulator.pcm.usagemodel.AbstractUserAction, edu.kit.ipd.sdq.eventsim.workload.entities.User, java.util.function.Consumer)
+    {
+        edu.kit.ipd.sdq.eventsim.workload.interpreter.strategies.LoopSimulationStrategy r0;
+        org.palladiosimulator.pcm.usagemodel.AbstractUserAction r1, $r14;
+        edu.kit.ipd.sdq.eventsim.workload.entities.User r2;
+        java.util.function.Consumer r3, $r11, $r12;
+        org.palladiosimulator.pcm.usagemodel.Loop r4;
+        org.palladiosimulator.pcm.usagemodel.ScenarioBehaviour r5;
+        org.palladiosimulator.pcm.core.PCMRandomVariable r6;
+        int i0;
+        java.lang.String $r7;
+        java.lang.Object $r8;
+        java.lang.Integer $r9;
+        edu.kit.ipd.sdq.eventsim.interpreter.LoopIterationHandler $r10;
+        edu.kit.ipd.sdq.eventsim.workload.WorkloadModelDiagnostics $r13;
+
+        r0 := @this: edu.kit.ipd.sdq.eventsim.workload.interpreter.strategies.LoopSimulationStrategy;
+
+        r1 := @parameter0: org.palladiosimulator.pcm.usagemodel.AbstractUserAction;
+
+        r2 := @parameter1: edu.kit.ipd.sdq.eventsim.workload.entities.User;
+
+        r3 := @parameter2: java.util.function.Consumer;
+
+        r4 = (org.palladiosimulator.pcm.usagemodel.Loop) r1;
+
+        r5 = interfaceinvoke r4.<org.palladiosimulator.pcm.usagemodel.Loop: org.palladiosimulator.pcm.usagemodel.ScenarioBehaviour getBodyBehaviour_Loop()>();
+
+        if r5 != null goto label1;
+
+        $r13 = r0.<edu.kit.ipd.sdq.eventsim.workload.interpreter.strategies.LoopSimulationStrategy: edu.kit.ipd.sdq.eventsim.workload.WorkloadModelDiagnostics diagnostics>;
+
+        virtualinvoke $r13.<edu.kit.ipd.sdq.eventsim.workload.WorkloadModelDiagnostics: void reportMissingLoopingBehaviour(org.palladiosimulator.pcm.usagemodel.Loop)>(r4);
+
+        $r14 = interfaceinvoke r4.<org.palladiosimulator.pcm.usagemodel.Loop: org.palladiosimulator.pcm.usagemodel.AbstractUserAction getSuccessor()>();
+
+        virtualinvoke r2.<edu.kit.ipd.sdq.eventsim.workload.entities.User: void simulateAction(org.palladiosimulator.pcm.usagemodel.AbstractUserAction)>($r14);
+
+        return;
+
+     label1:
+        r6 = interfaceinvoke r4.<org.palladiosimulator.pcm.usagemodel.Loop: org.palladiosimulator.pcm.core.PCMRandomVariable getLoopIteration_Loop()>();
+
+        $r7 = interfaceinvoke r6.<org.palladiosimulator.pcm.core.PCMRandomVariable: java.lang.String getSpecification()>();
+
+        $r8 = staticinvoke <de.uka.ipd.sdq.simucomframework.variables.StackContext: java.lang.Object evaluateStatic(java.lang.String,java.lang.Class)>($r7, class "Ljava/lang/Integer;");
+
+        $r9 = (java.lang.Integer) $r8;
+
+        i0 = virtualinvoke $r9.<java.lang.Integer: int intValue()>();
+
+        $r10 = new edu.kit.ipd.sdq.eventsim.interpreter.LoopIterationHandler;
+
+        $r11 = staticinvoke <edu.kit.ipd.sdq.eventsim.workload.interpreter.strategies.LoopSimulationStrategy$lambda_0__252: java.util.function.Consumer bootstrap$(edu.kit.ipd.sdq.eventsim.workload.entities.User,org.palladiosimulator.pcm.usagemodel.ScenarioBehaviour)>(r2, r5);
+
+        $r12 = staticinvoke <edu.kit.ipd.sdq.eventsim.workload.interpreter.strategies.LoopSimulationStrategy$lambda_1__253: java.util.function.Consumer bootstrap$(edu.kit.ipd.sdq.eventsim.workload.entities.User,org.palladiosimulator.pcm.usagemodel.ScenarioBehaviour,java.util.function.Consumer,org.palladiosimulator.pcm.usagemodel.Loop)>(r2, r5, r3, r4);
+
+        specialinvoke $r10.<edu.kit.ipd.sdq.eventsim.interpreter.LoopIterationHandler: void <init>(int,java.util.function.Consumer,java.util.function.Consumer)>(i0, $r11, $r12);
+
+        virtualinvoke $r10.<edu.kit.ipd.sdq.eventsim.interpreter.LoopIterationHandler: void execute()>();
+
+        return;
+    }
+
+    public volatile void simulate(org.palladiosimulator.pcm.core.entity.Entity, edu.kit.ipd.sdq.eventsim.entities.EventSimEntity, java.util.function.Consumer)
+    {
+        edu.kit.ipd.sdq.eventsim.workload.interpreter.strategies.LoopSimulationStrategy r0;
+        org.palladiosimulator.pcm.core.entity.Entity r1;
+        edu.kit.ipd.sdq.eventsim.entities.EventSimEntity r2;
+        java.util.function.Consumer r3;
+        edu.kit.ipd.sdq.eventsim.workload.entities.User $r4;
+        org.palladiosimulator.pcm.usagemodel.AbstractUserAction $r5;
+
+        r0 := @this: edu.kit.ipd.sdq.eventsim.workload.interpreter.strategies.LoopSimulationStrategy;
+
+        r1 := @parameter0: org.palladiosimulator.pcm.core.entity.Entity;
+
+        r2 := @parameter1: edu.kit.ipd.sdq.eventsim.entities.EventSimEntity;
+
+        r3 := @parameter2: java.util.function.Consumer;
+
+        $r5 = (org.palladiosimulator.pcm.usagemodel.AbstractUserAction) r1;
+
+        $r4 = (edu.kit.ipd.sdq.eventsim.workload.entities.User) r2;
+
+        virtualinvoke r0.<edu.kit.ipd.sdq.eventsim.workload.interpreter.strategies.LoopSimulationStrategy: void simulate(org.palladiosimulator.pcm.usagemodel.AbstractUserAction,edu.kit.ipd.sdq.eventsim.workload.entities.User,java.util.function.Consumer)>($r5, $r4, r3);
+
+        return;
+    }
+
+    public static void lambda$0(edu.kit.ipd.sdq.eventsim.workload.entities.User, org.palladiosimulator.pcm.usagemodel.ScenarioBehaviour, edu.kit.ipd.sdq.eventsim.interpreter.LoopIterationHandler)
+    {
+        edu.kit.ipd.sdq.eventsim.workload.entities.User r0;
+        org.palladiosimulator.pcm.usagemodel.ScenarioBehaviour r1;
+        edu.kit.ipd.sdq.eventsim.interpreter.LoopIterationHandler r2;
+
+        r0 := @parameter0: edu.kit.ipd.sdq.eventsim.workload.entities.User;
+
+        r1 := @parameter1: org.palladiosimulator.pcm.usagemodel.ScenarioBehaviour;
+
+        r2 := @parameter2: edu.kit.ipd.sdq.eventsim.interpreter.LoopIterationHandler;
+
+        virtualinvoke r0.<edu.kit.ipd.sdq.eventsim.workload.entities.User: void simulateBehaviour(org.palladiosimulator.pcm.usagemodel.ScenarioBehaviour,edu.kit.ipd.sdq.eventsim.api.Procedure)>(r1, r2);
+
+        return;
+    }
+
+    public static void lambda$1(edu.kit.ipd.sdq.eventsim.workload.entities.User, org.palladiosimulator.pcm.usagemodel.ScenarioBehaviour, java.util.function.Consumer, org.palladiosimulator.pcm.usagemodel.Loop, edu.kit.ipd.sdq.eventsim.interpreter.LoopIterationHandler)
+    {
+        edu.kit.ipd.sdq.eventsim.workload.entities.User r0;
+        org.palladiosimulator.pcm.usagemodel.ScenarioBehaviour r1;
+        java.util.function.Consumer r2;
+        org.palladiosimulator.pcm.usagemodel.Loop r3;
+        edu.kit.ipd.sdq.eventsim.interpreter.LoopIterationHandler r4;
+        edu.kit.ipd.sdq.eventsim.api.Procedure $r5;
+
+        r0 := @parameter0: edu.kit.ipd.sdq.eventsim.workload.entities.User;
+
+        r1 := @parameter1: org.palladiosimulator.pcm.usagemodel.ScenarioBehaviour;
+
+        r2 := @parameter2: java.util.function.Consumer;
+
+        r3 := @parameter3: org.palladiosimulator.pcm.usagemodel.Loop;
+
+        r4 := @parameter4: edu.kit.ipd.sdq.eventsim.interpreter.LoopIterationHandler;
+
+        $r5 = staticinvoke <edu.kit.ipd.sdq.eventsim.workload.interpreter.strategies.LoopSimulationStrategy$lambda_2__255: edu.kit.ipd.sdq.eventsim.api.Procedure bootstrap$(java.util.function.Consumer,edu.kit.ipd.sdq.eventsim.workload.entities.User,org.palladiosimulator.pcm.usagemodel.Loop)>(r2, r0, r3);
+
+        virtualinvoke r0.<edu.kit.ipd.sdq.eventsim.workload.entities.User: void simulateBehaviour(org.palladiosimulator.pcm.usagemodel.ScenarioBehaviour,edu.kit.ipd.sdq.eventsim.api.Procedure)>(r1, $r5);
+
+        return;
+    }
+
+    public static void lambda$2(java.util.function.Consumer, edu.kit.ipd.sdq.eventsim.workload.entities.User, org.palladiosimulator.pcm.usagemodel.Loop)
+    {
+        java.util.function.Consumer r0;
+        edu.kit.ipd.sdq.eventsim.workload.entities.User r1;
+        org.palladiosimulator.pcm.usagemodel.Loop r2;
+        edu.kit.ipd.sdq.eventsim.interpreter.TraversalInstruction $r3;
+
+        r0 := @parameter0: java.util.function.Consumer;
+
+        r1 := @parameter1: edu.kit.ipd.sdq.eventsim.workload.entities.User;
+
+        r2 := @parameter2: org.palladiosimulator.pcm.usagemodel.Loop;
+
+        $r3 = staticinvoke <edu.kit.ipd.sdq.eventsim.workload.interpreter.strategies.LoopSimulationStrategy$lambda_3__254: edu.kit.ipd.sdq.eventsim.interpreter.TraversalInstruction bootstrap$(edu.kit.ipd.sdq.eventsim.workload.entities.User,org.palladiosimulator.pcm.usagemodel.Loop)>(r1, r2);
+
+        interfaceinvoke r0.<java.util.function.Consumer: void accept(java.lang.Object)>($r3);
+
+        return;
+    }
+
+    public static void lambda$3(edu.kit.ipd.sdq.eventsim.workload.entities.User, org.palladiosimulator.pcm.usagemodel.Loop)
+    {
+        edu.kit.ipd.sdq.eventsim.workload.entities.User r0;
+        org.palladiosimulator.pcm.usagemodel.Loop r1;
+        org.palladiosimulator.pcm.usagemodel.AbstractUserAction $r2;
+
+        r0 := @parameter0: edu.kit.ipd.sdq.eventsim.workload.entities.User;
+
+        r1 := @parameter1: org.palladiosimulator.pcm.usagemodel.Loop;
+
+        $r2 = interfaceinvoke r1.<org.palladiosimulator.pcm.usagemodel.Loop: org.palladiosimulator.pcm.usagemodel.AbstractUserAction getSuccessor()>();
+
+        virtualinvoke r0.<edu.kit.ipd.sdq.eventsim.workload.entities.User: void simulateAction(org.palladiosimulator.pcm.usagemodel.AbstractUserAction)>($r2);
+
+        return;
+    }
+}

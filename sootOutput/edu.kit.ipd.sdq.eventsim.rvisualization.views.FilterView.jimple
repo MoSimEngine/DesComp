@@ -1,0 +1,2489 @@
+public class edu.kit.ipd.sdq.eventsim.rvisualization.views.FilterView extends org.eclipse.ui.part.ViewPart
+{
+    private org.eclipse.core.databinding.DataBindingContext m_bindingContext;
+    public static final java.lang.String ID;
+    private edu.kit.ipd.sdq.eventsim.rvisualization.Controller ctrl;
+    private org.eclipse.swt.widgets.Composite viewParent;
+    private static final int TIMESPAN_MAX_VALUE;
+    private org.eclipse.jface.viewers.ComboViewer cmbMetric;
+    private org.eclipse.jface.viewers.ComboViewer cmbTriggerType;
+    private org.eclipse.jface.viewers.ComboViewer cmbTriggerInstance;
+    private org.eclipse.jface.viewers.ComboViewer cmbAssemblyCtx;
+    private org.eclipse.jface.viewers.ComboViewer cmbMeasuringPointFrom;
+    private org.eclipse.jface.viewers.ComboViewer cmbMeasuringPointTo;
+    private org.eclipse.jface.viewers.ComboViewer cmbDiagramType;
+    private org.eclipse.swt.widgets.Spinner spnTimeSpanFrom;
+    private org.eclipse.swt.widgets.Spinner spnTimeSpanTo;
+    private org.eclipse.swt.widgets.Button btnTimespanReset;
+    private org.eclipse.swt.widgets.Button btnPlot;
+    private org.eclipse.swt.widgets.Label lblMeasurementsCount;
+    private org.eclipse.swt.widgets.Composite cmpMetric;
+    private org.eclipse.swt.widgets.Composite cmpTrigger;
+    private org.eclipse.swt.widgets.Composite cmpAssemblyCtx;
+    private org.eclipse.swt.widgets.Composite cmpMeasuringPoints;
+    private org.eclipse.swt.widgets.Composite cmpTimeSpan;
+    private org.eclipse.swt.widgets.Composite cmpCenter;
+    private org.eclipse.swt.widgets.Group grpTriggerTypes;
+    private org.eclipse.swt.widgets.Group grpTriggerInstances;
+    private org.eclipse.swt.widgets.Button btnClearTriggerTypes;
+    private org.eclipse.swt.widgets.Button btnClearTriggerInstances;
+    private org.eclipse.swt.widgets.Scale scaleLower;
+    private org.eclipse.swt.widgets.Scale scaleUpper;
+    private org.eclipse.swt.widgets.ExpandItem xpiTrigger;
+    private org.eclipse.swt.widgets.Text txtTriggerWarning1;
+    private org.eclipse.swt.widgets.Text txtTriggerWarning2;
+    private org.eclipse.swt.widgets.Text txtReduceSimulationTime;
+    private org.eclipse.swt.widgets.Composite cmpTriggerWarning;
+    private org.eclipse.swt.widgets.Button btnClearAssemblyContext;
+    private edu.kit.ipd.sdq.eventsim.rvisualization.model.FilterSelectionModel selectionModel;
+    private edu.kit.ipd.sdq.eventsim.rvisualization.model.FilterModel model;
+    private org.eclipse.swt.widgets.Label lblMemoryConsumption;
+    private org.eclipse.swt.widgets.Label lblMemory;
+    private org.eclipse.swt.widgets.Button btnEnableTriggerInstance;
+    private org.eclipse.swt.widgets.ExpandBar expandBar;
+    private java.util.Map xpiMetadataMap;
+
+    public void <init>()
+    {
+        edu.kit.ipd.sdq.eventsim.rvisualization.views.FilterView r0;
+        java.util.HashMap $r1;
+        edu.kit.ipd.sdq.eventsim.rvisualization.model.FilterSelectionModel $r2;
+        edu.kit.ipd.sdq.eventsim.rvisualization.model.FilterModel $r3;
+
+        r0 := @this: edu.kit.ipd.sdq.eventsim.rvisualization.views.FilterView;
+
+        specialinvoke r0.<org.eclipse.ui.part.ViewPart: void <init>()>();
+
+        $r1 = new java.util.HashMap;
+
+        specialinvoke $r1.<java.util.HashMap: void <init>()>();
+
+        r0.<edu.kit.ipd.sdq.eventsim.rvisualization.views.FilterView: java.util.Map xpiMetadataMap> = $r1;
+
+        $r2 = new edu.kit.ipd.sdq.eventsim.rvisualization.model.FilterSelectionModel;
+
+        specialinvoke $r2.<edu.kit.ipd.sdq.eventsim.rvisualization.model.FilterSelectionModel: void <init>()>();
+
+        r0.<edu.kit.ipd.sdq.eventsim.rvisualization.views.FilterView: edu.kit.ipd.sdq.eventsim.rvisualization.model.FilterSelectionModel selectionModel> = $r2;
+
+        $r3 = new edu.kit.ipd.sdq.eventsim.rvisualization.model.FilterModel;
+
+        specialinvoke $r3.<edu.kit.ipd.sdq.eventsim.rvisualization.model.FilterModel: void <init>()>();
+
+        r0.<edu.kit.ipd.sdq.eventsim.rvisualization.views.FilterView: edu.kit.ipd.sdq.eventsim.rvisualization.model.FilterModel model> = $r3;
+
+        return;
+    }
+
+    public final void createPartControl(org.eclipse.swt.widgets.Composite)
+    {
+        edu.kit.ipd.sdq.eventsim.rvisualization.views.FilterView r0;
+        org.eclipse.swt.widgets.Composite r1, $r3;
+        swing2swt.layout.BorderLayout $r4;
+        edu.kit.ipd.sdq.eventsim.rvisualization.Controller $r5, $r8;
+        edu.kit.ipd.sdq.eventsim.rvisualization.model.FilterModel $r6;
+        edu.kit.ipd.sdq.eventsim.rvisualization.model.FilterSelectionModel $r7;
+
+        r0 := @this: edu.kit.ipd.sdq.eventsim.rvisualization.views.FilterView;
+
+        r1 := @parameter0: org.eclipse.swt.widgets.Composite;
+
+        r0.<edu.kit.ipd.sdq.eventsim.rvisualization.views.FilterView: org.eclipse.swt.widgets.Composite viewParent> = r1;
+
+        $r3 = new org.eclipse.swt.widgets.Composite;
+
+        specialinvoke $r3.<org.eclipse.swt.widgets.Composite: void <init>(org.eclipse.swt.widgets.Composite,int)>(r1, 0);
+
+        $r4 = new swing2swt.layout.BorderLayout;
+
+        specialinvoke $r4.<swing2swt.layout.BorderLayout: void <init>(int,int)>(0, 0);
+
+        virtualinvoke $r3.<org.eclipse.swt.widgets.Composite: void setLayout(org.eclipse.swt.widgets.Layout)>($r4);
+
+        specialinvoke r0.<edu.kit.ipd.sdq.eventsim.rvisualization.views.FilterView: void createNorthBar(org.eclipse.swt.widgets.Composite)>($r3);
+
+        specialinvoke r0.<edu.kit.ipd.sdq.eventsim.rvisualization.views.FilterView: void createExpandBar(org.eclipse.swt.widgets.Composite)>($r3);
+
+        specialinvoke r0.<edu.kit.ipd.sdq.eventsim.rvisualization.views.FilterView: void createSouthBar(org.eclipse.swt.widgets.Composite)>($r3);
+
+        virtualinvoke r0.<edu.kit.ipd.sdq.eventsim.rvisualization.views.FilterView: void showTriggerWarning(boolean,int,int)>(0, 0, 0);
+
+        virtualinvoke r0.<edu.kit.ipd.sdq.eventsim.rvisualization.views.FilterView: void enableMetricsCombo(boolean)>(0);
+
+        virtualinvoke r0.<edu.kit.ipd.sdq.eventsim.rvisualization.views.FilterView: void enableTriggerTypeCombo(boolean)>(0);
+
+        virtualinvoke r0.<edu.kit.ipd.sdq.eventsim.rvisualization.views.FilterView: void enableTriggerInstanceCombo(boolean)>(0);
+
+        virtualinvoke r0.<edu.kit.ipd.sdq.eventsim.rvisualization.views.FilterView: void enableAssemblyContextCombo(boolean)>(0);
+
+        virtualinvoke r0.<edu.kit.ipd.sdq.eventsim.rvisualization.views.FilterView: void enableMeasuringPointsFromCombo(boolean)>(0);
+
+        virtualinvoke r0.<edu.kit.ipd.sdq.eventsim.rvisualization.views.FilterView: void enableMeasuringPointsToCombo(boolean)>(0);
+
+        virtualinvoke r0.<edu.kit.ipd.sdq.eventsim.rvisualization.views.FilterView: void enablePlotButton(boolean)>(0);
+
+        $r5 = new edu.kit.ipd.sdq.eventsim.rvisualization.Controller;
+
+        $r7 = r0.<edu.kit.ipd.sdq.eventsim.rvisualization.views.FilterView: edu.kit.ipd.sdq.eventsim.rvisualization.model.FilterSelectionModel selectionModel>;
+
+        $r6 = r0.<edu.kit.ipd.sdq.eventsim.rvisualization.views.FilterView: edu.kit.ipd.sdq.eventsim.rvisualization.model.FilterModel model>;
+
+        specialinvoke $r5.<edu.kit.ipd.sdq.eventsim.rvisualization.Controller: void <init>(edu.kit.ipd.sdq.eventsim.rvisualization.views.FilterView,edu.kit.ipd.sdq.eventsim.rvisualization.model.FilterSelectionModel,edu.kit.ipd.sdq.eventsim.rvisualization.model.FilterModel)>(r0, $r7, $r6);
+
+        r0.<edu.kit.ipd.sdq.eventsim.rvisualization.views.FilterView: edu.kit.ipd.sdq.eventsim.rvisualization.Controller ctrl> = $r5;
+
+        $r8 = r0.<edu.kit.ipd.sdq.eventsim.rvisualization.views.FilterView: edu.kit.ipd.sdq.eventsim.rvisualization.Controller ctrl>;
+
+        virtualinvoke $r8.<edu.kit.ipd.sdq.eventsim.rvisualization.Controller: void viewInitialized()>();
+
+        virtualinvoke r0.<edu.kit.ipd.sdq.eventsim.rvisualization.views.FilterView: org.eclipse.core.databinding.DataBindingContext initDataBindings()>();
+
+        specialinvoke r0.<edu.kit.ipd.sdq.eventsim.rvisualization.views.FilterView: void addEventHandler()>();
+
+        return;
+    }
+
+    public final void setFocus()
+    {
+        edu.kit.ipd.sdq.eventsim.rvisualization.views.FilterView r0;
+        org.eclipse.swt.widgets.Composite $r1;
+
+        r0 := @this: edu.kit.ipd.sdq.eventsim.rvisualization.views.FilterView;
+
+        $r1 = r0.<edu.kit.ipd.sdq.eventsim.rvisualization.views.FilterView: org.eclipse.swt.widgets.Composite viewParent>;
+
+        virtualinvoke $r1.<org.eclipse.swt.widgets.Composite: boolean setFocus()>();
+
+        return;
+    }
+
+    public edu.kit.ipd.sdq.eventsim.rvisualization.Controller getController()
+    {
+        edu.kit.ipd.sdq.eventsim.rvisualization.views.FilterView r0;
+        edu.kit.ipd.sdq.eventsim.rvisualization.Controller $r1;
+
+        r0 := @this: edu.kit.ipd.sdq.eventsim.rvisualization.views.FilterView;
+
+        $r1 = r0.<edu.kit.ipd.sdq.eventsim.rvisualization.views.FilterView: edu.kit.ipd.sdq.eventsim.rvisualization.Controller ctrl>;
+
+        return $r1;
+    }
+
+    public org.eclipse.swt.widgets.Display getDisplay()
+    {
+        edu.kit.ipd.sdq.eventsim.rvisualization.views.FilterView r0;
+        org.eclipse.swt.widgets.Composite $r1, $r2;
+        org.eclipse.swt.widgets.Display $r3;
+
+        r0 := @this: edu.kit.ipd.sdq.eventsim.rvisualization.views.FilterView;
+
+        $r1 = r0.<edu.kit.ipd.sdq.eventsim.rvisualization.views.FilterView: org.eclipse.swt.widgets.Composite viewParent>;
+
+        if $r1 == null goto label1;
+
+        $r2 = r0.<edu.kit.ipd.sdq.eventsim.rvisualization.views.FilterView: org.eclipse.swt.widgets.Composite viewParent>;
+
+        $r3 = virtualinvoke $r2.<org.eclipse.swt.widgets.Composite: org.eclipse.swt.widgets.Display getDisplay()>();
+
+        goto label2;
+
+     label1:
+        $r3 = staticinvoke <org.eclipse.swt.widgets.Display: org.eclipse.swt.widgets.Display getDefault()>();
+
+     label2:
+        return $r3;
+    }
+
+    public void setMeasurementsCount(int)
+    {
+        edu.kit.ipd.sdq.eventsim.rvisualization.views.FilterView r0;
+        int i0;
+        java.lang.String r1;
+        java.lang.Object[] $r2;
+        java.util.Locale $r3;
+        java.lang.Integer $r4;
+        org.eclipse.swt.widgets.Label $r5;
+
+        r0 := @this: edu.kit.ipd.sdq.eventsim.rvisualization.views.FilterView;
+
+        i0 := @parameter0: int;
+
+        $r3 = <java.util.Locale: java.util.Locale US>;
+
+        $r2 = newarray (java.lang.Object)[1];
+
+        $r4 = staticinvoke <java.lang.Integer: java.lang.Integer valueOf(int)>(i0);
+
+        $r2[0] = $r4;
+
+        r1 = staticinvoke <java.lang.String: java.lang.String format(java.util.Locale,java.lang.String,java.lang.Object[])>($r3, "%,d", $r2);
+
+        $r5 = r0.<edu.kit.ipd.sdq.eventsim.rvisualization.views.FilterView: org.eclipse.swt.widgets.Label lblMeasurementsCount>;
+
+        virtualinvoke $r5.<org.eclipse.swt.widgets.Label: void setText(java.lang.String)>(r1);
+
+        return;
+    }
+
+    public void setMemoryConsmption(int)
+    {
+        edu.kit.ipd.sdq.eventsim.rvisualization.views.FilterView r0;
+        int i0;
+        java.lang.String r1, $r7, $r9;
+        java.lang.Object[] $r2;
+        java.util.Locale $r3;
+        java.lang.Integer $r4;
+        java.lang.StringBuilder $r5, $r8;
+        org.eclipse.swt.widgets.Label $r6;
+
+        r0 := @this: edu.kit.ipd.sdq.eventsim.rvisualization.views.FilterView;
+
+        i0 := @parameter0: int;
+
+        $r3 = <java.util.Locale: java.util.Locale US>;
+
+        $r2 = newarray (java.lang.Object)[1];
+
+        $r4 = staticinvoke <java.lang.Integer: java.lang.Integer valueOf(int)>(i0);
+
+        $r2[0] = $r4;
+
+        r1 = staticinvoke <java.lang.String: java.lang.String format(java.util.Locale,java.lang.String,java.lang.Object[])>($r3, "%,d", $r2);
+
+        $r6 = r0.<edu.kit.ipd.sdq.eventsim.rvisualization.views.FilterView: org.eclipse.swt.widgets.Label lblMemory>;
+
+        $r5 = new java.lang.StringBuilder;
+
+        $r7 = staticinvoke <java.lang.String: java.lang.String valueOf(java.lang.Object)>(r1);
+
+        specialinvoke $r5.<java.lang.StringBuilder: void <init>(java.lang.String)>($r7);
+
+        $r8 = virtualinvoke $r5.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(" MB");
+
+        $r9 = virtualinvoke $r8.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        virtualinvoke $r6.<org.eclipse.swt.widgets.Label: void setText(java.lang.String)>($r9);
+
+        return;
+    }
+
+    public void showTriggerWarning(boolean, int, int)
+    {
+        edu.kit.ipd.sdq.eventsim.rvisualization.views.FilterView r0;
+        boolean z0;
+        int i0, i1;
+        org.eclipse.swt.widgets.Composite $r1;
+        java.lang.StringBuilder $r2, $r4, $r5, $r7, $r9;
+        org.eclipse.swt.widgets.Text $r3, $r8;
+        java.lang.String $r6, $r10;
+
+        r0 := @this: edu.kit.ipd.sdq.eventsim.rvisualization.views.FilterView;
+
+        z0 := @parameter0: boolean;
+
+        i0 := @parameter1: int;
+
+        i1 := @parameter2: int;
+
+        $r1 = r0.<edu.kit.ipd.sdq.eventsim.rvisualization.views.FilterView: org.eclipse.swt.widgets.Composite cmpTriggerWarning>;
+
+        virtualinvoke $r1.<org.eclipse.swt.widgets.Composite: void setVisible(boolean)>(z0);
+
+        if z0 == 0 goto label1;
+
+        $r3 = r0.<edu.kit.ipd.sdq.eventsim.rvisualization.views.FilterView: org.eclipse.swt.widgets.Text txtTriggerWarning1>;
+
+        $r2 = new java.lang.StringBuilder;
+
+        specialinvoke $r2.<java.lang.StringBuilder: void <init>(java.lang.String)>("Cannot display more than ");
+
+        $r4 = virtualinvoke $r2.<java.lang.StringBuilder: java.lang.StringBuilder append(int)>(i0);
+
+        $r5 = virtualinvoke $r4.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(" triggers.");
+
+        $r6 = virtualinvoke $r5.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        virtualinvoke $r3.<org.eclipse.swt.widgets.Text: void setText(java.lang.String)>($r6);
+
+        $r8 = r0.<edu.kit.ipd.sdq.eventsim.rvisualization.views.FilterView: org.eclipse.swt.widgets.Text txtTriggerWarning2>;
+
+        $r7 = new java.lang.StringBuilder;
+
+        specialinvoke $r7.<java.lang.StringBuilder: void <init>(java.lang.String)>("Triggers within time span: ");
+
+        $r9 = virtualinvoke $r7.<java.lang.StringBuilder: java.lang.StringBuilder append(int)>(i1);
+
+        $r10 = virtualinvoke $r9.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        virtualinvoke $r8.<org.eclipse.swt.widgets.Text: void setText(java.lang.String)>($r10);
+
+     label1:
+        return;
+    }
+
+    public void enableMetricsCombo(boolean)
+    {
+        edu.kit.ipd.sdq.eventsim.rvisualization.views.FilterView r0;
+        boolean z0;
+        org.eclipse.jface.viewers.ComboViewer $r1;
+        org.eclipse.swt.widgets.Combo $r2;
+
+        r0 := @this: edu.kit.ipd.sdq.eventsim.rvisualization.views.FilterView;
+
+        z0 := @parameter0: boolean;
+
+        $r1 = r0.<edu.kit.ipd.sdq.eventsim.rvisualization.views.FilterView: org.eclipse.jface.viewers.ComboViewer cmbMetric>;
+
+        $r2 = virtualinvoke $r1.<org.eclipse.jface.viewers.ComboViewer: org.eclipse.swt.widgets.Combo getCombo()>();
+
+        virtualinvoke $r2.<org.eclipse.swt.widgets.Combo: void setEnabled(boolean)>(z0);
+
+        return;
+    }
+
+    public final void enableTriggerTypeCombo(boolean)
+    {
+        edu.kit.ipd.sdq.eventsim.rvisualization.views.FilterView r0;
+        boolean z0;
+        org.eclipse.jface.viewers.ComboViewer $r1;
+        org.eclipse.swt.widgets.Combo $r2;
+        org.eclipse.swt.widgets.Button $r3;
+
+        r0 := @this: edu.kit.ipd.sdq.eventsim.rvisualization.views.FilterView;
+
+        z0 := @parameter0: boolean;
+
+        $r1 = r0.<edu.kit.ipd.sdq.eventsim.rvisualization.views.FilterView: org.eclipse.jface.viewers.ComboViewer cmbTriggerType>;
+
+        $r2 = virtualinvoke $r1.<org.eclipse.jface.viewers.ComboViewer: org.eclipse.swt.widgets.Combo getCombo()>();
+
+        virtualinvoke $r2.<org.eclipse.swt.widgets.Combo: void setEnabled(boolean)>(z0);
+
+        $r3 = r0.<edu.kit.ipd.sdq.eventsim.rvisualization.views.FilterView: org.eclipse.swt.widgets.Button btnClearTriggerTypes>;
+
+        virtualinvoke $r3.<org.eclipse.swt.widgets.Button: void setEnabled(boolean)>(z0);
+
+        return;
+    }
+
+    public void enableTriggerInstanceCombo(boolean)
+    {
+        edu.kit.ipd.sdq.eventsim.rvisualization.views.FilterView r0;
+        boolean z0;
+        org.eclipse.jface.viewers.ComboViewer $r1;
+        org.eclipse.swt.widgets.Combo $r2;
+        org.eclipse.swt.widgets.Button $r3;
+
+        r0 := @this: edu.kit.ipd.sdq.eventsim.rvisualization.views.FilterView;
+
+        z0 := @parameter0: boolean;
+
+        $r1 = r0.<edu.kit.ipd.sdq.eventsim.rvisualization.views.FilterView: org.eclipse.jface.viewers.ComboViewer cmbTriggerInstance>;
+
+        $r2 = virtualinvoke $r1.<org.eclipse.jface.viewers.ComboViewer: org.eclipse.swt.widgets.Combo getCombo()>();
+
+        virtualinvoke $r2.<org.eclipse.swt.widgets.Combo: void setEnabled(boolean)>(z0);
+
+        $r3 = r0.<edu.kit.ipd.sdq.eventsim.rvisualization.views.FilterView: org.eclipse.swt.widgets.Button btnClearTriggerInstances>;
+
+        virtualinvoke $r3.<org.eclipse.swt.widgets.Button: void setEnabled(boolean)>(z0);
+
+        return;
+    }
+
+    public void enableAssemblyContextCombo(boolean)
+    {
+        edu.kit.ipd.sdq.eventsim.rvisualization.views.FilterView r0;
+        boolean z0;
+        org.eclipse.jface.viewers.ComboViewer $r1;
+        org.eclipse.swt.widgets.Combo $r2;
+        org.eclipse.swt.widgets.Button $r3;
+
+        r0 := @this: edu.kit.ipd.sdq.eventsim.rvisualization.views.FilterView;
+
+        z0 := @parameter0: boolean;
+
+        $r1 = r0.<edu.kit.ipd.sdq.eventsim.rvisualization.views.FilterView: org.eclipse.jface.viewers.ComboViewer cmbAssemblyCtx>;
+
+        $r2 = virtualinvoke $r1.<org.eclipse.jface.viewers.ComboViewer: org.eclipse.swt.widgets.Combo getCombo()>();
+
+        virtualinvoke $r2.<org.eclipse.swt.widgets.Combo: void setEnabled(boolean)>(z0);
+
+        $r3 = r0.<edu.kit.ipd.sdq.eventsim.rvisualization.views.FilterView: org.eclipse.swt.widgets.Button btnClearAssemblyContext>;
+
+        virtualinvoke $r3.<org.eclipse.swt.widgets.Button: void setEnabled(boolean)>(z0);
+
+        return;
+    }
+
+    public void enableMeasuringPointsFromCombo(boolean)
+    {
+        edu.kit.ipd.sdq.eventsim.rvisualization.views.FilterView r0;
+        boolean z0;
+        org.eclipse.jface.viewers.ComboViewer $r1;
+        org.eclipse.swt.widgets.Combo $r2;
+
+        r0 := @this: edu.kit.ipd.sdq.eventsim.rvisualization.views.FilterView;
+
+        z0 := @parameter0: boolean;
+
+        $r1 = r0.<edu.kit.ipd.sdq.eventsim.rvisualization.views.FilterView: org.eclipse.jface.viewers.ComboViewer cmbMeasuringPointFrom>;
+
+        $r2 = virtualinvoke $r1.<org.eclipse.jface.viewers.ComboViewer: org.eclipse.swt.widgets.Combo getCombo()>();
+
+        virtualinvoke $r2.<org.eclipse.swt.widgets.Combo: void setEnabled(boolean)>(z0);
+
+        return;
+    }
+
+    public void enableMeasuringPointsToCombo(boolean)
+    {
+        edu.kit.ipd.sdq.eventsim.rvisualization.views.FilterView r0;
+        boolean z0;
+        org.eclipse.jface.viewers.ComboViewer $r1;
+        org.eclipse.swt.widgets.Combo $r2;
+
+        r0 := @this: edu.kit.ipd.sdq.eventsim.rvisualization.views.FilterView;
+
+        z0 := @parameter0: boolean;
+
+        $r1 = r0.<edu.kit.ipd.sdq.eventsim.rvisualization.views.FilterView: org.eclipse.jface.viewers.ComboViewer cmbMeasuringPointTo>;
+
+        $r2 = virtualinvoke $r1.<org.eclipse.jface.viewers.ComboViewer: org.eclipse.swt.widgets.Combo getCombo()>();
+
+        virtualinvoke $r2.<org.eclipse.swt.widgets.Combo: void setEnabled(boolean)>(z0);
+
+        return;
+    }
+
+    public void enableSimulationTimeComposite(boolean)
+    {
+        edu.kit.ipd.sdq.eventsim.rvisualization.views.FilterView r0;
+        boolean z0;
+        org.eclipse.swt.widgets.Composite $r1;
+        org.eclipse.swt.widgets.Control r2;
+
+        r0 := @this: edu.kit.ipd.sdq.eventsim.rvisualization.views.FilterView;
+
+        z0 := @parameter0: boolean;
+
+        $r1 = r0.<edu.kit.ipd.sdq.eventsim.rvisualization.views.FilterView: org.eclipse.swt.widgets.Composite cmpTimeSpan>;
+
+        r2 = (org.eclipse.swt.widgets.Control) $r1;
+
+        staticinvoke <edu.kit.ipd.sdq.eventsim.rvisualization.util.Helper: void setEnabledRecursive(org.eclipse.swt.widgets.Control,boolean)>(r2, z0);
+
+        return;
+    }
+
+    public void enableDiagramTypeCombo(boolean)
+    {
+        edu.kit.ipd.sdq.eventsim.rvisualization.views.FilterView r0;
+        boolean z0;
+        org.eclipse.jface.viewers.ComboViewer $r1;
+        org.eclipse.swt.widgets.Combo $r2;
+
+        r0 := @this: edu.kit.ipd.sdq.eventsim.rvisualization.views.FilterView;
+
+        z0 := @parameter0: boolean;
+
+        $r1 = r0.<edu.kit.ipd.sdq.eventsim.rvisualization.views.FilterView: org.eclipse.jface.viewers.ComboViewer cmbDiagramType>;
+
+        $r2 = virtualinvoke $r1.<org.eclipse.jface.viewers.ComboViewer: org.eclipse.swt.widgets.Combo getCombo()>();
+
+        virtualinvoke $r2.<org.eclipse.swt.widgets.Combo: void setEnabled(boolean)>(z0);
+
+        return;
+    }
+
+    public void enablePlotButton(boolean)
+    {
+        edu.kit.ipd.sdq.eventsim.rvisualization.views.FilterView r0;
+        boolean z0;
+        org.eclipse.swt.widgets.Button $r1;
+
+        r0 := @this: edu.kit.ipd.sdq.eventsim.rvisualization.views.FilterView;
+
+        z0 := @parameter0: boolean;
+
+        $r1 = r0.<edu.kit.ipd.sdq.eventsim.rvisualization.views.FilterView: org.eclipse.swt.widgets.Button btnPlot>;
+
+        virtualinvoke $r1.<org.eclipse.swt.widgets.Button: void setEnabled(boolean)>(z0);
+
+        return;
+    }
+
+    private void createNorthBar(org.eclipse.swt.widgets.Composite)
+    {
+        edu.kit.ipd.sdq.eventsim.rvisualization.views.FilterView r0;
+        org.eclipse.swt.widgets.Composite r1, $r4;
+        org.eclipse.swt.layout.GridLayout $r5;
+        org.eclipse.swt.widgets.Label $r6, $r7, $r9, $r10, $r11, $r12, $r13, $r15, $r16;
+        org.eclipse.swt.layout.GridData $r8, $r14;
+
+        r0 := @this: edu.kit.ipd.sdq.eventsim.rvisualization.views.FilterView;
+
+        r1 := @parameter0: org.eclipse.swt.widgets.Composite;
+
+        $r4 = new org.eclipse.swt.widgets.Composite;
+
+        specialinvoke $r4.<org.eclipse.swt.widgets.Composite: void <init>(org.eclipse.swt.widgets.Composite,int)>(r1, 0);
+
+        virtualinvoke $r4.<org.eclipse.swt.widgets.Composite: void setLayoutData(java.lang.Object)>("North");
+
+        $r5 = new org.eclipse.swt.layout.GridLayout;
+
+        specialinvoke $r5.<org.eclipse.swt.layout.GridLayout: void <init>(int,boolean)>(2, 0);
+
+        virtualinvoke $r4.<org.eclipse.swt.widgets.Composite: void setLayout(org.eclipse.swt.widgets.Layout)>($r5);
+
+        $r6 = new org.eclipse.swt.widgets.Label;
+
+        specialinvoke $r6.<org.eclipse.swt.widgets.Label: void <init>(org.eclipse.swt.widgets.Composite,int)>($r4, 0);
+
+        virtualinvoke $r6.<org.eclipse.swt.widgets.Label: void setText(java.lang.String)>("Number of measurements:");
+
+        $r7 = new org.eclipse.swt.widgets.Label;
+
+        specialinvoke $r7.<org.eclipse.swt.widgets.Label: void <init>(org.eclipse.swt.widgets.Composite,int)>($r4, 0);
+
+        r0.<edu.kit.ipd.sdq.eventsim.rvisualization.views.FilterView: org.eclipse.swt.widgets.Label lblMeasurementsCount> = $r7;
+
+        $r9 = r0.<edu.kit.ipd.sdq.eventsim.rvisualization.views.FilterView: org.eclipse.swt.widgets.Label lblMeasurementsCount>;
+
+        $r8 = new org.eclipse.swt.layout.GridData;
+
+        specialinvoke $r8.<org.eclipse.swt.layout.GridData: void <init>(int,int,boolean,boolean,int,int)>(4, 16777216, 1, 0, 1, 1);
+
+        virtualinvoke $r9.<org.eclipse.swt.widgets.Label: void setLayoutData(java.lang.Object)>($r8);
+
+        $r10 = r0.<edu.kit.ipd.sdq.eventsim.rvisualization.views.FilterView: org.eclipse.swt.widgets.Label lblMeasurementsCount>;
+
+        virtualinvoke $r10.<org.eclipse.swt.widgets.Label: void setText(java.lang.String)>("0");
+
+        $r11 = new org.eclipse.swt.widgets.Label;
+
+        specialinvoke $r11.<org.eclipse.swt.widgets.Label: void <init>(org.eclipse.swt.widgets.Composite,int)>($r4, 0);
+
+        r0.<edu.kit.ipd.sdq.eventsim.rvisualization.views.FilterView: org.eclipse.swt.widgets.Label lblMemoryConsumption> = $r11;
+
+        $r12 = r0.<edu.kit.ipd.sdq.eventsim.rvisualization.views.FilterView: org.eclipse.swt.widgets.Label lblMemoryConsumption>;
+
+        virtualinvoke $r12.<org.eclipse.swt.widgets.Label: void setText(java.lang.String)>("Memory consumption:");
+
+        $r13 = new org.eclipse.swt.widgets.Label;
+
+        specialinvoke $r13.<org.eclipse.swt.widgets.Label: void <init>(org.eclipse.swt.widgets.Composite,int)>($r4, 0);
+
+        r0.<edu.kit.ipd.sdq.eventsim.rvisualization.views.FilterView: org.eclipse.swt.widgets.Label lblMemory> = $r13;
+
+        $r15 = r0.<edu.kit.ipd.sdq.eventsim.rvisualization.views.FilterView: org.eclipse.swt.widgets.Label lblMemory>;
+
+        $r14 = new org.eclipse.swt.layout.GridData;
+
+        specialinvoke $r14.<org.eclipse.swt.layout.GridData: void <init>(int,int,boolean,boolean,int,int)>(4, 16777216, 0, 0, 1, 1);
+
+        virtualinvoke $r15.<org.eclipse.swt.widgets.Label: void setLayoutData(java.lang.Object)>($r14);
+
+        $r16 = r0.<edu.kit.ipd.sdq.eventsim.rvisualization.views.FilterView: org.eclipse.swt.widgets.Label lblMemory>;
+
+        virtualinvoke $r16.<org.eclipse.swt.widgets.Label: void setText(java.lang.String)>("0");
+
+        return;
+    }
+
+    private void createSouthBar(org.eclipse.swt.widgets.Composite)
+    {
+        edu.kit.ipd.sdq.eventsim.rvisualization.views.FilterView r0;
+        org.eclipse.swt.widgets.Composite r1, $r4;
+        org.eclipse.swt.layout.GridLayout $r5;
+        org.eclipse.swt.widgets.Label $r6;
+        org.eclipse.jface.viewers.ComboViewer $r7, $r8;
+        org.eclipse.swt.widgets.Combo $r9;
+        org.eclipse.swt.layout.GridData $r10, $r12;
+        org.eclipse.swt.widgets.Button $r11, $r13, $r14, $r16;
+        org.eclipse.swt.graphics.Image $r15;
+        org.eclipse.core.databinding.DataBindingContext $r17;
+
+        r0 := @this: edu.kit.ipd.sdq.eventsim.rvisualization.views.FilterView;
+
+        r1 := @parameter0: org.eclipse.swt.widgets.Composite;
+
+        $r4 = new org.eclipse.swt.widgets.Composite;
+
+        specialinvoke $r4.<org.eclipse.swt.widgets.Composite: void <init>(org.eclipse.swt.widgets.Composite,int)>(r1, 0);
+
+        virtualinvoke $r4.<org.eclipse.swt.widgets.Composite: void setLayoutData(java.lang.Object)>("South");
+
+        $r5 = new org.eclipse.swt.layout.GridLayout;
+
+        specialinvoke $r5.<org.eclipse.swt.layout.GridLayout: void <init>(int,boolean)>(2, 0);
+
+        virtualinvoke $r4.<org.eclipse.swt.widgets.Composite: void setLayout(org.eclipse.swt.widgets.Layout)>($r5);
+
+        $r6 = new org.eclipse.swt.widgets.Label;
+
+        specialinvoke $r6.<org.eclipse.swt.widgets.Label: void <init>(org.eclipse.swt.widgets.Composite,int)>($r4, 0);
+
+        virtualinvoke $r6.<org.eclipse.swt.widgets.Label: void setText(java.lang.String)>("Diagram Type:");
+
+        $r7 = new org.eclipse.jface.viewers.ComboViewer;
+
+        specialinvoke $r7.<org.eclipse.jface.viewers.ComboViewer: void <init>(org.eclipse.swt.widgets.Composite,int)>($r4, 8);
+
+        r0.<edu.kit.ipd.sdq.eventsim.rvisualization.views.FilterView: org.eclipse.jface.viewers.ComboViewer cmbDiagramType> = $r7;
+
+        $r8 = r0.<edu.kit.ipd.sdq.eventsim.rvisualization.views.FilterView: org.eclipse.jface.viewers.ComboViewer cmbDiagramType>;
+
+        $r9 = virtualinvoke $r8.<org.eclipse.jface.viewers.ComboViewer: org.eclipse.swt.widgets.Combo getCombo()>();
+
+        $r10 = new org.eclipse.swt.layout.GridData;
+
+        specialinvoke $r10.<org.eclipse.swt.layout.GridData: void <init>(int,int,boolean,boolean,int,int)>(4, 16777216, 1, 0, 1, 1);
+
+        virtualinvoke $r9.<org.eclipse.swt.widgets.Combo: void setLayoutData(java.lang.Object)>($r10);
+
+        $r11 = new org.eclipse.swt.widgets.Button;
+
+        specialinvoke $r11.<org.eclipse.swt.widgets.Button: void <init>(org.eclipse.swt.widgets.Composite,int)>($r4, 0);
+
+        r0.<edu.kit.ipd.sdq.eventsim.rvisualization.views.FilterView: org.eclipse.swt.widgets.Button btnPlot> = $r11;
+
+        $r13 = r0.<edu.kit.ipd.sdq.eventsim.rvisualization.views.FilterView: org.eclipse.swt.widgets.Button btnPlot>;
+
+        $r12 = new org.eclipse.swt.layout.GridData;
+
+        specialinvoke $r12.<org.eclipse.swt.layout.GridData: void <init>(int,int,boolean,boolean,int,int)>(4, 16777216, 1, 0, 2, 1);
+
+        virtualinvoke $r13.<org.eclipse.swt.widgets.Button: void setLayoutData(java.lang.Object)>($r12);
+
+        $r14 = r0.<edu.kit.ipd.sdq.eventsim.rvisualization.views.FilterView: org.eclipse.swt.widgets.Button btnPlot>;
+
+        $r15 = staticinvoke <org.eclipse.wb.swt.ResourceManager: org.eclipse.swt.graphics.Image getPluginImage(java.lang.String,java.lang.String)>("edu.kit.ipd.sdq.eventsim.rvisualization", "icons/chart_bar.png");
+
+        virtualinvoke $r14.<org.eclipse.swt.widgets.Button: void setImage(org.eclipse.swt.graphics.Image)>($r15);
+
+        $r16 = r0.<edu.kit.ipd.sdq.eventsim.rvisualization.views.FilterView: org.eclipse.swt.widgets.Button btnPlot>;
+
+        virtualinvoke $r16.<org.eclipse.swt.widgets.Button: void setText(java.lang.String)>("Plot Diagram");
+
+        $r17 = virtualinvoke r0.<edu.kit.ipd.sdq.eventsim.rvisualization.views.FilterView: org.eclipse.core.databinding.DataBindingContext initDataBindings()>();
+
+        r0.<edu.kit.ipd.sdq.eventsim.rvisualization.views.FilterView: org.eclipse.core.databinding.DataBindingContext m_bindingContext> = $r17;
+
+        return;
+    }
+
+    private void createExpandBar(org.eclipse.swt.widgets.Composite)
+    {
+        edu.kit.ipd.sdq.eventsim.rvisualization.views.FilterView r0;
+        org.eclipse.swt.widgets.Composite r1, $r2, $r3, $r5, $r7;
+        org.eclipse.swt.layout.FillLayout $r4;
+        org.eclipse.swt.widgets.ExpandBar $r6, $r9;
+        edu.kit.ipd.sdq.eventsim.rvisualization.views.FilterView$1 $r8;
+
+        r0 := @this: edu.kit.ipd.sdq.eventsim.rvisualization.views.FilterView;
+
+        r1 := @parameter0: org.eclipse.swt.widgets.Composite;
+
+        $r2 = new org.eclipse.swt.widgets.Composite;
+
+        specialinvoke $r2.<org.eclipse.swt.widgets.Composite: void <init>(org.eclipse.swt.widgets.Composite,int)>(r1, 0);
+
+        r0.<edu.kit.ipd.sdq.eventsim.rvisualization.views.FilterView: org.eclipse.swt.widgets.Composite cmpCenter> = $r2;
+
+        $r3 = r0.<edu.kit.ipd.sdq.eventsim.rvisualization.views.FilterView: org.eclipse.swt.widgets.Composite cmpCenter>;
+
+        virtualinvoke $r3.<org.eclipse.swt.widgets.Composite: void setLayoutData(java.lang.Object)>("Center");
+
+        $r5 = r0.<edu.kit.ipd.sdq.eventsim.rvisualization.views.FilterView: org.eclipse.swt.widgets.Composite cmpCenter>;
+
+        $r4 = new org.eclipse.swt.layout.FillLayout;
+
+        specialinvoke $r4.<org.eclipse.swt.layout.FillLayout: void <init>(int)>(256);
+
+        virtualinvoke $r5.<org.eclipse.swt.widgets.Composite: void setLayout(org.eclipse.swt.widgets.Layout)>($r4);
+
+        $r6 = new org.eclipse.swt.widgets.ExpandBar;
+
+        $r7 = r0.<edu.kit.ipd.sdq.eventsim.rvisualization.views.FilterView: org.eclipse.swt.widgets.Composite cmpCenter>;
+
+        specialinvoke $r6.<org.eclipse.swt.widgets.ExpandBar: void <init>(org.eclipse.swt.widgets.Composite,int)>($r7, 512);
+
+        r0.<edu.kit.ipd.sdq.eventsim.rvisualization.views.FilterView: org.eclipse.swt.widgets.ExpandBar expandBar> = $r6;
+
+        $r9 = r0.<edu.kit.ipd.sdq.eventsim.rvisualization.views.FilterView: org.eclipse.swt.widgets.ExpandBar expandBar>;
+
+        $r8 = new edu.kit.ipd.sdq.eventsim.rvisualization.views.FilterView$1;
+
+        specialinvoke $r8.<edu.kit.ipd.sdq.eventsim.rvisualization.views.FilterView$1: void <init>(edu.kit.ipd.sdq.eventsim.rvisualization.views.FilterView)>(r0);
+
+        virtualinvoke $r9.<org.eclipse.swt.widgets.ExpandBar: void addExpandListener(org.eclipse.swt.events.ExpandListener)>($r8);
+
+        specialinvoke r0.<edu.kit.ipd.sdq.eventsim.rvisualization.views.FilterView: void createMetricExpandItem()>();
+
+        specialinvoke r0.<edu.kit.ipd.sdq.eventsim.rvisualization.views.FilterView: void createSimulationTimeExpandItem()>();
+
+        specialinvoke r0.<edu.kit.ipd.sdq.eventsim.rvisualization.views.FilterView: void createTriggerExpandItem()>();
+
+        specialinvoke r0.<edu.kit.ipd.sdq.eventsim.rvisualization.views.FilterView: void createAssemblyContextExpandItem()>();
+
+        specialinvoke r0.<edu.kit.ipd.sdq.eventsim.rvisualization.views.FilterView: void createMeasuringPointsExpandItem()>();
+
+        return;
+    }
+
+    private void createSimulationTimeExpandItem()
+    {
+        edu.kit.ipd.sdq.eventsim.rvisualization.views.FilterView r0;
+        org.eclipse.swt.widgets.ExpandBar $r6, $r8;
+        org.eclipse.swt.widgets.Composite $r9, $r11, $r13, $r16, $r19, $r23, $r27, $r32, $r36, $r37, $r40, r45;
+        org.eclipse.swt.widgets.Scale $r21, $r25, r51, r53;
+        org.eclipse.swt.widgets.Spinner $r29, $r30, $r34, $r35, r55, r57;
+        org.eclipse.swt.widgets.Button $r42, $r43, r60;
+        org.eclipse.swt.widgets.ExpandItem r44;
+        org.eclipse.swt.layout.GridLayout r46;
+        org.eclipse.swt.widgets.Label r47, r49, r59;
+        org.eclipse.swt.layout.GridData r48, r50, r52, r54, r56, r58, r61;
+        org.eclipse.swt.widgets.Control r62;
+
+        r0 := @this: edu.kit.ipd.sdq.eventsim.rvisualization.views.FilterView;
+
+        r44 = new org.eclipse.swt.widgets.ExpandItem;
+
+        $r6 = r0.<edu.kit.ipd.sdq.eventsim.rvisualization.views.FilterView: org.eclipse.swt.widgets.ExpandBar expandBar>;
+
+        specialinvoke r44.<org.eclipse.swt.widgets.ExpandItem: void <init>(org.eclipse.swt.widgets.ExpandBar,int)>($r6, 0);
+
+        virtualinvoke r44.<org.eclipse.swt.widgets.ExpandItem: void setText(java.lang.String)>("When: Simulation Time Bounds");
+
+        r45 = new org.eclipse.swt.widgets.Composite;
+
+        $r8 = r0.<edu.kit.ipd.sdq.eventsim.rvisualization.views.FilterView: org.eclipse.swt.widgets.ExpandBar expandBar>;
+
+        specialinvoke r45.<org.eclipse.swt.widgets.Composite: void <init>(org.eclipse.swt.widgets.Composite,int)>($r8, 0);
+
+        r0.<edu.kit.ipd.sdq.eventsim.rvisualization.views.FilterView: org.eclipse.swt.widgets.Composite cmpTimeSpan> = r45;
+
+        $r9 = r0.<edu.kit.ipd.sdq.eventsim.rvisualization.views.FilterView: org.eclipse.swt.widgets.Composite cmpTimeSpan>;
+
+        r62 = (org.eclipse.swt.widgets.Control) $r9;
+
+        virtualinvoke r44.<org.eclipse.swt.widgets.ExpandItem: void setControl(org.eclipse.swt.widgets.Control)>(r62);
+
+        virtualinvoke r44.<org.eclipse.swt.widgets.ExpandItem: void setHeight(int)>(150);
+
+        r46 = new org.eclipse.swt.layout.GridLayout;
+
+        specialinvoke r46.<org.eclipse.swt.layout.GridLayout: void <init>(int,boolean)>(2, 0);
+
+        $r11 = r0.<edu.kit.ipd.sdq.eventsim.rvisualization.views.FilterView: org.eclipse.swt.widgets.Composite cmpTimeSpan>;
+
+        virtualinvoke $r11.<org.eclipse.swt.widgets.Composite: void setLayout(org.eclipse.swt.widgets.Layout)>(r46);
+
+        r47 = new org.eclipse.swt.widgets.Label;
+
+        $r13 = r0.<edu.kit.ipd.sdq.eventsim.rvisualization.views.FilterView: org.eclipse.swt.widgets.Composite cmpTimeSpan>;
+
+        specialinvoke r47.<org.eclipse.swt.widgets.Label: void <init>(org.eclipse.swt.widgets.Composite,int)>($r13, 0);
+
+        r48 = new org.eclipse.swt.layout.GridData;
+
+        specialinvoke r48.<org.eclipse.swt.layout.GridData: void <init>(int,int,boolean,boolean,int,int)>(4, 16777216, 0, 0, 1, 1);
+
+        virtualinvoke r47.<org.eclipse.swt.widgets.Label: void setLayoutData(java.lang.Object)>(r48);
+
+        virtualinvoke r47.<org.eclipse.swt.widgets.Label: void setText(java.lang.String)>("Lower bound:");
+
+        r49 = new org.eclipse.swt.widgets.Label;
+
+        $r16 = r0.<edu.kit.ipd.sdq.eventsim.rvisualization.views.FilterView: org.eclipse.swt.widgets.Composite cmpTimeSpan>;
+
+        specialinvoke r49.<org.eclipse.swt.widgets.Label: void <init>(org.eclipse.swt.widgets.Composite,int)>($r16, 0);
+
+        r50 = new org.eclipse.swt.layout.GridData;
+
+        specialinvoke r50.<org.eclipse.swt.layout.GridData: void <init>(int,int,boolean,boolean,int,int)>(4, 16777216, 0, 0, 1, 1);
+
+        virtualinvoke r49.<org.eclipse.swt.widgets.Label: void setLayoutData(java.lang.Object)>(r50);
+
+        virtualinvoke r49.<org.eclipse.swt.widgets.Label: void setText(java.lang.String)>("Upper bound:");
+
+        r51 = new org.eclipse.swt.widgets.Scale;
+
+        $r19 = r0.<edu.kit.ipd.sdq.eventsim.rvisualization.views.FilterView: org.eclipse.swt.widgets.Composite cmpTimeSpan>;
+
+        specialinvoke r51.<org.eclipse.swt.widgets.Scale: void <init>(org.eclipse.swt.widgets.Composite,int)>($r19, 0);
+
+        r0.<edu.kit.ipd.sdq.eventsim.rvisualization.views.FilterView: org.eclipse.swt.widgets.Scale scaleLower> = r51;
+
+        $r21 = r0.<edu.kit.ipd.sdq.eventsim.rvisualization.views.FilterView: org.eclipse.swt.widgets.Scale scaleLower>;
+
+        r52 = new org.eclipse.swt.layout.GridData;
+
+        specialinvoke r52.<org.eclipse.swt.layout.GridData: void <init>(int,int,boolean,boolean,int,int)>(4, 16777216, 1, 0, 1, 1);
+
+        virtualinvoke $r21.<org.eclipse.swt.widgets.Scale: void setLayoutData(java.lang.Object)>(r52);
+
+        r53 = new org.eclipse.swt.widgets.Scale;
+
+        $r23 = r0.<edu.kit.ipd.sdq.eventsim.rvisualization.views.FilterView: org.eclipse.swt.widgets.Composite cmpTimeSpan>;
+
+        specialinvoke r53.<org.eclipse.swt.widgets.Scale: void <init>(org.eclipse.swt.widgets.Composite,int)>($r23, 0);
+
+        r0.<edu.kit.ipd.sdq.eventsim.rvisualization.views.FilterView: org.eclipse.swt.widgets.Scale scaleUpper> = r53;
+
+        $r25 = r0.<edu.kit.ipd.sdq.eventsim.rvisualization.views.FilterView: org.eclipse.swt.widgets.Scale scaleUpper>;
+
+        r54 = new org.eclipse.swt.layout.GridData;
+
+        specialinvoke r54.<org.eclipse.swt.layout.GridData: void <init>(int,int,boolean,boolean,int,int)>(4, 16777216, 1, 0, 1, 1);
+
+        virtualinvoke $r25.<org.eclipse.swt.widgets.Scale: void setLayoutData(java.lang.Object)>(r54);
+
+        r55 = new org.eclipse.swt.widgets.Spinner;
+
+        $r27 = r0.<edu.kit.ipd.sdq.eventsim.rvisualization.views.FilterView: org.eclipse.swt.widgets.Composite cmpTimeSpan>;
+
+        specialinvoke r55.<org.eclipse.swt.widgets.Spinner: void <init>(org.eclipse.swt.widgets.Composite,int)>($r27, 2048);
+
+        r0.<edu.kit.ipd.sdq.eventsim.rvisualization.views.FilterView: org.eclipse.swt.widgets.Spinner spnTimeSpanFrom> = r55;
+
+        $r29 = r0.<edu.kit.ipd.sdq.eventsim.rvisualization.views.FilterView: org.eclipse.swt.widgets.Spinner spnTimeSpanFrom>;
+
+        r56 = new org.eclipse.swt.layout.GridData;
+
+        specialinvoke r56.<org.eclipse.swt.layout.GridData: void <init>(int,int,boolean,boolean,int,int)>(4, 16777216, 1, 0, 1, 1);
+
+        virtualinvoke $r29.<org.eclipse.swt.widgets.Spinner: void setLayoutData(java.lang.Object)>(r56);
+
+        $r30 = r0.<edu.kit.ipd.sdq.eventsim.rvisualization.views.FilterView: org.eclipse.swt.widgets.Spinner spnTimeSpanFrom>;
+
+        virtualinvoke $r30.<org.eclipse.swt.widgets.Spinner: void setMaximum(int)>(1000000);
+
+        r57 = new org.eclipse.swt.widgets.Spinner;
+
+        $r32 = r0.<edu.kit.ipd.sdq.eventsim.rvisualization.views.FilterView: org.eclipse.swt.widgets.Composite cmpTimeSpan>;
+
+        specialinvoke r57.<org.eclipse.swt.widgets.Spinner: void <init>(org.eclipse.swt.widgets.Composite,int)>($r32, 2048);
+
+        r0.<edu.kit.ipd.sdq.eventsim.rvisualization.views.FilterView: org.eclipse.swt.widgets.Spinner spnTimeSpanTo> = r57;
+
+        $r34 = r0.<edu.kit.ipd.sdq.eventsim.rvisualization.views.FilterView: org.eclipse.swt.widgets.Spinner spnTimeSpanTo>;
+
+        r58 = new org.eclipse.swt.layout.GridData;
+
+        specialinvoke r58.<org.eclipse.swt.layout.GridData: void <init>(int,int,boolean,boolean,int,int)>(4, 16777216, 1, 0, 1, 1);
+
+        virtualinvoke $r34.<org.eclipse.swt.widgets.Spinner: void setLayoutData(java.lang.Object)>(r58);
+
+        $r35 = r0.<edu.kit.ipd.sdq.eventsim.rvisualization.views.FilterView: org.eclipse.swt.widgets.Spinner spnTimeSpanTo>;
+
+        virtualinvoke $r35.<org.eclipse.swt.widgets.Spinner: void setMaximum(int)>(1000000);
+
+        $r36 = r0.<edu.kit.ipd.sdq.eventsim.rvisualization.views.FilterView: org.eclipse.swt.widgets.Composite cmpTimeSpan>;
+
+        specialinvoke r0.<edu.kit.ipd.sdq.eventsim.rvisualization.views.FilterView: void keepSameHeight(org.eclipse.swt.widgets.Composite,org.eclipse.swt.widgets.ExpandItem)>($r36, r44);
+
+        r59 = new org.eclipse.swt.widgets.Label;
+
+        $r37 = r0.<edu.kit.ipd.sdq.eventsim.rvisualization.views.FilterView: org.eclipse.swt.widgets.Composite cmpTimeSpan>;
+
+        specialinvoke r59.<org.eclipse.swt.widgets.Label: void <init>(org.eclipse.swt.widgets.Composite,int)>($r37, 0);
+
+        r60 = new org.eclipse.swt.widgets.Button;
+
+        $r40 = r0.<edu.kit.ipd.sdq.eventsim.rvisualization.views.FilterView: org.eclipse.swt.widgets.Composite cmpTimeSpan>;
+
+        specialinvoke r60.<org.eclipse.swt.widgets.Button: void <init>(org.eclipse.swt.widgets.Composite,int)>($r40, 0);
+
+        r0.<edu.kit.ipd.sdq.eventsim.rvisualization.views.FilterView: org.eclipse.swt.widgets.Button btnTimespanReset> = r60;
+
+        $r42 = r0.<edu.kit.ipd.sdq.eventsim.rvisualization.views.FilterView: org.eclipse.swt.widgets.Button btnTimespanReset>;
+
+        r61 = new org.eclipse.swt.layout.GridData;
+
+        specialinvoke r61.<org.eclipse.swt.layout.GridData: void <init>(int,int,boolean,boolean,int,int)>(131072, 16777216, 0, 0, 1, 1);
+
+        virtualinvoke $r42.<org.eclipse.swt.widgets.Button: void setLayoutData(java.lang.Object)>(r61);
+
+        $r43 = r0.<edu.kit.ipd.sdq.eventsim.rvisualization.views.FilterView: org.eclipse.swt.widgets.Button btnTimespanReset>;
+
+        virtualinvoke $r43.<org.eclipse.swt.widgets.Button: void setText(java.lang.String)>("Reset");
+
+        return;
+    }
+
+    private void createMeasuringPointsExpandItem()
+    {
+        edu.kit.ipd.sdq.eventsim.rvisualization.views.FilterView r0;
+        org.eclipse.swt.widgets.ExpandBar $r6, $r8;
+        org.eclipse.swt.widgets.Composite $r9, $r11, $r13, $r15, $r20, $r22, $r26, r28;
+        org.eclipse.jface.viewers.ComboViewer $r16, $r23, r31, r34;
+        org.eclipse.swt.widgets.Combo $r17, $r24;
+        org.eclipse.swt.widgets.ExpandItem r27;
+        org.eclipse.swt.layout.GridLayout r29;
+        org.eclipse.swt.widgets.Label r30, r33;
+        org.eclipse.swt.layout.GridData r32, r35;
+        org.eclipse.swt.widgets.Control r36;
+
+        r0 := @this: edu.kit.ipd.sdq.eventsim.rvisualization.views.FilterView;
+
+        r27 = new org.eclipse.swt.widgets.ExpandItem;
+
+        $r6 = r0.<edu.kit.ipd.sdq.eventsim.rvisualization.views.FilterView: org.eclipse.swt.widgets.ExpandBar expandBar>;
+
+        specialinvoke r27.<org.eclipse.swt.widgets.ExpandItem: void <init>(org.eclipse.swt.widgets.ExpandBar,int)>($r6, 0);
+
+        virtualinvoke r27.<org.eclipse.swt.widgets.ExpandItem: void setExpanded(boolean)>(1);
+
+        virtualinvoke r27.<org.eclipse.swt.widgets.ExpandItem: void setText(java.lang.String)>("Where: Measuring Point / Range");
+
+        r28 = new org.eclipse.swt.widgets.Composite;
+
+        $r8 = r0.<edu.kit.ipd.sdq.eventsim.rvisualization.views.FilterView: org.eclipse.swt.widgets.ExpandBar expandBar>;
+
+        specialinvoke r28.<org.eclipse.swt.widgets.Composite: void <init>(org.eclipse.swt.widgets.Composite,int)>($r8, 0);
+
+        r0.<edu.kit.ipd.sdq.eventsim.rvisualization.views.FilterView: org.eclipse.swt.widgets.Composite cmpMeasuringPoints> = r28;
+
+        $r9 = r0.<edu.kit.ipd.sdq.eventsim.rvisualization.views.FilterView: org.eclipse.swt.widgets.Composite cmpMeasuringPoints>;
+
+        r36 = (org.eclipse.swt.widgets.Control) $r9;
+
+        virtualinvoke r27.<org.eclipse.swt.widgets.ExpandItem: void setControl(org.eclipse.swt.widgets.Control)>(r36);
+
+        virtualinvoke r27.<org.eclipse.swt.widgets.ExpandItem: void setHeight(int)>(100);
+
+        r29 = new org.eclipse.swt.layout.GridLayout;
+
+        specialinvoke r29.<org.eclipse.swt.layout.GridLayout: void <init>(int,boolean)>(2, 0);
+
+        r29.<org.eclipse.swt.layout.GridLayout: int marginBottom> = 10;
+
+        r29.<org.eclipse.swt.layout.GridLayout: int marginTop> = 10;
+
+        $r11 = r0.<edu.kit.ipd.sdq.eventsim.rvisualization.views.FilterView: org.eclipse.swt.widgets.Composite cmpMeasuringPoints>;
+
+        virtualinvoke $r11.<org.eclipse.swt.widgets.Composite: void setLayout(org.eclipse.swt.widgets.Layout)>(r29);
+
+        r30 = new org.eclipse.swt.widgets.Label;
+
+        $r13 = r0.<edu.kit.ipd.sdq.eventsim.rvisualization.views.FilterView: org.eclipse.swt.widgets.Composite cmpMeasuringPoints>;
+
+        specialinvoke r30.<org.eclipse.swt.widgets.Label: void <init>(org.eclipse.swt.widgets.Composite,int)>($r13, 0);
+
+        virtualinvoke r30.<org.eclipse.swt.widgets.Label: void setText(java.lang.String)>("From:");
+
+        r31 = new org.eclipse.jface.viewers.ComboViewer;
+
+        $r15 = r0.<edu.kit.ipd.sdq.eventsim.rvisualization.views.FilterView: org.eclipse.swt.widgets.Composite cmpMeasuringPoints>;
+
+        specialinvoke r31.<org.eclipse.jface.viewers.ComboViewer: void <init>(org.eclipse.swt.widgets.Composite,int)>($r15, 8);
+
+        r0.<edu.kit.ipd.sdq.eventsim.rvisualization.views.FilterView: org.eclipse.jface.viewers.ComboViewer cmbMeasuringPointFrom> = r31;
+
+        $r16 = r0.<edu.kit.ipd.sdq.eventsim.rvisualization.views.FilterView: org.eclipse.jface.viewers.ComboViewer cmbMeasuringPointFrom>;
+
+        $r17 = virtualinvoke $r16.<org.eclipse.jface.viewers.ComboViewer: org.eclipse.swt.widgets.Combo getCombo()>();
+
+        r32 = new org.eclipse.swt.layout.GridData;
+
+        specialinvoke r32.<org.eclipse.swt.layout.GridData: void <init>(int,int,boolean,boolean,int,int)>(4, 16777216, 1, 0, 1, 1);
+
+        virtualinvoke $r17.<org.eclipse.swt.widgets.Combo: void setLayoutData(java.lang.Object)>(r32);
+
+        r33 = new org.eclipse.swt.widgets.Label;
+
+        $r20 = r0.<edu.kit.ipd.sdq.eventsim.rvisualization.views.FilterView: org.eclipse.swt.widgets.Composite cmpMeasuringPoints>;
+
+        specialinvoke r33.<org.eclipse.swt.widgets.Label: void <init>(org.eclipse.swt.widgets.Composite,int)>($r20, 0);
+
+        virtualinvoke r33.<org.eclipse.swt.widgets.Label: void setText(java.lang.String)>("To:");
+
+        r34 = new org.eclipse.jface.viewers.ComboViewer;
+
+        $r22 = r0.<edu.kit.ipd.sdq.eventsim.rvisualization.views.FilterView: org.eclipse.swt.widgets.Composite cmpMeasuringPoints>;
+
+        specialinvoke r34.<org.eclipse.jface.viewers.ComboViewer: void <init>(org.eclipse.swt.widgets.Composite,int)>($r22, 8);
+
+        r0.<edu.kit.ipd.sdq.eventsim.rvisualization.views.FilterView: org.eclipse.jface.viewers.ComboViewer cmbMeasuringPointTo> = r34;
+
+        $r23 = r0.<edu.kit.ipd.sdq.eventsim.rvisualization.views.FilterView: org.eclipse.jface.viewers.ComboViewer cmbMeasuringPointTo>;
+
+        $r24 = virtualinvoke $r23.<org.eclipse.jface.viewers.ComboViewer: org.eclipse.swt.widgets.Combo getCombo()>();
+
+        r35 = new org.eclipse.swt.layout.GridData;
+
+        specialinvoke r35.<org.eclipse.swt.layout.GridData: void <init>(int,int,boolean,boolean,int,int)>(4, 16777216, 1, 0, 1, 1);
+
+        virtualinvoke $r24.<org.eclipse.swt.widgets.Combo: void setLayoutData(java.lang.Object)>(r35);
+
+        $r26 = r0.<edu.kit.ipd.sdq.eventsim.rvisualization.views.FilterView: org.eclipse.swt.widgets.Composite cmpMeasuringPoints>;
+
+        specialinvoke r0.<edu.kit.ipd.sdq.eventsim.rvisualization.views.FilterView: void keepSameHeight(org.eclipse.swt.widgets.Composite,org.eclipse.swt.widgets.ExpandItem)>($r26, r27);
+
+        return;
+    }
+
+    private void createAssemblyContextExpandItem()
+    {
+        edu.kit.ipd.sdq.eventsim.rvisualization.views.FilterView r0;
+        org.eclipse.swt.widgets.ExpandBar $r4, $r8;
+        org.eclipse.swt.widgets.Composite $r6, $r9, $r11, $r16, $r20, r21;
+        org.eclipse.jface.viewers.ComboViewer $r12, r24;
+        org.eclipse.swt.widgets.Combo $r13;
+        org.eclipse.swt.widgets.Button $r17, $r19, r26;
+        org.eclipse.swt.layout.GridLayout r22;
+        org.eclipse.swt.widgets.ExpandItem r23;
+        org.eclipse.swt.layout.GridData r25;
+        edu.kit.ipd.sdq.eventsim.rvisualization.views.FilterView$2 r27;
+        org.eclipse.swt.widgets.Control r28;
+        org.eclipse.swt.events.SelectionListener r29;
+
+        r0 := @this: edu.kit.ipd.sdq.eventsim.rvisualization.views.FilterView;
+
+        r21 = new org.eclipse.swt.widgets.Composite;
+
+        $r4 = r0.<edu.kit.ipd.sdq.eventsim.rvisualization.views.FilterView: org.eclipse.swt.widgets.ExpandBar expandBar>;
+
+        specialinvoke r21.<org.eclipse.swt.widgets.Composite: void <init>(org.eclipse.swt.widgets.Composite,int)>($r4, 0);
+
+        r0.<edu.kit.ipd.sdq.eventsim.rvisualization.views.FilterView: org.eclipse.swt.widgets.Composite cmpAssemblyCtx> = r21;
+
+        r22 = new org.eclipse.swt.layout.GridLayout;
+
+        specialinvoke r22.<org.eclipse.swt.layout.GridLayout: void <init>(int,boolean)>(2, 0);
+
+        r22.<org.eclipse.swt.layout.GridLayout: int marginBottom> = 10;
+
+        r22.<org.eclipse.swt.layout.GridLayout: int marginTop> = 10;
+
+        $r6 = r0.<edu.kit.ipd.sdq.eventsim.rvisualization.views.FilterView: org.eclipse.swt.widgets.Composite cmpAssemblyCtx>;
+
+        virtualinvoke $r6.<org.eclipse.swt.widgets.Composite: void setLayout(org.eclipse.swt.widgets.Layout)>(r22);
+
+        r23 = new org.eclipse.swt.widgets.ExpandItem;
+
+        $r8 = r0.<edu.kit.ipd.sdq.eventsim.rvisualization.views.FilterView: org.eclipse.swt.widgets.ExpandBar expandBar>;
+
+        specialinvoke r23.<org.eclipse.swt.widgets.ExpandItem: void <init>(org.eclipse.swt.widgets.ExpandBar,int)>($r8, 0);
+
+        virtualinvoke r23.<org.eclipse.swt.widgets.ExpandItem: void setText(java.lang.String)>("Where: Assembly Context");
+
+        $r9 = r0.<edu.kit.ipd.sdq.eventsim.rvisualization.views.FilterView: org.eclipse.swt.widgets.Composite cmpAssemblyCtx>;
+
+        r28 = (org.eclipse.swt.widgets.Control) $r9;
+
+        virtualinvoke r23.<org.eclipse.swt.widgets.ExpandItem: void setControl(org.eclipse.swt.widgets.Control)>(r28);
+
+        virtualinvoke r23.<org.eclipse.swt.widgets.ExpandItem: void setHeight(int)>(100);
+
+        r24 = new org.eclipse.jface.viewers.ComboViewer;
+
+        $r11 = r0.<edu.kit.ipd.sdq.eventsim.rvisualization.views.FilterView: org.eclipse.swt.widgets.Composite cmpAssemblyCtx>;
+
+        specialinvoke r24.<org.eclipse.jface.viewers.ComboViewer: void <init>(org.eclipse.swt.widgets.Composite,int)>($r11, 8);
+
+        r0.<edu.kit.ipd.sdq.eventsim.rvisualization.views.FilterView: org.eclipse.jface.viewers.ComboViewer cmbAssemblyCtx> = r24;
+
+        $r12 = r0.<edu.kit.ipd.sdq.eventsim.rvisualization.views.FilterView: org.eclipse.jface.viewers.ComboViewer cmbAssemblyCtx>;
+
+        $r13 = virtualinvoke $r12.<org.eclipse.jface.viewers.ComboViewer: org.eclipse.swt.widgets.Combo getCombo()>();
+
+        r25 = new org.eclipse.swt.layout.GridData;
+
+        specialinvoke r25.<org.eclipse.swt.layout.GridData: void <init>(int,int,boolean,boolean,int,int)>(4, 16777216, 1, 0, 1, 1);
+
+        virtualinvoke $r13.<org.eclipse.swt.widgets.Combo: void setLayoutData(java.lang.Object)>(r25);
+
+        r26 = new org.eclipse.swt.widgets.Button;
+
+        $r16 = r0.<edu.kit.ipd.sdq.eventsim.rvisualization.views.FilterView: org.eclipse.swt.widgets.Composite cmpAssemblyCtx>;
+
+        specialinvoke r26.<org.eclipse.swt.widgets.Button: void <init>(org.eclipse.swt.widgets.Composite,int)>($r16, 0);
+
+        r0.<edu.kit.ipd.sdq.eventsim.rvisualization.views.FilterView: org.eclipse.swt.widgets.Button btnClearAssemblyContext> = r26;
+
+        $r17 = r0.<edu.kit.ipd.sdq.eventsim.rvisualization.views.FilterView: org.eclipse.swt.widgets.Button btnClearAssemblyContext>;
+
+        virtualinvoke $r17.<org.eclipse.swt.widgets.Button: void setText(java.lang.String)>("Clear");
+
+        $r19 = r0.<edu.kit.ipd.sdq.eventsim.rvisualization.views.FilterView: org.eclipse.swt.widgets.Button btnClearAssemblyContext>;
+
+        r27 = new edu.kit.ipd.sdq.eventsim.rvisualization.views.FilterView$2;
+
+        specialinvoke r27.<edu.kit.ipd.sdq.eventsim.rvisualization.views.FilterView$2: void <init>(edu.kit.ipd.sdq.eventsim.rvisualization.views.FilterView)>(r0);
+
+        r29 = (org.eclipse.swt.events.SelectionListener) r27;
+
+        virtualinvoke $r19.<org.eclipse.swt.widgets.Button: void addSelectionListener(org.eclipse.swt.events.SelectionListener)>(r29);
+
+        $r20 = r0.<edu.kit.ipd.sdq.eventsim.rvisualization.views.FilterView: org.eclipse.swt.widgets.Composite cmpAssemblyCtx>;
+
+        specialinvoke r0.<edu.kit.ipd.sdq.eventsim.rvisualization.views.FilterView: void keepSameHeight(org.eclipse.swt.widgets.Composite,org.eclipse.swt.widgets.ExpandItem)>($r20, r23);
+
+        return;
+    }
+
+    private void createTriggerExpandItem()
+    {
+        edu.kit.ipd.sdq.eventsim.rvisualization.views.FilterView r0;
+        org.eclipse.swt.widgets.ExpandBar $r3, $r7;
+        org.eclipse.swt.widgets.Composite $r5, $r9, $r13, $r14, $r15, r16;
+        org.eclipse.swt.widgets.ExpandItem $r8, $r10, $r11, $r12, r18;
+        org.eclipse.swt.layout.GridLayout r17;
+        org.eclipse.swt.widgets.Control r19;
+
+        r0 := @this: edu.kit.ipd.sdq.eventsim.rvisualization.views.FilterView;
+
+        r16 = new org.eclipse.swt.widgets.Composite;
+
+        $r3 = r0.<edu.kit.ipd.sdq.eventsim.rvisualization.views.FilterView: org.eclipse.swt.widgets.ExpandBar expandBar>;
+
+        specialinvoke r16.<org.eclipse.swt.widgets.Composite: void <init>(org.eclipse.swt.widgets.Composite,int)>($r3, 0);
+
+        r0.<edu.kit.ipd.sdq.eventsim.rvisualization.views.FilterView: org.eclipse.swt.widgets.Composite cmpTrigger> = r16;
+
+        r17 = new org.eclipse.swt.layout.GridLayout;
+
+        specialinvoke r17.<org.eclipse.swt.layout.GridLayout: void <init>(int,boolean)>(1, 0);
+
+        $r5 = r0.<edu.kit.ipd.sdq.eventsim.rvisualization.views.FilterView: org.eclipse.swt.widgets.Composite cmpTrigger>;
+
+        virtualinvoke $r5.<org.eclipse.swt.widgets.Composite: void setLayout(org.eclipse.swt.widgets.Layout)>(r17);
+
+        r18 = new org.eclipse.swt.widgets.ExpandItem;
+
+        $r7 = r0.<edu.kit.ipd.sdq.eventsim.rvisualization.views.FilterView: org.eclipse.swt.widgets.ExpandBar expandBar>;
+
+        specialinvoke r18.<org.eclipse.swt.widgets.ExpandItem: void <init>(org.eclipse.swt.widgets.ExpandBar,int)>($r7, 0);
+
+        r0.<edu.kit.ipd.sdq.eventsim.rvisualization.views.FilterView: org.eclipse.swt.widgets.ExpandItem xpiTrigger> = r18;
+
+        $r8 = r0.<edu.kit.ipd.sdq.eventsim.rvisualization.views.FilterView: org.eclipse.swt.widgets.ExpandItem xpiTrigger>;
+
+        virtualinvoke $r8.<org.eclipse.swt.widgets.ExpandItem: void setText(java.lang.String)>("Who: Trigger");
+
+        $r10 = r0.<edu.kit.ipd.sdq.eventsim.rvisualization.views.FilterView: org.eclipse.swt.widgets.ExpandItem xpiTrigger>;
+
+        $r9 = r0.<edu.kit.ipd.sdq.eventsim.rvisualization.views.FilterView: org.eclipse.swt.widgets.Composite cmpTrigger>;
+
+        r19 = (org.eclipse.swt.widgets.Control) $r9;
+
+        virtualinvoke $r10.<org.eclipse.swt.widgets.ExpandItem: void setControl(org.eclipse.swt.widgets.Control)>(r19);
+
+        $r11 = r0.<edu.kit.ipd.sdq.eventsim.rvisualization.views.FilterView: org.eclipse.swt.widgets.ExpandItem xpiTrigger>;
+
+        virtualinvoke $r11.<org.eclipse.swt.widgets.ExpandItem: void setHeight(int)>(250);
+
+        $r13 = r0.<edu.kit.ipd.sdq.eventsim.rvisualization.views.FilterView: org.eclipse.swt.widgets.Composite cmpTrigger>;
+
+        $r12 = r0.<edu.kit.ipd.sdq.eventsim.rvisualization.views.FilterView: org.eclipse.swt.widgets.ExpandItem xpiTrigger>;
+
+        specialinvoke r0.<edu.kit.ipd.sdq.eventsim.rvisualization.views.FilterView: void keepSameHeight(org.eclipse.swt.widgets.Composite,org.eclipse.swt.widgets.ExpandItem)>($r13, $r12);
+
+        $r14 = r0.<edu.kit.ipd.sdq.eventsim.rvisualization.views.FilterView: org.eclipse.swt.widgets.Composite cmpTrigger>;
+
+        specialinvoke r0.<edu.kit.ipd.sdq.eventsim.rvisualization.views.FilterView: void createTriggerTypesGroup(org.eclipse.swt.widgets.Composite)>($r14);
+
+        $r15 = r0.<edu.kit.ipd.sdq.eventsim.rvisualization.views.FilterView: org.eclipse.swt.widgets.Composite cmpTrigger>;
+
+        specialinvoke r0.<edu.kit.ipd.sdq.eventsim.rvisualization.views.FilterView: void createTriggerInstancesGroup(org.eclipse.swt.widgets.Composite)>($r15);
+
+        return;
+    }
+
+    private void createTriggerInstancesGroup(org.eclipse.swt.widgets.Composite)
+    {
+        edu.kit.ipd.sdq.eventsim.rvisualization.views.FilterView r0;
+        org.eclipse.swt.widgets.Composite r1, $r23, $r26, $r28, $r30, $r33, $r36;
+        org.eclipse.swt.widgets.Group $r4, $r6, $r7, $r9, $r11, $r16, $r21, $r24;
+        org.eclipse.swt.layout.GridData $r5, $r12, $r19, $r27;
+        org.eclipse.swt.layout.GridLayout $r8;
+        org.eclipse.swt.widgets.Button $r10, $r13, $r14, $r20, $r22;
+        org.eclipse.jface.viewers.ComboViewer $r15, $r17;
+        org.eclipse.swt.widgets.Combo $r18;
+        org.eclipse.swt.layout.FillLayout $r25;
+        org.eclipse.swt.widgets.Text $r29, $r31, $r32, $r34, $r35, $r37, $r39, $r40;
+        org.eclipse.swt.graphics.Font $r38;
+        org.eclipse.swt.widgets.Listener $r41;
+
+        r0 := @this: edu.kit.ipd.sdq.eventsim.rvisualization.views.FilterView;
+
+        r1 := @parameter0: org.eclipse.swt.widgets.Composite;
+
+        $r4 = new org.eclipse.swt.widgets.Group;
+
+        specialinvoke $r4.<org.eclipse.swt.widgets.Group: void <init>(org.eclipse.swt.widgets.Composite,int)>(r1, 0);
+
+        r0.<edu.kit.ipd.sdq.eventsim.rvisualization.views.FilterView: org.eclipse.swt.widgets.Group grpTriggerInstances> = $r4;
+
+        $r6 = r0.<edu.kit.ipd.sdq.eventsim.rvisualization.views.FilterView: org.eclipse.swt.widgets.Group grpTriggerInstances>;
+
+        $r5 = new org.eclipse.swt.layout.GridData;
+
+        specialinvoke $r5.<org.eclipse.swt.layout.GridData: void <init>(int,int,boolean,boolean,int,int)>(4, 128, 1, 0, 1, 1);
+
+        virtualinvoke $r6.<org.eclipse.swt.widgets.Group: void setLayoutData(java.lang.Object)>($r5);
+
+        $r7 = r0.<edu.kit.ipd.sdq.eventsim.rvisualization.views.FilterView: org.eclipse.swt.widgets.Group grpTriggerInstances>;
+
+        virtualinvoke $r7.<org.eclipse.swt.widgets.Group: void setText(java.lang.String)>("Trigger instance");
+
+        $r8 = new org.eclipse.swt.layout.GridLayout;
+
+        specialinvoke $r8.<org.eclipse.swt.layout.GridLayout: void <init>(int,boolean)>(2, 0);
+
+        $r9 = r0.<edu.kit.ipd.sdq.eventsim.rvisualization.views.FilterView: org.eclipse.swt.widgets.Group grpTriggerInstances>;
+
+        virtualinvoke $r9.<org.eclipse.swt.widgets.Group: void setLayout(org.eclipse.swt.widgets.Layout)>($r8);
+
+        $r10 = new org.eclipse.swt.widgets.Button;
+
+        $r11 = r0.<edu.kit.ipd.sdq.eventsim.rvisualization.views.FilterView: org.eclipse.swt.widgets.Group grpTriggerInstances>;
+
+        specialinvoke $r10.<org.eclipse.swt.widgets.Button: void <init>(org.eclipse.swt.widgets.Composite,int)>($r11, 32);
+
+        r0.<edu.kit.ipd.sdq.eventsim.rvisualization.views.FilterView: org.eclipse.swt.widgets.Button btnEnableTriggerInstance> = $r10;
+
+        $r13 = r0.<edu.kit.ipd.sdq.eventsim.rvisualization.views.FilterView: org.eclipse.swt.widgets.Button btnEnableTriggerInstance>;
+
+        $r12 = new org.eclipse.swt.layout.GridData;
+
+        specialinvoke $r12.<org.eclipse.swt.layout.GridData: void <init>(int,int,boolean,boolean,int,int)>(16384, 16777216, 0, 0, 2, 1);
+
+        virtualinvoke $r13.<org.eclipse.swt.widgets.Button: void setLayoutData(java.lang.Object)>($r12);
+
+        $r14 = r0.<edu.kit.ipd.sdq.eventsim.rvisualization.views.FilterView: org.eclipse.swt.widgets.Button btnEnableTriggerInstance>;
+
+        virtualinvoke $r14.<org.eclipse.swt.widgets.Button: void setText(java.lang.String)>("Enable trigger instance selection");
+
+        $r15 = new org.eclipse.jface.viewers.ComboViewer;
+
+        $r16 = r0.<edu.kit.ipd.sdq.eventsim.rvisualization.views.FilterView: org.eclipse.swt.widgets.Group grpTriggerInstances>;
+
+        specialinvoke $r15.<org.eclipse.jface.viewers.ComboViewer: void <init>(org.eclipse.swt.widgets.Composite,int)>($r16, 8);
+
+        r0.<edu.kit.ipd.sdq.eventsim.rvisualization.views.FilterView: org.eclipse.jface.viewers.ComboViewer cmbTriggerInstance> = $r15;
+
+        $r17 = r0.<edu.kit.ipd.sdq.eventsim.rvisualization.views.FilterView: org.eclipse.jface.viewers.ComboViewer cmbTriggerInstance>;
+
+        $r18 = virtualinvoke $r17.<org.eclipse.jface.viewers.ComboViewer: org.eclipse.swt.widgets.Combo getCombo()>();
+
+        $r19 = new org.eclipse.swt.layout.GridData;
+
+        specialinvoke $r19.<org.eclipse.swt.layout.GridData: void <init>(int,int,boolean,boolean,int,int)>(4, 16777216, 1, 0, 1, 1);
+
+        virtualinvoke $r18.<org.eclipse.swt.widgets.Combo: void setLayoutData(java.lang.Object)>($r19);
+
+        $r20 = new org.eclipse.swt.widgets.Button;
+
+        $r21 = r0.<edu.kit.ipd.sdq.eventsim.rvisualization.views.FilterView: org.eclipse.swt.widgets.Group grpTriggerInstances>;
+
+        specialinvoke $r20.<org.eclipse.swt.widgets.Button: void <init>(org.eclipse.swt.widgets.Composite,int)>($r21, 0);
+
+        r0.<edu.kit.ipd.sdq.eventsim.rvisualization.views.FilterView: org.eclipse.swt.widgets.Button btnClearTriggerInstances> = $r20;
+
+        $r22 = r0.<edu.kit.ipd.sdq.eventsim.rvisualization.views.FilterView: org.eclipse.swt.widgets.Button btnClearTriggerInstances>;
+
+        virtualinvoke $r22.<org.eclipse.swt.widgets.Button: void setText(java.lang.String)>("Clear");
+
+        $r23 = new org.eclipse.swt.widgets.Composite;
+
+        $r24 = r0.<edu.kit.ipd.sdq.eventsim.rvisualization.views.FilterView: org.eclipse.swt.widgets.Group grpTriggerInstances>;
+
+        specialinvoke $r23.<org.eclipse.swt.widgets.Composite: void <init>(org.eclipse.swt.widgets.Composite,int)>($r24, 0);
+
+        r0.<edu.kit.ipd.sdq.eventsim.rvisualization.views.FilterView: org.eclipse.swt.widgets.Composite cmpTriggerWarning> = $r23;
+
+        $r25 = new org.eclipse.swt.layout.FillLayout;
+
+        specialinvoke $r25.<org.eclipse.swt.layout.FillLayout: void <init>(int)>(512);
+
+        $r25.<org.eclipse.swt.layout.FillLayout: int spacing> = 3;
+
+        $r26 = r0.<edu.kit.ipd.sdq.eventsim.rvisualization.views.FilterView: org.eclipse.swt.widgets.Composite cmpTriggerWarning>;
+
+        virtualinvoke $r26.<org.eclipse.swt.widgets.Composite: void setLayout(org.eclipse.swt.widgets.Layout)>($r25);
+
+        $r28 = r0.<edu.kit.ipd.sdq.eventsim.rvisualization.views.FilterView: org.eclipse.swt.widgets.Composite cmpTriggerWarning>;
+
+        $r27 = new org.eclipse.swt.layout.GridData;
+
+        specialinvoke $r27.<org.eclipse.swt.layout.GridData: void <init>(int,int,boolean,boolean,int,int)>(4, 16777216, 1, 0, 2, 1);
+
+        virtualinvoke $r28.<org.eclipse.swt.widgets.Composite: void setLayoutData(java.lang.Object)>($r27);
+
+        $r29 = new org.eclipse.swt.widgets.Text;
+
+        $r30 = r0.<edu.kit.ipd.sdq.eventsim.rvisualization.views.FilterView: org.eclipse.swt.widgets.Composite cmpTriggerWarning>;
+
+        specialinvoke $r29.<org.eclipse.swt.widgets.Text: void <init>(org.eclipse.swt.widgets.Composite,int)>($r30, 8);
+
+        r0.<edu.kit.ipd.sdq.eventsim.rvisualization.views.FilterView: org.eclipse.swt.widgets.Text txtTriggerWarning1> = $r29;
+
+        $r31 = r0.<edu.kit.ipd.sdq.eventsim.rvisualization.views.FilterView: org.eclipse.swt.widgets.Text txtTriggerWarning1>;
+
+        virtualinvoke $r31.<org.eclipse.swt.widgets.Text: void setText(java.lang.String)>("Cannot display more than <x> triggers.");
+
+        $r32 = new org.eclipse.swt.widgets.Text;
+
+        $r33 = r0.<edu.kit.ipd.sdq.eventsim.rvisualization.views.FilterView: org.eclipse.swt.widgets.Composite cmpTriggerWarning>;
+
+        specialinvoke $r32.<org.eclipse.swt.widgets.Text: void <init>(org.eclipse.swt.widgets.Composite,int)>($r33, 8);
+
+        r0.<edu.kit.ipd.sdq.eventsim.rvisualization.views.FilterView: org.eclipse.swt.widgets.Text txtTriggerWarning2> = $r32;
+
+        $r34 = r0.<edu.kit.ipd.sdq.eventsim.rvisualization.views.FilterView: org.eclipse.swt.widgets.Text txtTriggerWarning2>;
+
+        virtualinvoke $r34.<org.eclipse.swt.widgets.Text: void setText(java.lang.String)>("Triggers within time span: <y>");
+
+        $r35 = new org.eclipse.swt.widgets.Text;
+
+        $r36 = r0.<edu.kit.ipd.sdq.eventsim.rvisualization.views.FilterView: org.eclipse.swt.widgets.Composite cmpTriggerWarning>;
+
+        specialinvoke $r35.<org.eclipse.swt.widgets.Text: void <init>(org.eclipse.swt.widgets.Composite,int)>($r36, 8);
+
+        r0.<edu.kit.ipd.sdq.eventsim.rvisualization.views.FilterView: org.eclipse.swt.widgets.Text txtReduceSimulationTime> = $r35;
+
+        $r37 = r0.<edu.kit.ipd.sdq.eventsim.rvisualization.views.FilterView: org.eclipse.swt.widgets.Text txtReduceSimulationTime>;
+
+        $r38 = staticinvoke <org.eclipse.wb.swt.SWTResourceManager: org.eclipse.swt.graphics.Font getFont(java.lang.String,int,int)>("Segoe UI", 9, 1);
+
+        virtualinvoke $r37.<org.eclipse.swt.widgets.Text: void setFont(org.eclipse.swt.graphics.Font)>($r38);
+
+        $r39 = r0.<edu.kit.ipd.sdq.eventsim.rvisualization.views.FilterView: org.eclipse.swt.widgets.Text txtReduceSimulationTime>;
+
+        virtualinvoke $r39.<org.eclipse.swt.widgets.Text: void setText(java.lang.String)>("Reduce simulation time span.");
+
+        $r40 = r0.<edu.kit.ipd.sdq.eventsim.rvisualization.views.FilterView: org.eclipse.swt.widgets.Text txtTriggerWarning1>;
+
+        $r41 = staticinvoke <edu.kit.ipd.sdq.eventsim.rvisualization.views.FilterView$lambda_0__196: org.eclipse.swt.widgets.Listener bootstrap$(edu.kit.ipd.sdq.eventsim.rvisualization.views.FilterView)>(r0);
+
+        virtualinvoke $r40.<org.eclipse.swt.widgets.Text: void addListener(int,org.eclipse.swt.widgets.Listener)>(24, $r41);
+
+        return;
+    }
+
+    private void createTriggerTypesGroup(org.eclipse.swt.widgets.Composite)
+    {
+        edu.kit.ipd.sdq.eventsim.rvisualization.views.FilterView r0;
+        org.eclipse.swt.widgets.Composite r1;
+        org.eclipse.swt.widgets.Group $r2, $r4, $r5, $r7, $r9, $r14;
+        org.eclipse.swt.layout.GridData $r3, $r12;
+        org.eclipse.swt.layout.GridLayout $r6;
+        org.eclipse.jface.viewers.ComboViewer $r8, $r10;
+        org.eclipse.swt.widgets.Combo $r11;
+        org.eclipse.swt.widgets.Button $r13, $r15;
+
+        r0 := @this: edu.kit.ipd.sdq.eventsim.rvisualization.views.FilterView;
+
+        r1 := @parameter0: org.eclipse.swt.widgets.Composite;
+
+        $r2 = new org.eclipse.swt.widgets.Group;
+
+        specialinvoke $r2.<org.eclipse.swt.widgets.Group: void <init>(org.eclipse.swt.widgets.Composite,int)>(r1, 0);
+
+        r0.<edu.kit.ipd.sdq.eventsim.rvisualization.views.FilterView: org.eclipse.swt.widgets.Group grpTriggerTypes> = $r2;
+
+        $r4 = r0.<edu.kit.ipd.sdq.eventsim.rvisualization.views.FilterView: org.eclipse.swt.widgets.Group grpTriggerTypes>;
+
+        $r3 = new org.eclipse.swt.layout.GridData;
+
+        specialinvoke $r3.<org.eclipse.swt.layout.GridData: void <init>(int,int,boolean,boolean,int,int)>(4, 128, 0, 0, 1, 1);
+
+        virtualinvoke $r4.<org.eclipse.swt.widgets.Group: void setLayoutData(java.lang.Object)>($r3);
+
+        $r5 = r0.<edu.kit.ipd.sdq.eventsim.rvisualization.views.FilterView: org.eclipse.swt.widgets.Group grpTriggerTypes>;
+
+        virtualinvoke $r5.<org.eclipse.swt.widgets.Group: void setText(java.lang.String)>("Trigger type");
+
+        $r7 = r0.<edu.kit.ipd.sdq.eventsim.rvisualization.views.FilterView: org.eclipse.swt.widgets.Group grpTriggerTypes>;
+
+        $r6 = new org.eclipse.swt.layout.GridLayout;
+
+        specialinvoke $r6.<org.eclipse.swt.layout.GridLayout: void <init>(int,boolean)>(2, 0);
+
+        virtualinvoke $r7.<org.eclipse.swt.widgets.Group: void setLayout(org.eclipse.swt.widgets.Layout)>($r6);
+
+        $r8 = new org.eclipse.jface.viewers.ComboViewer;
+
+        $r9 = r0.<edu.kit.ipd.sdq.eventsim.rvisualization.views.FilterView: org.eclipse.swt.widgets.Group grpTriggerTypes>;
+
+        specialinvoke $r8.<org.eclipse.jface.viewers.ComboViewer: void <init>(org.eclipse.swt.widgets.Composite,int)>($r9, 8);
+
+        r0.<edu.kit.ipd.sdq.eventsim.rvisualization.views.FilterView: org.eclipse.jface.viewers.ComboViewer cmbTriggerType> = $r8;
+
+        $r10 = r0.<edu.kit.ipd.sdq.eventsim.rvisualization.views.FilterView: org.eclipse.jface.viewers.ComboViewer cmbTriggerType>;
+
+        $r11 = virtualinvoke $r10.<org.eclipse.jface.viewers.ComboViewer: org.eclipse.swt.widgets.Combo getCombo()>();
+
+        $r12 = new org.eclipse.swt.layout.GridData;
+
+        specialinvoke $r12.<org.eclipse.swt.layout.GridData: void <init>(int,int,boolean,boolean,int,int)>(4, 16777216, 1, 0, 1, 1);
+
+        virtualinvoke $r11.<org.eclipse.swt.widgets.Combo: void setLayoutData(java.lang.Object)>($r12);
+
+        $r13 = new org.eclipse.swt.widgets.Button;
+
+        $r14 = r0.<edu.kit.ipd.sdq.eventsim.rvisualization.views.FilterView: org.eclipse.swt.widgets.Group grpTriggerTypes>;
+
+        specialinvoke $r13.<org.eclipse.swt.widgets.Button: void <init>(org.eclipse.swt.widgets.Composite,int)>($r14, 0);
+
+        r0.<edu.kit.ipd.sdq.eventsim.rvisualization.views.FilterView: org.eclipse.swt.widgets.Button btnClearTriggerTypes> = $r13;
+
+        $r15 = r0.<edu.kit.ipd.sdq.eventsim.rvisualization.views.FilterView: org.eclipse.swt.widgets.Button btnClearTriggerTypes>;
+
+        virtualinvoke $r15.<org.eclipse.swt.widgets.Button: void setText(java.lang.String)>("Clear");
+
+        return;
+    }
+
+    private void createMetricExpandItem()
+    {
+        edu.kit.ipd.sdq.eventsim.rvisualization.views.FilterView r0;
+        org.eclipse.swt.widgets.ExpandBar $r4, $r8;
+        org.eclipse.swt.widgets.Composite $r6, $r9, $r11, $r15, r16;
+        org.eclipse.jface.viewers.ComboViewer $r12, r19;
+        org.eclipse.swt.widgets.Combo $r13;
+        org.eclipse.swt.layout.GridLayout r17;
+        org.eclipse.swt.widgets.ExpandItem r18;
+        org.eclipse.swt.layout.GridData r20;
+        org.eclipse.swt.widgets.Control r21;
+
+        r0 := @this: edu.kit.ipd.sdq.eventsim.rvisualization.views.FilterView;
+
+        r16 = new org.eclipse.swt.widgets.Composite;
+
+        $r4 = r0.<edu.kit.ipd.sdq.eventsim.rvisualization.views.FilterView: org.eclipse.swt.widgets.ExpandBar expandBar>;
+
+        specialinvoke r16.<org.eclipse.swt.widgets.Composite: void <init>(org.eclipse.swt.widgets.Composite,int)>($r4, 0);
+
+        r0.<edu.kit.ipd.sdq.eventsim.rvisualization.views.FilterView: org.eclipse.swt.widgets.Composite cmpMetric> = r16;
+
+        r17 = new org.eclipse.swt.layout.GridLayout;
+
+        specialinvoke r17.<org.eclipse.swt.layout.GridLayout: void <init>(int,boolean)>(1, 0);
+
+        r17.<org.eclipse.swt.layout.GridLayout: int marginBottom> = 10;
+
+        r17.<org.eclipse.swt.layout.GridLayout: int marginTop> = 10;
+
+        $r6 = r0.<edu.kit.ipd.sdq.eventsim.rvisualization.views.FilterView: org.eclipse.swt.widgets.Composite cmpMetric>;
+
+        virtualinvoke $r6.<org.eclipse.swt.widgets.Composite: void setLayout(org.eclipse.swt.widgets.Layout)>(r17);
+
+        r18 = new org.eclipse.swt.widgets.ExpandItem;
+
+        $r8 = r0.<edu.kit.ipd.sdq.eventsim.rvisualization.views.FilterView: org.eclipse.swt.widgets.ExpandBar expandBar>;
+
+        specialinvoke r18.<org.eclipse.swt.widgets.ExpandItem: void <init>(org.eclipse.swt.widgets.ExpandBar,int)>($r8, 0);
+
+        virtualinvoke r18.<org.eclipse.swt.widgets.ExpandItem: void setExpanded(boolean)>(1);
+
+        virtualinvoke r18.<org.eclipse.swt.widgets.ExpandItem: void setText(java.lang.String)>("What: Metric");
+
+        $r9 = r0.<edu.kit.ipd.sdq.eventsim.rvisualization.views.FilterView: org.eclipse.swt.widgets.Composite cmpMetric>;
+
+        r21 = (org.eclipse.swt.widgets.Control) $r9;
+
+        virtualinvoke r18.<org.eclipse.swt.widgets.ExpandItem: void setControl(org.eclipse.swt.widgets.Control)>(r21);
+
+        virtualinvoke r18.<org.eclipse.swt.widgets.ExpandItem: void setHeight(int)>(50);
+
+        r19 = new org.eclipse.jface.viewers.ComboViewer;
+
+        $r11 = r0.<edu.kit.ipd.sdq.eventsim.rvisualization.views.FilterView: org.eclipse.swt.widgets.Composite cmpMetric>;
+
+        specialinvoke r19.<org.eclipse.jface.viewers.ComboViewer: void <init>(org.eclipse.swt.widgets.Composite,int)>($r11, 8);
+
+        r0.<edu.kit.ipd.sdq.eventsim.rvisualization.views.FilterView: org.eclipse.jface.viewers.ComboViewer cmbMetric> = r19;
+
+        $r12 = r0.<edu.kit.ipd.sdq.eventsim.rvisualization.views.FilterView: org.eclipse.jface.viewers.ComboViewer cmbMetric>;
+
+        $r13 = virtualinvoke $r12.<org.eclipse.jface.viewers.ComboViewer: org.eclipse.swt.widgets.Combo getCombo()>();
+
+        r20 = new org.eclipse.swt.layout.GridData;
+
+        specialinvoke r20.<org.eclipse.swt.layout.GridData: void <init>(int,int,boolean,boolean,int,int)>(4, 16777216, 1, 0, 1, 1);
+
+        virtualinvoke $r13.<org.eclipse.swt.widgets.Combo: void setLayoutData(java.lang.Object)>(r20);
+
+        $r15 = r0.<edu.kit.ipd.sdq.eventsim.rvisualization.views.FilterView: org.eclipse.swt.widgets.Composite cmpMetric>;
+
+        specialinvoke r0.<edu.kit.ipd.sdq.eventsim.rvisualization.views.FilterView: void keepSameHeight(org.eclipse.swt.widgets.Composite,org.eclipse.swt.widgets.ExpandItem)>($r15, r18);
+
+        return;
+    }
+
+    public void createMetadataExpandItem(edu.kit.ipd.sdq.eventsim.rvisualization.model.TranslatableEntity, java.util.List)
+    {
+        edu.kit.ipd.sdq.eventsim.rvisualization.views.FilterView r0;
+        edu.kit.ipd.sdq.eventsim.rvisualization.model.TranslatableEntity r1;
+        java.util.List r2;
+        org.eclipse.swt.widgets.ExpandBar $r8, $r11;
+        java.lang.String $r13, $r15;
+        java.lang.StringBuilder $r14, r27;
+        org.eclipse.swt.widgets.Combo $r17;
+        org.eclipse.jface.viewers.ArrayContentProvider $r19;
+        java.util.Map $r21;
+        org.eclipse.swt.widgets.Composite r24;
+        org.eclipse.swt.layout.GridLayout r25;
+        org.eclipse.swt.widgets.ExpandItem r26;
+        org.eclipse.jface.viewers.ComboViewer r28;
+        org.eclipse.swt.layout.GridData r29;
+        edu.kit.ipd.sdq.eventsim.rvisualization.views.FilterView$3 r30;
+        edu.kit.ipd.sdq.eventsim.rvisualization.views.FilterView$4 r31;
+        org.eclipse.swt.widgets.Control r32;
+        org.eclipse.jface.viewers.IBaseLabelProvider r33;
+
+        r0 := @this: edu.kit.ipd.sdq.eventsim.rvisualization.views.FilterView;
+
+        r1 := @parameter0: edu.kit.ipd.sdq.eventsim.rvisualization.model.TranslatableEntity;
+
+        r2 := @parameter1: java.util.List;
+
+        r24 = new org.eclipse.swt.widgets.Composite;
+
+        $r8 = r0.<edu.kit.ipd.sdq.eventsim.rvisualization.views.FilterView: org.eclipse.swt.widgets.ExpandBar expandBar>;
+
+        specialinvoke r24.<org.eclipse.swt.widgets.Composite: void <init>(org.eclipse.swt.widgets.Composite,int)>($r8, 0);
+
+        r25 = new org.eclipse.swt.layout.GridLayout;
+
+        specialinvoke r25.<org.eclipse.swt.layout.GridLayout: void <init>(int,boolean)>(1, 0);
+
+        r25.<org.eclipse.swt.layout.GridLayout: int marginBottom> = 10;
+
+        r25.<org.eclipse.swt.layout.GridLayout: int marginTop> = 10;
+
+        virtualinvoke r24.<org.eclipse.swt.widgets.Composite: void setLayout(org.eclipse.swt.widgets.Layout)>(r25);
+
+        r26 = new org.eclipse.swt.widgets.ExpandItem;
+
+        $r11 = r0.<edu.kit.ipd.sdq.eventsim.rvisualization.views.FilterView: org.eclipse.swt.widgets.ExpandBar expandBar>;
+
+        specialinvoke r26.<org.eclipse.swt.widgets.ExpandItem: void <init>(org.eclipse.swt.widgets.ExpandBar,int)>($r11, 0);
+
+        virtualinvoke r26.<org.eclipse.swt.widgets.ExpandItem: void setExpanded(boolean)>(1);
+
+        r27 = new java.lang.StringBuilder;
+
+        specialinvoke r27.<java.lang.StringBuilder: void <init>(java.lang.String)>("Metadata: ");
+
+        $r13 = virtualinvoke r1.<edu.kit.ipd.sdq.eventsim.rvisualization.model.TranslatableEntity: java.lang.String getTranslation()>();
+
+        $r14 = virtualinvoke r27.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r13);
+
+        $r15 = virtualinvoke $r14.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        virtualinvoke r26.<org.eclipse.swt.widgets.ExpandItem: void setText(java.lang.String)>($r15);
+
+        r32 = (org.eclipse.swt.widgets.Control) r24;
+
+        virtualinvoke r26.<org.eclipse.swt.widgets.ExpandItem: void setControl(org.eclipse.swt.widgets.Control)>(r32);
+
+        virtualinvoke r26.<org.eclipse.swt.widgets.ExpandItem: void setHeight(int)>(50);
+
+        r28 = new org.eclipse.jface.viewers.ComboViewer;
+
+        specialinvoke r28.<org.eclipse.jface.viewers.ComboViewer: void <init>(org.eclipse.swt.widgets.Composite,int)>(r24, 8);
+
+        $r17 = virtualinvoke r28.<org.eclipse.jface.viewers.ComboViewer: org.eclipse.swt.widgets.Combo getCombo()>();
+
+        r29 = new org.eclipse.swt.layout.GridData;
+
+        specialinvoke r29.<org.eclipse.swt.layout.GridData: void <init>(int,int,boolean,boolean,int,int)>(4, 16777216, 1, 0, 1, 1);
+
+        virtualinvoke $r17.<org.eclipse.swt.widgets.Combo: void setLayoutData(java.lang.Object)>(r29);
+
+        $r19 = staticinvoke <org.eclipse.jface.viewers.ArrayContentProvider: org.eclipse.jface.viewers.ArrayContentProvider getInstance()>();
+
+        virtualinvoke r28.<org.eclipse.jface.viewers.ComboViewer: void setContentProvider(org.eclipse.jface.viewers.IContentProvider)>($r19);
+
+        virtualinvoke r28.<org.eclipse.jface.viewers.ComboViewer: void setInput(java.lang.Object)>(r2);
+
+        r30 = new edu.kit.ipd.sdq.eventsim.rvisualization.views.FilterView$3;
+
+        specialinvoke r30.<edu.kit.ipd.sdq.eventsim.rvisualization.views.FilterView$3: void <init>(edu.kit.ipd.sdq.eventsim.rvisualization.views.FilterView)>(r0);
+
+        r33 = (org.eclipse.jface.viewers.IBaseLabelProvider) r30;
+
+        virtualinvoke r28.<org.eclipse.jface.viewers.ComboViewer: void setLabelProvider(org.eclipse.jface.viewers.IBaseLabelProvider)>(r33);
+
+        virtualinvoke r24.<org.eclipse.swt.widgets.Composite: void layout()>();
+
+        specialinvoke r0.<edu.kit.ipd.sdq.eventsim.rvisualization.views.FilterView: void keepSameHeight(org.eclipse.swt.widgets.Composite,org.eclipse.swt.widgets.ExpandItem)>(r24, r26);
+
+        $r21 = r0.<edu.kit.ipd.sdq.eventsim.rvisualization.views.FilterView: java.util.Map xpiMetadataMap>;
+
+        interfaceinvoke $r21.<java.util.Map: java.lang.Object putIfAbsent(java.lang.Object,java.lang.Object)>(r1, r26);
+
+        r31 = new edu.kit.ipd.sdq.eventsim.rvisualization.views.FilterView$4;
+
+        specialinvoke r31.<edu.kit.ipd.sdq.eventsim.rvisualization.views.FilterView$4: void <init>(edu.kit.ipd.sdq.eventsim.rvisualization.views.FilterView,edu.kit.ipd.sdq.eventsim.rvisualization.model.TranslatableEntity)>(r0, r1);
+
+        virtualinvoke r28.<org.eclipse.jface.viewers.ComboViewer: void addSelectionChangedListener(org.eclipse.jface.viewers.ISelectionChangedListener)>(r31);
+
+        return;
+    }
+
+    public void clearMetadataExpandItems()
+    {
+        edu.kit.ipd.sdq.eventsim.rvisualization.views.FilterView r0;
+        org.eclipse.swt.widgets.ExpandItem r1;
+        java.util.Iterator r2;
+        java.util.Map $r3, $r8;
+        java.util.Collection $r4;
+        boolean $z0;
+        java.lang.Object $r5;
+        edu.kit.ipd.sdq.eventsim.rvisualization.Controller $r6;
+        org.eclipse.swt.widgets.Control $r7;
+
+        r0 := @this: edu.kit.ipd.sdq.eventsim.rvisualization.views.FilterView;
+
+        $r3 = r0.<edu.kit.ipd.sdq.eventsim.rvisualization.views.FilterView: java.util.Map xpiMetadataMap>;
+
+        $r4 = interfaceinvoke $r3.<java.util.Map: java.util.Collection values()>();
+
+        r2 = interfaceinvoke $r4.<java.util.Collection: java.util.Iterator iterator()>();
+
+        goto label2;
+
+     label1:
+        $r5 = interfaceinvoke r2.<java.util.Iterator: java.lang.Object next()>();
+
+        r1 = (org.eclipse.swt.widgets.ExpandItem) $r5;
+
+        $r6 = r0.<edu.kit.ipd.sdq.eventsim.rvisualization.views.FilterView: edu.kit.ipd.sdq.eventsim.rvisualization.Controller ctrl>;
+
+        virtualinvoke $r6.<edu.kit.ipd.sdq.eventsim.rvisualization.Controller: void metadataSelectionCleared()>();
+
+        $r7 = virtualinvoke r1.<org.eclipse.swt.widgets.ExpandItem: org.eclipse.swt.widgets.Control getControl()>();
+
+        virtualinvoke $r7.<org.eclipse.swt.widgets.Control: void dispose()>();
+
+        virtualinvoke r1.<org.eclipse.swt.widgets.ExpandItem: void dispose()>();
+
+     label2:
+        $z0 = interfaceinvoke r2.<java.util.Iterator: boolean hasNext()>();
+
+        if $z0 != 0 goto label1;
+
+        $r8 = r0.<edu.kit.ipd.sdq.eventsim.rvisualization.views.FilterView: java.util.Map xpiMetadataMap>;
+
+        interfaceinvoke $r8.<java.util.Map: void clear()>();
+
+        return;
+    }
+
+    private void addEventHandler()
+    {
+        edu.kit.ipd.sdq.eventsim.rvisualization.views.FilterView r0;
+        org.eclipse.swt.widgets.Button $r1, $r3, $r5, $r7;
+        org.eclipse.swt.widgets.Listener $r2, $r4, $r6, $r8;
+
+        r0 := @this: edu.kit.ipd.sdq.eventsim.rvisualization.views.FilterView;
+
+        $r1 = r0.<edu.kit.ipd.sdq.eventsim.rvisualization.views.FilterView: org.eclipse.swt.widgets.Button btnPlot>;
+
+        $r2 = staticinvoke <edu.kit.ipd.sdq.eventsim.rvisualization.views.FilterView$lambda_1__197: org.eclipse.swt.widgets.Listener bootstrap$(edu.kit.ipd.sdq.eventsim.rvisualization.views.FilterView)>(r0);
+
+        virtualinvoke $r1.<org.eclipse.swt.widgets.Button: void addListener(int,org.eclipse.swt.widgets.Listener)>(13, $r2);
+
+        $r3 = r0.<edu.kit.ipd.sdq.eventsim.rvisualization.views.FilterView: org.eclipse.swt.widgets.Button btnTimespanReset>;
+
+        $r4 = staticinvoke <edu.kit.ipd.sdq.eventsim.rvisualization.views.FilterView$lambda_2__198: org.eclipse.swt.widgets.Listener bootstrap$(edu.kit.ipd.sdq.eventsim.rvisualization.views.FilterView)>(r0);
+
+        virtualinvoke $r3.<org.eclipse.swt.widgets.Button: void addListener(int,org.eclipse.swt.widgets.Listener)>(13, $r4);
+
+        $r5 = r0.<edu.kit.ipd.sdq.eventsim.rvisualization.views.FilterView: org.eclipse.swt.widgets.Button btnClearTriggerTypes>;
+
+        $r6 = staticinvoke <edu.kit.ipd.sdq.eventsim.rvisualization.views.FilterView$lambda_3__199: org.eclipse.swt.widgets.Listener bootstrap$(edu.kit.ipd.sdq.eventsim.rvisualization.views.FilterView)>(r0);
+
+        virtualinvoke $r5.<org.eclipse.swt.widgets.Button: void addListener(int,org.eclipse.swt.widgets.Listener)>(13, $r6);
+
+        $r7 = r0.<edu.kit.ipd.sdq.eventsim.rvisualization.views.FilterView: org.eclipse.swt.widgets.Button btnClearTriggerInstances>;
+
+        $r8 = staticinvoke <edu.kit.ipd.sdq.eventsim.rvisualization.views.FilterView$lambda_4__201: org.eclipse.swt.widgets.Listener bootstrap$(edu.kit.ipd.sdq.eventsim.rvisualization.views.FilterView)>(r0);
+
+        virtualinvoke $r7.<org.eclipse.swt.widgets.Button: void addListener(int,org.eclipse.swt.widgets.Listener)>(13, $r8);
+
+        return;
+    }
+
+    private void keepSameHeight(org.eclipse.swt.widgets.Composite, org.eclipse.swt.widgets.ExpandItem)
+    {
+        edu.kit.ipd.sdq.eventsim.rvisualization.views.FilterView r0;
+        org.eclipse.swt.widgets.Composite r1;
+        org.eclipse.swt.widgets.ExpandItem r2;
+        org.eclipse.swt.widgets.Listener $r3;
+
+        r0 := @this: edu.kit.ipd.sdq.eventsim.rvisualization.views.FilterView;
+
+        r1 := @parameter0: org.eclipse.swt.widgets.Composite;
+
+        r2 := @parameter1: org.eclipse.swt.widgets.ExpandItem;
+
+        $r3 = staticinvoke <edu.kit.ipd.sdq.eventsim.rvisualization.views.FilterView$lambda_5__128: org.eclipse.swt.widgets.Listener bootstrap$(edu.kit.ipd.sdq.eventsim.rvisualization.views.FilterView,org.eclipse.swt.widgets.Composite,org.eclipse.swt.widgets.ExpandItem)>(r0, r1, r2);
+
+        virtualinvoke r1.<org.eclipse.swt.widgets.Composite: void addListener(int,org.eclipse.swt.widgets.Listener)>(11, $r3);
+
+        return;
+    }
+
+    private void adjustHeight(org.eclipse.swt.widgets.Composite, org.eclipse.swt.widgets.ExpandItem)
+    {
+        edu.kit.ipd.sdq.eventsim.rvisualization.views.FilterView r0;
+        org.eclipse.swt.widgets.Composite r1;
+        org.eclipse.swt.widgets.ExpandItem r2;
+        org.eclipse.swt.graphics.Point r3;
+        boolean $z0;
+        int $i0, $i1, $i2;
+
+        r0 := @this: edu.kit.ipd.sdq.eventsim.rvisualization.views.FilterView;
+
+        r1 := @parameter0: org.eclipse.swt.widgets.Composite;
+
+        r2 := @parameter1: org.eclipse.swt.widgets.ExpandItem;
+
+        $z0 = virtualinvoke r1.<org.eclipse.swt.widgets.Composite: boolean isDisposed()>();
+
+        if $z0 == 0 goto label1;
+
+        return;
+
+     label1:
+        r3 = virtualinvoke r1.<org.eclipse.swt.widgets.Composite: org.eclipse.swt.graphics.Point computeSize(int,int)>(-1, -1);
+
+        $i0 = virtualinvoke r2.<org.eclipse.swt.widgets.ExpandItem: int getHeight()>();
+
+        $i1 = r3.<org.eclipse.swt.graphics.Point: int y>;
+
+        if $i0 == $i1 goto label2;
+
+        $i2 = r3.<org.eclipse.swt.graphics.Point: int y>;
+
+        virtualinvoke r2.<org.eclipse.swt.widgets.ExpandItem: void setHeight(int)>($i2);
+
+     label2:
+        return;
+    }
+
+    private void layoutView()
+    {
+        edu.kit.ipd.sdq.eventsim.rvisualization.views.FilterView r0;
+        org.eclipse.swt.widgets.Display $r1;
+        edu.kit.ipd.sdq.eventsim.rvisualization.views.FilterView$5 $r2;
+
+        r0 := @this: edu.kit.ipd.sdq.eventsim.rvisualization.views.FilterView;
+
+        $r1 = virtualinvoke r0.<edu.kit.ipd.sdq.eventsim.rvisualization.views.FilterView: org.eclipse.swt.widgets.Display getDisplay()>();
+
+        $r2 = new edu.kit.ipd.sdq.eventsim.rvisualization.views.FilterView$5;
+
+        specialinvoke $r2.<edu.kit.ipd.sdq.eventsim.rvisualization.views.FilterView$5: void <init>(edu.kit.ipd.sdq.eventsim.rvisualization.views.FilterView)>(r0);
+
+        virtualinvoke $r1.<org.eclipse.swt.widgets.Display: void asyncExec(java.lang.Runnable)>($r2);
+
+        return;
+    }
+
+    protected org.eclipse.core.databinding.DataBindingContext initDataBindings()
+    {
+        edu.kit.ipd.sdq.eventsim.rvisualization.views.FilterView r0;
+        org.eclipse.core.databinding.observable.map.IObservableMap[] r3, r44, r51;
+        org.eclipse.core.databinding.observable.list.IObservableList r4, r9, r14, r19, r24, r45, r52;
+        org.eclipse.jface.databinding.viewers.IViewerObservableValue r5, r10, r15, r20, r25, r46, r53;
+        org.eclipse.core.databinding.observable.value.IObservableValue r6, r11, r16, r21, r26, r28, r30, r32, r35, r47, r49, r54;
+        org.eclipse.core.databinding.observable.map.IObservableMap r8, r13, r18, r23;
+        org.eclipse.jface.databinding.swt.ISWTObservableValue r27, r29, r31, r33, r34, r36, r37, r38, r39, r40, r41, r42, r48;
+        org.eclipse.core.databinding.observable.set.IObservableSet $r57, $r71, $r84, $r97, $r110, $r167, $r186;
+        java.lang.String[] $r58, $r168, $r187;
+        org.eclipse.jface.viewers.ComboViewer $r60, $r61, $r64, $r66, $r73, $r74, $r77, $r79, $r86, $r87, $r90, $r92, $r99, $r100, $r103, $r105, $r112, $r113, $r116, $r118, $r170, $r171, $r174, $r176, $r189, $r190, $r193, $r195;
+        org.eclipse.core.databinding.beans.IBeanListProperty $r62, $r75, $r88, $r101, $r114, $r172, $r191;
+        edu.kit.ipd.sdq.eventsim.rvisualization.model.FilterModel $r63, $r76, $r89, $r102, $r115, $r125, $r143, $r173, $r192;
+        org.eclipse.jface.databinding.viewers.IViewerValueProperty $r65, $r78, $r91, $r104, $r117, $r175, $r194;
+        org.eclipse.core.databinding.beans.IBeanValueProperty $r67, $r80, $r93, $r106, $r119, $r124, $r129, $r134, $r142, $r177, $r182, $r196;
+        edu.kit.ipd.sdq.eventsim.rvisualization.model.FilterSelectionModel $r68, $r81, $r94, $r107, $r120, $r130, $r135, $r178, $r183, $r197;
+        org.eclipse.jface.databinding.swt.IWidgetValueProperty $r122, $r127, $r132, $r137, $r140, $r145, $r148, $r151, $r154, $r157, $r160, $r163, $r180;
+        org.eclipse.swt.widgets.Spinner $r123, $r128, $r133, $r138, $r141, $r146;
+        org.eclipse.swt.widgets.Scale $r149, $r152, $r155, $r158, $r161, $r164;
+        org.eclipse.swt.widgets.Button $r181;
+        org.eclipse.core.databinding.DataBindingContext r199;
+        org.eclipse.jface.databinding.viewers.ObservableListContentProvider r200, r202, r204, r206, r208, r210, r212;
+        edu.kit.ipd.sdq.eventsim.rvisualization.model.provider.EntityLabelProvider r201, r207, r209, r211;
+        edu.kit.ipd.sdq.eventsim.rvisualization.model.provider.TranslatableEntityLabelProvider r203, r205, r213;
+        org.eclipse.jface.viewers.IBaseLabelProvider r214, r215, r216, r217, r218, r219, r220;
+
+        r0 := @this: edu.kit.ipd.sdq.eventsim.rvisualization.views.FilterView;
+
+        r199 = new org.eclipse.core.databinding.DataBindingContext;
+
+        specialinvoke r199.<org.eclipse.core.databinding.DataBindingContext: void <init>()>();
+
+        r200 = new org.eclipse.jface.databinding.viewers.ObservableListContentProvider;
+
+        specialinvoke r200.<org.eclipse.jface.databinding.viewers.ObservableListContentProvider: void <init>()>();
+
+        $r57 = virtualinvoke r200.<org.eclipse.jface.databinding.viewers.ObservableListContentProvider: org.eclipse.core.databinding.observable.set.IObservableSet getKnownElements()>();
+
+        $r58 = newarray (java.lang.String)[2];
+
+        $r58[0] = "name";
+
+        $r58[1] = "id";
+
+        r3 = staticinvoke <org.eclipse.core.databinding.beans.PojoObservables: org.eclipse.core.databinding.observable.map.IObservableMap[] observeMaps(org.eclipse.core.databinding.observable.set.IObservableSet,java.lang.Class,java.lang.String[])>($r57, class "Ledu/kit/ipd/sdq/eventsim/rvisualization/model/Entity;", $r58);
+
+        $r60 = r0.<edu.kit.ipd.sdq.eventsim.rvisualization.views.FilterView: org.eclipse.jface.viewers.ComboViewer cmbMeasuringPointFrom>;
+
+        r201 = new edu.kit.ipd.sdq.eventsim.rvisualization.model.provider.EntityLabelProvider;
+
+        specialinvoke r201.<edu.kit.ipd.sdq.eventsim.rvisualization.model.provider.EntityLabelProvider: void <init>(org.eclipse.core.databinding.observable.map.IObservableMap[])>(r3);
+
+        r214 = (org.eclipse.jface.viewers.IBaseLabelProvider) r201;
+
+        virtualinvoke $r60.<org.eclipse.jface.viewers.ComboViewer: void setLabelProvider(org.eclipse.jface.viewers.IBaseLabelProvider)>(r214);
+
+        $r61 = r0.<edu.kit.ipd.sdq.eventsim.rvisualization.views.FilterView: org.eclipse.jface.viewers.ComboViewer cmbMeasuringPointFrom>;
+
+        virtualinvoke $r61.<org.eclipse.jface.viewers.ComboViewer: void setContentProvider(org.eclipse.jface.viewers.IContentProvider)>(r200);
+
+        $r62 = staticinvoke <org.eclipse.core.databinding.beans.BeanProperties: org.eclipse.core.databinding.beans.IBeanListProperty list(java.lang.String)>("measuringPointsFrom");
+
+        $r63 = r0.<edu.kit.ipd.sdq.eventsim.rvisualization.views.FilterView: edu.kit.ipd.sdq.eventsim.rvisualization.model.FilterModel model>;
+
+        r4 = interfaceinvoke $r62.<org.eclipse.core.databinding.beans.IBeanListProperty: org.eclipse.core.databinding.observable.list.IObservableList observe(java.lang.Object)>($r63);
+
+        $r64 = r0.<edu.kit.ipd.sdq.eventsim.rvisualization.views.FilterView: org.eclipse.jface.viewers.ComboViewer cmbMeasuringPointFrom>;
+
+        virtualinvoke $r64.<org.eclipse.jface.viewers.ComboViewer: void setInput(java.lang.Object)>(r4);
+
+        $r65 = staticinvoke <org.eclipse.jface.databinding.viewers.ViewerProperties: org.eclipse.jface.databinding.viewers.IViewerValueProperty singleSelection()>();
+
+        $r66 = r0.<edu.kit.ipd.sdq.eventsim.rvisualization.views.FilterView: org.eclipse.jface.viewers.ComboViewer cmbMeasuringPointFrom>;
+
+        r5 = interfaceinvoke $r65.<org.eclipse.jface.databinding.viewers.IViewerValueProperty: org.eclipse.jface.databinding.viewers.IViewerObservableValue observe(org.eclipse.jface.viewers.Viewer)>($r66);
+
+        $r67 = staticinvoke <org.eclipse.core.databinding.beans.BeanProperties: org.eclipse.core.databinding.beans.IBeanValueProperty value(java.lang.String)>("measuringPointFrom");
+
+        $r68 = r0.<edu.kit.ipd.sdq.eventsim.rvisualization.views.FilterView: edu.kit.ipd.sdq.eventsim.rvisualization.model.FilterSelectionModel selectionModel>;
+
+        r6 = interfaceinvoke $r67.<org.eclipse.core.databinding.beans.IBeanValueProperty: org.eclipse.core.databinding.observable.value.IObservableValue observe(java.lang.Object)>($r68);
+
+        virtualinvoke r199.<org.eclipse.core.databinding.DataBindingContext: org.eclipse.core.databinding.Binding bindValue(org.eclipse.core.databinding.observable.value.IObservableValue,org.eclipse.core.databinding.observable.value.IObservableValue,org.eclipse.core.databinding.UpdateValueStrategy,org.eclipse.core.databinding.UpdateValueStrategy)>(r5, r6, null, null);
+
+        r202 = new org.eclipse.jface.databinding.viewers.ObservableListContentProvider;
+
+        specialinvoke r202.<org.eclipse.jface.databinding.viewers.ObservableListContentProvider: void <init>()>();
+
+        $r71 = virtualinvoke r202.<org.eclipse.jface.databinding.viewers.ObservableListContentProvider: org.eclipse.core.databinding.observable.set.IObservableSet getKnownElements()>();
+
+        r8 = staticinvoke <org.eclipse.core.databinding.beans.PojoObservables: org.eclipse.core.databinding.observable.map.IObservableMap observeMap(org.eclipse.core.databinding.observable.set.IObservableSet,java.lang.Class,java.lang.String)>($r71, class "Ledu/kit/ipd/sdq/eventsim/rvisualization/model/TranslatableEntity;", "translation");
+
+        $r73 = r0.<edu.kit.ipd.sdq.eventsim.rvisualization.views.FilterView: org.eclipse.jface.viewers.ComboViewer cmbMetric>;
+
+        r203 = new edu.kit.ipd.sdq.eventsim.rvisualization.model.provider.TranslatableEntityLabelProvider;
+
+        specialinvoke r203.<edu.kit.ipd.sdq.eventsim.rvisualization.model.provider.TranslatableEntityLabelProvider: void <init>(org.eclipse.core.databinding.observable.map.IObservableMap)>(r8);
+
+        r215 = (org.eclipse.jface.viewers.IBaseLabelProvider) r203;
+
+        virtualinvoke $r73.<org.eclipse.jface.viewers.ComboViewer: void setLabelProvider(org.eclipse.jface.viewers.IBaseLabelProvider)>(r215);
+
+        $r74 = r0.<edu.kit.ipd.sdq.eventsim.rvisualization.views.FilterView: org.eclipse.jface.viewers.ComboViewer cmbMetric>;
+
+        virtualinvoke $r74.<org.eclipse.jface.viewers.ComboViewer: void setContentProvider(org.eclipse.jface.viewers.IContentProvider)>(r202);
+
+        $r75 = staticinvoke <org.eclipse.core.databinding.beans.BeanProperties: org.eclipse.core.databinding.beans.IBeanListProperty list(java.lang.String)>("metrics");
+
+        $r76 = r0.<edu.kit.ipd.sdq.eventsim.rvisualization.views.FilterView: edu.kit.ipd.sdq.eventsim.rvisualization.model.FilterModel model>;
+
+        r9 = interfaceinvoke $r75.<org.eclipse.core.databinding.beans.IBeanListProperty: org.eclipse.core.databinding.observable.list.IObservableList observe(java.lang.Object)>($r76);
+
+        $r77 = r0.<edu.kit.ipd.sdq.eventsim.rvisualization.views.FilterView: org.eclipse.jface.viewers.ComboViewer cmbMetric>;
+
+        virtualinvoke $r77.<org.eclipse.jface.viewers.ComboViewer: void setInput(java.lang.Object)>(r9);
+
+        $r78 = staticinvoke <org.eclipse.jface.databinding.viewers.ViewerProperties: org.eclipse.jface.databinding.viewers.IViewerValueProperty singleSelection()>();
+
+        $r79 = r0.<edu.kit.ipd.sdq.eventsim.rvisualization.views.FilterView: org.eclipse.jface.viewers.ComboViewer cmbMetric>;
+
+        r10 = interfaceinvoke $r78.<org.eclipse.jface.databinding.viewers.IViewerValueProperty: org.eclipse.jface.databinding.viewers.IViewerObservableValue observe(org.eclipse.jface.viewers.Viewer)>($r79);
+
+        $r80 = staticinvoke <org.eclipse.core.databinding.beans.BeanProperties: org.eclipse.core.databinding.beans.IBeanValueProperty value(java.lang.String)>("metric");
+
+        $r81 = r0.<edu.kit.ipd.sdq.eventsim.rvisualization.views.FilterView: edu.kit.ipd.sdq.eventsim.rvisualization.model.FilterSelectionModel selectionModel>;
+
+        r11 = interfaceinvoke $r80.<org.eclipse.core.databinding.beans.IBeanValueProperty: org.eclipse.core.databinding.observable.value.IObservableValue observe(java.lang.Object)>($r81);
+
+        virtualinvoke r199.<org.eclipse.core.databinding.DataBindingContext: org.eclipse.core.databinding.Binding bindValue(org.eclipse.core.databinding.observable.value.IObservableValue,org.eclipse.core.databinding.observable.value.IObservableValue,org.eclipse.core.databinding.UpdateValueStrategy,org.eclipse.core.databinding.UpdateValueStrategy)>(r10, r11, null, null);
+
+        r204 = new org.eclipse.jface.databinding.viewers.ObservableListContentProvider;
+
+        specialinvoke r204.<org.eclipse.jface.databinding.viewers.ObservableListContentProvider: void <init>()>();
+
+        $r84 = virtualinvoke r204.<org.eclipse.jface.databinding.viewers.ObservableListContentProvider: org.eclipse.core.databinding.observable.set.IObservableSet getKnownElements()>();
+
+        r13 = staticinvoke <org.eclipse.core.databinding.beans.PojoObservables: org.eclipse.core.databinding.observable.map.IObservableMap observeMap(org.eclipse.core.databinding.observable.set.IObservableSet,java.lang.Class,java.lang.String)>($r84, class "Ledu/kit/ipd/sdq/eventsim/rvisualization/model/TranslatableEntity;", "translation");
+
+        $r86 = r0.<edu.kit.ipd.sdq.eventsim.rvisualization.views.FilterView: org.eclipse.jface.viewers.ComboViewer cmbTriggerType>;
+
+        r205 = new edu.kit.ipd.sdq.eventsim.rvisualization.model.provider.TranslatableEntityLabelProvider;
+
+        specialinvoke r205.<edu.kit.ipd.sdq.eventsim.rvisualization.model.provider.TranslatableEntityLabelProvider: void <init>(org.eclipse.core.databinding.observable.map.IObservableMap)>(r13);
+
+        r216 = (org.eclipse.jface.viewers.IBaseLabelProvider) r205;
+
+        virtualinvoke $r86.<org.eclipse.jface.viewers.ComboViewer: void setLabelProvider(org.eclipse.jface.viewers.IBaseLabelProvider)>(r216);
+
+        $r87 = r0.<edu.kit.ipd.sdq.eventsim.rvisualization.views.FilterView: org.eclipse.jface.viewers.ComboViewer cmbTriggerType>;
+
+        virtualinvoke $r87.<org.eclipse.jface.viewers.ComboViewer: void setContentProvider(org.eclipse.jface.viewers.IContentProvider)>(r204);
+
+        $r88 = staticinvoke <org.eclipse.core.databinding.beans.BeanProperties: org.eclipse.core.databinding.beans.IBeanListProperty list(java.lang.String)>("triggerTypes");
+
+        $r89 = r0.<edu.kit.ipd.sdq.eventsim.rvisualization.views.FilterView: edu.kit.ipd.sdq.eventsim.rvisualization.model.FilterModel model>;
+
+        r14 = interfaceinvoke $r88.<org.eclipse.core.databinding.beans.IBeanListProperty: org.eclipse.core.databinding.observable.list.IObservableList observe(java.lang.Object)>($r89);
+
+        $r90 = r0.<edu.kit.ipd.sdq.eventsim.rvisualization.views.FilterView: org.eclipse.jface.viewers.ComboViewer cmbTriggerType>;
+
+        virtualinvoke $r90.<org.eclipse.jface.viewers.ComboViewer: void setInput(java.lang.Object)>(r14);
+
+        $r91 = staticinvoke <org.eclipse.jface.databinding.viewers.ViewerProperties: org.eclipse.jface.databinding.viewers.IViewerValueProperty singleSelection()>();
+
+        $r92 = r0.<edu.kit.ipd.sdq.eventsim.rvisualization.views.FilterView: org.eclipse.jface.viewers.ComboViewer cmbTriggerType>;
+
+        r15 = interfaceinvoke $r91.<org.eclipse.jface.databinding.viewers.IViewerValueProperty: org.eclipse.jface.databinding.viewers.IViewerObservableValue observe(org.eclipse.jface.viewers.Viewer)>($r92);
+
+        $r93 = staticinvoke <org.eclipse.core.databinding.beans.BeanProperties: org.eclipse.core.databinding.beans.IBeanValueProperty value(java.lang.String)>("triggerType");
+
+        $r94 = r0.<edu.kit.ipd.sdq.eventsim.rvisualization.views.FilterView: edu.kit.ipd.sdq.eventsim.rvisualization.model.FilterSelectionModel selectionModel>;
+
+        r16 = interfaceinvoke $r93.<org.eclipse.core.databinding.beans.IBeanValueProperty: org.eclipse.core.databinding.observable.value.IObservableValue observe(java.lang.Object)>($r94);
+
+        virtualinvoke r199.<org.eclipse.core.databinding.DataBindingContext: org.eclipse.core.databinding.Binding bindValue(org.eclipse.core.databinding.observable.value.IObservableValue,org.eclipse.core.databinding.observable.value.IObservableValue,org.eclipse.core.databinding.UpdateValueStrategy,org.eclipse.core.databinding.UpdateValueStrategy)>(r15, r16, null, null);
+
+        r206 = new org.eclipse.jface.databinding.viewers.ObservableListContentProvider;
+
+        specialinvoke r206.<org.eclipse.jface.databinding.viewers.ObservableListContentProvider: void <init>()>();
+
+        $r97 = virtualinvoke r206.<org.eclipse.jface.databinding.viewers.ObservableListContentProvider: org.eclipse.core.databinding.observable.set.IObservableSet getKnownElements()>();
+
+        r18 = staticinvoke <org.eclipse.core.databinding.beans.PojoObservables: org.eclipse.core.databinding.observable.map.IObservableMap observeMap(org.eclipse.core.databinding.observable.set.IObservableSet,java.lang.Class,java.lang.String)>($r97, class "Ledu/kit/ipd/sdq/eventsim/rvisualization/model/Entity;", "name");
+
+        $r99 = r0.<edu.kit.ipd.sdq.eventsim.rvisualization.views.FilterView: org.eclipse.jface.viewers.ComboViewer cmbAssemblyCtx>;
+
+        r207 = new edu.kit.ipd.sdq.eventsim.rvisualization.model.provider.EntityLabelProvider;
+
+        specialinvoke r207.<edu.kit.ipd.sdq.eventsim.rvisualization.model.provider.EntityLabelProvider: void <init>(org.eclipse.core.databinding.observable.map.IObservableMap)>(r18);
+
+        r217 = (org.eclipse.jface.viewers.IBaseLabelProvider) r207;
+
+        virtualinvoke $r99.<org.eclipse.jface.viewers.ComboViewer: void setLabelProvider(org.eclipse.jface.viewers.IBaseLabelProvider)>(r217);
+
+        $r100 = r0.<edu.kit.ipd.sdq.eventsim.rvisualization.views.FilterView: org.eclipse.jface.viewers.ComboViewer cmbAssemblyCtx>;
+
+        virtualinvoke $r100.<org.eclipse.jface.viewers.ComboViewer: void setContentProvider(org.eclipse.jface.viewers.IContentProvider)>(r206);
+
+        $r101 = staticinvoke <org.eclipse.core.databinding.beans.BeanProperties: org.eclipse.core.databinding.beans.IBeanListProperty list(java.lang.String)>("assemblyContexts");
+
+        $r102 = r0.<edu.kit.ipd.sdq.eventsim.rvisualization.views.FilterView: edu.kit.ipd.sdq.eventsim.rvisualization.model.FilterModel model>;
+
+        r19 = interfaceinvoke $r101.<org.eclipse.core.databinding.beans.IBeanListProperty: org.eclipse.core.databinding.observable.list.IObservableList observe(java.lang.Object)>($r102);
+
+        $r103 = r0.<edu.kit.ipd.sdq.eventsim.rvisualization.views.FilterView: org.eclipse.jface.viewers.ComboViewer cmbAssemblyCtx>;
+
+        virtualinvoke $r103.<org.eclipse.jface.viewers.ComboViewer: void setInput(java.lang.Object)>(r19);
+
+        $r104 = staticinvoke <org.eclipse.jface.databinding.viewers.ViewerProperties: org.eclipse.jface.databinding.viewers.IViewerValueProperty singleSelection()>();
+
+        $r105 = r0.<edu.kit.ipd.sdq.eventsim.rvisualization.views.FilterView: org.eclipse.jface.viewers.ComboViewer cmbAssemblyCtx>;
+
+        r20 = interfaceinvoke $r104.<org.eclipse.jface.databinding.viewers.IViewerValueProperty: org.eclipse.jface.databinding.viewers.IViewerObservableValue observe(org.eclipse.jface.viewers.Viewer)>($r105);
+
+        $r106 = staticinvoke <org.eclipse.core.databinding.beans.BeanProperties: org.eclipse.core.databinding.beans.IBeanValueProperty value(java.lang.String)>("assemblyContext");
+
+        $r107 = r0.<edu.kit.ipd.sdq.eventsim.rvisualization.views.FilterView: edu.kit.ipd.sdq.eventsim.rvisualization.model.FilterSelectionModel selectionModel>;
+
+        r21 = interfaceinvoke $r106.<org.eclipse.core.databinding.beans.IBeanValueProperty: org.eclipse.core.databinding.observable.value.IObservableValue observe(java.lang.Object)>($r107);
+
+        virtualinvoke r199.<org.eclipse.core.databinding.DataBindingContext: org.eclipse.core.databinding.Binding bindValue(org.eclipse.core.databinding.observable.value.IObservableValue,org.eclipse.core.databinding.observable.value.IObservableValue,org.eclipse.core.databinding.UpdateValueStrategy,org.eclipse.core.databinding.UpdateValueStrategy)>(r20, r21, null, null);
+
+        r208 = new org.eclipse.jface.databinding.viewers.ObservableListContentProvider;
+
+        specialinvoke r208.<org.eclipse.jface.databinding.viewers.ObservableListContentProvider: void <init>()>();
+
+        $r110 = virtualinvoke r208.<org.eclipse.jface.databinding.viewers.ObservableListContentProvider: org.eclipse.core.databinding.observable.set.IObservableSet getKnownElements()>();
+
+        r23 = staticinvoke <org.eclipse.core.databinding.beans.PojoObservables: org.eclipse.core.databinding.observable.map.IObservableMap observeMap(org.eclipse.core.databinding.observable.set.IObservableSet,java.lang.Class,java.lang.String)>($r110, class "Ledu/kit/ipd/sdq/eventsim/rvisualization/model/Entity;", "name");
+
+        $r112 = r0.<edu.kit.ipd.sdq.eventsim.rvisualization.views.FilterView: org.eclipse.jface.viewers.ComboViewer cmbMeasuringPointTo>;
+
+        r209 = new edu.kit.ipd.sdq.eventsim.rvisualization.model.provider.EntityLabelProvider;
+
+        specialinvoke r209.<edu.kit.ipd.sdq.eventsim.rvisualization.model.provider.EntityLabelProvider: void <init>(org.eclipse.core.databinding.observable.map.IObservableMap)>(r23);
+
+        r218 = (org.eclipse.jface.viewers.IBaseLabelProvider) r209;
+
+        virtualinvoke $r112.<org.eclipse.jface.viewers.ComboViewer: void setLabelProvider(org.eclipse.jface.viewers.IBaseLabelProvider)>(r218);
+
+        $r113 = r0.<edu.kit.ipd.sdq.eventsim.rvisualization.views.FilterView: org.eclipse.jface.viewers.ComboViewer cmbMeasuringPointTo>;
+
+        virtualinvoke $r113.<org.eclipse.jface.viewers.ComboViewer: void setContentProvider(org.eclipse.jface.viewers.IContentProvider)>(r208);
+
+        $r114 = staticinvoke <org.eclipse.core.databinding.beans.BeanProperties: org.eclipse.core.databinding.beans.IBeanListProperty list(java.lang.String)>("measuringPointsTo");
+
+        $r115 = r0.<edu.kit.ipd.sdq.eventsim.rvisualization.views.FilterView: edu.kit.ipd.sdq.eventsim.rvisualization.model.FilterModel model>;
+
+        r24 = interfaceinvoke $r114.<org.eclipse.core.databinding.beans.IBeanListProperty: org.eclipse.core.databinding.observable.list.IObservableList observe(java.lang.Object)>($r115);
+
+        $r116 = r0.<edu.kit.ipd.sdq.eventsim.rvisualization.views.FilterView: org.eclipse.jface.viewers.ComboViewer cmbMeasuringPointTo>;
+
+        virtualinvoke $r116.<org.eclipse.jface.viewers.ComboViewer: void setInput(java.lang.Object)>(r24);
+
+        $r117 = staticinvoke <org.eclipse.jface.databinding.viewers.ViewerProperties: org.eclipse.jface.databinding.viewers.IViewerValueProperty singleSelection()>();
+
+        $r118 = r0.<edu.kit.ipd.sdq.eventsim.rvisualization.views.FilterView: org.eclipse.jface.viewers.ComboViewer cmbMeasuringPointTo>;
+
+        r25 = interfaceinvoke $r117.<org.eclipse.jface.databinding.viewers.IViewerValueProperty: org.eclipse.jface.databinding.viewers.IViewerObservableValue observe(org.eclipse.jface.viewers.Viewer)>($r118);
+
+        $r119 = staticinvoke <org.eclipse.core.databinding.beans.BeanProperties: org.eclipse.core.databinding.beans.IBeanValueProperty value(java.lang.String)>("measuringPointTo");
+
+        $r120 = r0.<edu.kit.ipd.sdq.eventsim.rvisualization.views.FilterView: edu.kit.ipd.sdq.eventsim.rvisualization.model.FilterSelectionModel selectionModel>;
+
+        r26 = interfaceinvoke $r119.<org.eclipse.core.databinding.beans.IBeanValueProperty: org.eclipse.core.databinding.observable.value.IObservableValue observe(java.lang.Object)>($r120);
+
+        virtualinvoke r199.<org.eclipse.core.databinding.DataBindingContext: org.eclipse.core.databinding.Binding bindValue(org.eclipse.core.databinding.observable.value.IObservableValue,org.eclipse.core.databinding.observable.value.IObservableValue,org.eclipse.core.databinding.UpdateValueStrategy,org.eclipse.core.databinding.UpdateValueStrategy)>(r25, r26, null, null);
+
+        $r122 = staticinvoke <org.eclipse.jface.databinding.swt.WidgetProperties: org.eclipse.jface.databinding.swt.IWidgetValueProperty minimum()>();
+
+        $r123 = r0.<edu.kit.ipd.sdq.eventsim.rvisualization.views.FilterView: org.eclipse.swt.widgets.Spinner spnTimeSpanFrom>;
+
+        r27 = interfaceinvoke $r122.<org.eclipse.jface.databinding.swt.IWidgetValueProperty: org.eclipse.jface.databinding.swt.ISWTObservableValue observe(org.eclipse.swt.widgets.Widget)>($r123);
+
+        $r124 = staticinvoke <org.eclipse.core.databinding.beans.BeanProperties: org.eclipse.core.databinding.beans.IBeanValueProperty value(java.lang.String)>("simulationTimeMin");
+
+        $r125 = r0.<edu.kit.ipd.sdq.eventsim.rvisualization.views.FilterView: edu.kit.ipd.sdq.eventsim.rvisualization.model.FilterModel model>;
+
+        r28 = interfaceinvoke $r124.<org.eclipse.core.databinding.beans.IBeanValueProperty: org.eclipse.core.databinding.observable.value.IObservableValue observe(java.lang.Object)>($r125);
+
+        virtualinvoke r199.<org.eclipse.core.databinding.DataBindingContext: org.eclipse.core.databinding.Binding bindValue(org.eclipse.core.databinding.observable.value.IObservableValue,org.eclipse.core.databinding.observable.value.IObservableValue,org.eclipse.core.databinding.UpdateValueStrategy,org.eclipse.core.databinding.UpdateValueStrategy)>(r27, r28, null, null);
+
+        $r127 = staticinvoke <org.eclipse.jface.databinding.swt.WidgetProperties: org.eclipse.jface.databinding.swt.IWidgetValueProperty maximum()>();
+
+        $r128 = r0.<edu.kit.ipd.sdq.eventsim.rvisualization.views.FilterView: org.eclipse.swt.widgets.Spinner spnTimeSpanFrom>;
+
+        r29 = interfaceinvoke $r127.<org.eclipse.jface.databinding.swt.IWidgetValueProperty: org.eclipse.jface.databinding.swt.ISWTObservableValue observe(org.eclipse.swt.widgets.Widget)>($r128);
+
+        $r129 = staticinvoke <org.eclipse.core.databinding.beans.BeanProperties: org.eclipse.core.databinding.beans.IBeanValueProperty value(java.lang.String)>("simulationTimeUpper");
+
+        $r130 = r0.<edu.kit.ipd.sdq.eventsim.rvisualization.views.FilterView: edu.kit.ipd.sdq.eventsim.rvisualization.model.FilterSelectionModel selectionModel>;
+
+        r30 = interfaceinvoke $r129.<org.eclipse.core.databinding.beans.IBeanValueProperty: org.eclipse.core.databinding.observable.value.IObservableValue observe(java.lang.Object)>($r130);
+
+        virtualinvoke r199.<org.eclipse.core.databinding.DataBindingContext: org.eclipse.core.databinding.Binding bindValue(org.eclipse.core.databinding.observable.value.IObservableValue,org.eclipse.core.databinding.observable.value.IObservableValue,org.eclipse.core.databinding.UpdateValueStrategy,org.eclipse.core.databinding.UpdateValueStrategy)>(r29, r30, null, null);
+
+        $r132 = staticinvoke <org.eclipse.jface.databinding.swt.WidgetProperties: org.eclipse.jface.databinding.swt.IWidgetValueProperty selection()>();
+
+        $r133 = r0.<edu.kit.ipd.sdq.eventsim.rvisualization.views.FilterView: org.eclipse.swt.widgets.Spinner spnTimeSpanFrom>;
+
+        r31 = interfaceinvoke $r132.<org.eclipse.jface.databinding.swt.IWidgetValueProperty: org.eclipse.jface.databinding.swt.ISWTObservableValue observeDelayed(int,org.eclipse.swt.widgets.Widget)>(300, $r133);
+
+        $r134 = staticinvoke <org.eclipse.core.databinding.beans.BeanProperties: org.eclipse.core.databinding.beans.IBeanValueProperty value(java.lang.String)>("simulationTimeLower");
+
+        $r135 = r0.<edu.kit.ipd.sdq.eventsim.rvisualization.views.FilterView: edu.kit.ipd.sdq.eventsim.rvisualization.model.FilterSelectionModel selectionModel>;
+
+        r32 = interfaceinvoke $r134.<org.eclipse.core.databinding.beans.IBeanValueProperty: org.eclipse.core.databinding.observable.value.IObservableValue observe(java.lang.Object)>($r135);
+
+        virtualinvoke r199.<org.eclipse.core.databinding.DataBindingContext: org.eclipse.core.databinding.Binding bindValue(org.eclipse.core.databinding.observable.value.IObservableValue,org.eclipse.core.databinding.observable.value.IObservableValue,org.eclipse.core.databinding.UpdateValueStrategy,org.eclipse.core.databinding.UpdateValueStrategy)>(r31, r32, null, null);
+
+        $r137 = staticinvoke <org.eclipse.jface.databinding.swt.WidgetProperties: org.eclipse.jface.databinding.swt.IWidgetValueProperty minimum()>();
+
+        $r138 = r0.<edu.kit.ipd.sdq.eventsim.rvisualization.views.FilterView: org.eclipse.swt.widgets.Spinner spnTimeSpanTo>;
+
+        r33 = interfaceinvoke $r137.<org.eclipse.jface.databinding.swt.IWidgetValueProperty: org.eclipse.jface.databinding.swt.ISWTObservableValue observe(org.eclipse.swt.widgets.Widget)>($r138);
+
+        virtualinvoke r199.<org.eclipse.core.databinding.DataBindingContext: org.eclipse.core.databinding.Binding bindValue(org.eclipse.core.databinding.observable.value.IObservableValue,org.eclipse.core.databinding.observable.value.IObservableValue,org.eclipse.core.databinding.UpdateValueStrategy,org.eclipse.core.databinding.UpdateValueStrategy)>(r33, r32, null, null);
+
+        $r140 = staticinvoke <org.eclipse.jface.databinding.swt.WidgetProperties: org.eclipse.jface.databinding.swt.IWidgetValueProperty maximum()>();
+
+        $r141 = r0.<edu.kit.ipd.sdq.eventsim.rvisualization.views.FilterView: org.eclipse.swt.widgets.Spinner spnTimeSpanTo>;
+
+        r34 = interfaceinvoke $r140.<org.eclipse.jface.databinding.swt.IWidgetValueProperty: org.eclipse.jface.databinding.swt.ISWTObservableValue observe(org.eclipse.swt.widgets.Widget)>($r141);
+
+        $r142 = staticinvoke <org.eclipse.core.databinding.beans.BeanProperties: org.eclipse.core.databinding.beans.IBeanValueProperty value(java.lang.String)>("simulationTimeMax");
+
+        $r143 = r0.<edu.kit.ipd.sdq.eventsim.rvisualization.views.FilterView: edu.kit.ipd.sdq.eventsim.rvisualization.model.FilterModel model>;
+
+        r35 = interfaceinvoke $r142.<org.eclipse.core.databinding.beans.IBeanValueProperty: org.eclipse.core.databinding.observable.value.IObservableValue observe(java.lang.Object)>($r143);
+
+        virtualinvoke r199.<org.eclipse.core.databinding.DataBindingContext: org.eclipse.core.databinding.Binding bindValue(org.eclipse.core.databinding.observable.value.IObservableValue,org.eclipse.core.databinding.observable.value.IObservableValue,org.eclipse.core.databinding.UpdateValueStrategy,org.eclipse.core.databinding.UpdateValueStrategy)>(r34, r35, null, null);
+
+        $r145 = staticinvoke <org.eclipse.jface.databinding.swt.WidgetProperties: org.eclipse.jface.databinding.swt.IWidgetValueProperty selection()>();
+
+        $r146 = r0.<edu.kit.ipd.sdq.eventsim.rvisualization.views.FilterView: org.eclipse.swt.widgets.Spinner spnTimeSpanTo>;
+
+        r36 = interfaceinvoke $r145.<org.eclipse.jface.databinding.swt.IWidgetValueProperty: org.eclipse.jface.databinding.swt.ISWTObservableValue observeDelayed(int,org.eclipse.swt.widgets.Widget)>(300, $r146);
+
+        virtualinvoke r199.<org.eclipse.core.databinding.DataBindingContext: org.eclipse.core.databinding.Binding bindValue(org.eclipse.core.databinding.observable.value.IObservableValue,org.eclipse.core.databinding.observable.value.IObservableValue,org.eclipse.core.databinding.UpdateValueStrategy,org.eclipse.core.databinding.UpdateValueStrategy)>(r36, r30, null, null);
+
+        $r148 = staticinvoke <org.eclipse.jface.databinding.swt.WidgetProperties: org.eclipse.jface.databinding.swt.IWidgetValueProperty minimum()>();
+
+        $r149 = r0.<edu.kit.ipd.sdq.eventsim.rvisualization.views.FilterView: org.eclipse.swt.widgets.Scale scaleLower>;
+
+        r37 = interfaceinvoke $r148.<org.eclipse.jface.databinding.swt.IWidgetValueProperty: org.eclipse.jface.databinding.swt.ISWTObservableValue observe(org.eclipse.swt.widgets.Widget)>($r149);
+
+        virtualinvoke r199.<org.eclipse.core.databinding.DataBindingContext: org.eclipse.core.databinding.Binding bindValue(org.eclipse.core.databinding.observable.value.IObservableValue,org.eclipse.core.databinding.observable.value.IObservableValue,org.eclipse.core.databinding.UpdateValueStrategy,org.eclipse.core.databinding.UpdateValueStrategy)>(r37, r28, null, null);
+
+        $r151 = staticinvoke <org.eclipse.jface.databinding.swt.WidgetProperties: org.eclipse.jface.databinding.swt.IWidgetValueProperty maximum()>();
+
+        $r152 = r0.<edu.kit.ipd.sdq.eventsim.rvisualization.views.FilterView: org.eclipse.swt.widgets.Scale scaleLower>;
+
+        r38 = interfaceinvoke $r151.<org.eclipse.jface.databinding.swt.IWidgetValueProperty: org.eclipse.jface.databinding.swt.ISWTObservableValue observe(org.eclipse.swt.widgets.Widget)>($r152);
+
+        virtualinvoke r199.<org.eclipse.core.databinding.DataBindingContext: org.eclipse.core.databinding.Binding bindValue(org.eclipse.core.databinding.observable.value.IObservableValue,org.eclipse.core.databinding.observable.value.IObservableValue,org.eclipse.core.databinding.UpdateValueStrategy,org.eclipse.core.databinding.UpdateValueStrategy)>(r38, r30, null, null);
+
+        $r154 = staticinvoke <org.eclipse.jface.databinding.swt.WidgetProperties: org.eclipse.jface.databinding.swt.IWidgetValueProperty selection()>();
+
+        $r155 = r0.<edu.kit.ipd.sdq.eventsim.rvisualization.views.FilterView: org.eclipse.swt.widgets.Scale scaleLower>;
+
+        r39 = interfaceinvoke $r154.<org.eclipse.jface.databinding.swt.IWidgetValueProperty: org.eclipse.jface.databinding.swt.ISWTObservableValue observeDelayed(int,org.eclipse.swt.widgets.Widget)>(300, $r155);
+
+        virtualinvoke r199.<org.eclipse.core.databinding.DataBindingContext: org.eclipse.core.databinding.Binding bindValue(org.eclipse.core.databinding.observable.value.IObservableValue,org.eclipse.core.databinding.observable.value.IObservableValue,org.eclipse.core.databinding.UpdateValueStrategy,org.eclipse.core.databinding.UpdateValueStrategy)>(r39, r32, null, null);
+
+        $r157 = staticinvoke <org.eclipse.jface.databinding.swt.WidgetProperties: org.eclipse.jface.databinding.swt.IWidgetValueProperty minimum()>();
+
+        $r158 = r0.<edu.kit.ipd.sdq.eventsim.rvisualization.views.FilterView: org.eclipse.swt.widgets.Scale scaleUpper>;
+
+        r40 = interfaceinvoke $r157.<org.eclipse.jface.databinding.swt.IWidgetValueProperty: org.eclipse.jface.databinding.swt.ISWTObservableValue observe(org.eclipse.swt.widgets.Widget)>($r158);
+
+        virtualinvoke r199.<org.eclipse.core.databinding.DataBindingContext: org.eclipse.core.databinding.Binding bindValue(org.eclipse.core.databinding.observable.value.IObservableValue,org.eclipse.core.databinding.observable.value.IObservableValue,org.eclipse.core.databinding.UpdateValueStrategy,org.eclipse.core.databinding.UpdateValueStrategy)>(r40, r32, null, null);
+
+        $r160 = staticinvoke <org.eclipse.jface.databinding.swt.WidgetProperties: org.eclipse.jface.databinding.swt.IWidgetValueProperty maximum()>();
+
+        $r161 = r0.<edu.kit.ipd.sdq.eventsim.rvisualization.views.FilterView: org.eclipse.swt.widgets.Scale scaleUpper>;
+
+        r41 = interfaceinvoke $r160.<org.eclipse.jface.databinding.swt.IWidgetValueProperty: org.eclipse.jface.databinding.swt.ISWTObservableValue observe(org.eclipse.swt.widgets.Widget)>($r161);
+
+        virtualinvoke r199.<org.eclipse.core.databinding.DataBindingContext: org.eclipse.core.databinding.Binding bindValue(org.eclipse.core.databinding.observable.value.IObservableValue,org.eclipse.core.databinding.observable.value.IObservableValue,org.eclipse.core.databinding.UpdateValueStrategy,org.eclipse.core.databinding.UpdateValueStrategy)>(r41, r35, null, null);
+
+        $r163 = staticinvoke <org.eclipse.jface.databinding.swt.WidgetProperties: org.eclipse.jface.databinding.swt.IWidgetValueProperty selection()>();
+
+        $r164 = r0.<edu.kit.ipd.sdq.eventsim.rvisualization.views.FilterView: org.eclipse.swt.widgets.Scale scaleUpper>;
+
+        r42 = interfaceinvoke $r163.<org.eclipse.jface.databinding.swt.IWidgetValueProperty: org.eclipse.jface.databinding.swt.ISWTObservableValue observeDelayed(int,org.eclipse.swt.widgets.Widget)>(300, $r164);
+
+        virtualinvoke r199.<org.eclipse.core.databinding.DataBindingContext: org.eclipse.core.databinding.Binding bindValue(org.eclipse.core.databinding.observable.value.IObservableValue,org.eclipse.core.databinding.observable.value.IObservableValue,org.eclipse.core.databinding.UpdateValueStrategy,org.eclipse.core.databinding.UpdateValueStrategy)>(r42, r30, null, null);
+
+        r210 = new org.eclipse.jface.databinding.viewers.ObservableListContentProvider;
+
+        specialinvoke r210.<org.eclipse.jface.databinding.viewers.ObservableListContentProvider: void <init>()>();
+
+        $r167 = virtualinvoke r210.<org.eclipse.jface.databinding.viewers.ObservableListContentProvider: org.eclipse.core.databinding.observable.set.IObservableSet getKnownElements()>();
+
+        $r168 = newarray (java.lang.String)[2];
+
+        $r168[0] = "name";
+
+        $r168[1] = "id";
+
+        r44 = staticinvoke <org.eclipse.core.databinding.beans.PojoObservables: org.eclipse.core.databinding.observable.map.IObservableMap[] observeMaps(org.eclipse.core.databinding.observable.set.IObservableSet,java.lang.Class,java.lang.String[])>($r167, class "Ledu/kit/ipd/sdq/eventsim/rvisualization/model/Entity;", $r168);
+
+        $r170 = r0.<edu.kit.ipd.sdq.eventsim.rvisualization.views.FilterView: org.eclipse.jface.viewers.ComboViewer cmbTriggerInstance>;
+
+        r211 = new edu.kit.ipd.sdq.eventsim.rvisualization.model.provider.EntityLabelProvider;
+
+        specialinvoke r211.<edu.kit.ipd.sdq.eventsim.rvisualization.model.provider.EntityLabelProvider: void <init>(org.eclipse.core.databinding.observable.map.IObservableMap[])>(r44);
+
+        r219 = (org.eclipse.jface.viewers.IBaseLabelProvider) r211;
+
+        virtualinvoke $r170.<org.eclipse.jface.viewers.ComboViewer: void setLabelProvider(org.eclipse.jface.viewers.IBaseLabelProvider)>(r219);
+
+        $r171 = r0.<edu.kit.ipd.sdq.eventsim.rvisualization.views.FilterView: org.eclipse.jface.viewers.ComboViewer cmbTriggerInstance>;
+
+        virtualinvoke $r171.<org.eclipse.jface.viewers.ComboViewer: void setContentProvider(org.eclipse.jface.viewers.IContentProvider)>(r210);
+
+        $r172 = staticinvoke <org.eclipse.core.databinding.beans.BeanProperties: org.eclipse.core.databinding.beans.IBeanListProperty list(java.lang.String)>("triggerInstances");
+
+        $r173 = r0.<edu.kit.ipd.sdq.eventsim.rvisualization.views.FilterView: edu.kit.ipd.sdq.eventsim.rvisualization.model.FilterModel model>;
+
+        r45 = interfaceinvoke $r172.<org.eclipse.core.databinding.beans.IBeanListProperty: org.eclipse.core.databinding.observable.list.IObservableList observe(java.lang.Object)>($r173);
+
+        $r174 = r0.<edu.kit.ipd.sdq.eventsim.rvisualization.views.FilterView: org.eclipse.jface.viewers.ComboViewer cmbTriggerInstance>;
+
+        virtualinvoke $r174.<org.eclipse.jface.viewers.ComboViewer: void setInput(java.lang.Object)>(r45);
+
+        $r175 = staticinvoke <org.eclipse.jface.databinding.viewers.ViewerProperties: org.eclipse.jface.databinding.viewers.IViewerValueProperty singleSelection()>();
+
+        $r176 = r0.<edu.kit.ipd.sdq.eventsim.rvisualization.views.FilterView: org.eclipse.jface.viewers.ComboViewer cmbTriggerInstance>;
+
+        r46 = interfaceinvoke $r175.<org.eclipse.jface.databinding.viewers.IViewerValueProperty: org.eclipse.jface.databinding.viewers.IViewerObservableValue observe(org.eclipse.jface.viewers.Viewer)>($r176);
+
+        $r177 = staticinvoke <org.eclipse.core.databinding.beans.BeanProperties: org.eclipse.core.databinding.beans.IBeanValueProperty value(java.lang.String)>("triggerInstance");
+
+        $r178 = r0.<edu.kit.ipd.sdq.eventsim.rvisualization.views.FilterView: edu.kit.ipd.sdq.eventsim.rvisualization.model.FilterSelectionModel selectionModel>;
+
+        r47 = interfaceinvoke $r177.<org.eclipse.core.databinding.beans.IBeanValueProperty: org.eclipse.core.databinding.observable.value.IObservableValue observe(java.lang.Object)>($r178);
+
+        virtualinvoke r199.<org.eclipse.core.databinding.DataBindingContext: org.eclipse.core.databinding.Binding bindValue(org.eclipse.core.databinding.observable.value.IObservableValue,org.eclipse.core.databinding.observable.value.IObservableValue,org.eclipse.core.databinding.UpdateValueStrategy,org.eclipse.core.databinding.UpdateValueStrategy)>(r46, r47, null, null);
+
+        $r180 = staticinvoke <org.eclipse.jface.databinding.swt.WidgetProperties: org.eclipse.jface.databinding.swt.IWidgetValueProperty selection()>();
+
+        $r181 = r0.<edu.kit.ipd.sdq.eventsim.rvisualization.views.FilterView: org.eclipse.swt.widgets.Button btnEnableTriggerInstance>;
+
+        r48 = interfaceinvoke $r180.<org.eclipse.jface.databinding.swt.IWidgetValueProperty: org.eclipse.jface.databinding.swt.ISWTObservableValue observe(org.eclipse.swt.widgets.Widget)>($r181);
+
+        $r182 = staticinvoke <org.eclipse.core.databinding.beans.BeanProperties: org.eclipse.core.databinding.beans.IBeanValueProperty value(java.lang.String)>("triggerInstanceSelectionEnabled");
+
+        $r183 = r0.<edu.kit.ipd.sdq.eventsim.rvisualization.views.FilterView: edu.kit.ipd.sdq.eventsim.rvisualization.model.FilterSelectionModel selectionModel>;
+
+        r49 = interfaceinvoke $r182.<org.eclipse.core.databinding.beans.IBeanValueProperty: org.eclipse.core.databinding.observable.value.IObservableValue observe(java.lang.Object)>($r183);
+
+        virtualinvoke r199.<org.eclipse.core.databinding.DataBindingContext: org.eclipse.core.databinding.Binding bindValue(org.eclipse.core.databinding.observable.value.IObservableValue,org.eclipse.core.databinding.observable.value.IObservableValue,org.eclipse.core.databinding.UpdateValueStrategy,org.eclipse.core.databinding.UpdateValueStrategy)>(r48, r49, null, null);
+
+        r212 = new org.eclipse.jface.databinding.viewers.ObservableListContentProvider;
+
+        specialinvoke r212.<org.eclipse.jface.databinding.viewers.ObservableListContentProvider: void <init>()>();
+
+        $r186 = virtualinvoke r212.<org.eclipse.jface.databinding.viewers.ObservableListContentProvider: org.eclipse.core.databinding.observable.set.IObservableSet getKnownElements()>();
+
+        $r187 = newarray (java.lang.String)[2];
+
+        $r187[0] = "name";
+
+        $r187[1] = "translation";
+
+        r51 = staticinvoke <org.eclipse.core.databinding.beans.PojoObservables: org.eclipse.core.databinding.observable.map.IObservableMap[] observeMaps(org.eclipse.core.databinding.observable.set.IObservableSet,java.lang.Class,java.lang.String[])>($r186, class "Ledu/kit/ipd/sdq/eventsim/rvisualization/model/TranslatableEntity;", $r187);
+
+        $r189 = r0.<edu.kit.ipd.sdq.eventsim.rvisualization.views.FilterView: org.eclipse.jface.viewers.ComboViewer cmbDiagramType>;
+
+        r213 = new edu.kit.ipd.sdq.eventsim.rvisualization.model.provider.TranslatableEntityLabelProvider;
+
+        specialinvoke r213.<edu.kit.ipd.sdq.eventsim.rvisualization.model.provider.TranslatableEntityLabelProvider: void <init>(org.eclipse.core.databinding.observable.map.IObservableMap[])>(r51);
+
+        r220 = (org.eclipse.jface.viewers.IBaseLabelProvider) r213;
+
+        virtualinvoke $r189.<org.eclipse.jface.viewers.ComboViewer: void setLabelProvider(org.eclipse.jface.viewers.IBaseLabelProvider)>(r220);
+
+        $r190 = r0.<edu.kit.ipd.sdq.eventsim.rvisualization.views.FilterView: org.eclipse.jface.viewers.ComboViewer cmbDiagramType>;
+
+        virtualinvoke $r190.<org.eclipse.jface.viewers.ComboViewer: void setContentProvider(org.eclipse.jface.viewers.IContentProvider)>(r212);
+
+        $r191 = staticinvoke <org.eclipse.core.databinding.beans.BeanProperties: org.eclipse.core.databinding.beans.IBeanListProperty list(java.lang.String)>("diagramTypes");
+
+        $r192 = r0.<edu.kit.ipd.sdq.eventsim.rvisualization.views.FilterView: edu.kit.ipd.sdq.eventsim.rvisualization.model.FilterModel model>;
+
+        r52 = interfaceinvoke $r191.<org.eclipse.core.databinding.beans.IBeanListProperty: org.eclipse.core.databinding.observable.list.IObservableList observe(java.lang.Object)>($r192);
+
+        $r193 = r0.<edu.kit.ipd.sdq.eventsim.rvisualization.views.FilterView: org.eclipse.jface.viewers.ComboViewer cmbDiagramType>;
+
+        virtualinvoke $r193.<org.eclipse.jface.viewers.ComboViewer: void setInput(java.lang.Object)>(r52);
+
+        $r194 = staticinvoke <org.eclipse.jface.databinding.viewers.ViewerProperties: org.eclipse.jface.databinding.viewers.IViewerValueProperty singleSelection()>();
+
+        $r195 = r0.<edu.kit.ipd.sdq.eventsim.rvisualization.views.FilterView: org.eclipse.jface.viewers.ComboViewer cmbDiagramType>;
+
+        r53 = interfaceinvoke $r194.<org.eclipse.jface.databinding.viewers.IViewerValueProperty: org.eclipse.jface.databinding.viewers.IViewerObservableValue observe(org.eclipse.jface.viewers.Viewer)>($r195);
+
+        $r196 = staticinvoke <org.eclipse.core.databinding.beans.BeanProperties: org.eclipse.core.databinding.beans.IBeanValueProperty value(java.lang.String)>("diagramType");
+
+        $r197 = r0.<edu.kit.ipd.sdq.eventsim.rvisualization.views.FilterView: edu.kit.ipd.sdq.eventsim.rvisualization.model.FilterSelectionModel selectionModel>;
+
+        r54 = interfaceinvoke $r196.<org.eclipse.core.databinding.beans.IBeanValueProperty: org.eclipse.core.databinding.observable.value.IObservableValue observe(java.lang.Object)>($r197);
+
+        virtualinvoke r199.<org.eclipse.core.databinding.DataBindingContext: org.eclipse.core.databinding.Binding bindValue(org.eclipse.core.databinding.observable.value.IObservableValue,org.eclipse.core.databinding.observable.value.IObservableValue,org.eclipse.core.databinding.UpdateValueStrategy,org.eclipse.core.databinding.UpdateValueStrategy)>(r53, r54, null, null);
+
+        return r199;
+    }
+
+    static void access$0(edu.kit.ipd.sdq.eventsim.rvisualization.views.FilterView)
+    {
+        edu.kit.ipd.sdq.eventsim.rvisualization.views.FilterView r0;
+
+        r0 := @parameter0: edu.kit.ipd.sdq.eventsim.rvisualization.views.FilterView;
+
+        specialinvoke r0.<edu.kit.ipd.sdq.eventsim.rvisualization.views.FilterView: void layoutView()>();
+
+        return;
+    }
+
+    static org.eclipse.jface.viewers.ComboViewer access$1(edu.kit.ipd.sdq.eventsim.rvisualization.views.FilterView)
+    {
+        edu.kit.ipd.sdq.eventsim.rvisualization.views.FilterView r0;
+        org.eclipse.jface.viewers.ComboViewer $r1;
+
+        r0 := @parameter0: edu.kit.ipd.sdq.eventsim.rvisualization.views.FilterView;
+
+        $r1 = r0.<edu.kit.ipd.sdq.eventsim.rvisualization.views.FilterView: org.eclipse.jface.viewers.ComboViewer cmbAssemblyCtx>;
+
+        return $r1;
+    }
+
+    static edu.kit.ipd.sdq.eventsim.rvisualization.Controller access$2(edu.kit.ipd.sdq.eventsim.rvisualization.views.FilterView)
+    {
+        edu.kit.ipd.sdq.eventsim.rvisualization.views.FilterView r0;
+        edu.kit.ipd.sdq.eventsim.rvisualization.Controller $r1;
+
+        r0 := @parameter0: edu.kit.ipd.sdq.eventsim.rvisualization.views.FilterView;
+
+        $r1 = r0.<edu.kit.ipd.sdq.eventsim.rvisualization.views.FilterView: edu.kit.ipd.sdq.eventsim.rvisualization.Controller ctrl>;
+
+        return $r1;
+    }
+
+    static org.eclipse.swt.widgets.Composite access$3(edu.kit.ipd.sdq.eventsim.rvisualization.views.FilterView)
+    {
+        edu.kit.ipd.sdq.eventsim.rvisualization.views.FilterView r0;
+        org.eclipse.swt.widgets.Composite $r1;
+
+        r0 := @parameter0: edu.kit.ipd.sdq.eventsim.rvisualization.views.FilterView;
+
+        $r1 = r0.<edu.kit.ipd.sdq.eventsim.rvisualization.views.FilterView: org.eclipse.swt.widgets.Composite viewParent>;
+
+        return $r1;
+    }
+
+    public void lambda$0(org.eclipse.swt.widgets.Event)
+    {
+        edu.kit.ipd.sdq.eventsim.rvisualization.views.FilterView r0;
+        org.eclipse.swt.widgets.Event r1;
+        org.eclipse.swt.widgets.ExpandItem $r2;
+        org.eclipse.swt.widgets.Composite $r3;
+
+        r0 := @this: edu.kit.ipd.sdq.eventsim.rvisualization.views.FilterView;
+
+        r1 := @parameter0: org.eclipse.swt.widgets.Event;
+
+        $r3 = r0.<edu.kit.ipd.sdq.eventsim.rvisualization.views.FilterView: org.eclipse.swt.widgets.Composite cmpTrigger>;
+
+        $r2 = r0.<edu.kit.ipd.sdq.eventsim.rvisualization.views.FilterView: org.eclipse.swt.widgets.ExpandItem xpiTrigger>;
+
+        specialinvoke r0.<edu.kit.ipd.sdq.eventsim.rvisualization.views.FilterView: void adjustHeight(org.eclipse.swt.widgets.Composite,org.eclipse.swt.widgets.ExpandItem)>($r3, $r2);
+
+        return;
+    }
+
+    public void lambda$1(org.eclipse.swt.widgets.Event)
+    {
+        edu.kit.ipd.sdq.eventsim.rvisualization.views.FilterView r0;
+        org.eclipse.swt.widgets.Event r1;
+        edu.kit.ipd.sdq.eventsim.rvisualization.Controller $r2;
+
+        r0 := @this: edu.kit.ipd.sdq.eventsim.rvisualization.views.FilterView;
+
+        r1 := @parameter0: org.eclipse.swt.widgets.Event;
+
+        $r2 = r0.<edu.kit.ipd.sdq.eventsim.rvisualization.views.FilterView: edu.kit.ipd.sdq.eventsim.rvisualization.Controller ctrl>;
+
+        virtualinvoke $r2.<edu.kit.ipd.sdq.eventsim.rvisualization.Controller: void plotDiagram()>();
+
+        return;
+    }
+
+    public void lambda$2(org.eclipse.swt.widgets.Event)
+    {
+        edu.kit.ipd.sdq.eventsim.rvisualization.views.FilterView r0;
+        org.eclipse.swt.widgets.Event r1;
+        edu.kit.ipd.sdq.eventsim.rvisualization.Controller $r2;
+
+        r0 := @this: edu.kit.ipd.sdq.eventsim.rvisualization.views.FilterView;
+
+        r1 := @parameter0: org.eclipse.swt.widgets.Event;
+
+        $r2 = r0.<edu.kit.ipd.sdq.eventsim.rvisualization.views.FilterView: edu.kit.ipd.sdq.eventsim.rvisualization.Controller ctrl>;
+
+        virtualinvoke $r2.<edu.kit.ipd.sdq.eventsim.rvisualization.Controller: void resetSimulationTimeBounds()>();
+
+        return;
+    }
+
+    public void lambda$3(org.eclipse.swt.widgets.Event)
+    {
+        edu.kit.ipd.sdq.eventsim.rvisualization.views.FilterView r0;
+        org.eclipse.swt.widgets.Event r1;
+        edu.kit.ipd.sdq.eventsim.rvisualization.Controller $r2;
+
+        r0 := @this: edu.kit.ipd.sdq.eventsim.rvisualization.views.FilterView;
+
+        r1 := @parameter0: org.eclipse.swt.widgets.Event;
+
+        $r2 = r0.<edu.kit.ipd.sdq.eventsim.rvisualization.views.FilterView: edu.kit.ipd.sdq.eventsim.rvisualization.Controller ctrl>;
+
+        virtualinvoke $r2.<edu.kit.ipd.sdq.eventsim.rvisualization.Controller: void clearSelectionTriggerTypes()>();
+
+        return;
+    }
+
+    public void lambda$4(org.eclipse.swt.widgets.Event)
+    {
+        edu.kit.ipd.sdq.eventsim.rvisualization.views.FilterView r0;
+        org.eclipse.swt.widgets.Event r1;
+        edu.kit.ipd.sdq.eventsim.rvisualization.Controller $r2;
+
+        r0 := @this: edu.kit.ipd.sdq.eventsim.rvisualization.views.FilterView;
+
+        r1 := @parameter0: org.eclipse.swt.widgets.Event;
+
+        $r2 = r0.<edu.kit.ipd.sdq.eventsim.rvisualization.views.FilterView: edu.kit.ipd.sdq.eventsim.rvisualization.Controller ctrl>;
+
+        virtualinvoke $r2.<edu.kit.ipd.sdq.eventsim.rvisualization.Controller: void clearSelectionTriggerInstances()>();
+
+        return;
+    }
+
+    public void lambda$5(org.eclipse.swt.widgets.Composite, org.eclipse.swt.widgets.ExpandItem, org.eclipse.swt.widgets.Event)
+    {
+        edu.kit.ipd.sdq.eventsim.rvisualization.views.FilterView r0;
+        org.eclipse.swt.widgets.Composite r1;
+        org.eclipse.swt.widgets.ExpandItem r2;
+        org.eclipse.swt.widgets.Event r3;
+        org.eclipse.swt.widgets.Display $r4;
+        java.lang.Runnable $r5;
+
+        r0 := @this: edu.kit.ipd.sdq.eventsim.rvisualization.views.FilterView;
+
+        r1 := @parameter0: org.eclipse.swt.widgets.Composite;
+
+        r2 := @parameter1: org.eclipse.swt.widgets.ExpandItem;
+
+        r3 := @parameter2: org.eclipse.swt.widgets.Event;
+
+        $r4 = virtualinvoke r0.<edu.kit.ipd.sdq.eventsim.rvisualization.views.FilterView: org.eclipse.swt.widgets.Display getDisplay()>();
+
+        $r5 = staticinvoke <edu.kit.ipd.sdq.eventsim.rvisualization.views.FilterView$lambda_6__200: java.lang.Runnable bootstrap$(edu.kit.ipd.sdq.eventsim.rvisualization.views.FilterView,org.eclipse.swt.widgets.Composite,org.eclipse.swt.widgets.ExpandItem)>(r0, r1, r2);
+
+        virtualinvoke $r4.<org.eclipse.swt.widgets.Display: void asyncExec(java.lang.Runnable)>($r5);
+
+        return;
+    }
+
+    public void lambda$6(org.eclipse.swt.widgets.Composite, org.eclipse.swt.widgets.ExpandItem)
+    {
+        edu.kit.ipd.sdq.eventsim.rvisualization.views.FilterView r0;
+        org.eclipse.swt.widgets.Composite r1;
+        org.eclipse.swt.widgets.ExpandItem r2;
+
+        r0 := @this: edu.kit.ipd.sdq.eventsim.rvisualization.views.FilterView;
+
+        r1 := @parameter0: org.eclipse.swt.widgets.Composite;
+
+        r2 := @parameter1: org.eclipse.swt.widgets.ExpandItem;
+
+        specialinvoke r0.<edu.kit.ipd.sdq.eventsim.rvisualization.views.FilterView: void adjustHeight(org.eclipse.swt.widgets.Composite,org.eclipse.swt.widgets.ExpandItem)>(r1, r2);
+
+        return;
+    }
+
+    public static void <clinit>()
+    {
+        <edu.kit.ipd.sdq.eventsim.rvisualization.views.FilterView: int TIMESPAN_MAX_VALUE> = 1000000;
+
+        <edu.kit.ipd.sdq.eventsim.rvisualization.views.FilterView: java.lang.String ID> = "edu.kit.ipd.sdq.eventsim.rvisualization.filterview";
+
+        return;
+    }
+}

@@ -1,0 +1,112 @@
+public class edu.kit.ipd.sdq.eventsim.system.calculators.ResponseTimeOfExternalCallsCalculator extends edu.kit.ipd.sdq.eventsim.measurement.calculator.AbstractBinaryCalculator
+{
+
+    public void <init>()
+    {
+        edu.kit.ipd.sdq.eventsim.system.calculators.ResponseTimeOfExternalCallsCalculator r0;
+
+        r0 := @this: edu.kit.ipd.sdq.eventsim.system.calculators.ResponseTimeOfExternalCallsCalculator;
+
+        specialinvoke r0.<edu.kit.ipd.sdq.eventsim.measurement.calculator.AbstractBinaryCalculator: void <init>()>();
+
+        return;
+    }
+
+    public void setup(edu.kit.ipd.sdq.eventsim.measurement.probe.IProbe, edu.kit.ipd.sdq.eventsim.measurement.probe.IProbe)
+    {
+        edu.kit.ipd.sdq.eventsim.system.calculators.ResponseTimeOfExternalCallsCalculator r0;
+        edu.kit.ipd.sdq.eventsim.measurement.probe.IProbe r1, r2;
+        edu.kit.ipd.sdq.eventsim.measurement.MeasurementListener $r3;
+
+        r0 := @this: edu.kit.ipd.sdq.eventsim.system.calculators.ResponseTimeOfExternalCallsCalculator;
+
+        r1 := @parameter0: edu.kit.ipd.sdq.eventsim.measurement.probe.IProbe;
+
+        r2 := @parameter1: edu.kit.ipd.sdq.eventsim.measurement.probe.IProbe;
+
+        interfaceinvoke r1.<edu.kit.ipd.sdq.eventsim.measurement.probe.IProbe: void enableCaching()>();
+
+        $r3 = staticinvoke <edu.kit.ipd.sdq.eventsim.system.calculators.ResponseTimeOfExternalCallsCalculator$lambda_0__242: edu.kit.ipd.sdq.eventsim.measurement.MeasurementListener bootstrap$(edu.kit.ipd.sdq.eventsim.system.calculators.ResponseTimeOfExternalCallsCalculator,edu.kit.ipd.sdq.eventsim.measurement.probe.IProbe)>(r0, r1);
+
+        interfaceinvoke r2.<edu.kit.ipd.sdq.eventsim.measurement.probe.IProbe: void forEachMeasurement(edu.kit.ipd.sdq.eventsim.measurement.MeasurementListener)>($r3);
+
+        return;
+    }
+
+    public edu.kit.ipd.sdq.eventsim.measurement.Measurement calculate(edu.kit.ipd.sdq.eventsim.measurement.Measurement, edu.kit.ipd.sdq.eventsim.measurement.Measurement)
+    {
+        edu.kit.ipd.sdq.eventsim.system.calculators.ResponseTimeOfExternalCallsCalculator r0;
+        edu.kit.ipd.sdq.eventsim.measurement.Measurement r1, r2, $r9;
+        double d0, d1, $d2, $d3;
+        edu.kit.ipd.sdq.eventsim.measurement.MeasuringPointPair $r4;
+        edu.kit.ipd.sdq.eventsim.measurement.MeasuringPoint $r5, $r6, $r7;
+        java.lang.Object[] $r8;
+        java.lang.Object $r10;
+        edu.kit.ipd.sdq.eventsim.measurement.Metadata[] $r11;
+
+        r0 := @this: edu.kit.ipd.sdq.eventsim.system.calculators.ResponseTimeOfExternalCallsCalculator;
+
+        r1 := @parameter0: edu.kit.ipd.sdq.eventsim.measurement.Measurement;
+
+        r2 := @parameter1: edu.kit.ipd.sdq.eventsim.measurement.Measurement;
+
+        if r1 != null goto label1;
+
+        return null;
+
+     label1:
+        d0 = virtualinvoke r2.<edu.kit.ipd.sdq.eventsim.measurement.Measurement: double getWhen()>();
+
+        $d2 = virtualinvoke r2.<edu.kit.ipd.sdq.eventsim.measurement.Measurement: double getValue()>();
+
+        $d3 = virtualinvoke r1.<edu.kit.ipd.sdq.eventsim.measurement.Measurement: double getValue()>();
+
+        d1 = $d2 - $d3;
+
+        $r4 = new edu.kit.ipd.sdq.eventsim.measurement.MeasuringPointPair;
+
+        $r5 = virtualinvoke r1.<edu.kit.ipd.sdq.eventsim.measurement.Measurement: edu.kit.ipd.sdq.eventsim.measurement.MeasuringPoint getWhere()>();
+
+        $r6 = virtualinvoke r2.<edu.kit.ipd.sdq.eventsim.measurement.Measurement: edu.kit.ipd.sdq.eventsim.measurement.MeasuringPoint getWhere()>();
+
+        $r7 = virtualinvoke r2.<edu.kit.ipd.sdq.eventsim.measurement.Measurement: edu.kit.ipd.sdq.eventsim.measurement.MeasuringPoint getWhere()>();
+
+        $r8 = virtualinvoke $r7.<edu.kit.ipd.sdq.eventsim.measurement.MeasuringPoint: java.lang.Object[] getContexts()>();
+
+        specialinvoke $r4.<edu.kit.ipd.sdq.eventsim.measurement.MeasuringPointPair: void <init>(edu.kit.ipd.sdq.eventsim.measurement.MeasuringPoint,edu.kit.ipd.sdq.eventsim.measurement.MeasuringPoint,java.lang.String,java.lang.Object[])>($r5, $r6, "responsetime", $r8);
+
+        $r9 = new edu.kit.ipd.sdq.eventsim.measurement.Measurement;
+
+        $r10 = virtualinvoke r2.<edu.kit.ipd.sdq.eventsim.measurement.Measurement: java.lang.Object getWho()>();
+
+        $r11 = newarray (edu.kit.ipd.sdq.eventsim.measurement.Metadata)[0];
+
+        specialinvoke $r9.<edu.kit.ipd.sdq.eventsim.measurement.Measurement: void <init>(java.lang.Object,edu.kit.ipd.sdq.eventsim.measurement.MeasuringPoint,java.lang.Object,double,double,edu.kit.ipd.sdq.eventsim.measurement.Metadata[])>("RESPONSE_TIME_OF_EXTERNAL_CALLS", $r4, $r10, d1, d0, $r11);
+
+        return $r9;
+    }
+
+    public void lambda$0(edu.kit.ipd.sdq.eventsim.measurement.probe.IProbe, edu.kit.ipd.sdq.eventsim.measurement.Measurement)
+    {
+        edu.kit.ipd.sdq.eventsim.system.calculators.ResponseTimeOfExternalCallsCalculator r0;
+        edu.kit.ipd.sdq.eventsim.measurement.probe.IProbe r1;
+        edu.kit.ipd.sdq.eventsim.measurement.Measurement r2, $r4, $r5;
+        java.lang.Object $r3;
+
+        r0 := @this: edu.kit.ipd.sdq.eventsim.system.calculators.ResponseTimeOfExternalCallsCalculator;
+
+        r1 := @parameter0: edu.kit.ipd.sdq.eventsim.measurement.probe.IProbe;
+
+        r2 := @parameter1: edu.kit.ipd.sdq.eventsim.measurement.Measurement;
+
+        $r3 = virtualinvoke r2.<edu.kit.ipd.sdq.eventsim.measurement.Measurement: java.lang.Object getWho()>();
+
+        $r4 = interfaceinvoke r1.<edu.kit.ipd.sdq.eventsim.measurement.probe.IProbe: edu.kit.ipd.sdq.eventsim.measurement.Measurement getLastMeasurementOf(java.lang.Object)>($r3);
+
+        $r5 = virtualinvoke r0.<edu.kit.ipd.sdq.eventsim.system.calculators.ResponseTimeOfExternalCallsCalculator: edu.kit.ipd.sdq.eventsim.measurement.Measurement calculate(edu.kit.ipd.sdq.eventsim.measurement.Measurement,edu.kit.ipd.sdq.eventsim.measurement.Measurement)>($r4, r2);
+
+        virtualinvoke r0.<edu.kit.ipd.sdq.eventsim.system.calculators.ResponseTimeOfExternalCallsCalculator: void notify(edu.kit.ipd.sdq.eventsim.measurement.Measurement)>($r5);
+
+        return;
+    }
+}

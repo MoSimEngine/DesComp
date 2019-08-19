@@ -1,0 +1,54 @@
+public final class edu.kit.ipd.sdq.eventsim.resources.probes.passive.ResourceDemandProbe$1$lambda_0__156 extends java.lang.Object implements java.util.function.Consumer
+{
+    edu.kit.ipd.sdq.eventsim.measurement.Measurement cap0;
+
+    public static java.util.function.Consumer bootstrap$(edu.kit.ipd.sdq.eventsim.measurement.Measurement)
+    {
+        edu.kit.ipd.sdq.eventsim.measurement.Measurement $r0;
+        edu.kit.ipd.sdq.eventsim.resources.probes.passive.ResourceDemandProbe$1$lambda_0__156 $r1;
+
+        $r0 := @parameter0: edu.kit.ipd.sdq.eventsim.measurement.Measurement;
+
+        $r1 = new edu.kit.ipd.sdq.eventsim.resources.probes.passive.ResourceDemandProbe$1$lambda_0__156;
+
+        specialinvoke $r1.<edu.kit.ipd.sdq.eventsim.resources.probes.passive.ResourceDemandProbe$1$lambda_0__156: void <init>(edu.kit.ipd.sdq.eventsim.measurement.Measurement)>($r0);
+
+        return $r1;
+    }
+
+    public void <init>(edu.kit.ipd.sdq.eventsim.measurement.Measurement)
+    {
+        edu.kit.ipd.sdq.eventsim.resources.probes.passive.ResourceDemandProbe$1$lambda_0__156 $r0;
+        edu.kit.ipd.sdq.eventsim.measurement.Measurement $r1;
+
+        $r0 := @this: edu.kit.ipd.sdq.eventsim.resources.probes.passive.ResourceDemandProbe$1$lambda_0__156;
+
+        $r1 := @parameter0: edu.kit.ipd.sdq.eventsim.measurement.Measurement;
+
+        specialinvoke $r0.<java.lang.Object: void <init>()>();
+
+        $r0.<edu.kit.ipd.sdq.eventsim.resources.probes.passive.ResourceDemandProbe$1$lambda_0__156: edu.kit.ipd.sdq.eventsim.measurement.Measurement cap0> = $r1;
+
+        return;
+    }
+
+    public void accept(java.lang.Object)
+    {
+        edu.kit.ipd.sdq.eventsim.resources.probes.passive.ResourceDemandProbe$1$lambda_0__156 $r0;
+        java.lang.Object $r1;
+        edu.kit.ipd.sdq.eventsim.measurement.MeasurementListener $r2;
+        edu.kit.ipd.sdq.eventsim.measurement.Measurement $r3;
+
+        $r0 := @this: edu.kit.ipd.sdq.eventsim.resources.probes.passive.ResourceDemandProbe$1$lambda_0__156;
+
+        $r1 := @parameter0: java.lang.Object;
+
+        $r2 = (edu.kit.ipd.sdq.eventsim.measurement.MeasurementListener) $r1;
+
+        $r3 = $r0.<edu.kit.ipd.sdq.eventsim.resources.probes.passive.ResourceDemandProbe$1$lambda_0__156: edu.kit.ipd.sdq.eventsim.measurement.Measurement cap0>;
+
+        staticinvoke <edu.kit.ipd.sdq.eventsim.resources.probes.passive.ResourceDemandProbe$1: void lambda$0(edu.kit.ipd.sdq.eventsim.measurement.Measurement,edu.kit.ipd.sdq.eventsim.measurement.MeasurementListener)>($r3, $r2);
+
+        return;
+    }
+}

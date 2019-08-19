@@ -1,0 +1,107 @@
+public class edu.kit.ipd.sdq.eventsim.debug.DebugEntityListener extends java.lang.Object implements edu.kit.ipd.sdq.eventsim.entities.IEntityListener
+{
+    private static final org.apache.log4j.Logger logger;
+    private final java.lang.ref.WeakReference entity;
+
+    static void <clinit>()
+    {
+        org.apache.log4j.Logger $r0;
+
+        $r0 = staticinvoke <org.apache.log4j.Logger: org.apache.log4j.Logger getLogger(java.lang.Class)>(class "Ledu/kit/ipd/sdq/eventsim/debug/DebugEntityListener;");
+
+        <edu.kit.ipd.sdq.eventsim.debug.DebugEntityListener: org.apache.log4j.Logger logger> = $r0;
+
+        return;
+    }
+
+    public void <init>(edu.kit.ipd.sdq.eventsim.entities.EventSimEntity)
+    {
+        edu.kit.ipd.sdq.eventsim.debug.DebugEntityListener r0;
+        edu.kit.ipd.sdq.eventsim.entities.EventSimEntity r1;
+        java.lang.ref.WeakReference $r2;
+
+        r0 := @this: edu.kit.ipd.sdq.eventsim.debug.DebugEntityListener;
+
+        r1 := @parameter0: edu.kit.ipd.sdq.eventsim.entities.EventSimEntity;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        $r2 = new java.lang.ref.WeakReference;
+
+        specialinvoke $r2.<java.lang.ref.WeakReference: void <init>(java.lang.Object)>(r1);
+
+        r0.<edu.kit.ipd.sdq.eventsim.debug.DebugEntityListener: java.lang.ref.WeakReference entity> = $r2;
+
+        return;
+    }
+
+    public void enteredSystem()
+    {
+        edu.kit.ipd.sdq.eventsim.debug.DebugEntityListener r0;
+        java.lang.StringBuilder $r1, $r7;
+        org.apache.log4j.Logger $r2;
+        java.lang.ref.WeakReference $r3;
+        java.lang.Object $r4;
+        edu.kit.ipd.sdq.eventsim.entities.EventSimEntity $r5;
+        java.lang.String $r6, $r8;
+
+        r0 := @this: edu.kit.ipd.sdq.eventsim.debug.DebugEntityListener;
+
+        $r2 = <edu.kit.ipd.sdq.eventsim.debug.DebugEntityListener: org.apache.log4j.Logger logger>;
+
+        $r1 = new java.lang.StringBuilder;
+
+        specialinvoke $r1.<java.lang.StringBuilder: void <init>(java.lang.String)>("ENTERED SYSTEM: ");
+
+        $r3 = r0.<edu.kit.ipd.sdq.eventsim.debug.DebugEntityListener: java.lang.ref.WeakReference entity>;
+
+        $r4 = virtualinvoke $r3.<java.lang.ref.WeakReference: java.lang.Object get()>();
+
+        $r5 = (edu.kit.ipd.sdq.eventsim.entities.EventSimEntity) $r4;
+
+        $r6 = virtualinvoke $r5.<edu.kit.ipd.sdq.eventsim.entities.EventSimEntity: java.lang.String getName()>();
+
+        $r7 = virtualinvoke $r1.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r6);
+
+        $r8 = virtualinvoke $r7.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        virtualinvoke $r2.<org.apache.log4j.Logger: void debug(java.lang.Object)>($r8);
+
+        return;
+    }
+
+    public void leftSystem()
+    {
+        edu.kit.ipd.sdq.eventsim.debug.DebugEntityListener r0;
+        java.lang.StringBuilder $r1, $r7;
+        org.apache.log4j.Logger $r2;
+        java.lang.ref.WeakReference $r3;
+        java.lang.Object $r4;
+        edu.kit.ipd.sdq.eventsim.entities.EventSimEntity $r5;
+        java.lang.String $r6, $r8;
+
+        r0 := @this: edu.kit.ipd.sdq.eventsim.debug.DebugEntityListener;
+
+        $r2 = <edu.kit.ipd.sdq.eventsim.debug.DebugEntityListener: org.apache.log4j.Logger logger>;
+
+        $r1 = new java.lang.StringBuilder;
+
+        specialinvoke $r1.<java.lang.StringBuilder: void <init>(java.lang.String)>("LEFT SYSTEM: ");
+
+        $r3 = r0.<edu.kit.ipd.sdq.eventsim.debug.DebugEntityListener: java.lang.ref.WeakReference entity>;
+
+        $r4 = virtualinvoke $r3.<java.lang.ref.WeakReference: java.lang.Object get()>();
+
+        $r5 = (edu.kit.ipd.sdq.eventsim.entities.EventSimEntity) $r4;
+
+        $r6 = virtualinvoke $r5.<edu.kit.ipd.sdq.eventsim.entities.EventSimEntity: java.lang.String getName()>();
+
+        $r7 = virtualinvoke $r1.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r6);
+
+        $r8 = virtualinvoke $r7.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        virtualinvoke $r2.<org.apache.log4j.Logger: void debug(java.lang.Object)>($r8);
+
+        return;
+    }
+}

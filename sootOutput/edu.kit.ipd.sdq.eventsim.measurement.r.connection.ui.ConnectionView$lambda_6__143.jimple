@@ -1,0 +1,60 @@
+public final class edu.kit.ipd.sdq.eventsim.measurement.r.connection.ui.ConnectionView$lambda_6__143 extends java.lang.Object implements java.lang.Runnable
+{
+    edu.kit.ipd.sdq.eventsim.measurement.r.connection.ui.ConnectionView cap0;
+    boolean cap1;
+
+    public static java.lang.Runnable bootstrap$(edu.kit.ipd.sdq.eventsim.measurement.r.connection.ui.ConnectionView, boolean)
+    {
+        edu.kit.ipd.sdq.eventsim.measurement.r.connection.ui.ConnectionView $r0;
+        boolean $z0;
+        edu.kit.ipd.sdq.eventsim.measurement.r.connection.ui.ConnectionView$lambda_6__143 $r1;
+
+        $r0 := @parameter0: edu.kit.ipd.sdq.eventsim.measurement.r.connection.ui.ConnectionView;
+
+        $z0 := @parameter1: boolean;
+
+        $r1 = new edu.kit.ipd.sdq.eventsim.measurement.r.connection.ui.ConnectionView$lambda_6__143;
+
+        specialinvoke $r1.<edu.kit.ipd.sdq.eventsim.measurement.r.connection.ui.ConnectionView$lambda_6__143: void <init>(edu.kit.ipd.sdq.eventsim.measurement.r.connection.ui.ConnectionView,boolean)>($r0, $z0);
+
+        return $r1;
+    }
+
+    public void <init>(edu.kit.ipd.sdq.eventsim.measurement.r.connection.ui.ConnectionView, boolean)
+    {
+        edu.kit.ipd.sdq.eventsim.measurement.r.connection.ui.ConnectionView$lambda_6__143 $r0;
+        edu.kit.ipd.sdq.eventsim.measurement.r.connection.ui.ConnectionView $r1;
+        boolean $z0;
+
+        $r0 := @this: edu.kit.ipd.sdq.eventsim.measurement.r.connection.ui.ConnectionView$lambda_6__143;
+
+        $r1 := @parameter0: edu.kit.ipd.sdq.eventsim.measurement.r.connection.ui.ConnectionView;
+
+        $z0 := @parameter1: boolean;
+
+        specialinvoke $r0.<java.lang.Object: void <init>()>();
+
+        $r0.<edu.kit.ipd.sdq.eventsim.measurement.r.connection.ui.ConnectionView$lambda_6__143: edu.kit.ipd.sdq.eventsim.measurement.r.connection.ui.ConnectionView cap0> = $r1;
+
+        $r0.<edu.kit.ipd.sdq.eventsim.measurement.r.connection.ui.ConnectionView$lambda_6__143: boolean cap1> = $z0;
+
+        return;
+    }
+
+    public void run()
+    {
+        edu.kit.ipd.sdq.eventsim.measurement.r.connection.ui.ConnectionView$lambda_6__143 $r0;
+        edu.kit.ipd.sdq.eventsim.measurement.r.connection.ui.ConnectionView $r1;
+        boolean $z0;
+
+        $r0 := @this: edu.kit.ipd.sdq.eventsim.measurement.r.connection.ui.ConnectionView$lambda_6__143;
+
+        $r1 = $r0.<edu.kit.ipd.sdq.eventsim.measurement.r.connection.ui.ConnectionView$lambda_6__143: edu.kit.ipd.sdq.eventsim.measurement.r.connection.ui.ConnectionView cap0>;
+
+        $z0 = $r0.<edu.kit.ipd.sdq.eventsim.measurement.r.connection.ui.ConnectionView$lambda_6__143: boolean cap1>;
+
+        virtualinvoke $r1.<edu.kit.ipd.sdq.eventsim.measurement.r.connection.ui.ConnectionView: void lambda$6(boolean)>($z0);
+
+        return;
+    }
+}

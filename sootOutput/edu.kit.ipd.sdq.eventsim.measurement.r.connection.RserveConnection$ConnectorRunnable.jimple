@@ -1,0 +1,355 @@
+class edu.kit.ipd.sdq.eventsim.measurement.r.connection.RserveConnection$ConnectorRunnable extends java.lang.Object implements java.lang.Runnable
+{
+    private java.lang.String host;
+    private int port;
+    final edu.kit.ipd.sdq.eventsim.measurement.r.connection.RserveConnection this$0;
+
+    public void <init>(edu.kit.ipd.sdq.eventsim.measurement.r.connection.RserveConnection, java.lang.String, int)
+    {
+        edu.kit.ipd.sdq.eventsim.measurement.r.connection.RserveConnection$ConnectorRunnable r0;
+        edu.kit.ipd.sdq.eventsim.measurement.r.connection.RserveConnection r1;
+        java.lang.String r2;
+        int i0;
+
+        r0 := @this: edu.kit.ipd.sdq.eventsim.measurement.r.connection.RserveConnection$ConnectorRunnable;
+
+        r1 := @parameter0: edu.kit.ipd.sdq.eventsim.measurement.r.connection.RserveConnection;
+
+        r2 := @parameter1: java.lang.String;
+
+        i0 := @parameter2: int;
+
+        r0.<edu.kit.ipd.sdq.eventsim.measurement.r.connection.RserveConnection$ConnectorRunnable: edu.kit.ipd.sdq.eventsim.measurement.r.connection.RserveConnection this$0> = r1;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        r0.<edu.kit.ipd.sdq.eventsim.measurement.r.connection.RserveConnection$ConnectorRunnable: java.lang.String host> = r2;
+
+        r0.<edu.kit.ipd.sdq.eventsim.measurement.r.connection.RserveConnection$ConnectorRunnable: int port> = i0;
+
+        return;
+    }
+
+    public void run()
+    {
+        edu.kit.ipd.sdq.eventsim.measurement.r.connection.RserveConnection$ConnectorRunnable r0;
+        java.util.Iterator r1;
+        edu.kit.ipd.sdq.eventsim.measurement.r.connection.RserveConnection $r2, $r12, $r15, $r16, $r18, $r34, $r36, $r39, $r41, $r45, $r47, $r49, $r52, $r55;
+        org.rosuda.REngine.Rserve.RConnection $r3, $r13, $r17, $r35, $r40, $r46, $r48, $r53;
+        org.apache.log4j.Logger $r4, $r21, $r29, $r44, $r54, $r59;
+        java.lang.StringBuilder $r5, $r7, $r8, $r9, $r10, $r22, $r24, $r25, $r26, $r27, $r30, $r31, $r32;
+        java.lang.String $r6, $r11, $r14, $r23, $r28, $r33;
+        int $i0, $i1, $i2, $i3, $i4, i5;
+        boolean $z0, $z1, $z2, $z3, $z4;
+        java.util.List $r19, $r37, $r42, $r50, $r56;
+        java.lang.Object $r20;
+        java.util.function.Consumer $r38, $r43, $r51, $r57;
+        java.lang.InterruptedException $r58;
+        java.lang.Throwable $r60, $r61;
+        java.lang.RuntimeException $r62;
+        edu.kit.ipd.sdq.eventsim.measurement.r.connection.ConnectionStatusListener r64;
+
+        r0 := @this: edu.kit.ipd.sdq.eventsim.measurement.r.connection.RserveConnection$ConnectorRunnable;
+
+        $r2 = r0.<edu.kit.ipd.sdq.eventsim.measurement.r.connection.RserveConnection$ConnectorRunnable: edu.kit.ipd.sdq.eventsim.measurement.r.connection.RserveConnection this$0>;
+
+        $r3 = staticinvoke <edu.kit.ipd.sdq.eventsim.measurement.r.connection.RserveConnection: org.rosuda.REngine.Rserve.RConnection access$0(edu.kit.ipd.sdq.eventsim.measurement.r.connection.RserveConnection)>($r2);
+
+        if $r3 == null goto label01;
+
+        $r52 = r0.<edu.kit.ipd.sdq.eventsim.measurement.r.connection.RserveConnection$ConnectorRunnable: edu.kit.ipd.sdq.eventsim.measurement.r.connection.RserveConnection this$0>;
+
+        $r53 = staticinvoke <edu.kit.ipd.sdq.eventsim.measurement.r.connection.RserveConnection: org.rosuda.REngine.Rserve.RConnection access$0(edu.kit.ipd.sdq.eventsim.measurement.r.connection.RserveConnection)>($r52);
+
+        $z4 = virtualinvoke $r53.<org.rosuda.REngine.Rserve.RConnection: boolean isConnected()>();
+
+        if $z4 == 0 goto label01;
+
+        $r54 = staticinvoke <edu.kit.ipd.sdq.eventsim.measurement.r.connection.RserveConnection: org.apache.log4j.Logger access$1()>();
+
+        virtualinvoke $r54.<org.apache.log4j.Logger: void warn(java.lang.Object)>("Tried to connect, but there is already an open connection");
+
+        $r55 = r0.<edu.kit.ipd.sdq.eventsim.measurement.r.connection.RserveConnection$ConnectorRunnable: edu.kit.ipd.sdq.eventsim.measurement.r.connection.RserveConnection this$0>;
+
+        $r56 = staticinvoke <edu.kit.ipd.sdq.eventsim.measurement.r.connection.RserveConnection: java.util.List access$2(edu.kit.ipd.sdq.eventsim.measurement.r.connection.RserveConnection)>($r55);
+
+        $r57 = staticinvoke <edu.kit.ipd.sdq.eventsim.measurement.r.connection.RserveConnection$ConnectorRunnable$lambda_0__12: java.util.function.Consumer bootstrap$()>();
+
+        interfaceinvoke $r56.<java.util.List: void forEach(java.util.function.Consumer)>($r57);
+
+        return;
+
+     label01:
+        $r4 = staticinvoke <edu.kit.ipd.sdq.eventsim.measurement.r.connection.RserveConnection: org.apache.log4j.Logger access$1()>();
+
+        $r5 = new java.lang.StringBuilder;
+
+        specialinvoke $r5.<java.lang.StringBuilder: void <init>(java.lang.String)>("Establishing R connection to ");
+
+        $r6 = r0.<edu.kit.ipd.sdq.eventsim.measurement.r.connection.RserveConnection$ConnectorRunnable: java.lang.String host>;
+
+        $r7 = virtualinvoke $r5.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r6);
+
+        $r8 = virtualinvoke $r7.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(":");
+
+        $i0 = r0.<edu.kit.ipd.sdq.eventsim.measurement.r.connection.RserveConnection$ConnectorRunnable: int port>;
+
+        $r9 = virtualinvoke $r8.<java.lang.StringBuilder: java.lang.StringBuilder append(int)>($i0);
+
+        $r10 = virtualinvoke $r9.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("...");
+
+        $r11 = virtualinvoke $r10.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        virtualinvoke $r4.<org.apache.log4j.Logger: void info(java.lang.Object)>($r11);
+
+        i5 = 0;
+
+        goto label15;
+
+     label02:
+        $r12 = r0.<edu.kit.ipd.sdq.eventsim.measurement.r.connection.RserveConnection$ConnectorRunnable: edu.kit.ipd.sdq.eventsim.measurement.r.connection.RserveConnection this$0>;
+
+        $z0 = staticinvoke <edu.kit.ipd.sdq.eventsim.measurement.r.connection.RserveConnection: boolean access$3(edu.kit.ipd.sdq.eventsim.measurement.r.connection.RserveConnection)>($r12);
+
+        if $z0 == 0 goto label03;
+
+        $r49 = r0.<edu.kit.ipd.sdq.eventsim.measurement.r.connection.RserveConnection$ConnectorRunnable: edu.kit.ipd.sdq.eventsim.measurement.r.connection.RserveConnection this$0>;
+
+        $r50 = staticinvoke <edu.kit.ipd.sdq.eventsim.measurement.r.connection.RserveConnection: java.util.List access$2(edu.kit.ipd.sdq.eventsim.measurement.r.connection.RserveConnection)>($r49);
+
+        $r51 = staticinvoke <edu.kit.ipd.sdq.eventsim.measurement.r.connection.RserveConnection$ConnectorRunnable$lambda_1__11: java.util.function.Consumer bootstrap$()>();
+
+        interfaceinvoke $r50.<java.util.List: void forEach(java.util.function.Consumer)>($r51);
+
+        return;
+
+     label03:
+        $r15 = r0.<edu.kit.ipd.sdq.eventsim.measurement.r.connection.RserveConnection$ConnectorRunnable: edu.kit.ipd.sdq.eventsim.measurement.r.connection.RserveConnection this$0>;
+
+        $r13 = new org.rosuda.REngine.Rserve.RConnection;
+
+        $r14 = r0.<edu.kit.ipd.sdq.eventsim.measurement.r.connection.RserveConnection$ConnectorRunnable: java.lang.String host>;
+
+        $i1 = r0.<edu.kit.ipd.sdq.eventsim.measurement.r.connection.RserveConnection$ConnectorRunnable: int port>;
+
+        specialinvoke $r13.<org.rosuda.REngine.Rserve.RConnection: void <init>(java.lang.String,int)>($r14, $i1);
+
+        staticinvoke <edu.kit.ipd.sdq.eventsim.measurement.r.connection.RserveConnection: void access$4(edu.kit.ipd.sdq.eventsim.measurement.r.connection.RserveConnection,org.rosuda.REngine.Rserve.RConnection)>($r15, $r13);
+
+     label04:
+        goto label06;
+
+     label05:
+        $r60 := @caughtexception;
+
+     label06:
+        $r16 = r0.<edu.kit.ipd.sdq.eventsim.measurement.r.connection.RserveConnection$ConnectorRunnable: edu.kit.ipd.sdq.eventsim.measurement.r.connection.RserveConnection this$0>;
+
+        $r17 = staticinvoke <edu.kit.ipd.sdq.eventsim.measurement.r.connection.RserveConnection: org.rosuda.REngine.Rserve.RConnection access$0(edu.kit.ipd.sdq.eventsim.measurement.r.connection.RserveConnection)>($r16);
+
+        if $r17 == null goto label07;
+
+        $r34 = r0.<edu.kit.ipd.sdq.eventsim.measurement.r.connection.RserveConnection$ConnectorRunnable: edu.kit.ipd.sdq.eventsim.measurement.r.connection.RserveConnection this$0>;
+
+        $r35 = staticinvoke <edu.kit.ipd.sdq.eventsim.measurement.r.connection.RserveConnection: org.rosuda.REngine.Rserve.RConnection access$0(edu.kit.ipd.sdq.eventsim.measurement.r.connection.RserveConnection)>($r34);
+
+        $z2 = virtualinvoke $r35.<org.rosuda.REngine.Rserve.RConnection: boolean isConnected()>();
+
+        if $z2 == 0 goto label07;
+
+        $r36 = r0.<edu.kit.ipd.sdq.eventsim.measurement.r.connection.RserveConnection$ConnectorRunnable: edu.kit.ipd.sdq.eventsim.measurement.r.connection.RserveConnection this$0>;
+
+        $r37 = staticinvoke <edu.kit.ipd.sdq.eventsim.measurement.r.connection.RserveConnection: java.util.List access$2(edu.kit.ipd.sdq.eventsim.measurement.r.connection.RserveConnection)>($r36);
+
+        $r38 = staticinvoke <edu.kit.ipd.sdq.eventsim.measurement.r.connection.RserveConnection$ConnectorRunnable$lambda_2__9: java.util.function.Consumer bootstrap$()>();
+
+        interfaceinvoke $r37.<java.util.List: void forEach(java.util.function.Consumer)>($r38);
+
+        goto label16;
+
+     label07:
+        if i5 != 0 goto label08;
+
+        $r29 = staticinvoke <edu.kit.ipd.sdq.eventsim.measurement.r.connection.RserveConnection: org.apache.log4j.Logger access$1()>();
+
+        $r30 = new java.lang.StringBuilder;
+
+        specialinvoke $r30.<java.lang.StringBuilder: void <init>(java.lang.String)>("Could not establish Rserve connection to R. Make sure to run Rserve, e.g. by calling \"library(Rserve); Rserve(port=");
+
+        $i4 = r0.<edu.kit.ipd.sdq.eventsim.measurement.r.connection.RserveConnection$ConnectorRunnable: int port>;
+
+        $r31 = virtualinvoke $r30.<java.lang.StringBuilder: java.lang.StringBuilder append(int)>($i4);
+
+        $r32 = virtualinvoke $r31.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(")\" in R. ");
+
+        $r33 = virtualinvoke $r32.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        virtualinvoke $r29.<org.apache.log4j.Logger: void error(java.lang.Object)>($r33);
+
+     label08:
+        $i2 = i5 % 20;
+
+        if $i2 != 0 goto label09;
+
+        $r21 = staticinvoke <edu.kit.ipd.sdq.eventsim.measurement.r.connection.RserveConnection: org.apache.log4j.Logger access$1()>();
+
+        $r22 = new java.lang.StringBuilder;
+
+        specialinvoke $r22.<java.lang.StringBuilder: void <init>(java.lang.String)>("Waiting for Rserve connection to ");
+
+        $r23 = r0.<edu.kit.ipd.sdq.eventsim.measurement.r.connection.RserveConnection$ConnectorRunnable: java.lang.String host>;
+
+        $r24 = virtualinvoke $r22.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r23);
+
+        $r25 = virtualinvoke $r24.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(":");
+
+        $i3 = r0.<edu.kit.ipd.sdq.eventsim.measurement.r.connection.RserveConnection$ConnectorRunnable: int port>;
+
+        $r26 = virtualinvoke $r25.<java.lang.StringBuilder: java.lang.StringBuilder append(int)>($i3);
+
+        $r27 = virtualinvoke $r26.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("...");
+
+        $r28 = virtualinvoke $r27.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        virtualinvoke $r21.<org.apache.log4j.Logger: void error(java.lang.Object)>($r28);
+
+     label09:
+        $r18 = r0.<edu.kit.ipd.sdq.eventsim.measurement.r.connection.RserveConnection$ConnectorRunnable: edu.kit.ipd.sdq.eventsim.measurement.r.connection.RserveConnection this$0>;
+
+        $r19 = staticinvoke <edu.kit.ipd.sdq.eventsim.measurement.r.connection.RserveConnection: java.util.List access$2(edu.kit.ipd.sdq.eventsim.measurement.r.connection.RserveConnection)>($r18);
+
+        r1 = interfaceinvoke $r19.<java.util.List: java.util.Iterator iterator()>();
+
+        goto label11;
+
+     label10:
+        $r20 = interfaceinvoke r1.<java.util.Iterator: java.lang.Object next()>();
+
+        r64 = (edu.kit.ipd.sdq.eventsim.measurement.r.connection.ConnectionStatusListener) $r20;
+
+        interfaceinvoke r64.<edu.kit.ipd.sdq.eventsim.measurement.r.connection.ConnectionStatusListener: void connecting(int)>(i5);
+
+     label11:
+        $z1 = interfaceinvoke r1.<java.util.Iterator: boolean hasNext()>();
+
+        if $z1 != 0 goto label10;
+
+        staticinvoke <java.lang.Thread: void sleep(long)>(1000L);
+
+     label12:
+        goto label14;
+
+     label13:
+        $r58 := @caughtexception;
+
+        $r59 = staticinvoke <edu.kit.ipd.sdq.eventsim.measurement.r.connection.RserveConnection: org.apache.log4j.Logger access$1()>();
+
+        virtualinvoke $r59.<org.apache.log4j.Logger: void error(java.lang.Object)>($r58);
+
+     label14:
+        i5 = i5 + 1;
+
+     label15:
+        if i5 < 60 goto label02;
+
+     label16:
+        $r39 = r0.<edu.kit.ipd.sdq.eventsim.measurement.r.connection.RserveConnection$ConnectorRunnable: edu.kit.ipd.sdq.eventsim.measurement.r.connection.RserveConnection this$0>;
+
+        $r40 = staticinvoke <edu.kit.ipd.sdq.eventsim.measurement.r.connection.RserveConnection: org.rosuda.REngine.Rserve.RConnection access$0(edu.kit.ipd.sdq.eventsim.measurement.r.connection.RserveConnection)>($r39);
+
+        if $r40 == null goto label17;
+
+        $r45 = r0.<edu.kit.ipd.sdq.eventsim.measurement.r.connection.RserveConnection$ConnectorRunnable: edu.kit.ipd.sdq.eventsim.measurement.r.connection.RserveConnection this$0>;
+
+        $r46 = staticinvoke <edu.kit.ipd.sdq.eventsim.measurement.r.connection.RserveConnection: org.rosuda.REngine.Rserve.RConnection access$0(edu.kit.ipd.sdq.eventsim.measurement.r.connection.RserveConnection)>($r45);
+
+        $z3 = virtualinvoke $r46.<org.rosuda.REngine.Rserve.RConnection: boolean isConnected()>();
+
+        if $z3 != 0 goto label18;
+
+     label17:
+        $r41 = r0.<edu.kit.ipd.sdq.eventsim.measurement.r.connection.RserveConnection$ConnectorRunnable: edu.kit.ipd.sdq.eventsim.measurement.r.connection.RserveConnection this$0>;
+
+        $r42 = staticinvoke <edu.kit.ipd.sdq.eventsim.measurement.r.connection.RserveConnection: java.util.List access$2(edu.kit.ipd.sdq.eventsim.measurement.r.connection.RserveConnection)>($r41);
+
+        $r43 = staticinvoke <edu.kit.ipd.sdq.eventsim.measurement.r.connection.RserveConnection$ConnectorRunnable$lambda_3__10: java.util.function.Consumer bootstrap$()>();
+
+        interfaceinvoke $r42.<java.util.List: void forEach(java.util.function.Consumer)>($r43);
+
+        $r44 = staticinvoke <edu.kit.ipd.sdq.eventsim.measurement.r.connection.RserveConnection: org.apache.log4j.Logger access$1()>();
+
+        virtualinvoke $r44.<org.apache.log4j.Logger: void error(java.lang.Object)>("Could not establish Rserve connection to R within 60 attempts. Giving up now.");
+
+        return;
+
+     label18:
+        $r47 = r0.<edu.kit.ipd.sdq.eventsim.measurement.r.connection.RserveConnection$ConnectorRunnable: edu.kit.ipd.sdq.eventsim.measurement.r.connection.RserveConnection this$0>;
+
+        $r48 = staticinvoke <edu.kit.ipd.sdq.eventsim.measurement.r.connection.RserveConnection: org.rosuda.REngine.Rserve.RConnection access$0(edu.kit.ipd.sdq.eventsim.measurement.r.connection.RserveConnection)>($r47);
+
+        virtualinvoke $r48.<org.rosuda.REngine.Rserve.RConnection: void voidEval(java.lang.String)>("library(data.table)");
+
+     label19:
+        goto label21;
+
+     label20:
+        $r61 := @caughtexception;
+
+        $r62 = new java.lang.RuntimeException;
+
+        specialinvoke $r62.<java.lang.RuntimeException: void <init>(java.lang.String)>("R could not load library \"data.table\". Please run \"install.packages(\'data.table\')\" in R.");
+
+        throw $r62;
+
+     label21:
+        return;
+
+        catch org.rosuda.REngine.Rserve.RserveException from label03 to label04 with label05;
+        catch java.lang.InterruptedException from label09 to label12 with label13;
+        catch org.rosuda.REngine.Rserve.RserveException from label18 to label19 with label20;
+    }
+
+    public static void lambda$0(edu.kit.ipd.sdq.eventsim.measurement.r.connection.ConnectionStatusListener)
+    {
+        edu.kit.ipd.sdq.eventsim.measurement.r.connection.ConnectionStatusListener r0;
+
+        r0 := @parameter0: edu.kit.ipd.sdq.eventsim.measurement.r.connection.ConnectionStatusListener;
+
+        interfaceinvoke r0.<edu.kit.ipd.sdq.eventsim.measurement.r.connection.ConnectionStatusListener: void failed()>();
+
+        return;
+    }
+
+    public static void lambda$1(edu.kit.ipd.sdq.eventsim.measurement.r.connection.ConnectionStatusListener)
+    {
+        edu.kit.ipd.sdq.eventsim.measurement.r.connection.ConnectionStatusListener r0;
+
+        r0 := @parameter0: edu.kit.ipd.sdq.eventsim.measurement.r.connection.ConnectionStatusListener;
+
+        interfaceinvoke r0.<edu.kit.ipd.sdq.eventsim.measurement.r.connection.ConnectionStatusListener: void cancelled()>();
+
+        return;
+    }
+
+    public static void lambda$2(edu.kit.ipd.sdq.eventsim.measurement.r.connection.ConnectionStatusListener)
+    {
+        edu.kit.ipd.sdq.eventsim.measurement.r.connection.ConnectionStatusListener r0;
+
+        r0 := @parameter0: edu.kit.ipd.sdq.eventsim.measurement.r.connection.ConnectionStatusListener;
+
+        interfaceinvoke r0.<edu.kit.ipd.sdq.eventsim.measurement.r.connection.ConnectionStatusListener: void connected()>();
+
+        return;
+    }
+
+    public static void lambda$3(edu.kit.ipd.sdq.eventsim.measurement.r.connection.ConnectionStatusListener)
+    {
+        edu.kit.ipd.sdq.eventsim.measurement.r.connection.ConnectionStatusListener r0;
+
+        r0 := @parameter0: edu.kit.ipd.sdq.eventsim.measurement.r.connection.ConnectionStatusListener;
+
+        interfaceinvoke r0.<edu.kit.ipd.sdq.eventsim.measurement.r.connection.ConnectionStatusListener: void failed()>();
+
+        return;
+    }
+}

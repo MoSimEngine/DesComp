@@ -1,0 +1,66 @@
+public class edu.kit.ipd.sdq.eventsim.middleware.simulation.MaxMeasurementsStopCondition extends java.lang.Object implements de.uka.ipd.sdq.simulation.abstractsimengine.SimCondition
+{
+    private edu.kit.ipd.sdq.eventsim.api.ISimulationMiddleware middleware;
+    private long maxMeasurements;
+
+    public void <init>(edu.kit.ipd.sdq.eventsim.api.ISimulationMiddleware)
+    {
+        edu.kit.ipd.sdq.eventsim.middleware.simulation.MaxMeasurementsStopCondition r0;
+        edu.kit.ipd.sdq.eventsim.api.ISimulationMiddleware r1;
+        edu.kit.ipd.sdq.eventsim.SimulationConfiguration r2;
+        edu.kit.ipd.sdq.eventsim.api.ISimulationConfiguration $r3;
+        long $l0;
+
+        r0 := @this: edu.kit.ipd.sdq.eventsim.middleware.simulation.MaxMeasurementsStopCondition;
+
+        r1 := @parameter0: edu.kit.ipd.sdq.eventsim.api.ISimulationMiddleware;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        r0.<edu.kit.ipd.sdq.eventsim.middleware.simulation.MaxMeasurementsStopCondition: edu.kit.ipd.sdq.eventsim.api.ISimulationMiddleware middleware> = r1;
+
+        $r3 = interfaceinvoke r1.<edu.kit.ipd.sdq.eventsim.api.ISimulationMiddleware: edu.kit.ipd.sdq.eventsim.api.ISimulationConfiguration getSimulationConfiguration()>();
+
+        r2 = (edu.kit.ipd.sdq.eventsim.SimulationConfiguration) $r3;
+
+        $l0 = virtualinvoke r2.<edu.kit.ipd.sdq.eventsim.SimulationConfiguration: long getMaxMeasurementsCount()>();
+
+        r0.<edu.kit.ipd.sdq.eventsim.middleware.simulation.MaxMeasurementsStopCondition: long maxMeasurements> = $l0;
+
+        return;
+    }
+
+    public boolean check()
+    {
+        edu.kit.ipd.sdq.eventsim.middleware.simulation.MaxMeasurementsStopCondition r0;
+        long $l0, $l3, $l4;
+        byte $b1, $b5;
+        edu.kit.ipd.sdq.eventsim.api.ISimulationMiddleware $r1;
+        int $i2;
+
+        r0 := @this: edu.kit.ipd.sdq.eventsim.middleware.simulation.MaxMeasurementsStopCondition;
+
+        $l0 = r0.<edu.kit.ipd.sdq.eventsim.middleware.simulation.MaxMeasurementsStopCondition: long maxMeasurements>;
+
+        $b1 = $l0 cmp 0L;
+
+        if $b1 <= 0 goto label1;
+
+        $r1 = r0.<edu.kit.ipd.sdq.eventsim.middleware.simulation.MaxMeasurementsStopCondition: edu.kit.ipd.sdq.eventsim.api.ISimulationMiddleware middleware>;
+
+        $i2 = interfaceinvoke $r1.<edu.kit.ipd.sdq.eventsim.api.ISimulationMiddleware: int getMeasurementCount()>();
+
+        $l4 = (long) $i2;
+
+        $l3 = r0.<edu.kit.ipd.sdq.eventsim.middleware.simulation.MaxMeasurementsStopCondition: long maxMeasurements>;
+
+        $b5 = $l4 cmp $l3;
+
+        if $b5 < 0 goto label1;
+
+        return 1;
+
+     label1:
+        return 0;
+    }
+}

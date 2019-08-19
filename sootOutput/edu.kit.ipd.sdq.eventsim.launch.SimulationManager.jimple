@@ -1,0 +1,119 @@
+public class edu.kit.ipd.sdq.eventsim.launch.SimulationManager extends java.lang.Object
+{
+    private final edu.kit.ipd.sdq.eventsim.api.IWorkload workload;
+    private final edu.kit.ipd.sdq.eventsim.api.ISystem system;
+    private final edu.kit.ipd.sdq.eventsim.api.ISimulationMiddleware middleware;
+    private final edu.kit.ipd.sdq.eventsim.measurement.MeasurementStorage measurementStorage;
+
+    public void <init>(edu.kit.ipd.sdq.eventsim.api.IWorkload, edu.kit.ipd.sdq.eventsim.api.ISystem, edu.kit.ipd.sdq.eventsim.api.ISimulationMiddleware, edu.kit.ipd.sdq.eventsim.measurement.MeasurementStorage)
+    {
+        edu.kit.ipd.sdq.eventsim.launch.SimulationManager r0;
+        edu.kit.ipd.sdq.eventsim.api.IWorkload r1;
+        edu.kit.ipd.sdq.eventsim.api.ISystem r2;
+        edu.kit.ipd.sdq.eventsim.api.ISimulationMiddleware r3;
+        edu.kit.ipd.sdq.eventsim.measurement.MeasurementStorage r4;
+
+        r0 := @this: edu.kit.ipd.sdq.eventsim.launch.SimulationManager;
+
+        r1 := @parameter0: edu.kit.ipd.sdq.eventsim.api.IWorkload;
+
+        r2 := @parameter1: edu.kit.ipd.sdq.eventsim.api.ISystem;
+
+        r3 := @parameter2: edu.kit.ipd.sdq.eventsim.api.ISimulationMiddleware;
+
+        r4 := @parameter3: edu.kit.ipd.sdq.eventsim.measurement.MeasurementStorage;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        r0.<edu.kit.ipd.sdq.eventsim.launch.SimulationManager: edu.kit.ipd.sdq.eventsim.api.IWorkload workload> = r1;
+
+        r0.<edu.kit.ipd.sdq.eventsim.launch.SimulationManager: edu.kit.ipd.sdq.eventsim.api.ISystem system> = r2;
+
+        r0.<edu.kit.ipd.sdq.eventsim.launch.SimulationManager: edu.kit.ipd.sdq.eventsim.api.ISimulationMiddleware middleware> = r3;
+
+        r0.<edu.kit.ipd.sdq.eventsim.launch.SimulationManager: edu.kit.ipd.sdq.eventsim.measurement.MeasurementStorage measurementStorage> = r4;
+
+        return;
+    }
+
+    public void startSimulation()
+    {
+        edu.kit.ipd.sdq.eventsim.launch.SimulationManager r0;
+        edu.kit.ipd.sdq.eventsim.launch.SimulationManager$1 $r1;
+
+        r0 := @this: edu.kit.ipd.sdq.eventsim.launch.SimulationManager;
+
+        $r1 = new edu.kit.ipd.sdq.eventsim.launch.SimulationManager$1;
+
+        specialinvoke $r1.<edu.kit.ipd.sdq.eventsim.launch.SimulationManager$1: void <init>(edu.kit.ipd.sdq.eventsim.launch.SimulationManager)>(r0);
+
+        virtualinvoke r0.<edu.kit.ipd.sdq.eventsim.launch.SimulationManager: void startSimulation(de.uka.ipd.sdq.simulation.IStatusObserver)>($r1);
+
+        return;
+    }
+
+    public void startSimulation(de.uka.ipd.sdq.simulation.IStatusObserver)
+    {
+        edu.kit.ipd.sdq.eventsim.launch.SimulationManager r0;
+        de.uka.ipd.sdq.simulation.IStatusObserver r1;
+        edu.kit.ipd.sdq.eventsim.api.ISimulationMiddleware $r2;
+
+        r0 := @this: edu.kit.ipd.sdq.eventsim.launch.SimulationManager;
+
+        r1 := @parameter0: de.uka.ipd.sdq.simulation.IStatusObserver;
+
+        $r2 = r0.<edu.kit.ipd.sdq.eventsim.launch.SimulationManager: edu.kit.ipd.sdq.eventsim.api.ISimulationMiddleware middleware>;
+
+        interfaceinvoke $r2.<edu.kit.ipd.sdq.eventsim.api.ISimulationMiddleware: void startSimulation(de.uka.ipd.sdq.simulation.IStatusObserver)>(r1);
+
+        return;
+    }
+
+    public edu.kit.ipd.sdq.eventsim.api.IWorkload getWorkload()
+    {
+        edu.kit.ipd.sdq.eventsim.launch.SimulationManager r0;
+        edu.kit.ipd.sdq.eventsim.api.IWorkload $r1;
+
+        r0 := @this: edu.kit.ipd.sdq.eventsim.launch.SimulationManager;
+
+        $r1 = r0.<edu.kit.ipd.sdq.eventsim.launch.SimulationManager: edu.kit.ipd.sdq.eventsim.api.IWorkload workload>;
+
+        return $r1;
+    }
+
+    public edu.kit.ipd.sdq.eventsim.api.ISystem getSystem()
+    {
+        edu.kit.ipd.sdq.eventsim.launch.SimulationManager r0;
+        edu.kit.ipd.sdq.eventsim.api.ISystem $r1;
+
+        r0 := @this: edu.kit.ipd.sdq.eventsim.launch.SimulationManager;
+
+        $r1 = r0.<edu.kit.ipd.sdq.eventsim.launch.SimulationManager: edu.kit.ipd.sdq.eventsim.api.ISystem system>;
+
+        return $r1;
+    }
+
+    public edu.kit.ipd.sdq.eventsim.api.ISimulationMiddleware getMiddleware()
+    {
+        edu.kit.ipd.sdq.eventsim.launch.SimulationManager r0;
+        edu.kit.ipd.sdq.eventsim.api.ISimulationMiddleware $r1;
+
+        r0 := @this: edu.kit.ipd.sdq.eventsim.launch.SimulationManager;
+
+        $r1 = r0.<edu.kit.ipd.sdq.eventsim.launch.SimulationManager: edu.kit.ipd.sdq.eventsim.api.ISimulationMiddleware middleware>;
+
+        return $r1;
+    }
+
+    public edu.kit.ipd.sdq.eventsim.measurement.MeasurementStorage getMeasurementStorage()
+    {
+        edu.kit.ipd.sdq.eventsim.launch.SimulationManager r0;
+        edu.kit.ipd.sdq.eventsim.measurement.MeasurementStorage $r1;
+
+        r0 := @this: edu.kit.ipd.sdq.eventsim.launch.SimulationManager;
+
+        $r1 = r0.<edu.kit.ipd.sdq.eventsim.launch.SimulationManager: edu.kit.ipd.sdq.eventsim.measurement.MeasurementStorage measurementStorage>;
+
+        return $r1;
+    }
+}

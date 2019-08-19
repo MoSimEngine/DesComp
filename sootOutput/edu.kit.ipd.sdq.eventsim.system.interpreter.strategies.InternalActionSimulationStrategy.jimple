@@ -1,0 +1,453 @@
+public class edu.kit.ipd.sdq.eventsim.system.interpreter.strategies.InternalActionSimulationStrategy extends java.lang.Object implements edu.kit.ipd.sdq.eventsim.interpreter.SimulationStrategy
+{
+    private static final org.apache.log4j.Logger logger;
+    private edu.kit.ipd.sdq.eventsim.api.IActiveResource activeResourceModule;
+
+    static void <clinit>()
+    {
+        org.apache.log4j.Logger $r0;
+
+        $r0 = staticinvoke <org.apache.log4j.Logger: org.apache.log4j.Logger getLogger(java.lang.Class)>(class "Ledu/kit/ipd/sdq/eventsim/system/interpreter/strategies/InternalActionSimulationStrategy;");
+
+        <edu.kit.ipd.sdq.eventsim.system.interpreter.strategies.InternalActionSimulationStrategy: org.apache.log4j.Logger logger> = $r0;
+
+        return;
+    }
+
+    public void <init>()
+    {
+        edu.kit.ipd.sdq.eventsim.system.interpreter.strategies.InternalActionSimulationStrategy r0;
+
+        r0 := @this: edu.kit.ipd.sdq.eventsim.system.interpreter.strategies.InternalActionSimulationStrategy;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    public void simulate(org.palladiosimulator.pcm.seff.AbstractAction, edu.kit.ipd.sdq.eventsim.system.entities.Request, java.util.function.Consumer)
+    {
+        edu.kit.ipd.sdq.eventsim.system.interpreter.strategies.InternalActionSimulationStrategy r0;
+        org.palladiosimulator.pcm.seff.AbstractAction r1;
+        edu.kit.ipd.sdq.eventsim.system.entities.Request r2;
+        java.util.function.Consumer r3, $r16, $r19;
+        org.palladiosimulator.pcm.seff.InternalAction r4;
+        java.util.Iterator r6, r20;
+        org.palladiosimulator.pcm.resourcetype.ResourceType r7;
+        java.util.LinkedList $r8, $r11;
+        org.eclipse.emf.common.util.EList $r9, $r12;
+        boolean $z0, $z2, $z4;
+        java.lang.Object $r10, $r13;
+        edu.kit.ipd.sdq.eventsim.interpreter.DemandQueueHandler $r14, $r17;
+        java.util.function.BiConsumer $r15, $r18;
+        org.palladiosimulator.pcm.seff.seff_performance.ParametricResourceDemand r21;
+        org.palladiosimulator.pcm.seff.seff_performance.ResourceCall r23;
+
+        r0 := @this: edu.kit.ipd.sdq.eventsim.system.interpreter.strategies.InternalActionSimulationStrategy;
+
+        r1 := @parameter0: org.palladiosimulator.pcm.seff.AbstractAction;
+
+        r2 := @parameter1: edu.kit.ipd.sdq.eventsim.system.entities.Request;
+
+        r3 := @parameter2: java.util.function.Consumer;
+
+        r4 = (org.palladiosimulator.pcm.seff.InternalAction) r1;
+
+        $r8 = new java.util.LinkedList;
+
+        specialinvoke $r8.<java.util.LinkedList: void <init>()>();
+
+        $r9 = interfaceinvoke r4.<org.palladiosimulator.pcm.seff.InternalAction: org.eclipse.emf.common.util.EList getResourceDemand_Action()>();
+
+        r20 = interfaceinvoke $r9.<org.eclipse.emf.common.util.EList: java.util.Iterator iterator()>();
+
+        goto label2;
+
+     label1:
+        $r10 = interfaceinvoke r20.<java.util.Iterator: java.lang.Object next()>();
+
+        r21 = (org.palladiosimulator.pcm.seff.seff_performance.ParametricResourceDemand) $r10;
+
+        interfaceinvoke $r8.<java.util.Queue: boolean add(java.lang.Object)>(r21);
+
+     label2:
+        $z0 = interfaceinvoke r20.<java.util.Iterator: boolean hasNext()>();
+
+        if $z0 != 0 goto label1;
+
+        $r11 = new java.util.LinkedList;
+
+        specialinvoke $r11.<java.util.LinkedList: void <init>()>();
+
+        $r12 = interfaceinvoke r4.<org.palladiosimulator.pcm.seff.InternalAction: org.eclipse.emf.common.util.EList getResourceCall__Action()>();
+
+        r6 = interfaceinvoke $r12.<org.eclipse.emf.common.util.EList: java.util.Iterator iterator()>();
+
+        goto label4;
+
+     label3:
+        $r13 = interfaceinvoke r6.<java.util.Iterator: java.lang.Object next()>();
+
+        r23 = (org.palladiosimulator.pcm.seff.seff_performance.ResourceCall) $r13;
+
+        r7 = specialinvoke r0.<edu.kit.ipd.sdq.eventsim.system.interpreter.strategies.InternalActionSimulationStrategy: org.palladiosimulator.pcm.resourcetype.ResourceType findResourceType(org.palladiosimulator.pcm.seff.seff_performance.ResourceCall)>(r23);
+
+        $z2 = specialinvoke r0.<edu.kit.ipd.sdq.eventsim.system.interpreter.strategies.InternalActionSimulationStrategy: boolean isProcessingResourceType(org.palladiosimulator.pcm.resourcetype.ResourceType)>(r7);
+
+        if $z2 == 0 goto label4;
+
+        interfaceinvoke $r11.<java.util.Queue: boolean add(java.lang.Object)>(r23);
+
+     label4:
+        $z4 = interfaceinvoke r6.<java.util.Iterator: boolean hasNext()>();
+
+        if $z4 != 0 goto label3;
+
+        $r14 = new edu.kit.ipd.sdq.eventsim.interpreter.DemandQueueHandler;
+
+        $r15 = staticinvoke <edu.kit.ipd.sdq.eventsim.system.interpreter.strategies.InternalActionSimulationStrategy$lambda_0__204: java.util.function.BiConsumer bootstrap$(edu.kit.ipd.sdq.eventsim.system.interpreter.strategies.InternalActionSimulationStrategy,edu.kit.ipd.sdq.eventsim.system.entities.Request)>(r0, r2);
+
+        $r16 = staticinvoke <edu.kit.ipd.sdq.eventsim.system.interpreter.strategies.InternalActionSimulationStrategy$lambda_1__205: java.util.function.Consumer bootstrap$(java.util.function.Consumer,edu.kit.ipd.sdq.eventsim.system.entities.Request,org.palladiosimulator.pcm.seff.AbstractAction)>(r3, r2, r1);
+
+        specialinvoke $r14.<edu.kit.ipd.sdq.eventsim.interpreter.DemandQueueHandler: void <init>(java.util.Queue,java.util.function.BiConsumer,java.util.function.Consumer)>($r11, $r15, $r16);
+
+        $r17 = new edu.kit.ipd.sdq.eventsim.interpreter.DemandQueueHandler;
+
+        $r18 = staticinvoke <edu.kit.ipd.sdq.eventsim.system.interpreter.strategies.InternalActionSimulationStrategy$lambda_3__206: java.util.function.BiConsumer bootstrap$(edu.kit.ipd.sdq.eventsim.system.interpreter.strategies.InternalActionSimulationStrategy,edu.kit.ipd.sdq.eventsim.system.entities.Request)>(r0, r2);
+
+        $r19 = staticinvoke <edu.kit.ipd.sdq.eventsim.system.interpreter.strategies.InternalActionSimulationStrategy$lambda_4__207: java.util.function.Consumer bootstrap$(edu.kit.ipd.sdq.eventsim.interpreter.DemandQueueHandler)>($r14);
+
+        specialinvoke $r17.<edu.kit.ipd.sdq.eventsim.interpreter.DemandQueueHandler: void <init>(java.util.Queue,java.util.function.BiConsumer,java.util.function.Consumer)>($r8, $r18, $r19);
+
+        virtualinvoke $r17.<edu.kit.ipd.sdq.eventsim.interpreter.DemandQueueHandler: void execute()>();
+
+        return;
+    }
+
+    private void simulateResourceDemand(edu.kit.ipd.sdq.eventsim.system.entities.Request, org.palladiosimulator.pcm.seff.seff_performance.ParametricResourceDemand, edu.kit.ipd.sdq.eventsim.api.Procedure)
+    {
+        edu.kit.ipd.sdq.eventsim.system.interpreter.strategies.InternalActionSimulationStrategy r0;
+        edu.kit.ipd.sdq.eventsim.system.entities.Request r1;
+        org.palladiosimulator.pcm.seff.seff_performance.ParametricResourceDemand r2;
+        edu.kit.ipd.sdq.eventsim.api.Procedure r3;
+        org.palladiosimulator.pcm.resourcetype.ProcessingResourceType r4;
+        org.palladiosimulator.pcm.resourceenvironment.ResourceContainer r5;
+        edu.kit.ipd.sdq.eventsim.interpreter.state.EntityState $r6, $r14;
+        de.uka.ipd.sdq.simucomframework.variables.StackContext $r7;
+        org.palladiosimulator.pcm.core.PCMRandomVariable $r8;
+        java.lang.String $r9, $r18, $r20;
+        java.lang.Object $r10;
+        edu.kit.ipd.sdq.eventsim.system.staticstructure.ComponentInstance $r11;
+        edu.kit.ipd.sdq.eventsim.system.staticstructure.SimulatedResourceContainer $r12;
+        edu.kit.ipd.sdq.eventsim.api.IActiveResource $r13;
+        org.palladiosimulator.pcm.core.entity.Entity $r15;
+        java.lang.StringBuilder $r16, $r19;
+        org.apache.log4j.Logger $r17;
+        org.palladiosimulator.pcm.seff.AbstractAction r21;
+        double d0;
+
+        r0 := @this: edu.kit.ipd.sdq.eventsim.system.interpreter.strategies.InternalActionSimulationStrategy;
+
+        r1 := @parameter0: edu.kit.ipd.sdq.eventsim.system.entities.Request;
+
+        r2 := @parameter1: org.palladiosimulator.pcm.seff.seff_performance.ParametricResourceDemand;
+
+        r3 := @parameter2: edu.kit.ipd.sdq.eventsim.api.Procedure;
+
+        if r2 != null goto label1;
+
+        $r14 = virtualinvoke r1.<edu.kit.ipd.sdq.eventsim.system.entities.Request: edu.kit.ipd.sdq.eventsim.interpreter.state.EntityState getRequestState()>();
+
+        $r15 = virtualinvoke $r14.<edu.kit.ipd.sdq.eventsim.interpreter.state.EntityState: org.palladiosimulator.pcm.core.entity.Entity getCurrentPosition()>();
+
+        r21 = (org.palladiosimulator.pcm.seff.AbstractAction) $r15;
+
+        $r17 = <edu.kit.ipd.sdq.eventsim.system.interpreter.strategies.InternalActionSimulationStrategy: org.apache.log4j.Logger logger>;
+
+        $r16 = new java.lang.StringBuilder;
+
+        specialinvoke $r16.<java.lang.StringBuilder: void <init>(java.lang.String)>("Missing resource demand for ");
+
+        $r18 = staticinvoke <edu.kit.ipd.sdq.eventsim.util.PCMEntityHelper: java.lang.String toString(org.palladiosimulator.pcm.core.entity.Entity)>(r21);
+
+        $r19 = virtualinvoke $r16.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r18);
+
+        $r20 = virtualinvoke $r19.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        virtualinvoke $r17.<org.apache.log4j.Logger: void warn(java.lang.Object)>($r20);
+
+        return;
+
+     label1:
+        $r6 = virtualinvoke r1.<edu.kit.ipd.sdq.eventsim.system.entities.Request: edu.kit.ipd.sdq.eventsim.interpreter.state.EntityState getRequestState()>();
+
+        $r7 = virtualinvoke $r6.<edu.kit.ipd.sdq.eventsim.interpreter.state.EntityState: de.uka.ipd.sdq.simucomframework.variables.StackContext getStoExContext()>();
+
+        $r8 = interfaceinvoke r2.<org.palladiosimulator.pcm.seff.seff_performance.ParametricResourceDemand: org.palladiosimulator.pcm.core.PCMRandomVariable getSpecification_ParametericResourceDemand()>();
+
+        $r9 = interfaceinvoke $r8.<org.palladiosimulator.pcm.core.PCMRandomVariable: java.lang.String getSpecification()>();
+
+        $r10 = virtualinvoke $r7.<de.uka.ipd.sdq.simucomframework.variables.StackContext: java.lang.Object evaluate(java.lang.String)>($r9);
+
+        d0 = staticinvoke <de.uka.ipd.sdq.simucomframework.variables.converter.NumberConverter: double toDouble(java.lang.Object)>($r10);
+
+        r4 = interfaceinvoke r2.<org.palladiosimulator.pcm.seff.seff_performance.ParametricResourceDemand: org.palladiosimulator.pcm.resourcetype.ProcessingResourceType getRequiredResource_ParametricResourceDemand()>();
+
+        $r11 = virtualinvoke r1.<edu.kit.ipd.sdq.eventsim.system.entities.Request: edu.kit.ipd.sdq.eventsim.system.staticstructure.ComponentInstance getCurrentComponent()>();
+
+        $r12 = virtualinvoke $r11.<edu.kit.ipd.sdq.eventsim.system.staticstructure.ComponentInstance: edu.kit.ipd.sdq.eventsim.system.staticstructure.SimulatedResourceContainer getResourceContainer()>();
+
+        r5 = virtualinvoke $r12.<edu.kit.ipd.sdq.eventsim.system.staticstructure.SimulatedResourceContainer: org.palladiosimulator.pcm.resourceenvironment.ResourceContainer getSpecification()>();
+
+        $r13 = r0.<edu.kit.ipd.sdq.eventsim.system.interpreter.strategies.InternalActionSimulationStrategy: edu.kit.ipd.sdq.eventsim.api.IActiveResource activeResourceModule>;
+
+        interfaceinvoke $r13.<edu.kit.ipd.sdq.eventsim.api.IActiveResource: void consume(edu.kit.ipd.sdq.eventsim.api.IRequest,org.palladiosimulator.pcm.resourceenvironment.ResourceContainer,org.palladiosimulator.pcm.resourcetype.ResourceType,double,int,edu.kit.ipd.sdq.eventsim.api.Procedure)>(r1, r5, r4, d0, 1, r3);
+
+        return;
+    }
+
+    private void simulateProcessingResourceCall(edu.kit.ipd.sdq.eventsim.system.entities.Request, org.palladiosimulator.pcm.seff.seff_performance.ResourceCall, edu.kit.ipd.sdq.eventsim.api.Procedure)
+    {
+        edu.kit.ipd.sdq.eventsim.system.interpreter.strategies.InternalActionSimulationStrategy r0;
+        edu.kit.ipd.sdq.eventsim.system.entities.Request r1;
+        org.palladiosimulator.pcm.seff.seff_performance.ResourceCall r2;
+        edu.kit.ipd.sdq.eventsim.api.Procedure r3;
+        org.palladiosimulator.pcm.resourcetype.ResourceType r4;
+        org.palladiosimulator.pcm.resourcetype.ResourceSignature r5;
+        int i0;
+        org.palladiosimulator.pcm.resourceenvironment.ResourceContainer r6;
+        edu.kit.ipd.sdq.eventsim.interpreter.state.EntityState $r7, $r15;
+        de.uka.ipd.sdq.simucomframework.variables.StackContext $r8;
+        org.palladiosimulator.pcm.core.PCMRandomVariable $r9;
+        java.lang.String $r10, $r19, $r21;
+        java.lang.Object $r11;
+        edu.kit.ipd.sdq.eventsim.system.staticstructure.ComponentInstance $r12;
+        edu.kit.ipd.sdq.eventsim.system.staticstructure.SimulatedResourceContainer $r13;
+        edu.kit.ipd.sdq.eventsim.api.IActiveResource $r14;
+        org.palladiosimulator.pcm.core.entity.Entity $r16;
+        java.lang.StringBuilder $r17, $r20;
+        org.apache.log4j.Logger $r18;
+        org.palladiosimulator.pcm.seff.AbstractAction r22;
+        double d0;
+
+        r0 := @this: edu.kit.ipd.sdq.eventsim.system.interpreter.strategies.InternalActionSimulationStrategy;
+
+        r1 := @parameter0: edu.kit.ipd.sdq.eventsim.system.entities.Request;
+
+        r2 := @parameter1: org.palladiosimulator.pcm.seff.seff_performance.ResourceCall;
+
+        r3 := @parameter2: edu.kit.ipd.sdq.eventsim.api.Procedure;
+
+        if r2 != null goto label1;
+
+        $r15 = virtualinvoke r1.<edu.kit.ipd.sdq.eventsim.system.entities.Request: edu.kit.ipd.sdq.eventsim.interpreter.state.EntityState getRequestState()>();
+
+        $r16 = virtualinvoke $r15.<edu.kit.ipd.sdq.eventsim.interpreter.state.EntityState: org.palladiosimulator.pcm.core.entity.Entity getCurrentPosition()>();
+
+        r22 = (org.palladiosimulator.pcm.seff.AbstractAction) $r16;
+
+        $r18 = <edu.kit.ipd.sdq.eventsim.system.interpreter.strategies.InternalActionSimulationStrategy: org.apache.log4j.Logger logger>;
+
+        $r17 = new java.lang.StringBuilder;
+
+        specialinvoke $r17.<java.lang.StringBuilder: void <init>(java.lang.String)>("Missing resource call for ");
+
+        $r19 = staticinvoke <edu.kit.ipd.sdq.eventsim.util.PCMEntityHelper: java.lang.String toString(org.palladiosimulator.pcm.core.entity.Entity)>(r22);
+
+        $r20 = virtualinvoke $r17.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r19);
+
+        $r21 = virtualinvoke $r20.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        virtualinvoke $r18.<org.apache.log4j.Logger: void warn(java.lang.Object)>($r21);
+
+        return;
+
+     label1:
+        $r7 = virtualinvoke r1.<edu.kit.ipd.sdq.eventsim.system.entities.Request: edu.kit.ipd.sdq.eventsim.interpreter.state.EntityState getRequestState()>();
+
+        $r8 = virtualinvoke $r7.<edu.kit.ipd.sdq.eventsim.interpreter.state.EntityState: de.uka.ipd.sdq.simucomframework.variables.StackContext getStoExContext()>();
+
+        $r9 = interfaceinvoke r2.<org.palladiosimulator.pcm.seff.seff_performance.ResourceCall: org.palladiosimulator.pcm.core.PCMRandomVariable getNumberOfCalls__ResourceCall()>();
+
+        $r10 = interfaceinvoke $r9.<org.palladiosimulator.pcm.core.PCMRandomVariable: java.lang.String getSpecification()>();
+
+        $r11 = virtualinvoke $r8.<de.uka.ipd.sdq.simucomframework.variables.StackContext: java.lang.Object evaluate(java.lang.String)>($r10);
+
+        d0 = staticinvoke <de.uka.ipd.sdq.simucomframework.variables.converter.NumberConverter: double toDouble(java.lang.Object)>($r11);
+
+        r4 = specialinvoke r0.<edu.kit.ipd.sdq.eventsim.system.interpreter.strategies.InternalActionSimulationStrategy: org.palladiosimulator.pcm.resourcetype.ResourceType findResourceType(org.palladiosimulator.pcm.seff.seff_performance.ResourceCall)>(r2);
+
+        r5 = interfaceinvoke r2.<org.palladiosimulator.pcm.seff.seff_performance.ResourceCall: org.palladiosimulator.pcm.resourcetype.ResourceSignature getSignature__ResourceCall()>();
+
+        i0 = interfaceinvoke r5.<org.palladiosimulator.pcm.resourcetype.ResourceSignature: int getResourceServiceId()>();
+
+        $r12 = virtualinvoke r1.<edu.kit.ipd.sdq.eventsim.system.entities.Request: edu.kit.ipd.sdq.eventsim.system.staticstructure.ComponentInstance getCurrentComponent()>();
+
+        $r13 = virtualinvoke $r12.<edu.kit.ipd.sdq.eventsim.system.staticstructure.ComponentInstance: edu.kit.ipd.sdq.eventsim.system.staticstructure.SimulatedResourceContainer getResourceContainer()>();
+
+        r6 = virtualinvoke $r13.<edu.kit.ipd.sdq.eventsim.system.staticstructure.SimulatedResourceContainer: org.palladiosimulator.pcm.resourceenvironment.ResourceContainer getSpecification()>();
+
+        $r14 = r0.<edu.kit.ipd.sdq.eventsim.system.interpreter.strategies.InternalActionSimulationStrategy: edu.kit.ipd.sdq.eventsim.api.IActiveResource activeResourceModule>;
+
+        interfaceinvoke $r14.<edu.kit.ipd.sdq.eventsim.api.IActiveResource: void consume(edu.kit.ipd.sdq.eventsim.api.IRequest,org.palladiosimulator.pcm.resourceenvironment.ResourceContainer,org.palladiosimulator.pcm.resourcetype.ResourceType,double,int,edu.kit.ipd.sdq.eventsim.api.Procedure)>(r1, r6, r4, d0, i0, r3);
+
+        return;
+    }
+
+    private org.palladiosimulator.pcm.resourcetype.ResourceType findResourceType(org.palladiosimulator.pcm.seff.seff_performance.ResourceCall)
+    {
+        edu.kit.ipd.sdq.eventsim.system.interpreter.strategies.InternalActionSimulationStrategy r0;
+        org.palladiosimulator.pcm.seff.seff_performance.ResourceCall r1;
+        org.palladiosimulator.pcm.resourcetype.ResourceInterface r2;
+        org.palladiosimulator.pcm.resourcetype.ResourceSignature $r3;
+        edu.kit.ipd.sdq.eventsim.api.IActiveResource $r4;
+        org.palladiosimulator.pcm.resourcetype.ResourceType $r5;
+
+        r0 := @this: edu.kit.ipd.sdq.eventsim.system.interpreter.strategies.InternalActionSimulationStrategy;
+
+        r1 := @parameter0: org.palladiosimulator.pcm.seff.seff_performance.ResourceCall;
+
+        $r3 = interfaceinvoke r1.<org.palladiosimulator.pcm.seff.seff_performance.ResourceCall: org.palladiosimulator.pcm.resourcetype.ResourceSignature getSignature__ResourceCall()>();
+
+        r2 = interfaceinvoke $r3.<org.palladiosimulator.pcm.resourcetype.ResourceSignature: org.palladiosimulator.pcm.resourcetype.ResourceInterface getResourceInterface__ResourceSignature()>();
+
+        $r4 = r0.<edu.kit.ipd.sdq.eventsim.system.interpreter.strategies.InternalActionSimulationStrategy: edu.kit.ipd.sdq.eventsim.api.IActiveResource activeResourceModule>;
+
+        $r5 = interfaceinvoke $r4.<edu.kit.ipd.sdq.eventsim.api.IActiveResource: org.palladiosimulator.pcm.resourcetype.ResourceType findResourceType(org.palladiosimulator.pcm.resourcetype.ResourceInterface)>(r2);
+
+        return $r5;
+    }
+
+    private boolean isProcessingResourceType(org.palladiosimulator.pcm.resourcetype.ResourceType)
+    {
+        edu.kit.ipd.sdq.eventsim.system.interpreter.strategies.InternalActionSimulationStrategy r0;
+        org.palladiosimulator.pcm.resourcetype.ResourceType r1;
+        boolean $z0;
+
+        r0 := @this: edu.kit.ipd.sdq.eventsim.system.interpreter.strategies.InternalActionSimulationStrategy;
+
+        r1 := @parameter0: org.palladiosimulator.pcm.resourcetype.ResourceType;
+
+        $z0 = r1 instanceof org.palladiosimulator.pcm.resourcetype.ProcessingResourceType;
+
+        return $z0;
+    }
+
+    public volatile void simulate(org.palladiosimulator.pcm.core.entity.Entity, edu.kit.ipd.sdq.eventsim.entities.EventSimEntity, java.util.function.Consumer)
+    {
+        edu.kit.ipd.sdq.eventsim.system.interpreter.strategies.InternalActionSimulationStrategy r0;
+        org.palladiosimulator.pcm.core.entity.Entity r1;
+        edu.kit.ipd.sdq.eventsim.entities.EventSimEntity r2;
+        java.util.function.Consumer r3;
+        edu.kit.ipd.sdq.eventsim.system.entities.Request $r4;
+        org.palladiosimulator.pcm.seff.AbstractAction $r5;
+
+        r0 := @this: edu.kit.ipd.sdq.eventsim.system.interpreter.strategies.InternalActionSimulationStrategy;
+
+        r1 := @parameter0: org.palladiosimulator.pcm.core.entity.Entity;
+
+        r2 := @parameter1: edu.kit.ipd.sdq.eventsim.entities.EventSimEntity;
+
+        r3 := @parameter2: java.util.function.Consumer;
+
+        $r5 = (org.palladiosimulator.pcm.seff.AbstractAction) r1;
+
+        $r4 = (edu.kit.ipd.sdq.eventsim.system.entities.Request) r2;
+
+        virtualinvoke r0.<edu.kit.ipd.sdq.eventsim.system.interpreter.strategies.InternalActionSimulationStrategy: void simulate(org.palladiosimulator.pcm.seff.AbstractAction,edu.kit.ipd.sdq.eventsim.system.entities.Request,java.util.function.Consumer)>($r5, $r4, r3);
+
+        return;
+    }
+
+    public void lambda$0(edu.kit.ipd.sdq.eventsim.system.entities.Request, org.palladiosimulator.pcm.seff.seff_performance.ResourceCall, edu.kit.ipd.sdq.eventsim.interpreter.DemandQueueHandler)
+    {
+        edu.kit.ipd.sdq.eventsim.system.interpreter.strategies.InternalActionSimulationStrategy r0;
+        edu.kit.ipd.sdq.eventsim.system.entities.Request r1;
+        org.palladiosimulator.pcm.seff.seff_performance.ResourceCall r2;
+        edu.kit.ipd.sdq.eventsim.interpreter.DemandQueueHandler r3;
+
+        r0 := @this: edu.kit.ipd.sdq.eventsim.system.interpreter.strategies.InternalActionSimulationStrategy;
+
+        r1 := @parameter0: edu.kit.ipd.sdq.eventsim.system.entities.Request;
+
+        r2 := @parameter1: org.palladiosimulator.pcm.seff.seff_performance.ResourceCall;
+
+        r3 := @parameter2: edu.kit.ipd.sdq.eventsim.interpreter.DemandQueueHandler;
+
+        specialinvoke r0.<edu.kit.ipd.sdq.eventsim.system.interpreter.strategies.InternalActionSimulationStrategy: void simulateProcessingResourceCall(edu.kit.ipd.sdq.eventsim.system.entities.Request,org.palladiosimulator.pcm.seff.seff_performance.ResourceCall,edu.kit.ipd.sdq.eventsim.api.Procedure)>(r1, r2, r3);
+
+        return;
+    }
+
+    public static void lambda$1(java.util.function.Consumer, edu.kit.ipd.sdq.eventsim.system.entities.Request, org.palladiosimulator.pcm.seff.AbstractAction, edu.kit.ipd.sdq.eventsim.interpreter.DemandQueueHandler)
+    {
+        java.util.function.Consumer r0;
+        edu.kit.ipd.sdq.eventsim.system.entities.Request r1;
+        org.palladiosimulator.pcm.seff.AbstractAction r2;
+        edu.kit.ipd.sdq.eventsim.interpreter.DemandQueueHandler r3;
+        edu.kit.ipd.sdq.eventsim.interpreter.TraversalInstruction $r4;
+
+        r0 := @parameter0: java.util.function.Consumer;
+
+        r1 := @parameter1: edu.kit.ipd.sdq.eventsim.system.entities.Request;
+
+        r2 := @parameter2: org.palladiosimulator.pcm.seff.AbstractAction;
+
+        r3 := @parameter3: edu.kit.ipd.sdq.eventsim.interpreter.DemandQueueHandler;
+
+        $r4 = staticinvoke <edu.kit.ipd.sdq.eventsim.system.interpreter.strategies.InternalActionSimulationStrategy$lambda_2__208: edu.kit.ipd.sdq.eventsim.interpreter.TraversalInstruction bootstrap$(edu.kit.ipd.sdq.eventsim.system.entities.Request,org.palladiosimulator.pcm.seff.AbstractAction)>(r1, r2);
+
+        interfaceinvoke r0.<java.util.function.Consumer: void accept(java.lang.Object)>($r4);
+
+        return;
+    }
+
+    public void lambda$3(edu.kit.ipd.sdq.eventsim.system.entities.Request, org.palladiosimulator.pcm.seff.seff_performance.ParametricResourceDemand, edu.kit.ipd.sdq.eventsim.interpreter.DemandQueueHandler)
+    {
+        edu.kit.ipd.sdq.eventsim.system.interpreter.strategies.InternalActionSimulationStrategy r0;
+        edu.kit.ipd.sdq.eventsim.system.entities.Request r1;
+        org.palladiosimulator.pcm.seff.seff_performance.ParametricResourceDemand r2;
+        edu.kit.ipd.sdq.eventsim.interpreter.DemandQueueHandler r3;
+
+        r0 := @this: edu.kit.ipd.sdq.eventsim.system.interpreter.strategies.InternalActionSimulationStrategy;
+
+        r1 := @parameter0: edu.kit.ipd.sdq.eventsim.system.entities.Request;
+
+        r2 := @parameter1: org.palladiosimulator.pcm.seff.seff_performance.ParametricResourceDemand;
+
+        r3 := @parameter2: edu.kit.ipd.sdq.eventsim.interpreter.DemandQueueHandler;
+
+        specialinvoke r0.<edu.kit.ipd.sdq.eventsim.system.interpreter.strategies.InternalActionSimulationStrategy: void simulateResourceDemand(edu.kit.ipd.sdq.eventsim.system.entities.Request,org.palladiosimulator.pcm.seff.seff_performance.ParametricResourceDemand,edu.kit.ipd.sdq.eventsim.api.Procedure)>(r1, r2, r3);
+
+        return;
+    }
+
+    public static void lambda$4(edu.kit.ipd.sdq.eventsim.interpreter.DemandQueueHandler, edu.kit.ipd.sdq.eventsim.interpreter.DemandQueueHandler)
+    {
+        edu.kit.ipd.sdq.eventsim.interpreter.DemandQueueHandler r0, r1;
+
+        r0 := @parameter0: edu.kit.ipd.sdq.eventsim.interpreter.DemandQueueHandler;
+
+        r1 := @parameter1: edu.kit.ipd.sdq.eventsim.interpreter.DemandQueueHandler;
+
+        virtualinvoke r0.<edu.kit.ipd.sdq.eventsim.interpreter.DemandQueueHandler: void execute()>();
+
+        return;
+    }
+
+    public static void lambda$2(edu.kit.ipd.sdq.eventsim.system.entities.Request, org.palladiosimulator.pcm.seff.AbstractAction)
+    {
+        edu.kit.ipd.sdq.eventsim.system.entities.Request r0;
+        org.palladiosimulator.pcm.seff.AbstractAction r1, $r2;
+
+        r0 := @parameter0: edu.kit.ipd.sdq.eventsim.system.entities.Request;
+
+        r1 := @parameter1: org.palladiosimulator.pcm.seff.AbstractAction;
+
+        $r2 = interfaceinvoke r1.<org.palladiosimulator.pcm.seff.AbstractAction: org.palladiosimulator.pcm.seff.AbstractAction getSuccessor_AbstractAction()>();
+
+        virtualinvoke r0.<edu.kit.ipd.sdq.eventsim.system.entities.Request: void simulateAction(org.palladiosimulator.pcm.seff.AbstractAction)>($r2);
+
+        return;
+    }
+}

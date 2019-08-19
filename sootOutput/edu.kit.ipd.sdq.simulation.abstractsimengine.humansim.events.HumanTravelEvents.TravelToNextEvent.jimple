@@ -239,7 +239,7 @@ public class edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.events.HumanT
         edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.entities.Position$PositionType[] $r2;
         int $i0, $i1, $i2, $i3;
         edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.entities.Position$PositionType $r3, $r4, $r5;
-        java.lang.NoSuchFieldError $r6, $r7, $r8;
+        java.lang.NoSuchFieldError $r6, $r8, $r9;
 
         $r1 = <edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.events.HumanTravelEvents.TravelToNextEvent: int[] $SWITCH_TABLE$edu$kit$ipd$sdq$simulation$abstractsimengine$humansim$entities$Position$PositionType>;
 
@@ -265,7 +265,7 @@ public class edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.events.HumanT
         goto label05;
 
      label04:
-        $r7 := @caughtexception;
+        $r8 := @caughtexception;
 
      label05:
         $r4 = <edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.entities.Position$PositionType: edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.entities.Position$PositionType HOME>;
@@ -278,7 +278,7 @@ public class edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.events.HumanT
         goto label08;
 
      label07:
-        $r6 := @caughtexception;
+        $r9 := @caughtexception;
 
      label08:
         $r5 = <edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.entities.Position$PositionType: edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.entities.Position$PositionType WORK>;
@@ -291,7 +291,7 @@ public class edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.events.HumanT
         goto label11;
 
      label10:
-        $r8 := @caughtexception;
+        $r6 := @caughtexception;
 
      label11:
         <edu.kit.ipd.sdq.simulation.abstractsimengine.humansim.events.HumanTravelEvents.TravelToNextEvent: int[] $SWITCH_TABLE$edu$kit$ipd$sdq$simulation$abstractsimengine$humansim$entities$Position$PositionType> = r0;

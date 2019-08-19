@@ -1,0 +1,7 @@
+public interface  edu.kit.ipd.sdq.eventsim.api.IActiveResource extends java.lang.Object
+{
+
+    public abstract void consume(edu.kit.ipd.sdq.eventsim.api.IRequest, org.palladiosimulator.pcm.resourceenvironment.ResourceContainer, org.palladiosimulator.pcm.resourcetype.ResourceType, double, int, edu.kit.ipd.sdq.eventsim.api.Procedure);
+
+    public abstract org.palladiosimulator.pcm.resourcetype.ResourceType findResourceType(org.palladiosimulator.pcm.resourcetype.ResourceInterface);
+}

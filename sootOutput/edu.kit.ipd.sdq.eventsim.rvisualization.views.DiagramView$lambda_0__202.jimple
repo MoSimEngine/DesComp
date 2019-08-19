@@ -1,0 +1,42 @@
+public final class edu.kit.ipd.sdq.eventsim.rvisualization.views.DiagramView$lambda_0__202 extends java.lang.Object implements java.util.function.Consumer
+{
+
+    public static java.util.function.Consumer bootstrap$()
+    {
+        edu.kit.ipd.sdq.eventsim.rvisualization.views.DiagramView$lambda_0__202 $r0;
+
+        $r0 = new edu.kit.ipd.sdq.eventsim.rvisualization.views.DiagramView$lambda_0__202;
+
+        specialinvoke $r0.<edu.kit.ipd.sdq.eventsim.rvisualization.views.DiagramView$lambda_0__202: void <init>()>();
+
+        return $r0;
+    }
+
+    public void <init>()
+    {
+        edu.kit.ipd.sdq.eventsim.rvisualization.views.DiagramView$lambda_0__202 $r0;
+
+        $r0 := @this: edu.kit.ipd.sdq.eventsim.rvisualization.views.DiagramView$lambda_0__202;
+
+        specialinvoke $r0.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    public void accept(java.lang.Object)
+    {
+        edu.kit.ipd.sdq.eventsim.rvisualization.views.DiagramView$lambda_0__202 $r0;
+        java.lang.Object $r1;
+        edu.kit.ipd.sdq.eventsim.rvisualization.util.Procedure $r2;
+
+        $r0 := @this: edu.kit.ipd.sdq.eventsim.rvisualization.views.DiagramView$lambda_0__202;
+
+        $r1 := @parameter0: java.lang.Object;
+
+        $r2 = (edu.kit.ipd.sdq.eventsim.rvisualization.util.Procedure) $r1;
+
+        staticinvoke <edu.kit.ipd.sdq.eventsim.rvisualization.views.DiagramView: void lambda$0(edu.kit.ipd.sdq.eventsim.rvisualization.util.Procedure)>($r2);
+
+        return;
+    }
+}

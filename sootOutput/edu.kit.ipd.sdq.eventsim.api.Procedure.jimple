@@ -1,0 +1,5 @@
+public interface  edu.kit.ipd.sdq.eventsim.api.Procedure extends java.lang.Object
+{
+
+    public abstract void execute();
+}

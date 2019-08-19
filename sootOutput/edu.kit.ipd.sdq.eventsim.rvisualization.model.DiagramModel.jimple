@@ -1,0 +1,209 @@
+public class edu.kit.ipd.sdq.eventsim.rvisualization.model.DiagramModel extends java.lang.Object
+{
+    public static final java.lang.String DIAGRAM_TYPE_PROPERTY;
+    public static final java.lang.String TITLE_PROPERTY;
+    public static final java.lang.String SUB_TITLE_PROPERTY;
+    public static final java.lang.String SUB_SUB_TITLE_PROPERTY;
+    private edu.kit.ipd.sdq.eventsim.rvisualization.model.DiagramType diagramType;
+    private java.lang.String title;
+    private java.lang.String subTitle;
+    private java.lang.String subSubTitle;
+    private final java.beans.PropertyChangeSupport pcs;
+
+    public void <init>()
+    {
+        edu.kit.ipd.sdq.eventsim.rvisualization.model.DiagramModel r0;
+        java.beans.PropertyChangeSupport $r1;
+
+        r0 := @this: edu.kit.ipd.sdq.eventsim.rvisualization.model.DiagramModel;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        $r1 = new java.beans.PropertyChangeSupport;
+
+        specialinvoke $r1.<java.beans.PropertyChangeSupport: void <init>(java.lang.Object)>(r0);
+
+        r0.<edu.kit.ipd.sdq.eventsim.rvisualization.model.DiagramModel: java.beans.PropertyChangeSupport pcs> = $r1;
+
+        return;
+    }
+
+    public void addPropertyChangeListener(java.beans.PropertyChangeListener)
+    {
+        edu.kit.ipd.sdq.eventsim.rvisualization.model.DiagramModel r0;
+        java.beans.PropertyChangeListener r1;
+        java.beans.PropertyChangeSupport $r2;
+
+        r0 := @this: edu.kit.ipd.sdq.eventsim.rvisualization.model.DiagramModel;
+
+        r1 := @parameter0: java.beans.PropertyChangeListener;
+
+        $r2 = r0.<edu.kit.ipd.sdq.eventsim.rvisualization.model.DiagramModel: java.beans.PropertyChangeSupport pcs>;
+
+        virtualinvoke $r2.<java.beans.PropertyChangeSupport: void addPropertyChangeListener(java.beans.PropertyChangeListener)>(r1);
+
+        return;
+    }
+
+    public void removePropertyChangeListener(java.beans.PropertyChangeListener)
+    {
+        edu.kit.ipd.sdq.eventsim.rvisualization.model.DiagramModel r0;
+        java.beans.PropertyChangeListener r1;
+        java.beans.PropertyChangeSupport $r2;
+
+        r0 := @this: edu.kit.ipd.sdq.eventsim.rvisualization.model.DiagramModel;
+
+        r1 := @parameter0: java.beans.PropertyChangeListener;
+
+        $r2 = r0.<edu.kit.ipd.sdq.eventsim.rvisualization.model.DiagramModel: java.beans.PropertyChangeSupport pcs>;
+
+        virtualinvoke $r2.<java.beans.PropertyChangeSupport: void removePropertyChangeListener(java.beans.PropertyChangeListener)>(r1);
+
+        return;
+    }
+
+    public edu.kit.ipd.sdq.eventsim.rvisualization.model.DiagramType getDiagramType()
+    {
+        edu.kit.ipd.sdq.eventsim.rvisualization.model.DiagramModel r0;
+        edu.kit.ipd.sdq.eventsim.rvisualization.model.DiagramType $r1;
+
+        r0 := @this: edu.kit.ipd.sdq.eventsim.rvisualization.model.DiagramModel;
+
+        $r1 = r0.<edu.kit.ipd.sdq.eventsim.rvisualization.model.DiagramModel: edu.kit.ipd.sdq.eventsim.rvisualization.model.DiagramType diagramType>;
+
+        return $r1;
+    }
+
+    public void setDiagramType(edu.kit.ipd.sdq.eventsim.rvisualization.model.DiagramType)
+    {
+        edu.kit.ipd.sdq.eventsim.rvisualization.model.DiagramModel r0;
+        edu.kit.ipd.sdq.eventsim.rvisualization.model.DiagramType r1, r2;
+        java.beans.PropertyChangeSupport $r3;
+
+        r0 := @this: edu.kit.ipd.sdq.eventsim.rvisualization.model.DiagramModel;
+
+        r1 := @parameter0: edu.kit.ipd.sdq.eventsim.rvisualization.model.DiagramType;
+
+        r2 = r0.<edu.kit.ipd.sdq.eventsim.rvisualization.model.DiagramModel: edu.kit.ipd.sdq.eventsim.rvisualization.model.DiagramType diagramType>;
+
+        r0.<edu.kit.ipd.sdq.eventsim.rvisualization.model.DiagramModel: edu.kit.ipd.sdq.eventsim.rvisualization.model.DiagramType diagramType> = r1;
+
+        $r3 = r0.<edu.kit.ipd.sdq.eventsim.rvisualization.model.DiagramModel: java.beans.PropertyChangeSupport pcs>;
+
+        virtualinvoke $r3.<java.beans.PropertyChangeSupport: void firePropertyChange(java.lang.String,java.lang.Object,java.lang.Object)>("diagramType", r2, r1);
+
+        return;
+    }
+
+    public java.lang.String getTitle()
+    {
+        edu.kit.ipd.sdq.eventsim.rvisualization.model.DiagramModel r0;
+        java.lang.String $r1;
+
+        r0 := @this: edu.kit.ipd.sdq.eventsim.rvisualization.model.DiagramModel;
+
+        $r1 = r0.<edu.kit.ipd.sdq.eventsim.rvisualization.model.DiagramModel: java.lang.String title>;
+
+        return $r1;
+    }
+
+    public void setTitle(java.lang.String)
+    {
+        edu.kit.ipd.sdq.eventsim.rvisualization.model.DiagramModel r0;
+        java.lang.String r1, r2;
+        java.beans.PropertyChangeSupport $r3;
+
+        r0 := @this: edu.kit.ipd.sdq.eventsim.rvisualization.model.DiagramModel;
+
+        r1 := @parameter0: java.lang.String;
+
+        r2 = r0.<edu.kit.ipd.sdq.eventsim.rvisualization.model.DiagramModel: java.lang.String title>;
+
+        r0.<edu.kit.ipd.sdq.eventsim.rvisualization.model.DiagramModel: java.lang.String title> = r1;
+
+        $r3 = r0.<edu.kit.ipd.sdq.eventsim.rvisualization.model.DiagramModel: java.beans.PropertyChangeSupport pcs>;
+
+        virtualinvoke $r3.<java.beans.PropertyChangeSupport: void firePropertyChange(java.lang.String,java.lang.Object,java.lang.Object)>("title", r2, r1);
+
+        return;
+    }
+
+    public java.lang.String getSubTitle()
+    {
+        edu.kit.ipd.sdq.eventsim.rvisualization.model.DiagramModel r0;
+        java.lang.String $r1;
+
+        r0 := @this: edu.kit.ipd.sdq.eventsim.rvisualization.model.DiagramModel;
+
+        $r1 = r0.<edu.kit.ipd.sdq.eventsim.rvisualization.model.DiagramModel: java.lang.String subTitle>;
+
+        return $r1;
+    }
+
+    public void setSubTitle(java.lang.String)
+    {
+        edu.kit.ipd.sdq.eventsim.rvisualization.model.DiagramModel r0;
+        java.lang.String r1, r2;
+        java.beans.PropertyChangeSupport $r3;
+
+        r0 := @this: edu.kit.ipd.sdq.eventsim.rvisualization.model.DiagramModel;
+
+        r1 := @parameter0: java.lang.String;
+
+        r2 = r0.<edu.kit.ipd.sdq.eventsim.rvisualization.model.DiagramModel: java.lang.String subTitle>;
+
+        r0.<edu.kit.ipd.sdq.eventsim.rvisualization.model.DiagramModel: java.lang.String subTitle> = r1;
+
+        $r3 = r0.<edu.kit.ipd.sdq.eventsim.rvisualization.model.DiagramModel: java.beans.PropertyChangeSupport pcs>;
+
+        virtualinvoke $r3.<java.beans.PropertyChangeSupport: void firePropertyChange(java.lang.String,java.lang.Object,java.lang.Object)>("subTitle", r2, r1);
+
+        return;
+    }
+
+    public java.lang.String getSubSubTitle()
+    {
+        edu.kit.ipd.sdq.eventsim.rvisualization.model.DiagramModel r0;
+        java.lang.String $r1;
+
+        r0 := @this: edu.kit.ipd.sdq.eventsim.rvisualization.model.DiagramModel;
+
+        $r1 = r0.<edu.kit.ipd.sdq.eventsim.rvisualization.model.DiagramModel: java.lang.String subSubTitle>;
+
+        return $r1;
+    }
+
+    public void setSubSubTitle(java.lang.String)
+    {
+        edu.kit.ipd.sdq.eventsim.rvisualization.model.DiagramModel r0;
+        java.lang.String r1, r2;
+        java.beans.PropertyChangeSupport $r3;
+
+        r0 := @this: edu.kit.ipd.sdq.eventsim.rvisualization.model.DiagramModel;
+
+        r1 := @parameter0: java.lang.String;
+
+        r2 = r0.<edu.kit.ipd.sdq.eventsim.rvisualization.model.DiagramModel: java.lang.String subSubTitle>;
+
+        r0.<edu.kit.ipd.sdq.eventsim.rvisualization.model.DiagramModel: java.lang.String subSubTitle> = r1;
+
+        $r3 = r0.<edu.kit.ipd.sdq.eventsim.rvisualization.model.DiagramModel: java.beans.PropertyChangeSupport pcs>;
+
+        virtualinvoke $r3.<java.beans.PropertyChangeSupport: void firePropertyChange(java.lang.String,java.lang.Object,java.lang.Object)>("subSubTitle", r2, r1);
+
+        return;
+    }
+
+    public static void <clinit>()
+    {
+        <edu.kit.ipd.sdq.eventsim.rvisualization.model.DiagramModel: java.lang.String SUB_SUB_TITLE_PROPERTY> = "subSubTitle";
+
+        <edu.kit.ipd.sdq.eventsim.rvisualization.model.DiagramModel: java.lang.String SUB_TITLE_PROPERTY> = "subTitle";
+
+        <edu.kit.ipd.sdq.eventsim.rvisualization.model.DiagramModel: java.lang.String TITLE_PROPERTY> = "title";
+
+        <edu.kit.ipd.sdq.eventsim.rvisualization.model.DiagramModel: java.lang.String DIAGRAM_TYPE_PROPERTY> = "diagramType";
+
+        return;
+    }
+}

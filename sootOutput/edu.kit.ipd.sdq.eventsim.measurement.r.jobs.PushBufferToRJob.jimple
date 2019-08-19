@@ -1,0 +1,332 @@
+public class edu.kit.ipd.sdq.eventsim.measurement.r.jobs.PushBufferToRJob extends java.lang.Object implements edu.kit.ipd.sdq.eventsim.measurement.r.RJob
+{
+    private static final org.apache.log4j.Logger log;
+    private edu.kit.ipd.sdq.eventsim.measurement.r.Buffer buffer;
+    private int bufferNumber;
+
+    static void <clinit>()
+    {
+        org.apache.log4j.Logger $r0;
+
+        $r0 = staticinvoke <org.apache.log4j.Logger: org.apache.log4j.Logger getLogger(java.lang.Class)>(class "Ledu/kit/ipd/sdq/eventsim/measurement/r/jobs/PushBufferToRJob;");
+
+        <edu.kit.ipd.sdq.eventsim.measurement.r.jobs.PushBufferToRJob: org.apache.log4j.Logger log> = $r0;
+
+        return;
+    }
+
+    public void <init>(edu.kit.ipd.sdq.eventsim.measurement.r.Buffer, int)
+    {
+        edu.kit.ipd.sdq.eventsim.measurement.r.jobs.PushBufferToRJob r0;
+        edu.kit.ipd.sdq.eventsim.measurement.r.Buffer r1;
+        int i0;
+
+        r0 := @this: edu.kit.ipd.sdq.eventsim.measurement.r.jobs.PushBufferToRJob;
+
+        r1 := @parameter0: edu.kit.ipd.sdq.eventsim.measurement.r.Buffer;
+
+        i0 := @parameter1: int;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        r0.<edu.kit.ipd.sdq.eventsim.measurement.r.jobs.PushBufferToRJob: edu.kit.ipd.sdq.eventsim.measurement.r.Buffer buffer> = r1;
+
+        r0.<edu.kit.ipd.sdq.eventsim.measurement.r.jobs.PushBufferToRJob: int bufferNumber> = i0;
+
+        return;
+    }
+
+    public void process(edu.kit.ipd.sdq.eventsim.measurement.r.RContext)
+    {
+        edu.kit.ipd.sdq.eventsim.measurement.r.jobs.PushBufferToRJob r0;
+        edu.kit.ipd.sdq.eventsim.measurement.r.RContext r1;
+
+        r0 := @this: edu.kit.ipd.sdq.eventsim.measurement.r.jobs.PushBufferToRJob;
+
+        r1 := @parameter0: edu.kit.ipd.sdq.eventsim.measurement.r.RContext;
+
+        specialinvoke r0.<edu.kit.ipd.sdq.eventsim.measurement.r.jobs.PushBufferToRJob: void pushBufferToR(edu.kit.ipd.sdq.eventsim.measurement.r.RContext)>(r1);
+
+        return;
+    }
+
+    private void pushBufferToR(edu.kit.ipd.sdq.eventsim.measurement.r.RContext)
+    {
+        edu.kit.ipd.sdq.eventsim.measurement.r.jobs.PushBufferToRJob r0;
+        edu.kit.ipd.sdq.eventsim.measurement.r.RContext r1;
+        org.rosuda.REngine.Rserve.RConnection r2;
+        java.lang.StringBuilder $r3, $r5, $r6;
+        org.apache.log4j.Logger $r4, $r10, $r12;
+        int $i0, $i1;
+        java.lang.String $r7;
+        java.lang.String[] $r8, $r16;
+        edu.kit.ipd.sdq.eventsim.measurement.r.jobs.EvaluationException $r9;
+        java.lang.Throwable $r11;
+        edu.kit.ipd.sdq.eventsim.measurement.r.Buffer $r14;
+        org.rosuda.REngine.REXP $r15;
+
+        r0 := @this: edu.kit.ipd.sdq.eventsim.measurement.r.jobs.PushBufferToRJob;
+
+        r1 := @parameter0: edu.kit.ipd.sdq.eventsim.measurement.r.RContext;
+
+        r2 = virtualinvoke r1.<edu.kit.ipd.sdq.eventsim.measurement.r.RContext: org.rosuda.REngine.Rserve.RConnection getConnection()>();
+
+        $r4 = <edu.kit.ipd.sdq.eventsim.measurement.r.jobs.PushBufferToRJob: org.apache.log4j.Logger log>;
+
+        $r3 = new java.lang.StringBuilder;
+
+        specialinvoke $r3.<java.lang.StringBuilder: void <init>(java.lang.String)>("Pushing measurements buffer ");
+
+        $i0 = r0.<edu.kit.ipd.sdq.eventsim.measurement.r.jobs.PushBufferToRJob: int bufferNumber>;
+
+        $r5 = virtualinvoke $r3.<java.lang.StringBuilder: java.lang.StringBuilder append(int)>($i0);
+
+        $r6 = virtualinvoke $r5.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(" to R.");
+
+        $r7 = virtualinvoke $r6.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        virtualinvoke $r4.<org.apache.log4j.Logger: void debug(java.lang.Object)>($r7);
+
+     label1:
+        $i1 = r0.<edu.kit.ipd.sdq.eventsim.measurement.r.jobs.PushBufferToRJob: int bufferNumber>;
+
+        if $i1 != 0 goto label4;
+
+        $r8 = newarray (java.lang.String)[1];
+
+        $r8[0] = "mm <- list()";
+
+        staticinvoke <edu.kit.ipd.sdq.eventsim.measurement.r.jobs.EvaluationHelper: void evaluateVoid(edu.kit.ipd.sdq.eventsim.measurement.r.RContext,java.lang.String[])>(r1, $r8);
+
+     label2:
+        goto label4;
+
+     label3:
+        $r9 := @caughtexception;
+
+        $r10 = <edu.kit.ipd.sdq.eventsim.measurement.r.jobs.PushBufferToRJob: org.apache.log4j.Logger log>;
+
+        virtualinvoke $r10.<org.apache.log4j.Logger: void error(java.lang.Object)>($r9);
+
+     label4:
+        $r14 = r0.<edu.kit.ipd.sdq.eventsim.measurement.r.jobs.PushBufferToRJob: edu.kit.ipd.sdq.eventsim.measurement.r.Buffer buffer>;
+
+        $r15 = specialinvoke r0.<edu.kit.ipd.sdq.eventsim.measurement.r.jobs.PushBufferToRJob: org.rosuda.REngine.REXP createDataFrameFromBuffer(edu.kit.ipd.sdq.eventsim.measurement.r.Buffer)>($r14);
+
+        virtualinvoke r2.<org.rosuda.REngine.Rserve.RConnection: void assign(java.lang.String,org.rosuda.REngine.REXP)>("buffer", $r15);
+
+        specialinvoke r0.<edu.kit.ipd.sdq.eventsim.measurement.r.jobs.PushBufferToRJob: void convertCategoricalColumnsToFactorColumns(edu.kit.ipd.sdq.eventsim.measurement.r.RContext)>(r1);
+
+        $r16 = newarray (java.lang.String)[1];
+
+        $r16[0] = "mm[[length(mm)+1]] <- buffer";
+
+        staticinvoke <edu.kit.ipd.sdq.eventsim.measurement.r.jobs.EvaluationHelper: void evaluateVoid(edu.kit.ipd.sdq.eventsim.measurement.r.RContext,java.lang.String[])>(r1, $r16);
+
+     label5:
+        goto label7;
+
+     label6:
+        $r11 := @caughtexception;
+
+        $r12 = <edu.kit.ipd.sdq.eventsim.measurement.r.jobs.PushBufferToRJob: org.apache.log4j.Logger log>;
+
+        virtualinvoke $r12.<org.apache.log4j.Logger: void error(java.lang.Object)>($r11);
+
+     label7:
+        return;
+
+        catch edu.kit.ipd.sdq.eventsim.measurement.r.jobs.EvaluationException from label1 to label2 with label3;
+        catch org.rosuda.REngine.Rserve.RserveException from label4 to label5 with label6;
+        catch edu.kit.ipd.sdq.eventsim.measurement.r.jobs.EvaluationException from label4 to label5 with label6;
+    }
+
+    private void convertCategoricalColumnsToFactorColumns(edu.kit.ipd.sdq.eventsim.measurement.r.RContext)
+    {
+        edu.kit.ipd.sdq.eventsim.measurement.r.jobs.PushBufferToRJob r0;
+        edu.kit.ipd.sdq.eventsim.measurement.r.RContext r1;
+        java.util.Iterator r2;
+        java.lang.String r3, $r8, $r12, $r16;
+        edu.kit.ipd.sdq.eventsim.measurement.r.Buffer $r4;
+        java.util.Collection $r5;
+        java.lang.Object $r6;
+        boolean $z0, $z1;
+        java.lang.StringBuilder $r7, $r9, $r11, $r13, $r14, $r15;
+        java.lang.String[] $r10;
+        edu.kit.ipd.sdq.eventsim.measurement.r.jobs.EvaluationException $r17;
+        org.apache.log4j.Logger $r18;
+        edu.kit.ipd.sdq.eventsim.measurement.r.Column r19;
+
+        r0 := @this: edu.kit.ipd.sdq.eventsim.measurement.r.jobs.PushBufferToRJob;
+
+        r1 := @parameter0: edu.kit.ipd.sdq.eventsim.measurement.r.RContext;
+
+     label1:
+        $r4 = r0.<edu.kit.ipd.sdq.eventsim.measurement.r.jobs.PushBufferToRJob: edu.kit.ipd.sdq.eventsim.measurement.r.Buffer buffer>;
+
+        $r5 = virtualinvoke $r4.<edu.kit.ipd.sdq.eventsim.measurement.r.Buffer: java.util.Collection getColumns()>();
+
+        r2 = interfaceinvoke $r5.<java.util.Collection: java.util.Iterator iterator()>();
+
+        goto label3;
+
+     label2:
+        $r6 = interfaceinvoke r2.<java.util.Iterator: java.lang.Object next()>();
+
+        r19 = (edu.kit.ipd.sdq.eventsim.measurement.r.Column) $r6;
+
+        $z0 = virtualinvoke r19.<edu.kit.ipd.sdq.eventsim.measurement.r.Column: boolean isFactorial()>();
+
+        if $z0 == 0 goto label3;
+
+        $r7 = new java.lang.StringBuilder;
+
+        specialinvoke $r7.<java.lang.StringBuilder: void <init>(java.lang.String)>("buffer$");
+
+        $r8 = virtualinvoke r19.<edu.kit.ipd.sdq.eventsim.measurement.r.Column: java.lang.String getName()>();
+
+        $r9 = virtualinvoke $r7.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r8);
+
+        r3 = virtualinvoke $r9.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        $r10 = newarray (java.lang.String)[1];
+
+        $r11 = new java.lang.StringBuilder;
+
+        $r12 = staticinvoke <java.lang.String: java.lang.String valueOf(java.lang.Object)>(r3);
+
+        specialinvoke $r11.<java.lang.StringBuilder: void <init>(java.lang.String)>($r12);
+
+        $r13 = virtualinvoke $r11.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(" <- as.factor(");
+
+        $r14 = virtualinvoke $r13.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(r3);
+
+        $r15 = virtualinvoke $r14.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(")");
+
+        $r16 = virtualinvoke $r15.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        $r10[0] = $r16;
+
+        staticinvoke <edu.kit.ipd.sdq.eventsim.measurement.r.jobs.EvaluationHelper: void evaluateVoid(edu.kit.ipd.sdq.eventsim.measurement.r.RContext,java.lang.String[])>(r1, $r10);
+
+     label3:
+        $z1 = interfaceinvoke r2.<java.util.Iterator: boolean hasNext()>();
+
+        if $z1 != 0 goto label2;
+
+     label4:
+        goto label6;
+
+     label5:
+        $r17 := @caughtexception;
+
+        $r18 = <edu.kit.ipd.sdq.eventsim.measurement.r.jobs.PushBufferToRJob: org.apache.log4j.Logger log>;
+
+        virtualinvoke $r18.<org.apache.log4j.Logger: void error(java.lang.Object,java.lang.Throwable)>("Rserve reported an error while converting categorical columns to factors", $r17);
+
+     label6:
+        return;
+
+        catch edu.kit.ipd.sdq.eventsim.measurement.r.jobs.EvaluationException from label1 to label4 with label5;
+    }
+
+    private org.rosuda.REngine.REXP createDataFrameFromBuffer(edu.kit.ipd.sdq.eventsim.measurement.r.Buffer)
+    {
+        edu.kit.ipd.sdq.eventsim.measurement.r.jobs.PushBufferToRJob r0;
+        edu.kit.ipd.sdq.eventsim.measurement.r.Buffer r1;
+        edu.kit.ipd.sdq.eventsim.measurement.r.Column r3;
+        java.util.Iterator r4;
+        org.rosuda.REngine.RList $r5;
+        int $i0, $i1;
+        org.rosuda.REngine.REXPDouble $r6, $r9;
+        double[] $r7, $r10;
+        java.util.Collection $r12, r21;
+        boolean $z0;
+        java.lang.Object $r13;
+        java.lang.String $r14;
+        java.lang.Object[] $r15;
+        org.rosuda.REngine.REXP $r16, $r18;
+        java.lang.Throwable $r19;
+        java.lang.RuntimeException $r20;
+
+        r0 := @this: edu.kit.ipd.sdq.eventsim.measurement.r.jobs.PushBufferToRJob;
+
+        r1 := @parameter0: edu.kit.ipd.sdq.eventsim.measurement.r.Buffer;
+
+     label1:
+        r21 = virtualinvoke r1.<edu.kit.ipd.sdq.eventsim.measurement.r.Buffer: java.util.Collection getColumns()>();
+
+        $r5 = new org.rosuda.REngine.RList;
+
+        $i0 = interfaceinvoke r21.<java.util.Collection: int size()>();
+
+        $i1 = 2 + $i0;
+
+        specialinvoke $r5.<org.rosuda.REngine.RList: void <init>(int,boolean)>($i1, 1);
+
+        $r6 = new org.rosuda.REngine.REXPDouble;
+
+        $r7 = virtualinvoke r1.<edu.kit.ipd.sdq.eventsim.measurement.r.Buffer: double[] getValue()>();
+
+        specialinvoke $r6.<org.rosuda.REngine.REXPDouble: void <init>(double[])>($r7);
+
+        virtualinvoke $r5.<org.rosuda.REngine.RList: java.lang.Object put(java.lang.Object,java.lang.Object)>("value", $r6);
+
+        $r9 = new org.rosuda.REngine.REXPDouble;
+
+        $r10 = virtualinvoke r1.<edu.kit.ipd.sdq.eventsim.measurement.r.Buffer: double[] getWhen()>();
+
+        specialinvoke $r9.<org.rosuda.REngine.REXPDouble: void <init>(double[])>($r10);
+
+        virtualinvoke $r5.<org.rosuda.REngine.RList: java.lang.Object put(java.lang.Object,java.lang.Object)>("when", $r9);
+
+        $r12 = virtualinvoke r1.<edu.kit.ipd.sdq.eventsim.measurement.r.Buffer: java.util.Collection getColumns()>();
+
+        r4 = interfaceinvoke $r12.<java.util.Collection: java.util.Iterator iterator()>();
+
+        goto label3;
+
+     label2:
+        $r13 = interfaceinvoke r4.<java.util.Iterator: java.lang.Object next()>();
+
+        r3 = (edu.kit.ipd.sdq.eventsim.measurement.r.Column) $r13;
+
+        $r14 = virtualinvoke r3.<edu.kit.ipd.sdq.eventsim.measurement.r.Column: java.lang.String getName()>();
+
+        $r15 = virtualinvoke r3.<edu.kit.ipd.sdq.eventsim.measurement.r.Column: java.lang.Object[] values()>();
+
+        $r16 = staticinvoke <org.rosuda.REngine.REXPWrapper: org.rosuda.REngine.REXP wrap(java.lang.Object)>($r15);
+
+        virtualinvoke $r5.<org.rosuda.REngine.RList: java.lang.Object put(java.lang.Object,java.lang.Object)>($r14, $r16);
+
+     label3:
+        $z0 = interfaceinvoke r4.<java.util.Iterator: boolean hasNext()>();
+
+        if $z0 != 0 goto label2;
+
+        $r18 = staticinvoke <org.rosuda.REngine.REXP: org.rosuda.REngine.REXP createDataFrame(org.rosuda.REngine.RList)>($r5);
+
+     label4:
+        return $r18;
+
+     label5:
+        $r19 := @caughtexception;
+
+        $r20 = new java.lang.RuntimeException;
+
+        specialinvoke $r20.<java.lang.RuntimeException: void <init>(java.lang.Throwable)>($r19);
+
+        throw $r20;
+
+        catch org.rosuda.REngine.REXPMismatchException from label1 to label4 with label5;
+    }
+
+    public java.lang.String getName()
+    {
+        edu.kit.ipd.sdq.eventsim.measurement.r.jobs.PushBufferToRJob r0;
+
+        r0 := @this: edu.kit.ipd.sdq.eventsim.measurement.r.jobs.PushBufferToRJob;
+
+        return "Push buffered measurements to R";
+    }
+}

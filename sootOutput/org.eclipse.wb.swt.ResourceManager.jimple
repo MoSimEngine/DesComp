@@ -1,0 +1,714 @@
+public class org.eclipse.wb.swt.ResourceManager extends org.eclipse.wb.swt.SWTResourceManager
+{
+    private static java.util.Map m_descriptorImageMap;
+    private static java.util.Map[] m_decoratedImageMap;
+    private static java.util.Map m_URLImageMap;
+    private static org.eclipse.wb.swt.ResourceManager$PluginResourceProvider m_designTimePluginResourceProvider;
+
+    static void <clinit>()
+    {
+        java.util.HashMap $r0, $r2;
+        java.util.Map[] $r1;
+
+        $r0 = new java.util.HashMap;
+
+        specialinvoke $r0.<java.util.HashMap: void <init>()>();
+
+        <org.eclipse.wb.swt.ResourceManager: java.util.Map m_descriptorImageMap> = $r0;
+
+        $r1 = newarray (java.util.Map)[5];
+
+        <org.eclipse.wb.swt.ResourceManager: java.util.Map[] m_decoratedImageMap> = $r1;
+
+        $r2 = new java.util.HashMap;
+
+        specialinvoke $r2.<java.util.HashMap: void <init>()>();
+
+        <org.eclipse.wb.swt.ResourceManager: java.util.Map m_URLImageMap> = $r2;
+
+        <org.eclipse.wb.swt.ResourceManager: org.eclipse.wb.swt.ResourceManager$PluginResourceProvider m_designTimePluginResourceProvider> = null;
+
+        return;
+    }
+
+    public void <init>()
+    {
+        org.eclipse.wb.swt.ResourceManager r0;
+
+        r0 := @this: org.eclipse.wb.swt.ResourceManager;
+
+        specialinvoke r0.<org.eclipse.wb.swt.SWTResourceManager: void <init>()>();
+
+        return;
+    }
+
+    public static org.eclipse.jface.resource.ImageDescriptor getImageDescriptor(java.lang.Class, java.lang.String)
+    {
+        java.lang.Class r0;
+        java.lang.String r1;
+        org.eclipse.jface.resource.ImageDescriptor $r2;
+
+        r0 := @parameter0: java.lang.Class;
+
+        r1 := @parameter1: java.lang.String;
+
+        $r2 = staticinvoke <org.eclipse.jface.resource.ImageDescriptor: org.eclipse.jface.resource.ImageDescriptor createFromFile(java.lang.Class,java.lang.String)>(r0, r1);
+
+        return $r2;
+    }
+
+    public static org.eclipse.jface.resource.ImageDescriptor getImageDescriptor(java.lang.String)
+    {
+        java.lang.String r0;
+        java.io.File $r2;
+        java.net.URI $r3;
+        java.net.URL $r4;
+        org.eclipse.jface.resource.ImageDescriptor $r5;
+        java.net.MalformedURLException $r6;
+
+        r0 := @parameter0: java.lang.String;
+
+     label1:
+        $r2 = new java.io.File;
+
+        specialinvoke $r2.<java.io.File: void <init>(java.lang.String)>(r0);
+
+        $r3 = virtualinvoke $r2.<java.io.File: java.net.URI toURI()>();
+
+        $r4 = virtualinvoke $r3.<java.net.URI: java.net.URL toURL()>();
+
+        $r5 = staticinvoke <org.eclipse.jface.resource.ImageDescriptor: org.eclipse.jface.resource.ImageDescriptor createFromURL(java.net.URL)>($r4);
+
+     label2:
+        return $r5;
+
+     label3:
+        $r6 := @caughtexception;
+
+        return null;
+
+        catch java.net.MalformedURLException from label1 to label2 with label3;
+    }
+
+    public static org.eclipse.swt.graphics.Image getImage(org.eclipse.jface.resource.ImageDescriptor)
+    {
+        org.eclipse.jface.resource.ImageDescriptor r0;
+        java.util.Map $r1, $r3;
+        java.lang.Object $r2;
+        org.eclipse.swt.graphics.Image r5;
+
+        r0 := @parameter0: org.eclipse.jface.resource.ImageDescriptor;
+
+        if r0 != null goto label1;
+
+        return null;
+
+     label1:
+        $r1 = <org.eclipse.wb.swt.ResourceManager: java.util.Map m_descriptorImageMap>;
+
+        $r2 = interfaceinvoke $r1.<java.util.Map: java.lang.Object get(java.lang.Object)>(r0);
+
+        r5 = (org.eclipse.swt.graphics.Image) $r2;
+
+        if r5 != null goto label2;
+
+        r5 = virtualinvoke r0.<org.eclipse.jface.resource.ImageDescriptor: org.eclipse.swt.graphics.Image createImage()>();
+
+        $r3 = <org.eclipse.wb.swt.ResourceManager: java.util.Map m_descriptorImageMap>;
+
+        interfaceinvoke $r3.<java.util.Map: java.lang.Object put(java.lang.Object,java.lang.Object)>(r0, r5);
+
+     label2:
+        return r5;
+    }
+
+    public static org.eclipse.swt.graphics.Image decorateImage(org.eclipse.swt.graphics.Image, org.eclipse.swt.graphics.Image)
+    {
+        org.eclipse.swt.graphics.Image r0, r1, $r2;
+
+        r0 := @parameter0: org.eclipse.swt.graphics.Image;
+
+        r1 := @parameter1: org.eclipse.swt.graphics.Image;
+
+        $r2 = staticinvoke <org.eclipse.wb.swt.ResourceManager: org.eclipse.swt.graphics.Image decorateImage(org.eclipse.swt.graphics.Image,org.eclipse.swt.graphics.Image,int)>(r0, r1, 4);
+
+        return $r2;
+    }
+
+    public static org.eclipse.swt.graphics.Image decorateImage(org.eclipse.swt.graphics.Image, org.eclipse.swt.graphics.Image, int)
+    {
+        org.eclipse.swt.graphics.Image r0, r1, r19;
+        int i0, $i1, $i2;
+        org.eclipse.swt.graphics.Rectangle r2, r3;
+        java.lang.IllegalArgumentException $r6;
+        java.util.Map[] $r7, $r16;
+        java.lang.Object $r8, $r9;
+        org.eclipse.swt.graphics.Point $r10;
+        org.eclipse.wb.swt.ResourceManager$1 $r11;
+        java.util.HashMap $r13, $r15;
+        java.util.Map r17, r18;
+
+        r0 := @parameter0: org.eclipse.swt.graphics.Image;
+
+        r1 := @parameter1: org.eclipse.swt.graphics.Image;
+
+        i0 := @parameter2: int;
+
+        if i0 <= 0 goto label1;
+
+        if i0 < 5 goto label2;
+
+     label1:
+        $r6 = new java.lang.IllegalArgumentException;
+
+        specialinvoke $r6.<java.lang.IllegalArgumentException: void <init>(java.lang.String)>("Wrong decorate corner");
+
+        throw $r6;
+
+     label2:
+        $r7 = <org.eclipse.wb.swt.ResourceManager: java.util.Map[] m_decoratedImageMap>;
+
+        r17 = $r7[i0];
+
+        if r17 != null goto label3;
+
+        $r15 = new java.util.HashMap;
+
+        specialinvoke $r15.<java.util.HashMap: void <init>()>();
+
+        r17 = $r15;
+
+        $r16 = <org.eclipse.wb.swt.ResourceManager: java.util.Map[] m_decoratedImageMap>;
+
+        $r16[i0] = $r15;
+
+     label3:
+        $r8 = interfaceinvoke r17.<java.util.Map: java.lang.Object get(java.lang.Object)>(r0);
+
+        r18 = (java.util.Map) $r8;
+
+        if r18 != null goto label4;
+
+        $r13 = new java.util.HashMap;
+
+        specialinvoke $r13.<java.util.HashMap: void <init>()>();
+
+        r18 = $r13;
+
+        interfaceinvoke r17.<java.util.Map: java.lang.Object put(java.lang.Object,java.lang.Object)>(r0, $r13);
+
+     label4:
+        $r9 = interfaceinvoke r18.<java.util.Map: java.lang.Object get(java.lang.Object)>(r1);
+
+        r19 = (org.eclipse.swt.graphics.Image) $r9;
+
+        if r19 != null goto label5;
+
+        r2 = virtualinvoke r0.<org.eclipse.swt.graphics.Image: org.eclipse.swt.graphics.Rectangle getBounds()>();
+
+        r3 = virtualinvoke r1.<org.eclipse.swt.graphics.Image: org.eclipse.swt.graphics.Rectangle getBounds()>();
+
+        $r10 = new org.eclipse.swt.graphics.Point;
+
+        $i2 = r2.<org.eclipse.swt.graphics.Rectangle: int width>;
+
+        $i1 = r2.<org.eclipse.swt.graphics.Rectangle: int height>;
+
+        specialinvoke $r10.<org.eclipse.swt.graphics.Point: void <init>(int,int)>($i2, $i1);
+
+        $r11 = new org.eclipse.wb.swt.ResourceManager$1;
+
+        specialinvoke $r11.<org.eclipse.wb.swt.ResourceManager$1: void <init>(org.eclipse.swt.graphics.Image,int,org.eclipse.swt.graphics.Image,org.eclipse.swt.graphics.Rectangle,org.eclipse.swt.graphics.Rectangle,org.eclipse.swt.graphics.Point)>(r0, i0, r1, r2, r3, $r10);
+
+        r19 = virtualinvoke $r11.<org.eclipse.jface.resource.CompositeImageDescriptor: org.eclipse.swt.graphics.Image createImage()>();
+
+        interfaceinvoke r18.<java.util.Map: java.lang.Object put(java.lang.Object,java.lang.Object)>(r1, r19);
+
+     label5:
+        return r19;
+    }
+
+    public static void disposeImages()
+    {
+        java.util.Map r0, r1, $r5, $r9, $r15, $r19;
+        java.util.Iterator r2, r4, r20, r22;
+        org.eclipse.swt.graphics.Image r3, $r8, $r18;
+        java.util.Collection $r6, $r11, $r13, $r16;
+        boolean $z0, $z1, $z2, $z3;
+        java.lang.Object $r7, $r12, $r14, $r17;
+        java.util.Map[] $r10, $r21;
+        int i0, $i1;
+
+        staticinvoke <org.eclipse.wb.swt.SWTResourceManager: void disposeImages()>();
+
+        $r5 = <org.eclipse.wb.swt.ResourceManager: java.util.Map m_descriptorImageMap>;
+
+        $r6 = interfaceinvoke $r5.<java.util.Map: java.util.Collection values()>();
+
+        r20 = interfaceinvoke $r6.<java.util.Collection: java.util.Iterator iterator()>();
+
+        goto label02;
+
+     label01:
+        $r7 = interfaceinvoke r20.<java.util.Iterator: java.lang.Object next()>();
+
+        $r8 = (org.eclipse.swt.graphics.Image) $r7;
+
+        virtualinvoke $r8.<org.eclipse.swt.graphics.Image: void dispose()>();
+
+     label02:
+        $z0 = interfaceinvoke r20.<java.util.Iterator: boolean hasNext()>();
+
+        if $z0 != 0 goto label01;
+
+        $r9 = <org.eclipse.wb.swt.ResourceManager: java.util.Map m_descriptorImageMap>;
+
+        interfaceinvoke $r9.<java.util.Map: void clear()>();
+
+        i0 = 0;
+
+        goto label09;
+
+     label03:
+        $r10 = <org.eclipse.wb.swt.ResourceManager: java.util.Map[] m_decoratedImageMap>;
+
+        r0 = $r10[i0];
+
+        if r0 == null goto label08;
+
+        $r11 = interfaceinvoke r0.<java.util.Map: java.util.Collection values()>();
+
+        r2 = interfaceinvoke $r11.<java.util.Collection: java.util.Iterator iterator()>();
+
+        goto label07;
+
+     label04:
+        $r12 = interfaceinvoke r2.<java.util.Iterator: java.lang.Object next()>();
+
+        r1 = (java.util.Map) $r12;
+
+        $r13 = interfaceinvoke r1.<java.util.Map: java.util.Collection values()>();
+
+        r4 = interfaceinvoke $r13.<java.util.Collection: java.util.Iterator iterator()>();
+
+        goto label06;
+
+     label05:
+        $r14 = interfaceinvoke r4.<java.util.Iterator: java.lang.Object next()>();
+
+        r3 = (org.eclipse.swt.graphics.Image) $r14;
+
+        virtualinvoke r3.<org.eclipse.swt.graphics.Image: void dispose()>();
+
+     label06:
+        $z2 = interfaceinvoke r4.<java.util.Iterator: boolean hasNext()>();
+
+        if $z2 != 0 goto label05;
+
+        interfaceinvoke r1.<java.util.Map: void clear()>();
+
+     label07:
+        $z1 = interfaceinvoke r2.<java.util.Iterator: boolean hasNext()>();
+
+        if $z1 != 0 goto label04;
+
+        interfaceinvoke r0.<java.util.Map: void clear()>();
+
+     label08:
+        i0 = i0 + 1;
+
+     label09:
+        $r21 = <org.eclipse.wb.swt.ResourceManager: java.util.Map[] m_decoratedImageMap>;
+
+        $i1 = lengthof $r21;
+
+        if i0 < $i1 goto label03;
+
+        $r15 = <org.eclipse.wb.swt.ResourceManager: java.util.Map m_URLImageMap>;
+
+        $r16 = interfaceinvoke $r15.<java.util.Map: java.util.Collection values()>();
+
+        r22 = interfaceinvoke $r16.<java.util.Collection: java.util.Iterator iterator()>();
+
+        goto label11;
+
+     label10:
+        $r17 = interfaceinvoke r22.<java.util.Iterator: java.lang.Object next()>();
+
+        $r18 = (org.eclipse.swt.graphics.Image) $r17;
+
+        virtualinvoke $r18.<org.eclipse.swt.graphics.Image: void dispose()>();
+
+     label11:
+        $z3 = interfaceinvoke r22.<java.util.Iterator: boolean hasNext()>();
+
+        if $z3 != 0 goto label10;
+
+        $r19 = <org.eclipse.wb.swt.ResourceManager: java.util.Map m_URLImageMap>;
+
+        interfaceinvoke $r19.<java.util.Map: void clear()>();
+
+        return;
+    }
+
+    public static org.eclipse.swt.graphics.Image getPluginImage(java.lang.Object, java.lang.String)
+    {
+        java.lang.Object r0;
+        java.lang.String r1;
+        org.eclipse.swt.graphics.Image $r2;
+        java.lang.Throwable $r3;
+        java.net.URL r4;
+
+        r0 := @parameter0: java.lang.Object;
+
+        r1 := @parameter1: java.lang.String;
+
+     label1:
+        r4 = staticinvoke <org.eclipse.wb.swt.ResourceManager: java.net.URL getPluginImageURL(java.lang.Object,java.lang.String)>(r0, r1);
+
+        if r4 == null goto label4;
+
+        $r2 = staticinvoke <org.eclipse.wb.swt.ResourceManager: org.eclipse.swt.graphics.Image getPluginImageFromUrl(java.net.URL)>(r4);
+
+     label2:
+        return $r2;
+
+     label3:
+        $r3 := @caughtexception;
+
+     label4:
+        return null;
+
+        catch java.lang.Throwable from label1 to label2 with label3;
+    }
+
+    public static org.eclipse.swt.graphics.Image getPluginImage(java.lang.String, java.lang.String)
+    {
+        java.lang.String r0, r1;
+        org.eclipse.swt.graphics.Image $r2;
+        java.lang.Throwable $r3;
+        java.net.URL r4;
+
+        r0 := @parameter0: java.lang.String;
+
+        r1 := @parameter1: java.lang.String;
+
+     label1:
+        r4 = staticinvoke <org.eclipse.wb.swt.ResourceManager: java.net.URL getPluginImageURL(java.lang.String,java.lang.String)>(r0, r1);
+
+        if r4 == null goto label4;
+
+        $r2 = staticinvoke <org.eclipse.wb.swt.ResourceManager: org.eclipse.swt.graphics.Image getPluginImageFromUrl(java.net.URL)>(r4);
+
+     label2:
+        return $r2;
+
+     label3:
+        $r3 := @caughtexception;
+
+     label4:
+        return null;
+
+        catch java.lang.Throwable from label1 to label2 with label3;
+    }
+
+    private static org.eclipse.swt.graphics.Image getPluginImageFromUrl(java.net.URL)
+    {
+        java.net.URL r0;
+        java.io.InputStream r1;
+        java.util.Map $r3, $r5;
+        java.lang.Object $r4;
+        java.lang.Throwable $r8, $r9, $r10;
+        java.lang.String r11;
+        org.eclipse.swt.graphics.Image r12;
+
+        r0 := @parameter0: java.net.URL;
+
+     label1:
+        r11 = virtualinvoke r0.<java.net.URL: java.lang.String toExternalForm()>();
+
+        $r3 = <org.eclipse.wb.swt.ResourceManager: java.util.Map m_URLImageMap>;
+
+        $r4 = interfaceinvoke $r3.<java.util.Map: java.lang.Object get(java.lang.Object)>(r11);
+
+        r12 = (org.eclipse.swt.graphics.Image) $r4;
+
+        if r12 != null goto label5;
+
+        r1 = virtualinvoke r0.<java.net.URL: java.io.InputStream openStream()>();
+
+     label2:
+        r12 = staticinvoke <org.eclipse.wb.swt.ResourceManager: org.eclipse.swt.graphics.Image getImage(java.io.InputStream)>(r1);
+
+        $r5 = <org.eclipse.wb.swt.ResourceManager: java.util.Map m_URLImageMap>;
+
+        interfaceinvoke $r5.<java.util.Map: java.lang.Object put(java.lang.Object,java.lang.Object)>(r11, r12);
+
+        goto label4;
+
+     label3:
+        $r9 := @caughtexception;
+
+        virtualinvoke r1.<java.io.InputStream: void close()>();
+
+        throw $r9;
+
+     label4:
+        virtualinvoke r1.<java.io.InputStream: void close()>();
+
+     label5:
+        return r12;
+
+     label6:
+        $r8 := @caughtexception;
+
+     label7:
+        goto label9;
+
+     label8:
+        $r10 := @caughtexception;
+
+     label9:
+        return null;
+
+        catch java.lang.Throwable from label2 to label3 with label3;
+        catch java.lang.Throwable from label1 to label5 with label6;
+        catch java.lang.Throwable from label6 to label7 with label8;
+    }
+
+    public static org.eclipse.jface.resource.ImageDescriptor getPluginImageDescriptor(java.lang.Object, java.lang.String)
+    {
+        java.lang.Object r0;
+        java.lang.String r1;
+        org.eclipse.jface.resource.ImageDescriptor $r2;
+        java.lang.Throwable $r3, $r4;
+        java.net.URL r5;
+
+        r0 := @parameter0: java.lang.Object;
+
+        r1 := @parameter1: java.lang.String;
+
+     label1:
+        r5 = staticinvoke <org.eclipse.wb.swt.ResourceManager: java.net.URL getPluginImageURL(java.lang.Object,java.lang.String)>(r0, r1);
+
+        $r2 = staticinvoke <org.eclipse.jface.resource.ImageDescriptor: org.eclipse.jface.resource.ImageDescriptor createFromURL(java.net.URL)>(r5);
+
+     label2:
+        return $r2;
+
+     label3:
+        $r3 := @caughtexception;
+
+     label4:
+        goto label6;
+
+     label5:
+        $r4 := @caughtexception;
+
+     label6:
+        return null;
+
+        catch java.lang.Throwable from label1 to label2 with label3;
+        catch java.lang.Throwable from label3 to label4 with label5;
+    }
+
+    public static org.eclipse.jface.resource.ImageDescriptor getPluginImageDescriptor(java.lang.String, java.lang.String)
+    {
+        java.lang.String r0, r1;
+        org.eclipse.jface.resource.ImageDescriptor $r2;
+        java.lang.Throwable $r3;
+        java.net.URL r4;
+
+        r0 := @parameter0: java.lang.String;
+
+        r1 := @parameter1: java.lang.String;
+
+     label1:
+        r4 = staticinvoke <org.eclipse.wb.swt.ResourceManager: java.net.URL getPluginImageURL(java.lang.String,java.lang.String)>(r0, r1);
+
+        if r4 == null goto label4;
+
+        $r2 = staticinvoke <org.eclipse.jface.resource.ImageDescriptor: org.eclipse.jface.resource.ImageDescriptor createFromURL(java.net.URL)>(r4);
+
+     label2:
+        return $r2;
+
+     label3:
+        $r3 := @caughtexception;
+
+     label4:
+        return null;
+
+        catch java.lang.Throwable from label1 to label2 with label3;
+    }
+
+    private static java.net.URL getPluginImageURL(java.lang.String, java.lang.String)
+    {
+        java.lang.String r0, r1;
+        org.osgi.framework.Bundle r2;
+        org.eclipse.wb.swt.ResourceManager$PluginResourceProvider $r3, $r4;
+        java.net.URL $r5, $r6;
+
+        r0 := @parameter0: java.lang.String;
+
+        r1 := @parameter1: java.lang.String;
+
+        r2 = staticinvoke <org.eclipse.core.runtime.Platform: org.osgi.framework.Bundle getBundle(java.lang.String)>(r0);
+
+        if r2 == null goto label1;
+
+        $r6 = interfaceinvoke r2.<org.osgi.framework.Bundle: java.net.URL getEntry(java.lang.String)>(r1);
+
+        return $r6;
+
+     label1:
+        $r3 = <org.eclipse.wb.swt.ResourceManager: org.eclipse.wb.swt.ResourceManager$PluginResourceProvider m_designTimePluginResourceProvider>;
+
+        if $r3 == null goto label2;
+
+        $r4 = <org.eclipse.wb.swt.ResourceManager: org.eclipse.wb.swt.ResourceManager$PluginResourceProvider m_designTimePluginResourceProvider>;
+
+        $r5 = interfaceinvoke $r4.<org.eclipse.wb.swt.ResourceManager$PluginResourceProvider: java.net.URL getEntry(java.lang.String,java.lang.String)>(r0, r1);
+
+        return $r5;
+
+     label2:
+        return null;
+    }
+
+    private static java.net.URL getPluginImageURL(java.lang.Object, java.lang.String) throws java.lang.Exception
+    {
+        java.lang.Object r0, r2, $r12, $r20, r26, r33;
+        java.lang.String r1;
+        java.lang.Class r3, r4, $r6, $r7, r23, r24, r27, r30, r31, r34;
+        java.lang.reflect.Method r5, r25, r35;
+        boolean $z0, $z1;
+        java.lang.Class[] $r8, $r10, $r14, $r16, $r18;
+        java.lang.Object[] $r9, $r11, $r15, $r17, $r19;
+        java.net.URL $r13, $r21;
+        java.lang.Throwable $r22;
+        java.lang.reflect.Constructor r28, r32;
+
+        r0 := @parameter0: java.lang.Object;
+
+        r1 := @parameter1: java.lang.String;
+
+     label1:
+        r23 = staticinvoke <java.lang.Class: java.lang.Class forName(java.lang.String)>("org.osgi.framework.Bundle");
+
+        r24 = staticinvoke <java.lang.Class: java.lang.Class forName(java.lang.String)>("org.osgi.framework.BundleContext");
+
+        $r6 = virtualinvoke r0.<java.lang.Object: java.lang.Class getClass()>();
+
+        $z0 = virtualinvoke r24.<java.lang.Class: boolean isAssignableFrom(java.lang.Class)>($r6);
+
+        if $z0 == 0 goto label4;
+
+        $r14 = newarray (java.lang.Class)[0];
+
+        r25 = virtualinvoke r24.<java.lang.Class: java.lang.reflect.Method getMethod(java.lang.String,java.lang.Class[])>("getBundle", $r14);
+
+        $r15 = newarray (java.lang.Object)[0];
+
+        r26 = virtualinvoke r25.<java.lang.reflect.Method: java.lang.Object invoke(java.lang.Object,java.lang.Object[])>(r0, $r15);
+
+        r27 = staticinvoke <java.lang.Class: java.lang.Class forName(java.lang.String)>("org.eclipse.core.runtime.Path");
+
+        $r16 = newarray (java.lang.Class)[1];
+
+        $r16[0] = class "Ljava/lang/String;";
+
+        r28 = virtualinvoke r27.<java.lang.Class: java.lang.reflect.Constructor getConstructor(java.lang.Class[])>($r16);
+
+        $r17 = newarray (java.lang.Object)[1];
+
+        $r17[0] = r1;
+
+        r2 = virtualinvoke r28.<java.lang.reflect.Constructor: java.lang.Object newInstance(java.lang.Object[])>($r17);
+
+        r3 = staticinvoke <java.lang.Class: java.lang.Class forName(java.lang.String)>("org.eclipse.core.runtime.IPath");
+
+        r4 = staticinvoke <java.lang.Class: java.lang.Class forName(java.lang.String)>("org.eclipse.core.runtime.Platform");
+
+        $r18 = newarray (java.lang.Class)[2];
+
+        $r18[0] = r23;
+
+        $r18[1] = r3;
+
+        r5 = virtualinvoke r4.<java.lang.Class: java.lang.reflect.Method getMethod(java.lang.String,java.lang.Class[])>("find", $r18);
+
+        $r19 = newarray (java.lang.Object)[2];
+
+        $r19[0] = r26;
+
+        $r19[1] = r2;
+
+        $r20 = virtualinvoke r5.<java.lang.reflect.Method: java.lang.Object invoke(java.lang.Object,java.lang.Object[])>(null, $r19);
+
+        $r21 = (java.net.URL) $r20;
+
+     label2:
+        return $r21;
+
+     label3:
+        $r22 := @caughtexception;
+
+     label4:
+        r30 = staticinvoke <java.lang.Class: java.lang.Class forName(java.lang.String)>("org.eclipse.core.runtime.Plugin");
+
+        $r7 = virtualinvoke r0.<java.lang.Object: java.lang.Class getClass()>();
+
+        $z1 = virtualinvoke r30.<java.lang.Class: boolean isAssignableFrom(java.lang.Class)>($r7);
+
+        if $z1 == 0 goto label5;
+
+        r31 = staticinvoke <java.lang.Class: java.lang.Class forName(java.lang.String)>("org.eclipse.core.runtime.Path");
+
+        $r8 = newarray (java.lang.Class)[1];
+
+        $r8[0] = class "Ljava/lang/String;";
+
+        r32 = virtualinvoke r31.<java.lang.Class: java.lang.reflect.Constructor getConstructor(java.lang.Class[])>($r8);
+
+        $r9 = newarray (java.lang.Object)[1];
+
+        $r9[0] = r1;
+
+        r33 = virtualinvoke r32.<java.lang.reflect.Constructor: java.lang.Object newInstance(java.lang.Object[])>($r9);
+
+        r34 = staticinvoke <java.lang.Class: java.lang.Class forName(java.lang.String)>("org.eclipse.core.runtime.IPath");
+
+        $r10 = newarray (java.lang.Class)[1];
+
+        $r10[0] = r34;
+
+        r35 = virtualinvoke r30.<java.lang.Class: java.lang.reflect.Method getMethod(java.lang.String,java.lang.Class[])>("find", $r10);
+
+        $r11 = newarray (java.lang.Object)[1];
+
+        $r11[0] = r33;
+
+        $r12 = virtualinvoke r35.<java.lang.reflect.Method: java.lang.Object invoke(java.lang.Object,java.lang.Object[])>(r0, $r11);
+
+        $r13 = (java.net.URL) $r12;
+
+        return $r13;
+
+     label5:
+        return null;
+
+        catch java.lang.Throwable from label1 to label2 with label3;
+    }
+
+    public static void dispose()
+    {
+        staticinvoke <org.eclipse.wb.swt.ResourceManager: void disposeColors()>();
+
+        staticinvoke <org.eclipse.wb.swt.ResourceManager: void disposeFonts()>();
+
+        staticinvoke <org.eclipse.wb.swt.ResourceManager: void disposeImages()>();
+
+        return;
+    }
+}

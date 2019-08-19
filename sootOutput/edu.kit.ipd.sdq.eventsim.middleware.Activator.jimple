@@ -1,0 +1,66 @@
+public class edu.kit.ipd.sdq.eventsim.middleware.Activator extends java.lang.Object implements org.osgi.framework.BundleActivator
+{
+    private static edu.kit.ipd.sdq.eventsim.middleware.Activator plugin;
+    private static org.osgi.framework.BundleContext context;
+
+    public void <init>()
+    {
+        edu.kit.ipd.sdq.eventsim.middleware.Activator r0;
+
+        r0 := @this: edu.kit.ipd.sdq.eventsim.middleware.Activator;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    public static org.osgi.framework.BundleContext getContext()
+    {
+        org.osgi.framework.BundleContext $r0;
+
+        $r0 = <edu.kit.ipd.sdq.eventsim.middleware.Activator: org.osgi.framework.BundleContext context>;
+
+        return $r0;
+    }
+
+    public static edu.kit.ipd.sdq.eventsim.middleware.Activator getDefault()
+    {
+        edu.kit.ipd.sdq.eventsim.middleware.Activator $r0;
+
+        $r0 = <edu.kit.ipd.sdq.eventsim.middleware.Activator: edu.kit.ipd.sdq.eventsim.middleware.Activator plugin>;
+
+        return $r0;
+    }
+
+    public void start(org.osgi.framework.BundleContext) throws java.lang.Exception
+    {
+        edu.kit.ipd.sdq.eventsim.middleware.Activator r0;
+        org.osgi.framework.BundleContext r1;
+
+        r0 := @this: edu.kit.ipd.sdq.eventsim.middleware.Activator;
+
+        r1 := @parameter0: org.osgi.framework.BundleContext;
+
+        <edu.kit.ipd.sdq.eventsim.middleware.Activator: org.osgi.framework.BundleContext context> = r1;
+
+        <edu.kit.ipd.sdq.eventsim.middleware.Activator: edu.kit.ipd.sdq.eventsim.middleware.Activator plugin> = r0;
+
+        return;
+    }
+
+    public void stop(org.osgi.framework.BundleContext) throws java.lang.Exception
+    {
+        edu.kit.ipd.sdq.eventsim.middleware.Activator r0;
+        org.osgi.framework.BundleContext r1;
+
+        r0 := @this: edu.kit.ipd.sdq.eventsim.middleware.Activator;
+
+        r1 := @parameter0: org.osgi.framework.BundleContext;
+
+        <edu.kit.ipd.sdq.eventsim.middleware.Activator: org.osgi.framework.BundleContext context> = null;
+
+        <edu.kit.ipd.sdq.eventsim.middleware.Activator: edu.kit.ipd.sdq.eventsim.middleware.Activator plugin> = null;
+
+        return;
+    }
+}

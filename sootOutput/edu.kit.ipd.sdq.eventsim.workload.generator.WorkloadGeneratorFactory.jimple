@@ -1,0 +1,7 @@
+public interface  edu.kit.ipd.sdq.eventsim.workload.generator.WorkloadGeneratorFactory extends java.lang.Object
+{
+
+    public abstract edu.kit.ipd.sdq.eventsim.workload.generator.ClosedWorkloadGenerator createClosed(org.palladiosimulator.pcm.usagemodel.ClosedWorkload);
+
+    public abstract edu.kit.ipd.sdq.eventsim.workload.generator.OpenWorkloadGenerator createOpen(org.palladiosimulator.pcm.usagemodel.OpenWorkload);
+}

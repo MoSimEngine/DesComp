@@ -1,0 +1,11 @@
+public interface  edu.kit.ipd.sdq.eventsim.resources.entities.SimResourceFactory extends java.lang.Object
+{
+
+    public abstract edu.kit.ipd.sdq.eventsim.resources.entities.SimActiveResource createActiveResource(de.uka.ipd.sdq.scheduler.IActiveResource, java.lang.String, int, org.palladiosimulator.pcm.resourcetype.SchedulingPolicy, org.palladiosimulator.pcm.resourceenvironment.ProcessingResourceSpecification);
+
+    public abstract edu.kit.ipd.sdq.eventsim.resources.entities.SimHDDActiveResource createActiveHDDResource(de.uka.ipd.sdq.scheduler.IActiveResource, java.lang.String, int, org.palladiosimulator.pcm.resourcetype.SchedulingPolicy, org.palladiosimulator.pcm.resourceenvironment.HDDProcessingResourceSpecification, java.lang.String, java.lang.String);
+
+    public abstract edu.kit.ipd.sdq.eventsim.resources.entities.SimLinkingResource createLinkingResource(de.uka.ipd.sdq.scheduler.IActiveResource, java.lang.String, java.lang.String, org.palladiosimulator.pcm.resourceenvironment.LinkingResource);
+
+    public abstract edu.kit.ipd.sdq.eventsim.resources.entities.SimPassiveResource createPassiveResource(de.uka.ipd.sdq.scheduler.IPassiveResource, org.palladiosimulator.pcm.repository.PassiveResource);
+}

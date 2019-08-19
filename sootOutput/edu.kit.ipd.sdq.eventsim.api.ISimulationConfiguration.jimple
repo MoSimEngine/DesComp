@@ -1,0 +1,21 @@
+public interface  edu.kit.ipd.sdq.eventsim.api.ISimulationConfiguration extends java.lang.Object implements de.uka.ipd.sdq.simulation.abstractsimengine.ISimulationConfig
+{
+
+    public abstract java.util.Map getConfigurationMap();
+
+    public abstract boolean isDebug();
+
+    public abstract long[] getRandomSeed();
+
+    public abstract edu.kit.ipd.sdq.eventsim.api.PCMModel getPCMModel();
+
+    public abstract long getSimuTime();
+
+    public abstract long getMaxMeasurementsCount();
+
+    public abstract java.util.List getListeners();
+
+    public abstract boolean isSimulateLinkingResources();
+
+    public abstract boolean isSimulateThroughputOfLinkingResources();
+}

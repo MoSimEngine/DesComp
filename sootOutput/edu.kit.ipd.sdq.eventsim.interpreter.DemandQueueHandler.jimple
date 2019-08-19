@@ -1,0 +1,68 @@
+public class edu.kit.ipd.sdq.eventsim.interpreter.DemandQueueHandler extends java.lang.Object implements edu.kit.ipd.sdq.eventsim.api.Procedure
+{
+    private final java.util.Queue pendingDemands;
+    private final java.util.function.BiConsumer demandHandler;
+    private final java.util.function.Consumer onCompletionHandler;
+
+    public void <init>(java.util.Queue, java.util.function.BiConsumer, java.util.function.Consumer)
+    {
+        edu.kit.ipd.sdq.eventsim.interpreter.DemandQueueHandler r0;
+        java.util.Queue r1;
+        java.util.function.BiConsumer r2;
+        java.util.function.Consumer r3;
+
+        r0 := @this: edu.kit.ipd.sdq.eventsim.interpreter.DemandQueueHandler;
+
+        r1 := @parameter0: java.util.Queue;
+
+        r2 := @parameter1: java.util.function.BiConsumer;
+
+        r3 := @parameter2: java.util.function.Consumer;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        r0.<edu.kit.ipd.sdq.eventsim.interpreter.DemandQueueHandler: java.util.Queue pendingDemands> = r1;
+
+        r0.<edu.kit.ipd.sdq.eventsim.interpreter.DemandQueueHandler: java.util.function.BiConsumer demandHandler> = r2;
+
+        r0.<edu.kit.ipd.sdq.eventsim.interpreter.DemandQueueHandler: java.util.function.Consumer onCompletionHandler> = r3;
+
+        return;
+    }
+
+    public void execute()
+    {
+        edu.kit.ipd.sdq.eventsim.interpreter.DemandQueueHandler r0;
+        java.util.Queue $r1, $r3;
+        boolean $z0;
+        java.util.function.Consumer $r2;
+        java.util.function.BiConsumer $r4;
+        java.lang.Object $r5;
+
+        r0 := @this: edu.kit.ipd.sdq.eventsim.interpreter.DemandQueueHandler;
+
+        $r1 = r0.<edu.kit.ipd.sdq.eventsim.interpreter.DemandQueueHandler: java.util.Queue pendingDemands>;
+
+        $z0 = interfaceinvoke $r1.<java.util.Queue: boolean isEmpty()>();
+
+        if $z0 != 0 goto label1;
+
+        $r4 = r0.<edu.kit.ipd.sdq.eventsim.interpreter.DemandQueueHandler: java.util.function.BiConsumer demandHandler>;
+
+        $r3 = r0.<edu.kit.ipd.sdq.eventsim.interpreter.DemandQueueHandler: java.util.Queue pendingDemands>;
+
+        $r5 = interfaceinvoke $r3.<java.util.Queue: java.lang.Object poll()>();
+
+        interfaceinvoke $r4.<java.util.function.BiConsumer: void accept(java.lang.Object,java.lang.Object)>($r5, r0);
+
+        goto label2;
+
+     label1:
+        $r2 = r0.<edu.kit.ipd.sdq.eventsim.interpreter.DemandQueueHandler: java.util.function.Consumer onCompletionHandler>;
+
+        interfaceinvoke $r2.<java.util.function.Consumer: void accept(java.lang.Object)>(r0);
+
+     label2:
+        return;
+    }
+}

@@ -1,0 +1,60 @@
+class edu.kit.ipd.sdq.eventsim.rvisualization.Controller$2 extends java.lang.Object implements edu.kit.ipd.sdq.eventsim.measurement.r.connection.ConnectionListener
+{
+    final edu.kit.ipd.sdq.eventsim.rvisualization.Controller this$0;
+    private final edu.kit.ipd.sdq.eventsim.measurement.r.connection.ConnectionStatusListener val$statusListener;
+
+    void <init>(edu.kit.ipd.sdq.eventsim.rvisualization.Controller, edu.kit.ipd.sdq.eventsim.measurement.r.connection.ConnectionStatusListener)
+    {
+        edu.kit.ipd.sdq.eventsim.rvisualization.Controller$2 r0;
+        edu.kit.ipd.sdq.eventsim.rvisualization.Controller r1;
+        edu.kit.ipd.sdq.eventsim.measurement.r.connection.ConnectionStatusListener r2;
+
+        r0 := @this: edu.kit.ipd.sdq.eventsim.rvisualization.Controller$2;
+
+        r1 := @parameter0: edu.kit.ipd.sdq.eventsim.rvisualization.Controller;
+
+        r2 := @parameter1: edu.kit.ipd.sdq.eventsim.measurement.r.connection.ConnectionStatusListener;
+
+        r0.<edu.kit.ipd.sdq.eventsim.rvisualization.Controller$2: edu.kit.ipd.sdq.eventsim.rvisualization.Controller this$0> = r1;
+
+        r0.<edu.kit.ipd.sdq.eventsim.rvisualization.Controller$2: edu.kit.ipd.sdq.eventsim.measurement.r.connection.ConnectionStatusListener val$statusListener> = r2;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    public void connectionRemoved(edu.kit.ipd.sdq.eventsim.measurement.r.connection.RserveConnection)
+    {
+        edu.kit.ipd.sdq.eventsim.rvisualization.Controller$2 r0;
+        edu.kit.ipd.sdq.eventsim.measurement.r.connection.RserveConnection r1;
+        edu.kit.ipd.sdq.eventsim.measurement.r.connection.ConnectionStatusListener $r2;
+
+        r0 := @this: edu.kit.ipd.sdq.eventsim.rvisualization.Controller$2;
+
+        r1 := @parameter0: edu.kit.ipd.sdq.eventsim.measurement.r.connection.RserveConnection;
+
+        $r2 = r0.<edu.kit.ipd.sdq.eventsim.rvisualization.Controller$2: edu.kit.ipd.sdq.eventsim.measurement.r.connection.ConnectionStatusListener val$statusListener>;
+
+        virtualinvoke r1.<edu.kit.ipd.sdq.eventsim.measurement.r.connection.RserveConnection: void removeListener(edu.kit.ipd.sdq.eventsim.measurement.r.connection.ConnectionStatusListener)>($r2);
+
+        return;
+    }
+
+    public void connectionAdded(edu.kit.ipd.sdq.eventsim.measurement.r.connection.RserveConnection)
+    {
+        edu.kit.ipd.sdq.eventsim.rvisualization.Controller$2 r0;
+        edu.kit.ipd.sdq.eventsim.measurement.r.connection.RserveConnection r1;
+        edu.kit.ipd.sdq.eventsim.measurement.r.connection.ConnectionStatusListener $r2;
+
+        r0 := @this: edu.kit.ipd.sdq.eventsim.rvisualization.Controller$2;
+
+        r1 := @parameter0: edu.kit.ipd.sdq.eventsim.measurement.r.connection.RserveConnection;
+
+        $r2 = r0.<edu.kit.ipd.sdq.eventsim.rvisualization.Controller$2: edu.kit.ipd.sdq.eventsim.measurement.r.connection.ConnectionStatusListener val$statusListener>;
+
+        virtualinvoke r1.<edu.kit.ipd.sdq.eventsim.measurement.r.connection.RserveConnection: void addListener(edu.kit.ipd.sdq.eventsim.measurement.r.connection.ConnectionStatusListener)>($r2);
+
+        return;
+    }
+}

@@ -1,0 +1,60 @@
+public final class edu.kit.ipd.sdq.eventsim.system.interpreter.strategies.ExternalCallSimulationStrategy$lambda_3__214 extends java.lang.Object implements edu.kit.ipd.sdq.eventsim.api.Procedure
+{
+    edu.kit.ipd.sdq.eventsim.system.entities.Request cap0;
+    org.palladiosimulator.pcm.seff.AbstractAction cap1;
+
+    public static edu.kit.ipd.sdq.eventsim.api.Procedure bootstrap$(edu.kit.ipd.sdq.eventsim.system.entities.Request, org.palladiosimulator.pcm.seff.AbstractAction)
+    {
+        edu.kit.ipd.sdq.eventsim.system.entities.Request $r0;
+        org.palladiosimulator.pcm.seff.AbstractAction $r1;
+        edu.kit.ipd.sdq.eventsim.system.interpreter.strategies.ExternalCallSimulationStrategy$lambda_3__214 $r2;
+
+        $r0 := @parameter0: edu.kit.ipd.sdq.eventsim.system.entities.Request;
+
+        $r1 := @parameter1: org.palladiosimulator.pcm.seff.AbstractAction;
+
+        $r2 = new edu.kit.ipd.sdq.eventsim.system.interpreter.strategies.ExternalCallSimulationStrategy$lambda_3__214;
+
+        specialinvoke $r2.<edu.kit.ipd.sdq.eventsim.system.interpreter.strategies.ExternalCallSimulationStrategy$lambda_3__214: void <init>(edu.kit.ipd.sdq.eventsim.system.entities.Request,org.palladiosimulator.pcm.seff.AbstractAction)>($r0, $r1);
+
+        return $r2;
+    }
+
+    public void <init>(edu.kit.ipd.sdq.eventsim.system.entities.Request, org.palladiosimulator.pcm.seff.AbstractAction)
+    {
+        edu.kit.ipd.sdq.eventsim.system.interpreter.strategies.ExternalCallSimulationStrategy$lambda_3__214 $r0;
+        edu.kit.ipd.sdq.eventsim.system.entities.Request $r1;
+        org.palladiosimulator.pcm.seff.AbstractAction $r2;
+
+        $r0 := @this: edu.kit.ipd.sdq.eventsim.system.interpreter.strategies.ExternalCallSimulationStrategy$lambda_3__214;
+
+        $r1 := @parameter0: edu.kit.ipd.sdq.eventsim.system.entities.Request;
+
+        $r2 := @parameter1: org.palladiosimulator.pcm.seff.AbstractAction;
+
+        specialinvoke $r0.<java.lang.Object: void <init>()>();
+
+        $r0.<edu.kit.ipd.sdq.eventsim.system.interpreter.strategies.ExternalCallSimulationStrategy$lambda_3__214: edu.kit.ipd.sdq.eventsim.system.entities.Request cap0> = $r1;
+
+        $r0.<edu.kit.ipd.sdq.eventsim.system.interpreter.strategies.ExternalCallSimulationStrategy$lambda_3__214: org.palladiosimulator.pcm.seff.AbstractAction cap1> = $r2;
+
+        return;
+    }
+
+    public void execute()
+    {
+        edu.kit.ipd.sdq.eventsim.system.interpreter.strategies.ExternalCallSimulationStrategy$lambda_3__214 $r0;
+        edu.kit.ipd.sdq.eventsim.system.entities.Request $r1;
+        org.palladiosimulator.pcm.seff.AbstractAction $r2;
+
+        $r0 := @this: edu.kit.ipd.sdq.eventsim.system.interpreter.strategies.ExternalCallSimulationStrategy$lambda_3__214;
+
+        $r1 = $r0.<edu.kit.ipd.sdq.eventsim.system.interpreter.strategies.ExternalCallSimulationStrategy$lambda_3__214: edu.kit.ipd.sdq.eventsim.system.entities.Request cap0>;
+
+        $r2 = $r0.<edu.kit.ipd.sdq.eventsim.system.interpreter.strategies.ExternalCallSimulationStrategy$lambda_3__214: org.palladiosimulator.pcm.seff.AbstractAction cap1>;
+
+        staticinvoke <edu.kit.ipd.sdq.eventsim.system.interpreter.strategies.ExternalCallSimulationStrategy: void lambda$3(edu.kit.ipd.sdq.eventsim.system.entities.Request,org.palladiosimulator.pcm.seff.AbstractAction)>($r1, $r2);
+
+        return;
+    }
+}

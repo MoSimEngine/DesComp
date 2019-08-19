@@ -57,10 +57,14 @@ public class AbstractSimEngineSceneTransformer extends SceneTransformer {
 
 	private void extractEntities(List<Entity> entities, Hierarchy classHierarchy) {
 		SootClass entityParentClass = Scene.v().getSootClass(ENTITY_CLASS);
-		List<SootClass> entityList = classHierarchy.getDirectSubclassesOf(entityParentClass);
+		// List<SootClass> entityList =
+		// classHierarchy.getDirectSubclassesOf(entityParentClass);
+
+		List<SootClass> entityList = classHierarchy.getSubclassesOf(entityParentClass);
 
 		for (SootClass entity : entityList) {
 			entity.setApplicationClass();
+			System.out.println(entity.getJavaStyleName());
 
 			Entity currEntity = new Entity(entity.getShortName());
 			Chain<SootField> fields = entity.getFields();
@@ -86,7 +90,7 @@ public class AbstractSimEngineSceneTransformer extends SceneTransformer {
 					Body retrieveActiveBody = sootMethod.retrieveActiveBody();
 
 					Event currEvent = new Event(event.getJavaStyleName(), retrieveActiveBody.toString());
-
+					System.out.println(event.getJavaStyleName());
 					for (Unit unit : retrieveActiveBody.getUnits()) {
 
 						if (unit instanceof JInvokeStmt) {

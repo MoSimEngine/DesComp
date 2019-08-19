@@ -1,0 +1,72 @@
+public class edu.kit.ipd.sdq.eventsim.command.CachingPCMModelCommandExecutor extends java.lang.Object implements edu.kit.ipd.sdq.eventsim.command.ICommandExecutor
+{
+    private final edu.kit.ipd.sdq.eventsim.api.PCMModel pcm;
+    private final java.util.Map cache;
+
+    public void <init>(edu.kit.ipd.sdq.eventsim.api.PCMModel)
+    {
+        edu.kit.ipd.sdq.eventsim.command.CachingPCMModelCommandExecutor r0;
+        edu.kit.ipd.sdq.eventsim.api.PCMModel r1;
+        java.util.HashMap $r2;
+
+        r0 := @this: edu.kit.ipd.sdq.eventsim.command.CachingPCMModelCommandExecutor;
+
+        r1 := @parameter0: edu.kit.ipd.sdq.eventsim.api.PCMModel;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        r0.<edu.kit.ipd.sdq.eventsim.command.CachingPCMModelCommandExecutor: edu.kit.ipd.sdq.eventsim.api.PCMModel pcm> = r1;
+
+        $r2 = new java.util.HashMap;
+
+        specialinvoke $r2.<java.util.HashMap: void <init>()>();
+
+        r0.<edu.kit.ipd.sdq.eventsim.command.CachingPCMModelCommandExecutor: java.util.Map cache> = $r2;
+
+        return;
+    }
+
+    public java.lang.Object execute(edu.kit.ipd.sdq.eventsim.command.ICommand)
+    {
+        edu.kit.ipd.sdq.eventsim.command.CachingPCMModelCommandExecutor r0;
+        edu.kit.ipd.sdq.eventsim.command.ICommand r1;
+        java.lang.Object r2, r3, $r9;
+        boolean $z0;
+        java.util.Map $r4, $r6;
+        edu.kit.ipd.sdq.eventsim.api.PCMModel $r5, $r8;
+
+        r0 := @this: edu.kit.ipd.sdq.eventsim.command.CachingPCMModelCommandExecutor;
+
+        r1 := @parameter0: edu.kit.ipd.sdq.eventsim.command.ICommand;
+
+        $z0 = interfaceinvoke r1.<edu.kit.ipd.sdq.eventsim.command.ICommand: boolean cachable()>();
+
+        if $z0 != 0 goto label1;
+
+        $r8 = r0.<edu.kit.ipd.sdq.eventsim.command.CachingPCMModelCommandExecutor: edu.kit.ipd.sdq.eventsim.api.PCMModel pcm>;
+
+        $r9 = interfaceinvoke r1.<edu.kit.ipd.sdq.eventsim.command.ICommand: java.lang.Object execute(java.lang.Object,edu.kit.ipd.sdq.eventsim.command.ICommandExecutor)>($r8, r0);
+
+        return $r9;
+
+     label1:
+        $r4 = r0.<edu.kit.ipd.sdq.eventsim.command.CachingPCMModelCommandExecutor: java.util.Map cache>;
+
+        r2 = interfaceinvoke $r4.<java.util.Map: java.lang.Object get(java.lang.Object)>(r1);
+
+        if r2 == null goto label2;
+
+        return r2;
+
+     label2:
+        $r5 = r0.<edu.kit.ipd.sdq.eventsim.command.CachingPCMModelCommandExecutor: edu.kit.ipd.sdq.eventsim.api.PCMModel pcm>;
+
+        r3 = interfaceinvoke r1.<edu.kit.ipd.sdq.eventsim.command.ICommand: java.lang.Object execute(java.lang.Object,edu.kit.ipd.sdq.eventsim.command.ICommandExecutor)>($r5, r0);
+
+        $r6 = r0.<edu.kit.ipd.sdq.eventsim.command.CachingPCMModelCommandExecutor: java.util.Map cache>;
+
+        interfaceinvoke $r6.<java.util.Map: java.lang.Object put(java.lang.Object,java.lang.Object)>(r1, r3);
+
+        return r3;
+    }
+}

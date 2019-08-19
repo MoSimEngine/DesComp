@@ -1,0 +1,48 @@
+public final class edu.kit.ipd.sdq.eventsim.rvisualization.DiagramController$StatisticsSelectionHandler$lambda_0__190 extends java.lang.Object implements edu.kit.ipd.sdq.eventsim.rvisualization.util.Procedure
+{
+    edu.kit.ipd.sdq.eventsim.rvisualization.DiagramController$StatisticsSelectionHandler cap0;
+
+    public static edu.kit.ipd.sdq.eventsim.rvisualization.util.Procedure bootstrap$(edu.kit.ipd.sdq.eventsim.rvisualization.DiagramController$StatisticsSelectionHandler)
+    {
+        edu.kit.ipd.sdq.eventsim.rvisualization.DiagramController$StatisticsSelectionHandler $r0;
+        edu.kit.ipd.sdq.eventsim.rvisualization.DiagramController$StatisticsSelectionHandler$lambda_0__190 $r1;
+
+        $r0 := @parameter0: edu.kit.ipd.sdq.eventsim.rvisualization.DiagramController$StatisticsSelectionHandler;
+
+        $r1 = new edu.kit.ipd.sdq.eventsim.rvisualization.DiagramController$StatisticsSelectionHandler$lambda_0__190;
+
+        specialinvoke $r1.<edu.kit.ipd.sdq.eventsim.rvisualization.DiagramController$StatisticsSelectionHandler$lambda_0__190: void <init>(edu.kit.ipd.sdq.eventsim.rvisualization.DiagramController$StatisticsSelectionHandler)>($r0);
+
+        return $r1;
+    }
+
+    public void <init>(edu.kit.ipd.sdq.eventsim.rvisualization.DiagramController$StatisticsSelectionHandler)
+    {
+        edu.kit.ipd.sdq.eventsim.rvisualization.DiagramController$StatisticsSelectionHandler$lambda_0__190 $r0;
+        edu.kit.ipd.sdq.eventsim.rvisualization.DiagramController$StatisticsSelectionHandler $r1;
+
+        $r0 := @this: edu.kit.ipd.sdq.eventsim.rvisualization.DiagramController$StatisticsSelectionHandler$lambda_0__190;
+
+        $r1 := @parameter0: edu.kit.ipd.sdq.eventsim.rvisualization.DiagramController$StatisticsSelectionHandler;
+
+        specialinvoke $r0.<java.lang.Object: void <init>()>();
+
+        $r0.<edu.kit.ipd.sdq.eventsim.rvisualization.DiagramController$StatisticsSelectionHandler$lambda_0__190: edu.kit.ipd.sdq.eventsim.rvisualization.DiagramController$StatisticsSelectionHandler cap0> = $r1;
+
+        return;
+    }
+
+    public void execute()
+    {
+        edu.kit.ipd.sdq.eventsim.rvisualization.DiagramController$StatisticsSelectionHandler$lambda_0__190 $r0;
+        edu.kit.ipd.sdq.eventsim.rvisualization.DiagramController$StatisticsSelectionHandler $r1;
+
+        $r0 := @this: edu.kit.ipd.sdq.eventsim.rvisualization.DiagramController$StatisticsSelectionHandler$lambda_0__190;
+
+        $r1 = $r0.<edu.kit.ipd.sdq.eventsim.rvisualization.DiagramController$StatisticsSelectionHandler$lambda_0__190: edu.kit.ipd.sdq.eventsim.rvisualization.DiagramController$StatisticsSelectionHandler cap0>;
+
+        virtualinvoke $r1.<edu.kit.ipd.sdq.eventsim.rvisualization.DiagramController$StatisticsSelectionHandler: void lambda$0()>();
+
+        return;
+    }
+}

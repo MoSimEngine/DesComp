@@ -1,0 +1,68 @@
+public class edu.kit.ipd.sdq.eventsim.command.action.ActionContext extends java.lang.Object
+{
+    private org.palladiosimulator.pcm.allocation.AllocationContext allocationContext;
+    private org.palladiosimulator.pcm.core.composition.AssemblyContext assemblyContext;
+    private org.palladiosimulator.pcm.seff.AbstractAction action;
+
+    public void <init>(org.palladiosimulator.pcm.allocation.AllocationContext, org.palladiosimulator.pcm.core.composition.AssemblyContext, org.palladiosimulator.pcm.seff.AbstractAction)
+    {
+        edu.kit.ipd.sdq.eventsim.command.action.ActionContext r0;
+        org.palladiosimulator.pcm.allocation.AllocationContext r1;
+        org.palladiosimulator.pcm.core.composition.AssemblyContext r2;
+        org.palladiosimulator.pcm.seff.AbstractAction r3;
+
+        r0 := @this: edu.kit.ipd.sdq.eventsim.command.action.ActionContext;
+
+        r1 := @parameter0: org.palladiosimulator.pcm.allocation.AllocationContext;
+
+        r2 := @parameter1: org.palladiosimulator.pcm.core.composition.AssemblyContext;
+
+        r3 := @parameter2: org.palladiosimulator.pcm.seff.AbstractAction;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        r0.<edu.kit.ipd.sdq.eventsim.command.action.ActionContext: org.palladiosimulator.pcm.allocation.AllocationContext allocationContext> = r1;
+
+        r0.<edu.kit.ipd.sdq.eventsim.command.action.ActionContext: org.palladiosimulator.pcm.core.composition.AssemblyContext assemblyContext> = r2;
+
+        r0.<edu.kit.ipd.sdq.eventsim.command.action.ActionContext: org.palladiosimulator.pcm.seff.AbstractAction action> = r3;
+
+        return;
+    }
+
+    public org.palladiosimulator.pcm.allocation.AllocationContext getAllocationContext()
+    {
+        edu.kit.ipd.sdq.eventsim.command.action.ActionContext r0;
+        org.palladiosimulator.pcm.allocation.AllocationContext $r1;
+
+        r0 := @this: edu.kit.ipd.sdq.eventsim.command.action.ActionContext;
+
+        $r1 = r0.<edu.kit.ipd.sdq.eventsim.command.action.ActionContext: org.palladiosimulator.pcm.allocation.AllocationContext allocationContext>;
+
+        return $r1;
+    }
+
+    public org.palladiosimulator.pcm.core.composition.AssemblyContext getAssemblyContext()
+    {
+        edu.kit.ipd.sdq.eventsim.command.action.ActionContext r0;
+        org.palladiosimulator.pcm.core.composition.AssemblyContext $r1;
+
+        r0 := @this: edu.kit.ipd.sdq.eventsim.command.action.ActionContext;
+
+        $r1 = r0.<edu.kit.ipd.sdq.eventsim.command.action.ActionContext: org.palladiosimulator.pcm.core.composition.AssemblyContext assemblyContext>;
+
+        return $r1;
+    }
+
+    public org.palladiosimulator.pcm.seff.AbstractAction getAction()
+    {
+        edu.kit.ipd.sdq.eventsim.command.action.ActionContext r0;
+        org.palladiosimulator.pcm.seff.AbstractAction $r1;
+
+        r0 := @this: edu.kit.ipd.sdq.eventsim.command.action.ActionContext;
+
+        $r1 = r0.<edu.kit.ipd.sdq.eventsim.command.action.ActionContext: org.palladiosimulator.pcm.seff.AbstractAction action>;
+
+        return $r1;
+    }
+}

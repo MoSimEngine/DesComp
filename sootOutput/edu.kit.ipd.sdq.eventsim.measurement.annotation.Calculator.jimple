@@ -1,0 +1,13 @@
+public annotation interface  edu.kit.ipd.sdq.eventsim.measurement.'annotation'.Calculator extends java.lang.Object implements java.lang.'annotation'.Annotation
+{
+
+    public abstract java.lang.Class type();
+
+    public abstract java.lang.Class fromType();
+
+    public abstract java.lang.Class toType();
+
+    public abstract java.lang.String metric();
+
+    public abstract edu.kit.ipd.sdq.eventsim.measurement.'annotation'.ProbePair[] intendedProbes();
+}

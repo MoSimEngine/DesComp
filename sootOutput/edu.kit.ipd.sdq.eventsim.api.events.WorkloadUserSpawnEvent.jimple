@@ -1,0 +1,32 @@
+public class edu.kit.ipd.sdq.eventsim.api.events.WorkloadUserSpawnEvent extends edu.kit.ipd.sdq.eventsim.api.events.AbstractSimulationEvent
+{
+    private edu.kit.ipd.sdq.eventsim.api.IUser user;
+
+    public void <init>(edu.kit.ipd.sdq.eventsim.api.IUser)
+    {
+        edu.kit.ipd.sdq.eventsim.api.events.WorkloadUserSpawnEvent r0;
+        edu.kit.ipd.sdq.eventsim.api.IUser r1;
+
+        r0 := @this: edu.kit.ipd.sdq.eventsim.api.events.WorkloadUserSpawnEvent;
+
+        r1 := @parameter0: edu.kit.ipd.sdq.eventsim.api.IUser;
+
+        specialinvoke r0.<edu.kit.ipd.sdq.eventsim.api.events.AbstractSimulationEvent: void <init>()>();
+
+        r0.<edu.kit.ipd.sdq.eventsim.api.events.WorkloadUserSpawnEvent: edu.kit.ipd.sdq.eventsim.api.IUser user> = r1;
+
+        return;
+    }
+
+    public edu.kit.ipd.sdq.eventsim.api.IUser getUser()
+    {
+        edu.kit.ipd.sdq.eventsim.api.events.WorkloadUserSpawnEvent r0;
+        edu.kit.ipd.sdq.eventsim.api.IUser $r1;
+
+        r0 := @this: edu.kit.ipd.sdq.eventsim.api.events.WorkloadUserSpawnEvent;
+
+        $r1 = r0.<edu.kit.ipd.sdq.eventsim.api.events.WorkloadUserSpawnEvent: edu.kit.ipd.sdq.eventsim.api.IUser user>;
+
+        return $r1;
+    }
+}

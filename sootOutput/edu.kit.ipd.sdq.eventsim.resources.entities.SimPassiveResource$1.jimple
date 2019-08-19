@@ -1,0 +1,89 @@
+class edu.kit.ipd.sdq.eventsim.resources.entities.SimPassiveResource$1 extends java.lang.Object implements de.uka.ipd.sdq.scheduler.sensors.IPassiveResourceSensor
+{
+    final edu.kit.ipd.sdq.eventsim.resources.entities.SimPassiveResource this$0;
+
+    void <init>(edu.kit.ipd.sdq.eventsim.resources.entities.SimPassiveResource)
+    {
+        edu.kit.ipd.sdq.eventsim.resources.entities.SimPassiveResource$1 r0;
+        edu.kit.ipd.sdq.eventsim.resources.entities.SimPassiveResource r1;
+
+        r0 := @this: edu.kit.ipd.sdq.eventsim.resources.entities.SimPassiveResource$1;
+
+        r1 := @parameter0: edu.kit.ipd.sdq.eventsim.resources.entities.SimPassiveResource;
+
+        r0.<edu.kit.ipd.sdq.eventsim.resources.entities.SimPassiveResource$1: edu.kit.ipd.sdq.eventsim.resources.entities.SimPassiveResource this$0> = r1;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    public void request(de.uka.ipd.sdq.scheduler.ISchedulableProcess, long)
+    {
+        edu.kit.ipd.sdq.eventsim.resources.entities.SimPassiveResource$1 r0;
+        de.uka.ipd.sdq.scheduler.ISchedulableProcess r1;
+        long l0;
+        edu.kit.ipd.sdq.eventsim.resources.entities.SimulatedProcess $r2;
+        edu.kit.ipd.sdq.eventsim.resources.entities.SimPassiveResource $r3;
+
+        r0 := @this: edu.kit.ipd.sdq.eventsim.resources.entities.SimPassiveResource$1;
+
+        r1 := @parameter0: de.uka.ipd.sdq.scheduler.ISchedulableProcess;
+
+        l0 := @parameter1: long;
+
+        $r3 = r0.<edu.kit.ipd.sdq.eventsim.resources.entities.SimPassiveResource$1: edu.kit.ipd.sdq.eventsim.resources.entities.SimPassiveResource this$0>;
+
+        $r2 = (edu.kit.ipd.sdq.eventsim.resources.entities.SimulatedProcess) r1;
+
+        virtualinvoke $r3.<edu.kit.ipd.sdq.eventsim.resources.entities.SimPassiveResource: void fireRequest(edu.kit.ipd.sdq.eventsim.resources.entities.SimulatedProcess,long)>($r2, l0);
+
+        return;
+    }
+
+    public void release(de.uka.ipd.sdq.scheduler.ISchedulableProcess, long)
+    {
+        edu.kit.ipd.sdq.eventsim.resources.entities.SimPassiveResource$1 r0;
+        de.uka.ipd.sdq.scheduler.ISchedulableProcess r1;
+        long l0;
+        edu.kit.ipd.sdq.eventsim.resources.entities.SimulatedProcess $r2;
+        edu.kit.ipd.sdq.eventsim.resources.entities.SimPassiveResource $r3;
+
+        r0 := @this: edu.kit.ipd.sdq.eventsim.resources.entities.SimPassiveResource$1;
+
+        r1 := @parameter0: de.uka.ipd.sdq.scheduler.ISchedulableProcess;
+
+        l0 := @parameter1: long;
+
+        $r3 = r0.<edu.kit.ipd.sdq.eventsim.resources.entities.SimPassiveResource$1: edu.kit.ipd.sdq.eventsim.resources.entities.SimPassiveResource this$0>;
+
+        $r2 = (edu.kit.ipd.sdq.eventsim.resources.entities.SimulatedProcess) r1;
+
+        virtualinvoke $r3.<edu.kit.ipd.sdq.eventsim.resources.entities.SimPassiveResource: void fireRelease(edu.kit.ipd.sdq.eventsim.resources.entities.SimulatedProcess,long)>($r2, l0);
+
+        return;
+    }
+
+    public void acquire(de.uka.ipd.sdq.scheduler.ISchedulableProcess, long)
+    {
+        edu.kit.ipd.sdq.eventsim.resources.entities.SimPassiveResource$1 r0;
+        de.uka.ipd.sdq.scheduler.ISchedulableProcess r1;
+        long l0;
+        edu.kit.ipd.sdq.eventsim.resources.entities.SimulatedProcess $r2;
+        edu.kit.ipd.sdq.eventsim.resources.entities.SimPassiveResource $r3;
+
+        r0 := @this: edu.kit.ipd.sdq.eventsim.resources.entities.SimPassiveResource$1;
+
+        r1 := @parameter0: de.uka.ipd.sdq.scheduler.ISchedulableProcess;
+
+        l0 := @parameter1: long;
+
+        $r3 = r0.<edu.kit.ipd.sdq.eventsim.resources.entities.SimPassiveResource$1: edu.kit.ipd.sdq.eventsim.resources.entities.SimPassiveResource this$0>;
+
+        $r2 = (edu.kit.ipd.sdq.eventsim.resources.entities.SimulatedProcess) r1;
+
+        virtualinvoke $r3.<edu.kit.ipd.sdq.eventsim.resources.entities.SimPassiveResource: void fireAcquire(edu.kit.ipd.sdq.eventsim.resources.entities.SimulatedProcess,long)>($r2, l0);
+
+        return;
+    }
+}

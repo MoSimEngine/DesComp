@@ -1,0 +1,850 @@
+public class edu.kit.ipd.sdq.eventsim.rvisualization.views.StatisticsViewer extends org.eclipse.swt.widgets.Composite
+{
+    private org.eclipse.core.databinding.DataBindingContext m_bindingContext;
+    private org.eclipse.swt.widgets.Text txtObservations;
+    private org.eclipse.swt.widgets.Text txtMin;
+    private org.eclipse.swt.widgets.Text txtFirstQuartile;
+    private org.eclipse.swt.widgets.Text txtMedian;
+    private org.eclipse.swt.widgets.Text txtMean;
+    private org.eclipse.swt.widgets.Text txtThirdQuartile;
+    private org.eclipse.swt.widgets.Text txtMax;
+    private edu.kit.ipd.sdq.eventsim.rvisualization.model.StatisticsModel model;
+    private org.eclipse.swt.widgets.Text txtQuantile1;
+    private org.eclipse.swt.widgets.Text txtQuantile2;
+    private org.eclipse.swt.widgets.Text txtQuantile3;
+    private org.eclipse.swt.widgets.Text txtQuantile4;
+    private org.eclipse.swt.widgets.Text txtQuantile5;
+    private org.eclipse.swt.widgets.Text txtQuantile6;
+    private org.eclipse.swt.widgets.Text txtQuantile7;
+    private org.eclipse.swt.widgets.Text txtQuantile8;
+    private org.eclipse.swt.widgets.Text txtQuantile9;
+
+    public void <init>(org.eclipse.swt.widgets.Composite, int)
+    {
+        edu.kit.ipd.sdq.eventsim.rvisualization.views.StatisticsViewer r0;
+        org.eclipse.swt.widgets.Composite r1;
+        int i0;
+        edu.kit.ipd.sdq.eventsim.rvisualization.model.StatisticsModel $r20;
+        org.eclipse.swt.layout.GridLayout $r21;
+        org.eclipse.swt.widgets.Label $r22, $r27, $r29, $r34, $r39, $r44, $r49, $r54, $r59, $r61, $r66, $r71, $r76, $r81, $r86, $r91, $r96, $r101;
+        org.eclipse.swt.layout.GridData $r23, $r25, $r28, $r30, $r32, $r35, $r37, $r40, $r42, $r45, $r47, $r50, $r52, $r55, $r57, $r60, $r62, $r64, $r67, $r69, $r72, $r74, $r77, $r79, $r82, $r84, $r87, $r89, $r92, $r94, $r97, $r99, $r102, $r104;
+        org.eclipse.swt.widgets.Text $r24, $r26, $r31, $r33, $r36, $r38, $r41, $r43, $r46, $r48, $r51, $r53, $r56, $r58, $r63, $r65, $r68, $r70, $r73, $r75, $r78, $r80, $r83, $r85, $r88, $r90, $r93, $r95, $r98, $r100, $r103, $r105;
+        org.eclipse.core.databinding.DataBindingContext $r106;
+
+        r0 := @this: edu.kit.ipd.sdq.eventsim.rvisualization.views.StatisticsViewer;
+
+        r1 := @parameter0: org.eclipse.swt.widgets.Composite;
+
+        i0 := @parameter1: int;
+
+        specialinvoke r0.<org.eclipse.swt.widgets.Composite: void <init>(org.eclipse.swt.widgets.Composite,int)>(r1, i0);
+
+        $r20 = new edu.kit.ipd.sdq.eventsim.rvisualization.model.StatisticsModel;
+
+        specialinvoke $r20.<edu.kit.ipd.sdq.eventsim.rvisualization.model.StatisticsModel: void <init>()>();
+
+        r0.<edu.kit.ipd.sdq.eventsim.rvisualization.views.StatisticsViewer: edu.kit.ipd.sdq.eventsim.rvisualization.model.StatisticsModel model> = $r20;
+
+        $r21 = new org.eclipse.swt.layout.GridLayout;
+
+        specialinvoke $r21.<org.eclipse.swt.layout.GridLayout: void <init>(int,boolean)>(2, 0);
+
+        virtualinvoke r0.<edu.kit.ipd.sdq.eventsim.rvisualization.views.StatisticsViewer: void setLayout(org.eclipse.swt.widgets.Layout)>($r21);
+
+        $r22 = new org.eclipse.swt.widgets.Label;
+
+        specialinvoke $r22.<org.eclipse.swt.widgets.Label: void <init>(org.eclipse.swt.widgets.Composite,int)>(r0, 0);
+
+        $r23 = new org.eclipse.swt.layout.GridData;
+
+        specialinvoke $r23.<org.eclipse.swt.layout.GridData: void <init>(int,int,boolean,boolean,int,int)>(131072, 16777216, 0, 0, 1, 1);
+
+        virtualinvoke $r22.<org.eclipse.swt.widgets.Label: void setLayoutData(java.lang.Object)>($r23);
+
+        virtualinvoke $r22.<org.eclipse.swt.widgets.Label: void setText(java.lang.String)>("Observations:");
+
+        $r24 = new org.eclipse.swt.widgets.Text;
+
+        specialinvoke $r24.<org.eclipse.swt.widgets.Text: void <init>(org.eclipse.swt.widgets.Composite,int)>(r0, 8);
+
+        r0.<edu.kit.ipd.sdq.eventsim.rvisualization.views.StatisticsViewer: org.eclipse.swt.widgets.Text txtObservations> = $r24;
+
+        $r26 = r0.<edu.kit.ipd.sdq.eventsim.rvisualization.views.StatisticsViewer: org.eclipse.swt.widgets.Text txtObservations>;
+
+        $r25 = new org.eclipse.swt.layout.GridData;
+
+        specialinvoke $r25.<org.eclipse.swt.layout.GridData: void <init>(int,int,boolean,boolean,int,int)>(4, 16777216, 1, 0, 1, 1);
+
+        virtualinvoke $r26.<org.eclipse.swt.widgets.Text: void setLayoutData(java.lang.Object)>($r25);
+
+        $r27 = new org.eclipse.swt.widgets.Label;
+
+        specialinvoke $r27.<org.eclipse.swt.widgets.Label: void <init>(org.eclipse.swt.widgets.Composite,int)>(r0, 258);
+
+        $r28 = new org.eclipse.swt.layout.GridData;
+
+        specialinvoke $r28.<org.eclipse.swt.layout.GridData: void <init>(int,int,boolean,boolean,int,int)>(4, 16777216, 1, 0, 2, 1);
+
+        virtualinvoke $r27.<org.eclipse.swt.widgets.Label: void setLayoutData(java.lang.Object)>($r28);
+
+        $r29 = new org.eclipse.swt.widgets.Label;
+
+        specialinvoke $r29.<org.eclipse.swt.widgets.Label: void <init>(org.eclipse.swt.widgets.Composite,int)>(r0, 0);
+
+        $r30 = new org.eclipse.swt.layout.GridData;
+
+        specialinvoke $r30.<org.eclipse.swt.layout.GridData: void <init>(int,int,boolean,boolean,int,int)>(131072, 16777216, 0, 0, 1, 1);
+
+        virtualinvoke $r29.<org.eclipse.swt.widgets.Label: void setLayoutData(java.lang.Object)>($r30);
+
+        virtualinvoke $r29.<org.eclipse.swt.widgets.Label: void setText(java.lang.String)>("Min:");
+
+        $r31 = new org.eclipse.swt.widgets.Text;
+
+        specialinvoke $r31.<org.eclipse.swt.widgets.Text: void <init>(org.eclipse.swt.widgets.Composite,int)>(r0, 8);
+
+        r0.<edu.kit.ipd.sdq.eventsim.rvisualization.views.StatisticsViewer: org.eclipse.swt.widgets.Text txtMin> = $r31;
+
+        $r33 = r0.<edu.kit.ipd.sdq.eventsim.rvisualization.views.StatisticsViewer: org.eclipse.swt.widgets.Text txtMin>;
+
+        $r32 = new org.eclipse.swt.layout.GridData;
+
+        specialinvoke $r32.<org.eclipse.swt.layout.GridData: void <init>(int,int,boolean,boolean,int,int)>(4, 16777216, 1, 0, 1, 1);
+
+        virtualinvoke $r33.<org.eclipse.swt.widgets.Text: void setLayoutData(java.lang.Object)>($r32);
+
+        $r34 = new org.eclipse.swt.widgets.Label;
+
+        specialinvoke $r34.<org.eclipse.swt.widgets.Label: void <init>(org.eclipse.swt.widgets.Composite,int)>(r0, 0);
+
+        $r35 = new org.eclipse.swt.layout.GridData;
+
+        specialinvoke $r35.<org.eclipse.swt.layout.GridData: void <init>(int,int,boolean,boolean,int,int)>(131072, 16777216, 0, 0, 1, 1);
+
+        virtualinvoke $r34.<org.eclipse.swt.widgets.Label: void setLayoutData(java.lang.Object)>($r35);
+
+        virtualinvoke $r34.<org.eclipse.swt.widgets.Label: void setText(java.lang.String)>("1st Quartile:");
+
+        $r36 = new org.eclipse.swt.widgets.Text;
+
+        specialinvoke $r36.<org.eclipse.swt.widgets.Text: void <init>(org.eclipse.swt.widgets.Composite,int)>(r0, 8);
+
+        r0.<edu.kit.ipd.sdq.eventsim.rvisualization.views.StatisticsViewer: org.eclipse.swt.widgets.Text txtFirstQuartile> = $r36;
+
+        $r38 = r0.<edu.kit.ipd.sdq.eventsim.rvisualization.views.StatisticsViewer: org.eclipse.swt.widgets.Text txtFirstQuartile>;
+
+        $r37 = new org.eclipse.swt.layout.GridData;
+
+        specialinvoke $r37.<org.eclipse.swt.layout.GridData: void <init>(int,int,boolean,boolean,int,int)>(4, 16777216, 1, 0, 1, 1);
+
+        virtualinvoke $r38.<org.eclipse.swt.widgets.Text: void setLayoutData(java.lang.Object)>($r37);
+
+        $r39 = new org.eclipse.swt.widgets.Label;
+
+        specialinvoke $r39.<org.eclipse.swt.widgets.Label: void <init>(org.eclipse.swt.widgets.Composite,int)>(r0, 0);
+
+        $r40 = new org.eclipse.swt.layout.GridData;
+
+        specialinvoke $r40.<org.eclipse.swt.layout.GridData: void <init>(int,int,boolean,boolean,int,int)>(131072, 16777216, 0, 0, 1, 1);
+
+        virtualinvoke $r39.<org.eclipse.swt.widgets.Label: void setLayoutData(java.lang.Object)>($r40);
+
+        virtualinvoke $r39.<org.eclipse.swt.widgets.Label: void setText(java.lang.String)>("Median:");
+
+        $r41 = new org.eclipse.swt.widgets.Text;
+
+        specialinvoke $r41.<org.eclipse.swt.widgets.Text: void <init>(org.eclipse.swt.widgets.Composite,int)>(r0, 8);
+
+        r0.<edu.kit.ipd.sdq.eventsim.rvisualization.views.StatisticsViewer: org.eclipse.swt.widgets.Text txtMedian> = $r41;
+
+        $r43 = r0.<edu.kit.ipd.sdq.eventsim.rvisualization.views.StatisticsViewer: org.eclipse.swt.widgets.Text txtMedian>;
+
+        $r42 = new org.eclipse.swt.layout.GridData;
+
+        specialinvoke $r42.<org.eclipse.swt.layout.GridData: void <init>(int,int,boolean,boolean,int,int)>(4, 16777216, 1, 0, 1, 1);
+
+        virtualinvoke $r43.<org.eclipse.swt.widgets.Text: void setLayoutData(java.lang.Object)>($r42);
+
+        $r44 = new org.eclipse.swt.widgets.Label;
+
+        specialinvoke $r44.<org.eclipse.swt.widgets.Label: void <init>(org.eclipse.swt.widgets.Composite,int)>(r0, 0);
+
+        $r45 = new org.eclipse.swt.layout.GridData;
+
+        specialinvoke $r45.<org.eclipse.swt.layout.GridData: void <init>(int,int,boolean,boolean,int,int)>(131072, 16777216, 0, 0, 1, 1);
+
+        virtualinvoke $r44.<org.eclipse.swt.widgets.Label: void setLayoutData(java.lang.Object)>($r45);
+
+        virtualinvoke $r44.<org.eclipse.swt.widgets.Label: void setText(java.lang.String)>("Mean:");
+
+        $r46 = new org.eclipse.swt.widgets.Text;
+
+        specialinvoke $r46.<org.eclipse.swt.widgets.Text: void <init>(org.eclipse.swt.widgets.Composite,int)>(r0, 8);
+
+        r0.<edu.kit.ipd.sdq.eventsim.rvisualization.views.StatisticsViewer: org.eclipse.swt.widgets.Text txtMean> = $r46;
+
+        $r48 = r0.<edu.kit.ipd.sdq.eventsim.rvisualization.views.StatisticsViewer: org.eclipse.swt.widgets.Text txtMean>;
+
+        $r47 = new org.eclipse.swt.layout.GridData;
+
+        specialinvoke $r47.<org.eclipse.swt.layout.GridData: void <init>(int,int,boolean,boolean,int,int)>(4, 16777216, 1, 0, 1, 1);
+
+        virtualinvoke $r48.<org.eclipse.swt.widgets.Text: void setLayoutData(java.lang.Object)>($r47);
+
+        $r49 = new org.eclipse.swt.widgets.Label;
+
+        specialinvoke $r49.<org.eclipse.swt.widgets.Label: void <init>(org.eclipse.swt.widgets.Composite,int)>(r0, 0);
+
+        $r50 = new org.eclipse.swt.layout.GridData;
+
+        specialinvoke $r50.<org.eclipse.swt.layout.GridData: void <init>(int,int,boolean,boolean,int,int)>(131072, 16777216, 0, 0, 1, 1);
+
+        virtualinvoke $r49.<org.eclipse.swt.widgets.Label: void setLayoutData(java.lang.Object)>($r50);
+
+        virtualinvoke $r49.<org.eclipse.swt.widgets.Label: void setText(java.lang.String)>("3rd Quartile:");
+
+        $r51 = new org.eclipse.swt.widgets.Text;
+
+        specialinvoke $r51.<org.eclipse.swt.widgets.Text: void <init>(org.eclipse.swt.widgets.Composite,int)>(r0, 8);
+
+        r0.<edu.kit.ipd.sdq.eventsim.rvisualization.views.StatisticsViewer: org.eclipse.swt.widgets.Text txtThirdQuartile> = $r51;
+
+        $r53 = r0.<edu.kit.ipd.sdq.eventsim.rvisualization.views.StatisticsViewer: org.eclipse.swt.widgets.Text txtThirdQuartile>;
+
+        $r52 = new org.eclipse.swt.layout.GridData;
+
+        specialinvoke $r52.<org.eclipse.swt.layout.GridData: void <init>(int,int,boolean,boolean,int,int)>(4, 16777216, 1, 0, 1, 1);
+
+        virtualinvoke $r53.<org.eclipse.swt.widgets.Text: void setLayoutData(java.lang.Object)>($r52);
+
+        $r54 = new org.eclipse.swt.widgets.Label;
+
+        specialinvoke $r54.<org.eclipse.swt.widgets.Label: void <init>(org.eclipse.swt.widgets.Composite,int)>(r0, 0);
+
+        $r55 = new org.eclipse.swt.layout.GridData;
+
+        specialinvoke $r55.<org.eclipse.swt.layout.GridData: void <init>(int,int,boolean,boolean,int,int)>(131072, 16777216, 0, 0, 1, 1);
+
+        virtualinvoke $r54.<org.eclipse.swt.widgets.Label: void setLayoutData(java.lang.Object)>($r55);
+
+        virtualinvoke $r54.<org.eclipse.swt.widgets.Label: void setText(java.lang.String)>("Max:");
+
+        $r56 = new org.eclipse.swt.widgets.Text;
+
+        specialinvoke $r56.<org.eclipse.swt.widgets.Text: void <init>(org.eclipse.swt.widgets.Composite,int)>(r0, 8);
+
+        r0.<edu.kit.ipd.sdq.eventsim.rvisualization.views.StatisticsViewer: org.eclipse.swt.widgets.Text txtMax> = $r56;
+
+        $r58 = r0.<edu.kit.ipd.sdq.eventsim.rvisualization.views.StatisticsViewer: org.eclipse.swt.widgets.Text txtMax>;
+
+        $r57 = new org.eclipse.swt.layout.GridData;
+
+        specialinvoke $r57.<org.eclipse.swt.layout.GridData: void <init>(int,int,boolean,boolean,int,int)>(4, 16777216, 1, 0, 1, 1);
+
+        virtualinvoke $r58.<org.eclipse.swt.widgets.Text: void setLayoutData(java.lang.Object)>($r57);
+
+        $r59 = new org.eclipse.swt.widgets.Label;
+
+        specialinvoke $r59.<org.eclipse.swt.widgets.Label: void <init>(org.eclipse.swt.widgets.Composite,int)>(r0, 258);
+
+        $r60 = new org.eclipse.swt.layout.GridData;
+
+        specialinvoke $r60.<org.eclipse.swt.layout.GridData: void <init>(int,int,boolean,boolean,int,int)>(4, 16777216, 1, 0, 2, 1);
+
+        virtualinvoke $r59.<org.eclipse.swt.widgets.Label: void setLayoutData(java.lang.Object)>($r60);
+
+        $r61 = new org.eclipse.swt.widgets.Label;
+
+        specialinvoke $r61.<org.eclipse.swt.widgets.Label: void <init>(org.eclipse.swt.widgets.Composite,int)>(r0, 0);
+
+        $r62 = new org.eclipse.swt.layout.GridData;
+
+        specialinvoke $r62.<org.eclipse.swt.layout.GridData: void <init>(int,int,boolean,boolean,int,int)>(131072, 16777216, 0, 0, 1, 1);
+
+        virtualinvoke $r61.<org.eclipse.swt.widgets.Label: void setLayoutData(java.lang.Object)>($r62);
+
+        virtualinvoke $r61.<org.eclipse.swt.widgets.Label: void setText(java.lang.String)>("1st Quantile (10%):");
+
+        $r63 = new org.eclipse.swt.widgets.Text;
+
+        specialinvoke $r63.<org.eclipse.swt.widgets.Text: void <init>(org.eclipse.swt.widgets.Composite,int)>(r0, 8);
+
+        r0.<edu.kit.ipd.sdq.eventsim.rvisualization.views.StatisticsViewer: org.eclipse.swt.widgets.Text txtQuantile1> = $r63;
+
+        $r65 = r0.<edu.kit.ipd.sdq.eventsim.rvisualization.views.StatisticsViewer: org.eclipse.swt.widgets.Text txtQuantile1>;
+
+        $r64 = new org.eclipse.swt.layout.GridData;
+
+        specialinvoke $r64.<org.eclipse.swt.layout.GridData: void <init>(int,int,boolean,boolean,int,int)>(4, 16777216, 1, 0, 1, 1);
+
+        virtualinvoke $r65.<org.eclipse.swt.widgets.Text: void setLayoutData(java.lang.Object)>($r64);
+
+        $r66 = new org.eclipse.swt.widgets.Label;
+
+        specialinvoke $r66.<org.eclipse.swt.widgets.Label: void <init>(org.eclipse.swt.widgets.Composite,int)>(r0, 0);
+
+        $r67 = new org.eclipse.swt.layout.GridData;
+
+        specialinvoke $r67.<org.eclipse.swt.layout.GridData: void <init>(int,int,boolean,boolean,int,int)>(131072, 16777216, 0, 0, 1, 1);
+
+        virtualinvoke $r66.<org.eclipse.swt.widgets.Label: void setLayoutData(java.lang.Object)>($r67);
+
+        virtualinvoke $r66.<org.eclipse.swt.widgets.Label: void setText(java.lang.String)>("2nd Quantile (20%):");
+
+        $r68 = new org.eclipse.swt.widgets.Text;
+
+        specialinvoke $r68.<org.eclipse.swt.widgets.Text: void <init>(org.eclipse.swt.widgets.Composite,int)>(r0, 8);
+
+        r0.<edu.kit.ipd.sdq.eventsim.rvisualization.views.StatisticsViewer: org.eclipse.swt.widgets.Text txtQuantile2> = $r68;
+
+        $r70 = r0.<edu.kit.ipd.sdq.eventsim.rvisualization.views.StatisticsViewer: org.eclipse.swt.widgets.Text txtQuantile2>;
+
+        $r69 = new org.eclipse.swt.layout.GridData;
+
+        specialinvoke $r69.<org.eclipse.swt.layout.GridData: void <init>(int,int,boolean,boolean,int,int)>(4, 16777216, 1, 0, 1, 1);
+
+        virtualinvoke $r70.<org.eclipse.swt.widgets.Text: void setLayoutData(java.lang.Object)>($r69);
+
+        $r71 = new org.eclipse.swt.widgets.Label;
+
+        specialinvoke $r71.<org.eclipse.swt.widgets.Label: void <init>(org.eclipse.swt.widgets.Composite,int)>(r0, 0);
+
+        $r72 = new org.eclipse.swt.layout.GridData;
+
+        specialinvoke $r72.<org.eclipse.swt.layout.GridData: void <init>(int,int,boolean,boolean,int,int)>(131072, 16777216, 0, 0, 1, 1);
+
+        virtualinvoke $r71.<org.eclipse.swt.widgets.Label: void setLayoutData(java.lang.Object)>($r72);
+
+        virtualinvoke $r71.<org.eclipse.swt.widgets.Label: void setText(java.lang.String)>("3rd Quantile (30%):");
+
+        $r73 = new org.eclipse.swt.widgets.Text;
+
+        specialinvoke $r73.<org.eclipse.swt.widgets.Text: void <init>(org.eclipse.swt.widgets.Composite,int)>(r0, 8);
+
+        r0.<edu.kit.ipd.sdq.eventsim.rvisualization.views.StatisticsViewer: org.eclipse.swt.widgets.Text txtQuantile3> = $r73;
+
+        $r75 = r0.<edu.kit.ipd.sdq.eventsim.rvisualization.views.StatisticsViewer: org.eclipse.swt.widgets.Text txtQuantile3>;
+
+        $r74 = new org.eclipse.swt.layout.GridData;
+
+        specialinvoke $r74.<org.eclipse.swt.layout.GridData: void <init>(int,int,boolean,boolean,int,int)>(4, 16777216, 1, 0, 1, 1);
+
+        virtualinvoke $r75.<org.eclipse.swt.widgets.Text: void setLayoutData(java.lang.Object)>($r74);
+
+        $r76 = new org.eclipse.swt.widgets.Label;
+
+        specialinvoke $r76.<org.eclipse.swt.widgets.Label: void <init>(org.eclipse.swt.widgets.Composite,int)>(r0, 0);
+
+        $r77 = new org.eclipse.swt.layout.GridData;
+
+        specialinvoke $r77.<org.eclipse.swt.layout.GridData: void <init>(int,int,boolean,boolean,int,int)>(131072, 16777216, 0, 0, 1, 1);
+
+        virtualinvoke $r76.<org.eclipse.swt.widgets.Label: void setLayoutData(java.lang.Object)>($r77);
+
+        virtualinvoke $r76.<org.eclipse.swt.widgets.Label: void setText(java.lang.String)>("4th Quantile (40%):");
+
+        $r78 = new org.eclipse.swt.widgets.Text;
+
+        specialinvoke $r78.<org.eclipse.swt.widgets.Text: void <init>(org.eclipse.swt.widgets.Composite,int)>(r0, 8);
+
+        r0.<edu.kit.ipd.sdq.eventsim.rvisualization.views.StatisticsViewer: org.eclipse.swt.widgets.Text txtQuantile4> = $r78;
+
+        $r80 = r0.<edu.kit.ipd.sdq.eventsim.rvisualization.views.StatisticsViewer: org.eclipse.swt.widgets.Text txtQuantile4>;
+
+        $r79 = new org.eclipse.swt.layout.GridData;
+
+        specialinvoke $r79.<org.eclipse.swt.layout.GridData: void <init>(int,int,boolean,boolean,int,int)>(4, 16777216, 1, 0, 1, 1);
+
+        virtualinvoke $r80.<org.eclipse.swt.widgets.Text: void setLayoutData(java.lang.Object)>($r79);
+
+        $r81 = new org.eclipse.swt.widgets.Label;
+
+        specialinvoke $r81.<org.eclipse.swt.widgets.Label: void <init>(org.eclipse.swt.widgets.Composite,int)>(r0, 0);
+
+        $r82 = new org.eclipse.swt.layout.GridData;
+
+        specialinvoke $r82.<org.eclipse.swt.layout.GridData: void <init>(int,int,boolean,boolean,int,int)>(131072, 16777216, 0, 0, 1, 1);
+
+        virtualinvoke $r81.<org.eclipse.swt.widgets.Label: void setLayoutData(java.lang.Object)>($r82);
+
+        virtualinvoke $r81.<org.eclipse.swt.widgets.Label: void setText(java.lang.String)>("5th Quantile (50%):");
+
+        $r83 = new org.eclipse.swt.widgets.Text;
+
+        specialinvoke $r83.<org.eclipse.swt.widgets.Text: void <init>(org.eclipse.swt.widgets.Composite,int)>(r0, 8);
+
+        r0.<edu.kit.ipd.sdq.eventsim.rvisualization.views.StatisticsViewer: org.eclipse.swt.widgets.Text txtQuantile5> = $r83;
+
+        $r85 = r0.<edu.kit.ipd.sdq.eventsim.rvisualization.views.StatisticsViewer: org.eclipse.swt.widgets.Text txtQuantile5>;
+
+        $r84 = new org.eclipse.swt.layout.GridData;
+
+        specialinvoke $r84.<org.eclipse.swt.layout.GridData: void <init>(int,int,boolean,boolean,int,int)>(4, 16777216, 1, 0, 1, 1);
+
+        virtualinvoke $r85.<org.eclipse.swt.widgets.Text: void setLayoutData(java.lang.Object)>($r84);
+
+        $r86 = new org.eclipse.swt.widgets.Label;
+
+        specialinvoke $r86.<org.eclipse.swt.widgets.Label: void <init>(org.eclipse.swt.widgets.Composite,int)>(r0, 0);
+
+        $r87 = new org.eclipse.swt.layout.GridData;
+
+        specialinvoke $r87.<org.eclipse.swt.layout.GridData: void <init>(int,int,boolean,boolean,int,int)>(131072, 16777216, 0, 0, 1, 1);
+
+        virtualinvoke $r86.<org.eclipse.swt.widgets.Label: void setLayoutData(java.lang.Object)>($r87);
+
+        virtualinvoke $r86.<org.eclipse.swt.widgets.Label: void setText(java.lang.String)>("6th Quantile (60%):");
+
+        $r88 = new org.eclipse.swt.widgets.Text;
+
+        specialinvoke $r88.<org.eclipse.swt.widgets.Text: void <init>(org.eclipse.swt.widgets.Composite,int)>(r0, 8);
+
+        r0.<edu.kit.ipd.sdq.eventsim.rvisualization.views.StatisticsViewer: org.eclipse.swt.widgets.Text txtQuantile6> = $r88;
+
+        $r90 = r0.<edu.kit.ipd.sdq.eventsim.rvisualization.views.StatisticsViewer: org.eclipse.swt.widgets.Text txtQuantile6>;
+
+        $r89 = new org.eclipse.swt.layout.GridData;
+
+        specialinvoke $r89.<org.eclipse.swt.layout.GridData: void <init>(int,int,boolean,boolean,int,int)>(4, 16777216, 1, 0, 1, 1);
+
+        virtualinvoke $r90.<org.eclipse.swt.widgets.Text: void setLayoutData(java.lang.Object)>($r89);
+
+        $r91 = new org.eclipse.swt.widgets.Label;
+
+        specialinvoke $r91.<org.eclipse.swt.widgets.Label: void <init>(org.eclipse.swt.widgets.Composite,int)>(r0, 0);
+
+        $r92 = new org.eclipse.swt.layout.GridData;
+
+        specialinvoke $r92.<org.eclipse.swt.layout.GridData: void <init>(int,int,boolean,boolean,int,int)>(131072, 16777216, 0, 0, 1, 1);
+
+        virtualinvoke $r91.<org.eclipse.swt.widgets.Label: void setLayoutData(java.lang.Object)>($r92);
+
+        virtualinvoke $r91.<org.eclipse.swt.widgets.Label: void setText(java.lang.String)>("7th Quantile (70%):");
+
+        $r93 = new org.eclipse.swt.widgets.Text;
+
+        specialinvoke $r93.<org.eclipse.swt.widgets.Text: void <init>(org.eclipse.swt.widgets.Composite,int)>(r0, 8);
+
+        r0.<edu.kit.ipd.sdq.eventsim.rvisualization.views.StatisticsViewer: org.eclipse.swt.widgets.Text txtQuantile7> = $r93;
+
+        $r95 = r0.<edu.kit.ipd.sdq.eventsim.rvisualization.views.StatisticsViewer: org.eclipse.swt.widgets.Text txtQuantile7>;
+
+        $r94 = new org.eclipse.swt.layout.GridData;
+
+        specialinvoke $r94.<org.eclipse.swt.layout.GridData: void <init>(int,int,boolean,boolean,int,int)>(4, 16777216, 1, 0, 1, 1);
+
+        virtualinvoke $r95.<org.eclipse.swt.widgets.Text: void setLayoutData(java.lang.Object)>($r94);
+
+        $r96 = new org.eclipse.swt.widgets.Label;
+
+        specialinvoke $r96.<org.eclipse.swt.widgets.Label: void <init>(org.eclipse.swt.widgets.Composite,int)>(r0, 0);
+
+        $r97 = new org.eclipse.swt.layout.GridData;
+
+        specialinvoke $r97.<org.eclipse.swt.layout.GridData: void <init>(int,int,boolean,boolean,int,int)>(131072, 16777216, 0, 0, 1, 1);
+
+        virtualinvoke $r96.<org.eclipse.swt.widgets.Label: void setLayoutData(java.lang.Object)>($r97);
+
+        virtualinvoke $r96.<org.eclipse.swt.widgets.Label: void setText(java.lang.String)>("8th Quantile (80%):");
+
+        $r98 = new org.eclipse.swt.widgets.Text;
+
+        specialinvoke $r98.<org.eclipse.swt.widgets.Text: void <init>(org.eclipse.swt.widgets.Composite,int)>(r0, 8);
+
+        r0.<edu.kit.ipd.sdq.eventsim.rvisualization.views.StatisticsViewer: org.eclipse.swt.widgets.Text txtQuantile8> = $r98;
+
+        $r100 = r0.<edu.kit.ipd.sdq.eventsim.rvisualization.views.StatisticsViewer: org.eclipse.swt.widgets.Text txtQuantile8>;
+
+        $r99 = new org.eclipse.swt.layout.GridData;
+
+        specialinvoke $r99.<org.eclipse.swt.layout.GridData: void <init>(int,int,boolean,boolean,int,int)>(4, 16777216, 1, 0, 1, 1);
+
+        virtualinvoke $r100.<org.eclipse.swt.widgets.Text: void setLayoutData(java.lang.Object)>($r99);
+
+        $r101 = new org.eclipse.swt.widgets.Label;
+
+        specialinvoke $r101.<org.eclipse.swt.widgets.Label: void <init>(org.eclipse.swt.widgets.Composite,int)>(r0, 0);
+
+        $r102 = new org.eclipse.swt.layout.GridData;
+
+        specialinvoke $r102.<org.eclipse.swt.layout.GridData: void <init>(int,int,boolean,boolean,int,int)>(131072, 16777216, 0, 0, 1, 1);
+
+        virtualinvoke $r101.<org.eclipse.swt.widgets.Label: void setLayoutData(java.lang.Object)>($r102);
+
+        virtualinvoke $r101.<org.eclipse.swt.widgets.Label: void setText(java.lang.String)>("9th Quantile (90%):");
+
+        $r103 = new org.eclipse.swt.widgets.Text;
+
+        specialinvoke $r103.<org.eclipse.swt.widgets.Text: void <init>(org.eclipse.swt.widgets.Composite,int)>(r0, 8);
+
+        r0.<edu.kit.ipd.sdq.eventsim.rvisualization.views.StatisticsViewer: org.eclipse.swt.widgets.Text txtQuantile9> = $r103;
+
+        $r105 = r0.<edu.kit.ipd.sdq.eventsim.rvisualization.views.StatisticsViewer: org.eclipse.swt.widgets.Text txtQuantile9>;
+
+        $r104 = new org.eclipse.swt.layout.GridData;
+
+        specialinvoke $r104.<org.eclipse.swt.layout.GridData: void <init>(int,int,boolean,boolean,int,int)>(4, 16777216, 1, 0, 1, 1);
+
+        virtualinvoke $r105.<org.eclipse.swt.widgets.Text: void setLayoutData(java.lang.Object)>($r104);
+
+        $r106 = virtualinvoke r0.<edu.kit.ipd.sdq.eventsim.rvisualization.views.StatisticsViewer: org.eclipse.core.databinding.DataBindingContext initDataBindings()>();
+
+        r0.<edu.kit.ipd.sdq.eventsim.rvisualization.views.StatisticsViewer: org.eclipse.core.databinding.DataBindingContext m_bindingContext> = $r106;
+
+        return;
+    }
+
+    public edu.kit.ipd.sdq.eventsim.rvisualization.model.StatisticsModel getModel()
+    {
+        edu.kit.ipd.sdq.eventsim.rvisualization.views.StatisticsViewer r0;
+        edu.kit.ipd.sdq.eventsim.rvisualization.model.StatisticsModel $r1;
+
+        r0 := @this: edu.kit.ipd.sdq.eventsim.rvisualization.views.StatisticsViewer;
+
+        $r1 = r0.<edu.kit.ipd.sdq.eventsim.rvisualization.views.StatisticsViewer: edu.kit.ipd.sdq.eventsim.rvisualization.model.StatisticsModel model>;
+
+        return $r1;
+    }
+
+    protected org.eclipse.core.databinding.DataBindingContext initDataBindings()
+    {
+        edu.kit.ipd.sdq.eventsim.rvisualization.views.StatisticsViewer r0;
+        org.eclipse.jface.databinding.swt.ISWTObservableValue r2, r4, r6, r8, r10, r12, r14, r16, r18, r20, r22, r24, r26, r28, r30, r32;
+        org.eclipse.core.databinding.observable.value.IObservableValue r3, r5, r7, r9, r11, r13, r15, r17, r19, r21, r23, r25, r27, r29, r31, r33;
+        org.eclipse.core.databinding.DataBindingContext $r34;
+        org.eclipse.jface.databinding.swt.IWidgetValueProperty $r35, $r41, $r47, $r53, $r59, $r65, $r71, $r77, $r83, $r89, $r95, $r101, $r107, $r113, $r119, $r125;
+        org.eclipse.swt.widgets.Text $r36, $r42, $r48, $r54, $r60, $r66, $r72, $r78, $r84, $r90, $r96, $r102, $r108, $r114, $r120, $r126;
+        org.eclipse.core.databinding.beans.IBeanValueProperty $r37, $r43, $r49, $r55, $r61, $r67, $r73, $r79, $r85, $r91, $r97, $r103, $r109, $r115, $r121, $r127;
+        edu.kit.ipd.sdq.eventsim.rvisualization.model.StatisticsModel $r38, $r44, $r50, $r56, $r62, $r68, $r74, $r80, $r86, $r92, $r98, $r104, $r110, $r116, $r122, $r128;
+        org.eclipse.core.databinding.UpdateValueStrategy $r39, $r45, $r51, $r57, $r63, $r69, $r75, $r81, $r87, $r93, $r99, $r105, $r111, $r117, $r123, $r129;
+        int $i0, $i1, $i2, $i3, $i4, $i5, $i6, $i7, $i8, $i9, $i10, $i11, $i12, $i13, $i14, $i15;
+
+        r0 := @this: edu.kit.ipd.sdq.eventsim.rvisualization.views.StatisticsViewer;
+
+        $r34 = new org.eclipse.core.databinding.DataBindingContext;
+
+        specialinvoke $r34.<org.eclipse.core.databinding.DataBindingContext: void <init>()>();
+
+        $r35 = staticinvoke <org.eclipse.jface.databinding.swt.WidgetProperties: org.eclipse.jface.databinding.swt.IWidgetValueProperty text(int)>(24);
+
+        $r36 = r0.<edu.kit.ipd.sdq.eventsim.rvisualization.views.StatisticsViewer: org.eclipse.swt.widgets.Text txtObservations>;
+
+        r2 = interfaceinvoke $r35.<org.eclipse.jface.databinding.swt.IWidgetValueProperty: org.eclipse.jface.databinding.swt.ISWTObservableValue observe(org.eclipse.swt.widgets.Widget)>($r36);
+
+        $r37 = staticinvoke <org.eclipse.core.databinding.beans.BeanProperties: org.eclipse.core.databinding.beans.IBeanValueProperty value(java.lang.String)>("observations");
+
+        $r38 = r0.<edu.kit.ipd.sdq.eventsim.rvisualization.views.StatisticsViewer: edu.kit.ipd.sdq.eventsim.rvisualization.model.StatisticsModel model>;
+
+        r3 = interfaceinvoke $r37.<org.eclipse.core.databinding.beans.IBeanValueProperty: org.eclipse.core.databinding.observable.value.IObservableValue observe(java.lang.Object)>($r38);
+
+        $r39 = new org.eclipse.core.databinding.UpdateValueStrategy;
+
+        $i0 = <org.eclipse.core.databinding.UpdateValueStrategy: int POLICY_NEVER>;
+
+        specialinvoke $r39.<org.eclipse.core.databinding.UpdateValueStrategy: void <init>(int)>($i0);
+
+        virtualinvoke $r34.<org.eclipse.core.databinding.DataBindingContext: org.eclipse.core.databinding.Binding bindValue(org.eclipse.core.databinding.observable.value.IObservableValue,org.eclipse.core.databinding.observable.value.IObservableValue,org.eclipse.core.databinding.UpdateValueStrategy,org.eclipse.core.databinding.UpdateValueStrategy)>(r2, r3, $r39, null);
+
+        $r41 = staticinvoke <org.eclipse.jface.databinding.swt.WidgetProperties: org.eclipse.jface.databinding.swt.IWidgetValueProperty text(int)>(24);
+
+        $r42 = r0.<edu.kit.ipd.sdq.eventsim.rvisualization.views.StatisticsViewer: org.eclipse.swt.widgets.Text txtMin>;
+
+        r4 = interfaceinvoke $r41.<org.eclipse.jface.databinding.swt.IWidgetValueProperty: org.eclipse.jface.databinding.swt.ISWTObservableValue observe(org.eclipse.swt.widgets.Widget)>($r42);
+
+        $r43 = staticinvoke <org.eclipse.core.databinding.beans.BeanProperties: org.eclipse.core.databinding.beans.IBeanValueProperty value(java.lang.String)>("min");
+
+        $r44 = r0.<edu.kit.ipd.sdq.eventsim.rvisualization.views.StatisticsViewer: edu.kit.ipd.sdq.eventsim.rvisualization.model.StatisticsModel model>;
+
+        r5 = interfaceinvoke $r43.<org.eclipse.core.databinding.beans.IBeanValueProperty: org.eclipse.core.databinding.observable.value.IObservableValue observe(java.lang.Object)>($r44);
+
+        $r45 = new org.eclipse.core.databinding.UpdateValueStrategy;
+
+        $i1 = <org.eclipse.core.databinding.UpdateValueStrategy: int POLICY_NEVER>;
+
+        specialinvoke $r45.<org.eclipse.core.databinding.UpdateValueStrategy: void <init>(int)>($i1);
+
+        virtualinvoke $r34.<org.eclipse.core.databinding.DataBindingContext: org.eclipse.core.databinding.Binding bindValue(org.eclipse.core.databinding.observable.value.IObservableValue,org.eclipse.core.databinding.observable.value.IObservableValue,org.eclipse.core.databinding.UpdateValueStrategy,org.eclipse.core.databinding.UpdateValueStrategy)>(r4, r5, $r45, null);
+
+        $r47 = staticinvoke <org.eclipse.jface.databinding.swt.WidgetProperties: org.eclipse.jface.databinding.swt.IWidgetValueProperty text(int)>(24);
+
+        $r48 = r0.<edu.kit.ipd.sdq.eventsim.rvisualization.views.StatisticsViewer: org.eclipse.swt.widgets.Text txtFirstQuartile>;
+
+        r6 = interfaceinvoke $r47.<org.eclipse.jface.databinding.swt.IWidgetValueProperty: org.eclipse.jface.databinding.swt.ISWTObservableValue observe(org.eclipse.swt.widgets.Widget)>($r48);
+
+        $r49 = staticinvoke <org.eclipse.core.databinding.beans.BeanProperties: org.eclipse.core.databinding.beans.IBeanValueProperty value(java.lang.String)>("firstQuartile");
+
+        $r50 = r0.<edu.kit.ipd.sdq.eventsim.rvisualization.views.StatisticsViewer: edu.kit.ipd.sdq.eventsim.rvisualization.model.StatisticsModel model>;
+
+        r7 = interfaceinvoke $r49.<org.eclipse.core.databinding.beans.IBeanValueProperty: org.eclipse.core.databinding.observable.value.IObservableValue observe(java.lang.Object)>($r50);
+
+        $r51 = new org.eclipse.core.databinding.UpdateValueStrategy;
+
+        $i2 = <org.eclipse.core.databinding.UpdateValueStrategy: int POLICY_NEVER>;
+
+        specialinvoke $r51.<org.eclipse.core.databinding.UpdateValueStrategy: void <init>(int)>($i2);
+
+        virtualinvoke $r34.<org.eclipse.core.databinding.DataBindingContext: org.eclipse.core.databinding.Binding bindValue(org.eclipse.core.databinding.observable.value.IObservableValue,org.eclipse.core.databinding.observable.value.IObservableValue,org.eclipse.core.databinding.UpdateValueStrategy,org.eclipse.core.databinding.UpdateValueStrategy)>(r6, r7, $r51, null);
+
+        $r53 = staticinvoke <org.eclipse.jface.databinding.swt.WidgetProperties: org.eclipse.jface.databinding.swt.IWidgetValueProperty text(int)>(24);
+
+        $r54 = r0.<edu.kit.ipd.sdq.eventsim.rvisualization.views.StatisticsViewer: org.eclipse.swt.widgets.Text txtMedian>;
+
+        r8 = interfaceinvoke $r53.<org.eclipse.jface.databinding.swt.IWidgetValueProperty: org.eclipse.jface.databinding.swt.ISWTObservableValue observe(org.eclipse.swt.widgets.Widget)>($r54);
+
+        $r55 = staticinvoke <org.eclipse.core.databinding.beans.BeanProperties: org.eclipse.core.databinding.beans.IBeanValueProperty value(java.lang.String)>("median");
+
+        $r56 = r0.<edu.kit.ipd.sdq.eventsim.rvisualization.views.StatisticsViewer: edu.kit.ipd.sdq.eventsim.rvisualization.model.StatisticsModel model>;
+
+        r9 = interfaceinvoke $r55.<org.eclipse.core.databinding.beans.IBeanValueProperty: org.eclipse.core.databinding.observable.value.IObservableValue observe(java.lang.Object)>($r56);
+
+        $r57 = new org.eclipse.core.databinding.UpdateValueStrategy;
+
+        $i3 = <org.eclipse.core.databinding.UpdateValueStrategy: int POLICY_NEVER>;
+
+        specialinvoke $r57.<org.eclipse.core.databinding.UpdateValueStrategy: void <init>(int)>($i3);
+
+        virtualinvoke $r34.<org.eclipse.core.databinding.DataBindingContext: org.eclipse.core.databinding.Binding bindValue(org.eclipse.core.databinding.observable.value.IObservableValue,org.eclipse.core.databinding.observable.value.IObservableValue,org.eclipse.core.databinding.UpdateValueStrategy,org.eclipse.core.databinding.UpdateValueStrategy)>(r8, r9, $r57, null);
+
+        $r59 = staticinvoke <org.eclipse.jface.databinding.swt.WidgetProperties: org.eclipse.jface.databinding.swt.IWidgetValueProperty text(int)>(24);
+
+        $r60 = r0.<edu.kit.ipd.sdq.eventsim.rvisualization.views.StatisticsViewer: org.eclipse.swt.widgets.Text txtMean>;
+
+        r10 = interfaceinvoke $r59.<org.eclipse.jface.databinding.swt.IWidgetValueProperty: org.eclipse.jface.databinding.swt.ISWTObservableValue observe(org.eclipse.swt.widgets.Widget)>($r60);
+
+        $r61 = staticinvoke <org.eclipse.core.databinding.beans.BeanProperties: org.eclipse.core.databinding.beans.IBeanValueProperty value(java.lang.String)>("mean");
+
+        $r62 = r0.<edu.kit.ipd.sdq.eventsim.rvisualization.views.StatisticsViewer: edu.kit.ipd.sdq.eventsim.rvisualization.model.StatisticsModel model>;
+
+        r11 = interfaceinvoke $r61.<org.eclipse.core.databinding.beans.IBeanValueProperty: org.eclipse.core.databinding.observable.value.IObservableValue observe(java.lang.Object)>($r62);
+
+        $r63 = new org.eclipse.core.databinding.UpdateValueStrategy;
+
+        $i4 = <org.eclipse.core.databinding.UpdateValueStrategy: int POLICY_NEVER>;
+
+        specialinvoke $r63.<org.eclipse.core.databinding.UpdateValueStrategy: void <init>(int)>($i4);
+
+        virtualinvoke $r34.<org.eclipse.core.databinding.DataBindingContext: org.eclipse.core.databinding.Binding bindValue(org.eclipse.core.databinding.observable.value.IObservableValue,org.eclipse.core.databinding.observable.value.IObservableValue,org.eclipse.core.databinding.UpdateValueStrategy,org.eclipse.core.databinding.UpdateValueStrategy)>(r10, r11, $r63, null);
+
+        $r65 = staticinvoke <org.eclipse.jface.databinding.swt.WidgetProperties: org.eclipse.jface.databinding.swt.IWidgetValueProperty text(int)>(24);
+
+        $r66 = r0.<edu.kit.ipd.sdq.eventsim.rvisualization.views.StatisticsViewer: org.eclipse.swt.widgets.Text txtThirdQuartile>;
+
+        r12 = interfaceinvoke $r65.<org.eclipse.jface.databinding.swt.IWidgetValueProperty: org.eclipse.jface.databinding.swt.ISWTObservableValue observe(org.eclipse.swt.widgets.Widget)>($r66);
+
+        $r67 = staticinvoke <org.eclipse.core.databinding.beans.BeanProperties: org.eclipse.core.databinding.beans.IBeanValueProperty value(java.lang.String)>("thirdQuartile");
+
+        $r68 = r0.<edu.kit.ipd.sdq.eventsim.rvisualization.views.StatisticsViewer: edu.kit.ipd.sdq.eventsim.rvisualization.model.StatisticsModel model>;
+
+        r13 = interfaceinvoke $r67.<org.eclipse.core.databinding.beans.IBeanValueProperty: org.eclipse.core.databinding.observable.value.IObservableValue observe(java.lang.Object)>($r68);
+
+        $r69 = new org.eclipse.core.databinding.UpdateValueStrategy;
+
+        $i5 = <org.eclipse.core.databinding.UpdateValueStrategy: int POLICY_NEVER>;
+
+        specialinvoke $r69.<org.eclipse.core.databinding.UpdateValueStrategy: void <init>(int)>($i5);
+
+        virtualinvoke $r34.<org.eclipse.core.databinding.DataBindingContext: org.eclipse.core.databinding.Binding bindValue(org.eclipse.core.databinding.observable.value.IObservableValue,org.eclipse.core.databinding.observable.value.IObservableValue,org.eclipse.core.databinding.UpdateValueStrategy,org.eclipse.core.databinding.UpdateValueStrategy)>(r12, r13, $r69, null);
+
+        $r71 = staticinvoke <org.eclipse.jface.databinding.swt.WidgetProperties: org.eclipse.jface.databinding.swt.IWidgetValueProperty text(int)>(24);
+
+        $r72 = r0.<edu.kit.ipd.sdq.eventsim.rvisualization.views.StatisticsViewer: org.eclipse.swt.widgets.Text txtMax>;
+
+        r14 = interfaceinvoke $r71.<org.eclipse.jface.databinding.swt.IWidgetValueProperty: org.eclipse.jface.databinding.swt.ISWTObservableValue observe(org.eclipse.swt.widgets.Widget)>($r72);
+
+        $r73 = staticinvoke <org.eclipse.core.databinding.beans.BeanProperties: org.eclipse.core.databinding.beans.IBeanValueProperty value(java.lang.String)>("max");
+
+        $r74 = r0.<edu.kit.ipd.sdq.eventsim.rvisualization.views.StatisticsViewer: edu.kit.ipd.sdq.eventsim.rvisualization.model.StatisticsModel model>;
+
+        r15 = interfaceinvoke $r73.<org.eclipse.core.databinding.beans.IBeanValueProperty: org.eclipse.core.databinding.observable.value.IObservableValue observe(java.lang.Object)>($r74);
+
+        $r75 = new org.eclipse.core.databinding.UpdateValueStrategy;
+
+        $i6 = <org.eclipse.core.databinding.UpdateValueStrategy: int POLICY_NEVER>;
+
+        specialinvoke $r75.<org.eclipse.core.databinding.UpdateValueStrategy: void <init>(int)>($i6);
+
+        virtualinvoke $r34.<org.eclipse.core.databinding.DataBindingContext: org.eclipse.core.databinding.Binding bindValue(org.eclipse.core.databinding.observable.value.IObservableValue,org.eclipse.core.databinding.observable.value.IObservableValue,org.eclipse.core.databinding.UpdateValueStrategy,org.eclipse.core.databinding.UpdateValueStrategy)>(r14, r15, $r75, null);
+
+        $r77 = staticinvoke <org.eclipse.jface.databinding.swt.WidgetProperties: org.eclipse.jface.databinding.swt.IWidgetValueProperty text(int)>(24);
+
+        $r78 = r0.<edu.kit.ipd.sdq.eventsim.rvisualization.views.StatisticsViewer: org.eclipse.swt.widgets.Text txtQuantile1>;
+
+        r16 = interfaceinvoke $r77.<org.eclipse.jface.databinding.swt.IWidgetValueProperty: org.eclipse.jface.databinding.swt.ISWTObservableValue observe(org.eclipse.swt.widgets.Widget)>($r78);
+
+        $r79 = staticinvoke <org.eclipse.core.databinding.beans.BeanProperties: org.eclipse.core.databinding.beans.IBeanValueProperty value(java.lang.String)>("quantile1");
+
+        $r80 = r0.<edu.kit.ipd.sdq.eventsim.rvisualization.views.StatisticsViewer: edu.kit.ipd.sdq.eventsim.rvisualization.model.StatisticsModel model>;
+
+        r17 = interfaceinvoke $r79.<org.eclipse.core.databinding.beans.IBeanValueProperty: org.eclipse.core.databinding.observable.value.IObservableValue observe(java.lang.Object)>($r80);
+
+        $r81 = new org.eclipse.core.databinding.UpdateValueStrategy;
+
+        $i7 = <org.eclipse.core.databinding.UpdateValueStrategy: int POLICY_NEVER>;
+
+        specialinvoke $r81.<org.eclipse.core.databinding.UpdateValueStrategy: void <init>(int)>($i7);
+
+        virtualinvoke $r34.<org.eclipse.core.databinding.DataBindingContext: org.eclipse.core.databinding.Binding bindValue(org.eclipse.core.databinding.observable.value.IObservableValue,org.eclipse.core.databinding.observable.value.IObservableValue,org.eclipse.core.databinding.UpdateValueStrategy,org.eclipse.core.databinding.UpdateValueStrategy)>(r16, r17, $r81, null);
+
+        $r83 = staticinvoke <org.eclipse.jface.databinding.swt.WidgetProperties: org.eclipse.jface.databinding.swt.IWidgetValueProperty text(int)>(24);
+
+        $r84 = r0.<edu.kit.ipd.sdq.eventsim.rvisualization.views.StatisticsViewer: org.eclipse.swt.widgets.Text txtQuantile2>;
+
+        r18 = interfaceinvoke $r83.<org.eclipse.jface.databinding.swt.IWidgetValueProperty: org.eclipse.jface.databinding.swt.ISWTObservableValue observe(org.eclipse.swt.widgets.Widget)>($r84);
+
+        $r85 = staticinvoke <org.eclipse.core.databinding.beans.BeanProperties: org.eclipse.core.databinding.beans.IBeanValueProperty value(java.lang.String)>("quantile2");
+
+        $r86 = r0.<edu.kit.ipd.sdq.eventsim.rvisualization.views.StatisticsViewer: edu.kit.ipd.sdq.eventsim.rvisualization.model.StatisticsModel model>;
+
+        r19 = interfaceinvoke $r85.<org.eclipse.core.databinding.beans.IBeanValueProperty: org.eclipse.core.databinding.observable.value.IObservableValue observe(java.lang.Object)>($r86);
+
+        $r87 = new org.eclipse.core.databinding.UpdateValueStrategy;
+
+        $i8 = <org.eclipse.core.databinding.UpdateValueStrategy: int POLICY_NEVER>;
+
+        specialinvoke $r87.<org.eclipse.core.databinding.UpdateValueStrategy: void <init>(int)>($i8);
+
+        virtualinvoke $r34.<org.eclipse.core.databinding.DataBindingContext: org.eclipse.core.databinding.Binding bindValue(org.eclipse.core.databinding.observable.value.IObservableValue,org.eclipse.core.databinding.observable.value.IObservableValue,org.eclipse.core.databinding.UpdateValueStrategy,org.eclipse.core.databinding.UpdateValueStrategy)>(r18, r19, $r87, null);
+
+        $r89 = staticinvoke <org.eclipse.jface.databinding.swt.WidgetProperties: org.eclipse.jface.databinding.swt.IWidgetValueProperty text(int)>(24);
+
+        $r90 = r0.<edu.kit.ipd.sdq.eventsim.rvisualization.views.StatisticsViewer: org.eclipse.swt.widgets.Text txtQuantile3>;
+
+        r20 = interfaceinvoke $r89.<org.eclipse.jface.databinding.swt.IWidgetValueProperty: org.eclipse.jface.databinding.swt.ISWTObservableValue observe(org.eclipse.swt.widgets.Widget)>($r90);
+
+        $r91 = staticinvoke <org.eclipse.core.databinding.beans.BeanProperties: org.eclipse.core.databinding.beans.IBeanValueProperty value(java.lang.String)>("quantile3");
+
+        $r92 = r0.<edu.kit.ipd.sdq.eventsim.rvisualization.views.StatisticsViewer: edu.kit.ipd.sdq.eventsim.rvisualization.model.StatisticsModel model>;
+
+        r21 = interfaceinvoke $r91.<org.eclipse.core.databinding.beans.IBeanValueProperty: org.eclipse.core.databinding.observable.value.IObservableValue observe(java.lang.Object)>($r92);
+
+        $r93 = new org.eclipse.core.databinding.UpdateValueStrategy;
+
+        $i9 = <org.eclipse.core.databinding.UpdateValueStrategy: int POLICY_NEVER>;
+
+        specialinvoke $r93.<org.eclipse.core.databinding.UpdateValueStrategy: void <init>(int)>($i9);
+
+        virtualinvoke $r34.<org.eclipse.core.databinding.DataBindingContext: org.eclipse.core.databinding.Binding bindValue(org.eclipse.core.databinding.observable.value.IObservableValue,org.eclipse.core.databinding.observable.value.IObservableValue,org.eclipse.core.databinding.UpdateValueStrategy,org.eclipse.core.databinding.UpdateValueStrategy)>(r20, r21, $r93, null);
+
+        $r95 = staticinvoke <org.eclipse.jface.databinding.swt.WidgetProperties: org.eclipse.jface.databinding.swt.IWidgetValueProperty text(int)>(24);
+
+        $r96 = r0.<edu.kit.ipd.sdq.eventsim.rvisualization.views.StatisticsViewer: org.eclipse.swt.widgets.Text txtQuantile4>;
+
+        r22 = interfaceinvoke $r95.<org.eclipse.jface.databinding.swt.IWidgetValueProperty: org.eclipse.jface.databinding.swt.ISWTObservableValue observe(org.eclipse.swt.widgets.Widget)>($r96);
+
+        $r97 = staticinvoke <org.eclipse.core.databinding.beans.BeanProperties: org.eclipse.core.databinding.beans.IBeanValueProperty value(java.lang.String)>("quantile4");
+
+        $r98 = r0.<edu.kit.ipd.sdq.eventsim.rvisualization.views.StatisticsViewer: edu.kit.ipd.sdq.eventsim.rvisualization.model.StatisticsModel model>;
+
+        r23 = interfaceinvoke $r97.<org.eclipse.core.databinding.beans.IBeanValueProperty: org.eclipse.core.databinding.observable.value.IObservableValue observe(java.lang.Object)>($r98);
+
+        $r99 = new org.eclipse.core.databinding.UpdateValueStrategy;
+
+        $i10 = <org.eclipse.core.databinding.UpdateValueStrategy: int POLICY_NEVER>;
+
+        specialinvoke $r99.<org.eclipse.core.databinding.UpdateValueStrategy: void <init>(int)>($i10);
+
+        virtualinvoke $r34.<org.eclipse.core.databinding.DataBindingContext: org.eclipse.core.databinding.Binding bindValue(org.eclipse.core.databinding.observable.value.IObservableValue,org.eclipse.core.databinding.observable.value.IObservableValue,org.eclipse.core.databinding.UpdateValueStrategy,org.eclipse.core.databinding.UpdateValueStrategy)>(r22, r23, $r99, null);
+
+        $r101 = staticinvoke <org.eclipse.jface.databinding.swt.WidgetProperties: org.eclipse.jface.databinding.swt.IWidgetValueProperty text(int)>(24);
+
+        $r102 = r0.<edu.kit.ipd.sdq.eventsim.rvisualization.views.StatisticsViewer: org.eclipse.swt.widgets.Text txtQuantile5>;
+
+        r24 = interfaceinvoke $r101.<org.eclipse.jface.databinding.swt.IWidgetValueProperty: org.eclipse.jface.databinding.swt.ISWTObservableValue observe(org.eclipse.swt.widgets.Widget)>($r102);
+
+        $r103 = staticinvoke <org.eclipse.core.databinding.beans.BeanProperties: org.eclipse.core.databinding.beans.IBeanValueProperty value(java.lang.String)>("quantile5");
+
+        $r104 = r0.<edu.kit.ipd.sdq.eventsim.rvisualization.views.StatisticsViewer: edu.kit.ipd.sdq.eventsim.rvisualization.model.StatisticsModel model>;
+
+        r25 = interfaceinvoke $r103.<org.eclipse.core.databinding.beans.IBeanValueProperty: org.eclipse.core.databinding.observable.value.IObservableValue observe(java.lang.Object)>($r104);
+
+        $r105 = new org.eclipse.core.databinding.UpdateValueStrategy;
+
+        $i11 = <org.eclipse.core.databinding.UpdateValueStrategy: int POLICY_NEVER>;
+
+        specialinvoke $r105.<org.eclipse.core.databinding.UpdateValueStrategy: void <init>(int)>($i11);
+
+        virtualinvoke $r34.<org.eclipse.core.databinding.DataBindingContext: org.eclipse.core.databinding.Binding bindValue(org.eclipse.core.databinding.observable.value.IObservableValue,org.eclipse.core.databinding.observable.value.IObservableValue,org.eclipse.core.databinding.UpdateValueStrategy,org.eclipse.core.databinding.UpdateValueStrategy)>(r24, r25, $r105, null);
+
+        $r107 = staticinvoke <org.eclipse.jface.databinding.swt.WidgetProperties: org.eclipse.jface.databinding.swt.IWidgetValueProperty text(int)>(24);
+
+        $r108 = r0.<edu.kit.ipd.sdq.eventsim.rvisualization.views.StatisticsViewer: org.eclipse.swt.widgets.Text txtQuantile6>;
+
+        r26 = interfaceinvoke $r107.<org.eclipse.jface.databinding.swt.IWidgetValueProperty: org.eclipse.jface.databinding.swt.ISWTObservableValue observe(org.eclipse.swt.widgets.Widget)>($r108);
+
+        $r109 = staticinvoke <org.eclipse.core.databinding.beans.BeanProperties: org.eclipse.core.databinding.beans.IBeanValueProperty value(java.lang.String)>("quantile6");
+
+        $r110 = r0.<edu.kit.ipd.sdq.eventsim.rvisualization.views.StatisticsViewer: edu.kit.ipd.sdq.eventsim.rvisualization.model.StatisticsModel model>;
+
+        r27 = interfaceinvoke $r109.<org.eclipse.core.databinding.beans.IBeanValueProperty: org.eclipse.core.databinding.observable.value.IObservableValue observe(java.lang.Object)>($r110);
+
+        $r111 = new org.eclipse.core.databinding.UpdateValueStrategy;
+
+        $i12 = <org.eclipse.core.databinding.UpdateValueStrategy: int POLICY_NEVER>;
+
+        specialinvoke $r111.<org.eclipse.core.databinding.UpdateValueStrategy: void <init>(int)>($i12);
+
+        virtualinvoke $r34.<org.eclipse.core.databinding.DataBindingContext: org.eclipse.core.databinding.Binding bindValue(org.eclipse.core.databinding.observable.value.IObservableValue,org.eclipse.core.databinding.observable.value.IObservableValue,org.eclipse.core.databinding.UpdateValueStrategy,org.eclipse.core.databinding.UpdateValueStrategy)>(r26, r27, $r111, null);
+
+        $r113 = staticinvoke <org.eclipse.jface.databinding.swt.WidgetProperties: org.eclipse.jface.databinding.swt.IWidgetValueProperty text(int)>(24);
+
+        $r114 = r0.<edu.kit.ipd.sdq.eventsim.rvisualization.views.StatisticsViewer: org.eclipse.swt.widgets.Text txtQuantile7>;
+
+        r28 = interfaceinvoke $r113.<org.eclipse.jface.databinding.swt.IWidgetValueProperty: org.eclipse.jface.databinding.swt.ISWTObservableValue observe(org.eclipse.swt.widgets.Widget)>($r114);
+
+        $r115 = staticinvoke <org.eclipse.core.databinding.beans.BeanProperties: org.eclipse.core.databinding.beans.IBeanValueProperty value(java.lang.String)>("quantile7");
+
+        $r116 = r0.<edu.kit.ipd.sdq.eventsim.rvisualization.views.StatisticsViewer: edu.kit.ipd.sdq.eventsim.rvisualization.model.StatisticsModel model>;
+
+        r29 = interfaceinvoke $r115.<org.eclipse.core.databinding.beans.IBeanValueProperty: org.eclipse.core.databinding.observable.value.IObservableValue observe(java.lang.Object)>($r116);
+
+        $r117 = new org.eclipse.core.databinding.UpdateValueStrategy;
+
+        $i13 = <org.eclipse.core.databinding.UpdateValueStrategy: int POLICY_NEVER>;
+
+        specialinvoke $r117.<org.eclipse.core.databinding.UpdateValueStrategy: void <init>(int)>($i13);
+
+        virtualinvoke $r34.<org.eclipse.core.databinding.DataBindingContext: org.eclipse.core.databinding.Binding bindValue(org.eclipse.core.databinding.observable.value.IObservableValue,org.eclipse.core.databinding.observable.value.IObservableValue,org.eclipse.core.databinding.UpdateValueStrategy,org.eclipse.core.databinding.UpdateValueStrategy)>(r28, r29, $r117, null);
+
+        $r119 = staticinvoke <org.eclipse.jface.databinding.swt.WidgetProperties: org.eclipse.jface.databinding.swt.IWidgetValueProperty text(int)>(24);
+
+        $r120 = r0.<edu.kit.ipd.sdq.eventsim.rvisualization.views.StatisticsViewer: org.eclipse.swt.widgets.Text txtQuantile8>;
+
+        r30 = interfaceinvoke $r119.<org.eclipse.jface.databinding.swt.IWidgetValueProperty: org.eclipse.jface.databinding.swt.ISWTObservableValue observe(org.eclipse.swt.widgets.Widget)>($r120);
+
+        $r121 = staticinvoke <org.eclipse.core.databinding.beans.BeanProperties: org.eclipse.core.databinding.beans.IBeanValueProperty value(java.lang.String)>("quantile8");
+
+        $r122 = r0.<edu.kit.ipd.sdq.eventsim.rvisualization.views.StatisticsViewer: edu.kit.ipd.sdq.eventsim.rvisualization.model.StatisticsModel model>;
+
+        r31 = interfaceinvoke $r121.<org.eclipse.core.databinding.beans.IBeanValueProperty: org.eclipse.core.databinding.observable.value.IObservableValue observe(java.lang.Object)>($r122);
+
+        $r123 = new org.eclipse.core.databinding.UpdateValueStrategy;
+
+        $i14 = <org.eclipse.core.databinding.UpdateValueStrategy: int POLICY_NEVER>;
+
+        specialinvoke $r123.<org.eclipse.core.databinding.UpdateValueStrategy: void <init>(int)>($i14);
+
+        virtualinvoke $r34.<org.eclipse.core.databinding.DataBindingContext: org.eclipse.core.databinding.Binding bindValue(org.eclipse.core.databinding.observable.value.IObservableValue,org.eclipse.core.databinding.observable.value.IObservableValue,org.eclipse.core.databinding.UpdateValueStrategy,org.eclipse.core.databinding.UpdateValueStrategy)>(r30, r31, $r123, null);
+
+        $r125 = staticinvoke <org.eclipse.jface.databinding.swt.WidgetProperties: org.eclipse.jface.databinding.swt.IWidgetValueProperty text(int)>(24);
+
+        $r126 = r0.<edu.kit.ipd.sdq.eventsim.rvisualization.views.StatisticsViewer: org.eclipse.swt.widgets.Text txtQuantile9>;
+
+        r32 = interfaceinvoke $r125.<org.eclipse.jface.databinding.swt.IWidgetValueProperty: org.eclipse.jface.databinding.swt.ISWTObservableValue observe(org.eclipse.swt.widgets.Widget)>($r126);
+
+        $r127 = staticinvoke <org.eclipse.core.databinding.beans.BeanProperties: org.eclipse.core.databinding.beans.IBeanValueProperty value(java.lang.String)>("quantile9");
+
+        $r128 = r0.<edu.kit.ipd.sdq.eventsim.rvisualization.views.StatisticsViewer: edu.kit.ipd.sdq.eventsim.rvisualization.model.StatisticsModel model>;
+
+        r33 = interfaceinvoke $r127.<org.eclipse.core.databinding.beans.IBeanValueProperty: org.eclipse.core.databinding.observable.value.IObservableValue observe(java.lang.Object)>($r128);
+
+        $r129 = new org.eclipse.core.databinding.UpdateValueStrategy;
+
+        $i15 = <org.eclipse.core.databinding.UpdateValueStrategy: int POLICY_NEVER>;
+
+        specialinvoke $r129.<org.eclipse.core.databinding.UpdateValueStrategy: void <init>(int)>($i15);
+
+        virtualinvoke $r34.<org.eclipse.core.databinding.DataBindingContext: org.eclipse.core.databinding.Binding bindValue(org.eclipse.core.databinding.observable.value.IObservableValue,org.eclipse.core.databinding.observable.value.IObservableValue,org.eclipse.core.databinding.UpdateValueStrategy,org.eclipse.core.databinding.UpdateValueStrategy)>(r32, r33, $r129, null);
+
+        return $r34;
+    }
+}

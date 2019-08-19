@@ -1,0 +1,255 @@
+public class edu.kit.ipd.sdq.eventsim.system.staticstructure.SimulatedResourceContainer extends java.lang.Object
+{
+    private static org.apache.log4j.Logger logger;
+    private org.palladiosimulator.pcm.resourceenvironment.ResourceContainer specification;
+    private edu.kit.ipd.sdq.eventsim.system.staticstructure.SimulatedResourceContainer parent;
+    private java.util.List nestedContainers;
+    private java.util.List communicationLinks;
+
+    static void <clinit>()
+    {
+        org.apache.log4j.Logger $r0;
+
+        $r0 = staticinvoke <org.apache.log4j.Logger: org.apache.log4j.Logger getLogger(java.lang.Class)>(class "Ledu/kit/ipd/sdq/eventsim/system/staticstructure/SimulatedResourceContainer;");
+
+        <edu.kit.ipd.sdq.eventsim.system.staticstructure.SimulatedResourceContainer: org.apache.log4j.Logger logger> = $r0;
+
+        return;
+    }
+
+    public void <init>(org.palladiosimulator.pcm.resourceenvironment.ResourceContainer)
+    {
+        edu.kit.ipd.sdq.eventsim.system.staticstructure.SimulatedResourceContainer r0;
+        org.palladiosimulator.pcm.resourceenvironment.ResourceContainer r1;
+
+        r0 := @this: edu.kit.ipd.sdq.eventsim.system.staticstructure.SimulatedResourceContainer;
+
+        r1 := @parameter0: org.palladiosimulator.pcm.resourceenvironment.ResourceContainer;
+
+        specialinvoke r0.<edu.kit.ipd.sdq.eventsim.system.staticstructure.SimulatedResourceContainer: void <init>(org.palladiosimulator.pcm.resourceenvironment.ResourceContainer,edu.kit.ipd.sdq.eventsim.system.staticstructure.SimulatedResourceContainer)>(r1, null);
+
+        return;
+    }
+
+    public void <init>(org.palladiosimulator.pcm.resourceenvironment.ResourceContainer, edu.kit.ipd.sdq.eventsim.system.staticstructure.SimulatedResourceContainer)
+    {
+        edu.kit.ipd.sdq.eventsim.system.staticstructure.SimulatedResourceContainer r0, r2;
+        org.palladiosimulator.pcm.resourceenvironment.ResourceContainer r1;
+        java.util.ArrayList $r3, $r4;
+        java.lang.IllegalStateException $r5;
+
+        r0 := @this: edu.kit.ipd.sdq.eventsim.system.staticstructure.SimulatedResourceContainer;
+
+        r1 := @parameter0: org.palladiosimulator.pcm.resourceenvironment.ResourceContainer;
+
+        r2 := @parameter1: edu.kit.ipd.sdq.eventsim.system.staticstructure.SimulatedResourceContainer;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        if r2 == null goto label1;
+
+        $r5 = new java.lang.IllegalStateException;
+
+        specialinvoke $r5.<java.lang.IllegalStateException: void <init>(java.lang.String)>("Nested resource containers are no longer supported");
+
+        throw $r5;
+
+     label1:
+        r0.<edu.kit.ipd.sdq.eventsim.system.staticstructure.SimulatedResourceContainer: org.palladiosimulator.pcm.resourceenvironment.ResourceContainer specification> = r1;
+
+        r0.<edu.kit.ipd.sdq.eventsim.system.staticstructure.SimulatedResourceContainer: edu.kit.ipd.sdq.eventsim.system.staticstructure.SimulatedResourceContainer parent> = r2;
+
+        $r3 = new java.util.ArrayList;
+
+        specialinvoke $r3.<java.util.ArrayList: void <init>()>();
+
+        r0.<edu.kit.ipd.sdq.eventsim.system.staticstructure.SimulatedResourceContainer: java.util.List nestedContainers> = $r3;
+
+        $r4 = new java.util.ArrayList;
+
+        specialinvoke $r4.<java.util.ArrayList: void <init>()>();
+
+        r0.<edu.kit.ipd.sdq.eventsim.system.staticstructure.SimulatedResourceContainer: java.util.List communicationLinks> = $r4;
+
+        return;
+    }
+
+    public edu.kit.ipd.sdq.eventsim.system.staticstructure.CommunicationLink findCommunicationLink(edu.kit.ipd.sdq.eventsim.system.staticstructure.SimulatedResourceContainer)
+    {
+        edu.kit.ipd.sdq.eventsim.system.staticstructure.SimulatedResourceContainer r0, r1;
+        edu.kit.ipd.sdq.eventsim.system.staticstructure.CommunicationLink r2;
+        java.util.Iterator r3;
+        java.util.List $r4;
+        boolean $z0, $z1;
+        java.lang.Object $r5;
+
+        r0 := @this: edu.kit.ipd.sdq.eventsim.system.staticstructure.SimulatedResourceContainer;
+
+        r1 := @parameter0: edu.kit.ipd.sdq.eventsim.system.staticstructure.SimulatedResourceContainer;
+
+        $r4 = r0.<edu.kit.ipd.sdq.eventsim.system.staticstructure.SimulatedResourceContainer: java.util.List communicationLinks>;
+
+        r3 = interfaceinvoke $r4.<java.util.List: java.util.Iterator iterator()>();
+
+        goto label2;
+
+     label1:
+        $r5 = interfaceinvoke r3.<java.util.Iterator: java.lang.Object next()>();
+
+        r2 = (edu.kit.ipd.sdq.eventsim.system.staticstructure.CommunicationLink) $r5;
+
+        $z1 = virtualinvoke r2.<edu.kit.ipd.sdq.eventsim.system.staticstructure.CommunicationLink: boolean connects(edu.kit.ipd.sdq.eventsim.system.staticstructure.SimulatedResourceContainer,edu.kit.ipd.sdq.eventsim.system.staticstructure.SimulatedResourceContainer)>(r0, r1);
+
+        if $z1 == 0 goto label2;
+
+        return r2;
+
+     label2:
+        $z0 = interfaceinvoke r3.<java.util.Iterator: boolean hasNext()>();
+
+        if $z0 != 0 goto label1;
+
+        return null;
+    }
+
+    public void registerCommunicationLink(edu.kit.ipd.sdq.eventsim.system.staticstructure.CommunicationLink)
+    {
+        edu.kit.ipd.sdq.eventsim.system.staticstructure.SimulatedResourceContainer r0;
+        edu.kit.ipd.sdq.eventsim.system.staticstructure.CommunicationLink r1;
+        org.apache.log4j.Logger $r2, $r5, $r7, $r12;
+        boolean $z0, $z1, $z3;
+        java.util.List $r3, $r17;
+        org.apache.log4j.Level $r4;
+        java.lang.StringBuilder $r6, $r8, $r9, $r11, $r15;
+        java.lang.String $r10, $r14, $r16;
+        org.palladiosimulator.pcm.resourceenvironment.ResourceContainer $r13;
+
+        r0 := @this: edu.kit.ipd.sdq.eventsim.system.staticstructure.SimulatedResourceContainer;
+
+        r1 := @parameter0: edu.kit.ipd.sdq.eventsim.system.staticstructure.CommunicationLink;
+
+        $r2 = <edu.kit.ipd.sdq.eventsim.system.staticstructure.SimulatedResourceContainer: org.apache.log4j.Logger logger>;
+
+        $z0 = virtualinvoke $r2.<org.apache.log4j.Logger: boolean isDebugEnabled()>();
+
+        if $z0 == 0 goto label1;
+
+        $r12 = <edu.kit.ipd.sdq.eventsim.system.staticstructure.SimulatedResourceContainer: org.apache.log4j.Logger logger>;
+
+        $r11 = new java.lang.StringBuilder;
+
+        specialinvoke $r11.<java.lang.StringBuilder: void <init>(java.lang.String)>("Registering a communication link at ");
+
+        $r13 = r0.<edu.kit.ipd.sdq.eventsim.system.staticstructure.SimulatedResourceContainer: org.palladiosimulator.pcm.resourceenvironment.ResourceContainer specification>;
+
+        $r14 = staticinvoke <edu.kit.ipd.sdq.eventsim.util.PCMEntityHelper: java.lang.String toString(org.palladiosimulator.pcm.core.entity.Entity)>($r13);
+
+        $r15 = virtualinvoke $r11.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r14);
+
+        $r16 = virtualinvoke $r15.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        virtualinvoke $r12.<org.apache.log4j.Logger: void debug(java.lang.Object)>($r16);
+
+     label1:
+        $r3 = r0.<edu.kit.ipd.sdq.eventsim.system.staticstructure.SimulatedResourceContainer: java.util.List communicationLinks>;
+
+        $z1 = interfaceinvoke $r3.<java.util.List: boolean contains(java.lang.Object)>(r1);
+
+        if $z1 == 0 goto label2;
+
+        $r5 = <edu.kit.ipd.sdq.eventsim.system.staticstructure.SimulatedResourceContainer: org.apache.log4j.Logger logger>;
+
+        $r4 = <org.apache.log4j.Level: org.apache.log4j.Level WARN>;
+
+        $z3 = virtualinvoke $r5.<org.apache.log4j.Logger: boolean isEnabledFor(org.apache.log4j.Priority)>($r4);
+
+        if $z3 == 0 goto label2;
+
+        $r7 = <edu.kit.ipd.sdq.eventsim.system.staticstructure.SimulatedResourceContainer: org.apache.log4j.Logger logger>;
+
+        $r6 = new java.lang.StringBuilder;
+
+        specialinvoke $r6.<java.lang.StringBuilder: void <init>(java.lang.String)>("The communication link ");
+
+        $r8 = virtualinvoke $r6.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.Object)>(r1);
+
+        $r9 = virtualinvoke $r8.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(" has been registered multiple times.");
+
+        $r10 = virtualinvoke $r9.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        virtualinvoke $r7.<org.apache.log4j.Logger: void warn(java.lang.Object)>($r10);
+
+     label2:
+        $r17 = r0.<edu.kit.ipd.sdq.eventsim.system.staticstructure.SimulatedResourceContainer: java.util.List communicationLinks>;
+
+        interfaceinvoke $r17.<java.util.List: boolean add(java.lang.Object)>(r1);
+
+        return;
+    }
+
+    public edu.kit.ipd.sdq.eventsim.system.staticstructure.SimulatedResourceContainer getParent()
+    {
+        edu.kit.ipd.sdq.eventsim.system.staticstructure.SimulatedResourceContainer r0, $r1;
+
+        r0 := @this: edu.kit.ipd.sdq.eventsim.system.staticstructure.SimulatedResourceContainer;
+
+        $r1 = r0.<edu.kit.ipd.sdq.eventsim.system.staticstructure.SimulatedResourceContainer: edu.kit.ipd.sdq.eventsim.system.staticstructure.SimulatedResourceContainer parent>;
+
+        return $r1;
+    }
+
+    public void addNestedContainer(edu.kit.ipd.sdq.eventsim.system.staticstructure.SimulatedResourceContainer)
+    {
+        edu.kit.ipd.sdq.eventsim.system.staticstructure.SimulatedResourceContainer r0, r1;
+        java.util.List $r2;
+
+        r0 := @this: edu.kit.ipd.sdq.eventsim.system.staticstructure.SimulatedResourceContainer;
+
+        r1 := @parameter0: edu.kit.ipd.sdq.eventsim.system.staticstructure.SimulatedResourceContainer;
+
+        $r2 = r0.<edu.kit.ipd.sdq.eventsim.system.staticstructure.SimulatedResourceContainer: java.util.List nestedContainers>;
+
+        interfaceinvoke $r2.<java.util.List: boolean add(java.lang.Object)>(r1);
+
+        return;
+    }
+
+    public java.util.List getNestedContainers()
+    {
+        edu.kit.ipd.sdq.eventsim.system.staticstructure.SimulatedResourceContainer r0;
+        java.util.List $r1;
+
+        r0 := @this: edu.kit.ipd.sdq.eventsim.system.staticstructure.SimulatedResourceContainer;
+
+        $r1 = r0.<edu.kit.ipd.sdq.eventsim.system.staticstructure.SimulatedResourceContainer: java.util.List nestedContainers>;
+
+        return $r1;
+    }
+
+    public org.palladiosimulator.pcm.resourceenvironment.ResourceContainer getSpecification()
+    {
+        edu.kit.ipd.sdq.eventsim.system.staticstructure.SimulatedResourceContainer r0;
+        org.palladiosimulator.pcm.resourceenvironment.ResourceContainer $r1;
+
+        r0 := @this: edu.kit.ipd.sdq.eventsim.system.staticstructure.SimulatedResourceContainer;
+
+        $r1 = r0.<edu.kit.ipd.sdq.eventsim.system.staticstructure.SimulatedResourceContainer: org.palladiosimulator.pcm.resourceenvironment.ResourceContainer specification>;
+
+        return $r1;
+    }
+
+    public java.lang.String toString()
+    {
+        edu.kit.ipd.sdq.eventsim.system.staticstructure.SimulatedResourceContainer r0;
+        org.palladiosimulator.pcm.resourceenvironment.ResourceContainer $r1;
+        java.lang.String $r2;
+
+        r0 := @this: edu.kit.ipd.sdq.eventsim.system.staticstructure.SimulatedResourceContainer;
+
+        $r1 = r0.<edu.kit.ipd.sdq.eventsim.system.staticstructure.SimulatedResourceContainer: org.palladiosimulator.pcm.resourceenvironment.ResourceContainer specification>;
+
+        $r2 = staticinvoke <edu.kit.ipd.sdq.eventsim.util.PCMEntityHelper: java.lang.String toString(org.palladiosimulator.pcm.core.entity.Entity)>($r1);
+
+        return $r2;
+    }
+}

@@ -1,0 +1,55 @@
+public final class edu.kit.ipd.sdq.eventsim.middleware.SimulationMiddleware$lambda_0__147 extends java.lang.Object implements edu.kit.ipd.sdq.eventsim.api.events.IEventHandler
+{
+    edu.kit.ipd.sdq.eventsim.middleware.SimulationMiddleware cap0;
+
+    public static edu.kit.ipd.sdq.eventsim.api.events.IEventHandler bootstrap$(edu.kit.ipd.sdq.eventsim.middleware.SimulationMiddleware)
+    {
+        edu.kit.ipd.sdq.eventsim.middleware.SimulationMiddleware $r0;
+        edu.kit.ipd.sdq.eventsim.middleware.SimulationMiddleware$lambda_0__147 $r1;
+
+        $r0 := @parameter0: edu.kit.ipd.sdq.eventsim.middleware.SimulationMiddleware;
+
+        $r1 = new edu.kit.ipd.sdq.eventsim.middleware.SimulationMiddleware$lambda_0__147;
+
+        specialinvoke $r1.<edu.kit.ipd.sdq.eventsim.middleware.SimulationMiddleware$lambda_0__147: void <init>(edu.kit.ipd.sdq.eventsim.middleware.SimulationMiddleware)>($r0);
+
+        return $r1;
+    }
+
+    public void <init>(edu.kit.ipd.sdq.eventsim.middleware.SimulationMiddleware)
+    {
+        edu.kit.ipd.sdq.eventsim.middleware.SimulationMiddleware$lambda_0__147 $r0;
+        edu.kit.ipd.sdq.eventsim.middleware.SimulationMiddleware $r1;
+
+        $r0 := @this: edu.kit.ipd.sdq.eventsim.middleware.SimulationMiddleware$lambda_0__147;
+
+        $r1 := @parameter0: edu.kit.ipd.sdq.eventsim.middleware.SimulationMiddleware;
+
+        specialinvoke $r0.<java.lang.Object: void <init>()>();
+
+        $r0.<edu.kit.ipd.sdq.eventsim.middleware.SimulationMiddleware$lambda_0__147: edu.kit.ipd.sdq.eventsim.middleware.SimulationMiddleware cap0> = $r1;
+
+        return;
+    }
+
+    public edu.kit.ipd.sdq.eventsim.api.events.IEventHandler$Registration handle(edu.kit.ipd.sdq.eventsim.api.events.SimulationEvent)
+    {
+        edu.kit.ipd.sdq.eventsim.middleware.SimulationMiddleware$lambda_0__147 $r0;
+        edu.kit.ipd.sdq.eventsim.api.events.SimulationEvent $r1;
+        edu.kit.ipd.sdq.eventsim.api.events.SimulationStartEvent $r2;
+        edu.kit.ipd.sdq.eventsim.middleware.SimulationMiddleware $r3;
+        edu.kit.ipd.sdq.eventsim.api.events.IEventHandler$Registration $r4;
+
+        $r0 := @this: edu.kit.ipd.sdq.eventsim.middleware.SimulationMiddleware$lambda_0__147;
+
+        $r1 := @parameter0: edu.kit.ipd.sdq.eventsim.api.events.SimulationEvent;
+
+        $r2 = (edu.kit.ipd.sdq.eventsim.api.events.SimulationStartEvent) $r1;
+
+        $r3 = $r0.<edu.kit.ipd.sdq.eventsim.middleware.SimulationMiddleware$lambda_0__147: edu.kit.ipd.sdq.eventsim.middleware.SimulationMiddleware cap0>;
+
+        $r4 = virtualinvoke $r3.<edu.kit.ipd.sdq.eventsim.middleware.SimulationMiddleware: edu.kit.ipd.sdq.eventsim.api.events.IEventHandler$Registration lambda$0(edu.kit.ipd.sdq.eventsim.api.events.SimulationStartEvent)>($r2);
+
+        return $r4;
+    }
+}

@@ -1,0 +1,7 @@
+public annotation interface  edu.kit.ipd.sdq.eventsim.measurement.'annotation'.Probe extends java.lang.Object implements java.lang.'annotation'.Annotation
+{
+
+    public abstract java.lang.Class type();
+
+    public abstract java.lang.String property();
+}

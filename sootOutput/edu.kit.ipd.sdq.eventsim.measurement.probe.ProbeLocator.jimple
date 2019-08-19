@@ -1,0 +1,5 @@
+public interface  edu.kit.ipd.sdq.eventsim.measurement.probe.ProbeLocator extends java.lang.Object
+{
+
+    public abstract java.lang.Class probeForType(java.lang.Class, java.lang.String);
+}

@@ -1,0 +1,5 @@
+public interface  edu.kit.ipd.sdq.eventsim.api.ILinkingResource extends java.lang.Object
+{
+
+    public abstract void consume(edu.kit.ipd.sdq.eventsim.api.IRequest, org.palladiosimulator.pcm.resourceenvironment.LinkingResource, double, edu.kit.ipd.sdq.eventsim.api.Procedure);
+}

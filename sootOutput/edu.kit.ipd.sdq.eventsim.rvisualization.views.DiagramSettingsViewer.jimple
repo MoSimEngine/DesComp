@@ -1,0 +1,739 @@
+public class edu.kit.ipd.sdq.eventsim.rvisualization.views.DiagramSettingsViewer extends org.eclipse.swt.widgets.Composite
+{
+    private org.eclipse.core.databinding.DataBindingContext m_bindingContext;
+    private org.eclipse.swt.widgets.Text txtTitle;
+    private edu.kit.ipd.sdq.eventsim.rvisualization.model.DiagramModel diagramModel;
+    private edu.kit.ipd.sdq.eventsim.rvisualization.model.VariableBindingModel bindingModel;
+    private edu.kit.ipd.sdq.eventsim.rvisualization.model.VariableBindingModel bindingModelOriginal;
+    private org.eclipse.swt.widgets.Text txtSubTitle;
+    private org.eclipse.swt.widgets.Text txtSubSubTitle;
+    private org.eclipse.swt.widgets.Group grpVariableBindings;
+    private org.eclipse.swt.widgets.List listUnboundVariables;
+    private org.eclipse.jface.viewers.ListViewer listViewerUnboundVariables;
+    private org.eclipse.swt.widgets.List listBoundVariables;
+    private org.eclipse.jface.viewers.ListViewer listViewerBoundVariables;
+    private org.eclipse.swt.widgets.Label lblUnboundVariables;
+    private org.eclipse.swt.widgets.Label lblVariableBindings;
+    private org.eclipse.swt.widgets.Button btnBind;
+    private org.eclipse.swt.widgets.Button btnRemove;
+
+    public void <init>(org.eclipse.swt.widgets.Composite, int, edu.kit.ipd.sdq.eventsim.rvisualization.model.DiagramModel, edu.kit.ipd.sdq.eventsim.rvisualization.model.VariableBindingModel)
+    {
+        edu.kit.ipd.sdq.eventsim.rvisualization.views.DiagramSettingsViewer r0;
+        org.eclipse.swt.widgets.Composite r1;
+        int i0;
+        edu.kit.ipd.sdq.eventsim.rvisualization.model.DiagramModel r2;
+        edu.kit.ipd.sdq.eventsim.rvisualization.model.VariableBindingModel r3, $r4, $r5;
+        org.eclipse.swt.layout.GridLayout $r6;
+
+        r0 := @this: edu.kit.ipd.sdq.eventsim.rvisualization.views.DiagramSettingsViewer;
+
+        r1 := @parameter0: org.eclipse.swt.widgets.Composite;
+
+        i0 := @parameter1: int;
+
+        r2 := @parameter2: edu.kit.ipd.sdq.eventsim.rvisualization.model.DiagramModel;
+
+        r3 := @parameter3: edu.kit.ipd.sdq.eventsim.rvisualization.model.VariableBindingModel;
+
+        specialinvoke r0.<org.eclipse.swt.widgets.Composite: void <init>(org.eclipse.swt.widgets.Composite,int)>(r1, i0);
+
+        r0.<edu.kit.ipd.sdq.eventsim.rvisualization.views.DiagramSettingsViewer: edu.kit.ipd.sdq.eventsim.rvisualization.model.DiagramModel diagramModel> = r2;
+
+        r0.<edu.kit.ipd.sdq.eventsim.rvisualization.views.DiagramSettingsViewer: edu.kit.ipd.sdq.eventsim.rvisualization.model.VariableBindingModel bindingModelOriginal> = r3;
+
+        $r4 = new edu.kit.ipd.sdq.eventsim.rvisualization.model.VariableBindingModel;
+
+        $r5 = r0.<edu.kit.ipd.sdq.eventsim.rvisualization.views.DiagramSettingsViewer: edu.kit.ipd.sdq.eventsim.rvisualization.model.VariableBindingModel bindingModelOriginal>;
+
+        specialinvoke $r4.<edu.kit.ipd.sdq.eventsim.rvisualization.model.VariableBindingModel: void <init>(edu.kit.ipd.sdq.eventsim.rvisualization.model.VariableBindingModel)>($r5);
+
+        r0.<edu.kit.ipd.sdq.eventsim.rvisualization.views.DiagramSettingsViewer: edu.kit.ipd.sdq.eventsim.rvisualization.model.VariableBindingModel bindingModel> = $r4;
+
+        $r6 = new org.eclipse.swt.layout.GridLayout;
+
+        specialinvoke $r6.<org.eclipse.swt.layout.GridLayout: void <init>(int,boolean)>(2, 0);
+
+        virtualinvoke r0.<edu.kit.ipd.sdq.eventsim.rvisualization.views.DiagramSettingsViewer: void setLayout(org.eclipse.swt.widgets.Layout)>($r6);
+
+        specialinvoke r0.<edu.kit.ipd.sdq.eventsim.rvisualization.views.DiagramSettingsViewer: void createTitle()>();
+
+        specialinvoke r0.<edu.kit.ipd.sdq.eventsim.rvisualization.views.DiagramSettingsViewer: void createSubTitle()>();
+
+        specialinvoke r0.<edu.kit.ipd.sdq.eventsim.rvisualization.views.DiagramSettingsViewer: void createSubSubTitle()>();
+
+        specialinvoke r0.<edu.kit.ipd.sdq.eventsim.rvisualization.views.DiagramSettingsViewer: void createVariableBindingsGroup(edu.kit.ipd.sdq.eventsim.rvisualization.model.DiagramModel)>(r2);
+
+        return;
+    }
+
+    private void createVariableBindingsGroup(edu.kit.ipd.sdq.eventsim.rvisualization.model.DiagramModel)
+    {
+        edu.kit.ipd.sdq.eventsim.rvisualization.views.DiagramSettingsViewer r0;
+        edu.kit.ipd.sdq.eventsim.rvisualization.model.DiagramModel r1;
+        org.eclipse.swt.widgets.Group $r3, $r5, $r7, $r9, $r14, $r19, $r25, $r31, $r38, r45;
+        org.eclipse.swt.widgets.Label $r11, $r12, $r16, $r17, r48, r50;
+        org.eclipse.jface.viewers.ListViewer $r20, $r26, r52, r54;
+        org.eclipse.swt.widgets.List $r21, $r23, $r27, $r29;
+        org.eclipse.swt.widgets.Button $r33, $r35, $r36, $r40, $r42, $r43, r56, r59;
+        org.eclipse.core.databinding.DataBindingContext $r44;
+        org.eclipse.swt.layout.GridLayout r46;
+        org.eclipse.swt.layout.GridData r47, r49, r51, r53, r55, r58, r61;
+        edu.kit.ipd.sdq.eventsim.rvisualization.views.DiagramSettingsViewer$1 r57;
+        edu.kit.ipd.sdq.eventsim.rvisualization.views.DiagramSettingsViewer$2 r60;
+        org.eclipse.swt.events.SelectionListener r62, r63;
+
+        r0 := @this: edu.kit.ipd.sdq.eventsim.rvisualization.views.DiagramSettingsViewer;
+
+        r1 := @parameter0: edu.kit.ipd.sdq.eventsim.rvisualization.model.DiagramModel;
+
+        r45 = new org.eclipse.swt.widgets.Group;
+
+        specialinvoke r45.<org.eclipse.swt.widgets.Group: void <init>(org.eclipse.swt.widgets.Composite,int)>(r0, 0);
+
+        r0.<edu.kit.ipd.sdq.eventsim.rvisualization.views.DiagramSettingsViewer: org.eclipse.swt.widgets.Group grpVariableBindings> = r45;
+
+        $r3 = r0.<edu.kit.ipd.sdq.eventsim.rvisualization.views.DiagramSettingsViewer: org.eclipse.swt.widgets.Group grpVariableBindings>;
+
+        virtualinvoke $r3.<org.eclipse.swt.widgets.Group: void setText(java.lang.String)>("Variable Bindings");
+
+        $r5 = r0.<edu.kit.ipd.sdq.eventsim.rvisualization.views.DiagramSettingsViewer: org.eclipse.swt.widgets.Group grpVariableBindings>;
+
+        r46 = new org.eclipse.swt.layout.GridLayout;
+
+        specialinvoke r46.<org.eclipse.swt.layout.GridLayout: void <init>(int,boolean)>(2, 0);
+
+        virtualinvoke $r5.<org.eclipse.swt.widgets.Group: void setLayout(org.eclipse.swt.widgets.Layout)>(r46);
+
+        $r7 = r0.<edu.kit.ipd.sdq.eventsim.rvisualization.views.DiagramSettingsViewer: org.eclipse.swt.widgets.Group grpVariableBindings>;
+
+        r47 = new org.eclipse.swt.layout.GridData;
+
+        specialinvoke r47.<org.eclipse.swt.layout.GridData: void <init>(int,int,boolean,boolean,int,int)>(4, 4, 1, 1, 2, 1);
+
+        virtualinvoke $r7.<org.eclipse.swt.widgets.Group: void setLayoutData(java.lang.Object)>(r47);
+
+        r48 = new org.eclipse.swt.widgets.Label;
+
+        $r9 = r0.<edu.kit.ipd.sdq.eventsim.rvisualization.views.DiagramSettingsViewer: org.eclipse.swt.widgets.Group grpVariableBindings>;
+
+        specialinvoke r48.<org.eclipse.swt.widgets.Label: void <init>(org.eclipse.swt.widgets.Composite,int)>($r9, 0);
+
+        r0.<edu.kit.ipd.sdq.eventsim.rvisualization.views.DiagramSettingsViewer: org.eclipse.swt.widgets.Label lblUnboundVariables> = r48;
+
+        $r11 = r0.<edu.kit.ipd.sdq.eventsim.rvisualization.views.DiagramSettingsViewer: org.eclipse.swt.widgets.Label lblUnboundVariables>;
+
+        r49 = new org.eclipse.swt.layout.GridData;
+
+        specialinvoke r49.<org.eclipse.swt.layout.GridData: void <init>(int,int,boolean,boolean,int,int)>(16384, 16777216, 1, 0, 1, 1);
+
+        virtualinvoke $r11.<org.eclipse.swt.widgets.Label: void setLayoutData(java.lang.Object)>(r49);
+
+        $r12 = r0.<edu.kit.ipd.sdq.eventsim.rvisualization.views.DiagramSettingsViewer: org.eclipse.swt.widgets.Label lblUnboundVariables>;
+
+        virtualinvoke $r12.<org.eclipse.swt.widgets.Label: void setText(java.lang.String)>("Unbound Variables:");
+
+        r50 = new org.eclipse.swt.widgets.Label;
+
+        $r14 = r0.<edu.kit.ipd.sdq.eventsim.rvisualization.views.DiagramSettingsViewer: org.eclipse.swt.widgets.Group grpVariableBindings>;
+
+        specialinvoke r50.<org.eclipse.swt.widgets.Label: void <init>(org.eclipse.swt.widgets.Composite,int)>($r14, 0);
+
+        r0.<edu.kit.ipd.sdq.eventsim.rvisualization.views.DiagramSettingsViewer: org.eclipse.swt.widgets.Label lblVariableBindings> = r50;
+
+        $r16 = r0.<edu.kit.ipd.sdq.eventsim.rvisualization.views.DiagramSettingsViewer: org.eclipse.swt.widgets.Label lblVariableBindings>;
+
+        r51 = new org.eclipse.swt.layout.GridData;
+
+        specialinvoke r51.<org.eclipse.swt.layout.GridData: void <init>(int,int,boolean,boolean,int,int)>(16384, 16777216, 1, 0, 1, 1);
+
+        virtualinvoke $r16.<org.eclipse.swt.widgets.Label: void setLayoutData(java.lang.Object)>(r51);
+
+        $r17 = r0.<edu.kit.ipd.sdq.eventsim.rvisualization.views.DiagramSettingsViewer: org.eclipse.swt.widgets.Label lblVariableBindings>;
+
+        virtualinvoke $r17.<org.eclipse.swt.widgets.Label: void setText(java.lang.String)>("Bindings:");
+
+        r52 = new org.eclipse.jface.viewers.ListViewer;
+
+        $r19 = r0.<edu.kit.ipd.sdq.eventsim.rvisualization.views.DiagramSettingsViewer: org.eclipse.swt.widgets.Group grpVariableBindings>;
+
+        specialinvoke r52.<org.eclipse.jface.viewers.ListViewer: void <init>(org.eclipse.swt.widgets.Composite,int)>($r19, 2560);
+
+        r0.<edu.kit.ipd.sdq.eventsim.rvisualization.views.DiagramSettingsViewer: org.eclipse.jface.viewers.ListViewer listViewerUnboundVariables> = r52;
+
+        $r20 = r0.<edu.kit.ipd.sdq.eventsim.rvisualization.views.DiagramSettingsViewer: org.eclipse.jface.viewers.ListViewer listViewerUnboundVariables>;
+
+        $r21 = virtualinvoke $r20.<org.eclipse.jface.viewers.ListViewer: org.eclipse.swt.widgets.List getList()>();
+
+        r0.<edu.kit.ipd.sdq.eventsim.rvisualization.views.DiagramSettingsViewer: org.eclipse.swt.widgets.List listUnboundVariables> = $r21;
+
+        $r23 = r0.<edu.kit.ipd.sdq.eventsim.rvisualization.views.DiagramSettingsViewer: org.eclipse.swt.widgets.List listUnboundVariables>;
+
+        r53 = new org.eclipse.swt.layout.GridData;
+
+        specialinvoke r53.<org.eclipse.swt.layout.GridData: void <init>(int,int,boolean,boolean,int,int)>(4, 4, 1, 1, 1, 1);
+
+        virtualinvoke $r23.<org.eclipse.swt.widgets.List: void setLayoutData(java.lang.Object)>(r53);
+
+        r54 = new org.eclipse.jface.viewers.ListViewer;
+
+        $r25 = r0.<edu.kit.ipd.sdq.eventsim.rvisualization.views.DiagramSettingsViewer: org.eclipse.swt.widgets.Group grpVariableBindings>;
+
+        specialinvoke r54.<org.eclipse.jface.viewers.ListViewer: void <init>(org.eclipse.swt.widgets.Composite,int)>($r25, 2560);
+
+        r0.<edu.kit.ipd.sdq.eventsim.rvisualization.views.DiagramSettingsViewer: org.eclipse.jface.viewers.ListViewer listViewerBoundVariables> = r54;
+
+        $r26 = r0.<edu.kit.ipd.sdq.eventsim.rvisualization.views.DiagramSettingsViewer: org.eclipse.jface.viewers.ListViewer listViewerBoundVariables>;
+
+        $r27 = virtualinvoke $r26.<org.eclipse.jface.viewers.ListViewer: org.eclipse.swt.widgets.List getList()>();
+
+        r0.<edu.kit.ipd.sdq.eventsim.rvisualization.views.DiagramSettingsViewer: org.eclipse.swt.widgets.List listBoundVariables> = $r27;
+
+        $r29 = r0.<edu.kit.ipd.sdq.eventsim.rvisualization.views.DiagramSettingsViewer: org.eclipse.swt.widgets.List listBoundVariables>;
+
+        r55 = new org.eclipse.swt.layout.GridData;
+
+        specialinvoke r55.<org.eclipse.swt.layout.GridData: void <init>(int,int,boolean,boolean,int,int)>(4, 4, 1, 1, 1, 1);
+
+        virtualinvoke $r29.<org.eclipse.swt.widgets.List: void setLayoutData(java.lang.Object)>(r55);
+
+        r56 = new org.eclipse.swt.widgets.Button;
+
+        $r31 = r0.<edu.kit.ipd.sdq.eventsim.rvisualization.views.DiagramSettingsViewer: org.eclipse.swt.widgets.Group grpVariableBindings>;
+
+        specialinvoke r56.<org.eclipse.swt.widgets.Button: void <init>(org.eclipse.swt.widgets.Composite,int)>($r31, 0);
+
+        r0.<edu.kit.ipd.sdq.eventsim.rvisualization.views.DiagramSettingsViewer: org.eclipse.swt.widgets.Button btnBind> = r56;
+
+        $r33 = r0.<edu.kit.ipd.sdq.eventsim.rvisualization.views.DiagramSettingsViewer: org.eclipse.swt.widgets.Button btnBind>;
+
+        r57 = new edu.kit.ipd.sdq.eventsim.rvisualization.views.DiagramSettingsViewer$1;
+
+        specialinvoke r57.<edu.kit.ipd.sdq.eventsim.rvisualization.views.DiagramSettingsViewer$1: void <init>(edu.kit.ipd.sdq.eventsim.rvisualization.views.DiagramSettingsViewer)>(r0);
+
+        r62 = (org.eclipse.swt.events.SelectionListener) r57;
+
+        virtualinvoke $r33.<org.eclipse.swt.widgets.Button: void addSelectionListener(org.eclipse.swt.events.SelectionListener)>(r62);
+
+        $r35 = r0.<edu.kit.ipd.sdq.eventsim.rvisualization.views.DiagramSettingsViewer: org.eclipse.swt.widgets.Button btnBind>;
+
+        r58 = new org.eclipse.swt.layout.GridData;
+
+        specialinvoke r58.<org.eclipse.swt.layout.GridData: void <init>(int,int,boolean,boolean,int,int)>(131072, 16777216, 0, 0, 1, 1);
+
+        virtualinvoke $r35.<org.eclipse.swt.widgets.Button: void setLayoutData(java.lang.Object)>(r58);
+
+        $r36 = r0.<edu.kit.ipd.sdq.eventsim.rvisualization.views.DiagramSettingsViewer: org.eclipse.swt.widgets.Button btnBind>;
+
+        virtualinvoke $r36.<org.eclipse.swt.widgets.Button: void setText(java.lang.String)>("Bind...");
+
+        r59 = new org.eclipse.swt.widgets.Button;
+
+        $r38 = r0.<edu.kit.ipd.sdq.eventsim.rvisualization.views.DiagramSettingsViewer: org.eclipse.swt.widgets.Group grpVariableBindings>;
+
+        specialinvoke r59.<org.eclipse.swt.widgets.Button: void <init>(org.eclipse.swt.widgets.Composite,int)>($r38, 0);
+
+        r0.<edu.kit.ipd.sdq.eventsim.rvisualization.views.DiagramSettingsViewer: org.eclipse.swt.widgets.Button btnRemove> = r59;
+
+        $r40 = r0.<edu.kit.ipd.sdq.eventsim.rvisualization.views.DiagramSettingsViewer: org.eclipse.swt.widgets.Button btnRemove>;
+
+        r60 = new edu.kit.ipd.sdq.eventsim.rvisualization.views.DiagramSettingsViewer$2;
+
+        specialinvoke r60.<edu.kit.ipd.sdq.eventsim.rvisualization.views.DiagramSettingsViewer$2: void <init>(edu.kit.ipd.sdq.eventsim.rvisualization.views.DiagramSettingsViewer)>(r0);
+
+        r63 = (org.eclipse.swt.events.SelectionListener) r60;
+
+        virtualinvoke $r40.<org.eclipse.swt.widgets.Button: void addSelectionListener(org.eclipse.swt.events.SelectionListener)>(r63);
+
+        $r42 = r0.<edu.kit.ipd.sdq.eventsim.rvisualization.views.DiagramSettingsViewer: org.eclipse.swt.widgets.Button btnRemove>;
+
+        r61 = new org.eclipse.swt.layout.GridData;
+
+        specialinvoke r61.<org.eclipse.swt.layout.GridData: void <init>(int,int,boolean,boolean,int,int)>(131072, 16777216, 0, 0, 1, 1);
+
+        virtualinvoke $r42.<org.eclipse.swt.widgets.Button: void setLayoutData(java.lang.Object)>(r61);
+
+        $r43 = r0.<edu.kit.ipd.sdq.eventsim.rvisualization.views.DiagramSettingsViewer: org.eclipse.swt.widgets.Button btnRemove>;
+
+        virtualinvoke $r43.<org.eclipse.swt.widgets.Button: void setText(java.lang.String)>("Remove");
+
+        $r44 = virtualinvoke r0.<edu.kit.ipd.sdq.eventsim.rvisualization.views.DiagramSettingsViewer: org.eclipse.core.databinding.DataBindingContext initDataBindings()>();
+
+        r0.<edu.kit.ipd.sdq.eventsim.rvisualization.views.DiagramSettingsViewer: org.eclipse.core.databinding.DataBindingContext m_bindingContext> = $r44;
+
+        return;
+    }
+
+    private edu.kit.ipd.sdq.eventsim.rvisualization.model.TranslatableEntity openBindingTypeSelectionDialog()
+    {
+        edu.kit.ipd.sdq.eventsim.rvisualization.views.DiagramSettingsViewer r0;
+        int i0, $i1;
+        edu.kit.ipd.sdq.eventsim.rvisualization.model.TranslatableEntity r2;
+        org.eclipse.swt.widgets.Composite $r4;
+        org.eclipse.swt.widgets.Shell $r5;
+        edu.kit.ipd.sdq.eventsim.rvisualization.model.VariableBindingModel $r6;
+        java.util.List $r7;
+        org.eclipse.jface.viewers.ArrayContentProvider $r8;
+        java.lang.Object[] $r10, $r11;
+        java.lang.Object $r12;
+        org.eclipse.ui.dialogs.ListDialog r13;
+        edu.kit.ipd.sdq.eventsim.rvisualization.views.DiagramSettingsViewer$3 r14;
+        org.eclipse.jface.viewers.ILabelProvider r15;
+
+        r0 := @this: edu.kit.ipd.sdq.eventsim.rvisualization.views.DiagramSettingsViewer;
+
+        r13 = new org.eclipse.ui.dialogs.ListDialog;
+
+        $r4 = virtualinvoke r0.<edu.kit.ipd.sdq.eventsim.rvisualization.views.DiagramSettingsViewer: org.eclipse.swt.widgets.Composite getParent()>();
+
+        $r5 = virtualinvoke $r4.<org.eclipse.swt.widgets.Composite: org.eclipse.swt.widgets.Shell getShell()>();
+
+        specialinvoke r13.<org.eclipse.ui.dialogs.ListDialog: void <init>(org.eclipse.swt.widgets.Shell)>($r5);
+
+        virtualinvoke r13.<org.eclipse.ui.dialogs.ListDialog: void setHelpAvailable(boolean)>(0);
+
+        $r6 = r0.<edu.kit.ipd.sdq.eventsim.rvisualization.views.DiagramSettingsViewer: edu.kit.ipd.sdq.eventsim.rvisualization.model.VariableBindingModel bindingModel>;
+
+        $r7 = virtualinvoke $r6.<edu.kit.ipd.sdq.eventsim.rvisualization.model.VariableBindingModel: java.util.List getAvailableBindingTypes()>();
+
+        virtualinvoke r13.<org.eclipse.ui.dialogs.ListDialog: void setInput(java.lang.Object)>($r7);
+
+        $r8 = staticinvoke <org.eclipse.jface.viewers.ArrayContentProvider: org.eclipse.jface.viewers.ArrayContentProvider getInstance()>();
+
+        virtualinvoke r13.<org.eclipse.ui.dialogs.ListDialog: void setContentProvider(org.eclipse.jface.viewers.IStructuredContentProvider)>($r8);
+
+        r14 = new edu.kit.ipd.sdq.eventsim.rvisualization.views.DiagramSettingsViewer$3;
+
+        specialinvoke r14.<edu.kit.ipd.sdq.eventsim.rvisualization.views.DiagramSettingsViewer$3: void <init>(edu.kit.ipd.sdq.eventsim.rvisualization.views.DiagramSettingsViewer)>(r0);
+
+        r15 = (org.eclipse.jface.viewers.ILabelProvider) r14;
+
+        virtualinvoke r13.<org.eclipse.ui.dialogs.ListDialog: void setLabelProvider(org.eclipse.jface.viewers.ILabelProvider)>(r15);
+
+        virtualinvoke r13.<org.eclipse.ui.dialogs.ListDialog: void setBlockOnOpen(boolean)>(1);
+
+        virtualinvoke r13.<org.eclipse.ui.dialogs.ListDialog: void setTitle(java.lang.String)>("Select Binding Type");
+
+        i0 = virtualinvoke r13.<org.eclipse.ui.dialogs.ListDialog: int open()>();
+
+        if i0 != 0 goto label2;
+
+        $r10 = virtualinvoke r13.<org.eclipse.ui.dialogs.ListDialog: java.lang.Object[] getResult()>();
+
+        $i1 = lengthof $r10;
+
+        if $i1 != 1 goto label1;
+
+        $r11 = virtualinvoke r13.<org.eclipse.ui.dialogs.ListDialog: java.lang.Object[] getResult()>();
+
+        $r12 = $r11[0];
+
+        r2 = (edu.kit.ipd.sdq.eventsim.rvisualization.model.TranslatableEntity) $r12;
+
+        return r2;
+
+     label1:
+        return null;
+
+     label2:
+        return null;
+    }
+
+    private void createSubSubTitle()
+    {
+        edu.kit.ipd.sdq.eventsim.rvisualization.views.DiagramSettingsViewer r0;
+        org.eclipse.swt.widgets.Label $r2;
+        org.eclipse.swt.layout.GridData $r3, $r5;
+        org.eclipse.swt.widgets.Text $r4, $r6;
+
+        r0 := @this: edu.kit.ipd.sdq.eventsim.rvisualization.views.DiagramSettingsViewer;
+
+        $r2 = new org.eclipse.swt.widgets.Label;
+
+        specialinvoke $r2.<org.eclipse.swt.widgets.Label: void <init>(org.eclipse.swt.widgets.Composite,int)>(r0, 0);
+
+        $r3 = new org.eclipse.swt.layout.GridData;
+
+        specialinvoke $r3.<org.eclipse.swt.layout.GridData: void <init>(int,int,boolean,boolean,int,int)>(131072, 16777216, 0, 0, 1, 1);
+
+        virtualinvoke $r2.<org.eclipse.swt.widgets.Label: void setLayoutData(java.lang.Object)>($r3);
+
+        virtualinvoke $r2.<org.eclipse.swt.widgets.Label: void setText(java.lang.String)>("Third Title:");
+
+        $r4 = new org.eclipse.swt.widgets.Text;
+
+        specialinvoke $r4.<org.eclipse.swt.widgets.Text: void <init>(org.eclipse.swt.widgets.Composite,int)>(r0, 2048);
+
+        r0.<edu.kit.ipd.sdq.eventsim.rvisualization.views.DiagramSettingsViewer: org.eclipse.swt.widgets.Text txtSubSubTitle> = $r4;
+
+        $r6 = r0.<edu.kit.ipd.sdq.eventsim.rvisualization.views.DiagramSettingsViewer: org.eclipse.swt.widgets.Text txtSubSubTitle>;
+
+        $r5 = new org.eclipse.swt.layout.GridData;
+
+        specialinvoke $r5.<org.eclipse.swt.layout.GridData: void <init>(int,int,boolean,boolean,int,int)>(4, 16777216, 1, 0, 1, 1);
+
+        virtualinvoke $r6.<org.eclipse.swt.widgets.Text: void setLayoutData(java.lang.Object)>($r5);
+
+        return;
+    }
+
+    private void createSubTitle()
+    {
+        edu.kit.ipd.sdq.eventsim.rvisualization.views.DiagramSettingsViewer r0;
+        org.eclipse.swt.widgets.Label $r2;
+        org.eclipse.swt.layout.GridData $r3, $r5;
+        org.eclipse.swt.widgets.Text $r4, $r6;
+
+        r0 := @this: edu.kit.ipd.sdq.eventsim.rvisualization.views.DiagramSettingsViewer;
+
+        $r2 = new org.eclipse.swt.widgets.Label;
+
+        specialinvoke $r2.<org.eclipse.swt.widgets.Label: void <init>(org.eclipse.swt.widgets.Composite,int)>(r0, 0);
+
+        $r3 = new org.eclipse.swt.layout.GridData;
+
+        specialinvoke $r3.<org.eclipse.swt.layout.GridData: void <init>(int,int,boolean,boolean,int,int)>(131072, 16777216, 0, 0, 1, 1);
+
+        virtualinvoke $r2.<org.eclipse.swt.widgets.Label: void setLayoutData(java.lang.Object)>($r3);
+
+        virtualinvoke $r2.<org.eclipse.swt.widgets.Label: void setText(java.lang.String)>("Second Title:");
+
+        $r4 = new org.eclipse.swt.widgets.Text;
+
+        specialinvoke $r4.<org.eclipse.swt.widgets.Text: void <init>(org.eclipse.swt.widgets.Composite,int)>(r0, 2048);
+
+        r0.<edu.kit.ipd.sdq.eventsim.rvisualization.views.DiagramSettingsViewer: org.eclipse.swt.widgets.Text txtSubTitle> = $r4;
+
+        $r6 = r0.<edu.kit.ipd.sdq.eventsim.rvisualization.views.DiagramSettingsViewer: org.eclipse.swt.widgets.Text txtSubTitle>;
+
+        $r5 = new org.eclipse.swt.layout.GridData;
+
+        specialinvoke $r5.<org.eclipse.swt.layout.GridData: void <init>(int,int,boolean,boolean,int,int)>(4, 16777216, 1, 0, 1, 1);
+
+        virtualinvoke $r6.<org.eclipse.swt.widgets.Text: void setLayoutData(java.lang.Object)>($r5);
+
+        return;
+    }
+
+    private void createTitle()
+    {
+        edu.kit.ipd.sdq.eventsim.rvisualization.views.DiagramSettingsViewer r0;
+        org.eclipse.swt.widgets.Label $r2;
+        org.eclipse.swt.layout.GridData $r3, $r5;
+        org.eclipse.swt.widgets.Text $r4, $r6;
+
+        r0 := @this: edu.kit.ipd.sdq.eventsim.rvisualization.views.DiagramSettingsViewer;
+
+        $r2 = new org.eclipse.swt.widgets.Label;
+
+        specialinvoke $r2.<org.eclipse.swt.widgets.Label: void <init>(org.eclipse.swt.widgets.Composite,int)>(r0, 0);
+
+        $r3 = new org.eclipse.swt.layout.GridData;
+
+        specialinvoke $r3.<org.eclipse.swt.layout.GridData: void <init>(int,int,boolean,boolean,int,int)>(131072, 16777216, 0, 0, 1, 1);
+
+        virtualinvoke $r2.<org.eclipse.swt.widgets.Label: void setLayoutData(java.lang.Object)>($r3);
+
+        virtualinvoke $r2.<org.eclipse.swt.widgets.Label: void setText(java.lang.String)>("Title:");
+
+        $r4 = new org.eclipse.swt.widgets.Text;
+
+        specialinvoke $r4.<org.eclipse.swt.widgets.Text: void <init>(org.eclipse.swt.widgets.Composite,int)>(r0, 2048);
+
+        r0.<edu.kit.ipd.sdq.eventsim.rvisualization.views.DiagramSettingsViewer: org.eclipse.swt.widgets.Text txtTitle> = $r4;
+
+        $r6 = r0.<edu.kit.ipd.sdq.eventsim.rvisualization.views.DiagramSettingsViewer: org.eclipse.swt.widgets.Text txtTitle>;
+
+        $r5 = new org.eclipse.swt.layout.GridData;
+
+        specialinvoke $r5.<org.eclipse.swt.layout.GridData: void <init>(int,int,boolean,boolean,int,int)>(4, 16777216, 1, 0, 1, 1);
+
+        virtualinvoke $r6.<org.eclipse.swt.widgets.Text: void setLayoutData(java.lang.Object)>($r5);
+
+        return;
+    }
+
+    public edu.kit.ipd.sdq.eventsim.rvisualization.model.DiagramModel getDiagramModel()
+    {
+        edu.kit.ipd.sdq.eventsim.rvisualization.views.DiagramSettingsViewer r0;
+        edu.kit.ipd.sdq.eventsim.rvisualization.model.DiagramModel $r1;
+
+        r0 := @this: edu.kit.ipd.sdq.eventsim.rvisualization.views.DiagramSettingsViewer;
+
+        $r1 = r0.<edu.kit.ipd.sdq.eventsim.rvisualization.views.DiagramSettingsViewer: edu.kit.ipd.sdq.eventsim.rvisualization.model.DiagramModel diagramModel>;
+
+        return $r1;
+    }
+
+    public void setDiagramModel(edu.kit.ipd.sdq.eventsim.rvisualization.model.DiagramModel)
+    {
+        edu.kit.ipd.sdq.eventsim.rvisualization.views.DiagramSettingsViewer r0;
+        edu.kit.ipd.sdq.eventsim.rvisualization.model.DiagramModel r1;
+
+        r0 := @this: edu.kit.ipd.sdq.eventsim.rvisualization.views.DiagramSettingsViewer;
+
+        r1 := @parameter0: edu.kit.ipd.sdq.eventsim.rvisualization.model.DiagramModel;
+
+        r0.<edu.kit.ipd.sdq.eventsim.rvisualization.views.DiagramSettingsViewer: edu.kit.ipd.sdq.eventsim.rvisualization.model.DiagramModel diagramModel> = r1;
+
+        return;
+    }
+
+    public void applyChanges()
+    {
+        edu.kit.ipd.sdq.eventsim.rvisualization.views.DiagramSettingsViewer r0;
+        org.eclipse.core.databinding.DataBindingContext $r1;
+        edu.kit.ipd.sdq.eventsim.rvisualization.model.VariableBindingModel $r2, $r3, $r5, $r6, $r8, $r9;
+        java.util.List $r4, $r7, $r10;
+
+        r0 := @this: edu.kit.ipd.sdq.eventsim.rvisualization.views.DiagramSettingsViewer;
+
+        $r1 = r0.<edu.kit.ipd.sdq.eventsim.rvisualization.views.DiagramSettingsViewer: org.eclipse.core.databinding.DataBindingContext m_bindingContext>;
+
+        virtualinvoke $r1.<org.eclipse.core.databinding.DataBindingContext: void updateModels()>();
+
+        $r3 = r0.<edu.kit.ipd.sdq.eventsim.rvisualization.views.DiagramSettingsViewer: edu.kit.ipd.sdq.eventsim.rvisualization.model.VariableBindingModel bindingModelOriginal>;
+
+        $r2 = r0.<edu.kit.ipd.sdq.eventsim.rvisualization.views.DiagramSettingsViewer: edu.kit.ipd.sdq.eventsim.rvisualization.model.VariableBindingModel bindingModel>;
+
+        $r4 = virtualinvoke $r2.<edu.kit.ipd.sdq.eventsim.rvisualization.model.VariableBindingModel: java.util.List getAvailableBindingTypes()>();
+
+        virtualinvoke $r3.<edu.kit.ipd.sdq.eventsim.rvisualization.model.VariableBindingModel: void setAvailableBindingTypes(java.util.List)>($r4);
+
+        $r6 = r0.<edu.kit.ipd.sdq.eventsim.rvisualization.views.DiagramSettingsViewer: edu.kit.ipd.sdq.eventsim.rvisualization.model.VariableBindingModel bindingModelOriginal>;
+
+        $r5 = r0.<edu.kit.ipd.sdq.eventsim.rvisualization.views.DiagramSettingsViewer: edu.kit.ipd.sdq.eventsim.rvisualization.model.VariableBindingModel bindingModel>;
+
+        $r7 = virtualinvoke $r5.<edu.kit.ipd.sdq.eventsim.rvisualization.model.VariableBindingModel: java.util.List getUnboundVariables()>();
+
+        virtualinvoke $r6.<edu.kit.ipd.sdq.eventsim.rvisualization.model.VariableBindingModel: void setUnboundVariables(java.util.List)>($r7);
+
+        $r9 = r0.<edu.kit.ipd.sdq.eventsim.rvisualization.views.DiagramSettingsViewer: edu.kit.ipd.sdq.eventsim.rvisualization.model.VariableBindingModel bindingModelOriginal>;
+
+        $r8 = r0.<edu.kit.ipd.sdq.eventsim.rvisualization.views.DiagramSettingsViewer: edu.kit.ipd.sdq.eventsim.rvisualization.model.VariableBindingModel bindingModel>;
+
+        $r10 = virtualinvoke $r8.<edu.kit.ipd.sdq.eventsim.rvisualization.model.VariableBindingModel: java.util.List getVariableBindings()>();
+
+        virtualinvoke $r9.<edu.kit.ipd.sdq.eventsim.rvisualization.model.VariableBindingModel: void setVariableBindings(java.util.List)>($r10);
+
+        return;
+    }
+
+    protected org.eclipse.core.databinding.DataBindingContext initDataBindings()
+    {
+        edu.kit.ipd.sdq.eventsim.rvisualization.views.DiagramSettingsViewer r0;
+        org.eclipse.jface.databinding.swt.ISWTObservableValue r2, r4, r6;
+        org.eclipse.core.databinding.observable.value.IObservableValue r3, r5, r7, r15, r17;
+        org.eclipse.core.databinding.observable.map.IObservableMap r9;
+        org.eclipse.core.databinding.observable.list.IObservableList r10, r13;
+        org.eclipse.core.databinding.observable.map.IObservableMap[] r12;
+        org.eclipse.jface.databinding.viewers.IViewerObservableValue r14, r16;
+        org.eclipse.jface.databinding.swt.IWidgetValueProperty $r19, $r25, $r31;
+        org.eclipse.swt.widgets.Text $r20, $r26, $r32;
+        org.eclipse.core.databinding.beans.IBeanValueProperty $r21, $r27, $r33, $r56, $r61;
+        edu.kit.ipd.sdq.eventsim.rvisualization.model.DiagramModel $r22, $r28, $r34;
+        int $i0, $i1, $i2;
+        org.eclipse.core.databinding.observable.set.IObservableSet $r38, $r46;
+        org.eclipse.jface.viewers.ListViewer $r40, $r41, $r44, $r49, $r50, $r53, $r55, $r60;
+        org.eclipse.core.databinding.beans.IBeanListProperty $r42, $r51;
+        edu.kit.ipd.sdq.eventsim.rvisualization.model.VariableBindingModel $r43, $r52, $r57, $r62;
+        java.lang.String[] $r47;
+        org.eclipse.jface.databinding.viewers.IViewerValueProperty $r54, $r59;
+        org.eclipse.core.databinding.DataBindingContext r64;
+        org.eclipse.core.databinding.UpdateValueStrategy r65, r66, r67;
+        org.eclipse.jface.databinding.viewers.ObservableListContentProvider r68, r70;
+        edu.kit.ipd.sdq.eventsim.rvisualization.model.provider.TranslatableEntityLabelProvider r69;
+        edu.kit.ipd.sdq.eventsim.rvisualization.model.provider.VariableBindingLabelProvider r71;
+        org.eclipse.jface.viewers.IBaseLabelProvider r72, r73;
+
+        r0 := @this: edu.kit.ipd.sdq.eventsim.rvisualization.views.DiagramSettingsViewer;
+
+        r64 = new org.eclipse.core.databinding.DataBindingContext;
+
+        specialinvoke r64.<org.eclipse.core.databinding.DataBindingContext: void <init>()>();
+
+        $r19 = staticinvoke <org.eclipse.jface.databinding.swt.WidgetProperties: org.eclipse.jface.databinding.swt.IWidgetValueProperty text(int)>(24);
+
+        $r20 = r0.<edu.kit.ipd.sdq.eventsim.rvisualization.views.DiagramSettingsViewer: org.eclipse.swt.widgets.Text txtTitle>;
+
+        r2 = interfaceinvoke $r19.<org.eclipse.jface.databinding.swt.IWidgetValueProperty: org.eclipse.jface.databinding.swt.ISWTObservableValue observe(org.eclipse.swt.widgets.Widget)>($r20);
+
+        $r21 = staticinvoke <org.eclipse.core.databinding.beans.BeanProperties: org.eclipse.core.databinding.beans.IBeanValueProperty value(java.lang.String)>("title");
+
+        $r22 = r0.<edu.kit.ipd.sdq.eventsim.rvisualization.views.DiagramSettingsViewer: edu.kit.ipd.sdq.eventsim.rvisualization.model.DiagramModel diagramModel>;
+
+        r3 = interfaceinvoke $r21.<org.eclipse.core.databinding.beans.IBeanValueProperty: org.eclipse.core.databinding.observable.value.IObservableValue observe(java.lang.Object)>($r22);
+
+        r65 = new org.eclipse.core.databinding.UpdateValueStrategy;
+
+        $i0 = <org.eclipse.core.databinding.UpdateValueStrategy: int POLICY_ON_REQUEST>;
+
+        specialinvoke r65.<org.eclipse.core.databinding.UpdateValueStrategy: void <init>(int)>($i0);
+
+        virtualinvoke r64.<org.eclipse.core.databinding.DataBindingContext: org.eclipse.core.databinding.Binding bindValue(org.eclipse.core.databinding.observable.value.IObservableValue,org.eclipse.core.databinding.observable.value.IObservableValue,org.eclipse.core.databinding.UpdateValueStrategy,org.eclipse.core.databinding.UpdateValueStrategy)>(r2, r3, r65, null);
+
+        $r25 = staticinvoke <org.eclipse.jface.databinding.swt.WidgetProperties: org.eclipse.jface.databinding.swt.IWidgetValueProperty text(int)>(24);
+
+        $r26 = r0.<edu.kit.ipd.sdq.eventsim.rvisualization.views.DiagramSettingsViewer: org.eclipse.swt.widgets.Text txtSubTitle>;
+
+        r4 = interfaceinvoke $r25.<org.eclipse.jface.databinding.swt.IWidgetValueProperty: org.eclipse.jface.databinding.swt.ISWTObservableValue observe(org.eclipse.swt.widgets.Widget)>($r26);
+
+        $r27 = staticinvoke <org.eclipse.core.databinding.beans.BeanProperties: org.eclipse.core.databinding.beans.IBeanValueProperty value(java.lang.String)>("subTitle");
+
+        $r28 = r0.<edu.kit.ipd.sdq.eventsim.rvisualization.views.DiagramSettingsViewer: edu.kit.ipd.sdq.eventsim.rvisualization.model.DiagramModel diagramModel>;
+
+        r5 = interfaceinvoke $r27.<org.eclipse.core.databinding.beans.IBeanValueProperty: org.eclipse.core.databinding.observable.value.IObservableValue observe(java.lang.Object)>($r28);
+
+        r66 = new org.eclipse.core.databinding.UpdateValueStrategy;
+
+        $i1 = <org.eclipse.core.databinding.UpdateValueStrategy: int POLICY_ON_REQUEST>;
+
+        specialinvoke r66.<org.eclipse.core.databinding.UpdateValueStrategy: void <init>(int)>($i1);
+
+        virtualinvoke r64.<org.eclipse.core.databinding.DataBindingContext: org.eclipse.core.databinding.Binding bindValue(org.eclipse.core.databinding.observable.value.IObservableValue,org.eclipse.core.databinding.observable.value.IObservableValue,org.eclipse.core.databinding.UpdateValueStrategy,org.eclipse.core.databinding.UpdateValueStrategy)>(r4, r5, r66, null);
+
+        $r31 = staticinvoke <org.eclipse.jface.databinding.swt.WidgetProperties: org.eclipse.jface.databinding.swt.IWidgetValueProperty text(int)>(24);
+
+        $r32 = r0.<edu.kit.ipd.sdq.eventsim.rvisualization.views.DiagramSettingsViewer: org.eclipse.swt.widgets.Text txtSubSubTitle>;
+
+        r6 = interfaceinvoke $r31.<org.eclipse.jface.databinding.swt.IWidgetValueProperty: org.eclipse.jface.databinding.swt.ISWTObservableValue observe(org.eclipse.swt.widgets.Widget)>($r32);
+
+        $r33 = staticinvoke <org.eclipse.core.databinding.beans.BeanProperties: org.eclipse.core.databinding.beans.IBeanValueProperty value(java.lang.String)>("subSubTitle");
+
+        $r34 = r0.<edu.kit.ipd.sdq.eventsim.rvisualization.views.DiagramSettingsViewer: edu.kit.ipd.sdq.eventsim.rvisualization.model.DiagramModel diagramModel>;
+
+        r7 = interfaceinvoke $r33.<org.eclipse.core.databinding.beans.IBeanValueProperty: org.eclipse.core.databinding.observable.value.IObservableValue observe(java.lang.Object)>($r34);
+
+        r67 = new org.eclipse.core.databinding.UpdateValueStrategy;
+
+        $i2 = <org.eclipse.core.databinding.UpdateValueStrategy: int POLICY_ON_REQUEST>;
+
+        specialinvoke r67.<org.eclipse.core.databinding.UpdateValueStrategy: void <init>(int)>($i2);
+
+        virtualinvoke r64.<org.eclipse.core.databinding.DataBindingContext: org.eclipse.core.databinding.Binding bindValue(org.eclipse.core.databinding.observable.value.IObservableValue,org.eclipse.core.databinding.observable.value.IObservableValue,org.eclipse.core.databinding.UpdateValueStrategy,org.eclipse.core.databinding.UpdateValueStrategy)>(r6, r7, r67, null);
+
+        r68 = new org.eclipse.jface.databinding.viewers.ObservableListContentProvider;
+
+        specialinvoke r68.<org.eclipse.jface.databinding.viewers.ObservableListContentProvider: void <init>()>();
+
+        $r38 = virtualinvoke r68.<org.eclipse.jface.databinding.viewers.ObservableListContentProvider: org.eclipse.core.databinding.observable.set.IObservableSet getKnownElements()>();
+
+        r9 = staticinvoke <org.eclipse.core.databinding.beans.PojoObservables: org.eclipse.core.databinding.observable.map.IObservableMap observeMap(org.eclipse.core.databinding.observable.set.IObservableSet,java.lang.Class,java.lang.String)>($r38, class "Ledu/kit/ipd/sdq/eventsim/rvisualization/model/TranslatableEntity;", "translation");
+
+        $r40 = r0.<edu.kit.ipd.sdq.eventsim.rvisualization.views.DiagramSettingsViewer: org.eclipse.jface.viewers.ListViewer listViewerUnboundVariables>;
+
+        r69 = new edu.kit.ipd.sdq.eventsim.rvisualization.model.provider.TranslatableEntityLabelProvider;
+
+        specialinvoke r69.<edu.kit.ipd.sdq.eventsim.rvisualization.model.provider.TranslatableEntityLabelProvider: void <init>(org.eclipse.core.databinding.observable.map.IObservableMap)>(r9);
+
+        r72 = (org.eclipse.jface.viewers.IBaseLabelProvider) r69;
+
+        virtualinvoke $r40.<org.eclipse.jface.viewers.ListViewer: void setLabelProvider(org.eclipse.jface.viewers.IBaseLabelProvider)>(r72);
+
+        $r41 = r0.<edu.kit.ipd.sdq.eventsim.rvisualization.views.DiagramSettingsViewer: org.eclipse.jface.viewers.ListViewer listViewerUnboundVariables>;
+
+        virtualinvoke $r41.<org.eclipse.jface.viewers.ListViewer: void setContentProvider(org.eclipse.jface.viewers.IContentProvider)>(r68);
+
+        $r42 = staticinvoke <org.eclipse.core.databinding.beans.BeanProperties: org.eclipse.core.databinding.beans.IBeanListProperty list(java.lang.String)>("unboundVariables");
+
+        $r43 = r0.<edu.kit.ipd.sdq.eventsim.rvisualization.views.DiagramSettingsViewer: edu.kit.ipd.sdq.eventsim.rvisualization.model.VariableBindingModel bindingModel>;
+
+        r10 = interfaceinvoke $r42.<org.eclipse.core.databinding.beans.IBeanListProperty: org.eclipse.core.databinding.observable.list.IObservableList observe(java.lang.Object)>($r43);
+
+        $r44 = r0.<edu.kit.ipd.sdq.eventsim.rvisualization.views.DiagramSettingsViewer: org.eclipse.jface.viewers.ListViewer listViewerUnboundVariables>;
+
+        virtualinvoke $r44.<org.eclipse.jface.viewers.ListViewer: void setInput(java.lang.Object)>(r10);
+
+        r70 = new org.eclipse.jface.databinding.viewers.ObservableListContentProvider;
+
+        specialinvoke r70.<org.eclipse.jface.databinding.viewers.ObservableListContentProvider: void <init>()>();
+
+        $r46 = virtualinvoke r70.<org.eclipse.jface.databinding.viewers.ObservableListContentProvider: org.eclipse.core.databinding.observable.set.IObservableSet getKnownElements()>();
+
+        $r47 = newarray (java.lang.String)[2];
+
+        $r47[0] = "variable";
+
+        $r47[1] = "bindingType";
+
+        r12 = staticinvoke <org.eclipse.core.databinding.beans.PojoObservables: org.eclipse.core.databinding.observable.map.IObservableMap[] observeMaps(org.eclipse.core.databinding.observable.set.IObservableSet,java.lang.Class,java.lang.String[])>($r46, class "Ledu/kit/ipd/sdq/eventsim/rvisualization/model/VariableBinding;", $r47);
+
+        $r49 = r0.<edu.kit.ipd.sdq.eventsim.rvisualization.views.DiagramSettingsViewer: org.eclipse.jface.viewers.ListViewer listViewerBoundVariables>;
+
+        r71 = new edu.kit.ipd.sdq.eventsim.rvisualization.model.provider.VariableBindingLabelProvider;
+
+        specialinvoke r71.<edu.kit.ipd.sdq.eventsim.rvisualization.model.provider.VariableBindingLabelProvider: void <init>(org.eclipse.core.databinding.observable.map.IObservableMap[])>(r12);
+
+        r73 = (org.eclipse.jface.viewers.IBaseLabelProvider) r71;
+
+        virtualinvoke $r49.<org.eclipse.jface.viewers.ListViewer: void setLabelProvider(org.eclipse.jface.viewers.IBaseLabelProvider)>(r73);
+
+        $r50 = r0.<edu.kit.ipd.sdq.eventsim.rvisualization.views.DiagramSettingsViewer: org.eclipse.jface.viewers.ListViewer listViewerBoundVariables>;
+
+        virtualinvoke $r50.<org.eclipse.jface.viewers.ListViewer: void setContentProvider(org.eclipse.jface.viewers.IContentProvider)>(r70);
+
+        $r51 = staticinvoke <org.eclipse.core.databinding.beans.BeanProperties: org.eclipse.core.databinding.beans.IBeanListProperty list(java.lang.String)>("variableBindings");
+
+        $r52 = r0.<edu.kit.ipd.sdq.eventsim.rvisualization.views.DiagramSettingsViewer: edu.kit.ipd.sdq.eventsim.rvisualization.model.VariableBindingModel bindingModel>;
+
+        r13 = interfaceinvoke $r51.<org.eclipse.core.databinding.beans.IBeanListProperty: org.eclipse.core.databinding.observable.list.IObservableList observe(java.lang.Object)>($r52);
+
+        $r53 = r0.<edu.kit.ipd.sdq.eventsim.rvisualization.views.DiagramSettingsViewer: org.eclipse.jface.viewers.ListViewer listViewerBoundVariables>;
+
+        virtualinvoke $r53.<org.eclipse.jface.viewers.ListViewer: void setInput(java.lang.Object)>(r13);
+
+        $r54 = staticinvoke <org.eclipse.jface.databinding.viewers.ViewerProperties: org.eclipse.jface.databinding.viewers.IViewerValueProperty singleSelection()>();
+
+        $r55 = r0.<edu.kit.ipd.sdq.eventsim.rvisualization.views.DiagramSettingsViewer: org.eclipse.jface.viewers.ListViewer listViewerUnboundVariables>;
+
+        r14 = interfaceinvoke $r54.<org.eclipse.jface.databinding.viewers.IViewerValueProperty: org.eclipse.jface.databinding.viewers.IViewerObservableValue observe(org.eclipse.jface.viewers.Viewer)>($r55);
+
+        $r56 = staticinvoke <org.eclipse.core.databinding.beans.BeanProperties: org.eclipse.core.databinding.beans.IBeanValueProperty value(java.lang.String)>("selectedUnboundVariable");
+
+        $r57 = r0.<edu.kit.ipd.sdq.eventsim.rvisualization.views.DiagramSettingsViewer: edu.kit.ipd.sdq.eventsim.rvisualization.model.VariableBindingModel bindingModel>;
+
+        r15 = interfaceinvoke $r56.<org.eclipse.core.databinding.beans.IBeanValueProperty: org.eclipse.core.databinding.observable.value.IObservableValue observe(java.lang.Object)>($r57);
+
+        virtualinvoke r64.<org.eclipse.core.databinding.DataBindingContext: org.eclipse.core.databinding.Binding bindValue(org.eclipse.core.databinding.observable.value.IObservableValue,org.eclipse.core.databinding.observable.value.IObservableValue,org.eclipse.core.databinding.UpdateValueStrategy,org.eclipse.core.databinding.UpdateValueStrategy)>(r14, r15, null, null);
+
+        $r59 = staticinvoke <org.eclipse.jface.databinding.viewers.ViewerProperties: org.eclipse.jface.databinding.viewers.IViewerValueProperty singleSelection()>();
+
+        $r60 = r0.<edu.kit.ipd.sdq.eventsim.rvisualization.views.DiagramSettingsViewer: org.eclipse.jface.viewers.ListViewer listViewerBoundVariables>;
+
+        r16 = interfaceinvoke $r59.<org.eclipse.jface.databinding.viewers.IViewerValueProperty: org.eclipse.jface.databinding.viewers.IViewerObservableValue observe(org.eclipse.jface.viewers.Viewer)>($r60);
+
+        $r61 = staticinvoke <org.eclipse.core.databinding.beans.BeanProperties: org.eclipse.core.databinding.beans.IBeanValueProperty value(java.lang.String)>("selectedVariableBinding");
+
+        $r62 = r0.<edu.kit.ipd.sdq.eventsim.rvisualization.views.DiagramSettingsViewer: edu.kit.ipd.sdq.eventsim.rvisualization.model.VariableBindingModel bindingModel>;
+
+        r17 = interfaceinvoke $r61.<org.eclipse.core.databinding.beans.IBeanValueProperty: org.eclipse.core.databinding.observable.value.IObservableValue observe(java.lang.Object)>($r62);
+
+        virtualinvoke r64.<org.eclipse.core.databinding.DataBindingContext: org.eclipse.core.databinding.Binding bindValue(org.eclipse.core.databinding.observable.value.IObservableValue,org.eclipse.core.databinding.observable.value.IObservableValue,org.eclipse.core.databinding.UpdateValueStrategy,org.eclipse.core.databinding.UpdateValueStrategy)>(r16, r17, null, null);
+
+        return r64;
+    }
+
+    static edu.kit.ipd.sdq.eventsim.rvisualization.model.VariableBindingModel access$0(edu.kit.ipd.sdq.eventsim.rvisualization.views.DiagramSettingsViewer)
+    {
+        edu.kit.ipd.sdq.eventsim.rvisualization.views.DiagramSettingsViewer r0;
+        edu.kit.ipd.sdq.eventsim.rvisualization.model.VariableBindingModel $r1;
+
+        r0 := @parameter0: edu.kit.ipd.sdq.eventsim.rvisualization.views.DiagramSettingsViewer;
+
+        $r1 = r0.<edu.kit.ipd.sdq.eventsim.rvisualization.views.DiagramSettingsViewer: edu.kit.ipd.sdq.eventsim.rvisualization.model.VariableBindingModel bindingModel>;
+
+        return $r1;
+    }
+
+    static edu.kit.ipd.sdq.eventsim.rvisualization.model.TranslatableEntity access$1(edu.kit.ipd.sdq.eventsim.rvisualization.views.DiagramSettingsViewer)
+    {
+        edu.kit.ipd.sdq.eventsim.rvisualization.views.DiagramSettingsViewer r0;
+        edu.kit.ipd.sdq.eventsim.rvisualization.model.TranslatableEntity $r1;
+
+        r0 := @parameter0: edu.kit.ipd.sdq.eventsim.rvisualization.views.DiagramSettingsViewer;
+
+        $r1 = specialinvoke r0.<edu.kit.ipd.sdq.eventsim.rvisualization.views.DiagramSettingsViewer: edu.kit.ipd.sdq.eventsim.rvisualization.model.TranslatableEntity openBindingTypeSelectionDialog()>();
+
+        return $r1;
+    }
+}

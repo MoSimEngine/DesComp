@@ -1,0 +1,63 @@
+public final class edu.kit.ipd.sdq.eventsim.system.calculators.TimeSpanBetweenAbstractActionsCalculator$lambda_0__243 extends java.lang.Object implements edu.kit.ipd.sdq.eventsim.measurement.MeasurementListener
+{
+    edu.kit.ipd.sdq.eventsim.system.calculators.TimeSpanBetweenAbstractActionsCalculator cap0;
+    edu.kit.ipd.sdq.eventsim.measurement.probe.IProbe cap1;
+
+    public static edu.kit.ipd.sdq.eventsim.measurement.MeasurementListener bootstrap$(edu.kit.ipd.sdq.eventsim.system.calculators.TimeSpanBetweenAbstractActionsCalculator, edu.kit.ipd.sdq.eventsim.measurement.probe.IProbe)
+    {
+        edu.kit.ipd.sdq.eventsim.system.calculators.TimeSpanBetweenAbstractActionsCalculator $r0;
+        edu.kit.ipd.sdq.eventsim.measurement.probe.IProbe $r1;
+        edu.kit.ipd.sdq.eventsim.system.calculators.TimeSpanBetweenAbstractActionsCalculator$lambda_0__243 $r2;
+
+        $r0 := @parameter0: edu.kit.ipd.sdq.eventsim.system.calculators.TimeSpanBetweenAbstractActionsCalculator;
+
+        $r1 := @parameter1: edu.kit.ipd.sdq.eventsim.measurement.probe.IProbe;
+
+        $r2 = new edu.kit.ipd.sdq.eventsim.system.calculators.TimeSpanBetweenAbstractActionsCalculator$lambda_0__243;
+
+        specialinvoke $r2.<edu.kit.ipd.sdq.eventsim.system.calculators.TimeSpanBetweenAbstractActionsCalculator$lambda_0__243: void <init>(edu.kit.ipd.sdq.eventsim.system.calculators.TimeSpanBetweenAbstractActionsCalculator,edu.kit.ipd.sdq.eventsim.measurement.probe.IProbe)>($r0, $r1);
+
+        return $r2;
+    }
+
+    public void <init>(edu.kit.ipd.sdq.eventsim.system.calculators.TimeSpanBetweenAbstractActionsCalculator, edu.kit.ipd.sdq.eventsim.measurement.probe.IProbe)
+    {
+        edu.kit.ipd.sdq.eventsim.system.calculators.TimeSpanBetweenAbstractActionsCalculator$lambda_0__243 $r0;
+        edu.kit.ipd.sdq.eventsim.system.calculators.TimeSpanBetweenAbstractActionsCalculator $r1;
+        edu.kit.ipd.sdq.eventsim.measurement.probe.IProbe $r2;
+
+        $r0 := @this: edu.kit.ipd.sdq.eventsim.system.calculators.TimeSpanBetweenAbstractActionsCalculator$lambda_0__243;
+
+        $r1 := @parameter0: edu.kit.ipd.sdq.eventsim.system.calculators.TimeSpanBetweenAbstractActionsCalculator;
+
+        $r2 := @parameter1: edu.kit.ipd.sdq.eventsim.measurement.probe.IProbe;
+
+        specialinvoke $r0.<java.lang.Object: void <init>()>();
+
+        $r0.<edu.kit.ipd.sdq.eventsim.system.calculators.TimeSpanBetweenAbstractActionsCalculator$lambda_0__243: edu.kit.ipd.sdq.eventsim.system.calculators.TimeSpanBetweenAbstractActionsCalculator cap0> = $r1;
+
+        $r0.<edu.kit.ipd.sdq.eventsim.system.calculators.TimeSpanBetweenAbstractActionsCalculator$lambda_0__243: edu.kit.ipd.sdq.eventsim.measurement.probe.IProbe cap1> = $r2;
+
+        return;
+    }
+
+    public void notify(edu.kit.ipd.sdq.eventsim.measurement.Measurement)
+    {
+        edu.kit.ipd.sdq.eventsim.system.calculators.TimeSpanBetweenAbstractActionsCalculator$lambda_0__243 $r0;
+        edu.kit.ipd.sdq.eventsim.measurement.Measurement $r1;
+        edu.kit.ipd.sdq.eventsim.system.calculators.TimeSpanBetweenAbstractActionsCalculator $r2;
+        edu.kit.ipd.sdq.eventsim.measurement.probe.IProbe $r3;
+
+        $r0 := @this: edu.kit.ipd.sdq.eventsim.system.calculators.TimeSpanBetweenAbstractActionsCalculator$lambda_0__243;
+
+        $r1 := @parameter0: edu.kit.ipd.sdq.eventsim.measurement.Measurement;
+
+        $r2 = $r0.<edu.kit.ipd.sdq.eventsim.system.calculators.TimeSpanBetweenAbstractActionsCalculator$lambda_0__243: edu.kit.ipd.sdq.eventsim.system.calculators.TimeSpanBetweenAbstractActionsCalculator cap0>;
+
+        $r3 = $r0.<edu.kit.ipd.sdq.eventsim.system.calculators.TimeSpanBetweenAbstractActionsCalculator$lambda_0__243: edu.kit.ipd.sdq.eventsim.measurement.probe.IProbe cap1>;
+
+        virtualinvoke $r2.<edu.kit.ipd.sdq.eventsim.system.calculators.TimeSpanBetweenAbstractActionsCalculator: void lambda$0(edu.kit.ipd.sdq.eventsim.measurement.probe.IProbe,edu.kit.ipd.sdq.eventsim.measurement.Measurement)>($r3, $r1);
+
+        return;
+    }
+}

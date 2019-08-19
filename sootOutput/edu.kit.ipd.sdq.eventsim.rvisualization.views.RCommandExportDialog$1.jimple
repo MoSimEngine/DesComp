@@ -1,0 +1,66 @@
+class edu.kit.ipd.sdq.eventsim.rvisualization.views.RCommandExportDialog$1 extends java.lang.Object implements org.eclipse.swt.widgets.Listener
+{
+    final edu.kit.ipd.sdq.eventsim.rvisualization.views.RCommandExportDialog this$0;
+    private final org.eclipse.swt.widgets.Button val$btnCopyToClipboad;
+
+    void <init>(edu.kit.ipd.sdq.eventsim.rvisualization.views.RCommandExportDialog, org.eclipse.swt.widgets.Button)
+    {
+        edu.kit.ipd.sdq.eventsim.rvisualization.views.RCommandExportDialog$1 r0;
+        edu.kit.ipd.sdq.eventsim.rvisualization.views.RCommandExportDialog r1;
+        org.eclipse.swt.widgets.Button r2;
+
+        r0 := @this: edu.kit.ipd.sdq.eventsim.rvisualization.views.RCommandExportDialog$1;
+
+        r1 := @parameter0: edu.kit.ipd.sdq.eventsim.rvisualization.views.RCommandExportDialog;
+
+        r2 := @parameter1: org.eclipse.swt.widgets.Button;
+
+        r0.<edu.kit.ipd.sdq.eventsim.rvisualization.views.RCommandExportDialog$1: edu.kit.ipd.sdq.eventsim.rvisualization.views.RCommandExportDialog this$0> = r1;
+
+        r0.<edu.kit.ipd.sdq.eventsim.rvisualization.views.RCommandExportDialog$1: org.eclipse.swt.widgets.Button val$btnCopyToClipboad> = r2;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    public void handleEvent(org.eclipse.swt.widgets.Event)
+    {
+        edu.kit.ipd.sdq.eventsim.rvisualization.views.RCommandExportDialog$1 r0;
+        org.eclipse.swt.widgets.Event r1;
+        org.eclipse.swt.widgets.Button $r2;
+        org.eclipse.swt.widgets.Widget $r3;
+        java.awt.Toolkit $r4;
+        java.awt.datatransfer.Clipboard $r5;
+        java.awt.datatransfer.StringSelection $r6;
+        edu.kit.ipd.sdq.eventsim.rvisualization.views.RCommandExportDialog $r7;
+        java.lang.String $r8;
+
+        r0 := @this: edu.kit.ipd.sdq.eventsim.rvisualization.views.RCommandExportDialog$1;
+
+        r1 := @parameter0: org.eclipse.swt.widgets.Event;
+
+        $r3 = r1.<org.eclipse.swt.widgets.Event: org.eclipse.swt.widgets.Widget widget>;
+
+        $r2 = r0.<edu.kit.ipd.sdq.eventsim.rvisualization.views.RCommandExportDialog$1: org.eclipse.swt.widgets.Button val$btnCopyToClipboad>;
+
+        if $r3 != $r2 goto label1;
+
+        $r4 = staticinvoke <java.awt.Toolkit: java.awt.Toolkit getDefaultToolkit()>();
+
+        $r5 = virtualinvoke $r4.<java.awt.Toolkit: java.awt.datatransfer.Clipboard getSystemClipboard()>();
+
+        $r6 = new java.awt.datatransfer.StringSelection;
+
+        $r7 = r0.<edu.kit.ipd.sdq.eventsim.rvisualization.views.RCommandExportDialog$1: edu.kit.ipd.sdq.eventsim.rvisualization.views.RCommandExportDialog this$0>;
+
+        $r8 = staticinvoke <edu.kit.ipd.sdq.eventsim.rvisualization.views.RCommandExportDialog: java.lang.String access$0(edu.kit.ipd.sdq.eventsim.rvisualization.views.RCommandExportDialog)>($r7);
+
+        specialinvoke $r6.<java.awt.datatransfer.StringSelection: void <init>(java.lang.String)>($r8);
+
+        virtualinvoke $r5.<java.awt.datatransfer.Clipboard: void setContents(java.awt.datatransfer.Transferable,java.awt.datatransfer.ClipboardOwner)>($r6, null);
+
+     label1:
+        return;
+    }
+}

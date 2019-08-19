@@ -1,0 +1,132 @@
+public class edu.kit.ipd.sdq.eventsim.workload.probes.InterArrivalTimeProbe extends edu.kit.ipd.sdq.eventsim.measurement.probe.AbstractProbe
+{
+    private double simTimeLast;
+
+    public void <init>(edu.kit.ipd.sdq.eventsim.measurement.MeasuringPoint, edu.kit.ipd.sdq.eventsim.workload.WorkloadMeasurementConfiguration)
+    {
+        edu.kit.ipd.sdq.eventsim.workload.probes.InterArrivalTimeProbe r0;
+        edu.kit.ipd.sdq.eventsim.measurement.MeasuringPoint r1;
+        edu.kit.ipd.sdq.eventsim.workload.WorkloadMeasurementConfiguration r2, $r4;
+        edu.kit.ipd.sdq.eventsim.measurement.ProbeConfiguration $r3;
+        edu.kit.ipd.sdq.eventsim.api.ISimulationMiddleware $r5;
+        edu.kit.ipd.sdq.eventsim.api.events.IEventHandler $r6;
+
+        r0 := @this: edu.kit.ipd.sdq.eventsim.workload.probes.InterArrivalTimeProbe;
+
+        r1 := @parameter0: edu.kit.ipd.sdq.eventsim.measurement.MeasuringPoint;
+
+        r2 := @parameter1: edu.kit.ipd.sdq.eventsim.workload.WorkloadMeasurementConfiguration;
+
+        specialinvoke r0.<edu.kit.ipd.sdq.eventsim.measurement.probe.AbstractProbe: void <init>(edu.kit.ipd.sdq.eventsim.measurement.MeasuringPoint,edu.kit.ipd.sdq.eventsim.measurement.ProbeConfiguration)>(r1, r2);
+
+        $r3 = r0.<edu.kit.ipd.sdq.eventsim.workload.probes.InterArrivalTimeProbe: edu.kit.ipd.sdq.eventsim.measurement.ProbeConfiguration configuration>;
+
+        $r4 = (edu.kit.ipd.sdq.eventsim.workload.WorkloadMeasurementConfiguration) $r3;
+
+        $r5 = virtualinvoke $r4.<edu.kit.ipd.sdq.eventsim.workload.WorkloadMeasurementConfiguration: edu.kit.ipd.sdq.eventsim.api.ISimulationMiddleware getMiddleware()>();
+
+        $r6 = staticinvoke <edu.kit.ipd.sdq.eventsim.workload.probes.InterArrivalTimeProbe$lambda_0__249: edu.kit.ipd.sdq.eventsim.api.events.IEventHandler bootstrap$(edu.kit.ipd.sdq.eventsim.workload.probes.InterArrivalTimeProbe,edu.kit.ipd.sdq.eventsim.measurement.MeasuringPoint,edu.kit.ipd.sdq.eventsim.workload.WorkloadMeasurementConfiguration)>(r0, r1, r2);
+
+        interfaceinvoke $r5.<edu.kit.ipd.sdq.eventsim.api.ISimulationMiddleware: void registerEventHandler(java.lang.Class,edu.kit.ipd.sdq.eventsim.api.events.IEventHandler)>(class "Ledu/kit/ipd/sdq/eventsim/api/events/WorkloadUserSpawnEvent;", $r6);
+
+        return;
+    }
+
+    public edu.kit.ipd.sdq.eventsim.api.events.IEventHandler$Registration lambda$0(edu.kit.ipd.sdq.eventsim.measurement.MeasuringPoint, edu.kit.ipd.sdq.eventsim.workload.WorkloadMeasurementConfiguration, edu.kit.ipd.sdq.eventsim.api.events.WorkloadUserSpawnEvent)
+    {
+        edu.kit.ipd.sdq.eventsim.workload.probes.InterArrivalTimeProbe r0;
+        edu.kit.ipd.sdq.eventsim.measurement.MeasuringPoint r1, $r14;
+        edu.kit.ipd.sdq.eventsim.workload.WorkloadMeasurementConfiguration r2;
+        edu.kit.ipd.sdq.eventsim.api.events.WorkloadUserSpawnEvent r3;
+        edu.kit.ipd.sdq.eventsim.api.IUser r4;
+        org.palladiosimulator.pcm.usagemodel.UsageScenario r5, r6;
+        double d0, d1, $d2, $d3;
+        java.lang.Object $r8;
+        java.lang.String $r9, $r10;
+        boolean $z0;
+        de.uka.ipd.sdq.simulation.abstractsimengine.ISimulationModel $r11;
+        de.uka.ipd.sdq.simulation.abstractsimengine.ISimulationControl $r12;
+        byte $b0;
+        edu.kit.ipd.sdq.eventsim.measurement.Measurement $r13;
+        edu.kit.ipd.sdq.eventsim.measurement.Metadata[] $r15;
+        java.util.List $r16;
+        java.util.function.Consumer $r17;
+        edu.kit.ipd.sdq.eventsim.api.events.IEventHandler$Registration $r18;
+
+        r0 := @this: edu.kit.ipd.sdq.eventsim.workload.probes.InterArrivalTimeProbe;
+
+        r1 := @parameter0: edu.kit.ipd.sdq.eventsim.measurement.MeasuringPoint;
+
+        r2 := @parameter1: edu.kit.ipd.sdq.eventsim.workload.WorkloadMeasurementConfiguration;
+
+        r3 := @parameter2: edu.kit.ipd.sdq.eventsim.api.events.WorkloadUserSpawnEvent;
+
+        r4 = virtualinvoke r3.<edu.kit.ipd.sdq.eventsim.api.events.WorkloadUserSpawnEvent: edu.kit.ipd.sdq.eventsim.api.IUser getUser()>();
+
+        r5 = interfaceinvoke r4.<edu.kit.ipd.sdq.eventsim.api.IUser: org.palladiosimulator.pcm.usagemodel.UsageScenario getUsageScenario()>();
+
+        $r8 = virtualinvoke r1.<edu.kit.ipd.sdq.eventsim.measurement.MeasuringPoint: java.lang.Object getElement()>();
+
+        r6 = (org.palladiosimulator.pcm.usagemodel.UsageScenario) $r8;
+
+        $r9 = interfaceinvoke r5.<org.palladiosimulator.pcm.usagemodel.UsageScenario: java.lang.String getId()>();
+
+        $r10 = interfaceinvoke r6.<org.palladiosimulator.pcm.usagemodel.UsageScenario: java.lang.String getId()>();
+
+        $z0 = virtualinvoke $r9.<java.lang.String: boolean equals(java.lang.Object)>($r10);
+
+        if $z0 == 0 goto label2;
+
+        $r11 = virtualinvoke r2.<edu.kit.ipd.sdq.eventsim.workload.WorkloadMeasurementConfiguration: de.uka.ipd.sdq.simulation.abstractsimengine.ISimulationModel getSimulationModel()>();
+
+        $r12 = interfaceinvoke $r11.<de.uka.ipd.sdq.simulation.abstractsimengine.ISimulationModel: de.uka.ipd.sdq.simulation.abstractsimengine.ISimulationControl getSimulationControl()>();
+
+        d0 = interfaceinvoke $r12.<de.uka.ipd.sdq.simulation.abstractsimengine.ISimulationControl: double getCurrentSimulationTime()>();
+
+        $d2 = r0.<edu.kit.ipd.sdq.eventsim.workload.probes.InterArrivalTimeProbe: double simTimeLast>;
+
+        $b0 = $d2 cmpl 0.0;
+
+        if $b0 <= 0 goto label1;
+
+        $d3 = r0.<edu.kit.ipd.sdq.eventsim.workload.probes.InterArrivalTimeProbe: double simTimeLast>;
+
+        d1 = d0 - $d3;
+
+        $r13 = new edu.kit.ipd.sdq.eventsim.measurement.Measurement;
+
+        $r14 = virtualinvoke r0.<edu.kit.ipd.sdq.eventsim.workload.probes.InterArrivalTimeProbe: edu.kit.ipd.sdq.eventsim.measurement.MeasuringPoint getMeasuringPoint()>();
+
+        $r15 = newarray (edu.kit.ipd.sdq.eventsim.measurement.Metadata)[0];
+
+        specialinvoke $r13.<edu.kit.ipd.sdq.eventsim.measurement.Measurement: void <init>(java.lang.Object,edu.kit.ipd.sdq.eventsim.measurement.MeasuringPoint,java.lang.Object,double,double,edu.kit.ipd.sdq.eventsim.measurement.Metadata[])>("INTER_ARRIVAL_TIME", $r14, r4, d1, d0, $r15);
+
+        $r16 = r0.<edu.kit.ipd.sdq.eventsim.workload.probes.InterArrivalTimeProbe: java.util.List measurementListener>;
+
+        $r17 = staticinvoke <edu.kit.ipd.sdq.eventsim.workload.probes.InterArrivalTimeProbe$lambda_1__251: java.util.function.Consumer bootstrap$(edu.kit.ipd.sdq.eventsim.measurement.Measurement)>($r13);
+
+        interfaceinvoke $r16.<java.util.List: void forEach(java.util.function.Consumer)>($r17);
+
+     label1:
+        r0.<edu.kit.ipd.sdq.eventsim.workload.probes.InterArrivalTimeProbe: double simTimeLast> = d0;
+
+     label2:
+        $r18 = <edu.kit.ipd.sdq.eventsim.api.events.IEventHandler$Registration: edu.kit.ipd.sdq.eventsim.api.events.IEventHandler$Registration KEEP_REGISTERED>;
+
+        return $r18;
+    }
+
+    public static void lambda$1(edu.kit.ipd.sdq.eventsim.measurement.Measurement, edu.kit.ipd.sdq.eventsim.measurement.MeasurementListener)
+    {
+        edu.kit.ipd.sdq.eventsim.measurement.Measurement r0;
+        edu.kit.ipd.sdq.eventsim.measurement.MeasurementListener r1;
+
+        r0 := @parameter0: edu.kit.ipd.sdq.eventsim.measurement.Measurement;
+
+        r1 := @parameter1: edu.kit.ipd.sdq.eventsim.measurement.MeasurementListener;
+
+        interfaceinvoke r1.<edu.kit.ipd.sdq.eventsim.measurement.MeasurementListener: void notify(edu.kit.ipd.sdq.eventsim.measurement.Measurement)>(r0);
+
+        return;
+    }
+}

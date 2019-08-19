@@ -1,0 +1,3 @@
+public interface  edu.kit.ipd.sdq.eventsim.modules.SimulationModuleEntryPoint extends java.lang.Object
+{
+}

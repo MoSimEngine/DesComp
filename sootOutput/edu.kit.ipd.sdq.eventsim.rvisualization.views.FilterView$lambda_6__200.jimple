@@ -1,0 +1,72 @@
+public final class edu.kit.ipd.sdq.eventsim.rvisualization.views.FilterView$lambda_6__200 extends java.lang.Object implements java.lang.Runnable
+{
+    edu.kit.ipd.sdq.eventsim.rvisualization.views.FilterView cap0;
+    org.eclipse.swt.widgets.Composite cap1;
+    org.eclipse.swt.widgets.ExpandItem cap2;
+
+    public static java.lang.Runnable bootstrap$(edu.kit.ipd.sdq.eventsim.rvisualization.views.FilterView, org.eclipse.swt.widgets.Composite, org.eclipse.swt.widgets.ExpandItem)
+    {
+        edu.kit.ipd.sdq.eventsim.rvisualization.views.FilterView $r0;
+        org.eclipse.swt.widgets.Composite $r1;
+        org.eclipse.swt.widgets.ExpandItem $r2;
+        edu.kit.ipd.sdq.eventsim.rvisualization.views.FilterView$lambda_6__200 $r3;
+
+        $r0 := @parameter0: edu.kit.ipd.sdq.eventsim.rvisualization.views.FilterView;
+
+        $r1 := @parameter1: org.eclipse.swt.widgets.Composite;
+
+        $r2 := @parameter2: org.eclipse.swt.widgets.ExpandItem;
+
+        $r3 = new edu.kit.ipd.sdq.eventsim.rvisualization.views.FilterView$lambda_6__200;
+
+        specialinvoke $r3.<edu.kit.ipd.sdq.eventsim.rvisualization.views.FilterView$lambda_6__200: void <init>(edu.kit.ipd.sdq.eventsim.rvisualization.views.FilterView,org.eclipse.swt.widgets.Composite,org.eclipse.swt.widgets.ExpandItem)>($r0, $r1, $r2);
+
+        return $r3;
+    }
+
+    public void <init>(edu.kit.ipd.sdq.eventsim.rvisualization.views.FilterView, org.eclipse.swt.widgets.Composite, org.eclipse.swt.widgets.ExpandItem)
+    {
+        edu.kit.ipd.sdq.eventsim.rvisualization.views.FilterView$lambda_6__200 $r0;
+        edu.kit.ipd.sdq.eventsim.rvisualization.views.FilterView $r1;
+        org.eclipse.swt.widgets.Composite $r2;
+        org.eclipse.swt.widgets.ExpandItem $r3;
+
+        $r0 := @this: edu.kit.ipd.sdq.eventsim.rvisualization.views.FilterView$lambda_6__200;
+
+        $r1 := @parameter0: edu.kit.ipd.sdq.eventsim.rvisualization.views.FilterView;
+
+        $r2 := @parameter1: org.eclipse.swt.widgets.Composite;
+
+        $r3 := @parameter2: org.eclipse.swt.widgets.ExpandItem;
+
+        specialinvoke $r0.<java.lang.Object: void <init>()>();
+
+        $r0.<edu.kit.ipd.sdq.eventsim.rvisualization.views.FilterView$lambda_6__200: edu.kit.ipd.sdq.eventsim.rvisualization.views.FilterView cap0> = $r1;
+
+        $r0.<edu.kit.ipd.sdq.eventsim.rvisualization.views.FilterView$lambda_6__200: org.eclipse.swt.widgets.Composite cap1> = $r2;
+
+        $r0.<edu.kit.ipd.sdq.eventsim.rvisualization.views.FilterView$lambda_6__200: org.eclipse.swt.widgets.ExpandItem cap2> = $r3;
+
+        return;
+    }
+
+    public void run()
+    {
+        edu.kit.ipd.sdq.eventsim.rvisualization.views.FilterView$lambda_6__200 $r0;
+        edu.kit.ipd.sdq.eventsim.rvisualization.views.FilterView $r1;
+        org.eclipse.swt.widgets.Composite $r2;
+        org.eclipse.swt.widgets.ExpandItem $r3;
+
+        $r0 := @this: edu.kit.ipd.sdq.eventsim.rvisualization.views.FilterView$lambda_6__200;
+
+        $r1 = $r0.<edu.kit.ipd.sdq.eventsim.rvisualization.views.FilterView$lambda_6__200: edu.kit.ipd.sdq.eventsim.rvisualization.views.FilterView cap0>;
+
+        $r2 = $r0.<edu.kit.ipd.sdq.eventsim.rvisualization.views.FilterView$lambda_6__200: org.eclipse.swt.widgets.Composite cap1>;
+
+        $r3 = $r0.<edu.kit.ipd.sdq.eventsim.rvisualization.views.FilterView$lambda_6__200: org.eclipse.swt.widgets.ExpandItem cap2>;
+
+        virtualinvoke $r1.<edu.kit.ipd.sdq.eventsim.rvisualization.views.FilterView: void lambda$6(org.eclipse.swt.widgets.Composite,org.eclipse.swt.widgets.ExpandItem)>($r2, $r3);
+
+        return;
+    }
+}

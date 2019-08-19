@@ -1,0 +1,72 @@
+public final class edu.kit.ipd.sdq.eventsim.workload.interpreter.strategies.BranchSimulationStrategy$lambda_0__259 extends java.lang.Object implements edu.kit.ipd.sdq.eventsim.api.Procedure
+{
+    java.util.function.Consumer cap0;
+    edu.kit.ipd.sdq.eventsim.workload.entities.User cap1;
+    org.palladiosimulator.pcm.usagemodel.Branch cap2;
+
+    public static edu.kit.ipd.sdq.eventsim.api.Procedure bootstrap$(java.util.function.Consumer, edu.kit.ipd.sdq.eventsim.workload.entities.User, org.palladiosimulator.pcm.usagemodel.Branch)
+    {
+        java.util.function.Consumer $r0;
+        edu.kit.ipd.sdq.eventsim.workload.entities.User $r1;
+        org.palladiosimulator.pcm.usagemodel.Branch $r2;
+        edu.kit.ipd.sdq.eventsim.workload.interpreter.strategies.BranchSimulationStrategy$lambda_0__259 $r3;
+
+        $r0 := @parameter0: java.util.function.Consumer;
+
+        $r1 := @parameter1: edu.kit.ipd.sdq.eventsim.workload.entities.User;
+
+        $r2 := @parameter2: org.palladiosimulator.pcm.usagemodel.Branch;
+
+        $r3 = new edu.kit.ipd.sdq.eventsim.workload.interpreter.strategies.BranchSimulationStrategy$lambda_0__259;
+
+        specialinvoke $r3.<edu.kit.ipd.sdq.eventsim.workload.interpreter.strategies.BranchSimulationStrategy$lambda_0__259: void <init>(java.util.function.Consumer,edu.kit.ipd.sdq.eventsim.workload.entities.User,org.palladiosimulator.pcm.usagemodel.Branch)>($r0, $r1, $r2);
+
+        return $r3;
+    }
+
+    public void <init>(java.util.function.Consumer, edu.kit.ipd.sdq.eventsim.workload.entities.User, org.palladiosimulator.pcm.usagemodel.Branch)
+    {
+        edu.kit.ipd.sdq.eventsim.workload.interpreter.strategies.BranchSimulationStrategy$lambda_0__259 $r0;
+        java.util.function.Consumer $r1;
+        edu.kit.ipd.sdq.eventsim.workload.entities.User $r2;
+        org.palladiosimulator.pcm.usagemodel.Branch $r3;
+
+        $r0 := @this: edu.kit.ipd.sdq.eventsim.workload.interpreter.strategies.BranchSimulationStrategy$lambda_0__259;
+
+        $r1 := @parameter0: java.util.function.Consumer;
+
+        $r2 := @parameter1: edu.kit.ipd.sdq.eventsim.workload.entities.User;
+
+        $r3 := @parameter2: org.palladiosimulator.pcm.usagemodel.Branch;
+
+        specialinvoke $r0.<java.lang.Object: void <init>()>();
+
+        $r0.<edu.kit.ipd.sdq.eventsim.workload.interpreter.strategies.BranchSimulationStrategy$lambda_0__259: java.util.function.Consumer cap0> = $r1;
+
+        $r0.<edu.kit.ipd.sdq.eventsim.workload.interpreter.strategies.BranchSimulationStrategy$lambda_0__259: edu.kit.ipd.sdq.eventsim.workload.entities.User cap1> = $r2;
+
+        $r0.<edu.kit.ipd.sdq.eventsim.workload.interpreter.strategies.BranchSimulationStrategy$lambda_0__259: org.palladiosimulator.pcm.usagemodel.Branch cap2> = $r3;
+
+        return;
+    }
+
+    public void execute()
+    {
+        edu.kit.ipd.sdq.eventsim.workload.interpreter.strategies.BranchSimulationStrategy$lambda_0__259 $r0;
+        java.util.function.Consumer $r1;
+        edu.kit.ipd.sdq.eventsim.workload.entities.User $r2;
+        org.palladiosimulator.pcm.usagemodel.Branch $r3;
+
+        $r0 := @this: edu.kit.ipd.sdq.eventsim.workload.interpreter.strategies.BranchSimulationStrategy$lambda_0__259;
+
+        $r1 = $r0.<edu.kit.ipd.sdq.eventsim.workload.interpreter.strategies.BranchSimulationStrategy$lambda_0__259: java.util.function.Consumer cap0>;
+
+        $r2 = $r0.<edu.kit.ipd.sdq.eventsim.workload.interpreter.strategies.BranchSimulationStrategy$lambda_0__259: edu.kit.ipd.sdq.eventsim.workload.entities.User cap1>;
+
+        $r3 = $r0.<edu.kit.ipd.sdq.eventsim.workload.interpreter.strategies.BranchSimulationStrategy$lambda_0__259: org.palladiosimulator.pcm.usagemodel.Branch cap2>;
+
+        staticinvoke <edu.kit.ipd.sdq.eventsim.workload.interpreter.strategies.BranchSimulationStrategy: void lambda$0(java.util.function.Consumer,edu.kit.ipd.sdq.eventsim.workload.entities.User,org.palladiosimulator.pcm.usagemodel.Branch)>($r1, $r2, $r3);
+
+        return;
+    }
+}

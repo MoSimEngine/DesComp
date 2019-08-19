@@ -1,0 +1,71 @@
+class edu.kit.ipd.sdq.eventsim.measurement.r.launch.RConfigurationTab$2 extends org.eclipse.swt.events.SelectionAdapter
+{
+    final edu.kit.ipd.sdq.eventsim.measurement.r.launch.RConfigurationTab this$0;
+
+    void <init>(edu.kit.ipd.sdq.eventsim.measurement.r.launch.RConfigurationTab)
+    {
+        edu.kit.ipd.sdq.eventsim.measurement.r.launch.RConfigurationTab$2 r0;
+        edu.kit.ipd.sdq.eventsim.measurement.r.launch.RConfigurationTab r1;
+
+        r0 := @this: edu.kit.ipd.sdq.eventsim.measurement.r.launch.RConfigurationTab$2;
+
+        r1 := @parameter0: edu.kit.ipd.sdq.eventsim.measurement.r.launch.RConfigurationTab;
+
+        r0.<edu.kit.ipd.sdq.eventsim.measurement.r.launch.RConfigurationTab$2: edu.kit.ipd.sdq.eventsim.measurement.r.launch.RConfigurationTab this$0> = r1;
+
+        specialinvoke r0.<org.eclipse.swt.events.SelectionAdapter: void <init>()>();
+
+        return;
+    }
+
+    public void widgetSelected(org.eclipse.swt.events.SelectionEvent)
+    {
+        edu.kit.ipd.sdq.eventsim.measurement.r.launch.RConfigurationTab$2 r0;
+        org.eclipse.swt.events.SelectionEvent r1;
+        edu.kit.ipd.sdq.eventsim.measurement.r.launch.RConfigurationTab $r2, $r3, $r5, $r6, $r7, $r8, $r9;
+        org.eclipse.swt.widgets.Button $r4;
+        boolean $z0, $z1;
+
+        r0 := @this: edu.kit.ipd.sdq.eventsim.measurement.r.launch.RConfigurationTab$2;
+
+        r1 := @parameter0: org.eclipse.swt.events.SelectionEvent;
+
+        $r3 = r0.<edu.kit.ipd.sdq.eventsim.measurement.r.launch.RConfigurationTab$2: edu.kit.ipd.sdq.eventsim.measurement.r.launch.RConfigurationTab this$0>;
+
+        $r2 = r0.<edu.kit.ipd.sdq.eventsim.measurement.r.launch.RConfigurationTab$2: edu.kit.ipd.sdq.eventsim.measurement.r.launch.RConfigurationTab this$0>;
+
+        $r4 = staticinvoke <edu.kit.ipd.sdq.eventsim.measurement.r.launch.RConfigurationTab: org.eclipse.swt.widgets.Button access$2(edu.kit.ipd.sdq.eventsim.measurement.r.launch.RConfigurationTab)>($r2);
+
+        $z0 = virtualinvoke $r4.<org.eclipse.swt.widgets.Button: boolean getSelection()>();
+
+        $r3.<edu.kit.ipd.sdq.eventsim.measurement.r.launch.RConfigurationTab: boolean createRdsFile> = $z0;
+
+        $r5 = r0.<edu.kit.ipd.sdq.eventsim.measurement.r.launch.RConfigurationTab$2: edu.kit.ipd.sdq.eventsim.measurement.r.launch.RConfigurationTab this$0>;
+
+        $z1 = $r5.<edu.kit.ipd.sdq.eventsim.measurement.r.launch.RConfigurationTab: boolean createRdsFile>;
+
+        if $z1 == 0 goto label1;
+
+        $r9 = r0.<edu.kit.ipd.sdq.eventsim.measurement.r.launch.RConfigurationTab$2: edu.kit.ipd.sdq.eventsim.measurement.r.launch.RConfigurationTab this$0>;
+
+        staticinvoke <edu.kit.ipd.sdq.eventsim.measurement.r.launch.RConfigurationTab: void access$3(edu.kit.ipd.sdq.eventsim.measurement.r.launch.RConfigurationTab,boolean)>($r9, 1);
+
+        goto label2;
+
+     label1:
+        $r6 = r0.<edu.kit.ipd.sdq.eventsim.measurement.r.launch.RConfigurationTab$2: edu.kit.ipd.sdq.eventsim.measurement.r.launch.RConfigurationTab this$0>;
+
+        staticinvoke <edu.kit.ipd.sdq.eventsim.measurement.r.launch.RConfigurationTab: void access$3(edu.kit.ipd.sdq.eventsim.measurement.r.launch.RConfigurationTab,boolean)>($r6, 0);
+
+     label2:
+        $r7 = r0.<edu.kit.ipd.sdq.eventsim.measurement.r.launch.RConfigurationTab$2: edu.kit.ipd.sdq.eventsim.measurement.r.launch.RConfigurationTab this$0>;
+
+        staticinvoke <edu.kit.ipd.sdq.eventsim.measurement.r.launch.RConfigurationTab: void access$0(edu.kit.ipd.sdq.eventsim.measurement.r.launch.RConfigurationTab,boolean)>($r7, 1);
+
+        $r8 = r0.<edu.kit.ipd.sdq.eventsim.measurement.r.launch.RConfigurationTab$2: edu.kit.ipd.sdq.eventsim.measurement.r.launch.RConfigurationTab this$0>;
+
+        staticinvoke <edu.kit.ipd.sdq.eventsim.measurement.r.launch.RConfigurationTab: void access$1(edu.kit.ipd.sdq.eventsim.measurement.r.launch.RConfigurationTab)>($r8);
+
+        return;
+    }
+}

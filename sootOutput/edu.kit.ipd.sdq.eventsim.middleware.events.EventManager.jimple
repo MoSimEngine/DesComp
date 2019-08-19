@@ -1,0 +1,270 @@
+public class edu.kit.ipd.sdq.eventsim.middleware.events.EventManager extends java.lang.Object
+{
+    private static final org.apache.log4j.Logger log;
+    private org.osgi.service.event.EventAdmin eventAdmin;
+    private java.util.Set handlerRegistrations;
+
+    static void <clinit>()
+    {
+        org.apache.log4j.Logger $r0;
+
+        $r0 = staticinvoke <org.apache.log4j.Logger: org.apache.log4j.Logger getLogger(java.lang.Class)>(class "Ledu/kit/ipd/sdq/eventsim/middleware/events/EventManager;");
+
+        <edu.kit.ipd.sdq.eventsim.middleware.events.EventManager: org.apache.log4j.Logger log> = $r0;
+
+        return;
+    }
+
+    public void <init>()
+    {
+        edu.kit.ipd.sdq.eventsim.middleware.events.EventManager r0;
+        org.osgi.framework.BundleContext r1;
+        org.osgi.framework.ServiceReference r2;
+        java.util.HashSet $r3;
+        java.lang.Object $r4;
+        org.osgi.service.event.EventAdmin $r5;
+
+        r0 := @this: edu.kit.ipd.sdq.eventsim.middleware.events.EventManager;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        $r3 = new java.util.HashSet;
+
+        specialinvoke $r3.<java.util.HashSet: void <init>()>();
+
+        r0.<edu.kit.ipd.sdq.eventsim.middleware.events.EventManager: java.util.Set handlerRegistrations> = $r3;
+
+        r1 = staticinvoke <edu.kit.ipd.sdq.eventsim.middleware.Activator: org.osgi.framework.BundleContext getContext()>();
+
+        r2 = interfaceinvoke r1.<org.osgi.framework.BundleContext: org.osgi.framework.ServiceReference getServiceReference(java.lang.Class)>(class "Lorg/osgi/service/event/EventAdmin;");
+
+        $r4 = interfaceinvoke r1.<org.osgi.framework.BundleContext: java.lang.Object getService(org.osgi.framework.ServiceReference)>(r2);
+
+        $r5 = (org.osgi.service.event.EventAdmin) $r4;
+
+        r0.<edu.kit.ipd.sdq.eventsim.middleware.events.EventManager: org.osgi.service.event.EventAdmin eventAdmin> = $r5;
+
+        return;
+    }
+
+    public void triggerEvent(edu.kit.ipd.sdq.eventsim.api.events.SimulationEvent)
+    {
+        edu.kit.ipd.sdq.eventsim.middleware.events.EventManager r0;
+        edu.kit.ipd.sdq.eventsim.api.events.SimulationEvent r1;
+        org.apache.log4j.Logger $r3, $r12;
+        boolean $z0;
+        java.util.HashMap $r4;
+        java.util.Map $r6;
+        org.osgi.service.event.Event $r7;
+        org.osgi.service.event.EventAdmin $r8;
+        java.lang.Class $r9, $r13;
+        java.lang.String $r10, $r14, $r17;
+        java.lang.StringBuilder $r11, $r15, $r16;
+
+        r0 := @this: edu.kit.ipd.sdq.eventsim.middleware.events.EventManager;
+
+        r1 := @parameter0: edu.kit.ipd.sdq.eventsim.api.events.SimulationEvent;
+
+        $r3 = <edu.kit.ipd.sdq.eventsim.middleware.events.EventManager: org.apache.log4j.Logger log>;
+
+        $z0 = virtualinvoke $r3.<org.apache.log4j.Logger: boolean isDebugEnabled()>();
+
+        if $z0 == 0 goto label1;
+
+        $r12 = <edu.kit.ipd.sdq.eventsim.middleware.events.EventManager: org.apache.log4j.Logger log>;
+
+        $r11 = new java.lang.StringBuilder;
+
+        specialinvoke $r11.<java.lang.StringBuilder: void <init>(java.lang.String)>("Event triggered (");
+
+        $r13 = virtualinvoke r1.<java.lang.Object: java.lang.Class getClass()>();
+
+        $r14 = staticinvoke <edu.kit.ipd.sdq.eventsim.api.events.SimulationEvent: java.lang.String topicName(java.lang.Class)>($r13);
+
+        $r15 = virtualinvoke $r11.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r14);
+
+        $r16 = virtualinvoke $r15.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(")");
+
+        $r17 = virtualinvoke $r16.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        virtualinvoke $r12.<org.apache.log4j.Logger: void debug(java.lang.Object)>($r17);
+
+     label1:
+        $r4 = new java.util.HashMap;
+
+        specialinvoke $r4.<java.util.HashMap: void <init>()>();
+
+        interfaceinvoke $r4.<java.util.Map: java.lang.Object put(java.lang.Object,java.lang.Object)>("encapsulated.event", r1);
+
+        $r6 = interfaceinvoke r1.<edu.kit.ipd.sdq.eventsim.api.events.SimulationEvent: java.util.Map getProperties()>();
+
+        interfaceinvoke $r4.<java.util.Map: void putAll(java.util.Map)>($r6);
+
+        $r8 = r0.<edu.kit.ipd.sdq.eventsim.middleware.events.EventManager: org.osgi.service.event.EventAdmin eventAdmin>;
+
+        $r7 = new org.osgi.service.event.Event;
+
+        $r9 = virtualinvoke r1.<java.lang.Object: java.lang.Class getClass()>();
+
+        $r10 = staticinvoke <edu.kit.ipd.sdq.eventsim.api.events.SimulationEvent: java.lang.String topicName(java.lang.Class)>($r9);
+
+        specialinvoke $r7.<org.osgi.service.event.Event: void <init>(java.lang.String,java.util.Map)>($r10, $r4);
+
+        interfaceinvoke $r8.<org.osgi.service.event.EventAdmin: void sendEvent(org.osgi.service.event.Event)>($r7);
+
+        return;
+    }
+
+    public void registerEventHandler(java.lang.Class, edu.kit.ipd.sdq.eventsim.api.events.IEventHandler, java.lang.String)
+    {
+        edu.kit.ipd.sdq.eventsim.middleware.events.EventManager r0;
+        java.lang.Class r1;
+        edu.kit.ipd.sdq.eventsim.api.events.IEventHandler r2;
+        java.lang.String r3, $r9;
+        org.osgi.framework.BundleContext r4;
+        org.osgi.framework.ServiceRegistration r7;
+        java.util.Hashtable $r8;
+        boolean $z1;
+        edu.kit.ipd.sdq.eventsim.middleware.events.EventManager$FutureServiceRegistration $r12;
+        org.osgi.service.event.EventHandler $r13;
+        java.util.Set $r14;
+
+        r0 := @this: edu.kit.ipd.sdq.eventsim.middleware.events.EventManager;
+
+        r1 := @parameter0: java.lang.Class;
+
+        r2 := @parameter1: edu.kit.ipd.sdq.eventsim.api.events.IEventHandler;
+
+        r3 := @parameter2: java.lang.String;
+
+        r4 = staticinvoke <edu.kit.ipd.sdq.eventsim.middleware.Activator: org.osgi.framework.BundleContext getContext()>();
+
+        $r8 = new java.util.Hashtable;
+
+        specialinvoke $r8.<java.util.Hashtable: void <init>()>();
+
+        $r9 = staticinvoke <edu.kit.ipd.sdq.eventsim.api.events.SimulationEvent: java.lang.String topicName(java.lang.Class)>(r1);
+
+        virtualinvoke $r8.<java.util.Dictionary: java.lang.Object put(java.lang.Object,java.lang.Object)>("event.topics", $r9);
+
+        if r3 == null goto label1;
+
+        $z1 = virtualinvoke r3.<java.lang.String: boolean isEmpty()>();
+
+        if $z1 != 0 goto label1;
+
+        virtualinvoke $r8.<java.util.Dictionary: java.lang.Object put(java.lang.Object,java.lang.Object)>("event.filter", r3);
+
+     label1:
+        $r12 = new edu.kit.ipd.sdq.eventsim.middleware.events.EventManager$FutureServiceRegistration;
+
+        specialinvoke $r12.<edu.kit.ipd.sdq.eventsim.middleware.events.EventManager$FutureServiceRegistration: void <init>(edu.kit.ipd.sdq.eventsim.middleware.events.EventManager,edu.kit.ipd.sdq.eventsim.middleware.events.EventManager$FutureServiceRegistration)>(r0, null);
+
+        $r13 = staticinvoke <edu.kit.ipd.sdq.eventsim.middleware.events.EventManager$lambda_0__151: org.osgi.service.event.EventHandler bootstrap$(edu.kit.ipd.sdq.eventsim.middleware.events.EventManager,edu.kit.ipd.sdq.eventsim.api.events.IEventHandler,edu.kit.ipd.sdq.eventsim.middleware.events.EventManager$FutureServiceRegistration)>(r0, r2, $r12);
+
+        r7 = interfaceinvoke r4.<org.osgi.framework.BundleContext: org.osgi.framework.ServiceRegistration registerService(java.lang.Class,java.lang.Object,java.util.Dictionary)>(class "Lorg/osgi/service/event/EventHandler;", $r13, $r8);
+
+        virtualinvoke $r12.<edu.kit.ipd.sdq.eventsim.middleware.events.EventManager$FutureServiceRegistration: void set(org.osgi.framework.ServiceRegistration)>(r7);
+
+        $r14 = r0.<edu.kit.ipd.sdq.eventsim.middleware.events.EventManager: java.util.Set handlerRegistrations>;
+
+        interfaceinvoke $r14.<java.util.Set: boolean add(java.lang.Object)>(r7);
+
+        return;
+    }
+
+    public void unregisterAllEventHandlers()
+    {
+        edu.kit.ipd.sdq.eventsim.middleware.events.EventManager r0;
+        org.osgi.framework.ServiceRegistration r1;
+        java.util.Iterator r2;
+        java.util.Set $r3, $r5;
+        boolean $z0;
+        java.lang.Object $r4;
+
+        r0 := @this: edu.kit.ipd.sdq.eventsim.middleware.events.EventManager;
+
+        $r3 = r0.<edu.kit.ipd.sdq.eventsim.middleware.events.EventManager: java.util.Set handlerRegistrations>;
+
+        r2 = interfaceinvoke $r3.<java.util.Set: java.util.Iterator iterator()>();
+
+        goto label2;
+
+     label1:
+        $r4 = interfaceinvoke r2.<java.util.Iterator: java.lang.Object next()>();
+
+        r1 = (org.osgi.framework.ServiceRegistration) $r4;
+
+        interfaceinvoke r1.<org.osgi.framework.ServiceRegistration: void unregister()>();
+
+     label2:
+        $z0 = interfaceinvoke r2.<java.util.Iterator: boolean hasNext()>();
+
+        if $z0 != 0 goto label1;
+
+        $r5 = r0.<edu.kit.ipd.sdq.eventsim.middleware.events.EventManager: java.util.Set handlerRegistrations>;
+
+        interfaceinvoke $r5.<java.util.Set: void clear()>();
+
+        return;
+    }
+
+    public void lambda$0(edu.kit.ipd.sdq.eventsim.api.events.IEventHandler, edu.kit.ipd.sdq.eventsim.middleware.events.EventManager$FutureServiceRegistration, org.osgi.service.event.Event)
+    {
+        edu.kit.ipd.sdq.eventsim.middleware.events.EventManager r0;
+        edu.kit.ipd.sdq.eventsim.api.events.IEventHandler r1;
+        edu.kit.ipd.sdq.eventsim.middleware.events.EventManager$FutureServiceRegistration r2;
+        org.osgi.service.event.Event r3;
+        edu.kit.ipd.sdq.eventsim.api.events.SimulationEvent r4;
+        edu.kit.ipd.sdq.eventsim.api.events.IEventHandler$Registration r5, $r7;
+        boolean z0;
+        java.lang.Object $r6;
+        org.osgi.framework.ServiceRegistration $r8, $r11, $r12;
+        org.apache.log4j.Logger $r9;
+        java.util.Set $r10;
+
+        r0 := @this: edu.kit.ipd.sdq.eventsim.middleware.events.EventManager;
+
+        r1 := @parameter0: edu.kit.ipd.sdq.eventsim.api.events.IEventHandler;
+
+        r2 := @parameter1: edu.kit.ipd.sdq.eventsim.middleware.events.EventManager$FutureServiceRegistration;
+
+        r3 := @parameter2: org.osgi.service.event.Event;
+
+        $r6 = virtualinvoke r3.<org.osgi.service.event.Event: java.lang.Object getProperty(java.lang.String)>("encapsulated.event");
+
+        r4 = (edu.kit.ipd.sdq.eventsim.api.events.SimulationEvent) $r6;
+
+        r5 = interfaceinvoke r1.<edu.kit.ipd.sdq.eventsim.api.events.IEventHandler: edu.kit.ipd.sdq.eventsim.api.events.IEventHandler$Registration handle(edu.kit.ipd.sdq.eventsim.api.events.SimulationEvent)>(r4);
+
+        $r7 = <edu.kit.ipd.sdq.eventsim.api.events.IEventHandler$Registration: edu.kit.ipd.sdq.eventsim.api.events.IEventHandler$Registration UNREGISTER>;
+
+        if r5 != $r7 goto label2;
+
+        $r8 = virtualinvoke r2.<edu.kit.ipd.sdq.eventsim.middleware.events.EventManager$FutureServiceRegistration: org.osgi.framework.ServiceRegistration get()>();
+
+        if $r8 == null goto label1;
+
+        $r10 = r0.<edu.kit.ipd.sdq.eventsim.middleware.events.EventManager: java.util.Set handlerRegistrations>;
+
+        $r11 = virtualinvoke r2.<edu.kit.ipd.sdq.eventsim.middleware.events.EventManager$FutureServiceRegistration: org.osgi.framework.ServiceRegistration get()>();
+
+        z0 = interfaceinvoke $r10.<java.util.Set: boolean remove(java.lang.Object)>($r11);
+
+        if z0 == 0 goto label2;
+
+        $r12 = virtualinvoke r2.<edu.kit.ipd.sdq.eventsim.middleware.events.EventManager$FutureServiceRegistration: org.osgi.framework.ServiceRegistration get()>();
+
+        interfaceinvoke $r12.<org.osgi.framework.ServiceRegistration: void unregister()>();
+
+        goto label2;
+
+     label1:
+        $r9 = <edu.kit.ipd.sdq.eventsim.middleware.events.EventManager: org.apache.log4j.Logger log>;
+
+        virtualinvoke $r9.<org.apache.log4j.Logger: void warn(java.lang.Object)>("Cannot unregister event handler because the service registration is not yet available.");
+
+     label2:
+        return;
+    }
+}

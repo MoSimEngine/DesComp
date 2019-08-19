@@ -1,0 +1,75 @@
+public final class edu.kit.ipd.sdq.eventsim.middleware.events.EventManager$lambda_0__151 extends java.lang.Object implements org.osgi.service.event.EventHandler
+{
+    edu.kit.ipd.sdq.eventsim.middleware.events.EventManager cap0;
+    edu.kit.ipd.sdq.eventsim.api.events.IEventHandler cap1;
+    edu.kit.ipd.sdq.eventsim.middleware.events.EventManager$FutureServiceRegistration cap2;
+
+    public static org.osgi.service.event.EventHandler bootstrap$(edu.kit.ipd.sdq.eventsim.middleware.events.EventManager, edu.kit.ipd.sdq.eventsim.api.events.IEventHandler, edu.kit.ipd.sdq.eventsim.middleware.events.EventManager$FutureServiceRegistration)
+    {
+        edu.kit.ipd.sdq.eventsim.middleware.events.EventManager $r0;
+        edu.kit.ipd.sdq.eventsim.api.events.IEventHandler $r1;
+        edu.kit.ipd.sdq.eventsim.middleware.events.EventManager$FutureServiceRegistration $r2;
+        edu.kit.ipd.sdq.eventsim.middleware.events.EventManager$lambda_0__151 $r3;
+
+        $r0 := @parameter0: edu.kit.ipd.sdq.eventsim.middleware.events.EventManager;
+
+        $r1 := @parameter1: edu.kit.ipd.sdq.eventsim.api.events.IEventHandler;
+
+        $r2 := @parameter2: edu.kit.ipd.sdq.eventsim.middleware.events.EventManager$FutureServiceRegistration;
+
+        $r3 = new edu.kit.ipd.sdq.eventsim.middleware.events.EventManager$lambda_0__151;
+
+        specialinvoke $r3.<edu.kit.ipd.sdq.eventsim.middleware.events.EventManager$lambda_0__151: void <init>(edu.kit.ipd.sdq.eventsim.middleware.events.EventManager,edu.kit.ipd.sdq.eventsim.api.events.IEventHandler,edu.kit.ipd.sdq.eventsim.middleware.events.EventManager$FutureServiceRegistration)>($r0, $r1, $r2);
+
+        return $r3;
+    }
+
+    public void <init>(edu.kit.ipd.sdq.eventsim.middleware.events.EventManager, edu.kit.ipd.sdq.eventsim.api.events.IEventHandler, edu.kit.ipd.sdq.eventsim.middleware.events.EventManager$FutureServiceRegistration)
+    {
+        edu.kit.ipd.sdq.eventsim.middleware.events.EventManager$lambda_0__151 $r0;
+        edu.kit.ipd.sdq.eventsim.middleware.events.EventManager $r1;
+        edu.kit.ipd.sdq.eventsim.api.events.IEventHandler $r2;
+        edu.kit.ipd.sdq.eventsim.middleware.events.EventManager$FutureServiceRegistration $r3;
+
+        $r0 := @this: edu.kit.ipd.sdq.eventsim.middleware.events.EventManager$lambda_0__151;
+
+        $r1 := @parameter0: edu.kit.ipd.sdq.eventsim.middleware.events.EventManager;
+
+        $r2 := @parameter1: edu.kit.ipd.sdq.eventsim.api.events.IEventHandler;
+
+        $r3 := @parameter2: edu.kit.ipd.sdq.eventsim.middleware.events.EventManager$FutureServiceRegistration;
+
+        specialinvoke $r0.<java.lang.Object: void <init>()>();
+
+        $r0.<edu.kit.ipd.sdq.eventsim.middleware.events.EventManager$lambda_0__151: edu.kit.ipd.sdq.eventsim.middleware.events.EventManager cap0> = $r1;
+
+        $r0.<edu.kit.ipd.sdq.eventsim.middleware.events.EventManager$lambda_0__151: edu.kit.ipd.sdq.eventsim.api.events.IEventHandler cap1> = $r2;
+
+        $r0.<edu.kit.ipd.sdq.eventsim.middleware.events.EventManager$lambda_0__151: edu.kit.ipd.sdq.eventsim.middleware.events.EventManager$FutureServiceRegistration cap2> = $r3;
+
+        return;
+    }
+
+    public void handleEvent(org.osgi.service.event.Event)
+    {
+        edu.kit.ipd.sdq.eventsim.middleware.events.EventManager$lambda_0__151 $r0;
+        org.osgi.service.event.Event $r1;
+        edu.kit.ipd.sdq.eventsim.middleware.events.EventManager $r2;
+        edu.kit.ipd.sdq.eventsim.api.events.IEventHandler $r3;
+        edu.kit.ipd.sdq.eventsim.middleware.events.EventManager$FutureServiceRegistration $r4;
+
+        $r0 := @this: edu.kit.ipd.sdq.eventsim.middleware.events.EventManager$lambda_0__151;
+
+        $r1 := @parameter0: org.osgi.service.event.Event;
+
+        $r2 = $r0.<edu.kit.ipd.sdq.eventsim.middleware.events.EventManager$lambda_0__151: edu.kit.ipd.sdq.eventsim.middleware.events.EventManager cap0>;
+
+        $r3 = $r0.<edu.kit.ipd.sdq.eventsim.middleware.events.EventManager$lambda_0__151: edu.kit.ipd.sdq.eventsim.api.events.IEventHandler cap1>;
+
+        $r4 = $r0.<edu.kit.ipd.sdq.eventsim.middleware.events.EventManager$lambda_0__151: edu.kit.ipd.sdq.eventsim.middleware.events.EventManager$FutureServiceRegistration cap2>;
+
+        virtualinvoke $r2.<edu.kit.ipd.sdq.eventsim.middleware.events.EventManager: void lambda$0(edu.kit.ipd.sdq.eventsim.api.events.IEventHandler,edu.kit.ipd.sdq.eventsim.middleware.events.EventManager$FutureServiceRegistration,org.osgi.service.event.Event)>($r3, $r4, $r1);
+
+        return;
+    }
+}

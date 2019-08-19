@@ -1,0 +1,96 @@
+public class edu.kit.ipd.sdq.eventsim.rvisualization.handlers.LoadRDSHandler extends org.eclipse.core.commands.AbstractHandler
+{
+
+    public void <init>()
+    {
+        edu.kit.ipd.sdq.eventsim.rvisualization.handlers.LoadRDSHandler r0;
+
+        r0 := @this: edu.kit.ipd.sdq.eventsim.rvisualization.handlers.LoadRDSHandler;
+
+        specialinvoke r0.<org.eclipse.core.commands.AbstractHandler: void <init>()>();
+
+        return;
+    }
+
+    public java.lang.Object execute(org.eclipse.core.commands.ExecutionEvent) throws org.eclipse.core.commands.ExecutionException
+    {
+        edu.kit.ipd.sdq.eventsim.rvisualization.handlers.LoadRDSHandler r0;
+        org.eclipse.core.commands.ExecutionEvent r1;
+        edu.kit.ipd.sdq.eventsim.rvisualization.views.FilterView r2;
+        java.lang.String r3;
+        org.eclipse.ui.IWorkbenchWindow $r4;
+        org.eclipse.ui.IWorkbenchPage $r5;
+        org.eclipse.ui.IWorkbenchPart $r6;
+        edu.kit.ipd.sdq.eventsim.rvisualization.Controller $r7, $r8;
+
+        r0 := @this: edu.kit.ipd.sdq.eventsim.rvisualization.handlers.LoadRDSHandler;
+
+        r1 := @parameter0: org.eclipse.core.commands.ExecutionEvent;
+
+        $r4 = staticinvoke <org.eclipse.ui.handlers.HandlerUtil: org.eclipse.ui.IWorkbenchWindow getActiveWorkbenchWindow(org.eclipse.core.commands.ExecutionEvent)>(r1);
+
+        $r5 = interfaceinvoke $r4.<org.eclipse.ui.IWorkbenchWindow: org.eclipse.ui.IWorkbenchPage getActivePage()>();
+
+        $r6 = interfaceinvoke $r5.<org.eclipse.ui.IWorkbenchPage: org.eclipse.ui.IWorkbenchPart getActivePart()>();
+
+        r2 = (edu.kit.ipd.sdq.eventsim.rvisualization.views.FilterView) $r6;
+
+        r3 = specialinvoke r0.<edu.kit.ipd.sdq.eventsim.rvisualization.handlers.LoadRDSHandler: java.lang.String openFileChooserDialog(java.lang.String)>("Load measurements from RDS file...");
+
+        if r3 == null goto label1;
+
+        $r7 = virtualinvoke r2.<edu.kit.ipd.sdq.eventsim.rvisualization.views.FilterView: edu.kit.ipd.sdq.eventsim.rvisualization.Controller getController()>();
+
+        virtualinvoke $r7.<edu.kit.ipd.sdq.eventsim.rvisualization.Controller: void loadRDS(java.lang.String)>(r3);
+
+        $r8 = virtualinvoke r2.<edu.kit.ipd.sdq.eventsim.rvisualization.views.FilterView: edu.kit.ipd.sdq.eventsim.rvisualization.Controller getController()>();
+
+        virtualinvoke $r8.<edu.kit.ipd.sdq.eventsim.rvisualization.Controller: void reload()>();
+
+     label1:
+        return null;
+    }
+
+    private java.lang.String openFileChooserDialog(java.lang.String)
+    {
+        edu.kit.ipd.sdq.eventsim.rvisualization.handlers.LoadRDSHandler r0;
+        java.lang.String r1, r4;
+        org.eclipse.swt.widgets.Shell r2;
+        org.eclipse.ui.IWorkbench $r5;
+        org.eclipse.swt.widgets.Display $r6;
+        org.eclipse.swt.widgets.FileDialog $r7;
+        java.lang.String[] $r8, $r9;
+
+        r0 := @this: edu.kit.ipd.sdq.eventsim.rvisualization.handlers.LoadRDSHandler;
+
+        r1 := @parameter0: java.lang.String;
+
+        $r5 = staticinvoke <org.eclipse.ui.PlatformUI: org.eclipse.ui.IWorkbench getWorkbench()>();
+
+        $r6 = interfaceinvoke $r5.<org.eclipse.ui.IWorkbench: org.eclipse.swt.widgets.Display getDisplay()>();
+
+        r2 = virtualinvoke $r6.<org.eclipse.swt.widgets.Display: org.eclipse.swt.widgets.Shell getActiveShell()>();
+
+        $r7 = new org.eclipse.swt.widgets.FileDialog;
+
+        specialinvoke $r7.<org.eclipse.swt.widgets.FileDialog: void <init>(org.eclipse.swt.widgets.Shell,int)>(r2, 4096);
+
+        $r8 = newarray (java.lang.String)[1];
+
+        $r8[0] = "R data object serialization (*.rds)";
+
+        virtualinvoke $r7.<org.eclipse.swt.widgets.FileDialog: void setFilterNames(java.lang.String[])>($r8);
+
+        $r9 = newarray (java.lang.String)[1];
+
+        $r9[0] = "*.rds";
+
+        virtualinvoke $r7.<org.eclipse.swt.widgets.FileDialog: void setFilterExtensions(java.lang.String[])>($r9);
+
+        virtualinvoke $r7.<org.eclipse.swt.widgets.FileDialog: void setText(java.lang.String)>(r1);
+
+        r4 = virtualinvoke $r7.<org.eclipse.swt.widgets.FileDialog: java.lang.String open()>();
+
+        return r4;
+    }
+}

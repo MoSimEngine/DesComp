@@ -1,0 +1,309 @@
+public class edu.kit.ipd.sdq.eventsim.system.command.FindAssemblyContextForSystemCall extends java.lang.Object implements edu.kit.ipd.sdq.eventsim.command.IPCMCommand
+{
+    private static final org.apache.log4j.Logger logger;
+    private org.palladiosimulator.pcm.usagemodel.EntryLevelSystemCall call;
+
+    static void <clinit>()
+    {
+        org.apache.log4j.Logger $r0;
+
+        $r0 = staticinvoke <org.apache.log4j.Logger: org.apache.log4j.Logger getLogger(java.lang.Class)>(class "Ledu/kit/ipd/sdq/eventsim/system/command/FindAssemblyContextForSystemCall;");
+
+        <edu.kit.ipd.sdq.eventsim.system.command.FindAssemblyContextForSystemCall: org.apache.log4j.Logger logger> = $r0;
+
+        return;
+    }
+
+    public void <init>(org.palladiosimulator.pcm.usagemodel.EntryLevelSystemCall)
+    {
+        edu.kit.ipd.sdq.eventsim.system.command.FindAssemblyContextForSystemCall r0;
+        org.palladiosimulator.pcm.usagemodel.EntryLevelSystemCall r1;
+
+        r0 := @this: edu.kit.ipd.sdq.eventsim.system.command.FindAssemblyContextForSystemCall;
+
+        r1 := @parameter0: org.palladiosimulator.pcm.usagemodel.EntryLevelSystemCall;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        r0.<edu.kit.ipd.sdq.eventsim.system.command.FindAssemblyContextForSystemCall: org.palladiosimulator.pcm.usagemodel.EntryLevelSystemCall call> = r1;
+
+        return;
+    }
+
+    public org.palladiosimulator.pcm.core.composition.AssemblyContext execute(edu.kit.ipd.sdq.eventsim.api.PCMModel, edu.kit.ipd.sdq.eventsim.command.ICommandExecutor)
+    {
+        edu.kit.ipd.sdq.eventsim.system.command.FindAssemblyContextForSystemCall r0;
+        edu.kit.ipd.sdq.eventsim.api.PCMModel r1;
+        edu.kit.ipd.sdq.eventsim.command.ICommandExecutor r2;
+        org.palladiosimulator.pcm.core.entity.InterfaceProvidingEntity r3;
+        org.palladiosimulator.pcm.system.System r4, $r11, $r20;
+        org.palladiosimulator.pcm.repository.OperationProvidedRole r5, $r9;
+        org.palladiosimulator.pcm.core.composition.ProvidedDelegationConnector r6;
+        org.palladiosimulator.pcm.core.composition.AssemblyContext r7;
+        org.palladiosimulator.pcm.usagemodel.EntryLevelSystemCall $r8, $r13, $r16;
+        java.lang.String $r10, $r12, $r17, $r21, $r24, $r27;
+        boolean $z0;
+        java.lang.RuntimeException $r14;
+        java.lang.StringBuilder $r15, $r18, $r19, $r22, $r23, $r25, $r26;
+
+        r0 := @this: edu.kit.ipd.sdq.eventsim.system.command.FindAssemblyContextForSystemCall;
+
+        r1 := @parameter0: edu.kit.ipd.sdq.eventsim.api.PCMModel;
+
+        r2 := @parameter1: edu.kit.ipd.sdq.eventsim.command.ICommandExecutor;
+
+        $r8 = r0.<edu.kit.ipd.sdq.eventsim.system.command.FindAssemblyContextForSystemCall: org.palladiosimulator.pcm.usagemodel.EntryLevelSystemCall call>;
+
+        $r9 = interfaceinvoke $r8.<org.palladiosimulator.pcm.usagemodel.EntryLevelSystemCall: org.palladiosimulator.pcm.repository.OperationProvidedRole getProvidedRole_EntryLevelSystemCall()>();
+
+        r3 = interfaceinvoke $r9.<org.palladiosimulator.pcm.repository.OperationProvidedRole: org.palladiosimulator.pcm.core.entity.InterfaceProvidingEntity getProvidingEntity_ProvidedRole()>();
+
+        r4 = specialinvoke r0.<edu.kit.ipd.sdq.eventsim.system.command.FindAssemblyContextForSystemCall: org.palladiosimulator.pcm.system.System castToSystemOrThrowException(org.palladiosimulator.pcm.core.entity.InterfaceProvidingEntity)>(r3);
+
+        $r10 = interfaceinvoke r4.<org.palladiosimulator.pcm.system.System: java.lang.String getId()>();
+
+        $r11 = virtualinvoke r1.<edu.kit.ipd.sdq.eventsim.api.PCMModel: org.palladiosimulator.pcm.system.System getSystemModel()>();
+
+        $r12 = interfaceinvoke $r11.<org.palladiosimulator.pcm.system.System: java.lang.String getId()>();
+
+        $z0 = virtualinvoke $r10.<java.lang.String: boolean equals(java.lang.Object)>($r12);
+
+        if $z0 != 0 goto label1;
+
+        $r14 = new java.lang.RuntimeException;
+
+        $r15 = new java.lang.StringBuilder;
+
+        specialinvoke $r15.<java.lang.StringBuilder: void <init>(java.lang.String)>("The system call ");
+
+        $r16 = r0.<edu.kit.ipd.sdq.eventsim.system.command.FindAssemblyContextForSystemCall: org.palladiosimulator.pcm.usagemodel.EntryLevelSystemCall call>;
+
+        $r17 = staticinvoke <edu.kit.ipd.sdq.eventsim.util.PCMEntityHelper: java.lang.String toString(org.palladiosimulator.pcm.core.entity.Entity)>($r16);
+
+        $r18 = virtualinvoke $r15.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r17);
+
+        $r19 = virtualinvoke $r18.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(" refers to a system different from the system specified in the simulation configuration. Expected ");
+
+        $r20 = virtualinvoke r1.<edu.kit.ipd.sdq.eventsim.api.PCMModel: org.palladiosimulator.pcm.system.System getSystemModel()>();
+
+        $r21 = staticinvoke <edu.kit.ipd.sdq.eventsim.util.PCMEntityHelper: java.lang.String toString(org.palladiosimulator.pcm.core.entity.Entity)>($r20);
+
+        $r22 = virtualinvoke $r19.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r21);
+
+        $r23 = virtualinvoke $r22.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(", but encountered ");
+
+        $r24 = staticinvoke <edu.kit.ipd.sdq.eventsim.util.PCMEntityHelper: java.lang.String toString(org.palladiosimulator.pcm.core.entity.Entity)>(r4);
+
+        $r25 = virtualinvoke $r23.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r24);
+
+        $r26 = virtualinvoke $r25.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(".");
+
+        $r27 = virtualinvoke $r26.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        specialinvoke $r14.<java.lang.RuntimeException: void <init>(java.lang.String)>($r27);
+
+        throw $r14;
+
+     label1:
+        $r13 = r0.<edu.kit.ipd.sdq.eventsim.system.command.FindAssemblyContextForSystemCall: org.palladiosimulator.pcm.usagemodel.EntryLevelSystemCall call>;
+
+        r5 = interfaceinvoke $r13.<org.palladiosimulator.pcm.usagemodel.EntryLevelSystemCall: org.palladiosimulator.pcm.repository.OperationProvidedRole getProvidedRole_EntryLevelSystemCall()>();
+
+        r6 = specialinvoke r0.<edu.kit.ipd.sdq.eventsim.system.command.FindAssemblyContextForSystemCall: org.palladiosimulator.pcm.core.composition.ProvidedDelegationConnector findDelegationConnectorForRole(org.palladiosimulator.pcm.system.System,org.palladiosimulator.pcm.repository.OperationProvidedRole)>(r4, r5);
+
+        r7 = interfaceinvoke r6.<org.palladiosimulator.pcm.core.composition.ProvidedDelegationConnector: org.palladiosimulator.pcm.core.composition.AssemblyContext getAssemblyContext_ProvidedDelegationConnector()>();
+
+        return r7;
+    }
+
+    public boolean cachable()
+    {
+        edu.kit.ipd.sdq.eventsim.system.command.FindAssemblyContextForSystemCall r0;
+
+        r0 := @this: edu.kit.ipd.sdq.eventsim.system.command.FindAssemblyContextForSystemCall;
+
+        return 0;
+    }
+
+    private org.palladiosimulator.pcm.system.System castToSystemOrThrowException(org.palladiosimulator.pcm.core.entity.InterfaceProvidingEntity)
+    {
+        edu.kit.ipd.sdq.eventsim.system.command.FindAssemblyContextForSystemCall r0;
+        org.palladiosimulator.pcm.core.entity.InterfaceProvidingEntity r1;
+        org.palladiosimulator.pcm.system.SystemPackage $r2, $r5;
+        org.eclipse.emf.ecore.EClass $r3, $r6, $r7;
+        boolean $z0;
+        edu.kit.ipd.sdq.eventsim.exceptions.unchecked.UnexpectedModelStructureException $r4;
+        org.palladiosimulator.pcm.system.System $r8;
+
+        r0 := @this: edu.kit.ipd.sdq.eventsim.system.command.FindAssemblyContextForSystemCall;
+
+        r1 := @parameter0: org.palladiosimulator.pcm.core.entity.InterfaceProvidingEntity;
+
+        $r2 = <org.palladiosimulator.pcm.system.SystemPackage: org.palladiosimulator.pcm.system.SystemPackage eINSTANCE>;
+
+        $r3 = interfaceinvoke $r2.<org.palladiosimulator.pcm.system.SystemPackage: org.eclipse.emf.ecore.EClass getSystem()>();
+
+        $z0 = interfaceinvoke $r3.<org.eclipse.emf.ecore.EClass: boolean isInstance(java.lang.Object)>(r1);
+
+        if $z0 == 0 goto label1;
+
+        $r8 = (org.palladiosimulator.pcm.system.System) r1;
+
+        return $r8;
+
+     label1:
+        $r4 = new edu.kit.ipd.sdq.eventsim.exceptions.unchecked.UnexpectedModelStructureException;
+
+        $r5 = <org.palladiosimulator.pcm.system.SystemPackage: org.palladiosimulator.pcm.system.SystemPackage eINSTANCE>;
+
+        $r6 = interfaceinvoke $r5.<org.palladiosimulator.pcm.system.SystemPackage: org.eclipse.emf.ecore.EClass getSystem()>();
+
+        $r7 = interfaceinvoke r1.<org.palladiosimulator.pcm.core.entity.InterfaceProvidingEntity: org.eclipse.emf.ecore.EClass eClass()>();
+
+        specialinvoke $r4.<edu.kit.ipd.sdq.eventsim.exceptions.unchecked.UnexpectedModelStructureException: void <init>(org.eclipse.emf.ecore.EClass,org.eclipse.emf.ecore.EClass)>($r6, $r7);
+
+        throw $r4;
+    }
+
+    private org.palladiosimulator.pcm.core.composition.ProvidedDelegationConnector findDelegationConnectorForRole(org.palladiosimulator.pcm.system.System, org.palladiosimulator.pcm.repository.OperationProvidedRole)
+    {
+        edu.kit.ipd.sdq.eventsim.system.command.FindAssemblyContextForSystemCall r0;
+        org.palladiosimulator.pcm.system.System r1;
+        org.palladiosimulator.pcm.repository.OperationProvidedRole r2, r6, $r22;
+        org.palladiosimulator.pcm.core.composition.Connector r3;
+        java.util.Iterator r4;
+        org.palladiosimulator.pcm.core.composition.ProvidedDelegationConnector r5, r26;
+        org.eclipse.emf.common.util.EList $r7;
+        java.lang.Object $r8;
+        java.lang.Class $r9;
+        boolean $z0, $z1, $z2, $z3;
+        org.apache.log4j.Level $r10;
+        org.apache.log4j.Logger $r11, $r13;
+        java.lang.StringBuilder $r12, $r15, $r20, $r24;
+        java.lang.String $r14, $r16, $r17, $r18, $r23, $r25;
+        edu.kit.ipd.sdq.eventsim.exceptions.unchecked.UnexpectedModelStructureException $r19;
+        org.palladiosimulator.pcm.usagemodel.EntryLevelSystemCall $r21;
+
+        r0 := @this: edu.kit.ipd.sdq.eventsim.system.command.FindAssemblyContextForSystemCall;
+
+        r1 := @parameter0: org.palladiosimulator.pcm.system.System;
+
+        r2 := @parameter1: org.palladiosimulator.pcm.repository.OperationProvidedRole;
+
+        r26 = null;
+
+        $r7 = interfaceinvoke r1.<org.palladiosimulator.pcm.system.System: org.eclipse.emf.common.util.EList getConnectors__ComposedStructure()>();
+
+        r4 = interfaceinvoke $r7.<org.eclipse.emf.common.util.EList: java.util.Iterator iterator()>();
+
+        goto label3;
+
+     label1:
+        $r8 = interfaceinvoke r4.<java.util.Iterator: java.lang.Object next()>();
+
+        r3 = (org.palladiosimulator.pcm.core.composition.Connector) $r8;
+
+        $r9 = class "Lorg/palladiosimulator/pcm/core/composition/ProvidedDelegationConnector;";
+
+        $z0 = virtualinvoke $r9.<java.lang.Class: boolean isInstance(java.lang.Object)>(r3);
+
+        if $z0 == 0 goto label3;
+
+        r5 = (org.palladiosimulator.pcm.core.composition.ProvidedDelegationConnector) r3;
+
+        r6 = interfaceinvoke r5.<org.palladiosimulator.pcm.core.composition.ProvidedDelegationConnector: org.palladiosimulator.pcm.repository.OperationProvidedRole getOuterProvidedRole_ProvidedDelegationConnector()>();
+
+        if r6 == null goto label2;
+
+        $r17 = interfaceinvoke r6.<org.palladiosimulator.pcm.repository.OperationProvidedRole: java.lang.String getId()>();
+
+        $r18 = interfaceinvoke r2.<org.palladiosimulator.pcm.repository.OperationProvidedRole: java.lang.String getId()>();
+
+        $z2 = virtualinvoke $r17.<java.lang.String: boolean equals(java.lang.Object)>($r18);
+
+        if $z2 == 0 goto label2;
+
+        r26 = r5;
+
+        goto label4;
+
+     label2:
+        if r6 != null goto label3;
+
+        $r11 = <edu.kit.ipd.sdq.eventsim.system.command.FindAssemblyContextForSystemCall: org.apache.log4j.Logger logger>;
+
+        $r10 = <org.apache.log4j.Level: org.apache.log4j.Level WARN>;
+
+        $z1 = virtualinvoke $r11.<org.apache.log4j.Logger: boolean isEnabledFor(org.apache.log4j.Priority)>($r10);
+
+        if $z1 == 0 goto label3;
+
+        $r13 = <edu.kit.ipd.sdq.eventsim.system.command.FindAssemblyContextForSystemCall: org.apache.log4j.Logger logger>;
+
+        $r12 = new java.lang.StringBuilder;
+
+        specialinvoke $r12.<java.lang.StringBuilder: void <init>(java.lang.String)>("Found provided delegation connector who is missing an outer provided role: ");
+
+        $r14 = staticinvoke <edu.kit.ipd.sdq.eventsim.util.PCMEntityHelper: java.lang.String toString(org.palladiosimulator.pcm.core.entity.Entity)>(r5);
+
+        $r15 = virtualinvoke $r12.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r14);
+
+        $r16 = virtualinvoke $r15.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        virtualinvoke $r13.<org.apache.log4j.Logger: void warn(java.lang.Object)>($r16);
+
+     label3:
+        $z3 = interfaceinvoke r4.<java.util.Iterator: boolean hasNext()>();
+
+        if $z3 != 0 goto label1;
+
+     label4:
+        if r26 != null goto label5;
+
+        $r19 = new edu.kit.ipd.sdq.eventsim.exceptions.unchecked.UnexpectedModelStructureException;
+
+        $r20 = new java.lang.StringBuilder;
+
+        specialinvoke $r20.<java.lang.StringBuilder: void <init>(java.lang.String)>("Could not find the delegation connector of the provided role ");
+
+        $r21 = r0.<edu.kit.ipd.sdq.eventsim.system.command.FindAssemblyContextForSystemCall: org.palladiosimulator.pcm.usagemodel.EntryLevelSystemCall call>;
+
+        $r22 = interfaceinvoke $r21.<org.palladiosimulator.pcm.usagemodel.EntryLevelSystemCall: org.palladiosimulator.pcm.repository.OperationProvidedRole getProvidedRole_EntryLevelSystemCall()>();
+
+        $r23 = staticinvoke <edu.kit.ipd.sdq.eventsim.util.PCMEntityHelper: java.lang.String toString(org.palladiosimulator.pcm.core.entity.Entity)>($r22);
+
+        $r24 = virtualinvoke $r20.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r23);
+
+        $r25 = virtualinvoke $r24.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        specialinvoke $r19.<edu.kit.ipd.sdq.eventsim.exceptions.unchecked.UnexpectedModelStructureException: void <init>(java.lang.String)>($r25);
+
+        throw $r19;
+
+     label5:
+        return r26;
+    }
+
+    public volatile java.lang.Object execute(java.lang.Object, edu.kit.ipd.sdq.eventsim.command.ICommandExecutor)
+    {
+        edu.kit.ipd.sdq.eventsim.system.command.FindAssemblyContextForSystemCall r0;
+        java.lang.Object r1;
+        edu.kit.ipd.sdq.eventsim.command.ICommandExecutor r2, $r3;
+        edu.kit.ipd.sdq.eventsim.api.PCMModel $r4;
+        org.palladiosimulator.pcm.core.composition.AssemblyContext $r5;
+
+        r0 := @this: edu.kit.ipd.sdq.eventsim.system.command.FindAssemblyContextForSystemCall;
+
+        r1 := @parameter0: java.lang.Object;
+
+        r2 := @parameter1: edu.kit.ipd.sdq.eventsim.command.ICommandExecutor;
+
+        $r4 = (edu.kit.ipd.sdq.eventsim.api.PCMModel) r1;
+
+        $r3 = (edu.kit.ipd.sdq.eventsim.command.ICommandExecutor) r2;
+
+        $r5 = virtualinvoke r0.<edu.kit.ipd.sdq.eventsim.system.command.FindAssemblyContextForSystemCall: org.palladiosimulator.pcm.core.composition.AssemblyContext execute(edu.kit.ipd.sdq.eventsim.api.PCMModel,edu.kit.ipd.sdq.eventsim.command.ICommandExecutor)>($r4, $r3);
+
+        return $r5;
+    }
+}

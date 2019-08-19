@@ -1,0 +1,241 @@
+public final enum class edu.kit.ipd.sdq.eventsim.rvisualization.model.DiagramType extends java.lang.Enum
+{
+    public static final enum edu.kit.ipd.sdq.eventsim.rvisualization.model.DiagramType HISTOGRAM;
+    public static final enum edu.kit.ipd.sdq.eventsim.rvisualization.model.DiagramType POINT_GRAPH;
+    public static final enum edu.kit.ipd.sdq.eventsim.rvisualization.model.DiagramType CDF;
+    public static final enum edu.kit.ipd.sdq.eventsim.rvisualization.model.DiagramType BAR;
+    public static final enum edu.kit.ipd.sdq.eventsim.rvisualization.model.DiagramType LINE;
+    private java.lang.String name;
+    private java.lang.String shortName;
+    private boolean aggregating;
+    private edu.kit.ipd.sdq.eventsim.rvisualization.ggplot.Aesthetic[] aesthetics;
+    private static final edu.kit.ipd.sdq.eventsim.rvisualization.model.DiagramType[] ENUM$VALUES;
+
+    static void <clinit>()
+    {
+        edu.kit.ipd.sdq.eventsim.rvisualization.model.DiagramType $r0, $r3, $r10, $r13, $r16, $r21, $r22, $r23, $r24, $r25;
+        edu.kit.ipd.sdq.eventsim.rvisualization.ggplot.Aesthetic[] $r1, $r4, $r11, $r14, $r17;
+        edu.kit.ipd.sdq.eventsim.rvisualization.ggplot.Aesthetic $r2, $r5, $r6, $r7, $r8, $r9, $r12, $r15, $r18, $r19;
+        edu.kit.ipd.sdq.eventsim.rvisualization.model.DiagramType[] $r20;
+
+        $r0 = new edu.kit.ipd.sdq.eventsim.rvisualization.model.DiagramType;
+
+        $r1 = newarray (edu.kit.ipd.sdq.eventsim.rvisualization.ggplot.Aesthetic)[1];
+
+        $r2 = <edu.kit.ipd.sdq.eventsim.rvisualization.ggplot.Aesthetic: edu.kit.ipd.sdq.eventsim.rvisualization.ggplot.Aesthetic FILL>;
+
+        $r1[0] = $r2;
+
+        specialinvoke $r0.<edu.kit.ipd.sdq.eventsim.rvisualization.model.DiagramType: void <init>(java.lang.String,int,java.lang.String,java.lang.String,boolean,edu.kit.ipd.sdq.eventsim.rvisualization.ggplot.Aesthetic[])>("HISTOGRAM", 0, "Histogram", "Histogram", 1, $r1);
+
+        <edu.kit.ipd.sdq.eventsim.rvisualization.model.DiagramType: edu.kit.ipd.sdq.eventsim.rvisualization.model.DiagramType HISTOGRAM> = $r0;
+
+        $r3 = new edu.kit.ipd.sdq.eventsim.rvisualization.model.DiagramType;
+
+        $r4 = newarray (edu.kit.ipd.sdq.eventsim.rvisualization.ggplot.Aesthetic)[5];
+
+        $r5 = <edu.kit.ipd.sdq.eventsim.rvisualization.ggplot.Aesthetic: edu.kit.ipd.sdq.eventsim.rvisualization.ggplot.Aesthetic COLOR>;
+
+        $r4[0] = $r5;
+
+        $r6 = <edu.kit.ipd.sdq.eventsim.rvisualization.ggplot.Aesthetic: edu.kit.ipd.sdq.eventsim.rvisualization.ggplot.Aesthetic LINETYPE>;
+
+        $r4[1] = $r6;
+
+        $r7 = <edu.kit.ipd.sdq.eventsim.rvisualization.ggplot.Aesthetic: edu.kit.ipd.sdq.eventsim.rvisualization.ggplot.Aesthetic ALPHA>;
+
+        $r4[2] = $r7;
+
+        $r8 = <edu.kit.ipd.sdq.eventsim.rvisualization.ggplot.Aesthetic: edu.kit.ipd.sdq.eventsim.rvisualization.ggplot.Aesthetic FILL>;
+
+        $r4[3] = $r8;
+
+        $r9 = <edu.kit.ipd.sdq.eventsim.rvisualization.ggplot.Aesthetic: edu.kit.ipd.sdq.eventsim.rvisualization.ggplot.Aesthetic SHAPE>;
+
+        $r4[4] = $r9;
+
+        specialinvoke $r3.<edu.kit.ipd.sdq.eventsim.rvisualization.model.DiagramType: void <init>(java.lang.String,int,java.lang.String,java.lang.String,boolean,edu.kit.ipd.sdq.eventsim.rvisualization.ggplot.Aesthetic[])>("POINT_GRAPH", 1, "Point Chart", "Point", 0, $r4);
+
+        <edu.kit.ipd.sdq.eventsim.rvisualization.model.DiagramType: edu.kit.ipd.sdq.eventsim.rvisualization.model.DiagramType POINT_GRAPH> = $r3;
+
+        $r10 = new edu.kit.ipd.sdq.eventsim.rvisualization.model.DiagramType;
+
+        $r11 = newarray (edu.kit.ipd.sdq.eventsim.rvisualization.ggplot.Aesthetic)[1];
+
+        $r12 = <edu.kit.ipd.sdq.eventsim.rvisualization.ggplot.Aesthetic: edu.kit.ipd.sdq.eventsim.rvisualization.ggplot.Aesthetic COLOR>;
+
+        $r11[0] = $r12;
+
+        specialinvoke $r10.<edu.kit.ipd.sdq.eventsim.rvisualization.model.DiagramType: void <init>(java.lang.String,int,java.lang.String,java.lang.String,boolean,edu.kit.ipd.sdq.eventsim.rvisualization.ggplot.Aesthetic[])>("CDF", 2, "CDF (Cumulative Distribution Function)", "CDF", 1, $r11);
+
+        <edu.kit.ipd.sdq.eventsim.rvisualization.model.DiagramType: edu.kit.ipd.sdq.eventsim.rvisualization.model.DiagramType CDF> = $r10;
+
+        $r13 = new edu.kit.ipd.sdq.eventsim.rvisualization.model.DiagramType;
+
+        $r14 = newarray (edu.kit.ipd.sdq.eventsim.rvisualization.ggplot.Aesthetic)[1];
+
+        $r15 = <edu.kit.ipd.sdq.eventsim.rvisualization.ggplot.Aesthetic: edu.kit.ipd.sdq.eventsim.rvisualization.ggplot.Aesthetic COLOR>;
+
+        $r14[0] = $r15;
+
+        specialinvoke $r13.<edu.kit.ipd.sdq.eventsim.rvisualization.model.DiagramType: void <init>(java.lang.String,int,java.lang.String,java.lang.String,boolean,edu.kit.ipd.sdq.eventsim.rvisualization.ggplot.Aesthetic[])>("BAR", 3, "Bar Chart", "Bar", 0, $r14);
+
+        <edu.kit.ipd.sdq.eventsim.rvisualization.model.DiagramType: edu.kit.ipd.sdq.eventsim.rvisualization.model.DiagramType BAR> = $r13;
+
+        $r16 = new edu.kit.ipd.sdq.eventsim.rvisualization.model.DiagramType;
+
+        $r17 = newarray (edu.kit.ipd.sdq.eventsim.rvisualization.ggplot.Aesthetic)[2];
+
+        $r18 = <edu.kit.ipd.sdq.eventsim.rvisualization.ggplot.Aesthetic: edu.kit.ipd.sdq.eventsim.rvisualization.ggplot.Aesthetic COLOR>;
+
+        $r17[0] = $r18;
+
+        $r19 = <edu.kit.ipd.sdq.eventsim.rvisualization.ggplot.Aesthetic: edu.kit.ipd.sdq.eventsim.rvisualization.ggplot.Aesthetic LINETYPE>;
+
+        $r17[1] = $r19;
+
+        specialinvoke $r16.<edu.kit.ipd.sdq.eventsim.rvisualization.model.DiagramType: void <init>(java.lang.String,int,java.lang.String,java.lang.String,boolean,edu.kit.ipd.sdq.eventsim.rvisualization.ggplot.Aesthetic[])>("LINE", 4, "Line Chart", "Line", 0, $r17);
+
+        <edu.kit.ipd.sdq.eventsim.rvisualization.model.DiagramType: edu.kit.ipd.sdq.eventsim.rvisualization.model.DiagramType LINE> = $r16;
+
+        $r20 = newarray (edu.kit.ipd.sdq.eventsim.rvisualization.model.DiagramType)[5];
+
+        $r21 = <edu.kit.ipd.sdq.eventsim.rvisualization.model.DiagramType: edu.kit.ipd.sdq.eventsim.rvisualization.model.DiagramType HISTOGRAM>;
+
+        $r20[0] = $r21;
+
+        $r22 = <edu.kit.ipd.sdq.eventsim.rvisualization.model.DiagramType: edu.kit.ipd.sdq.eventsim.rvisualization.model.DiagramType POINT_GRAPH>;
+
+        $r20[1] = $r22;
+
+        $r23 = <edu.kit.ipd.sdq.eventsim.rvisualization.model.DiagramType: edu.kit.ipd.sdq.eventsim.rvisualization.model.DiagramType CDF>;
+
+        $r20[2] = $r23;
+
+        $r24 = <edu.kit.ipd.sdq.eventsim.rvisualization.model.DiagramType: edu.kit.ipd.sdq.eventsim.rvisualization.model.DiagramType BAR>;
+
+        $r20[3] = $r24;
+
+        $r25 = <edu.kit.ipd.sdq.eventsim.rvisualization.model.DiagramType: edu.kit.ipd.sdq.eventsim.rvisualization.model.DiagramType LINE>;
+
+        $r20[4] = $r25;
+
+        <edu.kit.ipd.sdq.eventsim.rvisualization.model.DiagramType: edu.kit.ipd.sdq.eventsim.rvisualization.model.DiagramType[] ENUM$VALUES> = $r20;
+
+        return;
+    }
+
+    private transient void <init>(java.lang.String, int, java.lang.String, java.lang.String, boolean, edu.kit.ipd.sdq.eventsim.rvisualization.ggplot.Aesthetic[])
+    {
+        edu.kit.ipd.sdq.eventsim.rvisualization.model.DiagramType r0;
+        java.lang.String r1, r2, r3;
+        int i0;
+        boolean z0;
+        edu.kit.ipd.sdq.eventsim.rvisualization.ggplot.Aesthetic[] r4;
+
+        r0 := @this: edu.kit.ipd.sdq.eventsim.rvisualization.model.DiagramType;
+
+        r1 := @parameter0: java.lang.String;
+
+        i0 := @parameter1: int;
+
+        r2 := @parameter2: java.lang.String;
+
+        r3 := @parameter3: java.lang.String;
+
+        z0 := @parameter4: boolean;
+
+        r4 := @parameter5: edu.kit.ipd.sdq.eventsim.rvisualization.ggplot.Aesthetic[];
+
+        specialinvoke r0.<java.lang.Enum: void <init>(java.lang.String,int)>(r1, i0);
+
+        r0.<edu.kit.ipd.sdq.eventsim.rvisualization.model.DiagramType: java.lang.String name> = r2;
+
+        r0.<edu.kit.ipd.sdq.eventsim.rvisualization.model.DiagramType: java.lang.String shortName> = r3;
+
+        r0.<edu.kit.ipd.sdq.eventsim.rvisualization.model.DiagramType: boolean aggregating> = z0;
+
+        r0.<edu.kit.ipd.sdq.eventsim.rvisualization.model.DiagramType: edu.kit.ipd.sdq.eventsim.rvisualization.ggplot.Aesthetic[] aesthetics> = r4;
+
+        return;
+    }
+
+    public java.lang.String getName()
+    {
+        edu.kit.ipd.sdq.eventsim.rvisualization.model.DiagramType r0;
+        java.lang.String $r1;
+
+        r0 := @this: edu.kit.ipd.sdq.eventsim.rvisualization.model.DiagramType;
+
+        $r1 = r0.<edu.kit.ipd.sdq.eventsim.rvisualization.model.DiagramType: java.lang.String name>;
+
+        return $r1;
+    }
+
+    public java.lang.String getShortName()
+    {
+        edu.kit.ipd.sdq.eventsim.rvisualization.model.DiagramType r0;
+        java.lang.String $r1;
+
+        r0 := @this: edu.kit.ipd.sdq.eventsim.rvisualization.model.DiagramType;
+
+        $r1 = r0.<edu.kit.ipd.sdq.eventsim.rvisualization.model.DiagramType: java.lang.String shortName>;
+
+        return $r1;
+    }
+
+    public boolean isAggregating()
+    {
+        edu.kit.ipd.sdq.eventsim.rvisualization.model.DiagramType r0;
+        boolean $z0;
+
+        r0 := @this: edu.kit.ipd.sdq.eventsim.rvisualization.model.DiagramType;
+
+        $z0 = r0.<edu.kit.ipd.sdq.eventsim.rvisualization.model.DiagramType: boolean aggregating>;
+
+        return $z0;
+    }
+
+    public edu.kit.ipd.sdq.eventsim.rvisualization.ggplot.Aesthetic[] getAesthetics()
+    {
+        edu.kit.ipd.sdq.eventsim.rvisualization.model.DiagramType r0;
+        edu.kit.ipd.sdq.eventsim.rvisualization.ggplot.Aesthetic[] $r1;
+
+        r0 := @this: edu.kit.ipd.sdq.eventsim.rvisualization.model.DiagramType;
+
+        $r1 = r0.<edu.kit.ipd.sdq.eventsim.rvisualization.model.DiagramType: edu.kit.ipd.sdq.eventsim.rvisualization.ggplot.Aesthetic[] aesthetics>;
+
+        return $r1;
+    }
+
+    public static edu.kit.ipd.sdq.eventsim.rvisualization.model.DiagramType[] values()
+    {
+        edu.kit.ipd.sdq.eventsim.rvisualization.model.DiagramType[] $r2, $r3;
+        int $i1;
+
+        $r2 = <edu.kit.ipd.sdq.eventsim.rvisualization.model.DiagramType: edu.kit.ipd.sdq.eventsim.rvisualization.model.DiagramType[] ENUM$VALUES>;
+
+        $i1 = lengthof $r2;
+
+        $r3 = newarray (edu.kit.ipd.sdq.eventsim.rvisualization.model.DiagramType)[$i1];
+
+        staticinvoke <java.lang.System: void arraycopy(java.lang.Object,int,java.lang.Object,int,int)>($r2, 0, $r3, 0, $i1);
+
+        return $r3;
+    }
+
+    public static edu.kit.ipd.sdq.eventsim.rvisualization.model.DiagramType valueOf(java.lang.String)
+    {
+        java.lang.String r0;
+        java.lang.Enum $r1;
+        edu.kit.ipd.sdq.eventsim.rvisualization.model.DiagramType $r2;
+
+        r0 := @parameter0: java.lang.String;
+
+        $r1 = staticinvoke <java.lang.Enum: java.lang.Enum valueOf(java.lang.Class,java.lang.String)>(class "Ledu/kit/ipd/sdq/eventsim/rvisualization/model/DiagramType;", r0);
+
+        $r2 = (edu.kit.ipd.sdq.eventsim.rvisualization.model.DiagramType) $r1;
+
+        return $r2;
+    }
+}

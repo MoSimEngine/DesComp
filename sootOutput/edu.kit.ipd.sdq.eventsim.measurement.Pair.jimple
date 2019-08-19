@@ -1,0 +1,207 @@
+public class edu.kit.ipd.sdq.eventsim.measurement.Pair extends java.lang.Object
+{
+    private java.lang.Object first;
+    private java.lang.Object second;
+
+    public void <init>(java.lang.Object, java.lang.Object)
+    {
+        edu.kit.ipd.sdq.eventsim.measurement.Pair r0;
+        java.lang.Object r1, r2;
+
+        r0 := @this: edu.kit.ipd.sdq.eventsim.measurement.Pair;
+
+        r1 := @parameter0: java.lang.Object;
+
+        r2 := @parameter1: java.lang.Object;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        r0.<edu.kit.ipd.sdq.eventsim.measurement.Pair: java.lang.Object first> = r1;
+
+        r0.<edu.kit.ipd.sdq.eventsim.measurement.Pair: java.lang.Object second> = r2;
+
+        return;
+    }
+
+    public java.lang.Object getFirst()
+    {
+        edu.kit.ipd.sdq.eventsim.measurement.Pair r0;
+        java.lang.Object $r1;
+
+        r0 := @this: edu.kit.ipd.sdq.eventsim.measurement.Pair;
+
+        $r1 = r0.<edu.kit.ipd.sdq.eventsim.measurement.Pair: java.lang.Object first>;
+
+        return $r1;
+    }
+
+    public java.lang.Object getSecond()
+    {
+        edu.kit.ipd.sdq.eventsim.measurement.Pair r0;
+        java.lang.Object $r1;
+
+        r0 := @this: edu.kit.ipd.sdq.eventsim.measurement.Pair;
+
+        $r1 = r0.<edu.kit.ipd.sdq.eventsim.measurement.Pair: java.lang.Object second>;
+
+        return $r1;
+    }
+
+    public java.lang.String toString()
+    {
+        edu.kit.ipd.sdq.eventsim.measurement.Pair r0;
+        java.lang.StringBuilder $r2, $r3, $r5, $r6, $r8;
+        java.lang.Object $r4, $r7;
+        java.lang.String $r10;
+
+        r0 := @this: edu.kit.ipd.sdq.eventsim.measurement.Pair;
+
+        $r2 = new java.lang.StringBuilder;
+
+        specialinvoke $r2.<java.lang.StringBuilder: void <init>()>();
+
+        $r3 = virtualinvoke $r2.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("Pair [first=");
+
+        $r4 = r0.<edu.kit.ipd.sdq.eventsim.measurement.Pair: java.lang.Object first>;
+
+        $r5 = virtualinvoke $r3.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.Object)>($r4);
+
+        $r6 = virtualinvoke $r5.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(", second=");
+
+        $r7 = r0.<edu.kit.ipd.sdq.eventsim.measurement.Pair: java.lang.Object second>;
+
+        $r8 = virtualinvoke $r6.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.Object)>($r7);
+
+        virtualinvoke $r8.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("]");
+
+        $r10 = virtualinvoke $r2.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        return $r10;
+    }
+
+    public int hashCode()
+    {
+        edu.kit.ipd.sdq.eventsim.measurement.Pair r0;
+        java.lang.Object $r1, $r2, $r3, $r4;
+        int $i1, $i2, $i4, i5, $i6, i7;
+
+        r0 := @this: edu.kit.ipd.sdq.eventsim.measurement.Pair;
+
+        $i1 = 31 * 1;
+
+        $r1 = r0.<edu.kit.ipd.sdq.eventsim.measurement.Pair: java.lang.Object first>;
+
+        if $r1 != null goto label1;
+
+        $i4 = 0;
+
+        goto label2;
+
+     label1:
+        $r2 = r0.<edu.kit.ipd.sdq.eventsim.measurement.Pair: java.lang.Object first>;
+
+        $i4 = virtualinvoke $r2.<java.lang.Object: int hashCode()>();
+
+     label2:
+        i5 = $i1 + $i4;
+
+        $i2 = 31 * i5;
+
+        $r3 = r0.<edu.kit.ipd.sdq.eventsim.measurement.Pair: java.lang.Object second>;
+
+        if $r3 != null goto label3;
+
+        $i6 = 0;
+
+        goto label4;
+
+     label3:
+        $r4 = r0.<edu.kit.ipd.sdq.eventsim.measurement.Pair: java.lang.Object second>;
+
+        $i6 = virtualinvoke $r4.<java.lang.Object: int hashCode()>();
+
+     label4:
+        i7 = $i2 + $i6;
+
+        return i7;
+    }
+
+    public boolean equals(java.lang.Object)
+    {
+        edu.kit.ipd.sdq.eventsim.measurement.Pair r0, r2;
+        java.lang.Object r1, $r5, $r6, $r7, $r8, $r9, $r10, $r11, $r12;
+        java.lang.Class $r3, $r4;
+        boolean $z0, $z1;
+
+        r0 := @this: edu.kit.ipd.sdq.eventsim.measurement.Pair;
+
+        r1 := @parameter0: java.lang.Object;
+
+        if r0 != r1 goto label1;
+
+        return 1;
+
+     label1:
+        if r1 != null goto label2;
+
+        return 0;
+
+     label2:
+        $r3 = virtualinvoke r0.<java.lang.Object: java.lang.Class getClass()>();
+
+        $r4 = virtualinvoke r1.<java.lang.Object: java.lang.Class getClass()>();
+
+        if $r3 == $r4 goto label3;
+
+        return 0;
+
+     label3:
+        r2 = (edu.kit.ipd.sdq.eventsim.measurement.Pair) r1;
+
+        $r5 = r0.<edu.kit.ipd.sdq.eventsim.measurement.Pair: java.lang.Object first>;
+
+        if $r5 != null goto label4;
+
+        $r12 = r2.<edu.kit.ipd.sdq.eventsim.measurement.Pair: java.lang.Object first>;
+
+        if $r12 == null goto label5;
+
+        return 0;
+
+     label4:
+        $r7 = r0.<edu.kit.ipd.sdq.eventsim.measurement.Pair: java.lang.Object first>;
+
+        $r6 = r2.<edu.kit.ipd.sdq.eventsim.measurement.Pair: java.lang.Object first>;
+
+        $z0 = virtualinvoke $r7.<java.lang.Object: boolean equals(java.lang.Object)>($r6);
+
+        if $z0 != 0 goto label5;
+
+        return 0;
+
+     label5:
+        $r8 = r0.<edu.kit.ipd.sdq.eventsim.measurement.Pair: java.lang.Object second>;
+
+        if $r8 != null goto label6;
+
+        $r11 = r2.<edu.kit.ipd.sdq.eventsim.measurement.Pair: java.lang.Object second>;
+
+        if $r11 == null goto label7;
+
+        return 0;
+
+     label6:
+        $r10 = r0.<edu.kit.ipd.sdq.eventsim.measurement.Pair: java.lang.Object second>;
+
+        $r9 = r2.<edu.kit.ipd.sdq.eventsim.measurement.Pair: java.lang.Object second>;
+
+        $z1 = virtualinvoke $r10.<java.lang.Object: boolean equals(java.lang.Object)>($r9);
+
+        if $z1 != 0 goto label7;
+
+        return 0;
+
+     label7:
+        return 1;
+    }
+}

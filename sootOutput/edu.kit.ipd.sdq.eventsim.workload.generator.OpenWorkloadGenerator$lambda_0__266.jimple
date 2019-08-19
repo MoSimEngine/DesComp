@@ -1,0 +1,60 @@
+public final class edu.kit.ipd.sdq.eventsim.workload.generator.OpenWorkloadGenerator$lambda_0__266 extends java.lang.Object implements edu.kit.ipd.sdq.eventsim.api.Procedure
+{
+    edu.kit.ipd.sdq.eventsim.workload.entities.User cap0;
+    org.palladiosimulator.pcm.usagemodel.UsageScenario cap1;
+
+    public static edu.kit.ipd.sdq.eventsim.api.Procedure bootstrap$(edu.kit.ipd.sdq.eventsim.workload.entities.User, org.palladiosimulator.pcm.usagemodel.UsageScenario)
+    {
+        edu.kit.ipd.sdq.eventsim.workload.entities.User $r0;
+        org.palladiosimulator.pcm.usagemodel.UsageScenario $r1;
+        edu.kit.ipd.sdq.eventsim.workload.generator.OpenWorkloadGenerator$lambda_0__266 $r2;
+
+        $r0 := @parameter0: edu.kit.ipd.sdq.eventsim.workload.entities.User;
+
+        $r1 := @parameter1: org.palladiosimulator.pcm.usagemodel.UsageScenario;
+
+        $r2 = new edu.kit.ipd.sdq.eventsim.workload.generator.OpenWorkloadGenerator$lambda_0__266;
+
+        specialinvoke $r2.<edu.kit.ipd.sdq.eventsim.workload.generator.OpenWorkloadGenerator$lambda_0__266: void <init>(edu.kit.ipd.sdq.eventsim.workload.entities.User,org.palladiosimulator.pcm.usagemodel.UsageScenario)>($r0, $r1);
+
+        return $r2;
+    }
+
+    public void <init>(edu.kit.ipd.sdq.eventsim.workload.entities.User, org.palladiosimulator.pcm.usagemodel.UsageScenario)
+    {
+        edu.kit.ipd.sdq.eventsim.workload.generator.OpenWorkloadGenerator$lambda_0__266 $r0;
+        edu.kit.ipd.sdq.eventsim.workload.entities.User $r1;
+        org.palladiosimulator.pcm.usagemodel.UsageScenario $r2;
+
+        $r0 := @this: edu.kit.ipd.sdq.eventsim.workload.generator.OpenWorkloadGenerator$lambda_0__266;
+
+        $r1 := @parameter0: edu.kit.ipd.sdq.eventsim.workload.entities.User;
+
+        $r2 := @parameter1: org.palladiosimulator.pcm.usagemodel.UsageScenario;
+
+        specialinvoke $r0.<java.lang.Object: void <init>()>();
+
+        $r0.<edu.kit.ipd.sdq.eventsim.workload.generator.OpenWorkloadGenerator$lambda_0__266: edu.kit.ipd.sdq.eventsim.workload.entities.User cap0> = $r1;
+
+        $r0.<edu.kit.ipd.sdq.eventsim.workload.generator.OpenWorkloadGenerator$lambda_0__266: org.palladiosimulator.pcm.usagemodel.UsageScenario cap1> = $r2;
+
+        return;
+    }
+
+    public void execute()
+    {
+        edu.kit.ipd.sdq.eventsim.workload.generator.OpenWorkloadGenerator$lambda_0__266 $r0;
+        edu.kit.ipd.sdq.eventsim.workload.entities.User $r1;
+        org.palladiosimulator.pcm.usagemodel.UsageScenario $r2;
+
+        $r0 := @this: edu.kit.ipd.sdq.eventsim.workload.generator.OpenWorkloadGenerator$lambda_0__266;
+
+        $r1 = $r0.<edu.kit.ipd.sdq.eventsim.workload.generator.OpenWorkloadGenerator$lambda_0__266: edu.kit.ipd.sdq.eventsim.workload.entities.User cap0>;
+
+        $r2 = $r0.<edu.kit.ipd.sdq.eventsim.workload.generator.OpenWorkloadGenerator$lambda_0__266: org.palladiosimulator.pcm.usagemodel.UsageScenario cap1>;
+
+        staticinvoke <edu.kit.ipd.sdq.eventsim.workload.generator.OpenWorkloadGenerator: void lambda$0(edu.kit.ipd.sdq.eventsim.workload.entities.User,org.palladiosimulator.pcm.usagemodel.UsageScenario)>($r1, $r2);
+
+        return;
+    }
+}

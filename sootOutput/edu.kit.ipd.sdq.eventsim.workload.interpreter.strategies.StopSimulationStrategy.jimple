@@ -1,0 +1,74 @@
+public class edu.kit.ipd.sdq.eventsim.workload.interpreter.strategies.StopSimulationStrategy extends java.lang.Object implements edu.kit.ipd.sdq.eventsim.interpreter.SimulationStrategy
+{
+
+    public void <init>()
+    {
+        edu.kit.ipd.sdq.eventsim.workload.interpreter.strategies.StopSimulationStrategy r0;
+
+        r0 := @this: edu.kit.ipd.sdq.eventsim.workload.interpreter.strategies.StopSimulationStrategy;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    public void simulate(org.palladiosimulator.pcm.usagemodel.AbstractUserAction, edu.kit.ipd.sdq.eventsim.workload.entities.User, java.util.function.Consumer)
+    {
+        edu.kit.ipd.sdq.eventsim.workload.interpreter.strategies.StopSimulationStrategy r0;
+        org.palladiosimulator.pcm.usagemodel.AbstractUserAction r1;
+        edu.kit.ipd.sdq.eventsim.workload.entities.User r2;
+        java.util.function.Consumer r3;
+        edu.kit.ipd.sdq.eventsim.interpreter.TraversalInstruction $r4;
+
+        r0 := @this: edu.kit.ipd.sdq.eventsim.workload.interpreter.strategies.StopSimulationStrategy;
+
+        r1 := @parameter0: org.palladiosimulator.pcm.usagemodel.AbstractUserAction;
+
+        r2 := @parameter1: edu.kit.ipd.sdq.eventsim.workload.entities.User;
+
+        r3 := @parameter2: java.util.function.Consumer;
+
+        $r4 = staticinvoke <edu.kit.ipd.sdq.eventsim.workload.interpreter.strategies.StopSimulationStrategy$lambda_0__263: edu.kit.ipd.sdq.eventsim.interpreter.TraversalInstruction bootstrap$(edu.kit.ipd.sdq.eventsim.workload.entities.User)>(r2);
+
+        interfaceinvoke r3.<java.util.function.Consumer: void accept(java.lang.Object)>($r4);
+
+        return;
+    }
+
+    public volatile void simulate(org.palladiosimulator.pcm.core.entity.Entity, edu.kit.ipd.sdq.eventsim.entities.EventSimEntity, java.util.function.Consumer)
+    {
+        edu.kit.ipd.sdq.eventsim.workload.interpreter.strategies.StopSimulationStrategy r0;
+        org.palladiosimulator.pcm.core.entity.Entity r1;
+        edu.kit.ipd.sdq.eventsim.entities.EventSimEntity r2;
+        java.util.function.Consumer r3;
+        edu.kit.ipd.sdq.eventsim.workload.entities.User $r4;
+        org.palladiosimulator.pcm.usagemodel.AbstractUserAction $r5;
+
+        r0 := @this: edu.kit.ipd.sdq.eventsim.workload.interpreter.strategies.StopSimulationStrategy;
+
+        r1 := @parameter0: org.palladiosimulator.pcm.core.entity.Entity;
+
+        r2 := @parameter1: edu.kit.ipd.sdq.eventsim.entities.EventSimEntity;
+
+        r3 := @parameter2: java.util.function.Consumer;
+
+        $r5 = (org.palladiosimulator.pcm.usagemodel.AbstractUserAction) r1;
+
+        $r4 = (edu.kit.ipd.sdq.eventsim.workload.entities.User) r2;
+
+        virtualinvoke r0.<edu.kit.ipd.sdq.eventsim.workload.interpreter.strategies.StopSimulationStrategy: void simulate(org.palladiosimulator.pcm.usagemodel.AbstractUserAction,edu.kit.ipd.sdq.eventsim.workload.entities.User,java.util.function.Consumer)>($r5, $r4, r3);
+
+        return;
+    }
+
+    public static void lambda$0(edu.kit.ipd.sdq.eventsim.workload.entities.User)
+    {
+        edu.kit.ipd.sdq.eventsim.workload.entities.User r0;
+
+        r0 := @parameter0: edu.kit.ipd.sdq.eventsim.workload.entities.User;
+
+        virtualinvoke r0.<edu.kit.ipd.sdq.eventsim.workload.entities.User: void leaveScenarioBehaviour()>();
+
+        return;
+    }
+}

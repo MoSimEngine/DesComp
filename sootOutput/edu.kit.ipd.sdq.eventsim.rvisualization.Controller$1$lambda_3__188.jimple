@@ -1,0 +1,48 @@
+public final class edu.kit.ipd.sdq.eventsim.rvisualization.Controller$1$lambda_3__188 extends java.lang.Object implements edu.kit.ipd.sdq.eventsim.rvisualization.util.Procedure
+{
+    edu.kit.ipd.sdq.eventsim.rvisualization.Controller$1 cap0;
+
+    public static edu.kit.ipd.sdq.eventsim.rvisualization.util.Procedure bootstrap$(edu.kit.ipd.sdq.eventsim.rvisualization.Controller$1)
+    {
+        edu.kit.ipd.sdq.eventsim.rvisualization.Controller$1 $r0;
+        edu.kit.ipd.sdq.eventsim.rvisualization.Controller$1$lambda_3__188 $r1;
+
+        $r0 := @parameter0: edu.kit.ipd.sdq.eventsim.rvisualization.Controller$1;
+
+        $r1 = new edu.kit.ipd.sdq.eventsim.rvisualization.Controller$1$lambda_3__188;
+
+        specialinvoke $r1.<edu.kit.ipd.sdq.eventsim.rvisualization.Controller$1$lambda_3__188: void <init>(edu.kit.ipd.sdq.eventsim.rvisualization.Controller$1)>($r0);
+
+        return $r1;
+    }
+
+    public void <init>(edu.kit.ipd.sdq.eventsim.rvisualization.Controller$1)
+    {
+        edu.kit.ipd.sdq.eventsim.rvisualization.Controller$1$lambda_3__188 $r0;
+        edu.kit.ipd.sdq.eventsim.rvisualization.Controller$1 $r1;
+
+        $r0 := @this: edu.kit.ipd.sdq.eventsim.rvisualization.Controller$1$lambda_3__188;
+
+        $r1 := @parameter0: edu.kit.ipd.sdq.eventsim.rvisualization.Controller$1;
+
+        specialinvoke $r0.<java.lang.Object: void <init>()>();
+
+        $r0.<edu.kit.ipd.sdq.eventsim.rvisualization.Controller$1$lambda_3__188: edu.kit.ipd.sdq.eventsim.rvisualization.Controller$1 cap0> = $r1;
+
+        return;
+    }
+
+    public void execute()
+    {
+        edu.kit.ipd.sdq.eventsim.rvisualization.Controller$1$lambda_3__188 $r0;
+        edu.kit.ipd.sdq.eventsim.rvisualization.Controller$1 $r1;
+
+        $r0 := @this: edu.kit.ipd.sdq.eventsim.rvisualization.Controller$1$lambda_3__188;
+
+        $r1 = $r0.<edu.kit.ipd.sdq.eventsim.rvisualization.Controller$1$lambda_3__188: edu.kit.ipd.sdq.eventsim.rvisualization.Controller$1 cap0>;
+
+        virtualinvoke $r1.<edu.kit.ipd.sdq.eventsim.rvisualization.Controller$1: void lambda$3()>();
+
+        return;
+    }
+}

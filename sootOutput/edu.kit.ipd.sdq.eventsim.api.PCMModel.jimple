@@ -1,0 +1,406 @@
+public class edu.kit.ipd.sdq.eventsim.api.PCMModel extends java.lang.Object
+{
+    private final org.palladiosimulator.pcm.allocation.Allocation allocationModel;
+    private final org.palladiosimulator.pcm.repository.Repository repositoryModel;
+    private final org.palladiosimulator.pcm.resourceenvironment.ResourceEnvironment resourceModel;
+    private final org.palladiosimulator.pcm.system.System systemModel;
+    private final org.palladiosimulator.pcm.usagemodel.UsageModel usageModel;
+    private final org.palladiosimulator.pcm.resourcetype.ResourceRepository resourceRepository;
+
+    public void <init>(org.palladiosimulator.pcm.allocation.Allocation, org.palladiosimulator.pcm.repository.Repository, org.palladiosimulator.pcm.resourceenvironment.ResourceEnvironment, org.palladiosimulator.pcm.system.System, org.palladiosimulator.pcm.usagemodel.UsageModel, org.palladiosimulator.pcm.resourcetype.ResourceRepository)
+    {
+        edu.kit.ipd.sdq.eventsim.api.PCMModel r0;
+        org.palladiosimulator.pcm.allocation.Allocation r1;
+        org.palladiosimulator.pcm.repository.Repository r2;
+        org.palladiosimulator.pcm.resourceenvironment.ResourceEnvironment r3;
+        org.palladiosimulator.pcm.system.System r4;
+        org.palladiosimulator.pcm.usagemodel.UsageModel r5;
+        org.palladiosimulator.pcm.resourcetype.ResourceRepository r6;
+
+        r0 := @this: edu.kit.ipd.sdq.eventsim.api.PCMModel;
+
+        r1 := @parameter0: org.palladiosimulator.pcm.allocation.Allocation;
+
+        r2 := @parameter1: org.palladiosimulator.pcm.repository.Repository;
+
+        r3 := @parameter2: org.palladiosimulator.pcm.resourceenvironment.ResourceEnvironment;
+
+        r4 := @parameter3: org.palladiosimulator.pcm.system.System;
+
+        r5 := @parameter4: org.palladiosimulator.pcm.usagemodel.UsageModel;
+
+        r6 := @parameter5: org.palladiosimulator.pcm.resourcetype.ResourceRepository;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        r0.<edu.kit.ipd.sdq.eventsim.api.PCMModel: org.palladiosimulator.pcm.allocation.Allocation allocationModel> = r1;
+
+        r0.<edu.kit.ipd.sdq.eventsim.api.PCMModel: org.palladiosimulator.pcm.repository.Repository repositoryModel> = r2;
+
+        r0.<edu.kit.ipd.sdq.eventsim.api.PCMModel: org.palladiosimulator.pcm.resourceenvironment.ResourceEnvironment resourceModel> = r3;
+
+        r0.<edu.kit.ipd.sdq.eventsim.api.PCMModel: org.palladiosimulator.pcm.system.System systemModel> = r4;
+
+        r0.<edu.kit.ipd.sdq.eventsim.api.PCMModel: org.palladiosimulator.pcm.usagemodel.UsageModel usageModel> = r5;
+
+        r0.<edu.kit.ipd.sdq.eventsim.api.PCMModel: org.palladiosimulator.pcm.resourcetype.ResourceRepository resourceRepository> = r6;
+
+        return;
+    }
+
+    public org.palladiosimulator.pcm.usagemodel.UsageModel getUsageModel()
+    {
+        edu.kit.ipd.sdq.eventsim.api.PCMModel r0;
+        org.palladiosimulator.pcm.usagemodel.UsageModel $r1;
+
+        r0 := @this: edu.kit.ipd.sdq.eventsim.api.PCMModel;
+
+        $r1 = r0.<edu.kit.ipd.sdq.eventsim.api.PCMModel: org.palladiosimulator.pcm.usagemodel.UsageModel usageModel>;
+
+        return $r1;
+    }
+
+    public org.palladiosimulator.pcm.allocation.Allocation getAllocationModel()
+    {
+        edu.kit.ipd.sdq.eventsim.api.PCMModel r0;
+        org.palladiosimulator.pcm.allocation.Allocation $r1;
+
+        r0 := @this: edu.kit.ipd.sdq.eventsim.api.PCMModel;
+
+        $r1 = r0.<edu.kit.ipd.sdq.eventsim.api.PCMModel: org.palladiosimulator.pcm.allocation.Allocation allocationModel>;
+
+        return $r1;
+    }
+
+    public org.palladiosimulator.pcm.system.System getSystemModel()
+    {
+        edu.kit.ipd.sdq.eventsim.api.PCMModel r0;
+        org.palladiosimulator.pcm.system.System $r1;
+
+        r0 := @this: edu.kit.ipd.sdq.eventsim.api.PCMModel;
+
+        $r1 = r0.<edu.kit.ipd.sdq.eventsim.api.PCMModel: org.palladiosimulator.pcm.system.System systemModel>;
+
+        return $r1;
+    }
+
+    public org.palladiosimulator.pcm.resourceenvironment.ResourceEnvironment getResourceEnvironmentModel()
+    {
+        edu.kit.ipd.sdq.eventsim.api.PCMModel r0;
+        org.palladiosimulator.pcm.resourceenvironment.ResourceEnvironment $r1;
+
+        r0 := @this: edu.kit.ipd.sdq.eventsim.api.PCMModel;
+
+        $r1 = r0.<edu.kit.ipd.sdq.eventsim.api.PCMModel: org.palladiosimulator.pcm.resourceenvironment.ResourceEnvironment resourceModel>;
+
+        return $r1;
+    }
+
+    public org.palladiosimulator.pcm.repository.Repository getRepositoryModel()
+    {
+        edu.kit.ipd.sdq.eventsim.api.PCMModel r0;
+        org.palladiosimulator.pcm.repository.Repository $r1;
+
+        r0 := @this: edu.kit.ipd.sdq.eventsim.api.PCMModel;
+
+        $r1 = r0.<edu.kit.ipd.sdq.eventsim.api.PCMModel: org.palladiosimulator.pcm.repository.Repository repositoryModel>;
+
+        return $r1;
+    }
+
+    public org.palladiosimulator.pcm.resourcetype.ResourceRepository getResourceRepository()
+    {
+        edu.kit.ipd.sdq.eventsim.api.PCMModel r0;
+        org.palladiosimulator.pcm.resourcetype.ResourceRepository $r1;
+
+        r0 := @this: edu.kit.ipd.sdq.eventsim.api.PCMModel;
+
+        $r1 = r0.<edu.kit.ipd.sdq.eventsim.api.PCMModel: org.palladiosimulator.pcm.resourcetype.ResourceRepository resourceRepository>;
+
+        return $r1;
+    }
+
+    public static edu.kit.ipd.sdq.eventsim.api.PCMModel loadFromBundle(org.osgi.framework.Bundle, org.eclipse.core.runtime.IPath, org.eclipse.core.runtime.IPath)
+    {
+        org.osgi.framework.Bundle r0;
+        org.eclipse.core.runtime.IPath r1, r2;
+        org.eclipse.emf.common.util.URI r3, r4;
+        edu.kit.ipd.sdq.eventsim.api.PCMModel $r5;
+
+        r0 := @parameter0: org.osgi.framework.Bundle;
+
+        r1 := @parameter1: org.eclipse.core.runtime.IPath;
+
+        r2 := @parameter2: org.eclipse.core.runtime.IPath;
+
+        r3 = staticinvoke <edu.kit.ipd.sdq.eventsim.api.PCMModel: org.eclipse.emf.common.util.URI relativePathToBundleURI(org.osgi.framework.Bundle,org.eclipse.core.runtime.IPath)>(r0, r1);
+
+        r4 = staticinvoke <edu.kit.ipd.sdq.eventsim.api.PCMModel: org.eclipse.emf.common.util.URI relativePathToBundleURI(org.osgi.framework.Bundle,org.eclipse.core.runtime.IPath)>(r0, r2);
+
+        $r5 = staticinvoke <edu.kit.ipd.sdq.eventsim.api.PCMModel: edu.kit.ipd.sdq.eventsim.api.PCMModel loadFromUri(org.eclipse.emf.common.util.URI,org.eclipse.emf.common.util.URI)>(r3, r4);
+
+        return $r5;
+    }
+
+    public static edu.kit.ipd.sdq.eventsim.api.PCMModel loadFromUri(org.eclipse.emf.common.util.URI, org.eclipse.emf.common.util.URI)
+    {
+        org.eclipse.emf.common.util.URI r0, r1;
+        org.eclipse.emf.ecore.resource.Resource r3;
+        java.util.Iterator r4;
+        org.eclipse.emf.ecore.EObject r5;
+        org.eclipse.emf.ecore.resource.impl.ResourceSetImpl $r6;
+        org.eclipse.emf.common.util.EList $r9, $r11;
+        java.lang.Object $r10, $r12;
+        edu.kit.ipd.sdq.eventsim.api.PCMModel$PCMPartialModel $r13, $r15, $r17, $r19, $r21, $r23;
+        org.eclipse.emf.ecore.EClass $r14, $r16, $r18, $r20, $r22, $r24;
+        boolean $z0, $z1, $z2, $z3, $z4, $z5, $z6;
+        edu.kit.ipd.sdq.eventsim.api.PCMModel $r25;
+        org.palladiosimulator.pcm.usagemodel.UsageModel r26;
+        org.palladiosimulator.pcm.allocation.Allocation r27;
+        org.palladiosimulator.pcm.repository.Repository r28;
+        org.palladiosimulator.pcm.system.System r29;
+        org.palladiosimulator.pcm.resourceenvironment.ResourceEnvironment r30;
+        org.palladiosimulator.pcm.resourcetype.ResourceRepository r31;
+
+        r0 := @parameter0: org.eclipse.emf.common.util.URI;
+
+        r1 := @parameter1: org.eclipse.emf.common.util.URI;
+
+        $r6 = new org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
+
+        specialinvoke $r6.<org.eclipse.emf.ecore.resource.impl.ResourceSetImpl: void <init>()>();
+
+        interfaceinvoke $r6.<org.eclipse.emf.ecore.resource.ResourceSet: org.eclipse.emf.ecore.resource.Resource getResource(org.eclipse.emf.common.util.URI,boolean)>(r0, 1);
+
+        interfaceinvoke $r6.<org.eclipse.emf.ecore.resource.ResourceSet: org.eclipse.emf.ecore.resource.Resource getResource(org.eclipse.emf.common.util.URI,boolean)>(r1, 1);
+
+        staticinvoke <org.eclipse.emf.ecore.util.EcoreUtil: void resolveAll(org.eclipse.emf.ecore.resource.ResourceSet)>($r6);
+
+        r26 = null;
+
+        r27 = null;
+
+        r28 = null;
+
+        r29 = null;
+
+        r30 = null;
+
+        r31 = null;
+
+        $r9 = interfaceinvoke $r6.<org.eclipse.emf.ecore.resource.ResourceSet: org.eclipse.emf.common.util.EList getResources()>();
+
+        r4 = interfaceinvoke $r9.<org.eclipse.emf.common.util.EList: java.util.Iterator iterator()>();
+
+        goto label7;
+
+     label1:
+        $r10 = interfaceinvoke r4.<java.util.Iterator: java.lang.Object next()>();
+
+        r3 = (org.eclipse.emf.ecore.resource.Resource) $r10;
+
+        $r11 = interfaceinvoke r3.<org.eclipse.emf.ecore.resource.Resource: org.eclipse.emf.common.util.EList getContents()>();
+
+        $r12 = interfaceinvoke $r11.<org.eclipse.emf.common.util.EList: java.lang.Object get(int)>(0);
+
+        r5 = (org.eclipse.emf.ecore.EObject) $r12;
+
+        $r13 = <edu.kit.ipd.sdq.eventsim.api.PCMModel$PCMPartialModel: edu.kit.ipd.sdq.eventsim.api.PCMModel$PCMPartialModel USAGE>;
+
+        $r14 = virtualinvoke $r13.<edu.kit.ipd.sdq.eventsim.api.PCMModel$PCMPartialModel: org.eclipse.emf.ecore.EClass getEClass()>();
+
+        $z0 = interfaceinvoke $r14.<org.eclipse.emf.ecore.EClass: boolean isInstance(java.lang.Object)>(r5);
+
+        if $z0 == 0 goto label2;
+
+        r26 = (org.palladiosimulator.pcm.usagemodel.UsageModel) r5;
+
+        goto label7;
+
+     label2:
+        $r15 = <edu.kit.ipd.sdq.eventsim.api.PCMModel$PCMPartialModel: edu.kit.ipd.sdq.eventsim.api.PCMModel$PCMPartialModel ALLOCATION>;
+
+        $r16 = virtualinvoke $r15.<edu.kit.ipd.sdq.eventsim.api.PCMModel$PCMPartialModel: org.eclipse.emf.ecore.EClass getEClass()>();
+
+        $z1 = interfaceinvoke $r16.<org.eclipse.emf.ecore.EClass: boolean isInstance(java.lang.Object)>(r5);
+
+        if $z1 == 0 goto label3;
+
+        r27 = (org.palladiosimulator.pcm.allocation.Allocation) r5;
+
+        goto label7;
+
+     label3:
+        $r17 = <edu.kit.ipd.sdq.eventsim.api.PCMModel$PCMPartialModel: edu.kit.ipd.sdq.eventsim.api.PCMModel$PCMPartialModel REPOSITORY>;
+
+        $r18 = virtualinvoke $r17.<edu.kit.ipd.sdq.eventsim.api.PCMModel$PCMPartialModel: org.eclipse.emf.ecore.EClass getEClass()>();
+
+        $z2 = interfaceinvoke $r18.<org.eclipse.emf.ecore.EClass: boolean isInstance(java.lang.Object)>(r5);
+
+        if $z2 == 0 goto label4;
+
+        r28 = (org.palladiosimulator.pcm.repository.Repository) r5;
+
+        goto label7;
+
+     label4:
+        $r19 = <edu.kit.ipd.sdq.eventsim.api.PCMModel$PCMPartialModel: edu.kit.ipd.sdq.eventsim.api.PCMModel$PCMPartialModel SYSTEM>;
+
+        $r20 = virtualinvoke $r19.<edu.kit.ipd.sdq.eventsim.api.PCMModel$PCMPartialModel: org.eclipse.emf.ecore.EClass getEClass()>();
+
+        $z3 = interfaceinvoke $r20.<org.eclipse.emf.ecore.EClass: boolean isInstance(java.lang.Object)>(r5);
+
+        if $z3 == 0 goto label5;
+
+        r29 = (org.palladiosimulator.pcm.system.System) r5;
+
+        goto label7;
+
+     label5:
+        $r21 = <edu.kit.ipd.sdq.eventsim.api.PCMModel$PCMPartialModel: edu.kit.ipd.sdq.eventsim.api.PCMModel$PCMPartialModel RESOURCEENVIRONMENT>;
+
+        $r22 = virtualinvoke $r21.<edu.kit.ipd.sdq.eventsim.api.PCMModel$PCMPartialModel: org.eclipse.emf.ecore.EClass getEClass()>();
+
+        $z4 = interfaceinvoke $r22.<org.eclipse.emf.ecore.EClass: boolean isInstance(java.lang.Object)>(r5);
+
+        if $z4 == 0 goto label6;
+
+        r30 = (org.palladiosimulator.pcm.resourceenvironment.ResourceEnvironment) r5;
+
+        goto label7;
+
+     label6:
+        $r23 = <edu.kit.ipd.sdq.eventsim.api.PCMModel$PCMPartialModel: edu.kit.ipd.sdq.eventsim.api.PCMModel$PCMPartialModel RESOURCEREPOSITORY>;
+
+        $r24 = virtualinvoke $r23.<edu.kit.ipd.sdq.eventsim.api.PCMModel$PCMPartialModel: org.eclipse.emf.ecore.EClass getEClass()>();
+
+        $z5 = interfaceinvoke $r24.<org.eclipse.emf.ecore.EClass: boolean isInstance(java.lang.Object)>(r5);
+
+        if $z5 == 0 goto label7;
+
+        r31 = (org.palladiosimulator.pcm.resourcetype.ResourceRepository) r5;
+
+     label7:
+        $z6 = interfaceinvoke r4.<java.util.Iterator: boolean hasNext()>();
+
+        if $z6 != 0 goto label1;
+
+        $r25 = new edu.kit.ipd.sdq.eventsim.api.PCMModel;
+
+        specialinvoke $r25.<edu.kit.ipd.sdq.eventsim.api.PCMModel: void <init>(org.palladiosimulator.pcm.allocation.Allocation,org.palladiosimulator.pcm.repository.Repository,org.palladiosimulator.pcm.resourceenvironment.ResourceEnvironment,org.palladiosimulator.pcm.system.System,org.palladiosimulator.pcm.usagemodel.UsageModel,org.palladiosimulator.pcm.resourcetype.ResourceRepository)>(r27, r28, r30, r29, r26, r31);
+
+        return $r25;
+    }
+
+    private static org.eclipse.emf.common.util.URI relativePathToBundleURI(org.osgi.framework.Bundle, org.eclipse.core.runtime.IPath)
+    {
+        org.osgi.framework.Bundle r0;
+        org.eclipse.core.runtime.IPath r1;
+        java.net.URL r2;
+        org.eclipse.emf.common.util.URI r3;
+        java.lang.String $r4;
+
+        r0 := @parameter0: org.osgi.framework.Bundle;
+
+        r1 := @parameter1: org.eclipse.core.runtime.IPath;
+
+        r2 = staticinvoke <org.eclipse.core.runtime.FileLocator: java.net.URL find(org.osgi.framework.Bundle,org.eclipse.core.runtime.IPath,java.util.Map)>(r0, r1, null);
+
+        if r2 != null goto label1;
+
+        return null;
+
+     label1:
+        $r4 = virtualinvoke r2.<java.net.URL: java.lang.String toExternalForm()>();
+
+        r3 = staticinvoke <org.eclipse.emf.common.util.URI: org.eclipse.emf.common.util.URI createURI(java.lang.String)>($r4);
+
+        return r3;
+    }
+
+    public void saveToFolder(org.eclipse.emf.common.util.URI) throws java.io.IOException
+    {
+        edu.kit.ipd.sdq.eventsim.api.PCMModel r0;
+        org.eclipse.emf.common.util.URI r1;
+        org.eclipse.emf.ecore.resource.ResourceSet r2;
+        org.eclipse.emf.ecore.resource.Resource r3, $r6;
+        java.util.Iterator r4;
+        boolean $z0, $z1;
+        org.palladiosimulator.pcm.allocation.Allocation $r5;
+        org.eclipse.emf.common.util.EList $r7;
+        java.lang.Object $r8;
+        java.lang.IllegalArgumentException $r9;
+
+        r0 := @this: edu.kit.ipd.sdq.eventsim.api.PCMModel;
+
+        r1 := @parameter0: org.eclipse.emf.common.util.URI;
+
+        $z0 = virtualinvoke r1.<org.eclipse.emf.common.util.URI: boolean isFile()>();
+
+        if $z0 != 0 goto label1;
+
+        $r9 = new java.lang.IllegalArgumentException;
+
+        specialinvoke $r9.<java.lang.IllegalArgumentException: void <init>(java.lang.String)>("Folder URI must be a file URI.");
+
+        throw $r9;
+
+     label1:
+        $r5 = r0.<edu.kit.ipd.sdq.eventsim.api.PCMModel: org.palladiosimulator.pcm.allocation.Allocation allocationModel>;
+
+        $r6 = interfaceinvoke $r5.<org.palladiosimulator.pcm.allocation.Allocation: org.eclipse.emf.ecore.resource.Resource eResource()>();
+
+        r2 = interfaceinvoke $r6.<org.eclipse.emf.ecore.resource.Resource: org.eclipse.emf.ecore.resource.ResourceSet getResourceSet()>();
+
+        $r7 = interfaceinvoke r2.<org.eclipse.emf.ecore.resource.ResourceSet: org.eclipse.emf.common.util.EList getResources()>();
+
+        r4 = interfaceinvoke $r7.<org.eclipse.emf.common.util.EList: java.util.Iterator iterator()>();
+
+        goto label3;
+
+     label2:
+        $r8 = interfaceinvoke r4.<java.util.Iterator: java.lang.Object next()>();
+
+        r3 = (org.eclipse.emf.ecore.resource.Resource) $r8;
+
+        specialinvoke r0.<edu.kit.ipd.sdq.eventsim.api.PCMModel: void saveResourceToFolder(org.eclipse.emf.ecore.resource.Resource,org.eclipse.emf.common.util.URI)>(r3, r1);
+
+     label3:
+        $z1 = interfaceinvoke r4.<java.util.Iterator: boolean hasNext()>();
+
+        if $z1 != 0 goto label2;
+
+        return;
+    }
+
+    private void saveResourceToFolder(org.eclipse.emf.ecore.resource.Resource, org.eclipse.emf.common.util.URI) throws java.io.IOException
+    {
+        edu.kit.ipd.sdq.eventsim.api.PCMModel r0;
+        org.eclipse.emf.ecore.resource.Resource r1;
+        org.eclipse.emf.common.util.URI r2, r4, $r6;
+        java.lang.String r3, $r8;
+        java.io.FileOutputStream $r7;
+
+        r0 := @this: edu.kit.ipd.sdq.eventsim.api.PCMModel;
+
+        r1 := @parameter0: org.eclipse.emf.ecore.resource.Resource;
+
+        r2 := @parameter1: org.eclipse.emf.common.util.URI;
+
+        $r6 = interfaceinvoke r1.<org.eclipse.emf.ecore.resource.Resource: org.eclipse.emf.common.util.URI getURI()>();
+
+        r3 = virtualinvoke $r6.<org.eclipse.emf.common.util.URI: java.lang.String lastSegment()>();
+
+        r4 = virtualinvoke r2.<org.eclipse.emf.common.util.URI: org.eclipse.emf.common.util.URI appendSegment(java.lang.String)>(r3);
+
+        $r7 = new java.io.FileOutputStream;
+
+        $r8 = virtualinvoke r4.<org.eclipse.emf.common.util.URI: java.lang.String toFileString()>();
+
+        specialinvoke $r7.<java.io.FileOutputStream: void <init>(java.lang.String)>($r8);
+
+        interfaceinvoke r1.<org.eclipse.emf.ecore.resource.Resource: void save(java.io.OutputStream,java.util.Map)>($r7, null);
+
+        return;
+    }
+}

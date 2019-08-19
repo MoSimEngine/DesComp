@@ -1,0 +1,71 @@
+public final class edu.kit.ipd.sdq.eventsim.system.interpreter.strategies.InternalActionSimulationStrategy$lambda_3__206 extends java.lang.Object implements java.util.function.BiConsumer
+{
+    edu.kit.ipd.sdq.eventsim.system.interpreter.strategies.InternalActionSimulationStrategy cap0;
+    edu.kit.ipd.sdq.eventsim.system.entities.Request cap1;
+
+    public static java.util.function.BiConsumer bootstrap$(edu.kit.ipd.sdq.eventsim.system.interpreter.strategies.InternalActionSimulationStrategy, edu.kit.ipd.sdq.eventsim.system.entities.Request)
+    {
+        edu.kit.ipd.sdq.eventsim.system.interpreter.strategies.InternalActionSimulationStrategy $r0;
+        edu.kit.ipd.sdq.eventsim.system.entities.Request $r1;
+        edu.kit.ipd.sdq.eventsim.system.interpreter.strategies.InternalActionSimulationStrategy$lambda_3__206 $r2;
+
+        $r0 := @parameter0: edu.kit.ipd.sdq.eventsim.system.interpreter.strategies.InternalActionSimulationStrategy;
+
+        $r1 := @parameter1: edu.kit.ipd.sdq.eventsim.system.entities.Request;
+
+        $r2 = new edu.kit.ipd.sdq.eventsim.system.interpreter.strategies.InternalActionSimulationStrategy$lambda_3__206;
+
+        specialinvoke $r2.<edu.kit.ipd.sdq.eventsim.system.interpreter.strategies.InternalActionSimulationStrategy$lambda_3__206: void <init>(edu.kit.ipd.sdq.eventsim.system.interpreter.strategies.InternalActionSimulationStrategy,edu.kit.ipd.sdq.eventsim.system.entities.Request)>($r0, $r1);
+
+        return $r2;
+    }
+
+    public void <init>(edu.kit.ipd.sdq.eventsim.system.interpreter.strategies.InternalActionSimulationStrategy, edu.kit.ipd.sdq.eventsim.system.entities.Request)
+    {
+        edu.kit.ipd.sdq.eventsim.system.interpreter.strategies.InternalActionSimulationStrategy$lambda_3__206 $r0;
+        edu.kit.ipd.sdq.eventsim.system.interpreter.strategies.InternalActionSimulationStrategy $r1;
+        edu.kit.ipd.sdq.eventsim.system.entities.Request $r2;
+
+        $r0 := @this: edu.kit.ipd.sdq.eventsim.system.interpreter.strategies.InternalActionSimulationStrategy$lambda_3__206;
+
+        $r1 := @parameter0: edu.kit.ipd.sdq.eventsim.system.interpreter.strategies.InternalActionSimulationStrategy;
+
+        $r2 := @parameter1: edu.kit.ipd.sdq.eventsim.system.entities.Request;
+
+        specialinvoke $r0.<java.lang.Object: void <init>()>();
+
+        $r0.<edu.kit.ipd.sdq.eventsim.system.interpreter.strategies.InternalActionSimulationStrategy$lambda_3__206: edu.kit.ipd.sdq.eventsim.system.interpreter.strategies.InternalActionSimulationStrategy cap0> = $r1;
+
+        $r0.<edu.kit.ipd.sdq.eventsim.system.interpreter.strategies.InternalActionSimulationStrategy$lambda_3__206: edu.kit.ipd.sdq.eventsim.system.entities.Request cap1> = $r2;
+
+        return;
+    }
+
+    public void accept(java.lang.Object, java.lang.Object)
+    {
+        edu.kit.ipd.sdq.eventsim.system.interpreter.strategies.InternalActionSimulationStrategy$lambda_3__206 $r0;
+        java.lang.Object $r1, $r2;
+        org.palladiosimulator.pcm.seff.seff_performance.ParametricResourceDemand $r3;
+        edu.kit.ipd.sdq.eventsim.interpreter.DemandQueueHandler $r4;
+        edu.kit.ipd.sdq.eventsim.system.interpreter.strategies.InternalActionSimulationStrategy $r5;
+        edu.kit.ipd.sdq.eventsim.system.entities.Request $r6;
+
+        $r0 := @this: edu.kit.ipd.sdq.eventsim.system.interpreter.strategies.InternalActionSimulationStrategy$lambda_3__206;
+
+        $r1 := @parameter0: java.lang.Object;
+
+        $r2 := @parameter1: java.lang.Object;
+
+        $r3 = (org.palladiosimulator.pcm.seff.seff_performance.ParametricResourceDemand) $r1;
+
+        $r4 = (edu.kit.ipd.sdq.eventsim.interpreter.DemandQueueHandler) $r2;
+
+        $r5 = $r0.<edu.kit.ipd.sdq.eventsim.system.interpreter.strategies.InternalActionSimulationStrategy$lambda_3__206: edu.kit.ipd.sdq.eventsim.system.interpreter.strategies.InternalActionSimulationStrategy cap0>;
+
+        $r6 = $r0.<edu.kit.ipd.sdq.eventsim.system.interpreter.strategies.InternalActionSimulationStrategy$lambda_3__206: edu.kit.ipd.sdq.eventsim.system.entities.Request cap1>;
+
+        virtualinvoke $r5.<edu.kit.ipd.sdq.eventsim.system.interpreter.strategies.InternalActionSimulationStrategy: void lambda$3(edu.kit.ipd.sdq.eventsim.system.entities.Request,org.palladiosimulator.pcm.seff.seff_performance.ParametricResourceDemand,edu.kit.ipd.sdq.eventsim.interpreter.DemandQueueHandler)>($r6, $r3, $r4);
+
+        return;
+    }
+}

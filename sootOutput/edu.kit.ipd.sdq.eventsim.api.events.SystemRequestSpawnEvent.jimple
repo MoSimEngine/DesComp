@@ -1,0 +1,32 @@
+public class edu.kit.ipd.sdq.eventsim.api.events.SystemRequestSpawnEvent extends edu.kit.ipd.sdq.eventsim.api.events.AbstractSimulationEvent
+{
+    private edu.kit.ipd.sdq.eventsim.api.IRequest request;
+
+    public void <init>(edu.kit.ipd.sdq.eventsim.api.IRequest)
+    {
+        edu.kit.ipd.sdq.eventsim.api.events.SystemRequestSpawnEvent r0;
+        edu.kit.ipd.sdq.eventsim.api.IRequest r1;
+
+        r0 := @this: edu.kit.ipd.sdq.eventsim.api.events.SystemRequestSpawnEvent;
+
+        r1 := @parameter0: edu.kit.ipd.sdq.eventsim.api.IRequest;
+
+        specialinvoke r0.<edu.kit.ipd.sdq.eventsim.api.events.AbstractSimulationEvent: void <init>()>();
+
+        r0.<edu.kit.ipd.sdq.eventsim.api.events.SystemRequestSpawnEvent: edu.kit.ipd.sdq.eventsim.api.IRequest request> = r1;
+
+        return;
+    }
+
+    public edu.kit.ipd.sdq.eventsim.api.IRequest getRequest()
+    {
+        edu.kit.ipd.sdq.eventsim.api.events.SystemRequestSpawnEvent r0;
+        edu.kit.ipd.sdq.eventsim.api.IRequest $r1;
+
+        r0 := @this: edu.kit.ipd.sdq.eventsim.api.events.SystemRequestSpawnEvent;
+
+        $r1 = r0.<edu.kit.ipd.sdq.eventsim.api.events.SystemRequestSpawnEvent: edu.kit.ipd.sdq.eventsim.api.IRequest request>;
+
+        return $r1;
+    }
+}

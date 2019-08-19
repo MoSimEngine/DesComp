@@ -1,0 +1,7 @@
+public interface  edu.kit.ipd.sdq.eventsim.command.ICommand extends java.lang.Object
+{
+
+    public abstract java.lang.Object execute(java.lang.Object, edu.kit.ipd.sdq.eventsim.command.ICommandExecutor);
+
+    public abstract boolean cachable();
+}

@@ -1,0 +1,491 @@
+public class edu.kit.ipd.sdq.eventsim.measurement.r.connection.RserveConnection extends java.lang.Object
+{
+    private static final org.apache.log4j.Logger log;
+    public static final java.lang.String DEFAULT_HOST;
+    public static final int DEFAULT_PORT;
+    public static final int CONNECTION_RETRIES_MAX;
+    private static final int MILLISECONDS_BETWEEN_CONNECTION_RETRIES;
+    private java.lang.Object connectionMonitor;
+    private org.rosuda.REngine.Rserve.RConnection connection;
+    private boolean shouldCancel;
+    private java.lang.Thread connectorThread;
+    private java.util.List statusListener;
+
+    static void <clinit>()
+    {
+        org.apache.log4j.Logger $r0;
+
+        <edu.kit.ipd.sdq.eventsim.measurement.r.connection.RserveConnection: int MILLISECONDS_BETWEEN_CONNECTION_RETRIES> = 1000;
+
+        <edu.kit.ipd.sdq.eventsim.measurement.r.connection.RserveConnection: int CONNECTION_RETRIES_MAX> = 60;
+
+        <edu.kit.ipd.sdq.eventsim.measurement.r.connection.RserveConnection: int DEFAULT_PORT> = 6311;
+
+        <edu.kit.ipd.sdq.eventsim.measurement.r.connection.RserveConnection: java.lang.String DEFAULT_HOST> = "127.0.0.1";
+
+        $r0 = staticinvoke <org.apache.log4j.Logger: org.apache.log4j.Logger getLogger(java.lang.Class)>(class "Ledu/kit/ipd/sdq/eventsim/measurement/r/RMeasurementStore;");
+
+        <edu.kit.ipd.sdq.eventsim.measurement.r.connection.RserveConnection: org.apache.log4j.Logger log> = $r0;
+
+        return;
+    }
+
+    public void <init>()
+    {
+        edu.kit.ipd.sdq.eventsim.measurement.r.connection.RserveConnection r0;
+        java.lang.Object $r1;
+        java.util.concurrent.CopyOnWriteArrayList $r2;
+
+        r0 := @this: edu.kit.ipd.sdq.eventsim.measurement.r.connection.RserveConnection;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        $r1 = new java.lang.Object;
+
+        specialinvoke $r1.<java.lang.Object: void <init>()>();
+
+        r0.<edu.kit.ipd.sdq.eventsim.measurement.r.connection.RserveConnection: java.lang.Object connectionMonitor> = $r1;
+
+        r0.<edu.kit.ipd.sdq.eventsim.measurement.r.connection.RserveConnection: boolean shouldCancel> = 0;
+
+        $r2 = new java.util.concurrent.CopyOnWriteArrayList;
+
+        specialinvoke $r2.<java.util.concurrent.CopyOnWriteArrayList: void <init>()>();
+
+        r0.<edu.kit.ipd.sdq.eventsim.measurement.r.connection.RserveConnection: java.util.List statusListener> = $r2;
+
+        return;
+    }
+
+    public void connect(java.lang.String, int)
+    {
+        edu.kit.ipd.sdq.eventsim.measurement.r.connection.RserveConnection r0;
+        java.lang.String r1;
+        int i0;
+        java.lang.Object $r5;
+        edu.kit.ipd.sdq.eventsim.measurement.r.connection.RserveConnection$ConnectorRunnable $r6;
+        java.lang.Thread $r7, $r8, $r9;
+        java.lang.Throwable $r10;
+        java.lang.InterruptedException $r11;
+        java.lang.RuntimeException $r12;
+
+        r0 := @this: edu.kit.ipd.sdq.eventsim.measurement.r.connection.RserveConnection;
+
+        r1 := @parameter0: java.lang.String;
+
+        i0 := @parameter1: int;
+
+        $r5 = r0.<edu.kit.ipd.sdq.eventsim.measurement.r.connection.RserveConnection: java.lang.Object connectionMonitor>;
+
+        entermonitor $r5;
+
+     label1:
+        $r6 = new edu.kit.ipd.sdq.eventsim.measurement.r.connection.RserveConnection$ConnectorRunnable;
+
+        specialinvoke $r6.<edu.kit.ipd.sdq.eventsim.measurement.r.connection.RserveConnection$ConnectorRunnable: void <init>(edu.kit.ipd.sdq.eventsim.measurement.r.connection.RserveConnection,java.lang.String,int)>(r0, r1, i0);
+
+        $r7 = new java.lang.Thread;
+
+        specialinvoke $r7.<java.lang.Thread: void <init>(java.lang.Runnable)>($r6);
+
+        r0.<edu.kit.ipd.sdq.eventsim.measurement.r.connection.RserveConnection: java.lang.Thread connectorThread> = $r7;
+
+        $r8 = r0.<edu.kit.ipd.sdq.eventsim.measurement.r.connection.RserveConnection: java.lang.Thread connectorThread>;
+
+        virtualinvoke $r8.<java.lang.Thread: void start()>();
+
+     label2:
+        $r9 = r0.<edu.kit.ipd.sdq.eventsim.measurement.r.connection.RserveConnection: java.lang.Thread connectorThread>;
+
+        virtualinvoke $r9.<java.lang.Thread: void join()>();
+
+     label3:
+        goto label5;
+
+     label4:
+        $r11 := @caughtexception;
+
+        $r12 = new java.lang.RuntimeException;
+
+        specialinvoke $r12.<java.lang.RuntimeException: void <init>(java.lang.Throwable)>($r11);
+
+        throw $r12;
+
+     label5:
+        exitmonitor $r5;
+
+     label6:
+        goto label9;
+
+     label7:
+        $r10 := @caughtexception;
+
+        exitmonitor $r5;
+
+     label8:
+        throw $r10;
+
+     label9:
+        return;
+
+        catch java.lang.InterruptedException from label2 to label3 with label4;
+        catch java.lang.Throwable from label1 to label6 with label7;
+        catch java.lang.Throwable from label7 to label8 with label7;
+    }
+
+    public void connect()
+    {
+        edu.kit.ipd.sdq.eventsim.measurement.r.connection.RserveConnection r0;
+
+        r0 := @this: edu.kit.ipd.sdq.eventsim.measurement.r.connection.RserveConnection;
+
+        virtualinvoke r0.<edu.kit.ipd.sdq.eventsim.measurement.r.connection.RserveConnection: void connect(java.lang.String,int)>("127.0.0.1", 6311);
+
+        return;
+    }
+
+    public void connectAsync(java.lang.String, int)
+    {
+        edu.kit.ipd.sdq.eventsim.measurement.r.connection.RserveConnection r0;
+        java.lang.String r1;
+        int i0;
+        java.lang.Object $r4;
+        edu.kit.ipd.sdq.eventsim.measurement.r.connection.RserveConnection$ConnectorRunnable $r5;
+        java.lang.Thread $r6, $r7;
+        java.lang.Throwable $r8;
+
+        r0 := @this: edu.kit.ipd.sdq.eventsim.measurement.r.connection.RserveConnection;
+
+        r1 := @parameter0: java.lang.String;
+
+        i0 := @parameter1: int;
+
+        $r4 = r0.<edu.kit.ipd.sdq.eventsim.measurement.r.connection.RserveConnection: java.lang.Object connectionMonitor>;
+
+        entermonitor $r4;
+
+     label1:
+        $r5 = new edu.kit.ipd.sdq.eventsim.measurement.r.connection.RserveConnection$ConnectorRunnable;
+
+        specialinvoke $r5.<edu.kit.ipd.sdq.eventsim.measurement.r.connection.RserveConnection$ConnectorRunnable: void <init>(edu.kit.ipd.sdq.eventsim.measurement.r.connection.RserveConnection,java.lang.String,int)>(r0, r1, i0);
+
+        $r6 = new java.lang.Thread;
+
+        specialinvoke $r6.<java.lang.Thread: void <init>(java.lang.Runnable)>($r5);
+
+        r0.<edu.kit.ipd.sdq.eventsim.measurement.r.connection.RserveConnection: java.lang.Thread connectorThread> = $r6;
+
+        $r7 = r0.<edu.kit.ipd.sdq.eventsim.measurement.r.connection.RserveConnection: java.lang.Thread connectorThread>;
+
+        virtualinvoke $r7.<java.lang.Thread: void start()>();
+
+        exitmonitor $r4;
+
+     label2:
+        goto label5;
+
+     label3:
+        $r8 := @caughtexception;
+
+        exitmonitor $r4;
+
+     label4:
+        throw $r8;
+
+     label5:
+        return;
+
+        catch java.lang.Throwable from label1 to label2 with label3;
+        catch java.lang.Throwable from label3 to label4 with label3;
+    }
+
+    public void stopConnecting()
+    {
+        edu.kit.ipd.sdq.eventsim.measurement.r.connection.RserveConnection r0;
+        java.lang.Object $r3;
+        java.lang.Thread $r4, $r5, $r6, $r7;
+        boolean $z0;
+        java.lang.InterruptedException $r8;
+        java.lang.RuntimeException $r9;
+        java.lang.Throwable $r10;
+
+        r0 := @this: edu.kit.ipd.sdq.eventsim.measurement.r.connection.RserveConnection;
+
+        $r3 = r0.<edu.kit.ipd.sdq.eventsim.measurement.r.connection.RserveConnection: java.lang.Object connectionMonitor>;
+
+        entermonitor $r3;
+
+     label01:
+        $r4 = r0.<edu.kit.ipd.sdq.eventsim.measurement.r.connection.RserveConnection: java.lang.Thread connectorThread>;
+
+        if $r4 != null goto label03;
+
+        exitmonitor $r3;
+
+     label02:
+        return;
+
+     label03:
+        r0.<edu.kit.ipd.sdq.eventsim.measurement.r.connection.RserveConnection: boolean shouldCancel> = 1;
+
+     label04:
+        $r5 = r0.<edu.kit.ipd.sdq.eventsim.measurement.r.connection.RserveConnection: java.lang.Thread connectorThread>;
+
+        virtualinvoke $r5.<java.lang.Thread: void join(long)>(2000L);
+
+     label05:
+        goto label07;
+
+     label06:
+        $r8 := @caughtexception;
+
+        $r9 = new java.lang.RuntimeException;
+
+        specialinvoke $r9.<java.lang.RuntimeException: void <init>(java.lang.Throwable)>($r8);
+
+        throw $r9;
+
+     label07:
+        $r6 = r0.<edu.kit.ipd.sdq.eventsim.measurement.r.connection.RserveConnection: java.lang.Thread connectorThread>;
+
+        $z0 = virtualinvoke $r6.<java.lang.Thread: boolean isAlive()>();
+
+        if $z0 == 0 goto label08;
+
+        $r7 = r0.<edu.kit.ipd.sdq.eventsim.measurement.r.connection.RserveConnection: java.lang.Thread connectorThread>;
+
+        virtualinvoke $r7.<java.lang.Thread: void stop()>();
+
+     label08:
+        r0.<edu.kit.ipd.sdq.eventsim.measurement.r.connection.RserveConnection: java.lang.Thread connectorThread> = null;
+
+        r0.<edu.kit.ipd.sdq.eventsim.measurement.r.connection.RserveConnection: boolean shouldCancel> = 0;
+
+        exitmonitor $r3;
+
+     label09:
+        goto label12;
+
+     label10:
+        $r10 := @caughtexception;
+
+        exitmonitor $r3;
+
+     label11:
+        throw $r10;
+
+     label12:
+        return;
+
+        catch java.lang.InterruptedException from label04 to label05 with label06;
+        catch java.lang.Throwable from label01 to label02 with label10;
+        catch java.lang.Throwable from label03 to label09 with label10;
+        catch java.lang.Throwable from label10 to label11 with label10;
+    }
+
+    public void disconnect()
+    {
+        edu.kit.ipd.sdq.eventsim.measurement.r.connection.RserveConnection r0;
+        java.lang.Object $r2;
+        org.rosuda.REngine.Rserve.RConnection $r3, $r5, $r6;
+        org.apache.log4j.Logger $r4;
+        boolean $z0;
+        java.lang.Throwable $r7;
+        java.util.List $r8;
+        java.util.function.Consumer $r9;
+
+        r0 := @this: edu.kit.ipd.sdq.eventsim.measurement.r.connection.RserveConnection;
+
+        $r2 = r0.<edu.kit.ipd.sdq.eventsim.measurement.r.connection.RserveConnection: java.lang.Object connectionMonitor>;
+
+        entermonitor $r2;
+
+     label1:
+        $r3 = r0.<edu.kit.ipd.sdq.eventsim.measurement.r.connection.RserveConnection: org.rosuda.REngine.Rserve.RConnection connection>;
+
+        if $r3 == null goto label2;
+
+        $r5 = r0.<edu.kit.ipd.sdq.eventsim.measurement.r.connection.RserveConnection: org.rosuda.REngine.Rserve.RConnection connection>;
+
+        $z0 = virtualinvoke $r5.<org.rosuda.REngine.Rserve.RConnection: boolean isConnected()>();
+
+        if $z0 == 0 goto label2;
+
+        $r6 = r0.<edu.kit.ipd.sdq.eventsim.measurement.r.connection.RserveConnection: org.rosuda.REngine.Rserve.RConnection connection>;
+
+        virtualinvoke $r6.<org.rosuda.REngine.Rserve.RConnection: boolean close()>();
+
+        goto label3;
+
+     label2:
+        $r4 = <edu.kit.ipd.sdq.eventsim.measurement.r.connection.RserveConnection: org.apache.log4j.Logger log>;
+
+        virtualinvoke $r4.<org.apache.log4j.Logger: void warn(java.lang.Object)>("Tried to disconnect, but there is no open connection");
+
+     label3:
+        $r8 = r0.<edu.kit.ipd.sdq.eventsim.measurement.r.connection.RserveConnection: java.util.List statusListener>;
+
+        $r9 = staticinvoke <edu.kit.ipd.sdq.eventsim.measurement.r.connection.RserveConnection$lambda_0__145: java.util.function.Consumer bootstrap$()>();
+
+        interfaceinvoke $r8.<java.util.List: void forEach(java.util.function.Consumer)>($r9);
+
+        exitmonitor $r2;
+
+     label4:
+        goto label7;
+
+     label5:
+        $r7 := @caughtexception;
+
+        exitmonitor $r2;
+
+     label6:
+        throw $r7;
+
+     label7:
+        return;
+
+        catch java.lang.Throwable from label1 to label4 with label5;
+        catch java.lang.Throwable from label5 to label6 with label5;
+    }
+
+    public org.rosuda.REngine.Rserve.RConnection getConnection()
+    {
+        edu.kit.ipd.sdq.eventsim.measurement.r.connection.RserveConnection r0;
+        org.rosuda.REngine.Rserve.RConnection $r1;
+
+        r0 := @this: edu.kit.ipd.sdq.eventsim.measurement.r.connection.RserveConnection;
+
+        $r1 = r0.<edu.kit.ipd.sdq.eventsim.measurement.r.connection.RserveConnection: org.rosuda.REngine.Rserve.RConnection connection>;
+
+        return $r1;
+    }
+
+    public boolean isConnected()
+    {
+        edu.kit.ipd.sdq.eventsim.measurement.r.connection.RserveConnection r0;
+        org.rosuda.REngine.Rserve.RConnection $r1, $r2;
+        boolean $z0;
+
+        r0 := @this: edu.kit.ipd.sdq.eventsim.measurement.r.connection.RserveConnection;
+
+        $r1 = r0.<edu.kit.ipd.sdq.eventsim.measurement.r.connection.RserveConnection: org.rosuda.REngine.Rserve.RConnection connection>;
+
+        if $r1 == null goto label1;
+
+        $r2 = r0.<edu.kit.ipd.sdq.eventsim.measurement.r.connection.RserveConnection: org.rosuda.REngine.Rserve.RConnection connection>;
+
+        $z0 = virtualinvoke $r2.<org.rosuda.REngine.Rserve.RConnection: boolean isConnected()>();
+
+        if $z0 == 0 goto label1;
+
+        return 1;
+
+     label1:
+        return 0;
+    }
+
+    public void addListener(edu.kit.ipd.sdq.eventsim.measurement.r.connection.ConnectionStatusListener)
+    {
+        edu.kit.ipd.sdq.eventsim.measurement.r.connection.RserveConnection r0;
+        edu.kit.ipd.sdq.eventsim.measurement.r.connection.ConnectionStatusListener r1;
+        java.util.List $r2;
+
+        r0 := @this: edu.kit.ipd.sdq.eventsim.measurement.r.connection.RserveConnection;
+
+        r1 := @parameter0: edu.kit.ipd.sdq.eventsim.measurement.r.connection.ConnectionStatusListener;
+
+        $r2 = r0.<edu.kit.ipd.sdq.eventsim.measurement.r.connection.RserveConnection: java.util.List statusListener>;
+
+        interfaceinvoke $r2.<java.util.List: boolean add(java.lang.Object)>(r1);
+
+        return;
+    }
+
+    public void removeListener(edu.kit.ipd.sdq.eventsim.measurement.r.connection.ConnectionStatusListener)
+    {
+        edu.kit.ipd.sdq.eventsim.measurement.r.connection.RserveConnection r0;
+        edu.kit.ipd.sdq.eventsim.measurement.r.connection.ConnectionStatusListener r1;
+        java.util.List $r2;
+
+        r0 := @this: edu.kit.ipd.sdq.eventsim.measurement.r.connection.RserveConnection;
+
+        r1 := @parameter0: edu.kit.ipd.sdq.eventsim.measurement.r.connection.ConnectionStatusListener;
+
+        $r2 = r0.<edu.kit.ipd.sdq.eventsim.measurement.r.connection.RserveConnection: java.util.List statusListener>;
+
+        interfaceinvoke $r2.<java.util.List: boolean remove(java.lang.Object)>(r1);
+
+        return;
+    }
+
+    static org.rosuda.REngine.Rserve.RConnection access$0(edu.kit.ipd.sdq.eventsim.measurement.r.connection.RserveConnection)
+    {
+        edu.kit.ipd.sdq.eventsim.measurement.r.connection.RserveConnection r0;
+        org.rosuda.REngine.Rserve.RConnection $r1;
+
+        r0 := @parameter0: edu.kit.ipd.sdq.eventsim.measurement.r.connection.RserveConnection;
+
+        $r1 = r0.<edu.kit.ipd.sdq.eventsim.measurement.r.connection.RserveConnection: org.rosuda.REngine.Rserve.RConnection connection>;
+
+        return $r1;
+    }
+
+    static org.apache.log4j.Logger access$1()
+    {
+        org.apache.log4j.Logger $r0;
+
+        $r0 = <edu.kit.ipd.sdq.eventsim.measurement.r.connection.RserveConnection: org.apache.log4j.Logger log>;
+
+        return $r0;
+    }
+
+    static java.util.List access$2(edu.kit.ipd.sdq.eventsim.measurement.r.connection.RserveConnection)
+    {
+        edu.kit.ipd.sdq.eventsim.measurement.r.connection.RserveConnection r0;
+        java.util.List $r1;
+
+        r0 := @parameter0: edu.kit.ipd.sdq.eventsim.measurement.r.connection.RserveConnection;
+
+        $r1 = r0.<edu.kit.ipd.sdq.eventsim.measurement.r.connection.RserveConnection: java.util.List statusListener>;
+
+        return $r1;
+    }
+
+    static boolean access$3(edu.kit.ipd.sdq.eventsim.measurement.r.connection.RserveConnection)
+    {
+        edu.kit.ipd.sdq.eventsim.measurement.r.connection.RserveConnection r0;
+        boolean $z0;
+
+        r0 := @parameter0: edu.kit.ipd.sdq.eventsim.measurement.r.connection.RserveConnection;
+
+        $z0 = r0.<edu.kit.ipd.sdq.eventsim.measurement.r.connection.RserveConnection: boolean shouldCancel>;
+
+        return $z0;
+    }
+
+    static void access$4(edu.kit.ipd.sdq.eventsim.measurement.r.connection.RserveConnection, org.rosuda.REngine.Rserve.RConnection)
+    {
+        edu.kit.ipd.sdq.eventsim.measurement.r.connection.RserveConnection r0;
+        org.rosuda.REngine.Rserve.RConnection r1;
+
+        r0 := @parameter0: edu.kit.ipd.sdq.eventsim.measurement.r.connection.RserveConnection;
+
+        r1 := @parameter1: org.rosuda.REngine.Rserve.RConnection;
+
+        r0.<edu.kit.ipd.sdq.eventsim.measurement.r.connection.RserveConnection: org.rosuda.REngine.Rserve.RConnection connection> = r1;
+
+        return;
+    }
+
+    public static void lambda$0(edu.kit.ipd.sdq.eventsim.measurement.r.connection.ConnectionStatusListener)
+    {
+        edu.kit.ipd.sdq.eventsim.measurement.r.connection.ConnectionStatusListener r0;
+
+        r0 := @parameter0: edu.kit.ipd.sdq.eventsim.measurement.r.connection.ConnectionStatusListener;
+
+        interfaceinvoke r0.<edu.kit.ipd.sdq.eventsim.measurement.r.connection.ConnectionStatusListener: void disconnected()>();
+
+        return;
+    }
+}

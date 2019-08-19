@@ -1,0 +1,5 @@
+public interface  edu.kit.ipd.sdq.eventsim.interpreter.SimulationStrategy extends java.lang.Object
+{
+
+    public abstract void simulate(org.palladiosimulator.pcm.core.entity.Entity, edu.kit.ipd.sdq.eventsim.entities.EventSimEntity, java.util.function.Consumer);
+}

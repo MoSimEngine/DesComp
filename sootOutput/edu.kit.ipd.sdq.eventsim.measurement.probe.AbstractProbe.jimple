@@ -1,0 +1,249 @@
+public abstract class edu.kit.ipd.sdq.eventsim.measurement.probe.AbstractProbe extends java.lang.Object implements edu.kit.ipd.sdq.eventsim.measurement.probe.IProbe
+{
+    private static final org.apache.log4j.Logger log;
+    protected edu.kit.ipd.sdq.eventsim.measurement.probe.MeasurementCache cache;
+    protected java.util.List measurementListener;
+    protected edu.kit.ipd.sdq.eventsim.measurement.MeasuringPoint measuringPoint;
+    protected edu.kit.ipd.sdq.eventsim.measurement.ProbeConfiguration configuration;
+    private boolean cacheEnabled;
+
+    static void <clinit>()
+    {
+        org.apache.log4j.Logger $r0;
+
+        $r0 = staticinvoke <org.apache.log4j.Logger: org.apache.log4j.Logger getLogger(java.lang.Class)>(class "Ledu/kit/ipd/sdq/eventsim/measurement/probe/AbstractProbe;");
+
+        <edu.kit.ipd.sdq.eventsim.measurement.probe.AbstractProbe: org.apache.log4j.Logger log> = $r0;
+
+        return;
+    }
+
+    public void <init>(edu.kit.ipd.sdq.eventsim.measurement.MeasuringPoint, edu.kit.ipd.sdq.eventsim.measurement.ProbeConfiguration)
+    {
+        edu.kit.ipd.sdq.eventsim.measurement.probe.AbstractProbe r0;
+        edu.kit.ipd.sdq.eventsim.measurement.MeasuringPoint r1;
+        edu.kit.ipd.sdq.eventsim.measurement.ProbeConfiguration r2;
+        edu.kit.ipd.sdq.eventsim.measurement.probe.AbstractProbe$DisabledCache $r3;
+        java.util.ArrayList $r4;
+
+        r0 := @this: edu.kit.ipd.sdq.eventsim.measurement.probe.AbstractProbe;
+
+        r1 := @parameter0: edu.kit.ipd.sdq.eventsim.measurement.MeasuringPoint;
+
+        r2 := @parameter1: edu.kit.ipd.sdq.eventsim.measurement.ProbeConfiguration;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        r0.<edu.kit.ipd.sdq.eventsim.measurement.probe.AbstractProbe: edu.kit.ipd.sdq.eventsim.measurement.MeasuringPoint measuringPoint> = r1;
+
+        r0.<edu.kit.ipd.sdq.eventsim.measurement.probe.AbstractProbe: edu.kit.ipd.sdq.eventsim.measurement.ProbeConfiguration configuration> = r2;
+
+        $r3 = new edu.kit.ipd.sdq.eventsim.measurement.probe.AbstractProbe$DisabledCache;
+
+        specialinvoke $r3.<edu.kit.ipd.sdq.eventsim.measurement.probe.AbstractProbe$DisabledCache: void <init>(edu.kit.ipd.sdq.eventsim.measurement.probe.AbstractProbe,edu.kit.ipd.sdq.eventsim.measurement.probe.AbstractProbe$DisabledCache)>(r0, null);
+
+        r0.<edu.kit.ipd.sdq.eventsim.measurement.probe.AbstractProbe: edu.kit.ipd.sdq.eventsim.measurement.probe.MeasurementCache cache> = $r3;
+
+        $r4 = new java.util.ArrayList;
+
+        specialinvoke $r4.<java.util.ArrayList: void <init>()>();
+
+        r0.<edu.kit.ipd.sdq.eventsim.measurement.probe.AbstractProbe: java.util.List measurementListener> = $r4;
+
+        return;
+    }
+
+    public edu.kit.ipd.sdq.eventsim.measurement.Measurement getLastMeasurementOf(java.lang.Object)
+    {
+        edu.kit.ipd.sdq.eventsim.measurement.probe.AbstractProbe r0;
+        java.lang.Object r1;
+        edu.kit.ipd.sdq.eventsim.measurement.MeasuringPoint $r2;
+        edu.kit.ipd.sdq.eventsim.measurement.probe.MeasurementCache $r3;
+        edu.kit.ipd.sdq.eventsim.measurement.Measurement $r4;
+
+        r0 := @this: edu.kit.ipd.sdq.eventsim.measurement.probe.AbstractProbe;
+
+        r1 := @parameter0: java.lang.Object;
+
+        $r3 = r0.<edu.kit.ipd.sdq.eventsim.measurement.probe.AbstractProbe: edu.kit.ipd.sdq.eventsim.measurement.probe.MeasurementCache cache>;
+
+        $r2 = r0.<edu.kit.ipd.sdq.eventsim.measurement.probe.AbstractProbe: edu.kit.ipd.sdq.eventsim.measurement.MeasuringPoint measuringPoint>;
+
+        $r4 = virtualinvoke $r3.<edu.kit.ipd.sdq.eventsim.measurement.probe.MeasurementCache: edu.kit.ipd.sdq.eventsim.measurement.Measurement getLastMeasurement(java.lang.Object,edu.kit.ipd.sdq.eventsim.measurement.MeasuringPoint)>(r1, $r2);
+
+        return $r4;
+    }
+
+    public void forEachMeasurement(edu.kit.ipd.sdq.eventsim.measurement.MeasurementListener)
+    {
+        edu.kit.ipd.sdq.eventsim.measurement.probe.AbstractProbe r0;
+        edu.kit.ipd.sdq.eventsim.measurement.MeasurementListener r1;
+        java.util.List $r2;
+
+        r0 := @this: edu.kit.ipd.sdq.eventsim.measurement.probe.AbstractProbe;
+
+        r1 := @parameter0: edu.kit.ipd.sdq.eventsim.measurement.MeasurementListener;
+
+        $r2 = r0.<edu.kit.ipd.sdq.eventsim.measurement.probe.AbstractProbe: java.util.List measurementListener>;
+
+        interfaceinvoke $r2.<java.util.List: boolean add(java.lang.Object)>(r1);
+
+        return;
+    }
+
+    public edu.kit.ipd.sdq.eventsim.measurement.MeasuringPoint getMeasuringPoint()
+    {
+        edu.kit.ipd.sdq.eventsim.measurement.probe.AbstractProbe r0;
+        edu.kit.ipd.sdq.eventsim.measurement.MeasuringPoint $r1;
+
+        r0 := @this: edu.kit.ipd.sdq.eventsim.measurement.probe.AbstractProbe;
+
+        $r1 = r0.<edu.kit.ipd.sdq.eventsim.measurement.probe.AbstractProbe: edu.kit.ipd.sdq.eventsim.measurement.MeasuringPoint measuringPoint>;
+
+        return $r1;
+    }
+
+    public void enableCaching()
+    {
+        edu.kit.ipd.sdq.eventsim.measurement.probe.AbstractProbe r0;
+        boolean $z0;
+        edu.kit.ipd.sdq.eventsim.measurement.probe.MeasurementCache $r1;
+
+        r0 := @this: edu.kit.ipd.sdq.eventsim.measurement.probe.AbstractProbe;
+
+        $z0 = r0.<edu.kit.ipd.sdq.eventsim.measurement.probe.AbstractProbe: boolean cacheEnabled>;
+
+        if $z0 != 0 goto label1;
+
+        $r1 = new edu.kit.ipd.sdq.eventsim.measurement.probe.MeasurementCache;
+
+        specialinvoke $r1.<edu.kit.ipd.sdq.eventsim.measurement.probe.MeasurementCache: void <init>()>();
+
+        r0.<edu.kit.ipd.sdq.eventsim.measurement.probe.AbstractProbe: edu.kit.ipd.sdq.eventsim.measurement.probe.MeasurementCache cache> = $r1;
+
+        r0.<edu.kit.ipd.sdq.eventsim.measurement.probe.AbstractProbe: boolean cacheEnabled> = 1;
+
+     label1:
+        return;
+    }
+
+    public void disableCaching()
+    {
+        edu.kit.ipd.sdq.eventsim.measurement.probe.AbstractProbe r0;
+        boolean $z0;
+        edu.kit.ipd.sdq.eventsim.measurement.probe.AbstractProbe$DisabledCache $r1;
+
+        r0 := @this: edu.kit.ipd.sdq.eventsim.measurement.probe.AbstractProbe;
+
+        $z0 = r0.<edu.kit.ipd.sdq.eventsim.measurement.probe.AbstractProbe: boolean cacheEnabled>;
+
+        if $z0 == 0 goto label1;
+
+        $r1 = new edu.kit.ipd.sdq.eventsim.measurement.probe.AbstractProbe$DisabledCache;
+
+        specialinvoke $r1.<edu.kit.ipd.sdq.eventsim.measurement.probe.AbstractProbe$DisabledCache: void <init>(edu.kit.ipd.sdq.eventsim.measurement.probe.AbstractProbe,edu.kit.ipd.sdq.eventsim.measurement.probe.AbstractProbe$DisabledCache)>(r0, null);
+
+        r0.<edu.kit.ipd.sdq.eventsim.measurement.probe.AbstractProbe: edu.kit.ipd.sdq.eventsim.measurement.probe.MeasurementCache cache> = $r1;
+
+        r0.<edu.kit.ipd.sdq.eventsim.measurement.probe.AbstractProbe: boolean cacheEnabled> = 0;
+
+     label1:
+        return;
+    }
+
+    public int hashCode()
+    {
+        edu.kit.ipd.sdq.eventsim.measurement.probe.AbstractProbe r0;
+        edu.kit.ipd.sdq.eventsim.measurement.MeasuringPoint $r1, $r2;
+        int $i1, $i3, i4;
+
+        r0 := @this: edu.kit.ipd.sdq.eventsim.measurement.probe.AbstractProbe;
+
+        $i1 = 31 * 1;
+
+        $r1 = r0.<edu.kit.ipd.sdq.eventsim.measurement.probe.AbstractProbe: edu.kit.ipd.sdq.eventsim.measurement.MeasuringPoint measuringPoint>;
+
+        if $r1 != null goto label1;
+
+        $i3 = 0;
+
+        goto label2;
+
+     label1:
+        $r2 = r0.<edu.kit.ipd.sdq.eventsim.measurement.probe.AbstractProbe: edu.kit.ipd.sdq.eventsim.measurement.MeasuringPoint measuringPoint>;
+
+        $i3 = virtualinvoke $r2.<edu.kit.ipd.sdq.eventsim.measurement.MeasuringPoint: int hashCode()>();
+
+     label2:
+        i4 = $i1 + $i3;
+
+        return i4;
+    }
+
+    public boolean equals(java.lang.Object)
+    {
+        edu.kit.ipd.sdq.eventsim.measurement.probe.AbstractProbe r0, r2;
+        java.lang.Object r1;
+        java.lang.Class $r3, $r4;
+        edu.kit.ipd.sdq.eventsim.measurement.MeasuringPoint $r5, $r6, $r7, $r8;
+        boolean $z0;
+
+        r0 := @this: edu.kit.ipd.sdq.eventsim.measurement.probe.AbstractProbe;
+
+        r1 := @parameter0: java.lang.Object;
+
+        if r0 != r1 goto label1;
+
+        return 1;
+
+     label1:
+        if r1 != null goto label2;
+
+        return 0;
+
+     label2:
+        $r3 = virtualinvoke r0.<java.lang.Object: java.lang.Class getClass()>();
+
+        $r4 = virtualinvoke r1.<java.lang.Object: java.lang.Class getClass()>();
+
+        if $r3 == $r4 goto label3;
+
+        return 0;
+
+     label3:
+        r2 = (edu.kit.ipd.sdq.eventsim.measurement.probe.AbstractProbe) r1;
+
+        $r5 = r0.<edu.kit.ipd.sdq.eventsim.measurement.probe.AbstractProbe: edu.kit.ipd.sdq.eventsim.measurement.MeasuringPoint measuringPoint>;
+
+        if $r5 != null goto label4;
+
+        $r8 = r2.<edu.kit.ipd.sdq.eventsim.measurement.probe.AbstractProbe: edu.kit.ipd.sdq.eventsim.measurement.MeasuringPoint measuringPoint>;
+
+        if $r8 == null goto label5;
+
+        return 0;
+
+     label4:
+        $r7 = r0.<edu.kit.ipd.sdq.eventsim.measurement.probe.AbstractProbe: edu.kit.ipd.sdq.eventsim.measurement.MeasuringPoint measuringPoint>;
+
+        $r6 = r2.<edu.kit.ipd.sdq.eventsim.measurement.probe.AbstractProbe: edu.kit.ipd.sdq.eventsim.measurement.MeasuringPoint measuringPoint>;
+
+        $z0 = virtualinvoke $r7.<edu.kit.ipd.sdq.eventsim.measurement.MeasuringPoint: boolean equals(java.lang.Object)>($r6);
+
+        if $z0 != 0 goto label5;
+
+        return 0;
+
+     label5:
+        return 1;
+    }
+
+    static org.apache.log4j.Logger access$0()
+    {
+        org.apache.log4j.Logger $r0;
+
+        $r0 = <edu.kit.ipd.sdq.eventsim.measurement.probe.AbstractProbe: org.apache.log4j.Logger log>;
+
+        return $r0;
+    }
+}

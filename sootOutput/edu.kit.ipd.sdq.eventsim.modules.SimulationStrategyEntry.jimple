@@ -1,0 +1,163 @@
+public class edu.kit.ipd.sdq.eventsim.modules.SimulationStrategyEntry extends java.lang.Object implements java.lang.Comparable
+{
+    private final java.lang.String name;
+    private final java.lang.String actionType;
+    private final java.lang.Object strategy;
+    private final int priority;
+
+    private void <init>(java.lang.String, java.lang.String, int, java.lang.Object)
+    {
+        edu.kit.ipd.sdq.eventsim.modules.SimulationStrategyEntry r0;
+        java.lang.String r1, r2;
+        int i0;
+        java.lang.Object r3;
+
+        r0 := @this: edu.kit.ipd.sdq.eventsim.modules.SimulationStrategyEntry;
+
+        r1 := @parameter0: java.lang.String;
+
+        r2 := @parameter1: java.lang.String;
+
+        i0 := @parameter2: int;
+
+        r3 := @parameter3: java.lang.Object;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        r0.<edu.kit.ipd.sdq.eventsim.modules.SimulationStrategyEntry: java.lang.String name> = r1;
+
+        r0.<edu.kit.ipd.sdq.eventsim.modules.SimulationStrategyEntry: java.lang.String actionType> = r2;
+
+        r0.<edu.kit.ipd.sdq.eventsim.modules.SimulationStrategyEntry: int priority> = i0;
+
+        r0.<edu.kit.ipd.sdq.eventsim.modules.SimulationStrategyEntry: java.lang.Object strategy> = r3;
+
+        return;
+    }
+
+    public java.lang.String getName()
+    {
+        edu.kit.ipd.sdq.eventsim.modules.SimulationStrategyEntry r0;
+        java.lang.String $r1;
+
+        r0 := @this: edu.kit.ipd.sdq.eventsim.modules.SimulationStrategyEntry;
+
+        $r1 = r0.<edu.kit.ipd.sdq.eventsim.modules.SimulationStrategyEntry: java.lang.String name>;
+
+        return $r1;
+    }
+
+    public java.lang.String getActionType()
+    {
+        edu.kit.ipd.sdq.eventsim.modules.SimulationStrategyEntry r0;
+        java.lang.String $r1;
+
+        r0 := @this: edu.kit.ipd.sdq.eventsim.modules.SimulationStrategyEntry;
+
+        $r1 = r0.<edu.kit.ipd.sdq.eventsim.modules.SimulationStrategyEntry: java.lang.String actionType>;
+
+        return $r1;
+    }
+
+    public java.lang.Object getStrategy()
+    {
+        edu.kit.ipd.sdq.eventsim.modules.SimulationStrategyEntry r0;
+        java.lang.Object $r1;
+
+        r0 := @this: edu.kit.ipd.sdq.eventsim.modules.SimulationStrategyEntry;
+
+        $r1 = r0.<edu.kit.ipd.sdq.eventsim.modules.SimulationStrategyEntry: java.lang.Object strategy>;
+
+        return $r1;
+    }
+
+    public int getPriority()
+    {
+        edu.kit.ipd.sdq.eventsim.modules.SimulationStrategyEntry r0;
+        int $i0;
+
+        r0 := @this: edu.kit.ipd.sdq.eventsim.modules.SimulationStrategyEntry;
+
+        $i0 = r0.<edu.kit.ipd.sdq.eventsim.modules.SimulationStrategyEntry: int priority>;
+
+        return $i0;
+    }
+
+    public static edu.kit.ipd.sdq.eventsim.modules.SimulationStrategyEntry createFrom(org.eclipse.core.runtime.IConfigurationElement, int)
+    {
+        org.eclipse.core.runtime.IConfigurationElement r0;
+        int i0;
+        java.lang.String r1, r2;
+        java.lang.Object r3;
+        edu.kit.ipd.sdq.eventsim.modules.SimulationStrategyEntry $r5;
+        java.lang.Throwable $r6;
+        java.lang.RuntimeException $r7;
+
+        r0 := @parameter0: org.eclipse.core.runtime.IConfigurationElement;
+
+        i0 := @parameter1: int;
+
+        r1 = interfaceinvoke r0.<org.eclipse.core.runtime.IConfigurationElement: java.lang.String getAttribute(java.lang.String)>("name");
+
+        r2 = interfaceinvoke r0.<org.eclipse.core.runtime.IConfigurationElement: java.lang.String getAttribute(java.lang.String)>("action");
+
+     label1:
+        r3 = interfaceinvoke r0.<org.eclipse.core.runtime.IConfigurationElement: java.lang.Object createExecutableExtension(java.lang.String)>("strategy");
+
+     label2:
+        goto label4;
+
+     label3:
+        $r6 := @caughtexception;
+
+        $r7 = new java.lang.RuntimeException;
+
+        specialinvoke $r7.<java.lang.RuntimeException: void <init>(java.lang.Throwable)>($r6);
+
+        throw $r7;
+
+     label4:
+        $r5 = new edu.kit.ipd.sdq.eventsim.modules.SimulationStrategyEntry;
+
+        specialinvoke $r5.<edu.kit.ipd.sdq.eventsim.modules.SimulationStrategyEntry: void <init>(java.lang.String,java.lang.String,int,java.lang.Object)>(r1, r2, i0, r3);
+
+        return $r5;
+
+        catch org.eclipse.core.runtime.CoreException from label1 to label2 with label3;
+    }
+
+    public int compareTo(edu.kit.ipd.sdq.eventsim.modules.SimulationStrategyEntry)
+    {
+        edu.kit.ipd.sdq.eventsim.modules.SimulationStrategyEntry r0, r1;
+        int $i0, $i1, $i2;
+
+        r0 := @this: edu.kit.ipd.sdq.eventsim.modules.SimulationStrategyEntry;
+
+        r1 := @parameter0: edu.kit.ipd.sdq.eventsim.modules.SimulationStrategyEntry;
+
+        $i0 = r0.<edu.kit.ipd.sdq.eventsim.modules.SimulationStrategyEntry: int priority>;
+
+        $i1 = virtualinvoke r1.<edu.kit.ipd.sdq.eventsim.modules.SimulationStrategyEntry: int getPriority()>();
+
+        $i2 = staticinvoke <java.lang.Integer: int compare(int,int)>($i0, $i1);
+
+        return $i2;
+    }
+
+    public volatile int compareTo(java.lang.Object)
+    {
+        edu.kit.ipd.sdq.eventsim.modules.SimulationStrategyEntry r0, $r2;
+        java.lang.Object r1;
+        int $i0;
+
+        r0 := @this: edu.kit.ipd.sdq.eventsim.modules.SimulationStrategyEntry;
+
+        r1 := @parameter0: java.lang.Object;
+
+        $r2 = (edu.kit.ipd.sdq.eventsim.modules.SimulationStrategyEntry) r1;
+
+        $i0 = virtualinvoke r0.<edu.kit.ipd.sdq.eventsim.modules.SimulationStrategyEntry: int compareTo(edu.kit.ipd.sdq.eventsim.modules.SimulationStrategyEntry)>($r2);
+
+        return $i0;
+    }
+}

@@ -1,0 +1,60 @@
+public final class edu.kit.ipd.sdq.eventsim.workload.interpreter.strategies.EntryLevelSystemCallSimulationStrategy$lambda_1__258 extends java.lang.Object implements edu.kit.ipd.sdq.eventsim.interpreter.TraversalInstruction
+{
+    edu.kit.ipd.sdq.eventsim.workload.entities.User cap0;
+    org.palladiosimulator.pcm.usagemodel.EntryLevelSystemCall cap1;
+
+    public static edu.kit.ipd.sdq.eventsim.interpreter.TraversalInstruction bootstrap$(edu.kit.ipd.sdq.eventsim.workload.entities.User, org.palladiosimulator.pcm.usagemodel.EntryLevelSystemCall)
+    {
+        edu.kit.ipd.sdq.eventsim.workload.entities.User $r0;
+        org.palladiosimulator.pcm.usagemodel.EntryLevelSystemCall $r1;
+        edu.kit.ipd.sdq.eventsim.workload.interpreter.strategies.EntryLevelSystemCallSimulationStrategy$lambda_1__258 $r2;
+
+        $r0 := @parameter0: edu.kit.ipd.sdq.eventsim.workload.entities.User;
+
+        $r1 := @parameter1: org.palladiosimulator.pcm.usagemodel.EntryLevelSystemCall;
+
+        $r2 = new edu.kit.ipd.sdq.eventsim.workload.interpreter.strategies.EntryLevelSystemCallSimulationStrategy$lambda_1__258;
+
+        specialinvoke $r2.<edu.kit.ipd.sdq.eventsim.workload.interpreter.strategies.EntryLevelSystemCallSimulationStrategy$lambda_1__258: void <init>(edu.kit.ipd.sdq.eventsim.workload.entities.User,org.palladiosimulator.pcm.usagemodel.EntryLevelSystemCall)>($r0, $r1);
+
+        return $r2;
+    }
+
+    public void <init>(edu.kit.ipd.sdq.eventsim.workload.entities.User, org.palladiosimulator.pcm.usagemodel.EntryLevelSystemCall)
+    {
+        edu.kit.ipd.sdq.eventsim.workload.interpreter.strategies.EntryLevelSystemCallSimulationStrategy$lambda_1__258 $r0;
+        edu.kit.ipd.sdq.eventsim.workload.entities.User $r1;
+        org.palladiosimulator.pcm.usagemodel.EntryLevelSystemCall $r2;
+
+        $r0 := @this: edu.kit.ipd.sdq.eventsim.workload.interpreter.strategies.EntryLevelSystemCallSimulationStrategy$lambda_1__258;
+
+        $r1 := @parameter0: edu.kit.ipd.sdq.eventsim.workload.entities.User;
+
+        $r2 := @parameter1: org.palladiosimulator.pcm.usagemodel.EntryLevelSystemCall;
+
+        specialinvoke $r0.<java.lang.Object: void <init>()>();
+
+        $r0.<edu.kit.ipd.sdq.eventsim.workload.interpreter.strategies.EntryLevelSystemCallSimulationStrategy$lambda_1__258: edu.kit.ipd.sdq.eventsim.workload.entities.User cap0> = $r1;
+
+        $r0.<edu.kit.ipd.sdq.eventsim.workload.interpreter.strategies.EntryLevelSystemCallSimulationStrategy$lambda_1__258: org.palladiosimulator.pcm.usagemodel.EntryLevelSystemCall cap1> = $r2;
+
+        return;
+    }
+
+    public void execute()
+    {
+        edu.kit.ipd.sdq.eventsim.workload.interpreter.strategies.EntryLevelSystemCallSimulationStrategy$lambda_1__258 $r0;
+        edu.kit.ipd.sdq.eventsim.workload.entities.User $r1;
+        org.palladiosimulator.pcm.usagemodel.EntryLevelSystemCall $r2;
+
+        $r0 := @this: edu.kit.ipd.sdq.eventsim.workload.interpreter.strategies.EntryLevelSystemCallSimulationStrategy$lambda_1__258;
+
+        $r1 = $r0.<edu.kit.ipd.sdq.eventsim.workload.interpreter.strategies.EntryLevelSystemCallSimulationStrategy$lambda_1__258: edu.kit.ipd.sdq.eventsim.workload.entities.User cap0>;
+
+        $r2 = $r0.<edu.kit.ipd.sdq.eventsim.workload.interpreter.strategies.EntryLevelSystemCallSimulationStrategy$lambda_1__258: org.palladiosimulator.pcm.usagemodel.EntryLevelSystemCall cap1>;
+
+        staticinvoke <edu.kit.ipd.sdq.eventsim.workload.interpreter.strategies.EntryLevelSystemCallSimulationStrategy: void lambda$1(edu.kit.ipd.sdq.eventsim.workload.entities.User,org.palladiosimulator.pcm.usagemodel.EntryLevelSystemCall)>($r1, $r2);
+
+        return;
+    }
+}

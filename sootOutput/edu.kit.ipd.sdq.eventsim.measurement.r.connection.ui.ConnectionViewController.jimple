@@ -1,0 +1,183 @@
+public class edu.kit.ipd.sdq.eventsim.measurement.r.connection.ui.ConnectionViewController extends java.lang.Object implements edu.kit.ipd.sdq.eventsim.measurement.r.connection.ui.ConnectionViewListener, edu.kit.ipd.sdq.eventsim.measurement.r.connection.ConnectionStatusListener
+{
+    private edu.kit.ipd.sdq.eventsim.measurement.r.connection.ui.ConnectionView view;
+    private edu.kit.ipd.sdq.eventsim.measurement.r.connection.RserveConnection connection;
+
+    public void <init>(edu.kit.ipd.sdq.eventsim.measurement.r.connection.ui.ConnectionView)
+    {
+        edu.kit.ipd.sdq.eventsim.measurement.r.connection.ui.ConnectionViewController r0;
+        edu.kit.ipd.sdq.eventsim.measurement.r.connection.ui.ConnectionView r1;
+        edu.kit.ipd.sdq.eventsim.measurement.r.connection.RserveConnection $r2, $r3, $r5;
+        edu.kit.ipd.sdq.eventsim.measurement.r.connection.ConnectionRegistry $r4;
+
+        r0 := @this: edu.kit.ipd.sdq.eventsim.measurement.r.connection.ui.ConnectionViewController;
+
+        r1 := @parameter0: edu.kit.ipd.sdq.eventsim.measurement.r.connection.ui.ConnectionView;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        r0.<edu.kit.ipd.sdq.eventsim.measurement.r.connection.ui.ConnectionViewController: edu.kit.ipd.sdq.eventsim.measurement.r.connection.ui.ConnectionView view> = r1;
+
+        $r2 = new edu.kit.ipd.sdq.eventsim.measurement.r.connection.RserveConnection;
+
+        specialinvoke $r2.<edu.kit.ipd.sdq.eventsim.measurement.r.connection.RserveConnection: void <init>()>();
+
+        r0.<edu.kit.ipd.sdq.eventsim.measurement.r.connection.ui.ConnectionViewController: edu.kit.ipd.sdq.eventsim.measurement.r.connection.RserveConnection connection> = $r2;
+
+        $r3 = r0.<edu.kit.ipd.sdq.eventsim.measurement.r.connection.ui.ConnectionViewController: edu.kit.ipd.sdq.eventsim.measurement.r.connection.RserveConnection connection>;
+
+        virtualinvoke $r3.<edu.kit.ipd.sdq.eventsim.measurement.r.connection.RserveConnection: void addListener(edu.kit.ipd.sdq.eventsim.measurement.r.connection.ConnectionStatusListener)>(r0);
+
+        $r4 = staticinvoke <edu.kit.ipd.sdq.eventsim.measurement.r.connection.ConnectionRegistry: edu.kit.ipd.sdq.eventsim.measurement.r.connection.ConnectionRegistry instance()>();
+
+        $r5 = r0.<edu.kit.ipd.sdq.eventsim.measurement.r.connection.ui.ConnectionViewController: edu.kit.ipd.sdq.eventsim.measurement.r.connection.RserveConnection connection>;
+
+        virtualinvoke $r4.<edu.kit.ipd.sdq.eventsim.measurement.r.connection.ConnectionRegistry: void setConnection(edu.kit.ipd.sdq.eventsim.measurement.r.connection.RserveConnection)>($r5);
+
+        return;
+    }
+
+    public void disconnectButtonSelected()
+    {
+        edu.kit.ipd.sdq.eventsim.measurement.r.connection.ui.ConnectionViewController r0;
+        edu.kit.ipd.sdq.eventsim.measurement.r.connection.RserveConnection $r1;
+        edu.kit.ipd.sdq.eventsim.measurement.r.connection.ui.ConnectionView $r2;
+
+        r0 := @this: edu.kit.ipd.sdq.eventsim.measurement.r.connection.ui.ConnectionViewController;
+
+        $r1 = r0.<edu.kit.ipd.sdq.eventsim.measurement.r.connection.ui.ConnectionViewController: edu.kit.ipd.sdq.eventsim.measurement.r.connection.RserveConnection connection>;
+
+        virtualinvoke $r1.<edu.kit.ipd.sdq.eventsim.measurement.r.connection.RserveConnection: void disconnect()>();
+
+        $r2 = r0.<edu.kit.ipd.sdq.eventsim.measurement.r.connection.ui.ConnectionViewController: edu.kit.ipd.sdq.eventsim.measurement.r.connection.ui.ConnectionView view>;
+
+        virtualinvoke $r2.<edu.kit.ipd.sdq.eventsim.measurement.r.connection.ui.ConnectionView: void setDisconnected()>();
+
+        return;
+    }
+
+    public void cancelButtonSelected()
+    {
+        edu.kit.ipd.sdq.eventsim.measurement.r.connection.ui.ConnectionViewController r0;
+        edu.kit.ipd.sdq.eventsim.measurement.r.connection.RserveConnection $r1;
+        edu.kit.ipd.sdq.eventsim.measurement.r.connection.ui.ConnectionView $r2;
+
+        r0 := @this: edu.kit.ipd.sdq.eventsim.measurement.r.connection.ui.ConnectionViewController;
+
+        $r1 = r0.<edu.kit.ipd.sdq.eventsim.measurement.r.connection.ui.ConnectionViewController: edu.kit.ipd.sdq.eventsim.measurement.r.connection.RserveConnection connection>;
+
+        virtualinvoke $r1.<edu.kit.ipd.sdq.eventsim.measurement.r.connection.RserveConnection: void stopConnecting()>();
+
+        $r2 = r0.<edu.kit.ipd.sdq.eventsim.measurement.r.connection.ui.ConnectionViewController: edu.kit.ipd.sdq.eventsim.measurement.r.connection.ui.ConnectionView view>;
+
+        virtualinvoke $r2.<edu.kit.ipd.sdq.eventsim.measurement.r.connection.ui.ConnectionView: void setDisconnected()>();
+
+        return;
+    }
+
+    public void connectButtonSelected()
+    {
+        edu.kit.ipd.sdq.eventsim.measurement.r.connection.ui.ConnectionViewController r0;
+        java.lang.String r1, $r5;
+        int i0;
+        edu.kit.ipd.sdq.eventsim.measurement.r.connection.ui.ConnectionView $r2, $r3, $r4;
+        edu.kit.ipd.sdq.eventsim.measurement.r.connection.RserveConnection $r6;
+
+        r0 := @this: edu.kit.ipd.sdq.eventsim.measurement.r.connection.ui.ConnectionViewController;
+
+        $r2 = r0.<edu.kit.ipd.sdq.eventsim.measurement.r.connection.ui.ConnectionViewController: edu.kit.ipd.sdq.eventsim.measurement.r.connection.ui.ConnectionView view>;
+
+        virtualinvoke $r2.<edu.kit.ipd.sdq.eventsim.measurement.r.connection.ui.ConnectionView: void setConnecting()>();
+
+        $r3 = r0.<edu.kit.ipd.sdq.eventsim.measurement.r.connection.ui.ConnectionViewController: edu.kit.ipd.sdq.eventsim.measurement.r.connection.ui.ConnectionView view>;
+
+        r1 = virtualinvoke $r3.<edu.kit.ipd.sdq.eventsim.measurement.r.connection.ui.ConnectionView: java.lang.String getServer()>();
+
+        $r4 = r0.<edu.kit.ipd.sdq.eventsim.measurement.r.connection.ui.ConnectionViewController: edu.kit.ipd.sdq.eventsim.measurement.r.connection.ui.ConnectionView view>;
+
+        $r5 = virtualinvoke $r4.<edu.kit.ipd.sdq.eventsim.measurement.r.connection.ui.ConnectionView: java.lang.String getPort()>();
+
+        i0 = staticinvoke <java.lang.Integer: int parseInt(java.lang.String)>($r5);
+
+        $r6 = r0.<edu.kit.ipd.sdq.eventsim.measurement.r.connection.ui.ConnectionViewController: edu.kit.ipd.sdq.eventsim.measurement.r.connection.RserveConnection connection>;
+
+        virtualinvoke $r6.<edu.kit.ipd.sdq.eventsim.measurement.r.connection.RserveConnection: void connectAsync(java.lang.String,int)>(r1, i0);
+
+        return;
+    }
+
+    public void failed()
+    {
+        edu.kit.ipd.sdq.eventsim.measurement.r.connection.ui.ConnectionViewController r0;
+        edu.kit.ipd.sdq.eventsim.measurement.r.connection.ui.ConnectionView $r1;
+
+        r0 := @this: edu.kit.ipd.sdq.eventsim.measurement.r.connection.ui.ConnectionViewController;
+
+        $r1 = r0.<edu.kit.ipd.sdq.eventsim.measurement.r.connection.ui.ConnectionViewController: edu.kit.ipd.sdq.eventsim.measurement.r.connection.ui.ConnectionView view>;
+
+        virtualinvoke $r1.<edu.kit.ipd.sdq.eventsim.measurement.r.connection.ui.ConnectionView: void setFailed()>();
+
+        return;
+    }
+
+    public void connecting(int)
+    {
+        edu.kit.ipd.sdq.eventsim.measurement.r.connection.ui.ConnectionViewController r0;
+        int i0, $i1;
+        edu.kit.ipd.sdq.eventsim.measurement.r.connection.ui.ConnectionView $r1;
+
+        r0 := @this: edu.kit.ipd.sdq.eventsim.measurement.r.connection.ui.ConnectionViewController;
+
+        i0 := @parameter0: int;
+
+        $r1 = r0.<edu.kit.ipd.sdq.eventsim.measurement.r.connection.ui.ConnectionViewController: edu.kit.ipd.sdq.eventsim.measurement.r.connection.ui.ConnectionView view>;
+
+        $i1 = 60 - i0;
+
+        virtualinvoke $r1.<edu.kit.ipd.sdq.eventsim.measurement.r.connection.ui.ConnectionView: void setConnecting(int)>($i1);
+
+        return;
+    }
+
+    public void connected()
+    {
+        edu.kit.ipd.sdq.eventsim.measurement.r.connection.ui.ConnectionViewController r0;
+        edu.kit.ipd.sdq.eventsim.measurement.r.connection.ui.ConnectionView $r1;
+
+        r0 := @this: edu.kit.ipd.sdq.eventsim.measurement.r.connection.ui.ConnectionViewController;
+
+        $r1 = r0.<edu.kit.ipd.sdq.eventsim.measurement.r.connection.ui.ConnectionViewController: edu.kit.ipd.sdq.eventsim.measurement.r.connection.ui.ConnectionView view>;
+
+        virtualinvoke $r1.<edu.kit.ipd.sdq.eventsim.measurement.r.connection.ui.ConnectionView: void setConnected()>();
+
+        return;
+    }
+
+    public void cancelled()
+    {
+        edu.kit.ipd.sdq.eventsim.measurement.r.connection.ui.ConnectionViewController r0;
+        edu.kit.ipd.sdq.eventsim.measurement.r.connection.ui.ConnectionView $r1;
+
+        r0 := @this: edu.kit.ipd.sdq.eventsim.measurement.r.connection.ui.ConnectionViewController;
+
+        $r1 = r0.<edu.kit.ipd.sdq.eventsim.measurement.r.connection.ui.ConnectionViewController: edu.kit.ipd.sdq.eventsim.measurement.r.connection.ui.ConnectionView view>;
+
+        virtualinvoke $r1.<edu.kit.ipd.sdq.eventsim.measurement.r.connection.ui.ConnectionView: void setDisconnected()>();
+
+        return;
+    }
+
+    public void disconnected()
+    {
+        edu.kit.ipd.sdq.eventsim.measurement.r.connection.ui.ConnectionViewController r0;
+        edu.kit.ipd.sdq.eventsim.measurement.r.connection.ui.ConnectionView $r1;
+
+        r0 := @this: edu.kit.ipd.sdq.eventsim.measurement.r.connection.ui.ConnectionViewController;
+
+        $r1 = r0.<edu.kit.ipd.sdq.eventsim.measurement.r.connection.ui.ConnectionViewController: edu.kit.ipd.sdq.eventsim.measurement.r.connection.ui.ConnectionView view>;
+
+        virtualinvoke $r1.<edu.kit.ipd.sdq.eventsim.measurement.r.connection.ui.ConnectionView: void setDisconnected()>();
+
+        return;
+    }
+}

@@ -1,0 +1,54 @@
+public final class edu.kit.ipd.sdq.eventsim.launch.runconfig.EventSimTab$lambda_4__135 extends java.lang.Object implements java.util.function.Consumer
+{
+    edu.kit.ipd.sdq.eventsim.launch.runconfig.EventSimTab cap0;
+
+    public static java.util.function.Consumer bootstrap$(edu.kit.ipd.sdq.eventsim.launch.runconfig.EventSimTab)
+    {
+        edu.kit.ipd.sdq.eventsim.launch.runconfig.EventSimTab $r0;
+        edu.kit.ipd.sdq.eventsim.launch.runconfig.EventSimTab$lambda_4__135 $r1;
+
+        $r0 := @parameter0: edu.kit.ipd.sdq.eventsim.launch.runconfig.EventSimTab;
+
+        $r1 = new edu.kit.ipd.sdq.eventsim.launch.runconfig.EventSimTab$lambda_4__135;
+
+        specialinvoke $r1.<edu.kit.ipd.sdq.eventsim.launch.runconfig.EventSimTab$lambda_4__135: void <init>(edu.kit.ipd.sdq.eventsim.launch.runconfig.EventSimTab)>($r0);
+
+        return $r1;
+    }
+
+    public void <init>(edu.kit.ipd.sdq.eventsim.launch.runconfig.EventSimTab)
+    {
+        edu.kit.ipd.sdq.eventsim.launch.runconfig.EventSimTab$lambda_4__135 $r0;
+        edu.kit.ipd.sdq.eventsim.launch.runconfig.EventSimTab $r1;
+
+        $r0 := @this: edu.kit.ipd.sdq.eventsim.launch.runconfig.EventSimTab$lambda_4__135;
+
+        $r1 := @parameter0: edu.kit.ipd.sdq.eventsim.launch.runconfig.EventSimTab;
+
+        specialinvoke $r0.<java.lang.Object: void <init>()>();
+
+        $r0.<edu.kit.ipd.sdq.eventsim.launch.runconfig.EventSimTab$lambda_4__135: edu.kit.ipd.sdq.eventsim.launch.runconfig.EventSimTab cap0> = $r1;
+
+        return;
+    }
+
+    public void accept(java.lang.Object)
+    {
+        edu.kit.ipd.sdq.eventsim.launch.runconfig.EventSimTab$lambda_4__135 $r0;
+        java.lang.Object $r1;
+        org.eclipse.swt.widgets.TableItem $r2;
+        edu.kit.ipd.sdq.eventsim.launch.runconfig.EventSimTab $r3;
+
+        $r0 := @this: edu.kit.ipd.sdq.eventsim.launch.runconfig.EventSimTab$lambda_4__135;
+
+        $r1 := @parameter0: java.lang.Object;
+
+        $r2 = (org.eclipse.swt.widgets.TableItem) $r1;
+
+        $r3 = $r0.<edu.kit.ipd.sdq.eventsim.launch.runconfig.EventSimTab$lambda_4__135: edu.kit.ipd.sdq.eventsim.launch.runconfig.EventSimTab cap0>;
+
+        virtualinvoke $r3.<edu.kit.ipd.sdq.eventsim.launch.runconfig.EventSimTab: void lambda$4(org.eclipse.swt.widgets.TableItem)>($r2);
+
+        return;
+    }
+}

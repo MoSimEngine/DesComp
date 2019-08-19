@@ -1,0 +1,7 @@
+public interface  edu.kit.ipd.sdq.eventsim.api.IPassiveResource extends java.lang.Object
+{
+
+    public abstract void acquire(edu.kit.ipd.sdq.eventsim.api.IRequest, org.palladiosimulator.pcm.core.composition.AssemblyContext, org.palladiosimulator.pcm.repository.PassiveResource, int, edu.kit.ipd.sdq.eventsim.api.Procedure);
+
+    public abstract void release(edu.kit.ipd.sdq.eventsim.api.IRequest, org.palladiosimulator.pcm.core.composition.AssemblyContext, org.palladiosimulator.pcm.repository.PassiveResource, int);
+}

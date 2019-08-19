@@ -1,0 +1,429 @@
+public class edu.kit.ipd.sdq.eventsim.system.command.BuildComponentInstances extends java.lang.Object implements edu.kit.ipd.sdq.eventsim.command.IPCMCommand
+{
+    private static final org.apache.log4j.Logger logger;
+    private final edu.kit.ipd.sdq.eventsim.system.staticstructure.AllocationRegistry allocation;
+
+    static void <clinit>()
+    {
+        org.apache.log4j.Logger $r0;
+
+        $r0 = staticinvoke <org.apache.log4j.Logger: org.apache.log4j.Logger getLogger(java.lang.Class)>(class "Ledu/kit/ipd/sdq/eventsim/system/command/BuildComponentInstances;");
+
+        <edu.kit.ipd.sdq.eventsim.system.command.BuildComponentInstances: org.apache.log4j.Logger logger> = $r0;
+
+        return;
+    }
+
+    public void <init>(edu.kit.ipd.sdq.eventsim.system.staticstructure.AllocationRegistry)
+    {
+        edu.kit.ipd.sdq.eventsim.system.command.BuildComponentInstances r0;
+        edu.kit.ipd.sdq.eventsim.system.staticstructure.AllocationRegistry r1;
+
+        r0 := @this: edu.kit.ipd.sdq.eventsim.system.command.BuildComponentInstances;
+
+        r1 := @parameter0: edu.kit.ipd.sdq.eventsim.system.staticstructure.AllocationRegistry;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        r0.<edu.kit.ipd.sdq.eventsim.system.command.BuildComponentInstances: edu.kit.ipd.sdq.eventsim.system.staticstructure.AllocationRegistry allocation> = r1;
+
+        return;
+    }
+
+    public java.util.Map execute(edu.kit.ipd.sdq.eventsim.api.PCMModel, edu.kit.ipd.sdq.eventsim.command.ICommandExecutor)
+    {
+        edu.kit.ipd.sdq.eventsim.system.command.BuildComponentInstances r0;
+        edu.kit.ipd.sdq.eventsim.api.PCMModel r1;
+        edu.kit.ipd.sdq.eventsim.command.ICommandExecutor r2;
+        java.util.HashMap $r4;
+        org.palladiosimulator.pcm.system.System $r5, $r31;
+        org.eclipse.emf.common.util.EList $r6, $r32;
+        java.lang.Object $r7, $r33, $r50, $r87;
+        org.palladiosimulator.pcm.repository.RepositoryPackage $r8;
+        org.eclipse.emf.ecore.EClass $r9;
+        boolean $z0, $z1, $z2, $z3, $z4, $z5, $z6, $z7, $z8, $z9, $z10;
+        org.apache.log4j.Level $r10, $r37, $r51, $r60, $r67;
+        org.apache.log4j.Logger $r11, $r13, $r38, $r40, $r52, $r54, $r61, $r63, $r68, $r70;
+        java.lang.StringBuilder $r12, $r15, $r16, $r18, $r19, $r26, $r28, $r29, $r39, $r42, $r43, $r45, $r46, $r53, $r56, $r62, $r65, $r69, $r72;
+        java.lang.Class $r14, $r34, $r35, $r36, $r41;
+        java.lang.String $r17, $r20, $r23, $r27, $r30, $r44, $r47, $r49, $r55, $r57, $r64, $r66, $r71, $r73, $r86;
+        edu.kit.ipd.sdq.eventsim.system.staticstructure.AllocationRegistry $r21;
+        edu.kit.ipd.sdq.eventsim.system.staticstructure.ComponentInstance $r22, r84, r88;
+        edu.kit.ipd.sdq.eventsim.exceptions.unchecked.EventSimException $r25;
+        org.palladiosimulator.pcm.core.composition.AssemblyContext $r48, r75, $r85;
+        org.palladiosimulator.pcm.repository.OperationRequiredRole $r58;
+        org.palladiosimulator.pcm.repository.OperationProvidedRole $r59;
+        java.util.Iterator r74, r81;
+        org.palladiosimulator.pcm.repository.RepositoryComponent r76;
+        org.palladiosimulator.pcm.repository.BasicComponent r77;
+        edu.kit.ipd.sdq.eventsim.system.staticstructure.SimulatedResourceContainer r78;
+        de.uka.ipd.sdq.simucomframework.variables.stackframe.SimulatedStackframe r79;
+        org.palladiosimulator.pcm.core.composition.Connector r82;
+        org.palladiosimulator.pcm.core.composition.AssemblyConnector r83;
+        edu.kit.ipd.sdq.eventsim.system.staticstructure.RoleInstance r89, r90;
+
+        r0 := @this: edu.kit.ipd.sdq.eventsim.system.command.BuildComponentInstances;
+
+        r1 := @parameter0: edu.kit.ipd.sdq.eventsim.api.PCMModel;
+
+        r2 := @parameter1: edu.kit.ipd.sdq.eventsim.command.ICommandExecutor;
+
+        $r4 = new java.util.HashMap;
+
+        specialinvoke $r4.<java.util.HashMap: void <init>()>();
+
+        $r5 = virtualinvoke r1.<edu.kit.ipd.sdq.eventsim.api.PCMModel: org.palladiosimulator.pcm.system.System getSystemModel()>();
+
+        $r6 = interfaceinvoke $r5.<org.palladiosimulator.pcm.system.System: org.eclipse.emf.common.util.EList getAssemblyContexts__ComposedStructure()>();
+
+        r74 = interfaceinvoke $r6.<org.eclipse.emf.common.util.EList: java.util.Iterator iterator()>();
+
+        goto label04;
+
+     label01:
+        $r7 = interfaceinvoke r74.<java.util.Iterator: java.lang.Object next()>();
+
+        r75 = (org.palladiosimulator.pcm.core.composition.AssemblyContext) $r7;
+
+        r76 = interfaceinvoke r75.<org.palladiosimulator.pcm.core.composition.AssemblyContext: org.palladiosimulator.pcm.repository.RepositoryComponent getEncapsulatedComponent__AssemblyContext()>();
+
+        $r8 = <org.palladiosimulator.pcm.repository.RepositoryPackage: org.palladiosimulator.pcm.repository.RepositoryPackage eINSTANCE>;
+
+        $r9 = interfaceinvoke $r8.<org.palladiosimulator.pcm.repository.RepositoryPackage: org.eclipse.emf.ecore.EClass getBasicComponent()>();
+
+        $z0 = interfaceinvoke $r9.<org.eclipse.emf.ecore.EClass: boolean isInstance(java.lang.Object)>(r76);
+
+        if $z0 == 0 goto label03;
+
+        r77 = (org.palladiosimulator.pcm.repository.BasicComponent) r76;
+
+        $r21 = r0.<edu.kit.ipd.sdq.eventsim.system.command.BuildComponentInstances: edu.kit.ipd.sdq.eventsim.system.staticstructure.AllocationRegistry allocation>;
+
+        r78 = virtualinvoke $r21.<edu.kit.ipd.sdq.eventsim.system.staticstructure.AllocationRegistry: edu.kit.ipd.sdq.eventsim.system.staticstructure.SimulatedResourceContainer getResourceContainer(org.palladiosimulator.pcm.core.composition.AssemblyContext)>(r75);
+
+        if r78 != null goto label02;
+
+        $r25 = new edu.kit.ipd.sdq.eventsim.exceptions.unchecked.EventSimException;
+
+        $r26 = new java.lang.StringBuilder;
+
+        specialinvoke $r26.<java.lang.StringBuilder: void <init>(java.lang.String)>("Encountered an undeployed assembly context: ");
+
+        $r27 = staticinvoke <edu.kit.ipd.sdq.eventsim.util.PCMEntityHelper: java.lang.String toString(org.palladiosimulator.pcm.core.entity.Entity)>(r75);
+
+        $r28 = virtualinvoke $r26.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r27);
+
+        $r29 = virtualinvoke $r28.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(".");
+
+        $r30 = virtualinvoke $r29.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        specialinvoke $r25.<edu.kit.ipd.sdq.eventsim.exceptions.unchecked.EventSimException: void <init>(java.lang.String)>($r30);
+
+        throw $r25;
+
+     label02:
+        r79 = specialinvoke r0.<edu.kit.ipd.sdq.eventsim.system.command.BuildComponentInstances: de.uka.ipd.sdq.simucomframework.variables.stackframe.SimulatedStackframe createComponentParameters(org.palladiosimulator.pcm.repository.BasicComponent,org.palladiosimulator.pcm.core.composition.AssemblyContext)>(r77, r75);
+
+        $r22 = new edu.kit.ipd.sdq.eventsim.system.staticstructure.ComponentInstance;
+
+        specialinvoke $r22.<edu.kit.ipd.sdq.eventsim.system.staticstructure.ComponentInstance: void <init>(org.palladiosimulator.pcm.repository.BasicComponent,org.palladiosimulator.pcm.core.composition.AssemblyContext,edu.kit.ipd.sdq.eventsim.system.staticstructure.SimulatedResourceContainer,de.uka.ipd.sdq.simucomframework.variables.stackframe.SimulatedStackframe)>(r77, r75, r78, r79);
+
+        $r23 = interfaceinvoke r75.<org.palladiosimulator.pcm.core.composition.AssemblyContext: java.lang.String getId()>();
+
+        interfaceinvoke $r4.<java.util.Map: java.lang.Object put(java.lang.Object,java.lang.Object)>($r23, $r22);
+
+        goto label04;
+
+     label03:
+        $r11 = <edu.kit.ipd.sdq.eventsim.system.command.BuildComponentInstances: org.apache.log4j.Logger logger>;
+
+        $r10 = <org.apache.log4j.Level: org.apache.log4j.Level WARN>;
+
+        $z1 = virtualinvoke $r11.<org.apache.log4j.Logger: boolean isEnabledFor(org.apache.log4j.Priority)>($r10);
+
+        if $z1 == 0 goto label04;
+
+        $r13 = <edu.kit.ipd.sdq.eventsim.system.command.BuildComponentInstances: org.apache.log4j.Logger logger>;
+
+        $r12 = new java.lang.StringBuilder;
+
+        specialinvoke $r12.<java.lang.StringBuilder: void <init>(java.lang.String)>("Encountered unsupported component type: ");
+
+        $r14 = virtualinvoke r76.<java.lang.Object: java.lang.Class getClass()>();
+
+        $r15 = virtualinvoke $r12.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.Object)>($r14);
+
+        $r16 = virtualinvoke $r15.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(". Ignoring component ");
+
+        $r17 = staticinvoke <edu.kit.ipd.sdq.eventsim.util.PCMEntityHelper: java.lang.String toString(org.palladiosimulator.pcm.core.entity.Entity)>(r76);
+
+        $r18 = virtualinvoke $r16.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r17);
+
+        $r19 = virtualinvoke $r18.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(".");
+
+        $r20 = virtualinvoke $r19.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        virtualinvoke $r13.<org.apache.log4j.Logger: void warn(java.lang.Object)>($r20);
+
+     label04:
+        $z9 = interfaceinvoke r74.<java.util.Iterator: boolean hasNext()>();
+
+        if $z9 != 0 goto label01;
+
+        $r31 = virtualinvoke r1.<edu.kit.ipd.sdq.eventsim.api.PCMModel: org.palladiosimulator.pcm.system.System getSystemModel()>();
+
+        $r32 = interfaceinvoke $r31.<org.palladiosimulator.pcm.system.System: org.eclipse.emf.common.util.EList getConnectors__ComposedStructure()>();
+
+        r81 = interfaceinvoke $r32.<org.eclipse.emf.common.util.EList: java.util.Iterator iterator()>();
+
+        goto label10;
+
+     label05:
+        $r33 = interfaceinvoke r81.<java.util.Iterator: java.lang.Object next()>();
+
+        r82 = (org.palladiosimulator.pcm.core.composition.Connector) $r33;
+
+        $r34 = class "Lorg/palladiosimulator/pcm/core/composition/AssemblyConnector;";
+
+        $z2 = virtualinvoke $r34.<java.lang.Class: boolean isInstance(java.lang.Object)>(r82);
+
+        if $z2 == 0 goto label09;
+
+        r83 = (org.palladiosimulator.pcm.core.composition.AssemblyConnector) r82;
+
+        $r48 = interfaceinvoke r83.<org.palladiosimulator.pcm.core.composition.AssemblyConnector: org.palladiosimulator.pcm.core.composition.AssemblyContext getProvidingAssemblyContext_AssemblyConnector()>();
+
+        $r49 = interfaceinvoke $r48.<org.palladiosimulator.pcm.core.composition.AssemblyContext: java.lang.String getId()>();
+
+        $r50 = interfaceinvoke $r4.<java.util.Map: java.lang.Object get(java.lang.Object)>($r49);
+
+        r84 = (edu.kit.ipd.sdq.eventsim.system.staticstructure.ComponentInstance) $r50;
+
+        if r84 != null goto label06;
+
+        $r68 = <edu.kit.ipd.sdq.eventsim.system.command.BuildComponentInstances: org.apache.log4j.Logger logger>;
+
+        $r67 = <org.apache.log4j.Level: org.apache.log4j.Level WARN>;
+
+        $z8 = virtualinvoke $r68.<org.apache.log4j.Logger: boolean isEnabledFor(org.apache.log4j.Priority)>($r67);
+
+        if $z8 == 0 goto label06;
+
+        $r70 = <edu.kit.ipd.sdq.eventsim.system.command.BuildComponentInstances: org.apache.log4j.Logger logger>;
+
+        $r69 = new java.lang.StringBuilder;
+
+        specialinvoke $r69.<java.lang.StringBuilder: void <init>(java.lang.String)>("Could not find the providing component instance for ");
+
+        $r71 = staticinvoke <edu.kit.ipd.sdq.eventsim.util.PCMEntityHelper: java.lang.String toString(org.palladiosimulator.pcm.core.entity.Entity)>(r83);
+
+        $r72 = virtualinvoke $r69.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r71);
+
+        $r73 = virtualinvoke $r72.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        virtualinvoke $r70.<org.apache.log4j.Logger: void warn(java.lang.Object)>($r73);
+
+     label06:
+        $r85 = interfaceinvoke r83.<org.palladiosimulator.pcm.core.composition.AssemblyConnector: org.palladiosimulator.pcm.core.composition.AssemblyContext getRequiringAssemblyContext_AssemblyConnector()>();
+
+        $r86 = interfaceinvoke $r85.<org.palladiosimulator.pcm.core.composition.AssemblyContext: java.lang.String getId()>();
+
+        $r87 = interfaceinvoke $r4.<java.util.Map: java.lang.Object get(java.lang.Object)>($r86);
+
+        r88 = (edu.kit.ipd.sdq.eventsim.system.staticstructure.ComponentInstance) $r87;
+
+        if r88 != null goto label07;
+
+        $r61 = <edu.kit.ipd.sdq.eventsim.system.command.BuildComponentInstances: org.apache.log4j.Logger logger>;
+
+        $r60 = <org.apache.log4j.Level: org.apache.log4j.Level WARN>;
+
+        $z7 = virtualinvoke $r61.<org.apache.log4j.Logger: boolean isEnabledFor(org.apache.log4j.Priority)>($r60);
+
+        if $z7 == 0 goto label07;
+
+        $r63 = <edu.kit.ipd.sdq.eventsim.system.command.BuildComponentInstances: org.apache.log4j.Logger logger>;
+
+        $r62 = new java.lang.StringBuilder;
+
+        specialinvoke $r62.<java.lang.StringBuilder: void <init>(java.lang.String)>("Could not find the providing component instance for ");
+
+        $r64 = staticinvoke <edu.kit.ipd.sdq.eventsim.util.PCMEntityHelper: java.lang.String toString(org.palladiosimulator.pcm.core.entity.Entity)>(r83);
+
+        $r65 = virtualinvoke $r62.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r64);
+
+        $r66 = virtualinvoke $r65.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        virtualinvoke $r63.<org.apache.log4j.Logger: void warn(java.lang.Object)>($r66);
+
+     label07:
+        if r84 == null goto label08;
+
+        if r88 == null goto label08;
+
+        $r58 = interfaceinvoke r83.<org.palladiosimulator.pcm.core.composition.AssemblyConnector: org.palladiosimulator.pcm.repository.OperationRequiredRole getRequiredRole_AssemblyConnector()>();
+
+        r89 = virtualinvoke r88.<edu.kit.ipd.sdq.eventsim.system.staticstructure.ComponentInstance: edu.kit.ipd.sdq.eventsim.system.staticstructure.RoleInstance getRequiredRole(org.palladiosimulator.pcm.repository.OperationRequiredRole)>($r58);
+
+        $r59 = interfaceinvoke r83.<org.palladiosimulator.pcm.core.composition.AssemblyConnector: org.palladiosimulator.pcm.repository.OperationProvidedRole getProvidedRole_AssemblyConnector()>();
+
+        r90 = virtualinvoke r84.<edu.kit.ipd.sdq.eventsim.system.staticstructure.ComponentInstance: edu.kit.ipd.sdq.eventsim.system.staticstructure.RoleInstance getProvidedRole(org.palladiosimulator.pcm.repository.OperationProvidedRole)>($r59);
+
+        staticinvoke <edu.kit.ipd.sdq.eventsim.system.staticstructure.RoleInstance: void linkRoles(edu.kit.ipd.sdq.eventsim.system.staticstructure.RoleInstance,edu.kit.ipd.sdq.eventsim.system.staticstructure.RoleInstance)>(r89, r90);
+
+        goto label10;
+
+     label08:
+        $r52 = <edu.kit.ipd.sdq.eventsim.system.command.BuildComponentInstances: org.apache.log4j.Logger logger>;
+
+        $r51 = <org.apache.log4j.Level: org.apache.log4j.Level WARN>;
+
+        $z6 = virtualinvoke $r52.<org.apache.log4j.Logger: boolean isEnabledFor(org.apache.log4j.Priority)>($r51);
+
+        if $z6 == 0 goto label10;
+
+        $r54 = <edu.kit.ipd.sdq.eventsim.system.command.BuildComponentInstances: org.apache.log4j.Logger logger>;
+
+        $r53 = new java.lang.StringBuilder;
+
+        specialinvoke $r53.<java.lang.StringBuilder: void <init>(java.lang.String)>("Ignoring ");
+
+        $r55 = staticinvoke <edu.kit.ipd.sdq.eventsim.util.PCMEntityHelper: java.lang.String toString(org.palladiosimulator.pcm.core.entity.Entity)>(r83);
+
+        $r56 = virtualinvoke $r53.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r55);
+
+        $r57 = virtualinvoke $r56.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        virtualinvoke $r54.<org.apache.log4j.Logger: void warn(java.lang.Object)>($r57);
+
+        goto label10;
+
+     label09:
+        $r35 = class "Lorg/palladiosimulator/pcm/core/composition/ProvidedDelegationConnector;";
+
+        $z3 = virtualinvoke $r35.<java.lang.Class: boolean isInstance(java.lang.Object)>(r82);
+
+        if $z3 != 0 goto label10;
+
+        $r36 = class "Lorg/palladiosimulator/pcm/core/composition/RequiredDelegationConnector;";
+
+        $z4 = virtualinvoke $r36.<java.lang.Class: boolean isInstance(java.lang.Object)>(r82);
+
+        if $z4 != 0 goto label10;
+
+        $r38 = <edu.kit.ipd.sdq.eventsim.system.command.BuildComponentInstances: org.apache.log4j.Logger logger>;
+
+        $r37 = <org.apache.log4j.Level: org.apache.log4j.Level WARN>;
+
+        $z5 = virtualinvoke $r38.<org.apache.log4j.Logger: boolean isEnabledFor(org.apache.log4j.Priority)>($r37);
+
+        if $z5 == 0 goto label10;
+
+        $r40 = <edu.kit.ipd.sdq.eventsim.system.command.BuildComponentInstances: org.apache.log4j.Logger logger>;
+
+        $r39 = new java.lang.StringBuilder;
+
+        specialinvoke $r39.<java.lang.StringBuilder: void <init>(java.lang.String)>("Unknown connector type: ");
+
+        $r41 = virtualinvoke r82.<java.lang.Object: java.lang.Class getClass()>();
+
+        $r42 = virtualinvoke $r39.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.Object)>($r41);
+
+        $r43 = virtualinvoke $r42.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(". Ignoring connector ");
+
+        $r44 = staticinvoke <edu.kit.ipd.sdq.eventsim.util.PCMEntityHelper: java.lang.String toString(org.palladiosimulator.pcm.core.entity.Entity)>(r82);
+
+        $r45 = virtualinvoke $r43.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r44);
+
+        $r46 = virtualinvoke $r45.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(".");
+
+        $r47 = virtualinvoke $r46.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        virtualinvoke $r40.<org.apache.log4j.Logger: void warn(java.lang.Object)>($r47);
+
+     label10:
+        $z10 = interfaceinvoke r81.<java.util.Iterator: boolean hasNext()>();
+
+        if $z10 != 0 goto label05;
+
+        return $r4;
+    }
+
+    public boolean cachable()
+    {
+        edu.kit.ipd.sdq.eventsim.system.command.BuildComponentInstances r0;
+
+        r0 := @this: edu.kit.ipd.sdq.eventsim.system.command.BuildComponentInstances;
+
+        return 0;
+    }
+
+    private de.uka.ipd.sdq.simucomframework.variables.stackframe.SimulatedStackframe createComponentParameters(org.palladiosimulator.pcm.repository.BasicComponent, org.palladiosimulator.pcm.core.composition.AssemblyContext)
+    {
+        edu.kit.ipd.sdq.eventsim.system.command.BuildComponentInstances r0;
+        org.palladiosimulator.pcm.repository.BasicComponent r1;
+        org.palladiosimulator.pcm.core.composition.AssemblyContext r2;
+        org.eclipse.emf.common.util.EList r5, r7;
+        de.uka.ipd.sdq.simucomframework.variables.stackframe.SimulatedStackframe r11, r12, r13;
+        java.util.List r14, r15;
+
+        r0 := @this: edu.kit.ipd.sdq.eventsim.system.command.BuildComponentInstances;
+
+        r1 := @parameter0: org.palladiosimulator.pcm.repository.BasicComponent;
+
+        r2 := @parameter1: org.palladiosimulator.pcm.core.composition.AssemblyContext;
+
+        r11 = new de.uka.ipd.sdq.simucomframework.variables.stackframe.SimulatedStackframe;
+
+        specialinvoke r11.<de.uka.ipd.sdq.simucomframework.variables.stackframe.SimulatedStackframe: void <init>()>();
+
+        r12 = new de.uka.ipd.sdq.simucomframework.variables.stackframe.SimulatedStackframe;
+
+        specialinvoke r12.<de.uka.ipd.sdq.simucomframework.variables.stackframe.SimulatedStackframe: void <init>()>();
+
+        r5 = interfaceinvoke r1.<org.palladiosimulator.pcm.repository.BasicComponent: org.eclipse.emf.common.util.EList getComponentParameterUsage_ImplementationComponentType()>();
+
+        r14 = (java.util.List) r5;
+
+        staticinvoke <edu.kit.ipd.sdq.eventsim.util.ParameterHelper: void createEvaluationProxiesAndCopyToFrame(java.util.List,de.uka.ipd.sdq.simucomframework.variables.stackframe.SimulatedStackframe)>(r14, r12);
+
+        virtualinvoke r11.<de.uka.ipd.sdq.simucomframework.variables.stackframe.SimulatedStackframe: void addVariables(de.uka.ipd.sdq.simucomframework.variables.stackframe.SimulatedStackframe)>(r12);
+
+        r13 = new de.uka.ipd.sdq.simucomframework.variables.stackframe.SimulatedStackframe;
+
+        specialinvoke r13.<de.uka.ipd.sdq.simucomframework.variables.stackframe.SimulatedStackframe: void <init>()>();
+
+        r7 = interfaceinvoke r2.<org.palladiosimulator.pcm.core.composition.AssemblyContext: org.eclipse.emf.common.util.EList getConfigParameterUsages__AssemblyContext()>();
+
+        r15 = (java.util.List) r7;
+
+        staticinvoke <edu.kit.ipd.sdq.eventsim.util.ParameterHelper: void createEvaluationProxiesAndCopyToFrame(java.util.List,de.uka.ipd.sdq.simucomframework.variables.stackframe.SimulatedStackframe)>(r15, r13);
+
+        virtualinvoke r11.<de.uka.ipd.sdq.simucomframework.variables.stackframe.SimulatedStackframe: void addVariables(de.uka.ipd.sdq.simucomframework.variables.stackframe.SimulatedStackframe)>(r12);
+
+        return r11;
+    }
+
+    public volatile java.lang.Object execute(java.lang.Object, edu.kit.ipd.sdq.eventsim.command.ICommandExecutor)
+    {
+        edu.kit.ipd.sdq.eventsim.system.command.BuildComponentInstances r0;
+        java.lang.Object r1;
+        edu.kit.ipd.sdq.eventsim.command.ICommandExecutor r2, $r3;
+        edu.kit.ipd.sdq.eventsim.api.PCMModel $r4;
+        java.util.Map $r5;
+
+        r0 := @this: edu.kit.ipd.sdq.eventsim.system.command.BuildComponentInstances;
+
+        r1 := @parameter0: java.lang.Object;
+
+        r2 := @parameter1: edu.kit.ipd.sdq.eventsim.command.ICommandExecutor;
+
+        $r4 = (edu.kit.ipd.sdq.eventsim.api.PCMModel) r1;
+
+        $r3 = (edu.kit.ipd.sdq.eventsim.command.ICommandExecutor) r2;
+
+        $r5 = virtualinvoke r0.<edu.kit.ipd.sdq.eventsim.system.command.BuildComponentInstances: java.util.Map execute(edu.kit.ipd.sdq.eventsim.api.PCMModel,edu.kit.ipd.sdq.eventsim.command.ICommandExecutor)>($r4, $r3);
+
+        return $r5;
+    }
+}

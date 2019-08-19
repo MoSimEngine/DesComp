@@ -1,0 +1,65 @@
+public class edu.kit.ipd.sdq.eventsim.resources.EventSimResourceModule extends com.google.inject.AbstractModule
+{
+
+    public void <init>()
+    {
+        edu.kit.ipd.sdq.eventsim.resources.EventSimResourceModule r0;
+
+        r0 := @this: edu.kit.ipd.sdq.eventsim.resources.EventSimResourceModule;
+
+        specialinvoke r0.<com.google.inject.AbstractModule: void <init>()>();
+
+        return;
+    }
+
+    protected void configure()
+    {
+        edu.kit.ipd.sdq.eventsim.resources.EventSimResourceModule r0;
+        com.google.inject.assistedinject.FactoryModuleBuilder $r1;
+        com.google.inject.Module $r2;
+        com.google.inject.binder.AnnotatedBindingBuilder $r3, $r5, $r7, $r9, $r11;
+        com.google.inject.binder.ScopedBindingBuilder $r4, $r6, $r8, $r10, $r12;
+
+        r0 := @this: edu.kit.ipd.sdq.eventsim.resources.EventSimResourceModule;
+
+        $r1 = new com.google.inject.assistedinject.FactoryModuleBuilder;
+
+        specialinvoke $r1.<com.google.inject.assistedinject.FactoryModuleBuilder: void <init>()>();
+
+        $r2 = virtualinvoke $r1.<com.google.inject.assistedinject.FactoryModuleBuilder: com.google.inject.Module build(java.lang.Class)>(class "Ledu/kit/ipd/sdq/eventsim/resources/entities/SimResourceFactory;");
+
+        virtualinvoke r0.<edu.kit.ipd.sdq.eventsim.resources.EventSimResourceModule: void install(com.google.inject.Module)>($r2);
+
+        $r3 = virtualinvoke r0.<edu.kit.ipd.sdq.eventsim.resources.EventSimResourceModule: com.google.inject.binder.AnnotatedBindingBuilder bind(java.lang.Class)>(class "Ledu/kit/ipd/sdq/eventsim/api/IActiveResource;");
+
+        $r4 = interfaceinvoke $r3.<com.google.inject.binder.AnnotatedBindingBuilder: com.google.inject.binder.ScopedBindingBuilder 'to'(java.lang.Class)>(class "Ledu/kit/ipd/sdq/eventsim/resources/EventSimActiveResourceModel;");
+
+        interfaceinvoke $r4.<com.google.inject.binder.ScopedBindingBuilder: void asEagerSingleton()>();
+
+        $r5 = virtualinvoke r0.<edu.kit.ipd.sdq.eventsim.resources.EventSimResourceModule: com.google.inject.binder.AnnotatedBindingBuilder bind(java.lang.Class)>(class "Ledu/kit/ipd/sdq/eventsim/api/IPassiveResource;");
+
+        $r6 = interfaceinvoke $r5.<com.google.inject.binder.AnnotatedBindingBuilder: com.google.inject.binder.ScopedBindingBuilder 'to'(java.lang.Class)>(class "Ledu/kit/ipd/sdq/eventsim/resources/EventSimPassiveResourceModel;");
+
+        interfaceinvoke $r6.<com.google.inject.binder.ScopedBindingBuilder: void asEagerSingleton()>();
+
+        $r7 = virtualinvoke r0.<edu.kit.ipd.sdq.eventsim.resources.EventSimResourceModule: com.google.inject.binder.AnnotatedBindingBuilder bind(java.lang.Class)>(class "Ledu/kit/ipd/sdq/eventsim/api/ILinkingResource;");
+
+        $r8 = interfaceinvoke $r7.<com.google.inject.binder.AnnotatedBindingBuilder: com.google.inject.binder.ScopedBindingBuilder 'to'(java.lang.Class)>(class "Ledu/kit/ipd/sdq/eventsim/resources/EventSimLinkingResourceModel;");
+
+        interfaceinvoke $r8.<com.google.inject.binder.ScopedBindingBuilder: void asEagerSingleton()>();
+
+        $r9 = virtualinvoke r0.<edu.kit.ipd.sdq.eventsim.resources.EventSimResourceModule: com.google.inject.binder.AnnotatedBindingBuilder bind(java.lang.Class)>(class "Lde/uka/ipd/sdq/scheduler/SchedulerModel;");
+
+        $r10 = interfaceinvoke $r9.<com.google.inject.binder.AnnotatedBindingBuilder: com.google.inject.binder.ScopedBindingBuilder 'to'(java.lang.Class)>(class "Ledu/kit/ipd/sdq/eventsim/middleware/simulation/SimulationModel;");
+
+        interfaceinvoke $r10.<com.google.inject.binder.ScopedBindingBuilder: void in(java.lang.Class)>(class "Lcom/google/inject/Singleton;");
+
+        $r11 = virtualinvoke r0.<edu.kit.ipd.sdq.eventsim.resources.EventSimResourceModule: com.google.inject.binder.AnnotatedBindingBuilder bind(java.lang.Class)>(class "Lde/uka/ipd/sdq/scheduler/ISchedulingFactory;");
+
+        $r12 = interfaceinvoke $r11.<com.google.inject.binder.AnnotatedBindingBuilder: com.google.inject.binder.ScopedBindingBuilder 'to'(java.lang.Class)>(class "Ledu/kit/ipd/sdq/eventsim/resources/InjectableSchedulingFactory;");
+
+        interfaceinvoke $r12.<com.google.inject.binder.ScopedBindingBuilder: void in(java.lang.Class)>(class "Lcom/google/inject/Singleton;");
+
+        return;
+    }
+}

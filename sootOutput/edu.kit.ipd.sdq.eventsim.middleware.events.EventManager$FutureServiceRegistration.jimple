@@ -1,0 +1,63 @@
+class edu.kit.ipd.sdq.eventsim.middleware.events.EventManager$FutureServiceRegistration extends java.lang.Object
+{
+    private org.osgi.framework.ServiceRegistration handlerRegistration;
+    final edu.kit.ipd.sdq.eventsim.middleware.events.EventManager this$0;
+
+    private void <init>(edu.kit.ipd.sdq.eventsim.middleware.events.EventManager)
+    {
+        edu.kit.ipd.sdq.eventsim.middleware.events.EventManager$FutureServiceRegistration r0;
+        edu.kit.ipd.sdq.eventsim.middleware.events.EventManager r1;
+
+        r0 := @this: edu.kit.ipd.sdq.eventsim.middleware.events.EventManager$FutureServiceRegistration;
+
+        r1 := @parameter0: edu.kit.ipd.sdq.eventsim.middleware.events.EventManager;
+
+        r0.<edu.kit.ipd.sdq.eventsim.middleware.events.EventManager$FutureServiceRegistration: edu.kit.ipd.sdq.eventsim.middleware.events.EventManager this$0> = r1;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    public void set(org.osgi.framework.ServiceRegistration)
+    {
+        edu.kit.ipd.sdq.eventsim.middleware.events.EventManager$FutureServiceRegistration r0;
+        org.osgi.framework.ServiceRegistration r1;
+
+        r0 := @this: edu.kit.ipd.sdq.eventsim.middleware.events.EventManager$FutureServiceRegistration;
+
+        r1 := @parameter0: org.osgi.framework.ServiceRegistration;
+
+        r0.<edu.kit.ipd.sdq.eventsim.middleware.events.EventManager$FutureServiceRegistration: org.osgi.framework.ServiceRegistration handlerRegistration> = r1;
+
+        return;
+    }
+
+    public org.osgi.framework.ServiceRegistration get()
+    {
+        edu.kit.ipd.sdq.eventsim.middleware.events.EventManager$FutureServiceRegistration r0;
+        org.osgi.framework.ServiceRegistration $r1;
+
+        r0 := @this: edu.kit.ipd.sdq.eventsim.middleware.events.EventManager$FutureServiceRegistration;
+
+        $r1 = r0.<edu.kit.ipd.sdq.eventsim.middleware.events.EventManager$FutureServiceRegistration: org.osgi.framework.ServiceRegistration handlerRegistration>;
+
+        return $r1;
+    }
+
+    void <init>(edu.kit.ipd.sdq.eventsim.middleware.events.EventManager, edu.kit.ipd.sdq.eventsim.middleware.events.EventManager$FutureServiceRegistration)
+    {
+        edu.kit.ipd.sdq.eventsim.middleware.events.EventManager$FutureServiceRegistration r0, r2;
+        edu.kit.ipd.sdq.eventsim.middleware.events.EventManager r1;
+
+        r0 := @this: edu.kit.ipd.sdq.eventsim.middleware.events.EventManager$FutureServiceRegistration;
+
+        r1 := @parameter0: edu.kit.ipd.sdq.eventsim.middleware.events.EventManager;
+
+        r2 := @parameter1: edu.kit.ipd.sdq.eventsim.middleware.events.EventManager$FutureServiceRegistration;
+
+        specialinvoke r0.<edu.kit.ipd.sdq.eventsim.middleware.events.EventManager$FutureServiceRegistration: void <init>(edu.kit.ipd.sdq.eventsim.middleware.events.EventManager)>(r1);
+
+        return;
+    }
+}

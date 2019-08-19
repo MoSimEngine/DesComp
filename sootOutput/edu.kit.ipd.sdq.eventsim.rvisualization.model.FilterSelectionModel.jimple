@@ -1,0 +1,634 @@
+public class edu.kit.ipd.sdq.eventsim.rvisualization.model.FilterSelectionModel extends java.lang.Object
+{
+    public static final java.lang.String METRIC_PROPERTY;
+    public static final java.lang.String TRIGGER_TYPE_PROPERTY;
+    public static final java.lang.String TRIGGER_INSTANCE_PROPERTY;
+    public static final java.lang.String TRIGGER_INSTANCE_SELECTION_ENABLED;
+    public static final java.lang.String ASSEMBLY_CONTEXT_PROPERTY;
+    public static final java.lang.String MEASURING_POINT_FROM_PROPERTY;
+    public static final java.lang.String MEASURING_POINT_TO_PROPERTY;
+    public static final java.lang.String SIMULATION_TIME_LOWER_PROPERTY;
+    public static final java.lang.String SIMULATION_TIME_UPPER_PROPERTY;
+    public static final java.lang.String DIAGRAM_TYPE_PROPERTY;
+    public static final java.lang.String METADATA_PROPERTY;
+    private final java.beans.PropertyChangeSupport pcs;
+    private edu.kit.ipd.sdq.eventsim.rvisualization.model.TranslatableEntity metric;
+    private edu.kit.ipd.sdq.eventsim.rvisualization.model.TranslatableEntity triggerType;
+    private edu.kit.ipd.sdq.eventsim.rvisualization.model.Entity triggerInstance;
+    private boolean triggerInstanceSelectionEnabled;
+    private edu.kit.ipd.sdq.eventsim.rvisualization.model.Entity assemblyContext;
+    private edu.kit.ipd.sdq.eventsim.rvisualization.model.Entity measuringPointFrom;
+    private edu.kit.ipd.sdq.eventsim.rvisualization.model.Entity measuringPointTo;
+    private int simulationTimeLower;
+    private int simulationTimeUpper;
+    private edu.kit.ipd.sdq.eventsim.rvisualization.model.TranslatableEntity diagramType;
+    private java.util.Map metadata;
+
+    public void <init>()
+    {
+        edu.kit.ipd.sdq.eventsim.rvisualization.model.FilterSelectionModel r0;
+        java.beans.PropertyChangeSupport $r1;
+
+        r0 := @this: edu.kit.ipd.sdq.eventsim.rvisualization.model.FilterSelectionModel;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        $r1 = new java.beans.PropertyChangeSupport;
+
+        specialinvoke $r1.<java.beans.PropertyChangeSupport: void <init>(java.lang.Object)>(r0);
+
+        r0.<edu.kit.ipd.sdq.eventsim.rvisualization.model.FilterSelectionModel: java.beans.PropertyChangeSupport pcs> = $r1;
+
+        return;
+    }
+
+    public void addPropertyChangeListener(java.beans.PropertyChangeListener)
+    {
+        edu.kit.ipd.sdq.eventsim.rvisualization.model.FilterSelectionModel r0;
+        java.beans.PropertyChangeListener r1;
+        java.beans.PropertyChangeSupport $r2;
+
+        r0 := @this: edu.kit.ipd.sdq.eventsim.rvisualization.model.FilterSelectionModel;
+
+        r1 := @parameter0: java.beans.PropertyChangeListener;
+
+        $r2 = r0.<edu.kit.ipd.sdq.eventsim.rvisualization.model.FilterSelectionModel: java.beans.PropertyChangeSupport pcs>;
+
+        virtualinvoke $r2.<java.beans.PropertyChangeSupport: void addPropertyChangeListener(java.beans.PropertyChangeListener)>(r1);
+
+        return;
+    }
+
+    public void removePropertyChangeListener(java.beans.PropertyChangeListener)
+    {
+        edu.kit.ipd.sdq.eventsim.rvisualization.model.FilterSelectionModel r0;
+        java.beans.PropertyChangeListener r1;
+        java.beans.PropertyChangeSupport $r2;
+
+        r0 := @this: edu.kit.ipd.sdq.eventsim.rvisualization.model.FilterSelectionModel;
+
+        r1 := @parameter0: java.beans.PropertyChangeListener;
+
+        $r2 = r0.<edu.kit.ipd.sdq.eventsim.rvisualization.model.FilterSelectionModel: java.beans.PropertyChangeSupport pcs>;
+
+        virtualinvoke $r2.<java.beans.PropertyChangeSupport: void removePropertyChangeListener(java.beans.PropertyChangeListener)>(r1);
+
+        return;
+    }
+
+    public edu.kit.ipd.sdq.eventsim.rvisualization.model.TranslatableEntity getMetric()
+    {
+        edu.kit.ipd.sdq.eventsim.rvisualization.model.FilterSelectionModel r0;
+        edu.kit.ipd.sdq.eventsim.rvisualization.model.TranslatableEntity $r1;
+
+        r0 := @this: edu.kit.ipd.sdq.eventsim.rvisualization.model.FilterSelectionModel;
+
+        $r1 = r0.<edu.kit.ipd.sdq.eventsim.rvisualization.model.FilterSelectionModel: edu.kit.ipd.sdq.eventsim.rvisualization.model.TranslatableEntity metric>;
+
+        return $r1;
+    }
+
+    public void setMetric(edu.kit.ipd.sdq.eventsim.rvisualization.model.TranslatableEntity)
+    {
+        edu.kit.ipd.sdq.eventsim.rvisualization.model.FilterSelectionModel r0;
+        edu.kit.ipd.sdq.eventsim.rvisualization.model.TranslatableEntity r1, r2;
+        java.beans.PropertyChangeSupport $r3;
+
+        r0 := @this: edu.kit.ipd.sdq.eventsim.rvisualization.model.FilterSelectionModel;
+
+        r1 := @parameter0: edu.kit.ipd.sdq.eventsim.rvisualization.model.TranslatableEntity;
+
+        r2 = r0.<edu.kit.ipd.sdq.eventsim.rvisualization.model.FilterSelectionModel: edu.kit.ipd.sdq.eventsim.rvisualization.model.TranslatableEntity metric>;
+
+        r0.<edu.kit.ipd.sdq.eventsim.rvisualization.model.FilterSelectionModel: edu.kit.ipd.sdq.eventsim.rvisualization.model.TranslatableEntity metric> = r1;
+
+        $r3 = r0.<edu.kit.ipd.sdq.eventsim.rvisualization.model.FilterSelectionModel: java.beans.PropertyChangeSupport pcs>;
+
+        virtualinvoke $r3.<java.beans.PropertyChangeSupport: void firePropertyChange(java.lang.String,java.lang.Object,java.lang.Object)>("metric", r2, r1);
+
+        return;
+    }
+
+    public edu.kit.ipd.sdq.eventsim.rvisualization.model.TranslatableEntity getTriggerType()
+    {
+        edu.kit.ipd.sdq.eventsim.rvisualization.model.FilterSelectionModel r0;
+        edu.kit.ipd.sdq.eventsim.rvisualization.model.TranslatableEntity $r1;
+
+        r0 := @this: edu.kit.ipd.sdq.eventsim.rvisualization.model.FilterSelectionModel;
+
+        $r1 = r0.<edu.kit.ipd.sdq.eventsim.rvisualization.model.FilterSelectionModel: edu.kit.ipd.sdq.eventsim.rvisualization.model.TranslatableEntity triggerType>;
+
+        return $r1;
+    }
+
+    public void setTriggerType(edu.kit.ipd.sdq.eventsim.rvisualization.model.TranslatableEntity)
+    {
+        edu.kit.ipd.sdq.eventsim.rvisualization.model.FilterSelectionModel r0;
+        edu.kit.ipd.sdq.eventsim.rvisualization.model.TranslatableEntity r1, r2;
+        java.beans.PropertyChangeSupport $r3;
+
+        r0 := @this: edu.kit.ipd.sdq.eventsim.rvisualization.model.FilterSelectionModel;
+
+        r1 := @parameter0: edu.kit.ipd.sdq.eventsim.rvisualization.model.TranslatableEntity;
+
+        r2 = r0.<edu.kit.ipd.sdq.eventsim.rvisualization.model.FilterSelectionModel: edu.kit.ipd.sdq.eventsim.rvisualization.model.TranslatableEntity triggerType>;
+
+        r0.<edu.kit.ipd.sdq.eventsim.rvisualization.model.FilterSelectionModel: edu.kit.ipd.sdq.eventsim.rvisualization.model.TranslatableEntity triggerType> = r1;
+
+        $r3 = r0.<edu.kit.ipd.sdq.eventsim.rvisualization.model.FilterSelectionModel: java.beans.PropertyChangeSupport pcs>;
+
+        virtualinvoke $r3.<java.beans.PropertyChangeSupport: void firePropertyChange(java.lang.String,java.lang.Object,java.lang.Object)>("triggerType", r2, r1);
+
+        return;
+    }
+
+    public edu.kit.ipd.sdq.eventsim.rvisualization.model.Entity getTriggerInstance()
+    {
+        edu.kit.ipd.sdq.eventsim.rvisualization.model.FilterSelectionModel r0;
+        edu.kit.ipd.sdq.eventsim.rvisualization.model.Entity $r1;
+
+        r0 := @this: edu.kit.ipd.sdq.eventsim.rvisualization.model.FilterSelectionModel;
+
+        $r1 = r0.<edu.kit.ipd.sdq.eventsim.rvisualization.model.FilterSelectionModel: edu.kit.ipd.sdq.eventsim.rvisualization.model.Entity triggerInstance>;
+
+        return $r1;
+    }
+
+    public void setTriggerInstance(edu.kit.ipd.sdq.eventsim.rvisualization.model.Entity)
+    {
+        edu.kit.ipd.sdq.eventsim.rvisualization.model.FilterSelectionModel r0;
+        edu.kit.ipd.sdq.eventsim.rvisualization.model.Entity r1, r2;
+        java.beans.PropertyChangeSupport $r3;
+
+        r0 := @this: edu.kit.ipd.sdq.eventsim.rvisualization.model.FilterSelectionModel;
+
+        r1 := @parameter0: edu.kit.ipd.sdq.eventsim.rvisualization.model.Entity;
+
+        r2 = r0.<edu.kit.ipd.sdq.eventsim.rvisualization.model.FilterSelectionModel: edu.kit.ipd.sdq.eventsim.rvisualization.model.Entity triggerInstance>;
+
+        r0.<edu.kit.ipd.sdq.eventsim.rvisualization.model.FilterSelectionModel: edu.kit.ipd.sdq.eventsim.rvisualization.model.Entity triggerInstance> = r1;
+
+        $r3 = r0.<edu.kit.ipd.sdq.eventsim.rvisualization.model.FilterSelectionModel: java.beans.PropertyChangeSupport pcs>;
+
+        virtualinvoke $r3.<java.beans.PropertyChangeSupport: void firePropertyChange(java.lang.String,java.lang.Object,java.lang.Object)>("triggerInstance", r2, r1);
+
+        return;
+    }
+
+    public boolean isTriggerInstanceSelectionEnabled()
+    {
+        edu.kit.ipd.sdq.eventsim.rvisualization.model.FilterSelectionModel r0;
+        boolean $z0;
+
+        r0 := @this: edu.kit.ipd.sdq.eventsim.rvisualization.model.FilterSelectionModel;
+
+        $z0 = r0.<edu.kit.ipd.sdq.eventsim.rvisualization.model.FilterSelectionModel: boolean triggerInstanceSelectionEnabled>;
+
+        return $z0;
+    }
+
+    public void setTriggerInstanceSelectionEnabled(boolean)
+    {
+        edu.kit.ipd.sdq.eventsim.rvisualization.model.FilterSelectionModel r0;
+        boolean z0, z1;
+        java.beans.PropertyChangeSupport $r1;
+
+        r0 := @this: edu.kit.ipd.sdq.eventsim.rvisualization.model.FilterSelectionModel;
+
+        z0 := @parameter0: boolean;
+
+        z1 = r0.<edu.kit.ipd.sdq.eventsim.rvisualization.model.FilterSelectionModel: boolean triggerInstanceSelectionEnabled>;
+
+        r0.<edu.kit.ipd.sdq.eventsim.rvisualization.model.FilterSelectionModel: boolean triggerInstanceSelectionEnabled> = z0;
+
+        $r1 = r0.<edu.kit.ipd.sdq.eventsim.rvisualization.model.FilterSelectionModel: java.beans.PropertyChangeSupport pcs>;
+
+        virtualinvoke $r1.<java.beans.PropertyChangeSupport: void firePropertyChange(java.lang.String,boolean,boolean)>("triggerInstanceSelectionEnabled", z1, z0);
+
+        return;
+    }
+
+    public edu.kit.ipd.sdq.eventsim.rvisualization.model.Entity getAssemblyContext()
+    {
+        edu.kit.ipd.sdq.eventsim.rvisualization.model.FilterSelectionModel r0;
+        edu.kit.ipd.sdq.eventsim.rvisualization.model.Entity $r1;
+
+        r0 := @this: edu.kit.ipd.sdq.eventsim.rvisualization.model.FilterSelectionModel;
+
+        $r1 = r0.<edu.kit.ipd.sdq.eventsim.rvisualization.model.FilterSelectionModel: edu.kit.ipd.sdq.eventsim.rvisualization.model.Entity assemblyContext>;
+
+        return $r1;
+    }
+
+    public void setAssemblyContext(edu.kit.ipd.sdq.eventsim.rvisualization.model.Entity)
+    {
+        edu.kit.ipd.sdq.eventsim.rvisualization.model.FilterSelectionModel r0;
+        edu.kit.ipd.sdq.eventsim.rvisualization.model.Entity r1, r2;
+        java.beans.PropertyChangeSupport $r3;
+
+        r0 := @this: edu.kit.ipd.sdq.eventsim.rvisualization.model.FilterSelectionModel;
+
+        r1 := @parameter0: edu.kit.ipd.sdq.eventsim.rvisualization.model.Entity;
+
+        r2 = r0.<edu.kit.ipd.sdq.eventsim.rvisualization.model.FilterSelectionModel: edu.kit.ipd.sdq.eventsim.rvisualization.model.Entity assemblyContext>;
+
+        r0.<edu.kit.ipd.sdq.eventsim.rvisualization.model.FilterSelectionModel: edu.kit.ipd.sdq.eventsim.rvisualization.model.Entity assemblyContext> = r1;
+
+        $r3 = r0.<edu.kit.ipd.sdq.eventsim.rvisualization.model.FilterSelectionModel: java.beans.PropertyChangeSupport pcs>;
+
+        virtualinvoke $r3.<java.beans.PropertyChangeSupport: void firePropertyChange(java.lang.String,java.lang.Object,java.lang.Object)>("assemblyContext", r2, r1);
+
+        return;
+    }
+
+    public edu.kit.ipd.sdq.eventsim.rvisualization.model.Entity getMeasuringPointFrom()
+    {
+        edu.kit.ipd.sdq.eventsim.rvisualization.model.FilterSelectionModel r0;
+        edu.kit.ipd.sdq.eventsim.rvisualization.model.Entity $r1;
+
+        r0 := @this: edu.kit.ipd.sdq.eventsim.rvisualization.model.FilterSelectionModel;
+
+        $r1 = r0.<edu.kit.ipd.sdq.eventsim.rvisualization.model.FilterSelectionModel: edu.kit.ipd.sdq.eventsim.rvisualization.model.Entity measuringPointFrom>;
+
+        return $r1;
+    }
+
+    public void setMeasuringPointFrom(edu.kit.ipd.sdq.eventsim.rvisualization.model.Entity)
+    {
+        edu.kit.ipd.sdq.eventsim.rvisualization.model.FilterSelectionModel r0;
+        edu.kit.ipd.sdq.eventsim.rvisualization.model.Entity r1, r2;
+        java.beans.PropertyChangeSupport $r3;
+
+        r0 := @this: edu.kit.ipd.sdq.eventsim.rvisualization.model.FilterSelectionModel;
+
+        r1 := @parameter0: edu.kit.ipd.sdq.eventsim.rvisualization.model.Entity;
+
+        r2 = r0.<edu.kit.ipd.sdq.eventsim.rvisualization.model.FilterSelectionModel: edu.kit.ipd.sdq.eventsim.rvisualization.model.Entity measuringPointFrom>;
+
+        r0.<edu.kit.ipd.sdq.eventsim.rvisualization.model.FilterSelectionModel: edu.kit.ipd.sdq.eventsim.rvisualization.model.Entity measuringPointFrom> = r1;
+
+        $r3 = r0.<edu.kit.ipd.sdq.eventsim.rvisualization.model.FilterSelectionModel: java.beans.PropertyChangeSupport pcs>;
+
+        virtualinvoke $r3.<java.beans.PropertyChangeSupport: void firePropertyChange(java.lang.String,java.lang.Object,java.lang.Object)>("measuringPointFrom", r2, r1);
+
+        return;
+    }
+
+    public edu.kit.ipd.sdq.eventsim.rvisualization.model.Entity getMeasuringPointTo()
+    {
+        edu.kit.ipd.sdq.eventsim.rvisualization.model.FilterSelectionModel r0;
+        edu.kit.ipd.sdq.eventsim.rvisualization.model.Entity $r1;
+
+        r0 := @this: edu.kit.ipd.sdq.eventsim.rvisualization.model.FilterSelectionModel;
+
+        $r1 = r0.<edu.kit.ipd.sdq.eventsim.rvisualization.model.FilterSelectionModel: edu.kit.ipd.sdq.eventsim.rvisualization.model.Entity measuringPointTo>;
+
+        return $r1;
+    }
+
+    public void setMeasuringPointTo(edu.kit.ipd.sdq.eventsim.rvisualization.model.Entity)
+    {
+        edu.kit.ipd.sdq.eventsim.rvisualization.model.FilterSelectionModel r0;
+        edu.kit.ipd.sdq.eventsim.rvisualization.model.Entity r1, r2;
+        java.beans.PropertyChangeSupport $r3;
+
+        r0 := @this: edu.kit.ipd.sdq.eventsim.rvisualization.model.FilterSelectionModel;
+
+        r1 := @parameter0: edu.kit.ipd.sdq.eventsim.rvisualization.model.Entity;
+
+        r2 = r0.<edu.kit.ipd.sdq.eventsim.rvisualization.model.FilterSelectionModel: edu.kit.ipd.sdq.eventsim.rvisualization.model.Entity measuringPointTo>;
+
+        r0.<edu.kit.ipd.sdq.eventsim.rvisualization.model.FilterSelectionModel: edu.kit.ipd.sdq.eventsim.rvisualization.model.Entity measuringPointTo> = r1;
+
+        $r3 = r0.<edu.kit.ipd.sdq.eventsim.rvisualization.model.FilterSelectionModel: java.beans.PropertyChangeSupport pcs>;
+
+        virtualinvoke $r3.<java.beans.PropertyChangeSupport: void firePropertyChange(java.lang.String,java.lang.Object,java.lang.Object)>("measuringPointTo", r2, r1);
+
+        return;
+    }
+
+    public int getSimulationTimeLower()
+    {
+        edu.kit.ipd.sdq.eventsim.rvisualization.model.FilterSelectionModel r0;
+        int $i0;
+
+        r0 := @this: edu.kit.ipd.sdq.eventsim.rvisualization.model.FilterSelectionModel;
+
+        $i0 = r0.<edu.kit.ipd.sdq.eventsim.rvisualization.model.FilterSelectionModel: int simulationTimeLower>;
+
+        return $i0;
+    }
+
+    public void setSimulationTimeLower(int)
+    {
+        edu.kit.ipd.sdq.eventsim.rvisualization.model.FilterSelectionModel r0;
+        int i0, i1;
+        java.beans.PropertyChangeSupport $r1;
+
+        r0 := @this: edu.kit.ipd.sdq.eventsim.rvisualization.model.FilterSelectionModel;
+
+        i0 := @parameter0: int;
+
+        i1 = r0.<edu.kit.ipd.sdq.eventsim.rvisualization.model.FilterSelectionModel: int simulationTimeLower>;
+
+        r0.<edu.kit.ipd.sdq.eventsim.rvisualization.model.FilterSelectionModel: int simulationTimeLower> = i0;
+
+        $r1 = r0.<edu.kit.ipd.sdq.eventsim.rvisualization.model.FilterSelectionModel: java.beans.PropertyChangeSupport pcs>;
+
+        virtualinvoke $r1.<java.beans.PropertyChangeSupport: void firePropertyChange(java.lang.String,int,int)>("simulationTimeLower", i1, i0);
+
+        return;
+    }
+
+    public int getSimulationTimeUpper()
+    {
+        edu.kit.ipd.sdq.eventsim.rvisualization.model.FilterSelectionModel r0;
+        int $i0;
+
+        r0 := @this: edu.kit.ipd.sdq.eventsim.rvisualization.model.FilterSelectionModel;
+
+        $i0 = r0.<edu.kit.ipd.sdq.eventsim.rvisualization.model.FilterSelectionModel: int simulationTimeUpper>;
+
+        return $i0;
+    }
+
+    public void setSimulationTimeUpper(int)
+    {
+        edu.kit.ipd.sdq.eventsim.rvisualization.model.FilterSelectionModel r0;
+        int i0, i1;
+        java.beans.PropertyChangeSupport $r1;
+
+        r0 := @this: edu.kit.ipd.sdq.eventsim.rvisualization.model.FilterSelectionModel;
+
+        i0 := @parameter0: int;
+
+        i1 = r0.<edu.kit.ipd.sdq.eventsim.rvisualization.model.FilterSelectionModel: int simulationTimeUpper>;
+
+        r0.<edu.kit.ipd.sdq.eventsim.rvisualization.model.FilterSelectionModel: int simulationTimeUpper> = i0;
+
+        $r1 = r0.<edu.kit.ipd.sdq.eventsim.rvisualization.model.FilterSelectionModel: java.beans.PropertyChangeSupport pcs>;
+
+        virtualinvoke $r1.<java.beans.PropertyChangeSupport: void firePropertyChange(java.lang.String,int,int)>("simulationTimeUpper", i1, i0);
+
+        return;
+    }
+
+    public edu.kit.ipd.sdq.eventsim.rvisualization.model.TranslatableEntity getDiagramType()
+    {
+        edu.kit.ipd.sdq.eventsim.rvisualization.model.FilterSelectionModel r0;
+        edu.kit.ipd.sdq.eventsim.rvisualization.model.TranslatableEntity $r1;
+
+        r0 := @this: edu.kit.ipd.sdq.eventsim.rvisualization.model.FilterSelectionModel;
+
+        $r1 = r0.<edu.kit.ipd.sdq.eventsim.rvisualization.model.FilterSelectionModel: edu.kit.ipd.sdq.eventsim.rvisualization.model.TranslatableEntity diagramType>;
+
+        return $r1;
+    }
+
+    public void setDiagramType(edu.kit.ipd.sdq.eventsim.rvisualization.model.TranslatableEntity)
+    {
+        edu.kit.ipd.sdq.eventsim.rvisualization.model.FilterSelectionModel r0;
+        edu.kit.ipd.sdq.eventsim.rvisualization.model.TranslatableEntity r1, r2;
+        java.beans.PropertyChangeSupport $r3;
+
+        r0 := @this: edu.kit.ipd.sdq.eventsim.rvisualization.model.FilterSelectionModel;
+
+        r1 := @parameter0: edu.kit.ipd.sdq.eventsim.rvisualization.model.TranslatableEntity;
+
+        r2 = r0.<edu.kit.ipd.sdq.eventsim.rvisualization.model.FilterSelectionModel: edu.kit.ipd.sdq.eventsim.rvisualization.model.TranslatableEntity diagramType>;
+
+        r0.<edu.kit.ipd.sdq.eventsim.rvisualization.model.FilterSelectionModel: edu.kit.ipd.sdq.eventsim.rvisualization.model.TranslatableEntity diagramType> = r1;
+
+        $r3 = r0.<edu.kit.ipd.sdq.eventsim.rvisualization.model.FilterSelectionModel: java.beans.PropertyChangeSupport pcs>;
+
+        virtualinvoke $r3.<java.beans.PropertyChangeSupport: void firePropertyChange(java.lang.String,java.lang.Object,java.lang.Object)>("diagramType", r2, r1);
+
+        return;
+    }
+
+    public java.util.Map getMetadata()
+    {
+        edu.kit.ipd.sdq.eventsim.rvisualization.model.FilterSelectionModel r0;
+        java.util.Map $r1;
+
+        r0 := @this: edu.kit.ipd.sdq.eventsim.rvisualization.model.FilterSelectionModel;
+
+        $r1 = r0.<edu.kit.ipd.sdq.eventsim.rvisualization.model.FilterSelectionModel: java.util.Map metadata>;
+
+        return $r1;
+    }
+
+    public void setMetadata(java.util.Map)
+    {
+        edu.kit.ipd.sdq.eventsim.rvisualization.model.FilterSelectionModel r0;
+        java.util.Map r1, r2;
+        java.beans.PropertyChangeSupport $r3;
+
+        r0 := @this: edu.kit.ipd.sdq.eventsim.rvisualization.model.FilterSelectionModel;
+
+        r1 := @parameter0: java.util.Map;
+
+        r2 = r0.<edu.kit.ipd.sdq.eventsim.rvisualization.model.FilterSelectionModel: java.util.Map metadata>;
+
+        r0.<edu.kit.ipd.sdq.eventsim.rvisualization.model.FilterSelectionModel: java.util.Map metadata> = r1;
+
+        $r3 = r0.<edu.kit.ipd.sdq.eventsim.rvisualization.model.FilterSelectionModel: java.beans.PropertyChangeSupport pcs>;
+
+        virtualinvoke $r3.<java.beans.PropertyChangeSupport: void firePropertyChange(java.lang.String,java.lang.Object,java.lang.Object)>("metadata", r2, r1);
+
+        return;
+    }
+
+    public void clear()
+    {
+        edu.kit.ipd.sdq.eventsim.rvisualization.model.FilterSelectionModel r0;
+
+        r0 := @this: edu.kit.ipd.sdq.eventsim.rvisualization.model.FilterSelectionModel;
+
+        virtualinvoke r0.<edu.kit.ipd.sdq.eventsim.rvisualization.model.FilterSelectionModel: void setMetric(edu.kit.ipd.sdq.eventsim.rvisualization.model.TranslatableEntity)>(null);
+
+        virtualinvoke r0.<edu.kit.ipd.sdq.eventsim.rvisualization.model.FilterSelectionModel: void setTriggerType(edu.kit.ipd.sdq.eventsim.rvisualization.model.TranslatableEntity)>(null);
+
+        virtualinvoke r0.<edu.kit.ipd.sdq.eventsim.rvisualization.model.FilterSelectionModel: void setTriggerInstance(edu.kit.ipd.sdq.eventsim.rvisualization.model.Entity)>(null);
+
+        virtualinvoke r0.<edu.kit.ipd.sdq.eventsim.rvisualization.model.FilterSelectionModel: void setTriggerInstanceSelectionEnabled(boolean)>(0);
+
+        virtualinvoke r0.<edu.kit.ipd.sdq.eventsim.rvisualization.model.FilterSelectionModel: void setAssemblyContext(edu.kit.ipd.sdq.eventsim.rvisualization.model.Entity)>(null);
+
+        virtualinvoke r0.<edu.kit.ipd.sdq.eventsim.rvisualization.model.FilterSelectionModel: void setMeasuringPointFrom(edu.kit.ipd.sdq.eventsim.rvisualization.model.Entity)>(null);
+
+        virtualinvoke r0.<edu.kit.ipd.sdq.eventsim.rvisualization.model.FilterSelectionModel: void setMeasuringPointTo(edu.kit.ipd.sdq.eventsim.rvisualization.model.Entity)>(null);
+
+        virtualinvoke r0.<edu.kit.ipd.sdq.eventsim.rvisualization.model.FilterSelectionModel: void setSimulationTimeLower(int)>(0);
+
+        virtualinvoke r0.<edu.kit.ipd.sdq.eventsim.rvisualization.model.FilterSelectionModel: void setSimulationTimeUpper(int)>(0);
+
+        virtualinvoke r0.<edu.kit.ipd.sdq.eventsim.rvisualization.model.FilterSelectionModel: void setDiagramType(edu.kit.ipd.sdq.eventsim.rvisualization.model.TranslatableEntity)>(null);
+
+        virtualinvoke r0.<edu.kit.ipd.sdq.eventsim.rvisualization.model.FilterSelectionModel: void setMetadata(java.util.Map)>(null);
+
+        return;
+    }
+
+    public java.util.List getUnboundVariables(edu.kit.ipd.sdq.eventsim.rvisualization.model.FilterModel)
+    {
+        edu.kit.ipd.sdq.eventsim.rvisualization.model.FilterSelectionModel r0;
+        edu.kit.ipd.sdq.eventsim.rvisualization.model.FilterModel r1;
+        java.util.ArrayList $r4;
+        edu.kit.ipd.sdq.eventsim.rvisualization.model.TranslatableEntity $r5, $r6, $r15, $r16, $r17, $r18, $r19, $r20, $r21, $r22, $r23, $r24, $r25;
+        edu.kit.ipd.sdq.eventsim.rvisualization.model.Entity $r7, $r8, $r9;
+        java.util.HashSet $r10;
+        java.util.List $r11;
+        java.util.Map $r12, $r13;
+        java.util.Set $r14;
+
+        r0 := @this: edu.kit.ipd.sdq.eventsim.rvisualization.model.FilterSelectionModel;
+
+        r1 := @parameter0: edu.kit.ipd.sdq.eventsim.rvisualization.model.FilterModel;
+
+        $r4 = new java.util.ArrayList;
+
+        specialinvoke $r4.<java.util.ArrayList: void <init>()>();
+
+        $r5 = r0.<edu.kit.ipd.sdq.eventsim.rvisualization.model.FilterSelectionModel: edu.kit.ipd.sdq.eventsim.rvisualization.model.TranslatableEntity metric>;
+
+        if $r5 != null goto label1;
+
+        $r25 = new edu.kit.ipd.sdq.eventsim.rvisualization.model.TranslatableEntity;
+
+        specialinvoke $r25.<edu.kit.ipd.sdq.eventsim.rvisualization.model.TranslatableEntity: void <init>(java.lang.String,java.lang.String)>("what", "Metric");
+
+        interfaceinvoke $r4.<java.util.List: boolean add(java.lang.Object)>($r25);
+
+     label1:
+        $r6 = r0.<edu.kit.ipd.sdq.eventsim.rvisualization.model.FilterSelectionModel: edu.kit.ipd.sdq.eventsim.rvisualization.model.TranslatableEntity triggerType>;
+
+        if $r6 != null goto label2;
+
+        $r24 = new edu.kit.ipd.sdq.eventsim.rvisualization.model.TranslatableEntity;
+
+        specialinvoke $r24.<edu.kit.ipd.sdq.eventsim.rvisualization.model.TranslatableEntity: void <init>(java.lang.String,java.lang.String)>("who.type", "Trigger (Type)");
+
+        interfaceinvoke $r4.<java.util.List: boolean add(java.lang.Object)>($r24);
+
+     label2:
+        $r7 = r0.<edu.kit.ipd.sdq.eventsim.rvisualization.model.FilterSelectionModel: edu.kit.ipd.sdq.eventsim.rvisualization.model.Entity assemblyContext>;
+
+        if $r7 != null goto label3;
+
+        $r21 = new edu.kit.ipd.sdq.eventsim.rvisualization.model.TranslatableEntity;
+
+        specialinvoke $r21.<edu.kit.ipd.sdq.eventsim.rvisualization.model.TranslatableEntity: void <init>(java.lang.String,java.lang.String)>("assemblycontext.id", "Assembly Context (Identifier)");
+
+        interfaceinvoke $r4.<java.util.List: boolean add(java.lang.Object)>($r21);
+
+        $r22 = new edu.kit.ipd.sdq.eventsim.rvisualization.model.TranslatableEntity;
+
+        specialinvoke $r22.<edu.kit.ipd.sdq.eventsim.rvisualization.model.TranslatableEntity: void <init>(java.lang.String,java.lang.String)>("assemblycontext.name", "Assembly Context (Name)");
+
+        interfaceinvoke $r4.<java.util.List: boolean add(java.lang.Object)>($r22);
+
+        $r23 = new edu.kit.ipd.sdq.eventsim.rvisualization.model.TranslatableEntity;
+
+        specialinvoke $r23.<edu.kit.ipd.sdq.eventsim.rvisualization.model.TranslatableEntity: void <init>(java.lang.String,java.lang.String)>("assemblycontext.type", "Assembly Context (Type)");
+
+        interfaceinvoke $r4.<java.util.List: boolean add(java.lang.Object)>($r23);
+
+     label3:
+        $r8 = r0.<edu.kit.ipd.sdq.eventsim.rvisualization.model.FilterSelectionModel: edu.kit.ipd.sdq.eventsim.rvisualization.model.Entity measuringPointFrom>;
+
+        if $r8 != null goto label4;
+
+        $r18 = new edu.kit.ipd.sdq.eventsim.rvisualization.model.TranslatableEntity;
+
+        specialinvoke $r18.<edu.kit.ipd.sdq.eventsim.rvisualization.model.TranslatableEntity: void <init>(java.lang.String,java.lang.String)>("where.first.id", "First Measuring Point (Identifier)");
+
+        interfaceinvoke $r4.<java.util.List: boolean add(java.lang.Object)>($r18);
+
+        $r19 = new edu.kit.ipd.sdq.eventsim.rvisualization.model.TranslatableEntity;
+
+        specialinvoke $r19.<edu.kit.ipd.sdq.eventsim.rvisualization.model.TranslatableEntity: void <init>(java.lang.String,java.lang.String)>("where.first.name", "First Measuring Point (Name)");
+
+        interfaceinvoke $r4.<java.util.List: boolean add(java.lang.Object)>($r19);
+
+        $r20 = new edu.kit.ipd.sdq.eventsim.rvisualization.model.TranslatableEntity;
+
+        specialinvoke $r20.<edu.kit.ipd.sdq.eventsim.rvisualization.model.TranslatableEntity: void <init>(java.lang.String,java.lang.String)>("where.first.type", "First Measuring Point (Type)");
+
+        interfaceinvoke $r4.<java.util.List: boolean add(java.lang.Object)>($r20);
+
+     label4:
+        $r9 = r0.<edu.kit.ipd.sdq.eventsim.rvisualization.model.FilterSelectionModel: edu.kit.ipd.sdq.eventsim.rvisualization.model.Entity measuringPointTo>;
+
+        if $r9 != null goto label5;
+
+        $r15 = new edu.kit.ipd.sdq.eventsim.rvisualization.model.TranslatableEntity;
+
+        specialinvoke $r15.<edu.kit.ipd.sdq.eventsim.rvisualization.model.TranslatableEntity: void <init>(java.lang.String,java.lang.String)>("where.second.id", "Second Measuring Point (Identifier)");
+
+        interfaceinvoke $r4.<java.util.List: boolean add(java.lang.Object)>($r15);
+
+        $r16 = new edu.kit.ipd.sdq.eventsim.rvisualization.model.TranslatableEntity;
+
+        specialinvoke $r16.<edu.kit.ipd.sdq.eventsim.rvisualization.model.TranslatableEntity: void <init>(java.lang.String,java.lang.String)>("where.second.name", "Second Measuring Point (Name)");
+
+        interfaceinvoke $r4.<java.util.List: boolean add(java.lang.Object)>($r16);
+
+        $r17 = new edu.kit.ipd.sdq.eventsim.rvisualization.model.TranslatableEntity;
+
+        specialinvoke $r17.<edu.kit.ipd.sdq.eventsim.rvisualization.model.TranslatableEntity: void <init>(java.lang.String,java.lang.String)>("where.second.type", "Second Measuring Point (Type)");
+
+        interfaceinvoke $r4.<java.util.List: boolean add(java.lang.Object)>($r17);
+
+     label5:
+        $r10 = new java.util.HashSet;
+
+        specialinvoke $r10.<java.util.HashSet: void <init>()>();
+
+        $r11 = virtualinvoke r1.<edu.kit.ipd.sdq.eventsim.rvisualization.model.FilterModel: java.util.List getMetadataTypes()>();
+
+        interfaceinvoke $r10.<java.util.Set: boolean addAll(java.util.Collection)>($r11);
+
+        $r12 = r0.<edu.kit.ipd.sdq.eventsim.rvisualization.model.FilterSelectionModel: java.util.Map metadata>;
+
+        if $r12 == null goto label6;
+
+        $r13 = r0.<edu.kit.ipd.sdq.eventsim.rvisualization.model.FilterSelectionModel: java.util.Map metadata>;
+
+        $r14 = interfaceinvoke $r13.<java.util.Map: java.util.Set keySet()>();
+
+        interfaceinvoke $r10.<java.util.Set: boolean removeAll(java.util.Collection)>($r14);
+
+     label6:
+        interfaceinvoke $r4.<java.util.List: boolean addAll(java.util.Collection)>($r10);
+
+        return $r4;
+    }
+
+    public static void <clinit>()
+    {
+        <edu.kit.ipd.sdq.eventsim.rvisualization.model.FilterSelectionModel: java.lang.String METADATA_PROPERTY> = "metadata";
+
+        <edu.kit.ipd.sdq.eventsim.rvisualization.model.FilterSelectionModel: java.lang.String DIAGRAM_TYPE_PROPERTY> = "diagramType";
+
+        <edu.kit.ipd.sdq.eventsim.rvisualization.model.FilterSelectionModel: java.lang.String SIMULATION_TIME_UPPER_PROPERTY> = "simulationTimeUpper";
+
+        <edu.kit.ipd.sdq.eventsim.rvisualization.model.FilterSelectionModel: java.lang.String SIMULATION_TIME_LOWER_PROPERTY> = "simulationTimeLower";
+
+        <edu.kit.ipd.sdq.eventsim.rvisualization.model.FilterSelectionModel: java.lang.String MEASURING_POINT_TO_PROPERTY> = "measuringPointTo";
+
+        <edu.kit.ipd.sdq.eventsim.rvisualization.model.FilterSelectionModel: java.lang.String MEASURING_POINT_FROM_PROPERTY> = "measuringPointFrom";
+
+        <edu.kit.ipd.sdq.eventsim.rvisualization.model.FilterSelectionModel: java.lang.String ASSEMBLY_CONTEXT_PROPERTY> = "assemblyContext";
+
+        <edu.kit.ipd.sdq.eventsim.rvisualization.model.FilterSelectionModel: java.lang.String TRIGGER_INSTANCE_SELECTION_ENABLED> = "triggerInstanceSelectionEnabled";
+
+        <edu.kit.ipd.sdq.eventsim.rvisualization.model.FilterSelectionModel: java.lang.String TRIGGER_INSTANCE_PROPERTY> = "triggerInstance";
+
+        <edu.kit.ipd.sdq.eventsim.rvisualization.model.FilterSelectionModel: java.lang.String TRIGGER_TYPE_PROPERTY> = "triggerType";
+
+        <edu.kit.ipd.sdq.eventsim.rvisualization.model.FilterSelectionModel: java.lang.String METRIC_PROPERTY> = "metric";
+
+        return;
+    }
+}

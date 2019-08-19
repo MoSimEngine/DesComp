@@ -1,0 +1,146 @@
+public class edu.kit.ipd.sdq.eventsim.middleware.simulation.SimulationModel extends de.uka.ipd.sdq.scheduler.SchedulerModel implements de.uka.ipd.sdq.simulation.abstractsimengine.ISimulationModel
+{
+    private de.uka.ipd.sdq.simulation.abstractsimengine.ISimulationControl control;
+    private de.uka.ipd.sdq.simulation.abstractsimengine.ISimEngineFactory factory;
+    private edu.kit.ipd.sdq.eventsim.api.ISimulationMiddleware middleware;
+
+    public void <init>()
+    {
+        edu.kit.ipd.sdq.eventsim.middleware.simulation.SimulationModel r0;
+
+        r0 := @this: edu.kit.ipd.sdq.eventsim.middleware.simulation.SimulationModel;
+
+        specialinvoke r0.<de.uka.ipd.sdq.scheduler.SchedulerModel: void <init>()>();
+
+        return;
+    }
+
+    public de.uka.ipd.sdq.simulation.abstractsimengine.ISimulationControl getSimulationControl()
+    {
+        edu.kit.ipd.sdq.eventsim.middleware.simulation.SimulationModel r0;
+        de.uka.ipd.sdq.simulation.abstractsimengine.ISimulationControl $r1, $r2, $r4;
+        de.uka.ipd.sdq.simulation.abstractsimengine.ISimEngineFactory $r3;
+
+        r0 := @this: edu.kit.ipd.sdq.eventsim.middleware.simulation.SimulationModel;
+
+        $r1 = r0.<edu.kit.ipd.sdq.eventsim.middleware.simulation.SimulationModel: de.uka.ipd.sdq.simulation.abstractsimengine.ISimulationControl control>;
+
+        if $r1 != null goto label1;
+
+        $r3 = r0.<edu.kit.ipd.sdq.eventsim.middleware.simulation.SimulationModel: de.uka.ipd.sdq.simulation.abstractsimengine.ISimEngineFactory factory>;
+
+        $r4 = interfaceinvoke $r3.<de.uka.ipd.sdq.simulation.abstractsimengine.ISimEngineFactory: de.uka.ipd.sdq.simulation.abstractsimengine.ISimulationControl createSimulationControl()>();
+
+        r0.<edu.kit.ipd.sdq.eventsim.middleware.simulation.SimulationModel: de.uka.ipd.sdq.simulation.abstractsimengine.ISimulationControl control> = $r4;
+
+     label1:
+        $r2 = r0.<edu.kit.ipd.sdq.eventsim.middleware.simulation.SimulationModel: de.uka.ipd.sdq.simulation.abstractsimengine.ISimulationControl control>;
+
+        return $r2;
+    }
+
+    public void setSimulationControl(de.uka.ipd.sdq.simulation.abstractsimengine.ISimulationControl)
+    {
+        edu.kit.ipd.sdq.eventsim.middleware.simulation.SimulationModel r0;
+        de.uka.ipd.sdq.simulation.abstractsimengine.ISimulationControl r1;
+
+        r0 := @this: edu.kit.ipd.sdq.eventsim.middleware.simulation.SimulationModel;
+
+        r1 := @parameter0: de.uka.ipd.sdq.simulation.abstractsimengine.ISimulationControl;
+
+        r0.<edu.kit.ipd.sdq.eventsim.middleware.simulation.SimulationModel: de.uka.ipd.sdq.simulation.abstractsimengine.ISimulationControl control> = r1;
+
+        return;
+    }
+
+    public void setSimulationEngineFactory(de.uka.ipd.sdq.simulation.abstractsimengine.ISimEngineFactory)
+    {
+        edu.kit.ipd.sdq.eventsim.middleware.simulation.SimulationModel r0;
+        de.uka.ipd.sdq.simulation.abstractsimengine.ISimEngineFactory r1;
+
+        r0 := @this: edu.kit.ipd.sdq.eventsim.middleware.simulation.SimulationModel;
+
+        r1 := @parameter0: de.uka.ipd.sdq.simulation.abstractsimengine.ISimEngineFactory;
+
+        r0.<edu.kit.ipd.sdq.eventsim.middleware.simulation.SimulationModel: de.uka.ipd.sdq.simulation.abstractsimengine.ISimEngineFactory factory> = r1;
+
+        return;
+    }
+
+    public de.uka.ipd.sdq.simulation.abstractsimengine.ISimEngineFactory getSimEngineFactory()
+    {
+        edu.kit.ipd.sdq.eventsim.middleware.simulation.SimulationModel r0;
+        de.uka.ipd.sdq.simulation.abstractsimengine.ISimEngineFactory $r1;
+
+        r0 := @this: edu.kit.ipd.sdq.eventsim.middleware.simulation.SimulationModel;
+
+        $r1 = r0.<edu.kit.ipd.sdq.eventsim.middleware.simulation.SimulationModel: de.uka.ipd.sdq.simulation.abstractsimengine.ISimEngineFactory factory>;
+
+        return $r1;
+    }
+
+    public edu.kit.ipd.sdq.eventsim.api.ISimulationConfiguration getConfiguration()
+    {
+        edu.kit.ipd.sdq.eventsim.middleware.simulation.SimulationModel r0;
+        edu.kit.ipd.sdq.eventsim.api.ISimulationMiddleware $r1;
+        edu.kit.ipd.sdq.eventsim.api.ISimulationConfiguration $r2;
+
+        r0 := @this: edu.kit.ipd.sdq.eventsim.middleware.simulation.SimulationModel;
+
+        $r1 = r0.<edu.kit.ipd.sdq.eventsim.middleware.simulation.SimulationModel: edu.kit.ipd.sdq.eventsim.api.ISimulationMiddleware middleware>;
+
+        $r2 = interfaceinvoke $r1.<edu.kit.ipd.sdq.eventsim.api.ISimulationMiddleware: edu.kit.ipd.sdq.eventsim.api.ISimulationConfiguration getSimulationConfiguration()>();
+
+        return $r2;
+    }
+
+    public void init()
+    {
+        edu.kit.ipd.sdq.eventsim.middleware.simulation.SimulationModel r0;
+        edu.kit.ipd.sdq.eventsim.api.events.SimulationStartEvent $r1;
+        edu.kit.ipd.sdq.eventsim.api.ISimulationMiddleware $r2;
+
+        r0 := @this: edu.kit.ipd.sdq.eventsim.middleware.simulation.SimulationModel;
+
+        $r2 = r0.<edu.kit.ipd.sdq.eventsim.middleware.simulation.SimulationModel: edu.kit.ipd.sdq.eventsim.api.ISimulationMiddleware middleware>;
+
+        $r1 = new edu.kit.ipd.sdq.eventsim.api.events.SimulationStartEvent;
+
+        specialinvoke $r1.<edu.kit.ipd.sdq.eventsim.api.events.SimulationStartEvent: void <init>()>();
+
+        interfaceinvoke $r2.<edu.kit.ipd.sdq.eventsim.api.ISimulationMiddleware: void triggerEvent(edu.kit.ipd.sdq.eventsim.api.events.SimulationEvent)>($r1);
+
+        return;
+    }
+
+    public void finalise()
+    {
+        edu.kit.ipd.sdq.eventsim.middleware.simulation.SimulationModel r0;
+        edu.kit.ipd.sdq.eventsim.api.events.SimulationStopEvent $r1;
+        edu.kit.ipd.sdq.eventsim.api.ISimulationMiddleware $r2;
+
+        r0 := @this: edu.kit.ipd.sdq.eventsim.middleware.simulation.SimulationModel;
+
+        $r2 = r0.<edu.kit.ipd.sdq.eventsim.middleware.simulation.SimulationModel: edu.kit.ipd.sdq.eventsim.api.ISimulationMiddleware middleware>;
+
+        $r1 = new edu.kit.ipd.sdq.eventsim.api.events.SimulationStopEvent;
+
+        specialinvoke $r1.<edu.kit.ipd.sdq.eventsim.api.events.SimulationStopEvent: void <init>()>();
+
+        interfaceinvoke $r2.<edu.kit.ipd.sdq.eventsim.api.ISimulationMiddleware: void triggerEvent(edu.kit.ipd.sdq.eventsim.api.events.SimulationEvent)>($r1);
+
+        return;
+    }
+
+    public volatile de.uka.ipd.sdq.simulation.abstractsimengine.ISimulationConfig getConfiguration()
+    {
+        edu.kit.ipd.sdq.eventsim.middleware.simulation.SimulationModel r0;
+        edu.kit.ipd.sdq.eventsim.api.ISimulationConfiguration $r1;
+
+        r0 := @this: edu.kit.ipd.sdq.eventsim.middleware.simulation.SimulationModel;
+
+        $r1 = virtualinvoke r0.<edu.kit.ipd.sdq.eventsim.middleware.simulation.SimulationModel: edu.kit.ipd.sdq.eventsim.api.ISimulationConfiguration getConfiguration()>();
+
+        return $r1;
+    }
+}

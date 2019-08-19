@@ -1,0 +1,9 @@
+public interface  edu.kit.ipd.sdq.eventsim.api.IUser extends java.lang.Object
+{
+
+    public abstract java.lang.String getId();
+
+    public abstract de.uka.ipd.sdq.simucomframework.variables.StackContext getStochasticExpressionContext();
+
+    public abstract org.palladiosimulator.pcm.usagemodel.UsageScenario getUsageScenario();
+}

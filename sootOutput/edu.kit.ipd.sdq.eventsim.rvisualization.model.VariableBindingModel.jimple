@@ -1,0 +1,501 @@
+public class edu.kit.ipd.sdq.eventsim.rvisualization.model.VariableBindingModel extends java.lang.Object
+{
+    public static final java.lang.String UNBOUND_VARIABLES_PROPERTY;
+    public static final java.lang.String VARIABLE_BINDINGS_PROPERTY;
+    public static final java.lang.String AVAILABLE_BINDING_TYPES_PROPERTY;
+    public static final java.lang.String SELECTED_UNBOUND_VARIABLE_PROPERTY;
+    public static final java.lang.String SELECTED_VARIABLE_BINDING_PROPERTY;
+    private final java.beans.PropertyChangeSupport pcs;
+    private java.util.List unboundVariables;
+    private java.util.List variableBindings;
+    private java.util.List availableBindingTypes;
+    private edu.kit.ipd.sdq.eventsim.rvisualization.model.TranslatableEntity selectedUnboundVariable;
+    private edu.kit.ipd.sdq.eventsim.rvisualization.model.VariableBinding selectedVariableBinding;
+
+    public void <init>()
+    {
+        edu.kit.ipd.sdq.eventsim.rvisualization.model.VariableBindingModel r0;
+        java.beans.PropertyChangeSupport $r1;
+        java.util.ArrayList $r2, $r3, $r4;
+
+        r0 := @this: edu.kit.ipd.sdq.eventsim.rvisualization.model.VariableBindingModel;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        $r1 = new java.beans.PropertyChangeSupport;
+
+        specialinvoke $r1.<java.beans.PropertyChangeSupport: void <init>(java.lang.Object)>(r0);
+
+        r0.<edu.kit.ipd.sdq.eventsim.rvisualization.model.VariableBindingModel: java.beans.PropertyChangeSupport pcs> = $r1;
+
+        $r2 = new java.util.ArrayList;
+
+        specialinvoke $r2.<java.util.ArrayList: void <init>()>();
+
+        r0.<edu.kit.ipd.sdq.eventsim.rvisualization.model.VariableBindingModel: java.util.List unboundVariables> = $r2;
+
+        $r3 = new java.util.ArrayList;
+
+        specialinvoke $r3.<java.util.ArrayList: void <init>()>();
+
+        r0.<edu.kit.ipd.sdq.eventsim.rvisualization.model.VariableBindingModel: java.util.List variableBindings> = $r3;
+
+        $r4 = new java.util.ArrayList;
+
+        specialinvoke $r4.<java.util.ArrayList: void <init>()>();
+
+        r0.<edu.kit.ipd.sdq.eventsim.rvisualization.model.VariableBindingModel: java.util.List availableBindingTypes> = $r4;
+
+        return;
+    }
+
+    public void <init>(edu.kit.ipd.sdq.eventsim.rvisualization.model.VariableBindingModel)
+    {
+        edu.kit.ipd.sdq.eventsim.rvisualization.model.VariableBindingModel r0, r1;
+        java.beans.PropertyChangeSupport $r2;
+        java.util.ArrayList $r3, $r4, $r5, $r6, $r8, $r10;
+        java.util.List $r7, $r9, $r11;
+        edu.kit.ipd.sdq.eventsim.rvisualization.model.TranslatableEntity $r12;
+        edu.kit.ipd.sdq.eventsim.rvisualization.model.VariableBinding $r13;
+
+        r0 := @this: edu.kit.ipd.sdq.eventsim.rvisualization.model.VariableBindingModel;
+
+        r1 := @parameter0: edu.kit.ipd.sdq.eventsim.rvisualization.model.VariableBindingModel;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        $r2 = new java.beans.PropertyChangeSupport;
+
+        specialinvoke $r2.<java.beans.PropertyChangeSupport: void <init>(java.lang.Object)>(r0);
+
+        r0.<edu.kit.ipd.sdq.eventsim.rvisualization.model.VariableBindingModel: java.beans.PropertyChangeSupport pcs> = $r2;
+
+        $r3 = new java.util.ArrayList;
+
+        specialinvoke $r3.<java.util.ArrayList: void <init>()>();
+
+        r0.<edu.kit.ipd.sdq.eventsim.rvisualization.model.VariableBindingModel: java.util.List unboundVariables> = $r3;
+
+        $r4 = new java.util.ArrayList;
+
+        specialinvoke $r4.<java.util.ArrayList: void <init>()>();
+
+        r0.<edu.kit.ipd.sdq.eventsim.rvisualization.model.VariableBindingModel: java.util.List variableBindings> = $r4;
+
+        $r5 = new java.util.ArrayList;
+
+        specialinvoke $r5.<java.util.ArrayList: void <init>()>();
+
+        r0.<edu.kit.ipd.sdq.eventsim.rvisualization.model.VariableBindingModel: java.util.List availableBindingTypes> = $r5;
+
+        $r6 = new java.util.ArrayList;
+
+        $r7 = virtualinvoke r1.<edu.kit.ipd.sdq.eventsim.rvisualization.model.VariableBindingModel: java.util.List getUnboundVariables()>();
+
+        specialinvoke $r6.<java.util.ArrayList: void <init>(java.util.Collection)>($r7);
+
+        r0.<edu.kit.ipd.sdq.eventsim.rvisualization.model.VariableBindingModel: java.util.List unboundVariables> = $r6;
+
+        $r8 = new java.util.ArrayList;
+
+        $r9 = virtualinvoke r1.<edu.kit.ipd.sdq.eventsim.rvisualization.model.VariableBindingModel: java.util.List getVariableBindings()>();
+
+        specialinvoke $r8.<java.util.ArrayList: void <init>(java.util.Collection)>($r9);
+
+        r0.<edu.kit.ipd.sdq.eventsim.rvisualization.model.VariableBindingModel: java.util.List variableBindings> = $r8;
+
+        $r10 = new java.util.ArrayList;
+
+        $r11 = virtualinvoke r1.<edu.kit.ipd.sdq.eventsim.rvisualization.model.VariableBindingModel: java.util.List getAvailableBindingTypes()>();
+
+        specialinvoke $r10.<java.util.ArrayList: void <init>(java.util.Collection)>($r11);
+
+        r0.<edu.kit.ipd.sdq.eventsim.rvisualization.model.VariableBindingModel: java.util.List availableBindingTypes> = $r10;
+
+        $r12 = r1.<edu.kit.ipd.sdq.eventsim.rvisualization.model.VariableBindingModel: edu.kit.ipd.sdq.eventsim.rvisualization.model.TranslatableEntity selectedUnboundVariable>;
+
+        r0.<edu.kit.ipd.sdq.eventsim.rvisualization.model.VariableBindingModel: edu.kit.ipd.sdq.eventsim.rvisualization.model.TranslatableEntity selectedUnboundVariable> = $r12;
+
+        $r13 = r1.<edu.kit.ipd.sdq.eventsim.rvisualization.model.VariableBindingModel: edu.kit.ipd.sdq.eventsim.rvisualization.model.VariableBinding selectedVariableBinding>;
+
+        r0.<edu.kit.ipd.sdq.eventsim.rvisualization.model.VariableBindingModel: edu.kit.ipd.sdq.eventsim.rvisualization.model.VariableBinding selectedVariableBinding> = $r13;
+
+        return;
+    }
+
+    public void addPropertyChangeListener(java.beans.PropertyChangeListener)
+    {
+        edu.kit.ipd.sdq.eventsim.rvisualization.model.VariableBindingModel r0;
+        java.beans.PropertyChangeListener r1;
+        java.beans.PropertyChangeSupport $r2;
+
+        r0 := @this: edu.kit.ipd.sdq.eventsim.rvisualization.model.VariableBindingModel;
+
+        r1 := @parameter0: java.beans.PropertyChangeListener;
+
+        $r2 = r0.<edu.kit.ipd.sdq.eventsim.rvisualization.model.VariableBindingModel: java.beans.PropertyChangeSupport pcs>;
+
+        virtualinvoke $r2.<java.beans.PropertyChangeSupport: void addPropertyChangeListener(java.beans.PropertyChangeListener)>(r1);
+
+        return;
+    }
+
+    public void removePropertyChangeListener(java.beans.PropertyChangeListener)
+    {
+        edu.kit.ipd.sdq.eventsim.rvisualization.model.VariableBindingModel r0;
+        java.beans.PropertyChangeListener r1;
+        java.beans.PropertyChangeSupport $r2;
+
+        r0 := @this: edu.kit.ipd.sdq.eventsim.rvisualization.model.VariableBindingModel;
+
+        r1 := @parameter0: java.beans.PropertyChangeListener;
+
+        $r2 = r0.<edu.kit.ipd.sdq.eventsim.rvisualization.model.VariableBindingModel: java.beans.PropertyChangeSupport pcs>;
+
+        virtualinvoke $r2.<java.beans.PropertyChangeSupport: void removePropertyChangeListener(java.beans.PropertyChangeListener)>(r1);
+
+        return;
+    }
+
+    public java.util.List getUnboundVariables()
+    {
+        edu.kit.ipd.sdq.eventsim.rvisualization.model.VariableBindingModel r0;
+        java.util.List $r1;
+
+        r0 := @this: edu.kit.ipd.sdq.eventsim.rvisualization.model.VariableBindingModel;
+
+        $r1 = r0.<edu.kit.ipd.sdq.eventsim.rvisualization.model.VariableBindingModel: java.util.List unboundVariables>;
+
+        return $r1;
+    }
+
+    public void setUnboundVariables(java.util.List)
+    {
+        edu.kit.ipd.sdq.eventsim.rvisualization.model.VariableBindingModel r0;
+        java.util.List r1, r2;
+        java.beans.PropertyChangeSupport $r3;
+
+        r0 := @this: edu.kit.ipd.sdq.eventsim.rvisualization.model.VariableBindingModel;
+
+        r1 := @parameter0: java.util.List;
+
+        r2 = r0.<edu.kit.ipd.sdq.eventsim.rvisualization.model.VariableBindingModel: java.util.List unboundVariables>;
+
+        r0.<edu.kit.ipd.sdq.eventsim.rvisualization.model.VariableBindingModel: java.util.List unboundVariables> = r1;
+
+        $r3 = r0.<edu.kit.ipd.sdq.eventsim.rvisualization.model.VariableBindingModel: java.beans.PropertyChangeSupport pcs>;
+
+        virtualinvoke $r3.<java.beans.PropertyChangeSupport: void firePropertyChange(java.lang.String,java.lang.Object,java.lang.Object)>("unboundVariables", r2, r1);
+
+        return;
+    }
+
+    public boolean addUnboundVariable(edu.kit.ipd.sdq.eventsim.rvisualization.model.TranslatableEntity)
+    {
+        edu.kit.ipd.sdq.eventsim.rvisualization.model.VariableBindingModel r0;
+        edu.kit.ipd.sdq.eventsim.rvisualization.model.TranslatableEntity r1;
+        boolean z0;
+        java.util.ArrayList $r3;
+        java.util.List $r4;
+
+        r0 := @this: edu.kit.ipd.sdq.eventsim.rvisualization.model.VariableBindingModel;
+
+        r1 := @parameter0: edu.kit.ipd.sdq.eventsim.rvisualization.model.TranslatableEntity;
+
+        $r3 = new java.util.ArrayList;
+
+        specialinvoke $r3.<java.util.ArrayList: void <init>()>();
+
+        $r4 = r0.<edu.kit.ipd.sdq.eventsim.rvisualization.model.VariableBindingModel: java.util.List unboundVariables>;
+
+        interfaceinvoke $r3.<java.util.List: boolean addAll(java.util.Collection)>($r4);
+
+        z0 = interfaceinvoke $r3.<java.util.List: boolean add(java.lang.Object)>(r1);
+
+        virtualinvoke r0.<edu.kit.ipd.sdq.eventsim.rvisualization.model.VariableBindingModel: void setUnboundVariables(java.util.List)>($r3);
+
+        return z0;
+    }
+
+    public boolean removeUnboundVariable(edu.kit.ipd.sdq.eventsim.rvisualization.model.TranslatableEntity)
+    {
+        edu.kit.ipd.sdq.eventsim.rvisualization.model.VariableBindingModel r0;
+        edu.kit.ipd.sdq.eventsim.rvisualization.model.TranslatableEntity r1;
+        boolean z0;
+        java.util.ArrayList $r3;
+        java.util.List $r4;
+
+        r0 := @this: edu.kit.ipd.sdq.eventsim.rvisualization.model.VariableBindingModel;
+
+        r1 := @parameter0: edu.kit.ipd.sdq.eventsim.rvisualization.model.TranslatableEntity;
+
+        $r3 = new java.util.ArrayList;
+
+        specialinvoke $r3.<java.util.ArrayList: void <init>()>();
+
+        $r4 = r0.<edu.kit.ipd.sdq.eventsim.rvisualization.model.VariableBindingModel: java.util.List unboundVariables>;
+
+        interfaceinvoke $r3.<java.util.List: boolean addAll(java.util.Collection)>($r4);
+
+        z0 = interfaceinvoke $r3.<java.util.List: boolean remove(java.lang.Object)>(r1);
+
+        virtualinvoke r0.<edu.kit.ipd.sdq.eventsim.rvisualization.model.VariableBindingModel: void setUnboundVariables(java.util.List)>($r3);
+
+        return z0;
+    }
+
+    public java.util.List getVariableBindings()
+    {
+        edu.kit.ipd.sdq.eventsim.rvisualization.model.VariableBindingModel r0;
+        java.util.List $r1;
+
+        r0 := @this: edu.kit.ipd.sdq.eventsim.rvisualization.model.VariableBindingModel;
+
+        $r1 = r0.<edu.kit.ipd.sdq.eventsim.rvisualization.model.VariableBindingModel: java.util.List variableBindings>;
+
+        return $r1;
+    }
+
+    public void setVariableBindings(java.util.List)
+    {
+        edu.kit.ipd.sdq.eventsim.rvisualization.model.VariableBindingModel r0;
+        java.util.List r1, r2;
+        java.beans.PropertyChangeSupport $r3;
+
+        r0 := @this: edu.kit.ipd.sdq.eventsim.rvisualization.model.VariableBindingModel;
+
+        r1 := @parameter0: java.util.List;
+
+        r2 = r0.<edu.kit.ipd.sdq.eventsim.rvisualization.model.VariableBindingModel: java.util.List variableBindings>;
+
+        r0.<edu.kit.ipd.sdq.eventsim.rvisualization.model.VariableBindingModel: java.util.List variableBindings> = r1;
+
+        $r3 = r0.<edu.kit.ipd.sdq.eventsim.rvisualization.model.VariableBindingModel: java.beans.PropertyChangeSupport pcs>;
+
+        virtualinvoke $r3.<java.beans.PropertyChangeSupport: void firePropertyChange(java.lang.String,java.lang.Object,java.lang.Object)>("variableBindings", r2, r1);
+
+        return;
+    }
+
+    public boolean addVariableBinding(edu.kit.ipd.sdq.eventsim.rvisualization.model.VariableBinding)
+    {
+        edu.kit.ipd.sdq.eventsim.rvisualization.model.VariableBindingModel r0;
+        edu.kit.ipd.sdq.eventsim.rvisualization.model.VariableBinding r1;
+        boolean z0;
+        java.util.ArrayList $r3;
+        java.util.List $r4;
+
+        r0 := @this: edu.kit.ipd.sdq.eventsim.rvisualization.model.VariableBindingModel;
+
+        r1 := @parameter0: edu.kit.ipd.sdq.eventsim.rvisualization.model.VariableBinding;
+
+        $r3 = new java.util.ArrayList;
+
+        specialinvoke $r3.<java.util.ArrayList: void <init>()>();
+
+        $r4 = r0.<edu.kit.ipd.sdq.eventsim.rvisualization.model.VariableBindingModel: java.util.List variableBindings>;
+
+        interfaceinvoke $r3.<java.util.List: boolean addAll(java.util.Collection)>($r4);
+
+        z0 = interfaceinvoke $r3.<java.util.List: boolean add(java.lang.Object)>(r1);
+
+        virtualinvoke r0.<edu.kit.ipd.sdq.eventsim.rvisualization.model.VariableBindingModel: void setVariableBindings(java.util.List)>($r3);
+
+        return z0;
+    }
+
+    public boolean removeVariableBinding(edu.kit.ipd.sdq.eventsim.rvisualization.model.VariableBinding)
+    {
+        edu.kit.ipd.sdq.eventsim.rvisualization.model.VariableBindingModel r0;
+        edu.kit.ipd.sdq.eventsim.rvisualization.model.VariableBinding r1;
+        boolean z0;
+        java.util.ArrayList $r3;
+        java.util.List $r4;
+
+        r0 := @this: edu.kit.ipd.sdq.eventsim.rvisualization.model.VariableBindingModel;
+
+        r1 := @parameter0: edu.kit.ipd.sdq.eventsim.rvisualization.model.VariableBinding;
+
+        $r3 = new java.util.ArrayList;
+
+        specialinvoke $r3.<java.util.ArrayList: void <init>()>();
+
+        $r4 = r0.<edu.kit.ipd.sdq.eventsim.rvisualization.model.VariableBindingModel: java.util.List variableBindings>;
+
+        interfaceinvoke $r3.<java.util.List: boolean addAll(java.util.Collection)>($r4);
+
+        z0 = interfaceinvoke $r3.<java.util.List: boolean remove(java.lang.Object)>(r1);
+
+        virtualinvoke r0.<edu.kit.ipd.sdq.eventsim.rvisualization.model.VariableBindingModel: void setVariableBindings(java.util.List)>($r3);
+
+        return z0;
+    }
+
+    public java.util.List getAvailableBindingTypes()
+    {
+        edu.kit.ipd.sdq.eventsim.rvisualization.model.VariableBindingModel r0;
+        java.util.List $r1;
+
+        r0 := @this: edu.kit.ipd.sdq.eventsim.rvisualization.model.VariableBindingModel;
+
+        $r1 = r0.<edu.kit.ipd.sdq.eventsim.rvisualization.model.VariableBindingModel: java.util.List availableBindingTypes>;
+
+        return $r1;
+    }
+
+    public void setAvailableBindingTypes(java.util.List)
+    {
+        edu.kit.ipd.sdq.eventsim.rvisualization.model.VariableBindingModel r0;
+        java.util.List r1, r2;
+        java.beans.PropertyChangeSupport $r3;
+
+        r0 := @this: edu.kit.ipd.sdq.eventsim.rvisualization.model.VariableBindingModel;
+
+        r1 := @parameter0: java.util.List;
+
+        r2 = r0.<edu.kit.ipd.sdq.eventsim.rvisualization.model.VariableBindingModel: java.util.List availableBindingTypes>;
+
+        r0.<edu.kit.ipd.sdq.eventsim.rvisualization.model.VariableBindingModel: java.util.List availableBindingTypes> = r1;
+
+        $r3 = r0.<edu.kit.ipd.sdq.eventsim.rvisualization.model.VariableBindingModel: java.beans.PropertyChangeSupport pcs>;
+
+        virtualinvoke $r3.<java.beans.PropertyChangeSupport: void firePropertyChange(java.lang.String,java.lang.Object,java.lang.Object)>("availableBindingTypes", r2, r1);
+
+        return;
+    }
+
+    public boolean addAvailableBindingType(edu.kit.ipd.sdq.eventsim.rvisualization.model.TranslatableEntity)
+    {
+        edu.kit.ipd.sdq.eventsim.rvisualization.model.VariableBindingModel r0;
+        edu.kit.ipd.sdq.eventsim.rvisualization.model.TranslatableEntity r1;
+        boolean z0;
+        java.util.ArrayList $r3;
+        java.util.List $r4;
+
+        r0 := @this: edu.kit.ipd.sdq.eventsim.rvisualization.model.VariableBindingModel;
+
+        r1 := @parameter0: edu.kit.ipd.sdq.eventsim.rvisualization.model.TranslatableEntity;
+
+        $r3 = new java.util.ArrayList;
+
+        specialinvoke $r3.<java.util.ArrayList: void <init>()>();
+
+        $r4 = r0.<edu.kit.ipd.sdq.eventsim.rvisualization.model.VariableBindingModel: java.util.List availableBindingTypes>;
+
+        interfaceinvoke $r3.<java.util.List: boolean addAll(java.util.Collection)>($r4);
+
+        z0 = interfaceinvoke $r3.<java.util.List: boolean add(java.lang.Object)>(r1);
+
+        virtualinvoke r0.<edu.kit.ipd.sdq.eventsim.rvisualization.model.VariableBindingModel: void setAvailableBindingTypes(java.util.List)>($r3);
+
+        return z0;
+    }
+
+    public boolean removeAvailableBindingType(edu.kit.ipd.sdq.eventsim.rvisualization.model.TranslatableEntity)
+    {
+        edu.kit.ipd.sdq.eventsim.rvisualization.model.VariableBindingModel r0;
+        edu.kit.ipd.sdq.eventsim.rvisualization.model.TranslatableEntity r1;
+        boolean z0;
+        java.util.ArrayList $r3;
+        java.util.List $r4;
+
+        r0 := @this: edu.kit.ipd.sdq.eventsim.rvisualization.model.VariableBindingModel;
+
+        r1 := @parameter0: edu.kit.ipd.sdq.eventsim.rvisualization.model.TranslatableEntity;
+
+        $r3 = new java.util.ArrayList;
+
+        specialinvoke $r3.<java.util.ArrayList: void <init>()>();
+
+        $r4 = r0.<edu.kit.ipd.sdq.eventsim.rvisualization.model.VariableBindingModel: java.util.List availableBindingTypes>;
+
+        interfaceinvoke $r3.<java.util.List: boolean addAll(java.util.Collection)>($r4);
+
+        z0 = interfaceinvoke $r3.<java.util.List: boolean remove(java.lang.Object)>(r1);
+
+        virtualinvoke r0.<edu.kit.ipd.sdq.eventsim.rvisualization.model.VariableBindingModel: void setAvailableBindingTypes(java.util.List)>($r3);
+
+        return z0;
+    }
+
+    public edu.kit.ipd.sdq.eventsim.rvisualization.model.TranslatableEntity getSelectedUnboundVariable()
+    {
+        edu.kit.ipd.sdq.eventsim.rvisualization.model.VariableBindingModel r0;
+        edu.kit.ipd.sdq.eventsim.rvisualization.model.TranslatableEntity $r1;
+
+        r0 := @this: edu.kit.ipd.sdq.eventsim.rvisualization.model.VariableBindingModel;
+
+        $r1 = r0.<edu.kit.ipd.sdq.eventsim.rvisualization.model.VariableBindingModel: edu.kit.ipd.sdq.eventsim.rvisualization.model.TranslatableEntity selectedUnboundVariable>;
+
+        return $r1;
+    }
+
+    public void setSelectedUnboundVariable(edu.kit.ipd.sdq.eventsim.rvisualization.model.TranslatableEntity)
+    {
+        edu.kit.ipd.sdq.eventsim.rvisualization.model.VariableBindingModel r0;
+        edu.kit.ipd.sdq.eventsim.rvisualization.model.TranslatableEntity r1, r2;
+        java.beans.PropertyChangeSupport $r3;
+
+        r0 := @this: edu.kit.ipd.sdq.eventsim.rvisualization.model.VariableBindingModel;
+
+        r1 := @parameter0: edu.kit.ipd.sdq.eventsim.rvisualization.model.TranslatableEntity;
+
+        r2 = r0.<edu.kit.ipd.sdq.eventsim.rvisualization.model.VariableBindingModel: edu.kit.ipd.sdq.eventsim.rvisualization.model.TranslatableEntity selectedUnboundVariable>;
+
+        r0.<edu.kit.ipd.sdq.eventsim.rvisualization.model.VariableBindingModel: edu.kit.ipd.sdq.eventsim.rvisualization.model.TranslatableEntity selectedUnboundVariable> = r1;
+
+        $r3 = r0.<edu.kit.ipd.sdq.eventsim.rvisualization.model.VariableBindingModel: java.beans.PropertyChangeSupport pcs>;
+
+        virtualinvoke $r3.<java.beans.PropertyChangeSupport: void firePropertyChange(java.lang.String,java.lang.Object,java.lang.Object)>("selectedUnboundVariable", r2, r1);
+
+        return;
+    }
+
+    public edu.kit.ipd.sdq.eventsim.rvisualization.model.VariableBinding getSelectedVariableBinding()
+    {
+        edu.kit.ipd.sdq.eventsim.rvisualization.model.VariableBindingModel r0;
+        edu.kit.ipd.sdq.eventsim.rvisualization.model.VariableBinding $r1;
+
+        r0 := @this: edu.kit.ipd.sdq.eventsim.rvisualization.model.VariableBindingModel;
+
+        $r1 = r0.<edu.kit.ipd.sdq.eventsim.rvisualization.model.VariableBindingModel: edu.kit.ipd.sdq.eventsim.rvisualization.model.VariableBinding selectedVariableBinding>;
+
+        return $r1;
+    }
+
+    public void setSelectedVariableBinding(edu.kit.ipd.sdq.eventsim.rvisualization.model.VariableBinding)
+    {
+        edu.kit.ipd.sdq.eventsim.rvisualization.model.VariableBindingModel r0;
+        edu.kit.ipd.sdq.eventsim.rvisualization.model.VariableBinding r1, r2;
+        java.beans.PropertyChangeSupport $r3;
+
+        r0 := @this: edu.kit.ipd.sdq.eventsim.rvisualization.model.VariableBindingModel;
+
+        r1 := @parameter0: edu.kit.ipd.sdq.eventsim.rvisualization.model.VariableBinding;
+
+        r2 = r0.<edu.kit.ipd.sdq.eventsim.rvisualization.model.VariableBindingModel: edu.kit.ipd.sdq.eventsim.rvisualization.model.VariableBinding selectedVariableBinding>;
+
+        r0.<edu.kit.ipd.sdq.eventsim.rvisualization.model.VariableBindingModel: edu.kit.ipd.sdq.eventsim.rvisualization.model.VariableBinding selectedVariableBinding> = r1;
+
+        $r3 = r0.<edu.kit.ipd.sdq.eventsim.rvisualization.model.VariableBindingModel: java.beans.PropertyChangeSupport pcs>;
+
+        virtualinvoke $r3.<java.beans.PropertyChangeSupport: void firePropertyChange(java.lang.String,java.lang.Object,java.lang.Object)>("selectedVariableBinding", r2, r1);
+
+        return;
+    }
+
+    public static void <clinit>()
+    {
+        <edu.kit.ipd.sdq.eventsim.rvisualization.model.VariableBindingModel: java.lang.String SELECTED_VARIABLE_BINDING_PROPERTY> = "selectedVariableBinding";
+
+        <edu.kit.ipd.sdq.eventsim.rvisualization.model.VariableBindingModel: java.lang.String SELECTED_UNBOUND_VARIABLE_PROPERTY> = "selectedUnboundVariable";
+
+        <edu.kit.ipd.sdq.eventsim.rvisualization.model.VariableBindingModel: java.lang.String AVAILABLE_BINDING_TYPES_PROPERTY> = "availableBindingTypes";
+
+        <edu.kit.ipd.sdq.eventsim.rvisualization.model.VariableBindingModel: java.lang.String VARIABLE_BINDINGS_PROPERTY> = "variableBindings";
+
+        <edu.kit.ipd.sdq.eventsim.rvisualization.model.VariableBindingModel: java.lang.String UNBOUND_VARIABLES_PROPERTY> = "unboundVariables";
+
+        return;
+    }
+}

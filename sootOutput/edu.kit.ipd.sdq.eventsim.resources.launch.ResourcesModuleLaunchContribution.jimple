@@ -1,0 +1,144 @@
+public class edu.kit.ipd.sdq.eventsim.resources.launch.ResourcesModuleLaunchContribution extends edu.kit.ipd.sdq.eventsim.modules.AbstractLaunchContribution
+{
+
+    public void <init>()
+    {
+        edu.kit.ipd.sdq.eventsim.resources.launch.ResourcesModuleLaunchContribution r0;
+
+        r0 := @this: edu.kit.ipd.sdq.eventsim.resources.launch.ResourcesModuleLaunchContribution;
+
+        specialinvoke r0.<edu.kit.ipd.sdq.eventsim.modules.AbstractLaunchContribution: void <init>()>();
+
+        return;
+    }
+
+    public void createControl(org.eclipse.swt.widgets.Composite)
+    {
+        edu.kit.ipd.sdq.eventsim.resources.launch.ResourcesModuleLaunchContribution r0;
+        org.eclipse.swt.widgets.Composite r1, r18;
+        org.eclipse.swt.layout.GridLayout r19, r21;
+        org.eclipse.swt.widgets.Group r20;
+        org.eclipse.swt.layout.GridData r22, r24, r26, r28;
+        org.eclipse.swt.widgets.Button r23, r25, r27;
+        org.eclipse.swt.widgets.Control r29;
+
+        r0 := @this: edu.kit.ipd.sdq.eventsim.resources.launch.ResourcesModuleLaunchContribution;
+
+        r1 := @parameter0: org.eclipse.swt.widgets.Composite;
+
+        r18 = new org.eclipse.swt.widgets.Composite;
+
+        specialinvoke r18.<org.eclipse.swt.widgets.Composite: void <init>(org.eclipse.swt.widgets.Composite,int)>(r1, 0);
+
+        r29 = (org.eclipse.swt.widgets.Control) r18;
+
+        virtualinvoke r0.<edu.kit.ipd.sdq.eventsim.resources.launch.ResourcesModuleLaunchContribution: void setControl(org.eclipse.swt.widgets.Control)>(r29);
+
+        r19 = new org.eclipse.swt.layout.GridLayout;
+
+        specialinvoke r19.<org.eclipse.swt.layout.GridLayout: void <init>()>();
+
+        virtualinvoke r18.<org.eclipse.swt.widgets.Composite: void setLayout(org.eclipse.swt.widgets.Layout)>(r19);
+
+        r20 = new org.eclipse.swt.widgets.Group;
+
+        specialinvoke r20.<org.eclipse.swt.widgets.Group: void <init>(org.eclipse.swt.widgets.Composite,int)>(r18, 0);
+
+        r21 = new org.eclipse.swt.layout.GridLayout;
+
+        specialinvoke r21.<org.eclipse.swt.layout.GridLayout: void <init>(int,boolean)>(1, 0);
+
+        virtualinvoke r20.<org.eclipse.swt.widgets.Group: void setLayout(org.eclipse.swt.widgets.Layout)>(r21);
+
+        r22 = new org.eclipse.swt.layout.GridData;
+
+        specialinvoke r22.<org.eclipse.swt.layout.GridData: void <init>(int,int,boolean,boolean,int,int)>(4, 16777216, 1, 0, 1, 1);
+
+        virtualinvoke r20.<org.eclipse.swt.widgets.Group: void setLayoutData(java.lang.Object)>(r22);
+
+        virtualinvoke r20.<org.eclipse.swt.widgets.Group: void setText(java.lang.String)>("Measurement Options");
+
+        r23 = new org.eclipse.swt.widgets.Button;
+
+        specialinvoke r23.<org.eclipse.swt.widgets.Button: void <init>(org.eclipse.swt.widgets.Composite,int)>(r20, 32);
+
+        r24 = new org.eclipse.swt.layout.GridData;
+
+        specialinvoke r24.<org.eclipse.swt.layout.GridData: void <init>(int,int,boolean,boolean,int,int)>(16384, 16777216, 1, 0, 1, 1);
+
+        virtualinvoke r23.<org.eclipse.swt.widgets.Button: void setLayoutData(java.lang.Object)>(r24);
+
+        virtualinvoke r23.<org.eclipse.swt.widgets.Button: void setText(java.lang.String)>("Calculate Resource Utilization Metric");
+
+        r25 = new org.eclipse.swt.widgets.Button;
+
+        specialinvoke r25.<org.eclipse.swt.widgets.Button: void <init>(org.eclipse.swt.widgets.Composite,int)>(r20, 32);
+
+        r26 = new org.eclipse.swt.layout.GridData;
+
+        specialinvoke r26.<org.eclipse.swt.layout.GridData: void <init>(int,int,boolean,boolean,int,int)>(16384, 16777216, 1, 0, 1, 1);
+
+        virtualinvoke r25.<org.eclipse.swt.widgets.Button: void setLayoutData(java.lang.Object)>(r26);
+
+        virtualinvoke r25.<org.eclipse.swt.widgets.Button: void setText(java.lang.String)>("Calculate Mean Queue Length Metric");
+
+        r27 = new org.eclipse.swt.widgets.Button;
+
+        specialinvoke r27.<org.eclipse.swt.widgets.Button: void <init>(org.eclipse.swt.widgets.Composite,int)>(r20, 32);
+
+        r28 = new org.eclipse.swt.layout.GridData;
+
+        specialinvoke r28.<org.eclipse.swt.layout.GridData: void <init>(int,int,boolean,boolean,int,int)>(16384, 16777216, 1, 0, 1, 1);
+
+        virtualinvoke r27.<org.eclipse.swt.widgets.Button: void setLayoutData(java.lang.Object)>(r28);
+
+        virtualinvoke r27.<org.eclipse.swt.widgets.Button: void setText(java.lang.String)>("Delete Raw Queue Length Observations");
+
+        return;
+    }
+
+    public void setDefaults(org.eclipse.debug.core.ILaunchConfigurationWorkingCopy)
+    {
+        edu.kit.ipd.sdq.eventsim.resources.launch.ResourcesModuleLaunchContribution r0;
+        org.eclipse.debug.core.ILaunchConfigurationWorkingCopy r1;
+
+        r0 := @this: edu.kit.ipd.sdq.eventsim.resources.launch.ResourcesModuleLaunchContribution;
+
+        r1 := @parameter0: org.eclipse.debug.core.ILaunchConfigurationWorkingCopy;
+
+        return;
+    }
+
+    public void initializeFrom(org.eclipse.debug.core.ILaunchConfiguration)
+    {
+        edu.kit.ipd.sdq.eventsim.resources.launch.ResourcesModuleLaunchContribution r0;
+        org.eclipse.debug.core.ILaunchConfiguration r1;
+
+        r0 := @this: edu.kit.ipd.sdq.eventsim.resources.launch.ResourcesModuleLaunchContribution;
+
+        r1 := @parameter0: org.eclipse.debug.core.ILaunchConfiguration;
+
+        return;
+    }
+
+    public void performApply(org.eclipse.debug.core.ILaunchConfigurationWorkingCopy)
+    {
+        edu.kit.ipd.sdq.eventsim.resources.launch.ResourcesModuleLaunchContribution r0;
+        org.eclipse.debug.core.ILaunchConfigurationWorkingCopy r1;
+
+        r0 := @this: edu.kit.ipd.sdq.eventsim.resources.launch.ResourcesModuleLaunchContribution;
+
+        r1 := @parameter0: org.eclipse.debug.core.ILaunchConfigurationWorkingCopy;
+
+        return;
+    }
+
+    public java.lang.String getName()
+    {
+        edu.kit.ipd.sdq.eventsim.resources.launch.ResourcesModuleLaunchContribution r0;
+
+        r0 := @this: edu.kit.ipd.sdq.eventsim.resources.launch.ResourcesModuleLaunchContribution;
+
+        return null;
+    }
+}

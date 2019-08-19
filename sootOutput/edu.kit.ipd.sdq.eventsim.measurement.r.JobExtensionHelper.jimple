@@ -1,0 +1,92 @@
+public class edu.kit.ipd.sdq.eventsim.measurement.r.JobExtensionHelper extends java.lang.Object
+{
+    private static final java.lang.String RJOBS_EXTENSION_POINT_ID;
+
+    public void <init>()
+    {
+        edu.kit.ipd.sdq.eventsim.measurement.r.JobExtensionHelper r0;
+
+        r0 := @this: edu.kit.ipd.sdq.eventsim.measurement.r.JobExtensionHelper;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    public static java.util.List createExtensionJobs()
+    {
+        org.eclipse.core.runtime.IConfigurationElement[] r0;
+        org.eclipse.core.runtime.IConfigurationElement r2;
+        int i0, i1;
+        edu.kit.ipd.sdq.eventsim.measurement.r.RJob r4;
+        boolean $z0;
+        org.eclipse.core.runtime.IExtensionRegistry $r6;
+        java.util.ArrayList $r7;
+        java.lang.Object $r8;
+        java.util.List $r9;
+        java.lang.Throwable $r10;
+        java.lang.RuntimeException $r11;
+
+        $z0 = staticinvoke <org.eclipse.core.runtime.Platform: boolean isRunning()>();
+
+        if $z0 != 0 goto label1;
+
+        $r9 = staticinvoke <java.util.Collections: java.util.List emptyList()>();
+
+        return $r9;
+
+     label1:
+        $r6 = staticinvoke <org.eclipse.core.runtime.Platform: org.eclipse.core.runtime.IExtensionRegistry getExtensionRegistry()>();
+
+        r0 = interfaceinvoke $r6.<org.eclipse.core.runtime.IExtensionRegistry: org.eclipse.core.runtime.IConfigurationElement[] getConfigurationElementsFor(java.lang.String)>("edu.kit.ipd.sdq.eventsim.measurement.r.rjobs");
+
+        $r7 = new java.util.ArrayList;
+
+        specialinvoke $r7.<java.util.ArrayList: void <init>()>();
+
+        i0 = lengthof r0;
+
+        i1 = 0;
+
+        goto label7;
+
+     label2:
+        r2 = r0[i1];
+
+     label3:
+        $r8 = interfaceinvoke r2.<org.eclipse.core.runtime.IConfigurationElement: java.lang.Object createExecutableExtension(java.lang.String)>("job");
+
+        r4 = (edu.kit.ipd.sdq.eventsim.measurement.r.RJob) $r8;
+
+     label4:
+        goto label6;
+
+     label5:
+        $r10 := @caughtexception;
+
+        $r11 = new java.lang.RuntimeException;
+
+        specialinvoke $r11.<java.lang.RuntimeException: void <init>(java.lang.Throwable)>($r10);
+
+        throw $r11;
+
+     label6:
+        interfaceinvoke $r7.<java.util.List: boolean add(java.lang.Object)>(r4);
+
+        i1 = i1 + 1;
+
+     label7:
+        if i1 < i0 goto label2;
+
+        return $r7;
+
+        catch org.eclipse.core.runtime.CoreException from label3 to label4 with label5;
+    }
+
+    public static void <clinit>()
+    {
+        <edu.kit.ipd.sdq.eventsim.measurement.r.JobExtensionHelper: java.lang.String RJOBS_EXTENSION_POINT_ID> = "edu.kit.ipd.sdq.eventsim.measurement.r.rjobs";
+
+        return;
+    }
+}

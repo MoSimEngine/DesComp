@@ -1,0 +1,60 @@
+class edu.kit.ipd.sdq.eventsim.measurement.osgi.CalculatorFactory$1 extends java.lang.Object implements edu.kit.ipd.sdq.eventsim.measurement.calculator.BinaryCalculator
+{
+    final edu.kit.ipd.sdq.eventsim.measurement.osgi.CalculatorFactory this$0;
+
+    void <init>(edu.kit.ipd.sdq.eventsim.measurement.osgi.CalculatorFactory)
+    {
+        edu.kit.ipd.sdq.eventsim.measurement.osgi.CalculatorFactory$1 r0;
+        edu.kit.ipd.sdq.eventsim.measurement.osgi.CalculatorFactory r1;
+
+        r0 := @this: edu.kit.ipd.sdq.eventsim.measurement.osgi.CalculatorFactory$1;
+
+        r1 := @parameter0: edu.kit.ipd.sdq.eventsim.measurement.osgi.CalculatorFactory;
+
+        r0.<edu.kit.ipd.sdq.eventsim.measurement.osgi.CalculatorFactory$1: edu.kit.ipd.sdq.eventsim.measurement.osgi.CalculatorFactory this$0> = r1;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    public void forEachMeasurement(edu.kit.ipd.sdq.eventsim.measurement.MeasurementListener)
+    {
+        edu.kit.ipd.sdq.eventsim.measurement.osgi.CalculatorFactory$1 r0;
+        edu.kit.ipd.sdq.eventsim.measurement.MeasurementListener r1;
+
+        r0 := @this: edu.kit.ipd.sdq.eventsim.measurement.osgi.CalculatorFactory$1;
+
+        r1 := @parameter0: edu.kit.ipd.sdq.eventsim.measurement.MeasurementListener;
+
+        return;
+    }
+
+    public void setup(edu.kit.ipd.sdq.eventsim.measurement.probe.IProbe, edu.kit.ipd.sdq.eventsim.measurement.probe.IProbe)
+    {
+        edu.kit.ipd.sdq.eventsim.measurement.osgi.CalculatorFactory$1 r0;
+        edu.kit.ipd.sdq.eventsim.measurement.probe.IProbe r1, r2;
+
+        r0 := @this: edu.kit.ipd.sdq.eventsim.measurement.osgi.CalculatorFactory$1;
+
+        r1 := @parameter0: edu.kit.ipd.sdq.eventsim.measurement.probe.IProbe;
+
+        r2 := @parameter1: edu.kit.ipd.sdq.eventsim.measurement.probe.IProbe;
+
+        return;
+    }
+
+    public edu.kit.ipd.sdq.eventsim.measurement.Measurement calculate(edu.kit.ipd.sdq.eventsim.measurement.Measurement, edu.kit.ipd.sdq.eventsim.measurement.Measurement)
+    {
+        edu.kit.ipd.sdq.eventsim.measurement.osgi.CalculatorFactory$1 r0;
+        edu.kit.ipd.sdq.eventsim.measurement.Measurement r1, r2;
+
+        r0 := @this: edu.kit.ipd.sdq.eventsim.measurement.osgi.CalculatorFactory$1;
+
+        r1 := @parameter0: edu.kit.ipd.sdq.eventsim.measurement.Measurement;
+
+        r2 := @parameter1: edu.kit.ipd.sdq.eventsim.measurement.Measurement;
+
+        return null;
+    }
+}

@@ -1,0 +1,5 @@
+public interface  edu.kit.ipd.sdq.eventsim.interpreter.DecoratingSimulationStrategy extends java.lang.Object implements edu.kit.ipd.sdq.eventsim.interpreter.SimulationStrategy
+{
+
+    public abstract void decorate(edu.kit.ipd.sdq.eventsim.interpreter.SimulationStrategy);
+}

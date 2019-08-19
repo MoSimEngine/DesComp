@@ -1,0 +1,58 @@
+public class edu.kit.ipd.sdq.eventsim.resources.probes.active.ResourceDemandProbe extends edu.kit.ipd.sdq.eventsim.measurement.probe.AbstractProbe
+{
+
+    public void <init>(edu.kit.ipd.sdq.eventsim.measurement.MeasuringPoint, edu.kit.ipd.sdq.eventsim.resources.ResourceProbeConfiguration)
+    {
+        edu.kit.ipd.sdq.eventsim.resources.probes.active.ResourceDemandProbe r0;
+        edu.kit.ipd.sdq.eventsim.measurement.MeasuringPoint r1;
+        edu.kit.ipd.sdq.eventsim.resources.ResourceProbeConfiguration r2;
+        edu.kit.ipd.sdq.eventsim.resources.entities.AbstractActiveResource r3;
+        java.lang.Object $r4;
+        int $i0, i1;
+        edu.kit.ipd.sdq.eventsim.resources.probes.active.ResourceDemandProbe$1 $r5;
+
+        r0 := @this: edu.kit.ipd.sdq.eventsim.resources.probes.active.ResourceDemandProbe;
+
+        r1 := @parameter0: edu.kit.ipd.sdq.eventsim.measurement.MeasuringPoint;
+
+        r2 := @parameter1: edu.kit.ipd.sdq.eventsim.resources.ResourceProbeConfiguration;
+
+        specialinvoke r0.<edu.kit.ipd.sdq.eventsim.measurement.probe.AbstractProbe: void <init>(edu.kit.ipd.sdq.eventsim.measurement.MeasuringPoint,edu.kit.ipd.sdq.eventsim.measurement.ProbeConfiguration)>(r1, r2);
+
+        $r4 = virtualinvoke r1.<edu.kit.ipd.sdq.eventsim.measurement.MeasuringPoint: java.lang.Object getElement()>();
+
+        r3 = (edu.kit.ipd.sdq.eventsim.resources.entities.AbstractActiveResource) $r4;
+
+        i1 = 0;
+
+        goto label2;
+
+     label1:
+        $r5 = new edu.kit.ipd.sdq.eventsim.resources.probes.active.ResourceDemandProbe$1;
+
+        specialinvoke $r5.<edu.kit.ipd.sdq.eventsim.resources.probes.active.ResourceDemandProbe$1: void <init>(edu.kit.ipd.sdq.eventsim.resources.probes.active.ResourceDemandProbe,edu.kit.ipd.sdq.eventsim.resources.entities.AbstractActiveResource)>(r0, r3);
+
+        virtualinvoke r3.<edu.kit.ipd.sdq.eventsim.resources.entities.AbstractActiveResource: void addDemandListener(edu.kit.ipd.sdq.eventsim.resources.listener.IDemandListener)>($r5);
+
+        i1 = i1 + 1;
+
+     label2:
+        $i0 = virtualinvoke r3.<edu.kit.ipd.sdq.eventsim.resources.entities.AbstractActiveResource: int getNumberOfInstances()>();
+
+        if i1 < $i0 goto label1;
+
+        return;
+    }
+
+    static java.util.List access$0(edu.kit.ipd.sdq.eventsim.resources.probes.active.ResourceDemandProbe)
+    {
+        edu.kit.ipd.sdq.eventsim.resources.probes.active.ResourceDemandProbe r0;
+        java.util.List $r1;
+
+        r0 := @parameter0: edu.kit.ipd.sdq.eventsim.resources.probes.active.ResourceDemandProbe;
+
+        $r1 = r0.<edu.kit.ipd.sdq.eventsim.resources.probes.active.ResourceDemandProbe: java.util.List measurementListener>;
+
+        return $r1;
+    }
+}

@@ -1,0 +1,50 @@
+public class edu.kit.ipd.sdq.eventsim.launch.runconfig.EventSimLaunchConfigurationBasedConfigBuilder extends de.uka.ipd.sdq.codegen.simucontroller.runconfig.AbstractSimulationLaunchConfigurationBasedConfigBuilder
+{
+
+    public void <init>(org.eclipse.debug.core.ILaunchConfiguration, java.lang.String) throws org.eclipse.core.runtime.CoreException
+    {
+        edu.kit.ipd.sdq.eventsim.launch.runconfig.EventSimLaunchConfigurationBasedConfigBuilder r0;
+        org.eclipse.debug.core.ILaunchConfiguration r1;
+        java.lang.String r2;
+
+        r0 := @this: edu.kit.ipd.sdq.eventsim.launch.runconfig.EventSimLaunchConfigurationBasedConfigBuilder;
+
+        r1 := @parameter0: org.eclipse.debug.core.ILaunchConfiguration;
+
+        r2 := @parameter1: java.lang.String;
+
+        specialinvoke r0.<de.uka.ipd.sdq.codegen.simucontroller.runconfig.AbstractSimulationLaunchConfigurationBasedConfigBuilder: void <init>(org.eclipse.debug.core.ILaunchConfiguration,java.lang.String)>(r1, r2);
+
+        return;
+    }
+
+    public void fillConfiguration(de.uka.ipd.sdq.workflow.launchconfig.AbstractWorkflowBasedRunConfiguration) throws org.eclipse.core.runtime.CoreException
+    {
+        edu.kit.ipd.sdq.eventsim.launch.runconfig.EventSimLaunchConfigurationBasedConfigBuilder r0;
+        de.uka.ipd.sdq.workflow.launchconfig.AbstractWorkflowBasedRunConfiguration r1;
+        edu.kit.ipd.sdq.eventsim.launch.runconfig.EventSimWorkflowConfiguration r2;
+        edu.kit.ipd.sdq.eventsim.SimulationConfiguration $r3;
+        java.util.Map $r4;
+        boolean $z0;
+
+        r0 := @this: edu.kit.ipd.sdq.eventsim.launch.runconfig.EventSimLaunchConfigurationBasedConfigBuilder;
+
+        r1 := @parameter0: de.uka.ipd.sdq.workflow.launchconfig.AbstractWorkflowBasedRunConfiguration;
+
+        specialinvoke r0.<de.uka.ipd.sdq.codegen.simucontroller.runconfig.AbstractSimulationLaunchConfigurationBasedConfigBuilder: void fillConfiguration(de.uka.ipd.sdq.workflow.launchconfig.AbstractWorkflowBasedRunConfiguration)>(r1);
+
+        r2 = (edu.kit.ipd.sdq.eventsim.launch.runconfig.EventSimWorkflowConfiguration) r1;
+
+        $r3 = new edu.kit.ipd.sdq.eventsim.SimulationConfiguration;
+
+        $r4 = r0.<edu.kit.ipd.sdq.eventsim.launch.runconfig.EventSimLaunchConfigurationBasedConfigBuilder: java.util.Map properties>;
+
+        $z0 = virtualinvoke r2.<edu.kit.ipd.sdq.eventsim.launch.runconfig.EventSimWorkflowConfiguration: boolean isDebug()>();
+
+        specialinvoke $r3.<edu.kit.ipd.sdq.eventsim.SimulationConfiguration: void <init>(java.util.Map,boolean)>($r4, $z0);
+
+        virtualinvoke r2.<edu.kit.ipd.sdq.eventsim.launch.runconfig.EventSimWorkflowConfiguration: void setSimulationConfiguration(edu.kit.ipd.sdq.eventsim.SimulationConfiguration)>($r3);
+
+        return;
+    }
+}

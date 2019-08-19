@@ -1,0 +1,61 @@
+class edu.kit.ipd.sdq.eventsim.rvisualization.views.FilterView$4 extends java.lang.Object implements org.eclipse.jface.viewers.ISelectionChangedListener
+{
+    final edu.kit.ipd.sdq.eventsim.rvisualization.views.FilterView this$0;
+    private final edu.kit.ipd.sdq.eventsim.rvisualization.model.TranslatableEntity val$metadataType;
+
+    void <init>(edu.kit.ipd.sdq.eventsim.rvisualization.views.FilterView, edu.kit.ipd.sdq.eventsim.rvisualization.model.TranslatableEntity)
+    {
+        edu.kit.ipd.sdq.eventsim.rvisualization.views.FilterView$4 r0;
+        edu.kit.ipd.sdq.eventsim.rvisualization.views.FilterView r1;
+        edu.kit.ipd.sdq.eventsim.rvisualization.model.TranslatableEntity r2;
+
+        r0 := @this: edu.kit.ipd.sdq.eventsim.rvisualization.views.FilterView$4;
+
+        r1 := @parameter0: edu.kit.ipd.sdq.eventsim.rvisualization.views.FilterView;
+
+        r2 := @parameter1: edu.kit.ipd.sdq.eventsim.rvisualization.model.TranslatableEntity;
+
+        r0.<edu.kit.ipd.sdq.eventsim.rvisualization.views.FilterView$4: edu.kit.ipd.sdq.eventsim.rvisualization.views.FilterView this$0> = r1;
+
+        r0.<edu.kit.ipd.sdq.eventsim.rvisualization.views.FilterView$4: edu.kit.ipd.sdq.eventsim.rvisualization.model.TranslatableEntity val$metadataType> = r2;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    public void selectionChanged(org.eclipse.jface.viewers.SelectionChangedEvent)
+    {
+        edu.kit.ipd.sdq.eventsim.rvisualization.views.FilterView$4 r0;
+        org.eclipse.jface.viewers.SelectionChangedEvent r1;
+        org.eclipse.jface.viewers.StructuredSelection r2;
+        edu.kit.ipd.sdq.eventsim.measurement.Metadata r3;
+        org.eclipse.jface.viewers.ISelection $r4;
+        java.lang.Object $r5;
+        edu.kit.ipd.sdq.eventsim.rvisualization.views.FilterView $r6;
+        edu.kit.ipd.sdq.eventsim.rvisualization.Controller $r7;
+        edu.kit.ipd.sdq.eventsim.rvisualization.model.TranslatableEntity $r8;
+
+        r0 := @this: edu.kit.ipd.sdq.eventsim.rvisualization.views.FilterView$4;
+
+        r1 := @parameter0: org.eclipse.jface.viewers.SelectionChangedEvent;
+
+        $r4 = virtualinvoke r1.<org.eclipse.jface.viewers.SelectionChangedEvent: org.eclipse.jface.viewers.ISelection getSelection()>();
+
+        r2 = (org.eclipse.jface.viewers.StructuredSelection) $r4;
+
+        $r5 = virtualinvoke r2.<org.eclipse.jface.viewers.StructuredSelection: java.lang.Object getFirstElement()>();
+
+        r3 = (edu.kit.ipd.sdq.eventsim.measurement.Metadata) $r5;
+
+        $r6 = r0.<edu.kit.ipd.sdq.eventsim.rvisualization.views.FilterView$4: edu.kit.ipd.sdq.eventsim.rvisualization.views.FilterView this$0>;
+
+        $r7 = staticinvoke <edu.kit.ipd.sdq.eventsim.rvisualization.views.FilterView: edu.kit.ipd.sdq.eventsim.rvisualization.Controller access$2(edu.kit.ipd.sdq.eventsim.rvisualization.views.FilterView)>($r6);
+
+        $r8 = r0.<edu.kit.ipd.sdq.eventsim.rvisualization.views.FilterView$4: edu.kit.ipd.sdq.eventsim.rvisualization.model.TranslatableEntity val$metadataType>;
+
+        virtualinvoke $r7.<edu.kit.ipd.sdq.eventsim.rvisualization.Controller: void metadataSelectionChanged(edu.kit.ipd.sdq.eventsim.rvisualization.model.TranslatableEntity,edu.kit.ipd.sdq.eventsim.measurement.Metadata)>($r8, r3);
+
+        return;
+    }
+}

@@ -1,0 +1,48 @@
+public final class edu.kit.ipd.sdq.eventsim.rvisualization.handlers.DiagramSettingsHandler$lambda_0__191 extends java.lang.Object implements edu.kit.ipd.sdq.eventsim.rvisualization.util.Procedure
+{
+    edu.kit.ipd.sdq.eventsim.rvisualization.DiagramController cap0;
+
+    public static edu.kit.ipd.sdq.eventsim.rvisualization.util.Procedure bootstrap$(edu.kit.ipd.sdq.eventsim.rvisualization.DiagramController)
+    {
+        edu.kit.ipd.sdq.eventsim.rvisualization.DiagramController $r0;
+        edu.kit.ipd.sdq.eventsim.rvisualization.handlers.DiagramSettingsHandler$lambda_0__191 $r1;
+
+        $r0 := @parameter0: edu.kit.ipd.sdq.eventsim.rvisualization.DiagramController;
+
+        $r1 = new edu.kit.ipd.sdq.eventsim.rvisualization.handlers.DiagramSettingsHandler$lambda_0__191;
+
+        specialinvoke $r1.<edu.kit.ipd.sdq.eventsim.rvisualization.handlers.DiagramSettingsHandler$lambda_0__191: void <init>(edu.kit.ipd.sdq.eventsim.rvisualization.DiagramController)>($r0);
+
+        return $r1;
+    }
+
+    public void <init>(edu.kit.ipd.sdq.eventsim.rvisualization.DiagramController)
+    {
+        edu.kit.ipd.sdq.eventsim.rvisualization.handlers.DiagramSettingsHandler$lambda_0__191 $r0;
+        edu.kit.ipd.sdq.eventsim.rvisualization.DiagramController $r1;
+
+        $r0 := @this: edu.kit.ipd.sdq.eventsim.rvisualization.handlers.DiagramSettingsHandler$lambda_0__191;
+
+        $r1 := @parameter0: edu.kit.ipd.sdq.eventsim.rvisualization.DiagramController;
+
+        specialinvoke $r0.<java.lang.Object: void <init>()>();
+
+        $r0.<edu.kit.ipd.sdq.eventsim.rvisualization.handlers.DiagramSettingsHandler$lambda_0__191: edu.kit.ipd.sdq.eventsim.rvisualization.DiagramController cap0> = $r1;
+
+        return;
+    }
+
+    public void execute()
+    {
+        edu.kit.ipd.sdq.eventsim.rvisualization.handlers.DiagramSettingsHandler$lambda_0__191 $r0;
+        edu.kit.ipd.sdq.eventsim.rvisualization.DiagramController $r1;
+
+        $r0 := @this: edu.kit.ipd.sdq.eventsim.rvisualization.handlers.DiagramSettingsHandler$lambda_0__191;
+
+        $r1 = $r0.<edu.kit.ipd.sdq.eventsim.rvisualization.handlers.DiagramSettingsHandler$lambda_0__191: edu.kit.ipd.sdq.eventsim.rvisualization.DiagramController cap0>;
+
+        staticinvoke <edu.kit.ipd.sdq.eventsim.rvisualization.handlers.DiagramSettingsHandler: void lambda$0(edu.kit.ipd.sdq.eventsim.rvisualization.DiagramController)>($r1);
+
+        return;
+    }
+}

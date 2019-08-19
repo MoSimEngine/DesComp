@@ -1,0 +1,91 @@
+public class edu.kit.ipd.sdq.eventsim.system.staticstructure.SimulatedResourceEnvironment extends java.lang.Object
+{
+    private java.util.Map map;
+
+    public void <init>()
+    {
+        edu.kit.ipd.sdq.eventsim.system.staticstructure.SimulatedResourceEnvironment r0;
+        java.util.HashMap $r1;
+
+        r0 := @this: edu.kit.ipd.sdq.eventsim.system.staticstructure.SimulatedResourceEnvironment;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        $r1 = new java.util.HashMap;
+
+        specialinvoke $r1.<java.util.HashMap: void <init>()>();
+
+        r0.<edu.kit.ipd.sdq.eventsim.system.staticstructure.SimulatedResourceEnvironment: java.util.Map map> = $r1;
+
+        return;
+    }
+
+    public void registerResourceContainer(org.palladiosimulator.pcm.resourceenvironment.ResourceContainer, edu.kit.ipd.sdq.eventsim.system.staticstructure.SimulatedResourceContainer)
+    {
+        edu.kit.ipd.sdq.eventsim.system.staticstructure.SimulatedResourceEnvironment r0;
+        org.palladiosimulator.pcm.resourceenvironment.ResourceContainer r1;
+        edu.kit.ipd.sdq.eventsim.system.staticstructure.SimulatedResourceContainer r2;
+        java.util.Map $r3;
+        java.lang.String $r4;
+
+        r0 := @this: edu.kit.ipd.sdq.eventsim.system.staticstructure.SimulatedResourceEnvironment;
+
+        r1 := @parameter0: org.palladiosimulator.pcm.resourceenvironment.ResourceContainer;
+
+        r2 := @parameter1: edu.kit.ipd.sdq.eventsim.system.staticstructure.SimulatedResourceContainer;
+
+        $r3 = r0.<edu.kit.ipd.sdq.eventsim.system.staticstructure.SimulatedResourceEnvironment: java.util.Map map>;
+
+        $r4 = interfaceinvoke r1.<org.palladiosimulator.pcm.resourceenvironment.ResourceContainer: java.lang.String getId()>();
+
+        interfaceinvoke $r3.<java.util.Map: java.lang.Object put(java.lang.Object,java.lang.Object)>($r4, r2);
+
+        return;
+    }
+
+    public edu.kit.ipd.sdq.eventsim.system.staticstructure.SimulatedResourceContainer getResourceContainer(org.palladiosimulator.pcm.resourceenvironment.ResourceContainer)
+    {
+        edu.kit.ipd.sdq.eventsim.system.staticstructure.SimulatedResourceEnvironment r0;
+        org.palladiosimulator.pcm.resourceenvironment.ResourceContainer r1;
+        java.util.Map $r2;
+        java.lang.String $r3;
+        java.lang.Object $r4;
+        edu.kit.ipd.sdq.eventsim.system.staticstructure.SimulatedResourceContainer $r5;
+
+        r0 := @this: edu.kit.ipd.sdq.eventsim.system.staticstructure.SimulatedResourceEnvironment;
+
+        r1 := @parameter0: org.palladiosimulator.pcm.resourceenvironment.ResourceContainer;
+
+        $r2 = r0.<edu.kit.ipd.sdq.eventsim.system.staticstructure.SimulatedResourceEnvironment: java.util.Map map>;
+
+        $r3 = interfaceinvoke r1.<org.palladiosimulator.pcm.resourceenvironment.ResourceContainer: java.lang.String getId()>();
+
+        $r4 = interfaceinvoke $r2.<java.util.Map: java.lang.Object get(java.lang.Object)>($r3);
+
+        $r5 = (edu.kit.ipd.sdq.eventsim.system.staticstructure.SimulatedResourceContainer) $r4;
+
+        return $r5;
+    }
+
+    public java.util.List getResourceContainers()
+    {
+        edu.kit.ipd.sdq.eventsim.system.staticstructure.SimulatedResourceEnvironment r0;
+        java.util.ArrayList $r2;
+        java.util.Map $r3;
+        java.util.Collection $r4;
+
+        r0 := @this: edu.kit.ipd.sdq.eventsim.system.staticstructure.SimulatedResourceEnvironment;
+
+        $r2 = new java.util.ArrayList;
+
+        specialinvoke $r2.<java.util.ArrayList: void <init>()>();
+
+        $r3 = r0.<edu.kit.ipd.sdq.eventsim.system.staticstructure.SimulatedResourceEnvironment: java.util.Map map>;
+
+        $r4 = interfaceinvoke $r3.<java.util.Map: java.util.Collection values()>();
+
+        interfaceinvoke $r2.<java.util.List: boolean addAll(java.util.Collection)>($r4);
+
+        return $r2;
+    }
+}

@@ -1,0 +1,109 @@
+public abstract class edu.kit.ipd.sdq.eventsim.measurement.calculator.AbstractBinaryCalculator extends java.lang.Object implements edu.kit.ipd.sdq.eventsim.measurement.calculator.BinaryCalculator
+{
+    private static final org.apache.log4j.Logger log;
+    protected java.util.List measurementListener;
+
+    static void <clinit>()
+    {
+        org.apache.log4j.Logger $r0;
+
+        $r0 = staticinvoke <org.apache.log4j.Logger: org.apache.log4j.Logger getLogger(java.lang.Class)>(class "Ledu/kit/ipd/sdq/eventsim/measurement/calculator/AbstractBinaryCalculator;");
+
+        <edu.kit.ipd.sdq.eventsim.measurement.calculator.AbstractBinaryCalculator: org.apache.log4j.Logger log> = $r0;
+
+        return;
+    }
+
+    public void <init>()
+    {
+        edu.kit.ipd.sdq.eventsim.measurement.calculator.AbstractBinaryCalculator r0;
+        java.util.ArrayList $r1;
+
+        r0 := @this: edu.kit.ipd.sdq.eventsim.measurement.calculator.AbstractBinaryCalculator;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        $r1 = new java.util.ArrayList;
+
+        specialinvoke $r1.<java.util.ArrayList: void <init>()>();
+
+        r0.<edu.kit.ipd.sdq.eventsim.measurement.calculator.AbstractBinaryCalculator: java.util.List measurementListener> = $r1;
+
+        return;
+    }
+
+    public void forEachMeasurement(edu.kit.ipd.sdq.eventsim.measurement.MeasurementListener)
+    {
+        edu.kit.ipd.sdq.eventsim.measurement.calculator.AbstractBinaryCalculator r0;
+        edu.kit.ipd.sdq.eventsim.measurement.MeasurementListener r1;
+        java.util.List $r2;
+
+        r0 := @this: edu.kit.ipd.sdq.eventsim.measurement.calculator.AbstractBinaryCalculator;
+
+        r1 := @parameter0: edu.kit.ipd.sdq.eventsim.measurement.MeasurementListener;
+
+        $r2 = r0.<edu.kit.ipd.sdq.eventsim.measurement.calculator.AbstractBinaryCalculator: java.util.List measurementListener>;
+
+        interfaceinvoke $r2.<java.util.List: boolean add(java.lang.Object)>(r1);
+
+        return;
+    }
+
+    protected void notify(edu.kit.ipd.sdq.eventsim.measurement.Measurement)
+    {
+        edu.kit.ipd.sdq.eventsim.measurement.calculator.AbstractBinaryCalculator r0;
+        edu.kit.ipd.sdq.eventsim.measurement.Measurement r1;
+        java.lang.Object[] $r2;
+        org.apache.log4j.Logger $r3;
+        java.lang.Class $r4;
+        java.lang.String $r5, $r6;
+        java.util.List $r7;
+        java.util.function.Consumer $r8;
+
+        r0 := @this: edu.kit.ipd.sdq.eventsim.measurement.calculator.AbstractBinaryCalculator;
+
+        r1 := @parameter0: edu.kit.ipd.sdq.eventsim.measurement.Measurement;
+
+        if r1 == null goto label1;
+
+        $r7 = r0.<edu.kit.ipd.sdq.eventsim.measurement.calculator.AbstractBinaryCalculator: java.util.List measurementListener>;
+
+        $r8 = staticinvoke <edu.kit.ipd.sdq.eventsim.measurement.calculator.AbstractBinaryCalculator$lambda_0__138: java.util.function.Consumer bootstrap$(edu.kit.ipd.sdq.eventsim.measurement.Measurement)>(r1);
+
+        interfaceinvoke $r7.<java.util.List: void forEach(java.util.function.Consumer)>($r8);
+
+        goto label2;
+
+     label1:
+        $r3 = <edu.kit.ipd.sdq.eventsim.measurement.calculator.AbstractBinaryCalculator: org.apache.log4j.Logger log>;
+
+        $r2 = newarray (java.lang.Object)[1];
+
+        $r4 = virtualinvoke r0.<java.lang.Object: java.lang.Class getClass()>();
+
+        $r5 = virtualinvoke $r4.<java.lang.Class: java.lang.String getSimpleName()>();
+
+        $r2[0] = $r5;
+
+        $r6 = staticinvoke <java.lang.String: java.lang.String format(java.lang.String,java.lang.Object[])>("Calculator %s tried to send null to its measurement listeners. Canceled notification.", $r2);
+
+        virtualinvoke $r3.<org.apache.log4j.Logger: void warn(java.lang.Object)>($r6);
+
+     label2:
+        return;
+    }
+
+    public static void lambda$0(edu.kit.ipd.sdq.eventsim.measurement.Measurement, edu.kit.ipd.sdq.eventsim.measurement.MeasurementListener)
+    {
+        edu.kit.ipd.sdq.eventsim.measurement.Measurement r0;
+        edu.kit.ipd.sdq.eventsim.measurement.MeasurementListener r1;
+
+        r0 := @parameter0: edu.kit.ipd.sdq.eventsim.measurement.Measurement;
+
+        r1 := @parameter1: edu.kit.ipd.sdq.eventsim.measurement.MeasurementListener;
+
+        interfaceinvoke r1.<edu.kit.ipd.sdq.eventsim.measurement.MeasurementListener: void notify(edu.kit.ipd.sdq.eventsim.measurement.Measurement)>(r0);
+
+        return;
+    }
+}

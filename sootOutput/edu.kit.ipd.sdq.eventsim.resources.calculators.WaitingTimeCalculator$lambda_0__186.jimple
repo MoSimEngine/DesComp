@@ -1,0 +1,63 @@
+public final class edu.kit.ipd.sdq.eventsim.resources.calculators.WaitingTimeCalculator$lambda_0__186 extends java.lang.Object implements edu.kit.ipd.sdq.eventsim.measurement.MeasurementListener
+{
+    edu.kit.ipd.sdq.eventsim.resources.calculators.WaitingTimeCalculator cap0;
+    edu.kit.ipd.sdq.eventsim.measurement.probe.IProbe cap1;
+
+    public static edu.kit.ipd.sdq.eventsim.measurement.MeasurementListener bootstrap$(edu.kit.ipd.sdq.eventsim.resources.calculators.WaitingTimeCalculator, edu.kit.ipd.sdq.eventsim.measurement.probe.IProbe)
+    {
+        edu.kit.ipd.sdq.eventsim.resources.calculators.WaitingTimeCalculator $r0;
+        edu.kit.ipd.sdq.eventsim.measurement.probe.IProbe $r1;
+        edu.kit.ipd.sdq.eventsim.resources.calculators.WaitingTimeCalculator$lambda_0__186 $r2;
+
+        $r0 := @parameter0: edu.kit.ipd.sdq.eventsim.resources.calculators.WaitingTimeCalculator;
+
+        $r1 := @parameter1: edu.kit.ipd.sdq.eventsim.measurement.probe.IProbe;
+
+        $r2 = new edu.kit.ipd.sdq.eventsim.resources.calculators.WaitingTimeCalculator$lambda_0__186;
+
+        specialinvoke $r2.<edu.kit.ipd.sdq.eventsim.resources.calculators.WaitingTimeCalculator$lambda_0__186: void <init>(edu.kit.ipd.sdq.eventsim.resources.calculators.WaitingTimeCalculator,edu.kit.ipd.sdq.eventsim.measurement.probe.IProbe)>($r0, $r1);
+
+        return $r2;
+    }
+
+    public void <init>(edu.kit.ipd.sdq.eventsim.resources.calculators.WaitingTimeCalculator, edu.kit.ipd.sdq.eventsim.measurement.probe.IProbe)
+    {
+        edu.kit.ipd.sdq.eventsim.resources.calculators.WaitingTimeCalculator$lambda_0__186 $r0;
+        edu.kit.ipd.sdq.eventsim.resources.calculators.WaitingTimeCalculator $r1;
+        edu.kit.ipd.sdq.eventsim.measurement.probe.IProbe $r2;
+
+        $r0 := @this: edu.kit.ipd.sdq.eventsim.resources.calculators.WaitingTimeCalculator$lambda_0__186;
+
+        $r1 := @parameter0: edu.kit.ipd.sdq.eventsim.resources.calculators.WaitingTimeCalculator;
+
+        $r2 := @parameter1: edu.kit.ipd.sdq.eventsim.measurement.probe.IProbe;
+
+        specialinvoke $r0.<java.lang.Object: void <init>()>();
+
+        $r0.<edu.kit.ipd.sdq.eventsim.resources.calculators.WaitingTimeCalculator$lambda_0__186: edu.kit.ipd.sdq.eventsim.resources.calculators.WaitingTimeCalculator cap0> = $r1;
+
+        $r0.<edu.kit.ipd.sdq.eventsim.resources.calculators.WaitingTimeCalculator$lambda_0__186: edu.kit.ipd.sdq.eventsim.measurement.probe.IProbe cap1> = $r2;
+
+        return;
+    }
+
+    public void notify(edu.kit.ipd.sdq.eventsim.measurement.Measurement)
+    {
+        edu.kit.ipd.sdq.eventsim.resources.calculators.WaitingTimeCalculator$lambda_0__186 $r0;
+        edu.kit.ipd.sdq.eventsim.measurement.Measurement $r1;
+        edu.kit.ipd.sdq.eventsim.resources.calculators.WaitingTimeCalculator $r2;
+        edu.kit.ipd.sdq.eventsim.measurement.probe.IProbe $r3;
+
+        $r0 := @this: edu.kit.ipd.sdq.eventsim.resources.calculators.WaitingTimeCalculator$lambda_0__186;
+
+        $r1 := @parameter0: edu.kit.ipd.sdq.eventsim.measurement.Measurement;
+
+        $r2 = $r0.<edu.kit.ipd.sdq.eventsim.resources.calculators.WaitingTimeCalculator$lambda_0__186: edu.kit.ipd.sdq.eventsim.resources.calculators.WaitingTimeCalculator cap0>;
+
+        $r3 = $r0.<edu.kit.ipd.sdq.eventsim.resources.calculators.WaitingTimeCalculator$lambda_0__186: edu.kit.ipd.sdq.eventsim.measurement.probe.IProbe cap1>;
+
+        virtualinvoke $r2.<edu.kit.ipd.sdq.eventsim.resources.calculators.WaitingTimeCalculator: void lambda$0(edu.kit.ipd.sdq.eventsim.measurement.probe.IProbe,edu.kit.ipd.sdq.eventsim.measurement.Measurement)>($r3, $r1);
+
+        return;
+    }
+}

@@ -1,0 +1,7 @@
+public interface  edu.kit.ipd.sdq.eventsim.entities.IEntityListener extends java.lang.Object
+{
+
+    public abstract void enteredSystem();
+
+    public abstract void leftSystem();
+}

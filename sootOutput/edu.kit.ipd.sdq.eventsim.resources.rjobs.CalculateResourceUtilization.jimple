@@ -1,0 +1,77 @@
+public class edu.kit.ipd.sdq.eventsim.resources.rjobs.CalculateResourceUtilization extends java.lang.Object implements edu.kit.ipd.sdq.eventsim.measurement.r.RJob
+{
+    private static final org.apache.log4j.Logger log;
+    private static final int WINDOW_SIZE;
+
+    static void <clinit>()
+    {
+        org.apache.log4j.Logger $r0;
+
+        <edu.kit.ipd.sdq.eventsim.resources.rjobs.CalculateResourceUtilization: int WINDOW_SIZE> = 10;
+
+        $r0 = staticinvoke <org.apache.log4j.Logger: org.apache.log4j.Logger getLogger(java.lang.Class)>(class "Ledu/kit/ipd/sdq/eventsim/resources/rjobs/CalculateResourceUtilization;");
+
+        <edu.kit.ipd.sdq.eventsim.resources.rjobs.CalculateResourceUtilization: org.apache.log4j.Logger log> = $r0;
+
+        return;
+    }
+
+    public void <init>()
+    {
+        edu.kit.ipd.sdq.eventsim.resources.rjobs.CalculateResourceUtilization r0;
+
+        r0 := @this: edu.kit.ipd.sdq.eventsim.resources.rjobs.CalculateResourceUtilization;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    public void process(edu.kit.ipd.sdq.eventsim.measurement.r.RContext)
+    {
+        edu.kit.ipd.sdq.eventsim.resources.rjobs.CalculateResourceUtilization r0;
+        edu.kit.ipd.sdq.eventsim.measurement.r.RContext r1;
+        org.apache.log4j.Logger $r2, $r5;
+        java.lang.String[] $r3;
+        edu.kit.ipd.sdq.eventsim.measurement.r.jobs.EvaluationException $r4;
+
+        r0 := @this: edu.kit.ipd.sdq.eventsim.resources.rjobs.CalculateResourceUtilization;
+
+        r1 := @parameter0: edu.kit.ipd.sdq.eventsim.measurement.r.RContext;
+
+        $r2 = <edu.kit.ipd.sdq.eventsim.resources.rjobs.CalculateResourceUtilization: org.apache.log4j.Logger log>;
+
+        virtualinvoke $r2.<org.apache.log4j.Logger: void info(java.lang.Object)>("Calculating resource utilizations...");
+
+     label1:
+        $r3 = newarray (java.lang.String)[1];
+
+        $r3[0] = "window.size = 10;mm[what==\'QUEUE_LENGTH\', c(\'duration\', \'windownumber\') := list(shift(.SD$when, 1, type=\'lead\') - when, ceiling(when / window.size)), by=where.first.id];tmp <- mm[what==\'QUEUE_LENGTH\', .(what=\'UTILIZATION\', busyduration=sum(.SD[value>0]$duration), totalduration=sum(.SD$duration), when=last(.SD$when)), by=.(where.first.id, where.first.name, where.first.type, assemblycontext.id, assemblycontext.name, assemblycontext.type, windownumber)];tmp[, value := 100 * busyduration / totalduration];mm <- rbindlist(list(mm, tmp), use.names=TRUE, fill=TRUE);mm[, c(\'duration\', \'windownumber\', \'busyduration\', \'totalduration\') := NULL];rm(tmp)";
+
+        staticinvoke <edu.kit.ipd.sdq.eventsim.measurement.r.jobs.EvaluationHelper: void evaluateVoid(edu.kit.ipd.sdq.eventsim.measurement.r.RContext,java.lang.String[])>(r1, $r3);
+
+     label2:
+        goto label4;
+
+     label3:
+        $r4 := @caughtexception;
+
+        $r5 = <edu.kit.ipd.sdq.eventsim.resources.rjobs.CalculateResourceUtilization: org.apache.log4j.Logger log>;
+
+        virtualinvoke $r5.<org.apache.log4j.Logger: void error(java.lang.Object)>($r4);
+
+     label4:
+        return;
+
+        catch edu.kit.ipd.sdq.eventsim.measurement.r.jobs.EvaluationException from label1 to label2 with label3;
+    }
+
+    public java.lang.String getName()
+    {
+        edu.kit.ipd.sdq.eventsim.resources.rjobs.CalculateResourceUtilization r0;
+
+        r0 := @this: edu.kit.ipd.sdq.eventsim.resources.rjobs.CalculateResourceUtilization;
+
+        return "Calculating resource utilizations based on queue length over time";
+    }
+}

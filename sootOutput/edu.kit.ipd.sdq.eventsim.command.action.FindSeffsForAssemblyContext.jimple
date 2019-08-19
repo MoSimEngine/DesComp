@@ -1,0 +1,161 @@
+public class edu.kit.ipd.sdq.eventsim.command.action.FindSeffsForAssemblyContext extends java.lang.Object implements edu.kit.ipd.sdq.eventsim.command.IPCMCommand
+{
+    private org.palladiosimulator.pcm.core.composition.AssemblyContext assemblyCtx;
+
+    public void <init>(org.palladiosimulator.pcm.core.composition.AssemblyContext)
+    {
+        edu.kit.ipd.sdq.eventsim.command.action.FindSeffsForAssemblyContext r0;
+        org.palladiosimulator.pcm.core.composition.AssemblyContext r1;
+
+        r0 := @this: edu.kit.ipd.sdq.eventsim.command.action.FindSeffsForAssemblyContext;
+
+        r1 := @parameter0: org.palladiosimulator.pcm.core.composition.AssemblyContext;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        r0.<edu.kit.ipd.sdq.eventsim.command.action.FindSeffsForAssemblyContext: org.palladiosimulator.pcm.core.composition.AssemblyContext assemblyCtx> = r1;
+
+        return;
+    }
+
+    public java.util.List execute(edu.kit.ipd.sdq.eventsim.api.PCMModel, edu.kit.ipd.sdq.eventsim.command.ICommandExecutor)
+    {
+        edu.kit.ipd.sdq.eventsim.command.action.FindSeffsForAssemblyContext r0;
+        edu.kit.ipd.sdq.eventsim.api.PCMModel r1;
+        edu.kit.ipd.sdq.eventsim.command.ICommandExecutor r2;
+        org.palladiosimulator.pcm.repository.BasicComponent r3;
+        org.palladiosimulator.pcm.seff.ServiceEffectSpecification r5;
+        java.util.Iterator r6;
+        org.palladiosimulator.pcm.core.composition.AssemblyContext $r7;
+        java.util.ArrayList $r8;
+        org.eclipse.emf.common.util.EList $r9;
+        boolean $z0, $z1;
+        java.lang.Object $r10;
+        org.palladiosimulator.pcm.seff.SeffPackage $r11;
+        org.eclipse.emf.ecore.EClass $r12;
+        edu.kit.ipd.sdq.eventsim.exceptions.unchecked.EventSimException $r13;
+        org.palladiosimulator.pcm.seff.ResourceDemandingSEFF $r14;
+
+        r0 := @this: edu.kit.ipd.sdq.eventsim.command.action.FindSeffsForAssemblyContext;
+
+        r1 := @parameter0: edu.kit.ipd.sdq.eventsim.api.PCMModel;
+
+        r2 := @parameter1: edu.kit.ipd.sdq.eventsim.command.ICommandExecutor;
+
+        $r7 = r0.<edu.kit.ipd.sdq.eventsim.command.action.FindSeffsForAssemblyContext: org.palladiosimulator.pcm.core.composition.AssemblyContext assemblyCtx>;
+
+        r3 = specialinvoke r0.<edu.kit.ipd.sdq.eventsim.command.action.FindSeffsForAssemblyContext: org.palladiosimulator.pcm.repository.BasicComponent findBasicComponent(org.palladiosimulator.pcm.core.composition.AssemblyContext)>($r7);
+
+        $r8 = new java.util.ArrayList;
+
+        specialinvoke $r8.<java.util.ArrayList: void <init>()>();
+
+        $r9 = interfaceinvoke r3.<org.palladiosimulator.pcm.repository.BasicComponent: org.eclipse.emf.common.util.EList getServiceEffectSpecifications__BasicComponent()>();
+
+        r6 = interfaceinvoke $r9.<org.eclipse.emf.common.util.EList: java.util.Iterator iterator()>();
+
+        goto label3;
+
+     label1:
+        $r10 = interfaceinvoke r6.<java.util.Iterator: java.lang.Object next()>();
+
+        r5 = (org.palladiosimulator.pcm.seff.ServiceEffectSpecification) $r10;
+
+        $r11 = <org.palladiosimulator.pcm.seff.SeffPackage: org.palladiosimulator.pcm.seff.SeffPackage eINSTANCE>;
+
+        $r12 = interfaceinvoke $r11.<org.palladiosimulator.pcm.seff.SeffPackage: org.eclipse.emf.ecore.EClass getResourceDemandingSEFF()>();
+
+        $z1 = interfaceinvoke $r12.<org.eclipse.emf.ecore.EClass: boolean isInstance(java.lang.Object)>(r5);
+
+        if $z1 == 0 goto label2;
+
+        $r14 = (org.palladiosimulator.pcm.seff.ResourceDemandingSEFF) r5;
+
+        interfaceinvoke $r8.<java.util.List: boolean add(java.lang.Object)>($r14);
+
+        goto label3;
+
+     label2:
+        $r13 = new edu.kit.ipd.sdq.eventsim.exceptions.unchecked.EventSimException;
+
+        specialinvoke $r13.<edu.kit.ipd.sdq.eventsim.exceptions.unchecked.EventSimException: void <init>(java.lang.String)>("Currently, only resource demanding SEFFs are supported.");
+
+        throw $r13;
+
+     label3:
+        $z0 = interfaceinvoke r6.<java.util.Iterator: boolean hasNext()>();
+
+        if $z0 != 0 goto label1;
+
+        return $r8;
+    }
+
+    private org.palladiosimulator.pcm.repository.BasicComponent findBasicComponent(org.palladiosimulator.pcm.core.composition.AssemblyContext)
+    {
+        edu.kit.ipd.sdq.eventsim.command.action.FindSeffsForAssemblyContext r0;
+        org.palladiosimulator.pcm.core.composition.AssemblyContext r1;
+        org.palladiosimulator.pcm.repository.RepositoryComponent r2;
+        org.palladiosimulator.pcm.repository.RepositoryPackage $r3;
+        org.eclipse.emf.ecore.EClass $r4;
+        boolean $z0;
+        edu.kit.ipd.sdq.eventsim.exceptions.unchecked.EventSimException $r5;
+        org.palladiosimulator.pcm.repository.BasicComponent $r6;
+
+        r0 := @this: edu.kit.ipd.sdq.eventsim.command.action.FindSeffsForAssemblyContext;
+
+        r1 := @parameter0: org.palladiosimulator.pcm.core.composition.AssemblyContext;
+
+        r2 = interfaceinvoke r1.<org.palladiosimulator.pcm.core.composition.AssemblyContext: org.palladiosimulator.pcm.repository.RepositoryComponent getEncapsulatedComponent__AssemblyContext()>();
+
+        $r3 = <org.palladiosimulator.pcm.repository.RepositoryPackage: org.palladiosimulator.pcm.repository.RepositoryPackage eINSTANCE>;
+
+        $r4 = interfaceinvoke $r3.<org.palladiosimulator.pcm.repository.RepositoryPackage: org.eclipse.emf.ecore.EClass getBasicComponent()>();
+
+        $z0 = interfaceinvoke $r4.<org.eclipse.emf.ecore.EClass: boolean isInstance(java.lang.Object)>(r2);
+
+        if $z0 == 0 goto label1;
+
+        $r6 = (org.palladiosimulator.pcm.repository.BasicComponent) r2;
+
+        return $r6;
+
+     label1:
+        $r5 = new edu.kit.ipd.sdq.eventsim.exceptions.unchecked.EventSimException;
+
+        specialinvoke $r5.<edu.kit.ipd.sdq.eventsim.exceptions.unchecked.EventSimException: void <init>(java.lang.String)>("Currently only BasicComponents are supported.");
+
+        throw $r5;
+    }
+
+    public boolean cachable()
+    {
+        edu.kit.ipd.sdq.eventsim.command.action.FindSeffsForAssemblyContext r0;
+
+        r0 := @this: edu.kit.ipd.sdq.eventsim.command.action.FindSeffsForAssemblyContext;
+
+        return 0;
+    }
+
+    public volatile java.lang.Object execute(java.lang.Object, edu.kit.ipd.sdq.eventsim.command.ICommandExecutor)
+    {
+        edu.kit.ipd.sdq.eventsim.command.action.FindSeffsForAssemblyContext r0;
+        java.lang.Object r1;
+        edu.kit.ipd.sdq.eventsim.command.ICommandExecutor r2, $r3;
+        edu.kit.ipd.sdq.eventsim.api.PCMModel $r4;
+        java.util.List $r5;
+
+        r0 := @this: edu.kit.ipd.sdq.eventsim.command.action.FindSeffsForAssemblyContext;
+
+        r1 := @parameter0: java.lang.Object;
+
+        r2 := @parameter1: edu.kit.ipd.sdq.eventsim.command.ICommandExecutor;
+
+        $r4 = (edu.kit.ipd.sdq.eventsim.api.PCMModel) r1;
+
+        $r3 = (edu.kit.ipd.sdq.eventsim.command.ICommandExecutor) r2;
+
+        $r5 = virtualinvoke r0.<edu.kit.ipd.sdq.eventsim.command.action.FindSeffsForAssemblyContext: java.util.List execute(edu.kit.ipd.sdq.eventsim.api.PCMModel,edu.kit.ipd.sdq.eventsim.command.ICommandExecutor)>($r4, $r3);
+
+        return $r5;
+    }
+}

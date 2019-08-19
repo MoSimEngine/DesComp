@@ -1,0 +1,51 @@
+public final class edu.kit.ipd.sdq.eventsim.rvisualization.views.FilterView$lambda_2__198 extends java.lang.Object implements org.eclipse.swt.widgets.Listener
+{
+    edu.kit.ipd.sdq.eventsim.rvisualization.views.FilterView cap0;
+
+    public static org.eclipse.swt.widgets.Listener bootstrap$(edu.kit.ipd.sdq.eventsim.rvisualization.views.FilterView)
+    {
+        edu.kit.ipd.sdq.eventsim.rvisualization.views.FilterView $r0;
+        edu.kit.ipd.sdq.eventsim.rvisualization.views.FilterView$lambda_2__198 $r1;
+
+        $r0 := @parameter0: edu.kit.ipd.sdq.eventsim.rvisualization.views.FilterView;
+
+        $r1 = new edu.kit.ipd.sdq.eventsim.rvisualization.views.FilterView$lambda_2__198;
+
+        specialinvoke $r1.<edu.kit.ipd.sdq.eventsim.rvisualization.views.FilterView$lambda_2__198: void <init>(edu.kit.ipd.sdq.eventsim.rvisualization.views.FilterView)>($r0);
+
+        return $r1;
+    }
+
+    public void <init>(edu.kit.ipd.sdq.eventsim.rvisualization.views.FilterView)
+    {
+        edu.kit.ipd.sdq.eventsim.rvisualization.views.FilterView$lambda_2__198 $r0;
+        edu.kit.ipd.sdq.eventsim.rvisualization.views.FilterView $r1;
+
+        $r0 := @this: edu.kit.ipd.sdq.eventsim.rvisualization.views.FilterView$lambda_2__198;
+
+        $r1 := @parameter0: edu.kit.ipd.sdq.eventsim.rvisualization.views.FilterView;
+
+        specialinvoke $r0.<java.lang.Object: void <init>()>();
+
+        $r0.<edu.kit.ipd.sdq.eventsim.rvisualization.views.FilterView$lambda_2__198: edu.kit.ipd.sdq.eventsim.rvisualization.views.FilterView cap0> = $r1;
+
+        return;
+    }
+
+    public void handleEvent(org.eclipse.swt.widgets.Event)
+    {
+        edu.kit.ipd.sdq.eventsim.rvisualization.views.FilterView$lambda_2__198 $r0;
+        org.eclipse.swt.widgets.Event $r1;
+        edu.kit.ipd.sdq.eventsim.rvisualization.views.FilterView $r2;
+
+        $r0 := @this: edu.kit.ipd.sdq.eventsim.rvisualization.views.FilterView$lambda_2__198;
+
+        $r1 := @parameter0: org.eclipse.swt.widgets.Event;
+
+        $r2 = $r0.<edu.kit.ipd.sdq.eventsim.rvisualization.views.FilterView$lambda_2__198: edu.kit.ipd.sdq.eventsim.rvisualization.views.FilterView cap0>;
+
+        virtualinvoke $r2.<edu.kit.ipd.sdq.eventsim.rvisualization.views.FilterView: void lambda$2(org.eclipse.swt.widgets.Event)>($r1);
+
+        return;
+    }
+}

@@ -1,0 +1,52 @@
+public final class edu.kit.ipd.sdq.eventsim.measurement.osgi.CalculatorFactory$isCalculatorType__139 extends java.lang.Object implements edu.kit.ipd.sdq.eventsim.instrumentation.utils.ClassSelector
+{
+    edu.kit.ipd.sdq.eventsim.measurement.osgi.CalculatorFactory cap0;
+
+    public static edu.kit.ipd.sdq.eventsim.instrumentation.utils.ClassSelector bootstrap$(edu.kit.ipd.sdq.eventsim.measurement.osgi.CalculatorFactory)
+    {
+        edu.kit.ipd.sdq.eventsim.measurement.osgi.CalculatorFactory $r0;
+        edu.kit.ipd.sdq.eventsim.measurement.osgi.CalculatorFactory$isCalculatorType__139 $r1;
+
+        $r0 := @parameter0: edu.kit.ipd.sdq.eventsim.measurement.osgi.CalculatorFactory;
+
+        $r1 = new edu.kit.ipd.sdq.eventsim.measurement.osgi.CalculatorFactory$isCalculatorType__139;
+
+        specialinvoke $r1.<edu.kit.ipd.sdq.eventsim.measurement.osgi.CalculatorFactory$isCalculatorType__139: void <init>(edu.kit.ipd.sdq.eventsim.measurement.osgi.CalculatorFactory)>($r0);
+
+        return $r1;
+    }
+
+    public void <init>(edu.kit.ipd.sdq.eventsim.measurement.osgi.CalculatorFactory)
+    {
+        edu.kit.ipd.sdq.eventsim.measurement.osgi.CalculatorFactory$isCalculatorType__139 $r0;
+        edu.kit.ipd.sdq.eventsim.measurement.osgi.CalculatorFactory $r1;
+
+        $r0 := @this: edu.kit.ipd.sdq.eventsim.measurement.osgi.CalculatorFactory$isCalculatorType__139;
+
+        $r1 := @parameter0: edu.kit.ipd.sdq.eventsim.measurement.osgi.CalculatorFactory;
+
+        specialinvoke $r0.<java.lang.Object: void <init>()>();
+
+        $r0.<edu.kit.ipd.sdq.eventsim.measurement.osgi.CalculatorFactory$isCalculatorType__139: edu.kit.ipd.sdq.eventsim.measurement.osgi.CalculatorFactory cap0> = $r1;
+
+        return;
+    }
+
+    public boolean select(java.lang.Class)
+    {
+        edu.kit.ipd.sdq.eventsim.measurement.osgi.CalculatorFactory$isCalculatorType__139 $r0;
+        java.lang.Class $r1;
+        edu.kit.ipd.sdq.eventsim.measurement.osgi.CalculatorFactory $r2;
+        boolean $z0;
+
+        $r0 := @this: edu.kit.ipd.sdq.eventsim.measurement.osgi.CalculatorFactory$isCalculatorType__139;
+
+        $r1 := @parameter0: java.lang.Class;
+
+        $r2 = $r0.<edu.kit.ipd.sdq.eventsim.measurement.osgi.CalculatorFactory$isCalculatorType__139: edu.kit.ipd.sdq.eventsim.measurement.osgi.CalculatorFactory cap0>;
+
+        $z0 = virtualinvoke $r2.<edu.kit.ipd.sdq.eventsim.measurement.osgi.CalculatorFactory: boolean isCalculatorType(java.lang.Class)>($r1);
+
+        return $z0;
+    }
+}

@@ -6,14 +6,10 @@ import org.springframework.shell.standard.ShellComponent;
 import org.springframework.shell.standard.ShellMethod;
 
 import edu.kit.ipd.sdq.modsim.descomp.services.SimulatorExecutor;
-import edu.kit.ipd.sdq.modsim.descomp.services.SimulatorRepository;
 
 @ShellComponent
 @ShellCommandGroup("run")
 public class RunSimulator {
-
-	@Autowired
-	private SimulatorRepository repository;
 
 	@Autowired
 	private SimulatorExecutor executor;

@@ -20,11 +20,19 @@ public class Entity {
 	private Set<Attribute> attributes = new HashSet<Attribute>();
 
 	public Entity(String name) {
-		this.name = name;
+		this.setName(name);
 	}
 
 	public void addWriteAttribute(Attribute attribute) {
 		attributes.add(attribute);
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
 	}
 
 }

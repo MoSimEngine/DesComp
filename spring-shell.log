@@ -40,3 +40,4 @@
 1566215543204:run-simulator --name "123"
 1566290790623:stacktrace
 1566290924084:run-simulator --name "123"
+1566309451767:exit

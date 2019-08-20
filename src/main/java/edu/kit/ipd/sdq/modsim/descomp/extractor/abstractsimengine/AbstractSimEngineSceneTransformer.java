@@ -89,7 +89,7 @@ public class AbstractSimEngineSceneTransformer extends SceneTransformer {
 
 					Body retrieveActiveBody = sootMethod.retrieveActiveBody();
 
-					Event currEvent = new Event(event.getJavaStyleName(), retrieveActiveBody.toString());
+					Event currEvent = new Event(event.getJavaStyleName());
 					System.out.println(event.getJavaStyleName());
 					for (Unit unit : retrieveActiveBody.getUnits()) {
 
@@ -106,7 +106,7 @@ public class AbstractSimEngineSceneTransformer extends SceneTransformer {
 
 									if (methodRef.getName().startsWith("schedule")) {
 										currEvent.addSchedulesEvent(
-												new Event(methodRef.getDeclaringClass().getShortName(), null), "", "");
+												new Event(methodRef.getDeclaringClass().getShortName()), "", "");
 									}
 								}
 

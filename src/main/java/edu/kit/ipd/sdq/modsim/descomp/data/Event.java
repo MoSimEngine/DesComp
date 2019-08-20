@@ -11,7 +11,7 @@ import org.neo4j.ogm.annotation.Relationship;
 public class Event {
 
 	@Id
-	public String name;
+	private String name;
 
 	@Relationship(type = "ENTITY", direction = Relationship.UNDIRECTED)
 	private Set<Entity> entitys = new HashSet<Entity>();
@@ -31,11 +31,8 @@ public class Event {
 	@Relationship(type = "WRITE_ATTRIBUTE", direction = Relationship.DIRECTION)
 	private Set<Attribute> writeAttribute = new HashSet<Attribute>();
 
-	private String eventRoutine;
-
-	public Event(String name, String eventRoutine) {
-		this.name = name;
-		this.setEventRoutine(eventRoutine);
+	public Event(String name) {
+		this.setName(name);
 	}
 
 	public void addSchedulesEvent(Event event, String condition, String delay) {
@@ -58,14 +55,6 @@ public class Event {
 
 	public void addWriteProperty(Property property) {
 		writeProperties.add(property);
-	}
-
-	public String getEventRoutine() {
-		return eventRoutine;
-	}
-
-	public void setEventRoutine(String eventRoutine) {
-		this.eventRoutine = eventRoutine;
 	}
 
 	public void addReadAttribute(Attribute attribute) {
@@ -115,5 +104,13 @@ public class Event {
 
 	public void setWriteAttribute(Set<Attribute> writeAttribute) {
 		this.writeAttribute = writeAttribute;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
 	}
 }

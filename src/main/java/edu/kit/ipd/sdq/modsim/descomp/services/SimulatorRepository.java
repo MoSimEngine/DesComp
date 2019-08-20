@@ -18,12 +18,12 @@ public interface SimulatorRepository extends CrudRepository<Simulator, Long> {
 			+ "MATCH (s2:Simulator)-[:EVENT]->(event2)\n" + "WITH s1, s1Event, s2, collect(id(event2)) AS s2Event\n"
 			+ "RETURN s1.name AS from,\n" + "       s2.name AS to,\n"
 			+ "       algo.similarity.jaccard(s1Event, s2Event) AS similarity")
-	Iterable<Map<String,Object>>  computeJaccardCoeffincyForEvents();
+	Iterable<Map<String, Object>> computeJaccardCoeffincyForEvents();
 
 	@Query("MATCH (s1:Simulator)-[:ENTITY]->(event1)\n" + "WITH s1, collect(id(event1)) AS s1Event\n"
 			+ "MATCH (s2:Simulator)-[:ENTITY]->(event2)\n" + "WITH s1, s1Event, s2, collect(id(event2)) AS s2Event\n"
 			+ "RETURN s1.name AS from,\n" + "       s2.name AS to,\n"
 			+ "       algo.similarity.jaccard(s1Event, s2Event) AS similarity")
-	Iterable<Map<String,Object>> computeJaccardCoeffincyForEntitys();
+	Iterable<Map<String, Object>> computeJaccardCoeffincyForEntitys();
 
 }

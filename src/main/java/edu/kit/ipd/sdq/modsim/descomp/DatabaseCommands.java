@@ -5,6 +5,8 @@ import org.springframework.shell.standard.ShellCommandGroup;
 import org.springframework.shell.standard.ShellComponent;
 import org.springframework.shell.standard.ShellMethod;
 
+import edu.kit.ipd.sdq.modsim.descomp.data.Entity;
+import edu.kit.ipd.sdq.modsim.descomp.data.Event;
 import edu.kit.ipd.sdq.modsim.descomp.data.Simulator;
 import edu.kit.ipd.sdq.modsim.descomp.services.SimulatorRepository;
 
@@ -18,6 +20,38 @@ public class DatabaseCommands {
 	@ShellMethod("Clear Database")
 	public void cleanAllDatabase() {
 		repository.cleanAll();
+	}
+
+	@ShellMethod("Add Entity")
+	public String addEntity(String simulator, String name) {
+
+		Simulator simu = repository.findByName(simulator);
+
+		long count = simu.getEntitys().stream().filter(e -> !e.getName().contentEquals(name)).count();
+
+		if (0 > count) {
+			return "Entity: " + name + " already exisits in " + simulator + "!";
+		}
+
+		simu.addEntitys(new Entity(name));
+		repository.save(simu);
+		return "Added Entity: " + name + " to " + simulator;
+	}
+
+	@ShellMethod("Add Event")
+	public String addEvent(String simulator, String name) {
+
+		Simulator simu = repository.findByName(simulator);
+
+		long count = simu.getEvents().stream().filter(e -> !e.getName().contentEquals(name)).count();
+
+		if (0 > count) {
+			return "Entity: " + name + " already exisits in " + simulator + "!";
+		}
+
+		simu.addEvents(new Event(name));
+		repository.save(simu);
+		return "Added Entity: " + name + " to " + simulator;
 	}
 
 	@ShellMethod("Delete Simulator")

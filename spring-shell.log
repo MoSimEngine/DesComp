@@ -38,3 +38,5 @@
 1566214957437:run-simulator --name "123"
 1566215003167:stacktrace
 1566215543204:run-simulator --name "123"
+1566290790623:stacktrace
+1566290924084:run-simulator --name "123"

@@ -35,3 +35,6 @@
 1566212479507:[A
 1566212480530:run-simulator --name "123"
 1566214716341:exit
+1566214957437:run-simulator --name "123"
+1566215003167:stacktrace
+1566215543204:run-simulator --name "123"

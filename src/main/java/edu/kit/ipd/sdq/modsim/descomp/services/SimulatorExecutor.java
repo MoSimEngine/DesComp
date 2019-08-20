@@ -8,9 +8,9 @@ import org.springframework.stereotype.Service;
 import com.microsoft.z3.BoolExpr;
 import com.microsoft.z3.Context;
 import com.microsoft.z3.Expr;
+import com.microsoft.z3.FPSort;
 import com.microsoft.z3.FuncDecl;
 import com.microsoft.z3.Model;
-import com.microsoft.z3.Params;
 import com.microsoft.z3.Solver;
 import com.microsoft.z3.Status;
 
@@ -60,20 +60,39 @@ public class SimulatorExecutor {
 			cfg.put("model", "true");
 
 			Context ctx = new Context(cfg);
+
 			Solver s = ctx.mkSolver();
+			FPSort sa = ctx.mkFPSort(11, 53);
+			System.out.println("Sort: " + sa);
 
-//			BoolExpr cond = ctx.mkBoolConst("cond");
+			BoolExpr mkFalse = ctx.mkBool(true);
 
-			BoolExpr cond = ctx.mkBoolConst("false");
-			s.add(cond);
+			System.out.println(mkFalse);
+
+			String t = "(assert true)";
+
+			BoolExpr f = ctx.parseSMTLIB2String(t, null, null, null, null)[0];
+
+			BoolExpr mkTrue = ctx.mkBool(false);
+
+			BoolExpr mkEq2 = ctx.mkEq(f, mkTrue);
+
+			s.add(mkEq2);
+
 			Status check = s.check();
 
-			System.out.println(s.getModel());
+			System.out.println(check);
+
+			BoolExpr cond = ctx.mkBool(false);
+			BoolExpr condTrue = ctx.mkBool(true);
+
+			BoolExpr mkEq = ctx.mkEq(cond, condTrue);
 
 			FuncDecl[] funcDecls = s.getModel().getFuncDecls();
 
 			Expr evaluate = s.getModel().evaluate(cond, false);
 			evaluate.isTrue();
+
 			if (evaluate.isTrue()) {
 
 				System.out.println("Condition is true:" + evaluate.simplify().toString());

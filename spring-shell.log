@@ -41,3 +41,18 @@
 1566290790623:stacktrace
 1566290924084:run-simulator --name "123"
 1566309451767:exit
+1566309993683:extract-structural-information --name "Bussim 1" --simulator examples/bussim/bussim.jar
+1566310219514:extract-structural-information --name "Bussim1" --simulator examples/bussim/bussim.jar
+1566310424642:clean-all-database
+1566310428838:extract-structural-information --name "Bussim1" --simulator examples/bussim/bussim.jar
+1566310487429:extract-structural-information --name "Bussim2" --simulator examples/bussim/bussim.jar
+1566310564375:exit
+1566310687292:clean-all-database
+1566310693136:extract-structural-information --name "Bussim1" --simulator examples/bussim/bussim.jar
+1566310729321:ls
+1566310732737:exit
+1566311043620:clean-all-database
+1566311047472:extract-structural-information --name "Bussim1" --simulator examples/bussim/bussim.jar
+1566311227209:clean-all-database
+1566311230630:extract-structural-information --name "Bussim1" --simulator examples/bussim/bussim.jar
+1566312219156:compute-event-communitiers

@@ -1,6 +1,7 @@
 package edu.kit.ipd.sdq.modsim.descomp.extractor.abstractsimengine;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -79,6 +80,8 @@ public class AbstractSimEngineSceneTransformer extends SceneTransformer {
 		SootClass eventClass = Scene.v().getSootClass(EVENT_CLASS);
 		List<SootClass> eventList = classHierarchy.getSubclassesOf(eventClass);
 
+		Map<String, Event> eventCache = new HashMap<String, Event>();
+
 		for (SootClass event : eventList) {
 			event.setApplicationClass();
 			SideEffectAnalysis sideEffectAnalysis = Scene.v().getSideEffectAnalysis();
@@ -90,6 +93,12 @@ public class AbstractSimEngineSceneTransformer extends SceneTransformer {
 					Body retrieveActiveBody = sootMethod.retrieveActiveBody();
 
 					Event currEvent = new Event(event.getJavaStyleName());
+					if (eventCache.containsKey(event.getJavaStyleName())) {
+						currEvent = eventCache.get(event.getJavaStyleName());
+					} else {
+						eventCache.put(event.getJavaStyleName(), currEvent);
+					}
+
 					System.out.println(event.getJavaStyleName());
 					for (Unit unit : retrieveActiveBody.getUnits()) {
 
@@ -105,8 +114,15 @@ public class AbstractSimEngineSceneTransformer extends SceneTransformer {
 								if (eventList.contains(methodRef.getDeclaringClass())) {
 
 									if (methodRef.getName().startsWith("schedule")) {
-										currEvent.addSchedulesEvent(
-												new Event(methodRef.getDeclaringClass().getShortName()), "", "");
+										Event event2 = new Event(methodRef.getDeclaringClass().getShortName());
+
+										if (eventCache.containsKey(event2.getName())) {
+											event2 = eventCache.get(event2.getName());
+										} else {
+											eventCache.put(event2.getName(), event2);
+										}
+
+										currEvent.addSchedulesEvent(event2, "", "");
 									}
 								}
 

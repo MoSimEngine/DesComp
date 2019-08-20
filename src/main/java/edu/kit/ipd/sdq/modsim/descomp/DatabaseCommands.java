@@ -1,5 +1,7 @@
 package edu.kit.ipd.sdq.modsim.descomp;
 
+import java.util.Map;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.shell.standard.ShellCommandGroup;
 import org.springframework.shell.standard.ShellComponent;
@@ -20,6 +22,21 @@ public class DatabaseCommands {
 	@ShellMethod("Clear Database")
 	public void cleanAllDatabase() {
 		repository.cleanAll();
+	}
+
+	@ShellMethod("Compute Event communities")
+	public String computeEventCommunitiers() {
+
+		StringBuffer bf = new StringBuffer();
+		bf.append("Compute Louvain Communities for Events " + System.lineSeparator());
+		bf.append("Found the following communities: " + System.lineSeparator());
+
+		for (Map<String, Object> map : repository.computeLouvainCommunitiesForEvents()) {
+			bf.append("\t In community " + map.get("community") + " is Event " + map.get("event")
+					+ System.lineSeparator());
+		}
+
+		return bf.toString();
 	}
 
 	@ShellMethod("Add Entity")

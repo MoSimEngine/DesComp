@@ -26,4 +26,8 @@ public interface SimulatorRepository extends CrudRepository<Simulator, Long> {
 			+ "       algo.similarity.jaccard(s1Event, s2Event) AS similarity")
 	Iterable<Map<String, Object>> computeJaccardCoeffincyForEntitys();
 
+	@Query("CALL algo.louvain.stream('Event', 'SCHEDULES', {})\n" + "YIELD nodeId, community\n" + "\n"
+			+ "RETURN algo.asNode(nodeId).name AS event, community\n" + "ORDER BY community")
+	Iterable<Map<String, Object>> computeLouvainCommunitiesForEvents();
+
 }

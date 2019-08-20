@@ -114,8 +114,6 @@ class RouteSegment():
         self.averageSpeed = averageSpeed
 
 
-
-
 LOADING_TIME_PER_PASSENGER = 3
 tbusStopId = Int('tbusStopId')
 twaitingPassengers = Int('twaitingPassengers')

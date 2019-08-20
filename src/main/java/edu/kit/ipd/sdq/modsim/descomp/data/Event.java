@@ -3,6 +3,7 @@ package edu.kit.ipd.sdq.modsim.descomp.data;
 import java.util.HashSet;
 import java.util.Set;
 
+import org.neo4j.ogm.annotation.GeneratedValue;
 import org.neo4j.ogm.annotation.Id;
 import org.neo4j.ogm.annotation.NodeEntity;
 import org.neo4j.ogm.annotation.Relationship;
@@ -11,12 +12,16 @@ import org.neo4j.ogm.annotation.Relationship;
 public class Event {
 
 	@Id
+	@GeneratedValue
+	private Long id;
+
+	@org.neo4j.ogm.annotation.Property
 	private String name;
 
 	@Relationship(type = "ENTITY", direction = Relationship.UNDIRECTED)
 	private Set<Entity> entitys = new HashSet<Entity>();
 
-	// @Relationship(type = "SCHEDULES", direction = Relationship.DIRECTION)
+	@Relationship(type = "SCHEDULES", direction = Relationship.DIRECTION)
 	private Set<Schedules> events = new HashSet<Schedules>();
 
 	@Relationship(type = "READ_PROPERTIES", direction = Relationship.DIRECTION)

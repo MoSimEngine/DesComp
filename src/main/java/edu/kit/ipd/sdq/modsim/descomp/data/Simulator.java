@@ -5,6 +5,7 @@ import java.util.Set;
 
 import org.neo4j.ogm.annotation.GeneratedValue;
 import org.neo4j.ogm.annotation.Id;
+import org.neo4j.ogm.annotation.Property;
 import org.neo4j.ogm.annotation.Relationship;
 
 public class Simulator {
@@ -13,7 +14,10 @@ public class Simulator {
 	@GeneratedValue
 	private Long id;
 
+	@Property
 	private String name;
+
+	@Property
 	private String beschreibung;
 
 	public Simulator(String name, String beschreibung) {

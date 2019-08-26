@@ -35,9 +35,7 @@ public class SimulatorCompareEventsService {
 		if (Status.SATISFIABLE == s.check()) {
 			return s.getModel();
 		}
-
 		return null;
-
 	}
 
 	public Map<String, Boolean> compareEvents(Event a, Event b) {
@@ -80,7 +78,6 @@ public class SimulatorCompareEventsService {
 
 			}
 		}
-
 		return compareInformation;
 	}
 
@@ -94,12 +91,10 @@ public class SimulatorCompareEventsService {
 				if (compareEvents.values().stream().noneMatch(b -> b == false)) {
 					exactMatchtes.put(event, compareEvents);
 				}
-
 			}
 		}
 
 		return exactMatchtes;
 
 	}
-
 }

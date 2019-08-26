@@ -25,7 +25,7 @@ public class DatabaseCommands {
 	}
 
 	@ShellMethod("Compute Event communities")
-	public String computeEventCommunitiers() {
+	public String computeEventCommunities() {
 
 		StringBuffer bf = new StringBuffer();
 		bf.append("Compute Louvain Communities for Events " + System.lineSeparator());
@@ -33,6 +33,22 @@ public class DatabaseCommands {
 
 		for (Map<String, Object> map : repository.computeLouvainCommunitiesForEvents()) {
 			bf.append("\t In community " + map.get("community") + " is Event " + map.get("event")
+					+ System.lineSeparator());
+		}
+
+		bf.append("Compute Label Propagation for Events " + System.lineSeparator());
+		bf.append("Found the following communities: " + System.lineSeparator());
+
+		for (Map<String, Object> map : repository.computeLabelPropagationForEvents()) {
+			bf.append("\t In community " + map.get("label") + " is Event " + map.get("event")
+					+ System.lineSeparator());
+		}
+
+		bf.append("Compute Union Find for Events " + System.lineSeparator());
+		bf.append("Found the following communities: " + System.lineSeparator());
+
+		for (Map<String, Object> map : repository.computeUnionFind()) {
+			bf.append("\t In community " + map.get("setId") + " is Event " + map.get("event")
 					+ System.lineSeparator());
 		}
 
@@ -54,6 +70,24 @@ public class DatabaseCommands {
 		repository.save(simu);
 		return "Added Entity: " + name + " to " + simulator;
 	}
+
+//	@ShellMethod("Add Entity")
+//	public String printEventsOfSimulator(String simulator) {
+//
+//		Simulator simu = repository.findByName(simulator);
+//
+//		StringBuffer output = new StringBuffer("Events from Simulator:" + System.lineSeparator());
+//
+////		simu.getEvents().stream().forEach(e -> output.append(("\t" + e.getId());
+//
+//		if (0 > count) {
+//			return "Entity: " + name + " already exisits in " + simulator + "!";
+//		}
+//
+//		simu.addEntitys(new Entity(name));
+//		repository.save(simu);
+//		return "Added Entity: " + name + " to " + simulator;
+//	}
 
 	@ShellMethod("Add Event")
 	public String addEvent(String simulator, String name) {

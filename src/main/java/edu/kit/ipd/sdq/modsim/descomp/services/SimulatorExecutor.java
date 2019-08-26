@@ -99,6 +99,8 @@ public class SimulatorExecutor {
 		// Get Delay of Function
 		IntExpr delayConst = ctx.mkIntConst("delay");
 		Expr constInterp = sy.getModel().getConstInterp(delayConst);
+
+		System.out.println(sy.getModel());
 		System.out.println(constInterp);
 		double delay = Double.parseDouble(constInterp.toString());
 

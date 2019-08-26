@@ -20,6 +20,7 @@ version = '0.0.1-SNAPSHOT'
 sourceCompatibility = '1.8'
 
 repositories {
+	maven { url 'https://jitpack.io' }
 	mavenCentral()
 	flatDir {
        dirs 'lib'
@@ -27,9 +28,12 @@ repositories {
 }
 
 dependencies {
+	compile name: "ws4j-1.0.1"
+	compile name: "jawjaw-1.0.2"
 	compile name: "com.microsoft.z3"
 	implementation 'org.springframework.boot:spring-boot-starter-data-neo4j'
 	compile 'org.springframework.shell:spring-shell-starter:2.0.1.RELEASE'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 	implementation 'ca.mcgill.sable:soot:3.3.0'
+
 }

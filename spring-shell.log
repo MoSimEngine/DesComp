@@ -56,3 +56,20 @@
 1566311227209:clean-all-database
 1566311230630:extract-structural-information --name "Bussim1" --simulator examples/bussim/bussim.jar
 1566312219156:compute-event-communitiers
+1566314522407:find-similar-events
+1566314582756:find-similar-events --simulator "Bussim1" --name "TravelEvent"
+1566314596743:find-similar-events --simulator "Bussim1" --event "TravelEvent"
+1566314605141:stacktrace
+1566314658707:find-similar-events --simulator "Bussim1" --event "TravelEvent"
+1566314937555:run-simulator --name "123"
+1566315867091:run-simulator --name "Bus"
+1566316250220:run-simulator --name "123"
+1566800214678:print-simulators
+1566800230334:calc-similarity-between-events Bussim1 Bussim1
+1566804304743:compute-event-communitiers
+1566804372116:compute-event-communities
+1566805723751:calc-similarity-between-words "car" "bus"
+1566805732159:calc-similarity-between-words "car" "car"
+1566805742587:calc-similarity-between-words "car" "human"
+1566805768242:calc-similarity-between-words "computer" "server"
+1566805775177:calc-similarity-between-words "computer" "software"

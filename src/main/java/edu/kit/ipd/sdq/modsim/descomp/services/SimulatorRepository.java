@@ -3,11 +3,11 @@ package edu.kit.ipd.sdq.modsim.descomp.services;
 import java.util.Map;
 
 import org.springframework.data.neo4j.annotation.Query;
-import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.neo4j.repository.Neo4jRepository;
 
 import edu.kit.ipd.sdq.modsim.descomp.data.Simulator;
 
-public interface SimulatorRepository extends CrudRepository<Simulator, Long> {
+public interface SimulatorRepository extends Neo4jRepository<Simulator, Long> {
 
 	Simulator findByName(String name);
 

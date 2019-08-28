@@ -70,7 +70,7 @@ public class AbstractSimEngineSceneTransformer extends SceneTransformer {
 			Entity currEntity = new Entity(entity.getShortName());
 			Chain<SootField> fields = entity.getFields();
 			fields.forEach(
-					field -> currEntity.addWriteAttribute(new Attribute(field.getName(), field.getType().toString())));
+					field -> currEntity.addAttribute(new Attribute(field.getName(), field.getType().toString())));
 
 			entities.add(currEntity);
 		}
@@ -135,7 +135,9 @@ public class AbstractSimEngineSceneTransformer extends SceneTransformer {
 
 					if (null != nonTransitiveReadSet) {
 						for (Object string : nonTransitiveReadSet.getGlobals()) {
-							currEvent.addReadProperty(new Property(((SootField) string).getName()));
+
+							SootField field = (SootField) string;
+							currEvent.addReadAttribute(new Attribute(field.getName(), field.getType().toString()));
 						}
 
 						for (Object object : nonTransitiveReadSet.getFields()) {
@@ -150,12 +152,16 @@ public class AbstractSimEngineSceneTransformer extends SceneTransformer {
 
 					if (null != nonTransitiveWriteSet) {
 						for (Object string : nonTransitiveWriteSet.getGlobals()) {
-							currEvent.addWriteProperty(new Property(((SootField) string).getName()));
+
+							currEvent.addWriteAttribute(new Attribute(((SootField) string).getName(),
+									((SootField) string).getType().toString()), "", "");
 						}
 
 						for (Object object : nonTransitiveWriteSet.getFields()) {
 							SootField field = (SootField) object;
-							currEvent.addWriteAttribute(new Attribute(field.getName(), field.getType().toString()));
+
+							currEvent.addWriteAttribute(new Attribute(field.getName(), field.getType().toString()), "",
+									"");
 						}
 					}
 

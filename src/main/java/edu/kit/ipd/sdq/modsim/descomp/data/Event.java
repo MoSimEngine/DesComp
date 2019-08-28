@@ -18,23 +18,17 @@ public class Event {
 	@org.neo4j.ogm.annotation.Property
 	private String name;
 
-	@Relationship(type = "ENTITY", direction = Relationship.UNDIRECTED)
+	@Relationship(type = "ENTITY", direction = Relationship.OUTGOING)
 	private Set<Entity> entitys = new HashSet<Entity>();
 
-	@Relationship(type = "SCHEDULES", direction = Relationship.DIRECTION)
+	@Relationship(type = "SCHEDULES", direction = Relationship.OUTGOING)
 	private Set<Schedules> events = new HashSet<Schedules>();
 
-	@Relationship(type = "READ_PROPERTIES", direction = Relationship.DIRECTION)
-	private Set<Property> readProperties = new HashSet<Property>();
-
-	@Relationship(type = "WRITE_PROPERTIES", direction = Relationship.DIRECTION)
-	private Set<Property> writeProperties = new HashSet<Property>();
-
-	@Relationship(type = "READ_ATTRIBUTE", direction = Relationship.DIRECTION)
+	@Relationship(type = "READ_ATTRIBUTE", direction = Relationship.OUTGOING)
 	private Set<Attribute> readAttribute = new HashSet<Attribute>();
 
-	@Relationship(type = "WRITE_ATTRIBUTE", direction = Relationship.DIRECTION)
-	private Set<Attribute> writeAttribute = new HashSet<Attribute>();
+	@Relationship(type = "WRITES", direction = Relationship.OUTGOING)
+	private Set<WritesAttribute> writeAttribute = new HashSet<WritesAttribute>();
 
 	public Event(String name) {
 		this.setName(name);
@@ -54,21 +48,9 @@ public class Event {
 		getEntitys().add(entity);
 	}
 
-	public void addReadProperty(Property property) {
-		getReadProperties().add(property);
-	}
-
-	public void addWriteProperty(Property property) {
-		writeProperties.add(property);
-	}
-
 	public void addReadAttribute(Attribute attribute) {
 		getReadAttribute().add(attribute);
 
-	}
-
-	public void addWriteAttribute(Attribute attribute) {
-		getWriteAttribute().add(attribute);
 	}
 
 	public Set<Entity> getEntitys() {
@@ -87,28 +69,12 @@ public class Event {
 		this.events = events;
 	}
 
-	public Set<Property> getReadProperties() {
-		return readProperties;
-	}
-
-	public void setReadProperties(Set<Property> readProperties) {
-		this.readProperties = readProperties;
-	}
-
 	public Set<Attribute> getReadAttribute() {
 		return readAttribute;
 	}
 
 	public void setReadAttribute(Set<Attribute> readAttribute) {
 		this.readAttribute = readAttribute;
-	}
-
-	public Set<Attribute> getWriteAttribute() {
-		return writeAttribute;
-	}
-
-	public void setWriteAttribute(Set<Attribute> writeAttribute) {
-		this.writeAttribute = writeAttribute;
 	}
 
 	public String getName() {
@@ -125,5 +91,23 @@ public class Event {
 
 	public void setId(Long id) {
 		this.id = id;
+	}
+
+	public Set<WritesAttribute> getWriteAttribute() {
+		return writeAttribute;
+	}
+
+	public void addWriteAttribute(Attribute attribute, String condition, String writeFunction) {
+
+		WritesAttribute newWritesAttribute = new WritesAttribute();
+		newWritesAttribute.setAttribute(attribute);
+		newWritesAttribute.setCondition(condition);
+		newWritesAttribute.setStartEvent(this);
+		newWritesAttribute.setWriteFunction(writeFunction);
+		this.writeAttribute.add(newWritesAttribute);
+	}
+
+	public void setWriteAttribute(Set<WritesAttribute> writeAttribute) {
+		this.writeAttribute = writeAttribute;
 	}
 }

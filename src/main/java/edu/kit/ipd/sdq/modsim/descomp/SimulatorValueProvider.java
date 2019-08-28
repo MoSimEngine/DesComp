@@ -14,7 +14,7 @@ import org.springframework.stereotype.Component;
 import edu.kit.ipd.sdq.modsim.descomp.services.SimulatorRepository;
 
 @Component
-class SimulatorValueProvider extends ValueProviderSupport {
+public class SimulatorValueProvider extends ValueProviderSupport {
 
 	@Autowired
 	private SimulatorRepository repository;

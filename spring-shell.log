@@ -112,3 +112,40 @@
 1566982672104:clean-all-database
 1566982718949:script --file bussim_descomp.script
 1566982745820:print-simulators
+1566984901097:add-entity --name "Bus"
+1566984911973:set-current-simulator --simulator Johannes
+1566984920789:add-entity --name "Haus"
+1566984948300:add-attributes-to-entity --entity-name "Haus" --type DOUBLE --attribute-name "anzahlZimmer"
+1566985005977:set-current-simulator --simulator Johannes
+1566985008557:add-attributes-to-entity --entity-name "Haus" --type DOUBLE --attribute-name "anzahlZimmer"
+1566985028714:print-entities-of-simulator
+1566985035171:print-entities-of-simulator --simulator Johannes
+1566986624963:print-entities-of-simulator
+1566986627489:set-current-simulator --simulator Johannes
+1566986630273:print-entities-of-simulator
+1566986634612:print-entities-of-simulator --simulator Johannes
+1566986646021:print-events-of-simulator
+1566986648212:print-events-of-simulator --simulator Johannes
+1566986693331:add-read-attribute-to-event --entity-name Haus --event-name ArriveEvent --attribute-name anzahlZimmer
+1566986806481:set-current-simulator --simulator Johannes
+1566986809820:add-read-attribute-to-event --entity-name Haus --event-name ArriveEvent --attribute-name anzahlZimmer
+1566986881216:add-read-attribute-to-event --entity-name Haus --event-name ArriveEvent --attribute-name "anzahlZimmer"
+1566986968957:set-current-simulator --simulator Johannes
+1566986971579:add-read-attribute-to-event --entity-name Haus --event-name ArriveEvent --attribute-name "anzahlZimmer"
+1566987037872:set-current-simulator --simulator Johannes
+1566987040146:add-read-attribute-to-event --entity-name Haus --event-name ArriveEvent --attribute-name "anzahlZimmer"
+1566987113136:set-current-simulator --simulator Johannes
+1566987115349:add-read-attribute-to-event --entity-name Haus --event-name ArriveEvent --attribute-name "anzahlZimmer"
+1566987155600:set-current-simulator --simulator Johannes
+1566987164451:add-read-attribute-to-event --entity-name Haus --event-name ArriveEvent --attribute-name "anzahlZimmer"
+1566987249188:set-current-simulator --simulator Johannes
+1566987261559:add-read-attribute-to-event --entity-name Haus --event-name ArriveEvent --attribute-name "anzahlZimmer"
+1566987555192:set-current-simulator --simulator Johannes
+1566987570152:add-read-attribute-to-event --entity-name Haus --event-name ArriveEvent --attribute-name "anzahlZimmer"
+1566987943919:set-current-simulator --simulator Johannes
+1566987946218:add-read-attribute-to-event --entity-name Haus --event-name ArriveEvent --attribute-name "anzahlZimmer"
+1566988002369:set-current-simulator --simulator Johannes
+1566988004573:add-read-attribute-to-event --entity-name Haus --event-name ArriveEvent --attribute-name "anzahlZimmer"
+1566988065864:set-current-simulator --simulator Johannes
+1566988067966:add-read-attribute-to-event --entity-name Haus --event-name ArriveEvent --attribute-name "anzahlZimmer"
+1566988497363:exit

@@ -18,15 +18,15 @@ public class Entity {
 	@Property
 	private String name;
 
-	@Relationship(type = "HAS_ATTRIBUTE", direction = Relationship.DIRECTION)
+	@Relationship(type = "HAS_ATTRIBUTE", direction = Relationship.OUTGOING)
 	private Set<Attribute> attributes = new HashSet<Attribute>();
 
 	public Entity(String name) {
 		this.setName(name);
 	}
 
-	public void addWriteAttribute(Attribute attribute) {
-		attributes.add(attribute);
+	public void addAttribute(Attribute attribute) {
+		getAttributes().add(attribute);
 	}
 
 	public String getName() {
@@ -35,6 +35,10 @@ public class Entity {
 
 	public void setName(String name) {
 		this.name = name;
+	}
+
+	public Set<Attribute> getAttributes() {
+		return attributes;
 	}
 
 }

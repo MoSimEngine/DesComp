@@ -11,6 +11,7 @@ import org.springframework.shell.standard.ShellMethod;
 import org.springframework.shell.standard.ShellMethodAvailability;
 import org.springframework.shell.standard.ShellOption;
 
+import edu.kit.ipd.sdq.modsim.descomp.data.Attribute;
 import edu.kit.ipd.sdq.modsim.descomp.data.Entity;
 import edu.kit.ipd.sdq.modsim.descomp.data.Event;
 import edu.kit.ipd.sdq.modsim.descomp.data.Schedules;
@@ -108,6 +109,147 @@ public class DatabaseCommands {
 		simu.addEntitys(new Entity(name));
 		repository.save(simu);
 		return "Added Entity: " + name + " to " + simu.getName();
+	}
+
+	@ShellMethod("Add Attribute to Entity")
+	@ShellMethodAvailability("currenSimulatorAvailabilityCheck")
+	public String addAttributesToEntity(String entityName,
+			@ShellOption(valueProvider = DataTypeValueProvider.class) String type, String attributeName) {
+
+		Simulator simu = repository.findById(currentSimulatorId).get();
+
+		Optional<Entity> opEntity = simu.getEntitys().stream().filter(e -> e.getName().contentEquals(entityName))
+				.findFirst();
+
+		StringBuffer bf = new StringBuffer();
+
+		if (opEntity.isEmpty()) {
+			bf.append(
+					"Entity: " + entityName + " does not exisits in " + simu.getName() + "!" + System.lineSeparator());
+		} else {
+			Entity entity = opEntity.get();
+			entity.addAttribute(new Attribute(attributeName, type));
+			repository.save(simu);
+
+			bf.append("Entity " + entityName + " changed. Attribute " + attributeName + " added."
+					+ System.lineSeparator());
+		}
+
+		return bf.toString();
+	}
+
+	@ShellMethod("Add Read Attribute to Event")
+	@ShellMethodAvailability("currenSimulatorAvailabilityCheck")
+	public String addReadAttributeToEvent(String eventName, String entityName, String attributeName) {
+
+		Simulator simu = repository.findById(currentSimulatorId, 3).get();
+		StringBuffer bf = new StringBuffer();
+
+		Optional<Event> opEvent = simu.getEvents().stream().filter(e -> e.getName().contentEquals(eventName))
+				.findFirst();
+
+		Optional<Entity> opEntity = simu.getEntitys().stream().filter(e -> e.getName().contentEquals(entityName))
+				.findFirst();
+
+		if (opEntity.isPresent() && opEvent.isPresent()) {
+
+			for (Attribute attribute2 : opEntity.get().getAttributes()) {
+				bf.append(attribute2.getName());
+			}
+
+			Optional<Attribute> attribute = opEntity.get().getAttributes().stream()
+					.filter(a -> a.getName().contentEquals(attributeName)).findFirst();
+
+			if (attribute.isPresent()) {
+				Event event = opEvent.get();
+				event.addReadAttribute(attribute.get());
+				repository.save(simu);
+
+				bf.append("Added Attribute " + attributeName + " from " + entityName + "as releation to "
+						+ event.getName() + ".");
+			} else {
+				bf.append("Attribute " + attributeName + " in " + entityName + " not found.");
+			}
+
+		} else {
+			bf.append("Entity " + entityName + " or Event " + eventName + " does not exisits in " + simu.getName() + "!"
+					+ System.lineSeparator());
+		}
+
+		return bf.toString();
+	}
+
+	@ShellMethod("Add Write Attribute to Event")
+	@ShellMethodAvailability("currenSimulatorAvailabilityCheck")
+	public String addWriteAttributeToEvent(String eventName, String entityName, String attributeName,
+			String writeFunction) {
+
+		Simulator simu = repository.findById(currentSimulatorId).get();
+		StringBuffer bf = new StringBuffer();
+
+		Optional<Event> opEvent = simu.getEvents().stream().filter(e -> e.getName().contentEquals(eventName))
+				.findFirst();
+
+		Optional<Entity> opEntity = simu.getEntitys().stream().filter(e -> e.getName().contentEquals(entityName))
+				.findFirst();
+
+		if (opEntity.isPresent() && opEvent.isPresent()) {
+
+			for (Attribute attribute2 : opEntity.get().getAttributes()) {
+				System.out.println(attribute2.getName());
+			}
+
+			Optional<Attribute> attribute = opEntity.get().getAttributes().stream()
+					.filter(a -> a.getName().contentEquals(attributeName)).findFirst();
+
+			if (attribute.isPresent()) {
+				Event event = opEvent.get();
+				event.addReadAttribute(attribute.get());
+				repository.save(simu);
+
+				bf.append("Added Attribute " + attributeName + " from " + entityName + "as releation to "
+						+ event.getName() + ".");
+			}
+
+		} else {
+			bf.append("Entity " + entityName + " or Event " + eventName + " does not exisits in " + simu.getName() + "!"
+					+ System.lineSeparator());
+		}
+
+		return bf.toString();
+	}
+
+	@ShellMethod("Remove Read Attribute from Event")
+	@ShellMethodAvailability("currenSimulatorAvailabilityCheck")
+	public String removeReadAttributeFromEvent(String eventName, String entityName, String attributeName) {
+		StringBuffer bf = new StringBuffer();
+
+		Simulator simu = repository.findById(currentSimulatorId).get();
+		Optional<Event> opEvent = simu.getEvents().stream().filter(e -> e.getName().contentEquals(eventName))
+				.findFirst();
+
+		Optional<Entity> opEntity = simu.getEntitys().stream().filter(e -> e.getName().contentEquals(entityName))
+				.findFirst();
+
+		if (opEntity.isPresent() && opEvent.isPresent()) {
+			Optional<Attribute> attribute = opEntity.get().getAttributes().stream()
+					.filter(a -> a.getName().contentEquals(attributeName)).findFirst();
+
+			if (attribute.isPresent()) {
+				Event event = opEvent.get();
+				event.getReadAttribute().remove(attribute.get());
+				repository.save(simu);
+
+				bf.append("Removed Attribute " + attributeName + " from " + entityName + "as releation to "
+						+ event.getName() + ".");
+			}
+
+		} else {
+			bf.append("Entity " + entityName + " or Event " + eventName + " does not exisits in " + simu.getName() + "!"
+					+ System.lineSeparator());
+		}
+
+		return bf.toString();
 	}
 
 	@ShellMethod("Print Events of Simulators")

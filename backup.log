@@ -1,0 +1,177 @@
+1566204447969:ls
+1566204471106:extract-structural-information --simulator examples/bussim/bussim.jar
+1566205095869:clean-all-database
+1566205102932:extract-structural-information --simulator examples/bussim/bussim.jar
+1566205116991:extract-structural-information --simulator examples/bussim/bussim.jar --name Bus Simulation
+1566205120702:extract-structural-information --simulator examples/bussim/bussim.jar --name "Bus Simulation"
+1566205258423:print-simulators
+1566205396577:extract-structural-information --simulator examples/bussim/bussim.jar --name "Bus Simulation"
+1566205431867:print-simulators
+1566205610424:exit
+1566205661121:help
+1566205685405:exit
+1566205723013:extract-structural-information --simulator examples/workwaysim/workwaySim.jar --name "Workway Simulation"
+1566205759133:print-simulators
+1566207485820:exit
+1566208891136:run-simulator
+1566208900407:run-simulator --name Bus Sim
+1566208906972:run-simulator --name "Bus Sim"
+1566208922866:print-simulators
+1566208931126:run-simulator --name "Bus Simulation"
+1566208954496:exit
+1566208968246:run-simulator --name "Bus Simulation"
+1566210797814:exit
+1566210924609:clean-all-database
+1566210937417:extract-structural-information --simulator examples/workwaysim/workwaySim.jar --name "Workway Simulation"
+1566211816685:print-simulators
+1566211819696:ls
+1566211827884:run-simulator
+1566211836101:run-simulator --name "123"
+1566212029083:run-simulator
+1566212034130:run-simulator --name 123
+1566212050291:run-simulator --name "123"
+1566212054837:exit
+1566212085926:run-simulator --name "123"
+1566212479507:[A
+1566212480530:run-simulator --name "123"
+1566214716341:exit
+1566214957437:run-simulator --name "123"
+1566215003167:stacktrace
+1566215543204:run-simulator --name "123"
+1566290790623:stacktrace
+1566290924084:run-simulator --name "123"
+1566309451767:exit
+1566309993683:extract-structural-information --name "Bussim 1" --simulator examples/bussim/bussim.jar
+1566310219514:extract-structural-information --name "Bussim1" --simulator examples/bussim/bussim.jar
+1566310424642:clean-all-database
+1566310428838:extract-structural-information --name "Bussim1" --simulator examples/bussim/bussim.jar
+1566310487429:extract-structural-information --name "Bussim2" --simulator examples/bussim/bussim.jar
+1566310564375:exit
+1566310687292:clean-all-database
+1566310693136:extract-structural-information --name "Bussim1" --simulator examples/bussim/bussim.jar
+1566310729321:ls
+1566310732737:exit
+1566311043620:clean-all-database
+1566311047472:extract-structural-information --name "Bussim1" --simulator examples/bussim/bussim.jar
+1566311227209:clean-all-database
+1566311230630:extract-structural-information --name "Bussim1" --simulator examples/bussim/bussim.jar
+1566312219156:compute-event-communitiers
+1566314522407:find-similar-events
+1566314582756:find-similar-events --simulator "Bussim1" --name "TravelEvent"
+1566314596743:find-similar-events --simulator "Bussim1" --event "TravelEvent"
+1566314605141:stacktrace
+1566314658707:find-similar-events --simulator "Bussim1" --event "TravelEvent"
+1566314937555:run-simulator --name "123"
+1566315867091:run-simulator --name "Bus"
+1566316250220:run-simulator --name "123"
+1566800214678:print-simulators
+1566800230334:calc-similarity-between-events Bussim1 Bussim1
+1566804304743:compute-event-communitiers
+1566804372116:compute-event-communities
+1566805723751:calc-similarity-between-words "car" "bus"
+1566805732159:calc-similarity-between-words "car" "car"
+1566805742587:calc-similarity-between-words "car" "human"
+1566805768242:calc-similarity-between-words "computer" "server"
+1566805775177:calc-similarity-between-words "computer" "software"
+1566817101526:compute-event-communities
+1566817138069:calc-similarity-between-communities "Bussim1" "Bussim1"
+1566819711499:calc-similarity-between-words "car" "bus"
+1566819719271:calc-similarity-between-words "car" "human"
+1566819790616:compute-event-communities
+1566819814092:print-simulators
+1566819856240:compute-event-communities
+1566820216225:calc-similarity-between-simulators --simulator1 "Bussim1" --simulator2 "Bussim1"
+1566823653935:calc-similarity-between-words "car" "cpu"
+1566823660430:calc-similarity-between-words "hdd" "cpu"
+1566823666493:calc-similarity-between-words "computer" "cpu"
+1566823686095:calc-similarity-between-words "computer" "centralprocessingunit"
+1566823692275:calc-similarity-between-words "computer" "monitor"
+1566977253341:tasks
+1566977260623:print-simulators
+1566977515196:print-events-of-simulator "Bussim1"
+1566977667592:print-entities-of-simulator
+1566977674074:print-entities-of-simulator --simulator "Bussim1"
+1566978435482:print-entities-of-simulator --simulator Bussim1
+1566979523916:get-current-simulator
+1566981461623:create-simulator --name "Johannes"--description "Tolle test Simulation.. Das hinzufügen funktioniert"
+1566981468195:print-simulators
+1566981568932:create-simulator --name "Johannes"--description "Tolle test Simulation.. Das hinzufügen funktioniert"
+1566981571760:print-simulators
+1566981586947:set-current-simulator --simulator Bussim1
+1566981590760:ls
+1566981592735:tasks
+1566981596643:help
+1566981622552:add-entity --name "Bus"
+1566981632223:print-entities-of-simulator
+1566981644012:print-entities-of-simulator --simulator Bussim1
+1566981686155:add-event --name "ArriveEvent"
+1566981703452:add-event --name "LeaveEvent"
+1566981734847:add-schedules-relation --end-event-name "ArriveEvent" --start-event-name "LeaveEVent" --condition-function "x+a" --delay-function "as"
+1566981744842:add-schedules-relation --end-event-name "ArriveEvent" --start-event-name "LeaveEvent" --condition-function "x+a" --delay-function "as"
+1566982526077:script
+1566982672104:clean-all-database
+1566982718949:script --file bussim_descomp.script
+1566982745820:print-simulators
+1566984901097:add-entity --name "Bus"
+1566984911973:set-current-simulator --simulator Johannes
+1566984920789:add-entity --name "Haus"
+1566984948300:add-attributes-to-entity --entity-name "Haus" --type DOUBLE --attribute-name "anzahlZimmer"
+1566985005977:set-current-simulator --simulator Johannes
+1566985008557:add-attributes-to-entity --entity-name "Haus" --type DOUBLE --attribute-name "anzahlZimmer"
+1566985028714:print-entities-of-simulator
+1566985035171:print-entities-of-simulator --simulator Johannes
+1566986624963:print-entities-of-simulator
+1566986627489:set-current-simulator --simulator Johannes
+1566986630273:print-entities-of-simulator
+1566986634612:print-entities-of-simulator --simulator Johannes
+1566986646021:print-events-of-simulator
+1566986648212:print-events-of-simulator --simulator Johannes
+1566986693331:add-read-attribute-to-event --entity-name Haus --event-name ArriveEvent --attribute-name anzahlZimmer
+1566986806481:set-current-simulator --simulator Johannes
+1566986809820:add-read-attribute-to-event --entity-name Haus --event-name ArriveEvent --attribute-name anzahlZimmer
+1566986881216:add-read-attribute-to-event --entity-name Haus --event-name ArriveEvent --attribute-name "anzahlZimmer"
+1566986968957:set-current-simulator --simulator Johannes
+1566986971579:add-read-attribute-to-event --entity-name Haus --event-name ArriveEvent --attribute-name "anzahlZimmer"
+1566987037872:set-current-simulator --simulator Johannes
+1566987040146:add-read-attribute-to-event --entity-name Haus --event-name ArriveEvent --attribute-name "anzahlZimmer"
+1566987113136:set-current-simulator --simulator Johannes
+1566987115349:add-read-attribute-to-event --entity-name Haus --event-name ArriveEvent --attribute-name "anzahlZimmer"
+1566987155600:set-current-simulator --simulator Johannes
+1566987164451:add-read-attribute-to-event --entity-name Haus --event-name ArriveEvent --attribute-name "anzahlZimmer"
+1566987249188:set-current-simulator --simulator Johannes
+1566987261559:add-read-attribute-to-event --entity-name Haus --event-name ArriveEvent --attribute-name "anzahlZimmer"
+1566987555192:set-current-simulator --simulator Johannes
+1566987570152:add-read-attribute-to-event --entity-name Haus --event-name ArriveEvent --attribute-name "anzahlZimmer"
+1566987943919:set-current-simulator --simulator Johannes
+1566987946218:add-read-attribute-to-event --entity-name Haus --event-name ArriveEvent --attribute-name "anzahlZimmer"
+1566988002369:set-current-simulator --simulator Johannes
+1566988004573:add-read-attribute-to-event --entity-name Haus --event-name ArriveEvent --attribute-name "anzahlZimmer"
+1566988065864:set-current-simulator --simulator Johannes
+1566988067966:add-read-attribute-to-event --entity-name Haus --event-name ArriveEvent --attribute-name "anzahlZimmer"
+1566988497363:exit
+1567011647162:print-simulators
+1567011658715:tasks
+1567011662026:help
+1567011666227:set-current-simulator
+1567011670708:set-current-simulator --simulator Johannes
+1567011682542:print-entities-of-simulator --simulator Johannes
+1567011698479:print-events-of-simulator
+1567011701601:print-events-of-simulator --simulator Johannes
+1567011731820:add-attributes-to-entity --entity-name "Haus" --attribute-name "tuer" --type INT
+1567011761445:add-read-attribute-to-event --attribute-name tuer --entity-name Haus --event-name "LeaveEvent"
+1567011858429:set-current-simulator --simulator Johannes
+1567011861632:add-read-attribute-to-event --attribute-name tuer --entity-name Haus --event-name "LeaveEvent"
+1567011919839:set-current-simulator --simulator Johannes
+1567011922720:add-read-attribute-to-event --attribute-name tuer --entity-name Haus --event-name "LeaveEvent"
+1567012090194:ls
+1567012093592:clean-all-database
+1567013209550:create-simulator --name "EventSim" --description "EventSim Simulator"
+1567013226839:set-current-simulator --simulator EventSim
+1567013249556:add-entity --name LinkingResource
+1567013298193:add-attributes-to-entity --entity-name --attribute-name "throughput" --type DOUBLE
+1567013312039:add-attributes-to-entity --entity-name LinkingResource --attribute-name "throughput" --type DOUBLE
+1567013335853:add-attributes-to-entity --entity-name LinkingResource --attribute-name "latency" --type DOUBLE
+1567013491672:add-entity --name HDDActiveResource
+1567013545555:add-attributes-to-entity --entity-name HDDActiveResource --attribute-name "writeProcessingRate" --type DOUBLE
+1567013569202:add-attributes-to-entity --entity-name HDDActiveResource --attribute-name "readProcessingRate" --type DOUBLE
+1567013679091:add-entity --name SimulatedProcess

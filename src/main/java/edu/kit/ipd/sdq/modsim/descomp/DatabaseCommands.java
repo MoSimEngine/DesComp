@@ -153,10 +153,6 @@ public class DatabaseCommands {
 
 		if (opEntity.isPresent() && opEvent.isPresent()) {
 
-			for (Attribute attribute2 : opEntity.get().getAttributes()) {
-				bf.append(attribute2.getName());
-			}
-
 			Optional<Attribute> attribute = opEntity.get().getAttributes().stream()
 					.filter(a -> a.getName().contentEquals(attributeName)).findFirst();
 
@@ -165,10 +161,10 @@ public class DatabaseCommands {
 				event.addReadAttribute(attribute.get());
 				repository.save(simu);
 
-				bf.append("Added Attribute " + attributeName + " from " + entityName + "as releation to "
-						+ event.getName() + ".");
+				bf.append("Added Attribute " + attributeName + " from " + entityName + " as releation to "
+						+ event.getName() + "." + System.lineSeparator());
 			} else {
-				bf.append("Attribute " + attributeName + " in " + entityName + " not found.");
+				bf.append("Attribute " + attributeName + " in " + entityName + " not found." + System.lineSeparator());
 			}
 
 		} else {
@@ -194,10 +190,6 @@ public class DatabaseCommands {
 				.findFirst();
 
 		if (opEntity.isPresent() && opEvent.isPresent()) {
-
-			for (Attribute attribute2 : opEntity.get().getAttributes()) {
-				System.out.println(attribute2.getName());
-			}
 
 			Optional<Attribute> attribute = opEntity.get().getAttributes().stream()
 					.filter(a -> a.getName().contentEquals(attributeName)).findFirst();

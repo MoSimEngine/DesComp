@@ -52,7 +52,7 @@ public class DatabaseCommands {
 	@ShellMethod("Get current Simulator")
 	public String getCurrentSimulator() {
 
-		Optional<Simulator> currSimulator = repository.findById(currentSimulatorId);
+		Optional<Simulator> currSimulator = repository.findById(currentSimulatorId, 3);
 
 		StringBuffer sb = new StringBuffer();
 
@@ -98,7 +98,7 @@ public class DatabaseCommands {
 	@ShellMethodAvailability("currenSimulatorAvailabilityCheck")
 	public String addEntity(String name) {
 
-		Simulator simu = repository.findById(currentSimulatorId).get();
+		Simulator simu = repository.findById(currentSimulatorId, 3).get();
 
 		long count = simu.getEntitys().stream().filter(e -> !e.getName().contentEquals(name)).count();
 
@@ -116,7 +116,7 @@ public class DatabaseCommands {
 	public String addAttributesToEntity(String entityName,
 			@ShellOption(valueProvider = DataTypeValueProvider.class) String type, String attributeName) {
 
-		Simulator simu = repository.findById(currentSimulatorId).get();
+		Simulator simu = repository.findById(currentSimulatorId, 3).get();
 
 		Optional<Entity> opEntity = simu.getEntitys().stream().filter(e -> e.getName().contentEquals(entityName))
 				.findFirst();
@@ -178,9 +178,9 @@ public class DatabaseCommands {
 	@ShellMethod("Add Write Attribute to Event")
 	@ShellMethodAvailability("currenSimulatorAvailabilityCheck")
 	public String addWriteAttributeToEvent(String eventName, String entityName, String attributeName,
-			String writeFunction) {
+			String writeFunction, String condition) {
 
-		Simulator simu = repository.findById(currentSimulatorId).get();
+		Simulator simu = repository.findById(currentSimulatorId, 3).get();
 		StringBuffer bf = new StringBuffer();
 
 		Optional<Event> opEvent = simu.getEvents().stream().filter(e -> e.getName().contentEquals(eventName))
@@ -196,7 +196,9 @@ public class DatabaseCommands {
 
 			if (attribute.isPresent()) {
 				Event event = opEvent.get();
-				event.addReadAttribute(attribute.get());
+
+				event.addWriteAttribute(attribute.get(), condition, writeFunction);
+
 				repository.save(simu);
 
 				bf.append("Added Attribute " + attributeName + " from " + entityName + "as releation to "
@@ -216,7 +218,7 @@ public class DatabaseCommands {
 	public String removeReadAttributeFromEvent(String eventName, String entityName, String attributeName) {
 		StringBuffer bf = new StringBuffer();
 
-		Simulator simu = repository.findById(currentSimulatorId).get();
+		Simulator simu = repository.findById(currentSimulatorId, 3).get();
 		Optional<Event> opEvent = simu.getEvents().stream().filter(e -> e.getName().contentEquals(eventName))
 				.findFirst();
 
@@ -247,14 +249,23 @@ public class DatabaseCommands {
 	@ShellMethod("Print Events of Simulators")
 	public String printEventsOfSimulator(@ShellOption(valueProvider = SimulatorValueProvider.class) String simulator) {
 
-		Simulator simu = repository.findByName(simulator);
+		Simulator simu = repository.findById(repository.findByName(simulator).getId(), 3).get();
 
 		StringBuffer output = new StringBuffer(
 				"Events from Simulator " + simu.getName() + ":" + System.lineSeparator());
 
-		simu.getEvents().stream().forEach(e -> output.append(("\t" + e.getName() + System.lineSeparator())));
+		simu.getEvents().stream().forEach(e -> {
+			output.append("\t" + e.getName() + System.lineSeparator());
+			printEventInformation(e, output);
+		});
 
 		return output.toString();
+	}
+
+	private void printEventInformation(Event e, StringBuffer bf) {
+		e.getEvents().forEach(s -> bf.append("\t\t" + "Event " + s.getEndEvent().getName() + " condition "
+				+ s.getCondition() + " delay " + s.getDelay() + System.lineSeparator()));
+
 	}
 
 	@ShellMethod("Print Entities of Simulators")
@@ -275,7 +286,7 @@ public class DatabaseCommands {
 	@ShellMethodAvailability("currenSimulatorAvailabilityCheck")
 	public String addEvent(String name) {
 
-		Simulator simu = repository.findById(currentSimulatorId).get();
+		Simulator simu = repository.findById(currentSimulatorId, 3).get();
 
 		long count = simu.getEvents().stream().filter(e -> !e.getName().contentEquals(name)).count();
 
@@ -295,7 +306,7 @@ public class DatabaseCommands {
 
 		StringBuffer bf = new StringBuffer();
 
-		Simulator simu = repository.findById(currentSimulatorId).get();
+		Simulator simu = repository.findById(currentSimulatorId, 3).get();
 
 		Event startEvent = simu.getEvents().stream().filter(e -> e.getName().contentEquals(startEventName)).findAny()
 				.get();
@@ -319,7 +330,7 @@ public class DatabaseCommands {
 
 		StringBuffer bf = new StringBuffer();
 
-		Simulator simu = repository.findById(currentSimulatorId).get();
+		Simulator simu = repository.findById(currentSimulatorId, 3).get();
 
 		Event startEvent = simu.getEvents().stream().filter(e -> e.getName().contentEquals(startEventName)).findAny()
 				.get();
@@ -352,7 +363,7 @@ public class DatabaseCommands {
 
 		StringBuffer bf = new StringBuffer();
 
-		Simulator simu = repository.findById(currentSimulatorId).get();
+		Simulator simu = repository.findById(currentSimulatorId, 3).get();
 
 		Event startEvent = simu.getEvents().stream().filter(e -> e.getName().contentEquals(startEventName)).findAny()
 				.get();
@@ -393,7 +404,7 @@ public class DatabaseCommands {
 	@ShellMethodAvailability("currenSimulatorAvailabilityCheck")
 	public void editSimulatorName(String newSimulatorName) {
 
-		Simulator simulator = repository.findById(currentSimulatorId).get();
+		Simulator simulator = repository.findById(currentSimulatorId, 3).get();
 		simulator.setName(newSimulatorName);
 
 		repository.save(simulator);
@@ -403,7 +414,7 @@ public class DatabaseCommands {
 	@ShellMethodAvailability("currenSimulatorAvailabilityCheck")
 	public void editSimulatorDescription(String newSimulatorDescription) {
 
-		Simulator simulator = repository.findById(currentSimulatorId).get();
+		Simulator simulator = repository.findById(currentSimulatorId, 3).get();
 		simulator.setBeschreibung(newSimulatorDescription);
 
 		repository.save(simulator);

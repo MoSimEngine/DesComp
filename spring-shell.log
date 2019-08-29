@@ -1,1 +1,77 @@
 1567013926679:exit
+1567015094984:print-simulators
+1567015217791:clean-all-database
+1567015751286:create-simulator --name "BusSimulation" --description "Example Simulation from AbstractSimEngine (https://github.com/PalladioSimulator/Palladio-Simulation-AbstractSimEngine.git)"
+1567015755998:print-simulators
+1567015762523:set-current-simulator --simulator BusSimulation
+1567015776785:add-entity --name Bus
+1567015780313:add-entity --name BusStop
+1567015857898:add-attributes-to-entity --attribute-name "waitingPassengers" --entity-name "BusStop"
+1567015862097:add-attributes-to-entity --attribute-name "waitingPassengers" --entity-name "BusStop" --type INT
+1567015886412:add-entity --name SimulationProperty
+1567015987244:add-attributes-to-entity --attribute-name "interarrivalTime" --entity-name "SimulationProperty" --type DOUBLE
+1567016032186:add-event --name PassengerArrival
+1567016074004:add-read-attribute-to-event --attribute-name interarrivalTime --entity-name SimulationProperty --event-name PassengerArrival
+1567070657600:print-simulators
+1567070665127:set-current-simulator --simulator BusSimulation
+1567070667087:ls
+1567070672631:help
+1567070701909:history
+1567071522739:print-simulators
+1567071526887:set-current-simulator --simulator BusSimulation
+1567071530843:print-entities-of-simulator
+1567071533091:print-entities-of-simulator --simulator BusSimulation
+1567071539326:print-events-of-simulator --simulator BusSimulation
+1567071651577:add-read-attribute-to-event --attribute-name waitingPassengers --entity-name BusStop --event-name PassengerArrival
+1567071777954:add-schedules-relation --condition-function "(assert true)" --delay-function "(declare-fun interarrivalTime () Real)(declare-fun delay () Real)(assert (= delay interarrivalTime))" --end-event-name "PassengerArrival" --start-event-name "PassengerArrival"
+1567072438241:add-write-attribute-to-event --attribute-name waitingPassengers --entity-name BusStop --event-name PassengerArrival --write-function "(declare-fun waitingPassengers () Int) (declare-fun value () Int)(assert (= value (+ 1 waitingPassengers)))"
+1567072613281:print-events-of-simulator --simulator BusSimulation
+1567072619656:set-current-simulator --simulator BusSimulation
+1567072622760:add-write-attribute-to-event --attribute-name waitingPassengers --entity-name BusStop --event-name PassengerArrival --write-function "(declare-fun waitingPassengers () Int) (declare-fun value () Int)(assert (= value (+ 1 waitingPassengers)))"
+1567072636847:add-write-attribute-to-event --attribute-name waitingPassengers --entity-name BusStop --event-name PassengerArrival --write-function "(declare-fun waitingPassengers () Int) (declare-fun value () Int)(assert (= value (+ 1 waitingPassengers)))" --condition "(assert true)"
+1567072723007:set-current-simulator --simulator BusSimulation
+1567072725470:add-write-attribute-to-event --attribute-name waitingPassengers --entity-name BusStop --event-name PassengerArrival --write-function "(declare-fun waitingPassengers () Int) (declare-fun value () Int)(assert (= value (+ 1 waitingPassengers)))" --condition "(assert true)"
+1567072826237:add-event --name Arrive
+1567072844915:add-event --name LoadFinished
+1567072862439:add-event --name PassengerArrival
+1567072871898:add-event --name Travel
+1567072958100:add-event --name UnloadingFinished
+1567072968349:add-event --name UnloadPassengers
+1567073187423:clean-all-database
+1567073196005:script --file bussiminsert.descomp
+1567073210372:stacktrace
+1567073232171:clean-all-database
+1567073234179:script --file bussiminsert.descomp
+1567073244099:get-current-simulator
+1567073530428:add-schedules-relation --condition-function "(assert true)" --delay-function "(declare-fun delay () Real) (assert (= delay 0.0))" --end-event-name UnloadPassengers --start-event-name Arrive
+1567073590685:add-attributes-to-entity --attribute-name occupiedSeats --entity-name Bus --type INT
+1567073630131:add-read-attribute-to-event --attribute-name occupiedSeats --entity-name Bus --event-name UnloadPassengers
+1567073693422:add-attributes-to-entity --attribute-name "UNLOADING_TIME_PER_PASSENGER" --entity-name "SimulationProperty" --type DOUBLE
+1567073732254:add-read-attribute-to-event --attribute-name UNLOADING_TIME_PER_PASSENGER --entity-name SimulationProperty --event-name UnloadPassengers
+1567073914681:add-schedules-relation --condition-function "(assert true)" --end-event-name "UnloadingFinished" --start-event-name "UnloadPassengers" --delay-function "(declare-fun occupiedSeats () Real) (declare-fun UNLOADING_TIME_PER_PASSENGER () Real)	(declare-fun delay () Real) (assert (= delay (* UNLOADING_TIME_PER_PASSENGER occupiedSeats)))"
+1567074013484:add-schedules-relation --condition-function "(assert true)" --delay-function "(declare-fun delay () Real) (assert (= delay 0.0))" --end-event-name LoadPassengers --start-event-name UnloadingFinished
+1567074033759:add-event --name LoadPassengers
+1567074035435:add-schedules-relation --condition-function "(assert true)" --delay-function "(declare-fun delay () Real) (assert (= delay 0.0))" --end-event-name LoadPassengers --start-event-name UnloadingFinished
+1567074116111:add-attributes-to-entity --attribute-name "LOADING_TIME_PER_PASSENGER" --entity-name "SimulationProperty" --type DOUBLE
+1567074267979:add-read-attribute-to-event --attribute-name UNLOADING_TIME_PER_PASSENGER --entity-name SimulationProperty --event-name LoadPassengers
+1567074344066:remove-read-attribute-from-event --attribute-name "UNLOADING_TIME_PER_PASSENGER" --entity-name "SimulationProperty" --event-name LoadPassengers
+1567074432634:add-read-attribute-to-event --attribute-name LOADING_TIME_PER_PASSENGER --entity-name SimulationProperty --event-name LoadPassengers
+1567074577575:clean-all-database
+1567074590414:script --file bussiminsert.descomp
+1567074729553:add-attributes-to-entity --attribute-name totalSeats --entity-name Bus --type INT
+1567074809770:add-read-attribute-to-event --attribute-name totalSeats --entity-name Bus --event-name LoadPassengers
+1567074846095:add-read-attribute-to-event --attribute-name waitingPassengers --entity-name Bus --event-name LoadPassengers
+1567074856359:add-read-attribute-to-event --attribute-name waitingPassengers --entity-name BusStop --event-name LoadPassengers
+1567076063922:add-schedules-relation --condition-function "(assert true)" --delay-function "		(declare-fun servedPassengers () Int)(declare-fun delay () Real)(declare-fun LOADING_TIME_PER_PASSENGER () Real)(declare-fun totalSeats () Int)(declare-fun waitingPassengers () Int)(assert (= servedPassengers (ite (<= waitingPassengers totalSeats) waitingPassengers totalSeats))) (assert (= delay (* LOADING_TIME_PER_PASSENGER (to_real servedPassengers))))" --end-event-name LoadFinished --start-event-name LoadPassengers
+1567076882808:clean-all-database
+1567076892600:script --file bussiminsert.descomp
+1567076910199:print-events-of-simulator --simulator BusSimulation
+1567076957218:clean-all-database
+1567076959905:script --file bussiminsert.descomp
+1567076971756:print-events-of-simulator --simulator BusSimulation
+1567077046997:clean-all-database
+1567077049804:script --file bussiminsert.descomp
+1567077061371:print-events-of-simulator --simulator BusSimulation
+1567077114618:clean-all-database
+1567077117628:script --file bussiminsert.descomp
+1567077128420:print-events-of-simulator --simulator BusSimulation

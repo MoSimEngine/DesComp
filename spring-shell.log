@@ -1,2 +1,39 @@
 1567098350994:print-entities-of-simulator --simulator BusSimulation
 1567098359568:print-events-of-simulator --simulator BusSimulation
+1567165178286:history
+1567165193544:print-simulators
+1567178970741:create-simulator --description "EventSim" --name "EventSim"
+1567178979165:set-current-simulator --simulator EventSim
+1567178996628:add-entity --name OpenWorkloadGenerator
+1567179023402:add-attributes-to-entity --attribute-name interarrivalTime --entity-name OpenWorkloadGenerator --type DOUBLE
+1567179083747:add-entity --name ClosedWorkloadGenerator
+1567179121205:add-attributes-to-entity --attribute-name thinkTime --entity-name population
+1567179127121:add-attributes-to-entity --attribute-name thinkTime --entity-name population --type INT
+1567179140256:add-attributes-to-entity --attribute-name thinkTime --entity-name ClosedWorkloadGenerator --type INT
+1567179155028:add-attributes-to-entity --attribute-name population --entity-name ClosedWorkloadGenerator --type INT
+1567179234804:clean-all-database
+1567179244615:script --file eventsiminsert.descomp
+1567179689788:add-entity --name DelaySimulationStrategy
+1567179695280:set-current-simulator
+1567179700740:set-current-simulator  --simulator EventSim
+1567179705215:add-entity --name DelaySimulationStrategy
+1567179743726:add-attributes-to-entity --attribute-name delayTime --entity-name DelaySimulationStrategy --type DOUBLE
+1567179859036:add-entity LoopSimulationStrategy
+1567179890022:add-attributes-to-entity --attribute-name loopCount --entity-name LoopSimulationStrategy --type INT
+1567179938100:add-entity --name EntryLevelSystemCallSimulationStrategy
+1567179978493:add-entity --name BranchSimulationStrategy
+1567180345590:add-entity --name SimHDDActiveResource
+1567180351819:set-current-simulator --simulator EventSim
+1567180355403:add-entity --name SimHDDActiveResource
+1567180396213:add-attributes-to-entity --attribute-name writeProcessingRate --entity-name SimHDDActiveResource --type DOUBLE
+1567180404304:add-attributes-to-entity --attribute-name readProcessingRate --entity-name SimHDDActiveResource --type DOUBLE
+1567180501096:add-entity --name SimLinkingResource
+1567180530874:add-attributes-to-entity --attribute-name latency --entity-name SimLinkingResource --type DOUBLE
+1567180544193:add-attributes-to-entity --attribute-name throughput --entity-name SimLinkingResource --type DOUBLE
+1567184063630:add-entity --name SimProcessorSharingResource
+1567184094904:add-attributes-to-entity --attribute-name "countOfRunningProcesses"
+1567184105966:add-attributes-to-entity --attribute-name "countOfRunningProcesses" --entity-name SimProcessorSharingResource --type INT
+1567184152369:add-attributes-to-entity --attribute-name capacity --entity-name SimProcessorSharingResource --type INT
+1567184190227:add-entity --name Process
+1567184222569:add-attributes-to-entity --attribute-name demand --entity-name Process --type DOUBLE
+1567184302125:add-entity --name SimFCFSResource

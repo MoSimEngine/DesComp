@@ -1,0 +1,7 @@
+create-simulator --description "EventSim" --name "EventSim"
+set-current-simulator --simulator EventSim
+add-entity --name OpenWorkloadGenerator
+add-attributes-to-entity --attribute-name interarrivalTime --entity-name OpenWorkloadGenerator --type DOUBLE
+add-entity --name ClosedWorkloadGenerator
+add-attributes-to-entity --attribute-name thinkTime --entity-name ClosedWorkloadGenerator --type DOUBLE
+add-attributes-to-entity --attribute-name population --entity-name ClosedWorkloadGenerator --type INT

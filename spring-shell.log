@@ -192,3 +192,14 @@
 1567251462505:exit
 1567256930903:history
 1567256935510:compare-simulators-behavior --simulator1 EventSim --simulator2 EventSim2
+1567262476448:tasks
+1567262480585:task
+1567262485181:tasks
+1567262499441:help
+1567262716713:compare-simulators-behavior --simulator1 EventSim --simulator2 EventSim2
+1567263227295:stacktrace
+1567263249294:compare-simulators-behavior --simulator1 EventSim --simulator2 EventSim2
+1567263342171:stacktrace
+1567263427291:compare-simulators-behavior --simulator1 EventSim --simulator2 EventSim2
+1567263487788:stacktrace
+1567263552054:compare-simulators-behavior --simulator1 EventSim --simulator2 EventSim2

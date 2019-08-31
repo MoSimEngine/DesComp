@@ -12,6 +12,7 @@ import org.springframework.shell.standard.ShellMethod;
 
 import com.microsoft.z3.Model;
 
+import edu.kit.ipd.sdq.modsim.descomp.data.Attribute;
 import edu.kit.ipd.sdq.modsim.descomp.data.Entity;
 import edu.kit.ipd.sdq.modsim.descomp.data.Event;
 import edu.kit.ipd.sdq.modsim.descomp.data.Schedules;
@@ -182,13 +183,25 @@ public class CompareCommands {
 
 		for (Schedules schedules : event1.getEvents()) {
 			for (Schedules schedules2 : event2.getEvents()) {
-				Model checkEquality = compareEventsService.checkEquality(schedules.getCondition(),
-						schedules2.getCondition(),null,null);
 
-				if (null == checkEquality) {
-					System.out.println("NOT SAT");
+				List<String> parametersOfEvent1 = new ArrayList<String>();
+				List<String> parametersOfEvent2 = new ArrayList<String>();
+
+				for (Attribute attribute : event1.getReadAttribute()) {
+					parametersOfEvent1.add(attribute.getName());
+				}
+
+				for (Attribute attribute : event1.getReadAttribute()) {
+					parametersOfEvent2.add(attribute.getName());
+				}
+
+				String checkEquality = compareEventsService.checkEquality(schedules.getDelay(), schedules2.getDelay(),
+						parametersOfEvent1, parametersOfEvent2);
+
+				if (checkEquality.contains("EQUAL")) {
+					System.out.println("Functions are equal under the assumption:" + checkEquality);
 				} else {
-					System.out.println("SAT" + checkEquality.toString());
+					System.out.println("Functions are not equal" + checkEquality.toString());
 				}
 			}
 		}

@@ -1,6 +1,6 @@
 package edu.kit.ipd.sdq.modsim.descomp.services;
 
-import java.util.Arrays;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -9,67 +9,63 @@ import org.springframework.stereotype.Service;
 
 import com.microsoft.z3.BoolExpr;
 import com.microsoft.z3.Context;
-import com.microsoft.z3.FuncDecl;
-import com.microsoft.z3.Model;
 import com.microsoft.z3.Solver;
 import com.microsoft.z3.Status;
+import com.microsoft.z3.Z3Exception;
 
 import edu.kit.ipd.sdq.modsim.descomp.data.Event;
-import edu.kit.ipd.sdq.modsim.descomp.data.Schedules;
 import edu.kit.ipd.sdq.modsim.descomp.data.Simulator;
 
 @Service
 public class SimulatorCompareEventsService {
 
-	public Model checkEquality(String smtLiba, String smtLibb, List<String> parameters1, List<String> parameters2) {
+	public String checkEquality(String smtLiba, String smtLibb, List<String> parameters1, List<String> parameters2) {
+		try {
 
-		HashMap<String, String> cfg = new HashMap<String, String>();
-		cfg.put("model", "true");
-		Context ctx = new Context(cfg);
-		Solver s = ctx.mkSolver();
+			HashMap<String, String> cfg = new HashMap<String, String>();
+			cfg.put("model", "true");
+			Context ctx = new Context(cfg);
+			Solver s = ctx.mkSolver();
 
-		String a = "(declare-fun readProcessingRate () Real)(declare-fun abstractDemand () Real)(declare-fun value () Real)(assert (= value (/ abstractDemand readProcessingRate)))";
-		String b = "(declare-fun writeProcessingRate () Real)(declare-fun abstractDemand () Real)(declare-fun value () Real)(assert (= value (/ abstractDemand writeProcessingRate)))";
-		FuncDecl[] funcDecls = null;
+			smtLibb = smtLibb.replace("delay", "delay1");
 
-		BoolExpr[] conditionsA = ctx.parseSMTLIB2String(smtLiba, null, null, null, funcDecls);
-		BoolExpr[] conditionsB = ctx.parseSMTLIB2String(smtLibb, null, null, null, null);
-		// Add Context to Solver
-		s.add(ctx.mkEq(ctx.mkIntConst("demand"), ctx.mkInt(3)));
-		s.add(ctx.mkEq(conditionsA[0], conditionsB[0]));
-		// for (String string : parameters1) {
-		// for (String string2 : parameters2) {
-		// s.add(ctx.mkEq(ctx.mkSymbol(string), ctx.mkSymbol(string2)));
-		// }
-		// }
+			BoolExpr[] conditionsA = ctx.parseSMTLIB2String(smtLiba, null, null, null, null);
+			BoolExpr[] conditionsB = ctx.parseSMTLIB2String(smtLibb, null, null, null, null);
+			s.add(conditionsA);
+			s.add(conditionsB);
+			s.add(ctx.mkNot(ctx.mkEq(ctx.mkRealConst("delay"), ctx.mkRealConst("delay1"))));
 
-		if (Status.SATISFIABLE == s.check()) {
-			Model model = s.getModel();
-			System.out.println(model);
+			List<List<String>> lists = new ArrayList<List<String>>(2);
+			lists.add(parameters1);
+			lists.add(parameters2);
 
-			FuncDecl[] funcDecls1 = model.getDecls();
+			List<String> result = new ArrayList<String>();
+			generatePermutations(lists, result, 0, "");
 
-			System.out.println(s);
-			Status check = s.check();
-			s.getModel();
-			List<FuncDecl> asList = Arrays.asList(funcDecls);
+			for (String permParameterCombination : result) {
+				System.out.println("Checking:" + permParameterCombination);
+				s.push();
 
-			for (String string : parameters1) {
-				for (String string2 : parameters2) {
+				String[] split = permParameterCombination.split("=");
 
-				}
-			}
+				BoolExpr mkEq = ctx.mkEq(ctx.mkRealConst(split[1]), ctx.mkRealConst(split[2]));
 
-			for (FuncDecl funcDecl : funcDecls) {
+				s.add(mkEq);
 
-				if (parameters1.contains(funcDecl.getName())) {
+				if (Status.SATISFIABLE == s.check()) {
+
+				} else {
+					System.out.println("Functions match with the assumption" + mkEq);
 				}
 
-				System.out.println();
-			}
+				s.pop();
 
+			}
+		} catch (Z3Exception e) {
+			System.out.println(e.getMessage());
 		}
-		return null;
+		return "EQUAL";
+
 	}
 
 	public Map<String, Boolean> compareEvents(Event a, Event b) {
@@ -80,39 +76,44 @@ public class SimulatorCompareEventsService {
 
 		compareInformation.put("CountScheduledEvents", size);
 
-		for (Schedules scheduledEventByA : a.getEvents()) {
-			for (Schedules scheduledEventByB : b.getEvents()) {
+		// for (Schedules scheduledEventByA : a.getEvents()) {
+		// for (Schedules scheduledEventByB : b.getEvents()) {
+		//
+		// String conditonA = scheduledEventByA.getCondition();
+		// String conditonB = scheduledEventByA.getCondition();
+		//
+		//// Model checkCondition = checkEquality(conditonA, conditonB, null, null);
+		//
+		// // Condition cannot be eq
+		// if (null == checkCondition) {
+		// compareInformation.put("DelayFunctionCompareScheduledEvent" +
+		// scheduledEventByA + scheduledEventByB,
+		// false);
+		// } else {
+		// compareInformation.put("DelayFunctionCompareScheduledEvent" +
+		// scheduledEventByA + scheduledEventByB,
+		// true);
+		// }
+		//
+		// String delayA = scheduledEventByA.getDelay();
+		// String delayB = scheduledEventByA.getDelay();
+		//
+		// Model checkDelay = checkEquality(delayA, delayB, null, null);
+		// // Delay Funtion cannot be equal
+		// if (null == checkDelay) {
+		// compareInformation.put("DelayFunctionCompareScheduledEvent" +
+		// scheduledEventByA + scheduledEventByB,
+		// false);
+		// } else {
+		// compareInformation.put("DelayFunctionCompareScheduledEvent" +
+		// scheduledEventByA + scheduledEventByB,
+		// true);
+		// }
+		//
+		// }
+		// }
+		return null;
 
-				String conditonA = scheduledEventByA.getCondition();
-				String conditonB = scheduledEventByA.getCondition();
-
-				Model checkCondition = checkEquality(conditonA, conditonB, null, null);
-
-				// Condition cannot be eq
-				if (null == checkCondition) {
-					compareInformation.put("DelayFunctionCompareScheduledEvent" + scheduledEventByA + scheduledEventByB,
-							false);
-				} else {
-					compareInformation.put("DelayFunctionCompareScheduledEvent" + scheduledEventByA + scheduledEventByB,
-							true);
-				}
-
-				String delayA = scheduledEventByA.getDelay();
-				String delayB = scheduledEventByA.getDelay();
-
-				Model checkDelay = checkEquality(delayA, delayB, null, null);
-				// Delay Funtion cannot be equal
-				if (null == checkDelay) {
-					compareInformation.put("DelayFunctionCompareScheduledEvent" + scheduledEventByA + scheduledEventByB,
-							false);
-				} else {
-					compareInformation.put("DelayFunctionCompareScheduledEvent" + scheduledEventByA + scheduledEventByB,
-							true);
-				}
-
-			}
-		}
-		return compareInformation;
 	}
 
 	public Map<Event, Map<String, Boolean>> findExactMatches(Event compareEvent, List<Simulator> simulators) {
@@ -131,4 +132,16 @@ public class SimulatorCompareEventsService {
 		return exactMatchtes;
 
 	}
+
+	private static void generatePermutations(List<List<String>> lists, List<String> result, int depth, String current) {
+		if (depth == lists.size()) {
+			result.add(current);
+			return;
+		}
+
+		for (int i = 0; i < lists.get(depth).size(); i++) {
+			generatePermutations(lists, result, depth + 1, current + "=" + lists.get(depth).get(i));
+		}
+	}
+
 }

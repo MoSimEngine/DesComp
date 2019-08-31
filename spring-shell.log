@@ -182,3 +182,13 @@
 1567247660902:find-similar-events --event Acquire --simulator "EventSim"
 1567247677182:find-similar-events --event CalculateLinkingResourceDemand --simulator "EventSim"
 1567247708239:exit
+1567248729865:clean-all-database
+1567248740793:script --file eventsiminsert.descomp
+1567248975313:script --file eventsiminsert2.descomp
+1567249121178:clean-all-database
+1567249124750:script --file eventsiminsert.descomp
+1567249689340:script --file eventsiminsert2.descomp
+1567249999829:compare-simulators-behavior --simulator1 EventSim --simulator2 EventSim2
+1567251462505:exit
+1567256930903:history
+1567256935510:compare-simulators-behavior --simulator1 EventSim --simulator2 EventSim2

@@ -10,8 +10,11 @@ import org.springframework.shell.standard.ShellCommandGroup;
 import org.springframework.shell.standard.ShellComponent;
 import org.springframework.shell.standard.ShellMethod;
 
+import com.microsoft.z3.Model;
+
 import edu.kit.ipd.sdq.modsim.descomp.data.Entity;
 import edu.kit.ipd.sdq.modsim.descomp.data.Event;
+import edu.kit.ipd.sdq.modsim.descomp.data.Schedules;
 import edu.kit.ipd.sdq.modsim.descomp.data.Simulator;
 import edu.kit.ipd.sdq.modsim.descomp.services.DomainCompare;
 import edu.kit.ipd.sdq.modsim.descomp.services.SimulatorCompareEventsService;
@@ -144,6 +147,53 @@ public class CompareCommands {
 
 		return bf.toString();
 
+	}
+
+	@ShellMethod("Find Similar Events")
+	public String compareSimulatorsBehavior(String simulator1, String simulator2) {
+		Simulator simu1 = repository.findById(repository.findByName(simulator1).getId(), 3).get();
+		Simulator simu2 = repository.findById(repository.findByName(simulator2).getId(), 3).get();
+
+		// Compare Events
+		for (Event event1 : simu1.getEvents()) {
+			for (Event event2 : simu2.getEvents()) {
+				compareEvents(event1, event2);
+			}
+		}
+
+		return "";
+
+	}
+
+	private Map<String, String> compareEvents(Event event1, Event event2) {
+		Map<String, String> result = new HashMap<String, String>();
+
+		// Compare simple Informations of the Event
+		result.put("countOfEventsScheduled",
+				Boolean.toString(((event1.getEvents().size() == event2.getEvents().size()))));
+
+		result.put("countOfReadAttributes",
+				Boolean.toString(((event1.getReadAttribute().size() == event2.getReadAttribute().size()))));
+
+		result.put("countOfWriteAttributes",
+				Boolean.toString(((event1.getWriteAttribute().size() == event2.getWriteAttribute().size()))));
+
+		// Compare Condition for delay function
+
+		for (Schedules schedules : event1.getEvents()) {
+			for (Schedules schedules2 : event2.getEvents()) {
+				Model checkEquality = compareEventsService.checkEquality(schedules.getCondition(),
+						schedules2.getCondition(),null,null);
+
+				if (null == checkEquality) {
+					System.out.println("NOT SAT");
+				} else {
+					System.out.println("SAT" + checkEquality.toString());
+				}
+			}
+		}
+
+		return result;
 	}
 
 	@ShellMethod("Find Similar Events")

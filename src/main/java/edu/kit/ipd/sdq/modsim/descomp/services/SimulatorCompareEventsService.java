@@ -1,5 +1,6 @@
 package edu.kit.ipd.sdq.modsim.descomp.services;
 
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -8,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import com.microsoft.z3.BoolExpr;
 import com.microsoft.z3.Context;
+import com.microsoft.z3.FuncDecl;
 import com.microsoft.z3.Model;
 import com.microsoft.z3.Solver;
 import com.microsoft.z3.Status;
@@ -19,21 +21,53 @@ import edu.kit.ipd.sdq.modsim.descomp.data.Simulator;
 @Service
 public class SimulatorCompareEventsService {
 
-	public Model checkEquality(String smtLiba, String smtLibb) {
+	public Model checkEquality(String smtLiba, String smtLibb, List<String> parameters1, List<String> parameters2) {
 
 		HashMap<String, String> cfg = new HashMap<String, String>();
 		cfg.put("model", "true");
 		Context ctx = new Context(cfg);
 		Solver s = ctx.mkSolver();
 
-		BoolExpr conditionA = ctx.parseSMTLIB2String(smtLiba, null, null, null, null)[0];
-		BoolExpr conditionB = ctx.parseSMTLIB2String(smtLibb, null, null, null, null)[0];
+		String a = "(declare-fun readProcessingRate () Real)(declare-fun abstractDemand () Real)(declare-fun value () Real)(assert (= value (/ abstractDemand readProcessingRate)))";
+		String b = "(declare-fun writeProcessingRate () Real)(declare-fun abstractDemand () Real)(declare-fun value () Real)(assert (= value (/ abstractDemand writeProcessingRate)))";
+		FuncDecl[] funcDecls = null;
+
+		BoolExpr[] conditionsA = ctx.parseSMTLIB2String(smtLiba, null, null, null, funcDecls);
+		BoolExpr[] conditionsB = ctx.parseSMTLIB2String(smtLibb, null, null, null, null);
 		// Add Context to Solver
-		s.add(ctx.mkEq(conditionA, conditionB));
-		ctx.close();
+		s.add(ctx.mkEq(ctx.mkIntConst("demand"), ctx.mkInt(3)));
+		s.add(ctx.mkEq(conditionsA[0], conditionsB[0]));
+		// for (String string : parameters1) {
+		// for (String string2 : parameters2) {
+		// s.add(ctx.mkEq(ctx.mkSymbol(string), ctx.mkSymbol(string2)));
+		// }
+		// }
 
 		if (Status.SATISFIABLE == s.check()) {
-			return s.getModel();
+			Model model = s.getModel();
+			System.out.println(model);
+
+			FuncDecl[] funcDecls1 = model.getDecls();
+
+			System.out.println(s);
+			Status check = s.check();
+			s.getModel();
+			List<FuncDecl> asList = Arrays.asList(funcDecls);
+
+			for (String string : parameters1) {
+				for (String string2 : parameters2) {
+
+				}
+			}
+
+			for (FuncDecl funcDecl : funcDecls) {
+
+				if (parameters1.contains(funcDecl.getName())) {
+				}
+
+				System.out.println();
+			}
+
 		}
 		return null;
 	}
@@ -52,7 +86,7 @@ public class SimulatorCompareEventsService {
 				String conditonA = scheduledEventByA.getCondition();
 				String conditonB = scheduledEventByA.getCondition();
 
-				Model checkCondition = checkEquality(conditonA, conditonB);
+				Model checkCondition = checkEquality(conditonA, conditonB, null, null);
 
 				// Condition cannot be eq
 				if (null == checkCondition) {
@@ -66,7 +100,7 @@ public class SimulatorCompareEventsService {
 				String delayA = scheduledEventByA.getDelay();
 				String delayB = scheduledEventByA.getDelay();
 
-				Model checkDelay = checkEquality(delayA, delayB);
+				Model checkDelay = checkEquality(delayA, delayB, null, null);
 				// Delay Funtion cannot be equal
 				if (null == checkDelay) {
 					compareInformation.put("DelayFunctionCompareScheduledEvent" + scheduledEventByA + scheduledEventByB,

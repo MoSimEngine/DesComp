@@ -9,6 +9,8 @@ import com.microsoft.z3.EnumSort;
 import com.microsoft.z3.Expr;
 import com.microsoft.z3.IntExpr;
 import com.microsoft.z3.IntNum;
+import com.microsoft.z3.RatNum;
+import com.microsoft.z3.RealExpr;
 import com.microsoft.z3.Solver;
 import com.microsoft.z3.Symbol;
 
@@ -20,7 +22,43 @@ public class Z3Test {
 		cfg.put("model", "true");
 		Context ctx = new Context(cfg);
 		Solver s = ctx.mkSolver();
+		
+		
+		
+		Symbol name = ctx.mkSymbol("actions");
 
+		EnumSort mkEnumSort = ctx.mkEnumSort(name, ctx.mkSymbol("AcquireAction"), ctx.mkSymbol("ExternalCall"), ctx.mkSymbol("ReleaseAction"),
+				ctx.mkSymbol("InternalAction"));
+		ArrayExpr mkArrayConst = ctx.mkArrayConst("behavior", ctx.getIntSort(), mkEnumSort);
+		Expr sel = ctx.mkSelect(mkArrayConst, ctx.mkInt(0));
+		// s.add(ctx.mkEq(sel, mkEnumSort.getConsts()[0]));
+
+		s.add(ctx.mkEq(sel, mkEnumSort.getConsts()[2]));
+		
+		System.out.println(s);
+		
+		//(declare-datatypes ((actions 0)) (((AcquireAction) (ExternalCall) (ReleaseAction) (InternalAction))))	(declare-fun behavior () (Array Int actions)) (assert (= (select behavior 0) ReleaseAction))
+		
+		
+		RealExpr countOfRunningProcesses = ctx.mkRealConst("countOfRunningProcesses");
+		RealExpr capacity = ctx.mkRealConst("capacity");
+		RealExpr speed = ctx.mkRealConst("speed");
+		RealExpr demand = ctx.mkRealConst("demand");
+		RealExpr delay = ctx.mkRealConst("delay");
+		ctx.mkReal(1);
+		ctx.mkEq(speed, ctx.mkReal(1));
+		BoolExpr mkLe2 = ctx.mkLe(ctx.mkDiv(countOfRunningProcesses, capacity), ctx.mkReal(1));
+		Expr mkITE = ctx.mkITE(mkLe2,  ctx.mkReal(1),  ctx.mkDiv(countOfRunningProcesses, capacity));
+		s.add(ctx.mkEq(speed, mkITE));
+		
+		
+		BoolExpr mkEq = ctx.mkEq(delay, ctx.mkMul(speed, demand));
+		s.add(mkEq);
+		System.out.println(s);
+
+		
+		
+		
 		// BusStop position = bus.getPosition();
 		// int waitingPassengers = position.getWaitingPassengers();
 		//
@@ -41,44 +79,104 @@ public class Z3Test {
 		//// LoadFinishedEvent e = new LoadFinishedEvent(loadingTime,
 		// remainingPassengers, this.getModel(), "LoadFinished");
 		// e.schedule(bus, loadingTime);
+		// BoolExpr[] conditionA = ctx.parseSMTLIB2String(
+		// "(declare-datatypes (T1 T2) ((Process (mk-process (id T1) (demand
+		// T2)))))(declare-const p1 (Process Int Real))(declare-const p2 (Process Int
+		// Real))(assert (= p1 p2))",
+		// null, null, null, null);
+		// // ctx.mkDatatypeSort("Process", ctx.mkConstructor);
+		// s.add(conditionA);
 
 		// (declare-fun servedPassengers () Int) (declare-fun value () Int) (declare-fun
 		// totalSeats () Int) (declare-fun waitingPassengers () Int) (assert (=
 		// servedPassengers (ite (<= waitingPassengers totalSeats) waitingPassengers
 		// totalSeats)))
-		IntExpr value = ctx.mkIntConst("value");
-		IntExpr population = ctx.mkIntConst("population");
-		IntExpr totalSeats = ctx.mkIntConst("totalSeats");
+		// IntExpr value = ctx.mkIntConst("value");
+		IntExpr population = ctx.mkIntConst("type");
 		IntNum mkInt = ctx.mkInt(1);
 
-		s.add(ctx.mkEq(value, ctx.mkSub(population, mkInt)));
+		BoolExpr mkEq3 = ctx.mkEq(population, mkInt);
+		// s.add(mkEq3);
+
 		System.out.println(s);
 
-		Symbol name = ctx.mkSymbol("actions");
+		IntExpr totalSeats = ctx.mkIntConst("capacity");
+		BoolExpr mkLe = ctx.mkLe(population, totalSeats);
+		// s.add(mkLe);
+		// System.out.println(s);
 
-		EnumSort mkEnumSort = ctx.mkEnumSort(name, ctx.mkSymbol("DelayAction"), ctx.mkSymbol("ExternalCall"),
-				ctx.mkSymbol("END"));
-		ArrayExpr mkArrayConst = ctx.mkArrayConst("behavior", ctx.getIntSort(), mkEnumSort);
-		Expr sel = ctx.mkSelect(mkArrayConst, ctx.mkInt(0));
-		// s.add(ctx.mkEq(sel, mkEnumSort.getConsts()[0]));
+		// (declare-fun throughput () Real)(declare-fun abstractDemand ()
+		// Real)(declare-fun latency () Real)(declare-fun value () Real)(assert (= value
+		// (+ latency (/ abstractDemand throughput))))
 
-		s.add(ctx.mkEq(sel, mkEnumSort.getConsts()[2]));
+		// (declare-fun readProcessingRate () Real)(declare-fun abstractDemand ()
+		// Real)(declare-fun value () Real)(assert (= value (/ abstractDemand
+		// readProcessingRate)))
+
+		// (declare-fun processingRate () Real)(declare-fun abstractDemand ()
+		// Real)(declare-fun value () Real)(assert (= value (/ abstractDemand
+		// processingRate)))
+		BoolExpr mkBoolConst = ctx.mkBoolConst("value");
+		BoolExpr mkBool = ctx.mkBool(true);
+		BoolExpr mkBoolConst2 = ctx.mkBoolConst("simulateThroughput");
+
+		BoolExpr mkEq4 = ctx.mkEq(mkBoolConst, ctx.mkEq(mkBoolConst2, mkBool));
+		// s.add(mkEq4);
+		System.out.println(s);
+
+		RealExpr value1 = ctx.mkRealConst("value");
+		RealExpr bytes = ctx.mkRealConst("sumOfBytes");
+		
+		RatNum mkReal = ctx.mkReal(0);
+		BoolExpr mkEq5 = ctx.mkEq(value1, mkReal);
+		s.add(mkEq5);
+		System.out.println(s);
+
+		// (declare-fun simulateThroughput () Bool) (declare-fun value () Bool) (assert
+		// (= value (= simulateThroughput true)))
+
+		RealExpr abstractDemand = ctx.mkRealConst("abstractDemand");
+		RealExpr latency = ctx.mkRealConst("latency");
+		RealExpr throughput = ctx.mkRealConst("processingRate");
+		RealExpr value = ctx.mkRealConst("value");
+
+		BoolExpr mkE1q = ctx.mkEq(value, ctx.mkDiv(abstractDemand, throughput));
+		s.add(mkEq);
+		System.out.println(s);
+
+		ArrayExpr a1 = ctx.mkArrayConst("waitingProcesses", ctx.mkIntSort(), ctx.mkIntSort());
+		IntNum one = ctx.mkInt(1);
+
+		IntExpr waitingProcessCount = ctx.mkIntConst("waitingProcessCount");
+		IntExpr processId = ctx.mkIntConst("processId");
+
+		ArrayExpr mkStore = ctx.mkStore(a1, ctx.mkAdd(waitingProcessCount, one), processId);
+
+		// IntExpr mkInt = ctx.mkIntConst("value");
+
+		ArrayExpr value11 = ctx.mkArrayConst("value", ctx.mkIntSort(), ctx.mkIntSort());
+
+		s.add(ctx.mkEq(value, mkStore));
+		System.out.println(s);
+
+//		Symbol name = ctx.mkSymbol("actions");
+//
+//		EnumSort mkEnumSort = ctx.mkEnumSort(name, ctx.mkSymbol("AcquireAction"), ctx.mkSymbol("ExternalCall"), ctx.mkSymbol("ReleaseAction"),
+//				ctx.mkSymbol("InternalAction"));
+//		ArrayExpr mkArrayConst = ctx.mkArrayConst("behavior", ctx.getIntSort(), mkEnumSort);
+//		Expr sel = ctx.mkSelect(mkArrayConst, ctx.mkInt(0));
+//		// s.add(ctx.mkEq(sel, mkEnumSort.getConsts()[0]));
+//
+//		s.add(ctx.mkEq(sel, mkEnumSort.getConsts()[2]));
 
 		// (declare-fun delaySpecification () Real)(declare-fun delay () Real)(assert (=
 		// delay delaySpecification))
 		System.out.println(s);
-
-		System.out.println((mkEnumSort.getConsts()[0]));
-		System.out.println((mkEnumSort.getConsts()[1]));
-		System.out.println((mkEnumSort.getConsts()[2]));
-
-		System.out.println(mkEnumSort);
-
 		System.out.println("");
 
-		ctx.mkGe(value, mkInt);
-
-		s.add(ctx.mkGe(value, mkInt));
+		// ctx.mkGe(value, mkInt);
+		//
+		// s.add(ctx.mkGe(value, mkInt));
 
 		System.out.println(s);
 

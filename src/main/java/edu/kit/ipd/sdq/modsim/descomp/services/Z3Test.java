@@ -2,11 +2,15 @@ package edu.kit.ipd.sdq.modsim.descomp.services;
 
 import java.util.HashMap;
 
+import com.microsoft.z3.ArrayExpr;
 import com.microsoft.z3.BoolExpr;
 import com.microsoft.z3.Context;
+import com.microsoft.z3.EnumSort;
 import com.microsoft.z3.Expr;
 import com.microsoft.z3.IntExpr;
+import com.microsoft.z3.IntNum;
 import com.microsoft.z3.Solver;
+import com.microsoft.z3.Symbol;
 
 public class Z3Test {
 
@@ -42,9 +46,52 @@ public class Z3Test {
 		// totalSeats () Int) (declare-fun waitingPassengers () Int) (assert (=
 		// servedPassengers (ite (<= waitingPassengers totalSeats) waitingPassengers
 		// totalSeats)))
-
 		IntExpr value = ctx.mkIntConst("value");
+		IntExpr population = ctx.mkIntConst("population");
 		IntExpr totalSeats = ctx.mkIntConst("totalSeats");
+		IntNum mkInt = ctx.mkInt(1);
+
+		s.add(ctx.mkEq(value, ctx.mkSub(population, mkInt)));
+		System.out.println(s);
+
+		Symbol name = ctx.mkSymbol("actions");
+
+		EnumSort mkEnumSort = ctx.mkEnumSort(name, ctx.mkSymbol("DelayAction"), ctx.mkSymbol("ExternalCall"),
+				ctx.mkSymbol("END"));
+		ArrayExpr mkArrayConst = ctx.mkArrayConst("behavior", ctx.getIntSort(), mkEnumSort);
+		Expr sel = ctx.mkSelect(mkArrayConst, ctx.mkInt(0));
+		// s.add(ctx.mkEq(sel, mkEnumSort.getConsts()[0]));
+
+		s.add(ctx.mkEq(sel, mkEnumSort.getConsts()[2]));
+
+		// (declare-fun delaySpecification () Real)(declare-fun delay () Real)(assert (=
+		// delay delaySpecification))
+		System.out.println(s);
+
+		System.out.println((mkEnumSort.getConsts()[0]));
+		System.out.println((mkEnumSort.getConsts()[1]));
+		System.out.println((mkEnumSort.getConsts()[2]));
+
+		System.out.println(mkEnumSort);
+
+		System.out.println("");
+
+		ctx.mkGe(value, mkInt);
+
+		s.add(ctx.mkGe(value, mkInt));
+
+		System.out.println(s);
+
+		// add-schedules-relation --condition-function "(assert true)" --delay-function
+		// "(declare-fun thinkTime () Real)(declare-fun delay () Real)(assert (= delay
+		// thinkTime))" --end-event-name "PassengerArrival" --start-event-name
+		// "PassengerArrival"
+		// Expr ite = ctx.mkITE(ctx.mkLe(waitingPassengers, totalSeats),
+		// waitingPassengers, totalSeats);
+		//
+		//
+		// IntExpr value = ctx.mkIntConst("value");
+		// IntExpr totalSeats = ctx.mkIntConst("totalSeats");
 		IntExpr waitingPassengers = ctx.mkIntConst("waitingPassengers");
 
 		IntExpr servedPassengers = ctx.mkIntConst("servedPassengers");
@@ -55,7 +102,6 @@ public class Z3Test {
 
 		BoolExpr mkEq2 = ctx.mkEq(value, ctx.mkSub(waitingPassengers, servedPassengers));
 
-		
 		s.add(mkEq2);
 		System.out.println(s);
 		// s.add(ctx.mkEq(LOADING_TIME_PER_PASSENGER, ctx.mkReal(3)));

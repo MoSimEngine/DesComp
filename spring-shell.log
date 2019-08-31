@@ -37,3 +37,45 @@
 1567184190227:add-entity --name Process
 1567184222569:add-attributes-to-entity --attribute-name demand --entity-name Process --type DOUBLE
 1567184302125:add-entity --name SimFCFSResource
+1567222263192:print-simulators
+1567222400516:print-entities-of-simulator
+1567222403927:print-entities-of-simulator --simulator EventSim
+1567222476591:add-event --name UserArrivalOpenWorkload
+1567222482915:set-current-simulator --simulator EventSim
+1567222484511:add-event --name UserArrivalOpenWorkload
+1567222529933:add-read-attribute-to-event --attribute-name interarrivalTime --entity-name OpenWorkloadGenerator --event-name UserArrivalOpenWorkload
+1567222650046:add-schedules-relation --condition-function "(assert true)" --delay-function "(declare-fun interarrivalTime () Real)(declare-fun delay () Real)(assert (= delay interarrivalTime))" --end-event-name "UserArrivalOpenWorkload" --start-event-name "UserArrivalOpenWorkload"
+1567222750763:add-event --name UserArrivalClosedWorkload
+1567222786619:add-read-attribute-to-event --attribute-name thinkTime --entity-name ClosedWorkloadGenerator --event-name UserArrivalClosedWorkload
+1567222812593:add-read-attribute-to-event --attribute-name population --entity-name ClosedWorkloadGenerator --event-name UserArrivalClosedWorkload
+1567223179440:add-event --name ProcessUsageScenario
+1567223198000:print-simulators
+1567223200332:add-event --name ProcessUsageScenario
+1567223244048:add-schedules-relation --condition-function "(declare-fun population () Int) (assert (>= population 1))" --delay-function "(declare-fun thinkTime () Real)(declare-fun delay () Real)(assert (= delay thinkTime))" --start-event-name UserArrivalClosedWorkload --end-event-name ProcessUsageScenario
+1567223306960:add-schedules-relation --condition-function "(assert true)" --delay-function "(declare-fun delay () Real) (assert (= delay 0.0))" --start-event-name UserArrivalOpenWorkload --end-event-name ProcessUsageScenario
+1567224290510:print-simulators
+1567224304249:print-events-of-simulator
+1567224306317:print-events-of-simulator --simulator EventSim
+1567224341881:add-entity --name UsageScenario
+1567224740409:print-simulators
+1567224809697:add-attributes-to-entity --attribute-name actions --entity-name UsageScenario --type ARRAY[ACTION]
+1567224845539:add-event --name DelayAction
+1567224969113:add-schedules-relation --condition-function "(declare-datatypes ((UsageBehavior 0)) (((DelayAction) (LoopAction) (BranchAction)))) (declare-fun behavior () (Array Int UsageBehavior)) (assert (= (select behavior 0) DelayAction))" --delay-function "(declare-fun delay () Real) (assert (= delay 0.0))" --start-event-name ProcessUsageScenario --end-event-name DelayAction
+1567225118555:add-entity --name "Delay"
+1567225135690:add-attributes-to-entity --attribute-name delay --entity-name Delay --type DOUBLE
+1567225156293:add-read-attribute-to-event --attribute-name delay --entity-name Delay --event-name DelayAction
+1567225242233:add-schedules-relation --condition-function "(assert true)" --delay-function "(declare-fun delaySpecification () Real)(declare-fun delay () Real)(assert (= delay delaySpecification))" --start-event-name DelayAction --end-event-name ProcessUsageScenario
+1567225643520:add-schedules-relation --condition-function "(declare-datatypes ((actions 0)) (((DelayAction) (ExternalCall) (END)))) (declare-fun behavior () (Array Int actions)) (assert (= (select behavior 0) END))" --delay-function "(declare-fun delay () Real) (assert (= delay 0.0))" --start-event-name ProcessUsageScenario --end-event-name UserArrivalClosedWorkload
+1567226664808:print-simulators
+1567226702136:add-read-attribute-to-event --attribute-name actions --entity-name UsageScenario --event-name ProcessUsageScenario
+1567226982677:add-event --name ProcessRDSEFF
+1567227048165:add-event --name EntryLevelSystemCall
+1567227123760:add-schedules-relation --condition-function "(declare-datatypes ((actions 0)) (((DelayAction) (EntryLevelSystemCall) (END)))) (declare-fun behavior () (Array Int actions)) (assert (= (select behavior 0) EntryLevelSystemCall))" --delay-function "(declare-fun delay () Real) (assert (= delay 0.0))" --start-event-name ProcessUsageScenario --end-event-name EntryLevelSystemCall
+1567227266014:add-schedules-relation --condition-function "(assert true)" --delay-function "(declare-fun delay () Real) (assert (= delay 0.0))" --start-event-name EntryLevelSystemCall --end-event-name ProcessRDSEFF
+1567227491091:clean-all-database
+1567227503342:script --file eventsiminsert.descomp
+1567227918355:clean-all-database
+1567227924642:script --file eventsiminsert.descomp
+1567228221154:add-write-attribute-to-event --attribute-name population --condition "(assert true)" --write-function "(declare-fun population () Int)	(declare-fun value () Int)	(assert (= value (- population 1)))" --entity-name ClosedWorkloadGenerator --event-name UsageScenarioFinished
+1567228417445:clean-all-database
+1567228423289:script --file eventsiminsert.descomp

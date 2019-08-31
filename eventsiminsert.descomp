@@ -5,3 +5,43 @@ add-attributes-to-entity --attribute-name interarrivalTime --entity-name OpenWor
 add-entity --name ClosedWorkloadGenerator
 add-attributes-to-entity --attribute-name thinkTime --entity-name ClosedWorkloadGenerator --type DOUBLE
 add-attributes-to-entity --attribute-name population --entity-name ClosedWorkloadGenerator --type INT
+add-entity --name EntryLevelSystemCallSimulationStrategy
+add-entity --name BranchSimulationStrategy
+add-entity --name SimHDDActiveResource
+add-attributes-to-entity --attribute-name writeProcessingRate --entity-name SimHDDActiveResource --type DOUBLE
+add-attributes-to-entity --attribute-name readProcessingRate --entity-name SimHDDActiveResource --type DOUBLE
+add-entity --name SimLinkingResource
+add-attributes-to-entity --attribute-name latency --entity-name SimLinkingResource --type DOUBLE
+add-attributes-to-entity --attribute-name throughput --entity-name SimLinkingResource --type DOUBLE
+add-entity --name SimProcessorSharingResource
+add-attributes-to-entity --attribute-name "countOfRunningProcesses" --entity-name SimProcessorSharingResource --type INT
+add-attributes-to-entity --attribute-name capacity --entity-name SimProcessorSharingResource --type INT
+add-entity --name Process
+add-attributes-to-entity --attribute-name demand --entity-name Process --type DOUBLE
+add-entity --name SimFCFSResource
+add-event --name UserArrivalOpenWorkload
+add-read-attribute-to-event --attribute-name interarrivalTime --entity-name OpenWorkloadGenerator --event-name UserArrivalOpenWorkload
+add-schedules-relation --condition-function "(assert true)" --delay-function "(declare-fun interarrivalTime () Real)(declare-fun delay () Real)(assert (= delay interarrivalTime))" --end-event-name "UserArrivalOpenWorkload" --start-event-name "UserArrivalOpenWorkload"
+add-event --name UserArrivalClosedWorkload
+add-read-attribute-to-event --attribute-name thinkTime --entity-name ClosedWorkloadGenerator --event-name UserArrivalClosedWorkload
+add-read-attribute-to-event --attribute-name population --entity-name ClosedWorkloadGenerator --event-name UserArrivalClosedWorkload
+add-event --name ProcessUsageScenario
+add-schedules-relation --condition-function "(declare-fun population () Int) (assert (>= population 1))" --delay-function "(declare-fun thinkTime () Real)(declare-fun delay () Real)(assert (= delay thinkTime))" --start-event-name UserArrivalClosedWorkload --end-event-name ProcessUsageScenario
+add-schedules-relation --condition-function "(assert true)" --delay-function "(declare-fun delay () Real) (assert (= delay 0.0))" --start-event-name UserArrivalOpenWorkload --end-event-name ProcessUsageScenario
+add-entity --name UsageScenario
+add-attributes-to-entity --attribute-name actions --entity-name UsageScenario --type ARRAY[ACTION]
+add-event --name DelayAction
+add-schedules-relation --condition-function "(declare-datatypes ((actions 0)) (((DelayAction) (EntryLevelSystemCall) (END)))) (declare-fun behavior () (Array Int UsageBehavior)) (assert (= (select behavior 0) DelayAction))" --delay-function "(declare-fun delay () Real) (assert (= delay 0.0))" --start-event-name ProcessUsageScenario --end-event-name DelayAction
+add-entity --name "Delay"
+add-attributes-to-entity --attribute-name delay --entity-name Delay --type DOUBLE
+add-read-attribute-to-event --attribute-name delay --entity-name Delay --event-name DelayAction
+add-schedules-relation --condition-function "(assert true)" --delay-function "(declare-fun delaySpecification () Real)(declare-fun delay () Real)(assert (= delay delaySpecification))" --start-event-name DelayAction --end-event-name ProcessUsageScenario
+add-read-attribute-to-event --attribute-name actions --entity-name UsageScenario --event-name ProcessUsageScenario
+add-event --name ProcessRDSEFF
+add-event --name EntryLevelSystemCall
+add-schedules-relation --condition-function "(declare-datatypes ((actions 0)) (((DelayAction) (EntryLevelSystemCall) (END)))) (declare-fun behavior () (Array Int actions)) (assert (= (select behavior 0) EntryLevelSystemCall))" --delay-function "(declare-fun delay () Real) (assert (= delay 0.0))" --start-event-name ProcessUsageScenario --end-event-name EntryLevelSystemCall
+add-schedules-relation --condition-function "(assert true)" --delay-function "(declare-fun delay () Real) (assert (= delay 0.0))" --start-event-name EntryLevelSystemCall --end-event-name ProcessRDSEFF
+add-event --name UsageScenarioFinished
+add-schedules-relation --condition-function "(declare-datatypes ((actions 0)) (((DelayAction) (EntryLevelSystemCall) (END)))) (declare-fun behavior () (Array Int actions)) (assert (= (select behavior 0) END))" --delay-function "(declare-fun delay () Real) (assert (= delay 0.0))" --start-event-name ProcessUsageScenario --end-event-name UsageScenarioFinished
+add-schedules-relation --condition-function "(assert true)" --delay-function "(declare-fun delay () Real) (assert (= delay 0.0))" --start-event-name UsageScenarioFinished --end-event-name UserArrivalClosedWorkload
+add-write-attribute-to-event --attribute-name population --condition "(assert true)" --write-function "(declare-fun population () Int)	(declare-fun value () Int)	(assert (= value (- population 1)))" --entity-name ClosedWorkloadGenerator --event-name UsageScenarioFinished

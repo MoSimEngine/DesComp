@@ -203,3 +203,27 @@
 1567263427291:compare-simulators-behavior --simulator1 EventSim --simulator2 EventSim2
 1567263487788:stacktrace
 1567263552054:compare-simulators-behavior --simulator1 EventSim --simulator2 EventSim2
+1567352296511:extract-structural-information --name "BusSim" --simulator examples/bussim/bussim.jar
+1567359853474:clean-all-database
+1567359855482:extract-structural-information --name "BusSim" --simulator examples/bussim/bussim.jar
+1567359874203:extract-structural-information --name "BusSimExtracted" --simulator examples/bussim/bussim.jar
+1567360466627:print-entities-of-simulator --simulator BusSimExtracted
+1567360897951:print-events-of-simulator --simulator BusSimExtracted
+1567360966604:script --file  bussiminsert.descomp
+1567361074738:print-entities-of-simulator --simulator BusSimulation
+1567363189581:print-events-of-simulator --simulator BusSimExtracted
+1567363201245:print-events-of-simulator --simulator BusSimulation
+1567363355289:print-events-of-simulator --simulator BusSimExtracted
+1567368417114:tasks
+1567368418778:help
+1567368438073:compute-event-communities
+1567368456676:clean-all-database
+1567368471475:script --file eventsiminsert.descomp
+1567368674229:compute-event-communities
+1567376721382:calc-similarity-between-simulators --simulator1 EventSim --simulator2 EventSim
+1567377241650:exit
+1567380958732:calc-similarity-between-simulators --simulator1 EventSim --simulator2 EventSim
+1567381239965:compare-simulators-behavior --simulator1 EventSim --simulator2 EventSim
+1567383401075:clean-all-database
+1567383416146:script --file eventsiminsert.descomp
+1567383673718:compare-simulators-behavior --simulator1 Workload --simulator2 EventSim

@@ -18,7 +18,7 @@ public class RunSimulator {
 	public String runSimulator(String name) {
 		// Simulator simulator = repository.findByName(name);
 
-		executor.executeSimulator(null);
+		// executor.executeSimulator(null);
 
 		return "AWESOME!!!";
 	}

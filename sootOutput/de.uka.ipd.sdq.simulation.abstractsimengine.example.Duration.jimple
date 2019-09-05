@@ -331,7 +331,7 @@ public class de.uka.ipd.sdq.simulation.abstractsimengine.example.Duration extend
         de.uka.ipd.sdq.simulation.abstractsimengine.example.Duration$TimeUnit[] $r2;
         int $i0, $i1, $i2, $i3;
         de.uka.ipd.sdq.simulation.abstractsimengine.example.Duration$TimeUnit $r3, $r4, $r5;
-        java.lang.NoSuchFieldError $r6, $r7, $r9;
+        java.lang.NoSuchFieldError $r6, $r7, $r8;
 
         $r1 = <de.uka.ipd.sdq.simulation.abstractsimengine.example.Duration: int[] $SWITCH_TABLE$de$uka$ipd$sdq$simulation$abstractsimengine$example$Duration$TimeUnit>;
 
@@ -357,7 +357,7 @@ public class de.uka.ipd.sdq.simulation.abstractsimengine.example.Duration extend
         goto label05;
 
      label04:
-        $r9 := @caughtexception;
+        $r6 := @caughtexception;
 
      label05:
         $r4 = <de.uka.ipd.sdq.simulation.abstractsimengine.example.Duration$TimeUnit: de.uka.ipd.sdq.simulation.abstractsimengine.example.Duration$TimeUnit MINUTES>;
@@ -370,7 +370,7 @@ public class de.uka.ipd.sdq.simulation.abstractsimengine.example.Duration extend
         goto label08;
 
      label07:
-        $r6 := @caughtexception;
+        $r7 := @caughtexception;
 
      label08:
         $r5 = <de.uka.ipd.sdq.simulation.abstractsimengine.example.Duration$TimeUnit: de.uka.ipd.sdq.simulation.abstractsimengine.example.Duration$TimeUnit SECONDS>;
@@ -383,7 +383,7 @@ public class de.uka.ipd.sdq.simulation.abstractsimengine.example.Duration extend
         goto label11;
 
      label10:
-        $r7 := @caughtexception;
+        $r8 := @caughtexception;
 
      label11:
         <de.uka.ipd.sdq.simulation.abstractsimengine.example.Duration: int[] $SWITCH_TABLE$de$uka$ipd$sdq$simulation$abstractsimengine$example$Duration$TimeUnit> = r0;

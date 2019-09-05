@@ -10,13 +10,12 @@ import org.springframework.shell.standard.ShellCommandGroup;
 import org.springframework.shell.standard.ShellComponent;
 import org.springframework.shell.standard.ShellMethod;
 
-import com.microsoft.z3.Model;
-
 import edu.kit.ipd.sdq.modsim.descomp.data.Attribute;
 import edu.kit.ipd.sdq.modsim.descomp.data.Entity;
 import edu.kit.ipd.sdq.modsim.descomp.data.Event;
 import edu.kit.ipd.sdq.modsim.descomp.data.Schedules;
 import edu.kit.ipd.sdq.modsim.descomp.data.Simulator;
+import edu.kit.ipd.sdq.modsim.descomp.data.WritesAttribute;
 import edu.kit.ipd.sdq.modsim.descomp.services.DomainCompare;
 import edu.kit.ipd.sdq.modsim.descomp.services.SimulatorCompareEventsService;
 import edu.kit.ipd.sdq.modsim.descomp.services.SimulatorRepository;
@@ -158,6 +157,8 @@ public class CompareCommands {
 		// Compare Events
 		for (Event event1 : simu1.getEvents()) {
 			for (Event event2 : simu2.getEvents()) {
+				// System.out.println("Check Events:" + event1.getName() + ";" +
+				// event2.getName());
 				compareEvents(event1, event2);
 			}
 		}
@@ -187,21 +188,77 @@ public class CompareCommands {
 				List<String> parametersOfEvent1 = new ArrayList<String>();
 				List<String> parametersOfEvent2 = new ArrayList<String>();
 
-				for (Attribute attribute : event1.getReadAttribute()) {
-					parametersOfEvent1.add(attribute.getName());
+				if (event1.getReadAttribute().size() == event2.getReadAttribute().size()) {
+
+					for (Attribute attribute : event1.getReadAttribute()) {
+						parametersOfEvent1.add(attribute.getName());
+					}
+
+					for (Attribute attribute : event2.getReadAttribute()) {
+						parametersOfEvent2.add(attribute.getName());
+					}
+
+					String checkEqualityDelay = compareEventsService.checkEqualityDelay(schedules.getDelay(),
+							schedules2.getDelay(), parametersOfEvent1, parametersOfEvent2);
+
+					if (checkEqualityDelay.contains("EQUAL")) {
+
+						System.out.println("DELEAY: Compared Events: " + event1.getName() + ";" + event2.getName()
+								+ " Compared Relationship: " + schedules.getEndEvent().getName() + ";"
+								+ schedules2.getEndEvent().getName() + " are equal under the assumption:"
+								+ checkEqualityDelay);
+					} else {
+						// System.out.println("Functions are not equal" + checkEquality.toString());
+					}
+
+					// Check for condition
+
+					String checkEqualityConditon = compareEventsService.checkEqualityDelayCondtion(
+							schedules.getCondition(), schedules.getCondition(), parametersOfEvent1, parametersOfEvent2);
+
+					if (checkEqualityConditon.contains("EQUAL")) {
+						System.out.println("DELAYCONDITON: Compared Events: " + event1.getName() + ";"
+								+ event2.getName() + " Compared Relationship: " + schedules.getEndEvent().getName()
+								+ ";" + schedules2.getEndEvent().getName() + " are equal under the assumption:"
+								+ checkEqualityConditon);
+					} else {
+						// System.out.println("Functions are not equal" + checkEquality.toString());
+					}
 				}
 
-				for (Attribute attribute : event1.getReadAttribute()) {
-					parametersOfEvent2.add(attribute.getName());
-				}
+			}
+		}
 
-				String checkEquality = compareEventsService.checkEquality(schedules.getDelay(), schedules2.getDelay(),
-						parametersOfEvent1, parametersOfEvent2);
+		for (
 
-				if (checkEquality.contains("EQUAL")) {
-					System.out.println("Functions are equal under the assumption:" + checkEquality);
-				} else {
-					System.out.println("Functions are not equal" + checkEquality.toString());
+		WritesAttribute writesAttribute : event1.getWriteAttribute()) {
+			for (WritesAttribute writesAttribute2 : event2.getWriteAttribute()) {
+				List<String> parametersOfEvent1 = new ArrayList<String>();
+				List<String> parametersOfEvent2 = new ArrayList<String>();
+
+				if (event1.getReadAttribute().size() == event2.getReadAttribute().size()) {
+
+					for (Attribute attribute : event1.getReadAttribute()) {
+						parametersOfEvent1.add(attribute.getName());
+					}
+
+					for (Attribute attribute : event2.getReadAttribute()) {
+						parametersOfEvent2.add(attribute.getName());
+					}
+					System.out.println("Check Write");
+					String checkEqualityOfWrite = compareEventsService.checkEqualityWrite(
+							writesAttribute.getWriteFunction(), writesAttribute2.getWriteFunction(), parametersOfEvent1,
+							parametersOfEvent2);
+
+					if (checkEqualityOfWrite.contains("EQUAL")) {
+						System.out.println("WRITE: Compared Events: " + event1.getName() + ";" + event2.getName()
+								+ " Compared Relationship: " + writesAttribute.getAttribute().getName() + ";"
+								+ writesAttribute2.getAttribute().getName() + " are equal under the assumption:"
+								+ checkEqualityOfWrite);
+					} else {
+						// System.out.println("Functions are not equal" + checkEquality.toString());
+
+					}
 				}
 			}
 		}
@@ -218,31 +275,37 @@ public class CompareCommands {
 
 		StringBuffer bf = new StringBuffer();
 
-		if (null != events) {
-
-			bf.append("Event " + event + " found in " + simulator + System.lineSeparator());
-
-			Event compareEvent = events;
-
-			bf.append("Following Events are exact matches: " + System.lineSeparator());
-
-			List<Simulator> simualtors = new ArrayList<Simulator>();
-			repository.findAll().forEach(simualtors::add);
-			Map<Event, Map<String, Boolean>> findExactMatches = compareEventsService.findExactMatches(compareEvent,
-					simualtors);
-
-			for (Event event2 : findExactMatches.keySet()) {
-				bf.append("Event " + event2.getName() + " is a exact match" + System.lineSeparator());
-
-				for (String reason : findExactMatches.get(event2).keySet()) {
-					bf.append("\t" + reason + "\t" + findExactMatches.get(event2).get(reason) + System.lineSeparator());
-				}
-
-			}
-			bf.append("Find similar Events finished. " + findExactMatches.size() + " where found.");
-		} else {
-			bf.append("Event " + event + " not found in " + simulator + System.lineSeparator());
-		}
+		// if (null != events) {
+		//
+		// bf.append("Event " + event + " found in " + simulator +
+		// System.lineSeparator());
+		//
+		// Event compareEvent = events;
+		//
+		// bf.append("Following Events are exact matches: " + System.lineSeparator());
+		//
+		// List<Simulator> simualtors = new ArrayList<Simulator>();
+		// repository.findAll().forEach(simualtors::add);
+		// Map<Event, Map<String, Boolean>> findExactMatches =
+		// compareEventsService.findExactMatches(compareEvent,
+		// simualtors);
+		//
+		// for (Event event2 : findExactMatches.keySet()) {
+		// bf.append("Event " + event2.getName() + " is a exact match" +
+		// System.lineSeparator());
+		//
+		// for (String reason : findExactMatches.get(event2).keySet()) {
+		// bf.append("\t" + reason + "\t" + findExactMatches.get(event2).get(reason) +
+		// System.lineSeparator());
+		// }
+		//
+		// }
+		// bf.append("Find similar Events finished. " + findExactMatches.size() + "
+		// where found.");
+		// } else {
+		// bf.append("Event " + event + " not found in " + simulator +
+		// System.lineSeparator());
+		// }
 
 		return bf.toString();
 	}

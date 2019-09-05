@@ -109,3 +109,27 @@ add-read-attribute-to-event --attribute-name waitingProcesses --entity-name SimF
 add-read-attribute-to-event --attribute-name demand --entity-name Process --event-name ConsumeSimFCFSResource
 add-schedules-relation --condition-function "(declare-datatypes ((actions 0)) (((AcquireAction) (ExternalCall) (ReleaseAction) (InternalAction))))	(declare-fun behavior () (Array Int actions)) (assert (= (select behavior 0) ReleaseAction))" --delay-function "(declare-fun delay () Real) (assert (= delay 0.0))" --end-event-name "ReleaseAction" --start-event-name ProcessRDSEFF
 add-schedules-relation --condition-function "(declare-datatypes ((actions 0)) (((AcquireAction) (ExternalCall) (ReleaseAction) (InternalAction))))	(declare-fun behavior () (Array Int actions)) (assert (= (select behavior 0) AcquireAction))" --delay-function "(declare-fun delay () Real) (assert (= delay 0.0))" --end-event-name "AcquireAction" --start-event-name ProcessRDSEFF
+
+
+
+
+create-simulator --description "EventSim" --name "Workload"
+set-current-simulator --simulator Workload
+add-entity --name OPG
+add-attributes-to-entity --attribute-name iT --entity-name OPG --type DOUBLE
+add-entity --name CWG
+add-attributes-to-entity --attribute-name tT --entity-name CWG --type DOUBLE
+add-attributes-to-entity --attribute-name p --entity-name CWG --type INT
+add-event --name UAOW
+add-read-attribute-to-event --attribute-name iT --entity-name OPG --event-name UAOW
+add-schedules-relation --condition-function "(assert true)" --delay-function "(declare-fun iT () Real)(declare-fun delay () Real)(assert (= delay iT))" --end-event-name "UAOW" --start-event-name "UAOW"
+add-event --name UACW
+add-read-attribute-to-event --attribute-name tT --entity-name CWG --event-name UACW
+add-read-attribute-to-event --attribute-name p --entity-name CWG --event-name UACW
+add-event --name PUS
+add-schedules-relation --condition-function "(declare-fun p () Int) (assert (>= p 1))" --delay-function "(declare-fun tT () Real)(declare-fun delay () Real)(assert (= delay tT))" --start-event-name UACW --end-event-name PUS
+add-schedules-relation --condition-function "(assert true)" --delay-function "(declare-fun delay () Real) (assert (= delay 0.0))" --start-event-name UAOW --end-event-name PUS
+add-schedules-relation --condition-function "(assert true)" --delay-function "(declare-fun delay () Real) (assert (= delay 0.0))" --start-event-name USF --end-event-name UACW
+add-write-attribute-to-event --attribute-name p --condition "(assert true)" --write-function "(declare-fun p () Int)	(declare-fun value () Int)	(assert (= value (+ p 1)))" --entity-name CWG --event-name USF
+add-write-attribute-to-event --attribute-name p --condition "(declare-fun p () Int) (assert (>= p 1))" --write-function "(declare-fun p () Int)	(declare-fun value () Int)	(assert (= value (- p 1)))" --entity-name CWG --event-name UACW
+

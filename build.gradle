@@ -18,6 +18,7 @@ apply plugin: 'io.spring.dependency-management'
 group = 'edu.kit.ipd.sdq.modsim'
 version = '0.0.1-SNAPSHOT'
 sourceCompatibility = '10.0'
+//sourceCompatibility = '1.8'
 
 repositories {
 	maven { url 'https://jitpack.io' }

@@ -22,24 +22,23 @@ public class Z3Test {
 		cfg.put("model", "true");
 		Context ctx = new Context(cfg);
 		Solver s = ctx.mkSolver();
-		
-		
-		
+
 		Symbol name = ctx.mkSymbol("actions");
 
-		EnumSort mkEnumSort = ctx.mkEnumSort(name, ctx.mkSymbol("AcquireAction"), ctx.mkSymbol("ExternalCall"), ctx.mkSymbol("ReleaseAction"),
-				ctx.mkSymbol("InternalAction"));
+		EnumSort mkEnumSort = ctx.mkEnumSort(name, ctx.mkSymbol("AcquireAction"), ctx.mkSymbol("ExternalCall"),
+				ctx.mkSymbol("ReleaseAction"), ctx.mkSymbol("InternalAction"));
 		ArrayExpr mkArrayConst = ctx.mkArrayConst("behavior", ctx.getIntSort(), mkEnumSort);
 		Expr sel = ctx.mkSelect(mkArrayConst, ctx.mkInt(0));
 		// s.add(ctx.mkEq(sel, mkEnumSort.getConsts()[0]));
 
 		s.add(ctx.mkEq(sel, mkEnumSort.getConsts()[2]));
-		
+
 		System.out.println(s);
-		
-		//(declare-datatypes ((actions 0)) (((AcquireAction) (ExternalCall) (ReleaseAction) (InternalAction))))	(declare-fun behavior () (Array Int actions)) (assert (= (select behavior 0) ReleaseAction))
-		
-		
+
+		// (declare-datatypes ((actions 0)) (((AcquireAction) (ExternalCall)
+		// (ReleaseAction) (InternalAction)))) (declare-fun behavior () (Array Int
+		// actions)) (assert (= (select behavior 0) ReleaseAction))
+
 		RealExpr countOfRunningProcesses = ctx.mkRealConst("countOfRunningProcesses");
 		RealExpr capacity = ctx.mkRealConst("capacity");
 		RealExpr speed = ctx.mkRealConst("speed");
@@ -48,17 +47,13 @@ public class Z3Test {
 		ctx.mkReal(1);
 		ctx.mkEq(speed, ctx.mkReal(1));
 		BoolExpr mkLe2 = ctx.mkLe(ctx.mkDiv(countOfRunningProcesses, capacity), ctx.mkReal(1));
-		Expr mkITE = ctx.mkITE(mkLe2,  ctx.mkReal(1),  ctx.mkDiv(countOfRunningProcesses, capacity));
+		Expr mkITE = ctx.mkITE(mkLe2, ctx.mkReal(1), ctx.mkDiv(countOfRunningProcesses, capacity));
 		s.add(ctx.mkEq(speed, mkITE));
-		
-		
+
 		BoolExpr mkEq = ctx.mkEq(delay, ctx.mkMul(speed, demand));
 		s.add(mkEq);
 		System.out.println(s);
 
-		
-		
-		
 		// BusStop position = bus.getPosition();
 		// int waitingPassengers = position.getWaitingPassengers();
 		//
@@ -126,7 +121,7 @@ public class Z3Test {
 
 		RealExpr value1 = ctx.mkRealConst("value");
 		RealExpr bytes = ctx.mkRealConst("sumOfBytes");
-		
+
 		RatNum mkReal = ctx.mkReal(0);
 		BoolExpr mkEq5 = ctx.mkEq(value1, mkReal);
 		s.add(mkEq5);
@@ -159,15 +154,17 @@ public class Z3Test {
 		s.add(ctx.mkEq(value, mkStore));
 		System.out.println(s);
 
-//		Symbol name = ctx.mkSymbol("actions");
-//
-//		EnumSort mkEnumSort = ctx.mkEnumSort(name, ctx.mkSymbol("AcquireAction"), ctx.mkSymbol("ExternalCall"), ctx.mkSymbol("ReleaseAction"),
-//				ctx.mkSymbol("InternalAction"));
-//		ArrayExpr mkArrayConst = ctx.mkArrayConst("behavior", ctx.getIntSort(), mkEnumSort);
-//		Expr sel = ctx.mkSelect(mkArrayConst, ctx.mkInt(0));
-//		// s.add(ctx.mkEq(sel, mkEnumSort.getConsts()[0]));
-//
-//		s.add(ctx.mkEq(sel, mkEnumSort.getConsts()[2]));
+		// Symbol name = ctx.mkSymbol("actions");
+		//
+		// EnumSort mkEnumSort = ctx.mkEnumSort(name, ctx.mkSymbol("AcquireAction"),
+		// ctx.mkSymbol("ExternalCall"), ctx.mkSymbol("ReleaseAction"),
+		// ctx.mkSymbol("InternalAction"));
+		// ArrayExpr mkArrayConst = ctx.mkArrayConst("behavior", ctx.getIntSort(),
+		// mkEnumSort);
+		// Expr sel = ctx.mkSelect(mkArrayConst, ctx.mkInt(0));
+		// // s.add(ctx.mkEq(sel, mkEnumSort.getConsts()[0]));
+		//
+		// s.add(ctx.mkEq(sel, mkEnumSort.getConsts()[2]));
 
 		// (declare-fun delaySpecification () Real)(declare-fun delay () Real)(assert (=
 		// delay delaySpecification))

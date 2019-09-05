@@ -8,7 +8,6 @@ import java.util.Map;
 import edu.kit.ipd.sdq.modsim.descomp.data.Attribute;
 import edu.kit.ipd.sdq.modsim.descomp.data.Entity;
 import edu.kit.ipd.sdq.modsim.descomp.data.Event;
-import edu.kit.ipd.sdq.modsim.descomp.data.Property;
 import soot.Body;
 import soot.Hierarchy;
 import soot.Scene;
@@ -43,11 +42,11 @@ public class AbstractSimEngineSceneTransformer extends SceneTransformer {
 	@Override
 	protected void internalTransform(String phaseName, Map options) {
 		CHATransformer.v().transform();
-//		CallGraph cg = Scene.v().getCallGraph();
-//
-//		System.out.println(cg.size());
-//
-//		Iterator<MethodOrMethodContext> sourceMethods = cg.sourceMethods();
+		// CallGraph cg = Scene.v().getCallGraph();
+		//
+		// System.out.println(cg.size());
+		//
+		// Iterator<MethodOrMethodContext> sourceMethods = cg.sourceMethods();
 
 		Hierarchy classHierarchy = Scene.v().getActiveHierarchy();
 

@@ -67,11 +67,9 @@ public class Z3Test2 {
 		}
 
 	}
-	
-	
-	
 
-	//Adapted from https://stackoverflow.com/questions/17192796/generate-all-combinations-from-multiple-lists
+	// Adapted from
+	// https://stackoverflow.com/questions/17192796/generate-all-combinations-from-multiple-lists
 	private static void generatePermutations(List<List<String>> lists, List<String> result, int depth, String current) {
 		if (depth == lists.size()) {
 			result.add(current);

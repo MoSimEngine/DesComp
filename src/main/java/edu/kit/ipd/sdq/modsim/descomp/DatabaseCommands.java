@@ -272,14 +272,22 @@ public class DatabaseCommands {
 	public String printEntitiesOfSimulator(
 			@ShellOption(valueProvider = SimulatorValueProvider.class) String simulator) {
 
-		Simulator simu = repository.findByName(simulator);
+		Simulator simu = repository.findById(repository.findByName(simulator).getId(), 3).get();
 
 		StringBuffer output = new StringBuffer(
 				"Entities from Simulator " + simu.getName() + ":" + System.lineSeparator());
 
-		simu.getEntitys().stream().forEach(e -> output.append(("\t" + e.getName() + System.lineSeparator())));
+		simu.getEntitys().stream().forEach(e -> {
+			output.append(("\t" + e.getName() + System.lineSeparator()));
+			printEntityInformation(e, output);
+		});
 
 		return output.toString();
+	}
+
+	private void printEntityInformation(Entity e, StringBuffer bf) {
+		e.getAttributes().forEach(s -> bf.append("\t\t" + "Attribute " + s.getName() + System.lineSeparator()));
+
 	}
 
 	@ShellMethod("Add Event")

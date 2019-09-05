@@ -19,7 +19,9 @@ import edu.kit.ipd.sdq.modsim.descomp.data.Simulator;
 @Service
 public class SimulatorCompareEventsService {
 
-	public String checkEquality(String smtLiba, String smtLibb, List<String> parameters1, List<String> parameters2) {
+	public String checkEqualityDelay(String smtLiba, String smtLibb, List<String> parameters1,
+			List<String> parameters2) {
+		String combination = "";
 		try {
 
 			HashMap<String, String> cfg = new HashMap<String, String>();
@@ -43,28 +45,135 @@ public class SimulatorCompareEventsService {
 			generatePermutations(lists, result, 0, "");
 
 			for (String permParameterCombination : result) {
-				System.out.println("Checking:" + permParameterCombination);
-				s.push();
+				// System.out.println("Checking:" + permParameterCombination);
 
-				String[] split = permParameterCombination.split("=");
+				if (combination.isEmpty()) {
 
-				BoolExpr mkEq = ctx.mkEq(ctx.mkRealConst(split[1]), ctx.mkRealConst(split[2]));
+					s.push();
 
-				s.add(mkEq);
+					String[] split = permParameterCombination.split("=");
 
-				if (Status.SATISFIABLE == s.check()) {
+					BoolExpr mkEq = ctx.mkEq(ctx.mkRealConst(split[1]), ctx.mkRealConst(split[2]));
 
-				} else {
-					System.out.println("Functions match with the assumption" + mkEq);
+					s.add(mkEq);
+
+					if (Status.SATISFIABLE == s.check()) {
+
+					} else {
+						combination = "EQUALFunctions match with the assumption" + mkEq;
+					}
 				}
-
 				s.pop();
 
 			}
 		} catch (Z3Exception e) {
-			System.out.println(e.getMessage());
+			// System.out.println(e.getMessage());
 		}
-		return "EQUAL";
+		return combination;
+
+	}
+
+	public String checkEqualityDelayCondtion(String smtLiba, String smtLibb, List<String> parameters1,
+			List<String> parameters2) {
+		String combination = "";
+		try {
+
+			HashMap<String, String> cfg = new HashMap<String, String>();
+			cfg.put("model", "true");
+			Context ctx = new Context(cfg);
+			Solver s = ctx.mkSolver();
+
+			BoolExpr[] conditionsA = ctx.parseSMTLIB2String(smtLiba, null, null, null, null);
+			BoolExpr[] conditionsB = ctx.parseSMTLIB2String(smtLibb, null, null, null, null);
+			s.add(ctx.mkNot(ctx.mkEq(conditionsA[0], conditionsB[0])));
+
+			List<List<String>> lists = new ArrayList<List<String>>(2);
+			lists.add(parameters1);
+			lists.add(parameters2);
+
+			List<String> result = new ArrayList<String>();
+			generatePermutations(lists, result, 0, "");
+
+			for (String permParameterCombination : result) {
+				// System.out.println("Checking:" + permParameterCombination);
+
+				if (combination.isEmpty()) {
+
+					s.push();
+
+					String[] split = permParameterCombination.split("=");
+
+					BoolExpr mkEq = ctx.mkEq(ctx.mkRealConst(split[1]), ctx.mkRealConst(split[2]));
+
+					s.add(mkEq);
+
+					if (Status.SATISFIABLE == s.check()) {
+
+					} else {
+						combination = "EQUALFunctions match with the assumption" + mkEq;
+					}
+				}
+				s.pop();
+
+			}
+		} catch (Z3Exception e) {
+			// System.out.println(e.getMessage());
+		}
+		return combination;
+
+	}
+
+	public String checkEqualityWrite(String smtLiba, String smtLibb, List<String> parameters1,
+			List<String> parameters2) {
+		String combination = "";
+		try {
+
+			HashMap<String, String> cfg = new HashMap<String, String>();
+			cfg.put("model", "true");
+			Context ctx = new Context(cfg);
+			Solver s = ctx.mkSolver();
+
+			smtLibb = smtLibb.replace("value", "value1");
+
+			BoolExpr[] conditionsA = ctx.parseSMTLIB2String(smtLiba, null, null, null, null);
+			BoolExpr[] conditionsB = ctx.parseSMTLIB2String(smtLibb, null, null, null, null);
+			s.add(conditionsA);
+			s.add(conditionsB);
+			s.add(ctx.mkNot(ctx.mkEq(ctx.mkIntConst("value"), ctx.mkIntConst("value1"))));
+
+			List<List<String>> lists = new ArrayList<List<String>>(2);
+			lists.add(parameters1);
+			lists.add(parameters2);
+
+			List<String> result = new ArrayList<String>();
+			generatePermutations(lists, result, 0, "");
+
+			for (String permParameterCombination : result) {
+				// System.out.println("Checking:" + permParameterCombination);
+				if (combination.isEmpty()) {
+
+					s.push();
+
+					String[] split = permParameterCombination.split("=");
+
+					BoolExpr mkEq = ctx.mkEq(ctx.mkIntConst(split[1]), ctx.mkIntConst(split[2]));
+
+					s.add(mkEq);
+					System.out.println(s);
+
+					if (Status.SATISFIABLE == s.check()) {
+
+					} else {
+						combination = "EQUALFunctions match with the assumption" + mkEq;
+					}
+				}
+				s.pop();
+
+			}
+		} catch (Z3Exception e) {
+			// System.out.println(e.getMessage());
+		}
+		return combination;
 
 	}
 

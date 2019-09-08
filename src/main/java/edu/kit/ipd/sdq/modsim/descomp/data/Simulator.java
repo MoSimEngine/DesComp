@@ -3,43 +3,34 @@ package edu.kit.ipd.sdq.modsim.descomp.data;
 import java.util.HashSet;
 import java.util.Set;
 
-import org.neo4j.ogm.annotation.GeneratedValue;
-import org.neo4j.ogm.annotation.Id;
 import org.neo4j.ogm.annotation.Property;
 import org.neo4j.ogm.annotation.Relationship;
 
-public class Simulator {
-
-	@Id
-	@GeneratedValue
-	private Long id;
+public class Simulator extends Identifier {
 
 	@Property
-	private String name;
+	private String description;
 
-	@Property
-	private String beschreibung;
-
-	public Simulator(String name, String beschreibung) {
+	public Simulator(String name, String description) {
 		super();
 		this.setName(name);
-		this.setBeschreibung(beschreibung);
-		setEvents(new HashSet<Event>());
-		setEntitys(new HashSet<Entity>());
+		this.setDescription(description);
+		setEvents(new HashSet<>());
+		setEntities(new HashSet<>());
 	}
 
 	@Relationship(type = "EVENT", direction = Relationship.UNDIRECTED)
 	private Set<Event> events;
 
 	@Relationship(type = "ENTITY", direction = Relationship.UNDIRECTED)
-	private Set<Entity> entitys;
+	private Set<Entity> entities;
 
 	public void addEvents(Event event) {
 		this.getEvents().add(event);
 	}
 
-	public void addEntitys(Entity entity) {
-		this.getEntitys().add(entity);
+	public void addEntities(Entity entity) {
+		this.getEntities().add(entity);
 	}
 
 	public String getName() {
@@ -50,12 +41,12 @@ public class Simulator {
 		this.name = name;
 	}
 
-	public String getBeschreibung() {
-		return beschreibung;
+	public String getDescription() {
+		return description;
 	}
 
-	public void setBeschreibung(String beschreibung) {
-		this.beschreibung = beschreibung;
+	public void setDescription(String description) {
+		this.description = description;
 	}
 
 	public Long getId() {
@@ -74,12 +65,12 @@ public class Simulator {
 		this.events = events;
 	}
 
-	public Set<Entity> getEntitys() {
-		return entitys;
+	public Set<Entity> getEntities() {
+		return entities;
 	}
 
-	public void setEntitys(Set<Entity> entitys) {
-		this.entitys = entitys;
+	public void setEntities(Set<Entity> entities) {
+		this.entities = entities;
 	}
 
 }

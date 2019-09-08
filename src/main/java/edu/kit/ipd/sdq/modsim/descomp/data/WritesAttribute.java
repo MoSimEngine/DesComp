@@ -8,11 +8,7 @@ import org.neo4j.ogm.annotation.RelationshipEntity;
 import org.neo4j.ogm.annotation.StartNode;
 
 @RelationshipEntity(type = "WRITES")
-public class WritesAttribute {
-
-	@Id
-	@GeneratedValue
-	private Long relationshipId;
+public class WritesAttribute extends Identifier {
 
 	@Property
 	private String condition;
@@ -27,11 +23,11 @@ public class WritesAttribute {
 	private Attribute attribute;
 
 	public Long getRelationshipId() {
-		return relationshipId;
+		return id;
 	}
 
 	public void setRelationshipId(Long relationshipId) {
-		this.relationshipId = relationshipId;
+		this.id = relationshipId;
 	}
 
 	public String getCondition() {

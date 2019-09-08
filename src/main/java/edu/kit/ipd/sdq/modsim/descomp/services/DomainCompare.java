@@ -25,21 +25,21 @@ public class DomainCompare {
 	private static RelatednessCalculator[] rcs = { new HirstStOnge(db), new LeacockChodorow(db), new Lesk(db),
 			new WuPalmer(db), new Resnik(db), new JiangConrath(db), new Lin(db), new Path(db) };
 
-	public Map<String, double[][]> calcRelatednessOfWordMatric(String[] word1, String[] word2) {
+	public Map<String, double[][]> calcRelatednessOfWordMatrices(String[] word1, String[] word2) {
 
-		Map<String, double[][]> similarityMatrice = new HashMap<String, double[][]>();
+		Map<String, double[][]> similarityMatrix = new HashMap<String, double[][]>();
 
 		WS4JConfiguration.getInstance().setMFS(true);
 		for (RelatednessCalculator rc : rcs) {
 			double[][] s = rc.getSimilarityMatrix(word1, word2);
-			similarityMatrice.put(rc.getClass().getName(), s);
+			 similarityMatrix.put(rc.getClass().getName(), s);
 		}
 
-		return similarityMatrice;
+		return  similarityMatrix;
 	}
 
 	public String calcRelatednessOfWords(String word1, String word2) {
-		StringBuffer bf = new StringBuffer();
+		StringBuilder bf = new StringBuilder();
 
 		word1 = word1.replace("Event", "");
 		word2 = word2.replace("Event", "");
@@ -48,7 +48,11 @@ public class DomainCompare {
 		for (RelatednessCalculator rc : rcs) {
 			double s = rc.calcRelatednessOfWords(word1, word2);
 
-			bf.append("\t" + (rc.getClass().getName() + "\t" + s + System.lineSeparator()));
+			bf.append("\t");
+			bf.append(rc.getClass().getName());
+			bf.append("\t");
+			bf.append(s);
+			bf.append(System.lineSeparator());
 
 		}
 

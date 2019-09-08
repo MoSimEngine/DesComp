@@ -31,7 +31,7 @@ public class AbstractSimEngineExtractorService implements ExtractorService {
 		Simulator extractedSimulation = new Simulator("EXTARCTED_SIMULATION", "EXTARCTED_SIMULATION");
 
 		transformer.getEvents().forEach(event -> extractedSimulation.addEvents(event));
-		transformer.getEntities().forEach(entity -> extractedSimulation.addEntitys(entity));
+		transformer.getEntities().forEach(entity -> extractedSimulation.addEntities(entity));
 
 		return extractedSimulation;
 

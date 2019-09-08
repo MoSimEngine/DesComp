@@ -100,13 +100,13 @@ public class DatabaseCommands {
 
 		Simulator simu = repository.findById(currentSimulatorId, 3).get();
 
-		long count = simu.getEntitys().stream().filter(e -> !e.getName().contentEquals(name)).count();
+		long count = simu.getEntities().stream().filter(e -> !e.getName().contentEquals(name)).count();
 
 		if (0 > count) {
 			return "Entity: " + name + " already exisits in " + simu.getName() + "!";
 		}
 
-		simu.addEntitys(new Entity(name));
+		simu.addEntities(new Entity(name));
 		repository.save(simu);
 		return "Added Entity: " + name + " to " + simu.getName();
 	}
@@ -118,7 +118,7 @@ public class DatabaseCommands {
 
 		Simulator simu = repository.findById(currentSimulatorId, 3).get();
 
-		Optional<Entity> opEntity = simu.getEntitys().stream().filter(e -> e.getName().contentEquals(entityName))
+		Optional<Entity> opEntity = simu.getEntities().stream().filter(e -> e.getName().contentEquals(entityName))
 				.findFirst();
 
 		StringBuffer bf = new StringBuffer();
@@ -148,7 +148,7 @@ public class DatabaseCommands {
 		Optional<Event> opEvent = simu.getEvents().stream().filter(e -> e.getName().contentEquals(eventName))
 				.findFirst();
 
-		Optional<Entity> opEntity = simu.getEntitys().stream().filter(e -> e.getName().contentEquals(entityName))
+		Optional<Entity> opEntity = simu.getEntities().stream().filter(e -> e.getName().contentEquals(entityName))
 				.findFirst();
 
 		if (opEntity.isPresent() && opEvent.isPresent()) {
@@ -186,7 +186,7 @@ public class DatabaseCommands {
 		Optional<Event> opEvent = simu.getEvents().stream().filter(e -> e.getName().contentEquals(eventName))
 				.findFirst();
 
-		Optional<Entity> opEntity = simu.getEntitys().stream().filter(e -> e.getName().contentEquals(entityName))
+		Optional<Entity> opEntity = simu.getEntities().stream().filter(e -> e.getName().contentEquals(entityName))
 				.findFirst();
 
 		if (opEntity.isPresent() && opEvent.isPresent()) {
@@ -222,7 +222,7 @@ public class DatabaseCommands {
 		Optional<Event> opEvent = simu.getEvents().stream().filter(e -> e.getName().contentEquals(eventName))
 				.findFirst();
 
-		Optional<Entity> opEntity = simu.getEntitys().stream().filter(e -> e.getName().contentEquals(entityName))
+		Optional<Entity> opEntity = simu.getEntities().stream().filter(e -> e.getName().contentEquals(entityName))
 				.findFirst();
 
 		if (opEntity.isPresent() && opEvent.isPresent()) {
@@ -277,7 +277,7 @@ public class DatabaseCommands {
 		StringBuffer output = new StringBuffer(
 				"Entities from Simulator " + simu.getName() + ":" + System.lineSeparator());
 
-		simu.getEntitys().stream().forEach(e -> {
+		simu.getEntities().stream().forEach(e -> {
 			output.append(("\t" + e.getName() + System.lineSeparator()));
 			printEntityInformation(e, output);
 		});
@@ -404,7 +404,7 @@ public class DatabaseCommands {
 
 		Simulator simu = new Simulator(name, description);
 		simu.setName(name);
-		simu.setBeschreibung(description);
+		simu.setDescription(description);
 		repository.save(simu);
 	}
 
@@ -423,7 +423,7 @@ public class DatabaseCommands {
 	public void editSimulatorDescription(String newSimulatorDescription) {
 
 		Simulator simulator = repository.findById(currentSimulatorId, 3).get();
-		simulator.setBeschreibung(newSimulatorDescription);
+		simulator.setDescription(newSimulatorDescription);
 
 		repository.save(simulator);
 	}

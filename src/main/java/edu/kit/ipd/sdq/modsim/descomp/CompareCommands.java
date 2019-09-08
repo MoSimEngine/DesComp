@@ -80,7 +80,7 @@ public class CompareCommands {
 					String[] wordsOfCommunity2 = communities.get(community2).split(",");
 
 					Map<String, double[][]> calcRelatednessOfWordMatric = domainCompareService
-							.calcRelatednessOfWordMatric(wordsOfCommunity1, wordsOfCommunity2);
+							.calcRelatednessOfWordMatrices(wordsOfCommunity1, wordsOfCommunity2);
 
 					for (String calculator : calcRelatednessOfWordMatric.keySet()) {
 						bf.append("\t" + calculator + System.lineSeparator());
@@ -125,8 +125,8 @@ public class CompareCommands {
 
 		StringBuffer bf = new StringBuffer();
 
-		for (Entity entity : simulator_a.getEntitys()) {
-			for (Entity entity2 : simulator_b.getEntitys()) {
+		for (Entity entity : simulator_a.getEntities()) {
+			for (Entity entity2 : simulator_b.getEntities()) {
 				bf.append("Compare Entity " + entity.getName() + " from Simulator " + simulator_a.getName()
 						+ " with Entity " + entity2.getName() + " from Simulator " + simulator_b.getName()
 						+ System.lineSeparator());

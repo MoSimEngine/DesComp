@@ -29,7 +29,7 @@ public class SimulatorExecutor {
 
 		Simulator example = new Simulator("Example Simulator", "");
 
-		example.addEntitys(new Entity("Example Entity"));
+		example.addEntities(new Entity("Example Entity"));
 
 		Event example1Event = new Event("Example Event1");
 		example1Event.addSchedulesEvent(example1Event, "true", "2.0");

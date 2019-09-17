@@ -1,5 +1,0 @@
-public interface  edu.kit.ipd.sdq.eventsim.rvisualization.ggplot.Plottable extends java.lang.Object
-{
-
-    public abstract java.lang.String toPlot();
-}

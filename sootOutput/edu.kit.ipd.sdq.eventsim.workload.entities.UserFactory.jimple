@@ -1,5 +1,0 @@
-public interface  edu.kit.ipd.sdq.eventsim.workload.entities.UserFactory extends java.lang.Object
-{
-
-    public abstract edu.kit.ipd.sdq.eventsim.workload.entities.User create(org.palladiosimulator.pcm.usagemodel.UsageScenario);
-}

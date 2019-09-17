@@ -1,7 +1,0 @@
-public interface  edu.kit.ipd.sdq.eventsim.measurement.r.RJob extends java.lang.Object
-{
-
-    public abstract void process(edu.kit.ipd.sdq.eventsim.measurement.r.RContext);
-
-    public abstract java.lang.String getName();
-}

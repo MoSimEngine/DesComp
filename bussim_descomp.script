@@ -1,6 +1,0 @@
-clean-all-database
-create-simulator --name "Johannes"--description "Tolle test Simulation.. Das hinzufügen funktioniert"
-set-current-simulator --simulator "Johannes"
-add-event --name "ArriveEvent"
-add-event --name "LeaveEvent"
-add-schedules-relation --end-event-name "ArriveEvent" --start-event-name "LeaveEvent" --condition-function "x+a" --delay-function "as"

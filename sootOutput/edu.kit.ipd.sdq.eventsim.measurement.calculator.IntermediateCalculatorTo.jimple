@@ -1,5 +1,0 @@
-public interface  edu.kit.ipd.sdq.eventsim.measurement.calculator.IntermediateCalculatorTo extends java.lang.Object
-{
-
-    public abstract transient edu.kit.ipd.sdq.eventsim.measurement.calculator.BinaryCalculator 'to'(java.lang.Object, java.lang.String, java.lang.Object[]);
-}

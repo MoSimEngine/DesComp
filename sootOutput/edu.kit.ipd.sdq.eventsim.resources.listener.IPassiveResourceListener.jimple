@@ -1,9 +1,0 @@
-public interface  edu.kit.ipd.sdq.eventsim.resources.listener.IPassiveResourceListener extends java.lang.Object
-{
-
-    public abstract void request(edu.kit.ipd.sdq.eventsim.resources.entities.SimulatedProcess, long);
-
-    public abstract void acquire(edu.kit.ipd.sdq.eventsim.resources.entities.SimulatedProcess, long);
-
-    public abstract void release(edu.kit.ipd.sdq.eventsim.resources.entities.SimulatedProcess, long);
-}

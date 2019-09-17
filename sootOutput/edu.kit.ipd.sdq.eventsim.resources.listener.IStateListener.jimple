@@ -1,5 +1,0 @@
-public interface  edu.kit.ipd.sdq.eventsim.resources.listener.IStateListener extends java.lang.Object
-{
-
-    public abstract void stateChanged(long, int);
-}

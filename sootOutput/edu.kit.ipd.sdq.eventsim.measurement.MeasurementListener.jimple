@@ -1,5 +1,0 @@
-public interface  edu.kit.ipd.sdq.eventsim.measurement.MeasurementListener extends java.lang.Object
-{
-
-    public abstract void notify(edu.kit.ipd.sdq.eventsim.measurement.Measurement);
-}

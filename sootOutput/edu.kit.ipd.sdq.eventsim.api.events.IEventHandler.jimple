@@ -1,5 +1,0 @@
-public interface  edu.kit.ipd.sdq.eventsim.api.events.IEventHandler extends java.lang.Object
-{
-
-    public abstract edu.kit.ipd.sdq.eventsim.api.events.IEventHandler$Registration handle(edu.kit.ipd.sdq.eventsim.api.events.SimulationEvent);
-}

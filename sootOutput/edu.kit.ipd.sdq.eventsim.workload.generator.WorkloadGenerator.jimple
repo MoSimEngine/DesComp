@@ -1,5 +1,0 @@
-public interface  edu.kit.ipd.sdq.eventsim.workload.generator.WorkloadGenerator extends java.lang.Object
-{
-
-    public abstract void processWorkload();
-}

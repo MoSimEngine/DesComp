@@ -1,5 +1,0 @@
-public interface  edu.kit.ipd.sdq.eventsim.measurement.MeasurementProducer extends java.lang.Object
-{
-
-    public abstract void forEachMeasurement(edu.kit.ipd.sdq.eventsim.measurement.MeasurementListener);
-}

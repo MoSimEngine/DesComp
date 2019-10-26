@@ -1,9 +1,0 @@
-public interface  edu.kit.ipd.sdq.eventsim.rvisualization.ggplot.Layer extends java.lang.Object implements edu.kit.ipd.sdq.eventsim.rvisualization.ggplot.Plottable
-{
-
-    public abstract edu.kit.ipd.sdq.eventsim.rvisualization.ggplot.Layer data(java.lang.String);
-
-    public abstract edu.kit.ipd.sdq.eventsim.rvisualization.ggplot.Layer map(edu.kit.ipd.sdq.eventsim.rvisualization.ggplot.Aesthetic, java.lang.String);
-
-    public abstract edu.kit.ipd.sdq.eventsim.rvisualization.ggplot.Layer param(java.lang.String, java.lang.String);
-}

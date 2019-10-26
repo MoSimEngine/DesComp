@@ -1,5 +1,0 @@
-public interface  edu.kit.ipd.sdq.eventsim.resources.listener.IDemandListener extends java.lang.Object
-{
-
-    public abstract void demand(de.uka.ipd.sdq.scheduler.ISchedulableProcess, double, int);
-}

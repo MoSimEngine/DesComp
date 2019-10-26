@@ -1,7 +1,0 @@
-public interface  edu.kit.ipd.sdq.eventsim.interpreter.listener.ITraversalListener extends java.lang.Object
-{
-
-    public abstract void before(org.palladiosimulator.pcm.core.entity.Entity, edu.kit.ipd.sdq.eventsim.entities.EventSimEntity);
-
-    public abstract void after(org.palladiosimulator.pcm.core.entity.Entity, edu.kit.ipd.sdq.eventsim.entities.EventSimEntity);
-}

@@ -5,7 +5,7 @@ import java.util.Map;
 import org.springframework.data.neo4j.annotation.Query;
 import org.springframework.data.neo4j.repository.Neo4jRepository;
 
-import edu.kit.ipd.sdq.modsim.descomp.data.Simulator;
+import edu.kit.ipd.sdq.modsim.descomp.data.simulator.Simulator;
 
 public interface SimulatorRepository extends Neo4jRepository<Simulator, Long> {
 

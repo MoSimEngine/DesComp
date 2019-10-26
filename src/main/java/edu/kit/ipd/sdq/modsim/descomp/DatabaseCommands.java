@@ -11,11 +11,11 @@ import org.springframework.shell.standard.ShellMethod;
 import org.springframework.shell.standard.ShellMethodAvailability;
 import org.springframework.shell.standard.ShellOption;
 
-import edu.kit.ipd.sdq.modsim.descomp.data.Attribute;
-import edu.kit.ipd.sdq.modsim.descomp.data.Entity;
-import edu.kit.ipd.sdq.modsim.descomp.data.Event;
-import edu.kit.ipd.sdq.modsim.descomp.data.Schedules;
-import edu.kit.ipd.sdq.modsim.descomp.data.Simulator;
+import edu.kit.ipd.sdq.modsim.descomp.data.simulator.Attribute;
+import edu.kit.ipd.sdq.modsim.descomp.data.simulator.Entity;
+import edu.kit.ipd.sdq.modsim.descomp.data.simulator.Event;
+import edu.kit.ipd.sdq.modsim.descomp.data.simulator.Schedules;
+import edu.kit.ipd.sdq.modsim.descomp.data.simulator.Simulator;
 import edu.kit.ipd.sdq.modsim.descomp.services.SimulatorRepository;
 
 @ShellComponent
@@ -123,16 +123,16 @@ public class DatabaseCommands {
 
 		StringBuffer bf = new StringBuffer();
 
-		if (opEntity.isEmpty()) {
-			bf.append(
-					"Entity: " + entityName + " does not exisits in " + simu.getName() + "!" + System.lineSeparator());
-		} else {
+		if (opEntity.isPresent()) {
 			Entity entity = opEntity.get();
 			entity.addAttribute(new Attribute(attributeName, type));
 			repository.save(simu);
 
 			bf.append("Entity " + entityName + " changed. Attribute " + attributeName + " added."
 					+ System.lineSeparator());
+		} else {
+			bf.append(
+					"Entity: " + entityName + " does not exisits in " + simu.getName() + "!" + System.lineSeparator());
 		}
 
 		return bf.toString();

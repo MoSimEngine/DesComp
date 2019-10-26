@@ -5,9 +5,9 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import edu.kit.ipd.sdq.modsim.descomp.data.Attribute;
-import edu.kit.ipd.sdq.modsim.descomp.data.Entity;
-import edu.kit.ipd.sdq.modsim.descomp.data.Event;
+import edu.kit.ipd.sdq.modsim.descomp.data.simulator.Attribute;
+import edu.kit.ipd.sdq.modsim.descomp.data.simulator.Entity;
+import edu.kit.ipd.sdq.modsim.descomp.data.simulator.Event;
 import soot.Body;
 import soot.Hierarchy;
 import soot.Scene;

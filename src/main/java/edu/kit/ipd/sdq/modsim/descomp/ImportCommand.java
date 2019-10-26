@@ -7,7 +7,7 @@ import org.springframework.shell.standard.ShellCommandGroup;
 import org.springframework.shell.standard.ShellComponent;
 import org.springframework.shell.standard.ShellMethod;
 
-import edu.kit.ipd.sdq.modsim.descomp.data.Simulator;
+import edu.kit.ipd.sdq.modsim.descomp.data.simulator.Simulator;
 import edu.kit.ipd.sdq.modsim.descomp.extractor.abstractsimengine.ExtractorService;
 import edu.kit.ipd.sdq.modsim.descomp.services.SimulatorRepository;
 

@@ -4,7 +4,7 @@ import java.io.File;
 
 import org.springframework.stereotype.Service;
 
-import edu.kit.ipd.sdq.modsim.descomp.data.Simulator;
+import edu.kit.ipd.sdq.modsim.descomp.data.simulator.Simulator;
 import soot.PackManager;
 import soot.Transform;
 import soot.options.Options;

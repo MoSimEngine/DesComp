@@ -15,10 +15,10 @@ import com.microsoft.z3.Model;
 import com.microsoft.z3.Solver;
 import com.microsoft.z3.Status;
 
-import edu.kit.ipd.sdq.modsim.descomp.data.Entity;
-import edu.kit.ipd.sdq.modsim.descomp.data.Event;
-import edu.kit.ipd.sdq.modsim.descomp.data.Schedules;
-import edu.kit.ipd.sdq.modsim.descomp.data.Simulator;
+import edu.kit.ipd.sdq.modsim.descomp.data.simulator.Entity;
+import edu.kit.ipd.sdq.modsim.descomp.data.simulator.Event;
+import edu.kit.ipd.sdq.modsim.descomp.data.simulator.Schedules;
+import edu.kit.ipd.sdq.modsim.descomp.data.simulator.Simulator;
 
 @Service
 public class SimulatorExecutor {

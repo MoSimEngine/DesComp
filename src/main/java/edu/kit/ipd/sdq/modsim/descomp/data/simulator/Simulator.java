@@ -1,4 +1,4 @@
-package edu.kit.ipd.sdq.modsim.descomp.data;
+package edu.kit.ipd.sdq.modsim.descomp.data.simulator;
 
 import java.util.HashSet;
 import java.util.Set;

@@ -11,9 +11,9 @@
 //import org.springframework.boot.test.context.SpringBootTest;
 //import org.springframework.test.context.junit4.SpringRunner;
 //
-//import edu.kit.ipd.sdq.modsim.descomp.data.Entity;
-//import edu.kit.ipd.sdq.modsim.descomp.data.Event;
-//import edu.kit.ipd.sdq.modsim.descomp.data.Simulator;
+//import edu.kit.ipd.sdq.modsim.descomp.data.simulator.Entity;
+//import edu.kit.ipd.sdq.modsim.descomp.data.simulator.Event;
+//import edu.kit.ipd.sdq.modsim.descomp.data.simulator.Simulator;
 //import edu.kit.ipd.sdq.modsim.descomp.services.SimulatorRepository;
 //
 //@RunWith(SpringRunner.class)

@@ -13,8 +13,8 @@ import com.microsoft.z3.Solver;
 import com.microsoft.z3.Status;
 import com.microsoft.z3.Z3Exception;
 
-import edu.kit.ipd.sdq.modsim.descomp.data.Event;
-import edu.kit.ipd.sdq.modsim.descomp.data.Simulator;
+import edu.kit.ipd.sdq.modsim.descomp.data.simulator.Event;
+import edu.kit.ipd.sdq.modsim.descomp.data.simulator.Simulator;
 
 @Service
 public class SimulatorCompareEventsService {
@@ -23,7 +23,6 @@ public class SimulatorCompareEventsService {
 			List<String> parameters2) {
 		String combination = "";
 		try {
-
 			HashMap<String, String> cfg = new HashMap<String, String>();
 			cfg.put("model", "true");
 			Context ctx = new Context(cfg);

@@ -1,8 +1,6 @@
-package edu.kit.ipd.sdq.modsim.descomp.data;
+package edu.kit.ipd.sdq.modsim.descomp.data.simulator;
 
 import org.neo4j.ogm.annotation.EndNode;
-import org.neo4j.ogm.annotation.GeneratedValue;
-import org.neo4j.ogm.annotation.Id;
 import org.neo4j.ogm.annotation.Property;
 import org.neo4j.ogm.annotation.RelationshipEntity;
 import org.neo4j.ogm.annotation.StartNode;

@@ -10,12 +10,12 @@ import org.springframework.shell.standard.ShellCommandGroup;
 import org.springframework.shell.standard.ShellComponent;
 import org.springframework.shell.standard.ShellMethod;
 
-import edu.kit.ipd.sdq.modsim.descomp.data.Attribute;
-import edu.kit.ipd.sdq.modsim.descomp.data.Entity;
-import edu.kit.ipd.sdq.modsim.descomp.data.Event;
-import edu.kit.ipd.sdq.modsim.descomp.data.Schedules;
-import edu.kit.ipd.sdq.modsim.descomp.data.Simulator;
-import edu.kit.ipd.sdq.modsim.descomp.data.WritesAttribute;
+import edu.kit.ipd.sdq.modsim.descomp.data.simulator.Attribute;
+import edu.kit.ipd.sdq.modsim.descomp.data.simulator.Entity;
+import edu.kit.ipd.sdq.modsim.descomp.data.simulator.Event;
+import edu.kit.ipd.sdq.modsim.descomp.data.simulator.Schedules;
+import edu.kit.ipd.sdq.modsim.descomp.data.simulator.Simulator;
+import edu.kit.ipd.sdq.modsim.descomp.data.simulator.WritesAttribute;
 import edu.kit.ipd.sdq.modsim.descomp.services.DomainCompare;
 import edu.kit.ipd.sdq.modsim.descomp.services.SimulatorCompareEventsService;
 import edu.kit.ipd.sdq.modsim.descomp.services.SimulatorRepository;

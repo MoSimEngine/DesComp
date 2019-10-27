@@ -1,5 +1,6 @@
 package edu.kit.ipd.sdq.modsim.descomp.data.simulator;
 
+import edu.kit.ipd.sdq.modsim.descomp.data.Identifier;
 import org.neo4j.ogm.annotation.NodeEntity;
 import org.neo4j.ogm.annotation.Property;
 

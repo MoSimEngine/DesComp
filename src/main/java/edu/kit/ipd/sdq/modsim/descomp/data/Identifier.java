@@ -1,4 +1,4 @@
-package edu.kit.ipd.sdq.modsim.descomp.data.simulator;
+package edu.kit.ipd.sdq.modsim.descomp.data;
 
 import org.neo4j.ogm.annotation.GeneratedValue;
 import org.neo4j.ogm.annotation.Id;

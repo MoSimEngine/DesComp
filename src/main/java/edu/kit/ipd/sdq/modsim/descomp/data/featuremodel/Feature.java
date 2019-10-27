@@ -1,6 +1,6 @@
 package edu.kit.ipd.sdq.modsim.descomp.data.featuremodel;
 
-import edu.kit.ipd.sdq.modsim.descomp.data.simulator.Identifier;
+import edu.kit.ipd.sdq.modsim.descomp.data.Identifier;
 import org.neo4j.ogm.annotation.Property;
 import org.neo4j.ogm.annotation.Relationship;
 

@@ -1,8 +1,10 @@
 package edu.kit.ipd.sdq.modsim.descomp.commands.database;
 
 import edu.kit.ipd.sdq.modsim.descomp.SimulationValueProvider;
+import edu.kit.ipd.sdq.modsim.descomp.data.featuremodel.ChildRelation;
 import edu.kit.ipd.sdq.modsim.descomp.data.featuremodel.Feature;
 import edu.kit.ipd.sdq.modsim.descomp.data.featuremodel.FeatureDiagram;
+import edu.kit.ipd.sdq.modsim.descomp.data.featuremodel.MandatoryRelation;
 import edu.kit.ipd.sdq.modsim.descomp.data.simulator.Simulator;
 import edu.kit.ipd.sdq.modsim.descomp.services.SimulationRepository;
 import edu.kit.ipd.sdq.modsim.descomp.services.SimulatorRepository;
@@ -20,7 +22,7 @@ public class SimulationFeatureDatabaseCommands {
     @Autowired
     private SimulationRepository simulationRepository;
 
-    @ShellMethod("Create Simulator")
+    @ShellMethod("Create Simulation")
     public void createSimulator(String name, String description) {
         FeatureDiagram simulation = new FeatureDiagram(name, description);
         simulation.setName(name);
@@ -70,5 +72,28 @@ public class SimulationFeatureDatabaseCommands {
         simulationRepository.save(simulation);
 
         return "Added Feature: " + name + " to " + simulation.getName();
+    }
+
+    @ShellMethod("Make Feature Mandatory")
+    @ShellMethodAvailability("currentSimulationSpecificationAvailabilityCheck")
+    public String makeFeatureMandatory(String featureName){
+        FeatureDiagram simulation = simulationRepository.findById(currentSimulationId, 3).get();
+
+
+        Optional<Feature> optionalFeature = simulation.getFeatures().stream().filter(e -> e.getName().contentEquals(featureName))
+                .findFirst();
+
+        StringBuilder sb = new StringBuilder();
+
+        if (optionalFeature.isPresent()){
+            Feature feature = optionalFeature.get();
+            feature.setMandatory(true);
+            simulationRepository.save(simulation);
+
+            sb.append("Optional Feature ").append(featureName).append("changed to mandatory feature").append(System.lineSeparator());
+        } else {
+            sb.append("Feature: ").append(featureName).append(" does not exist in ").append(simulation.getName()).append("!").append(System.lineSeparator());
+        }
+        return sb.toString();
     }
 }

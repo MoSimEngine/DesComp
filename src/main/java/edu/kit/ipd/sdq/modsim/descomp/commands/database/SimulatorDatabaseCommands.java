@@ -130,7 +130,7 @@ public class SimulatorDatabaseCommands {
 		Optional<Entity> opEntity = simu.getEntities().stream().filter(e -> e.getName().contentEquals(entityName))
 				.findFirst();
 
-		StringBuffer bf = new StringBuffer();
+		StringBuilder bf = new StringBuilder();
 
 		if (opEntity.isPresent()) {
 			Entity entity = opEntity.get();

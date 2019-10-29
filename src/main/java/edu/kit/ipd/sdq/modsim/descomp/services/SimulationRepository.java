@@ -1,14 +1,15 @@
 package edu.kit.ipd.sdq.modsim.descomp.services;
 
+import edu.kit.ipd.sdq.modsim.descomp.data.featuremodel.FeatureDiagram;
 import edu.kit.ipd.sdq.modsim.descomp.data.simulator.Simulator;
 import org.springframework.data.neo4j.annotation.Query;
 import org.springframework.data.neo4j.repository.Neo4jRepository;
 
 import java.util.Map;
 
-public interface SimulationRepository extends Neo4jRepository<Simulator, Long> {
+public interface SimulationRepository extends Neo4jRepository<FeatureDiagram, Long> {
 
-	Simulator findByName(String name);
+	FeatureDiagram findByName(String name);
 
 	@Query("MATCH (n) DETACH DELETE n")
 	void cleanAll();

@@ -1,10 +1,14 @@
-package edu.kit.ipd.sdq.modsim.descomp.commands;
+package edu.kit.ipd.sdq.modsim.descomp.commands.database;
 
 import java.util.Map;
 import java.util.Optional;
 
 import edu.kit.ipd.sdq.modsim.descomp.DataTypeValueProvider;
+import edu.kit.ipd.sdq.modsim.descomp.SimulationValueProvider;
 import edu.kit.ipd.sdq.modsim.descomp.SimulatorValueProvider;
+import edu.kit.ipd.sdq.modsim.descomp.data.featuremodel.Feature;
+import edu.kit.ipd.sdq.modsim.descomp.data.featuremodel.FeatureDiagram;
+import edu.kit.ipd.sdq.modsim.descomp.services.SimulationRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.shell.Availability;
 import org.springframework.shell.standard.ShellCommandGroup;
@@ -21,30 +25,31 @@ import edu.kit.ipd.sdq.modsim.descomp.data.simulator.Simulator;
 import edu.kit.ipd.sdq.modsim.descomp.services.SimulatorRepository;
 
 @ShellComponent
-@ShellCommandGroup("database")
-public class DatabaseCommands {
+@ShellCommandGroup("database - simulator")
+public class SimulatorDatabaseCommands {
 
 	private Long currentSimulatorId;
+	private Long currentSimulationId;
 
 	@Autowired
 	private SimulatorRepository repository;
 
-	@ShellMethod("Clear Database")
-	public void cleanAllDatabase() {
-		repository.cleanAll();
-	}
+	@Autowired
+	private SimulationRepository simulationRepository;
+
+
 
 	@ShellMethod("Set current Simulator")
 	public String setCurrentSimulator(@ShellOption(valueProvider = SimulatorValueProvider.class) String simulator) {
 
 		Simulator currSimulator = repository.findByName(simulator);
 
-		StringBuffer sb = new StringBuffer();
+		StringBuilder sb = new StringBuilder();
 
 		if (null == currSimulator) {
-			sb.append("Simulator " + simulator + " not found.");
+			sb.append("Simulator ").append(simulator).append(" not found.");
 		} else {
-			sb.append("Current Simulator is set to: " + currSimulator.getName());
+			sb.append("Current Simulator is set to: ").append(currSimulator.getName());
 			currentSimulatorId = currSimulator.getId();
 		}
 
@@ -56,12 +61,12 @@ public class DatabaseCommands {
 
 		Optional<Simulator> currSimulator = repository.findById(currentSimulatorId, 3);
 
-		StringBuffer sb = new StringBuffer();
+		StringBuilder sb = new StringBuilder();
 
 		if (!currSimulator.isPresent()) {
 			sb.append("Current set Simulator does not exists.");
 		} else {
-			sb.append("Current Simulator is set to: " + currSimulator.get().getName());
+			sb.append("Current Simulator is set to: ").append(currSimulator.get().getName());
 		}
 
 		return sb.toString();
@@ -95,6 +100,8 @@ public class DatabaseCommands {
 
 		return bf.toString();
 	}
+
+
 
 	@ShellMethod("Add Entity")
 	@ShellMethodAvailability("currenSimulatorAvailabilityCheck")

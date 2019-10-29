@@ -1,4 +1,4 @@
-package edu.kit.ipd.sdq.modsim.descomp;
+package edu.kit.ipd.sdq.modsim.descomp.commands;
 
 import java.io.File;
 

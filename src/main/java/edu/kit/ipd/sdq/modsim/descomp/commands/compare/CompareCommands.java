@@ -1,4 +1,4 @@
-package edu.kit.ipd.sdq.modsim.descomp.commands;
+package edu.kit.ipd.sdq.modsim.descomp.commands.compare;
 
 import java.util.ArrayList;
 import java.util.HashMap;

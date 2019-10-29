@@ -1,12 +1,17 @@
 package edu.kit.ipd.sdq.modsim.descomp.data.featuremodel;
 
 import edu.kit.ipd.sdq.modsim.descomp.data.Identifier;
+import org.neo4j.ogm.annotation.Properties;
+import org.neo4j.ogm.annotation.Property;
 import org.neo4j.ogm.annotation.Relationship;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class FeatureDiagram extends Identifier {
+    @Property
+    private String description;
+
     @Relationship(type = "FEATURE", direction = Relationship.OUTGOING)
     private List<Feature> features;
 
@@ -19,14 +24,14 @@ public class FeatureDiagram extends Identifier {
     @Relationship(type = "CONSTRAINTS", direction = Relationship.OUTGOING)
     private List<Constraint> constraints;
 
-    public FeatureDiagram(String name, Feature rootFeature){
+    public FeatureDiagram(String name, String description){
         this.name = name;
+        this.description = description;
         this.features = new ArrayList<>();
         this.childRelations = new ArrayList<>();
-        this.rootFeature = rootFeature;
         this.constraints = new ArrayList<>();
     }
-
+    
     public List<Feature> getFeatures() {
         return features;
     }
@@ -69,5 +74,13 @@ public class FeatureDiagram extends Identifier {
 
     public void addConstraint(Constraint c) {
         this.constraints.add(c);
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
 }

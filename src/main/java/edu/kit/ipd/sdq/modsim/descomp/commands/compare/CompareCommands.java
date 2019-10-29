@@ -1,4 +1,4 @@
-package edu.kit.ipd.sdq.modsim.descomp;
+package edu.kit.ipd.sdq.modsim.descomp.commands;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -35,9 +35,7 @@ public class CompareCommands {
 
 	@ShellMethod("Calculate Similarity between words")
 	public String calcSimilarityBetweenWords(String word1, String word2) {
-		String calcRelatednessOfWords = domainCompareService.calcRelatednessOfWords(word1, word2);
-
-		return calcRelatednessOfWords;
+		return domainCompareService.calcRelatednessOfWords(word1, word2);
 	}
 
 	@ShellMethod("Calculate Similarity matrice between communities")
@@ -46,7 +44,6 @@ public class CompareCommands {
 		Map<String, String> communities = new HashMap<String, String>();
 
 		for (Map<String, Object> map : repository.computeLouvainCommunitiesForEvents()) {
-
 			if (communities.containsKey(map.get("community"))) {
 				String concat = communities.get(map.get("community"));
 
@@ -59,22 +56,32 @@ public class CompareCommands {
 			}
 		}
 
-		StringBuffer bf = new StringBuffer();
+		StringBuilder sb = new StringBuilder();
 
-		bf.append("Compute Similarity between Communities (LouvainCommunities)" + System.lineSeparator());
+		sb.append("Compute Similarity between Communities (LouvainCommunities)").append(System.lineSeparator());
 
 		for (String community1 : communities.keySet()) {
 			for (String community2 : communities.keySet()) {
 
 				if (!community1.contentEquals(community2)) {
 
-					bf.append("Compare Community " + community1 + " with Community " + community2
-							+ System.lineSeparator());
+					sb.append("Compare Community ")
+							.append(community1)
+							.append(" with Community ")
+							.append(community2)
+							.append(System.lineSeparator());
 
-					bf.append("Community " + community1 + " contains the following words: "
-							+ communities.get(community1) + System.lineSeparator());
-					bf.append("Community " + community2 + " contains the following words: "
-							+ communities.get(community2) + System.lineSeparator());
+					sb.append("Community ")
+							.append(community1)
+							.append(" contains the following words: ")
+							.append(communities.get(community1))
+							.append(System.lineSeparator());
+
+					sb.append("Community ")
+							.append(community2)
+							.append(" contains the following words: ")
+							.append(communities.get(community2))
+							.append(System.lineSeparator());
 
 					String[] wordsOfCommunity1 = communities.get(community1).split(",");
 					String[] wordsOfCommunity2 = communities.get(community2).split(",");
@@ -83,15 +90,15 @@ public class CompareCommands {
 							.calcRelatednessOfWordMatrices(wordsOfCommunity1, wordsOfCommunity2);
 
 					for (String calculator : calcRelatednessOfWordMatric.keySet()) {
-						bf.append("\t" + calculator + System.lineSeparator());
+						sb.append("\t").append(calculator).append(System.lineSeparator());
 
 						double[][] matrice = calcRelatednessOfWordMatric.get(calculator);
 
-						for (int i = 0; i < matrice.length; i++) { // this equals to the row in our matrix.
-							for (int j = 0; j < matrice[i].length; j++) { // this equals to the column in each row.
-								bf.append(matrice[i][j] + " ");
+						for (double[] doubles : matrice) { // this equals to the row in our matrix.
+							for (double aDouble : doubles) { // this equals to the column in each row.
+								sb.append(aDouble).append(" ");
 							}
-							bf.append(System.lineSeparator());
+							sb.append(System.lineSeparator());
 						}
 
 					}
@@ -101,21 +108,21 @@ public class CompareCommands {
 			}
 		}
 
-		bf.append("Compute Label Propagation for Events " + System.lineSeparator());
-		bf.append("Found the following communities: " + System.lineSeparator());
+		sb.append("Compute Label Propagation for Events " + System.lineSeparator());
+		sb.append("Found the following communities: " + System.lineSeparator());
 
 		for (Map<String, Object> map : repository.computeLabelPropagationForEvents()) {
-			bf.append("\t In community " + map.get("label") + " is Event " + map.get("event") + System.lineSeparator());
+			sb.append("\t In community " + map.get("label") + " is Event " + map.get("event") + System.lineSeparator());
 		}
 
-		bf.append("Compute Union Find for Events " + System.lineSeparator());
-		bf.append("Found the following communities: " + System.lineSeparator());
+		sb.append("Compute Union Find for Events " + System.lineSeparator());
+		sb.append("Found the following communities: " + System.lineSeparator());
 
 		for (Map<String, Object> map : repository.computeUnionFind()) {
-			bf.append("\t In community " + map.get("setId") + " is Event " + map.get("event") + System.lineSeparator());
+			sb.append("\t In community " + map.get("setId") + " is Event " + map.get("event") + System.lineSeparator());
 		}
 
-		return bf.toString();
+		return sb.toString();
 	}
 
 	@ShellMethod("Calculate Similarity Between Events and Entities")

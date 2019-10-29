@@ -1,8 +1,10 @@
-package edu.kit.ipd.sdq.modsim.descomp;
+package edu.kit.ipd.sdq.modsim.descomp.commands;
 
 import java.util.Map;
 import java.util.Optional;
 
+import edu.kit.ipd.sdq.modsim.descomp.DataTypeValueProvider;
+import edu.kit.ipd.sdq.modsim.descomp.SimulatorValueProvider;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.shell.Availability;
 import org.springframework.shell.standard.ShellCommandGroup;
@@ -114,7 +116,7 @@ public class DatabaseCommands {
 	@ShellMethod("Add Attribute to Entity")
 	@ShellMethodAvailability("currenSimulatorAvailabilityCheck")
 	public String addAttributesToEntity(String entityName,
-			@ShellOption(valueProvider = DataTypeValueProvider.class) String type, String attributeName) {
+										@ShellOption(valueProvider = DataTypeValueProvider.class) String type, String attributeName) {
 
 		Simulator simu = repository.findById(currentSimulatorId, 3).get();
 

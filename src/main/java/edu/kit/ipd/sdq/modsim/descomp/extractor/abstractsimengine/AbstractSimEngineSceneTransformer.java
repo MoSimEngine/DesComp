@@ -1,35 +1,23 @@
 package edu.kit.ipd.sdq.modsim.descomp.extractor.abstractsimengine;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 import edu.kit.ipd.sdq.modsim.descomp.data.simulator.Attribute;
 import edu.kit.ipd.sdq.modsim.descomp.data.simulator.Entity;
 import edu.kit.ipd.sdq.modsim.descomp.data.simulator.Event;
-import soot.Body;
-import soot.Hierarchy;
-import soot.Scene;
-import soot.SceneTransformer;
-import soot.SootClass;
-import soot.SootField;
-import soot.SootMethod;
-import soot.SootMethodRef;
-import soot.Unit;
-import soot.Value;
-import soot.ValueBox;
+import soot.*;
 import soot.jimple.internal.JInvokeStmt;
 import soot.jimple.internal.JVirtualInvokeExpr;
 import soot.jimple.toolkits.callgraph.CHATransformer;
+import soot.jimple.toolkits.callgraph.CallGraph;
 import soot.jimple.toolkits.pointer.RWSet;
 import soot.jimple.toolkits.pointer.SideEffectAnalysis;
 import soot.util.Chain;
 
 public class AbstractSimEngineSceneTransformer extends SceneTransformer {
 
-	private static final String EVENT_CLASS = "de.uka.ipd.sdq.simulation.abstractsimengine.AbstractSimEventDelegator";
-	private static final String ENTITY_CLASS = "de.uka.ipd.sdq.simulation.abstractsimengine.AbstractSimEntityDelegator";
+    private static final String EVENT_CLASS = "de.uka.ipd.sdq.simulation.abstractsimengine.AbstractSimEventDelegator";
+    private static final String ENTITY_CLASS = "de.uka.ipd.sdq.simulation.abstractsimengine.AbstractSimEntityDelegator";
 
 	private List<Event> events = new ArrayList<Event>();
 	private List<Entity> entities = new ArrayList<Entity>();
@@ -42,11 +30,12 @@ public class AbstractSimEngineSceneTransformer extends SceneTransformer {
 	@Override
 	protected void internalTransform(String phaseName, Map options) {
 		CHATransformer.v().transform();
-		// CallGraph cg = Scene.v().getCallGraph();
+		//CallGraph cg = Scene.v().getCallGraph();
 		//
-		// System.out.println(cg.size());
+		//System.out.println(cg.size());
 		//
-		// Iterator<MethodOrMethodContext> sourceMethods = cg.sourceMethods();
+		//Iterator<MethodOrMethodContext> sourceMethods = cg.sourceMethods();
+
 
 		Hierarchy classHierarchy = Scene.v().getActiveHierarchy();
 
@@ -57,8 +46,7 @@ public class AbstractSimEngineSceneTransformer extends SceneTransformer {
 
 	private void extractEntities(List<Entity> entities, Hierarchy classHierarchy) {
 		SootClass entityParentClass = Scene.v().getSootClass(ENTITY_CLASS);
-		// List<SootClass> entityList =
-		// classHierarchy.getDirectSubclassesOf(entityParentClass);
+//		 List<SootClass> entityList = classHierarchy.getDirectSubclassesOf(entityParentClass);
 
 		List<SootClass> entityList = classHierarchy.getSubclassesOf(entityParentClass);
 
@@ -76,12 +64,13 @@ public class AbstractSimEngineSceneTransformer extends SceneTransformer {
 	}
 
 	private void extractEvents(List<Event> events, Hierarchy classHierarchy) {
-		SootClass eventClass = Scene.v().getSootClass(EVENT_CLASS);
-		List<SootClass> eventList = classHierarchy.getSubclassesOf(eventClass);
+        SootClass eventClass = Scene.v().getSootClass(EVENT_CLASS);
+        List<SootClass> eventList = classHierarchy.getSubclassesOf(eventClass);
 
-		Map<String, Event> eventCache = new HashMap<String, Event>();
+        Map<String, Event> eventCache = new HashMap<String, Event>();
 
-		for (SootClass event : eventList) {
+
+        for (SootClass event : eventList) {
 			event.setApplicationClass();
 			SideEffectAnalysis sideEffectAnalysis = Scene.v().getSideEffectAnalysis();
 

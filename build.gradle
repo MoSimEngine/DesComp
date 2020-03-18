@@ -21,7 +21,8 @@ sourceCompatibility = '10.0'
 //sourceCompatibility = '1.8'
 
 repositories {
-	maven { url 'https://jitpack.io' }
+	maven {	url 'https://jitpack.io' }
+//	maven { url 'https://oss.sonatype.org/content/repositories/snapshots'}
 	mavenCentral()
 	flatDir {
        dirs 'lib'
@@ -35,6 +36,7 @@ dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-data-neo4j'
 	compile 'org.springframework.shell:spring-shell-starter:2.0.1.RELEASE'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
-	implementation 'ca.mcgill.sable:soot:3.3.0'
-
+ 	implementation 'ca.mcgill.sable:soot:3.3.0'
+	compile 'org.apache.bcel:bcel:6.4.1'
+//	compile "ca.mcgill.sable:soot:3.4.0-SNAPSHOT"
 }

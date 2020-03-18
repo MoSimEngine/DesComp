@@ -1,31 +1,25 @@
 package edu.kit.ipd.sdq.modsim.descomp.extractor.eventSimEngine;
 
 import edu.kit.ipd.sdq.modsim.descomp.data.simulator.Simulator;
-import edu.kit.ipd.sdq.modsim.descomp.extractor.eventSimEngine.extractionTools.JavaCLassExtraction;
-import edu.kit.ipd.sdq.modsim.descomp.extractor.eventSimEngine.util.ClassVisitor;
-import edu.kit.ipd.sdq.modsim.descomp.extractor.eventSimEngine.util.EnumerationUtil;
-import org.apache.bcel.classfile.ClassParser;
+import edu.kit.ipd.sdq.modsim.descomp.extractor.eventSimEngine.extractionTools.IClassFilter;
+import edu.kit.ipd.sdq.modsim.descomp.extractor.eventSimEngine.extractionTools.JavaClassExtraction;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.apache.bcel.classfile.JavaClass;
 
 
 import java.io.File;
-import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.util.*;
-import java.util.jar.JarEntry;
-import java.util.jar.JarFile;
-import java.util.stream.Stream;
 
 @Service
 public class EventSimExtractorService implements EventExtractorService{
 
+    @Autowired
+    private JavaClassExtraction classExtrator;
 
     @Autowired
-    private JavaCLassExtraction classExtrator;
+    private IClassFilter classFilter;
+
 
     private Map<String, List<JavaClass>> extractedJavaClasses;
 
@@ -35,7 +29,21 @@ public class EventSimExtractorService implements EventExtractorService{
 
     @Override
     public Simulator extractEventSim(Collection<File> jarCollection) {
+        //get all java classes of available jar files
         extractedJavaClasses = classExtrator.extractJavaClasses(jarCollection);
+        //filter jar classes for available entity classes
+        classFilter.filterEntityClasses(collectJavaClasses());
+
+
         return null;
     }
+
+    private Collection<JavaClass> collectJavaClasses(){
+        Collection<JavaClass> javaClasses = new ArrayList<>();
+        for (List<JavaClass>  classList : extractedJavaClasses.values()) {
+            javaClasses.addAll(classList);
+        }
+        return javaClasses;
+    }
+
 }

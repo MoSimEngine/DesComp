@@ -17,7 +17,7 @@ import java.util.jar.JarFile;
 import java.util.stream.Stream;
 
 @Service
-public class JavaClassesExtractor implements JavaCLassExtraction {
+public class JavaClassesExtractor implements JavaClassExtraction {
 
     private Map<String, List<JavaClass>> extractedJavaClasses;
 

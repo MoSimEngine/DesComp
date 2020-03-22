@@ -3,6 +3,7 @@ package edu.kit.ipd.sdq.modsim.descomp.extractor.eventSimEngine.dataElementCreat
 import org.apache.bcel.classfile.*;
 import org.apache.commons.lang3.ArrayUtils;
 
+import java.lang.reflect.Array;
 import java.util.*;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
@@ -100,7 +101,13 @@ public class MethodeDecoder {
                 readMap.get(effectiveCode[effectiveCode.length-2]).add(effectiveCode[effectiveCode.length-1]);
             }
             else if(methodeCode[0][i][1].startsWith("put")){
-                //contains reference
+                HashMap<String, Collection<String>> writeMap = effectSpecification.get("write");
+                String[] effectiveCode = methodeCode[0][i][2].split(Pattern.quote("."));
+                if(!writeMap.keySet().contains(effectiveCode[effectiveCode.length-2])){
+                    Collection<String> attrCollection = new HashSet<>();
+                    writeMap.put(effectiveCode[effectiveCode.length-2], attrCollection);
+                }
+                writeMap.get(effectiveCode[effectiveCode.length-2]).add(effectiveCode[effectiveCode.length-1]);
             }
             else if(methodeCode[0][i][1].contains("load")){
                 int localVar = getVarNr(methodeCode[0][i]);
@@ -139,11 +146,15 @@ public class MethodeDecoder {
                     }
                     schedulingMap.get(callingName[0]).add(callingName[1]);
 
+
+                    String calledMethodClassName = callingName[0].split(Pattern.quote("."))[callingName[0].split(Pattern.quote(".")).length - 1];
+                    String calledMethodName = callingName[1];
+
                     //invoke. die danach aufgerufene put methode
                     if(checkIfValueIsPut(methodeCode[0], i)){
                         Collection<Integer> storeMethodePlaces = new ArrayList<>();
                         for (int j = i; j < methodeCode[0].length; j++) {
-                            if(methodeCode[0][j][1].contains("store")){
+                            if(methodeCode[0][j][1].contains("put") || methodeCode[0][j][1].contains("store")){
                                 storeMethodePlaces.add(j);
                             } else if(methodeCode[0][j][1].contains("get") || methodeCode[0][j][1].contains("load")){
                                 break;
@@ -155,11 +166,27 @@ public class MethodeDecoder {
                             HashMap<String, Collection<String>> writeMap = effectSpecification.get("write");
                             if (!writeMap.containsKey("called_" + callingName[1])) {
                                 Collection<String> attrCollection = new HashSet<>();
-                                writeMap.put("called_" + callingName[1], attrCollection);
+                                writeMap.put("called_" + calledMethodClassName+ "_"+calledMethodName, attrCollection);
                             }
-                            writeMap.get("called_" + callingName[1]).add(writesTo);
+                            writeMap.get("called_" + calledMethodClassName+ "_"+calledMethodName).add(writesTo);
                         }
                     }
+
+                    //TODO die davor aufgerufenden load als read referenz für called -> called_ in read
+                    for (String[] prevLoads:getPreviousLoadLine(methodeCode[0],i)) {
+                        if (prevLoads[1].startsWith("get"))
+                        {
+                            String[] loadedVariableName = prevLoads[2].split(Pattern.quote("."));
+                            HashMap<String, Collection<String>> readMap = effectSpecification.get("read");
+
+                            if (!readMap.keySet().contains("called_" + calledMethodClassName)) {
+                                Collection<String> attrCollection = new HashSet<>();
+                                readMap.put("called_" + calledMethodClassName+ "_"+calledMethodName, attrCollection);
+                            }
+                            readMap.get("called_" + calledMethodClassName+ "_"+calledMethodName).add(loadedVariableName[loadedVariableName.length-1]);
+                        }
+                    }
+
                 }
             }
         }
@@ -207,9 +234,9 @@ public class MethodeDecoder {
     private static boolean checkIfValueIsPut(String[][] code, int line){
         for (int i = line; i < code.length; i++) {
             if(code[i].length >= 2) {
-                if (code[i][1].contains("load") || code[i][1].contains("load")) {
+                if (code[i][1].contains("load") || code[i][1].contains("get")) {
                     return false;
-                } else if (code[i][1].contains("put")) {
+                } else if (code[i][1].contains("put") || code[i][1].contains("store")) {
                     return true;
                 }
             }
@@ -236,5 +263,34 @@ public class MethodeDecoder {
         return returnArray;
     }
 
+    private static String[][] getPreviousLoadLine(String[][] code, int line){
+        String[] loadLocalVarByteCode = {"get"};
+        String[] loadOtherElementsByteCode = {"load","ldc"};
+        ArrayList<String[]> returnArray = new ArrayList<String[]>();
+        for (int i = line-1 ; i >=0 ; i--) {
+            boolean found = false;
+            for (String str:loadLocalVarByteCode) {
+                if (code[i][1].startsWith(str)) {
+                    returnArray.add(code[i]);
+                    found = true;
+                }
+            }
+            for (String str: loadOtherElementsByteCode) {
+                if(code[i][1].startsWith(str)){
+                    found = true;
+                }
+            }
+            if(!found){
+                break;
+            }
+        }
+        String[][] codeLines = new String[returnArray.size()][1];
+        int i=0;
+        for (String[] codeLine: returnArray) {
+            codeLines[i] = codeLine;
+        }
+
+        return codeLines;
+    }
 
 }

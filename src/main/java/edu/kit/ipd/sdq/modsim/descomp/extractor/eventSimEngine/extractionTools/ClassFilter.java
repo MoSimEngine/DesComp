@@ -15,7 +15,7 @@ public class ClassFilter  implements IClassFilter {
 
     public static String[] entityClassNames = {"EventSimEntity.java", "AbstractActiveResource.java"};
     public static String[] eventClassNames = {"AbstractActiveResource.java"};
-    public static String[] eventMethodeNames= {"calculateConcreteDemand"};
+    public static String[] eventMethodeNames= {"calculateConcreteDemand", "<init>"};
 
 
     public Collection<JavaClass> extractClassesWithHierarchie(Collection<JavaClass> javaClasses, String[] classNames){

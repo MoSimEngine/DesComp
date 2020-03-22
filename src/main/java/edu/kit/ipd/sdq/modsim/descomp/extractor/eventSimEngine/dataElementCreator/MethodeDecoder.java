@@ -10,6 +10,10 @@ import java.util.stream.Collectors;
 
 public class MethodeDecoder {
 
+    public static String write = "write";
+    public static String read = "read";
+    public static String schedule = "schedule";
+
 
     //<MethodeName, <RelationType, <AffectedObjName, Collection<AttrNames>>>>
     public static HashMap<String, HashMap<String, HashMap<String, Collection<String>>>> extractEventsFromMethods(HashMap<String, Method> methodCollection){
@@ -107,7 +111,8 @@ public class MethodeDecoder {
                     Collection<String> attrCollection = new HashSet<>();
                     writeMap.put(effectiveCode[effectiveCode.length-2], attrCollection);
                 }
-                writeMap.get(effectiveCode[effectiveCode.length-2]).add(effectiveCode[effectiveCode.length-1]);
+                String attributeType =  getVarType(methodeCode[1], effectiveCode[effectiveCode.length-1]);
+                writeMap.get(effectiveCode[effectiveCode.length-2]).add(attributeType + "_" + effectiveCode[effectiveCode.length-1]);
             }
             else if(methodeCode[0][i][1].contains("load")){
                 int localVar = getVarNr(methodeCode[0][i]);
@@ -166,9 +171,9 @@ public class MethodeDecoder {
                             HashMap<String, Collection<String>> writeMap = effectSpecification.get("write");
                             if (!writeMap.containsKey("called_" + callingName[1])) {
                                 Collection<String> attrCollection = new HashSet<>();
-                                writeMap.put("called_" + calledMethodClassName+ "_"+calledMethodName, attrCollection);
+                                writeMap.put("called_" + callingName[0] + "_"+calledMethodName, attrCollection);
                             }
-                            writeMap.get("called_" + calledMethodClassName+ "_"+calledMethodName).add(writesTo);
+                            writeMap.get("called_" + callingName[0]+ "_"+calledMethodName).add(writesTo);
                         }
                     }
 
@@ -181,9 +186,9 @@ public class MethodeDecoder {
 
                             if (!readMap.keySet().contains("called_" + calledMethodClassName)) {
                                 Collection<String> attrCollection = new HashSet<>();
-                                readMap.put("called_" + calledMethodClassName+ "_"+calledMethodName, attrCollection);
+                                readMap.put("called_" + callingName[0]+ "_"+calledMethodName, attrCollection);
                             }
-                            readMap.get("called_" + calledMethodClassName+ "_"+calledMethodName).add(loadedVariableName[loadedVariableName.length-1]);
+                            readMap.get("called_" + callingName[0]+ "_"+calledMethodName).add(loadedVariableName[loadedVariableName.length-1]);
                         }
                     }
 
@@ -291,6 +296,17 @@ public class MethodeDecoder {
         }
 
         return codeLines;
+    }
+
+    private static String getVarType(String[][] localVariables, String varName){
+        String type = "unknow";
+        for (String[] singleLocalVariable : localVariables){
+            if(singleLocalVariable[2].equals(varName)){
+                type = singleLocalVariable[1].split(Pattern.quote("."))[singleLocalVariable[1].split(Pattern.quote(".")).length-1];
+                break;
+            }
+        }
+        return type;
     }
 
 }

@@ -67,8 +67,8 @@ public class ImportCommand {
 		Collection<File> fileList = new ArrayList<File>();
 		dfsForJar(fileList, dir);
         Simulator extractedSimulator = eventExtractorService.extractEventSim(fileList);
-//        extractedSimulator.setName(simulationName);
-//        repository.save(extractedSimulator);
+        extractedSimulator.setName(simulationName);
+        repository.save(extractedSimulator);
     }
 
 

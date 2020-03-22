@@ -39,12 +39,11 @@ public class EventSimExtractorService implements EventExtractorService{
         Simulator simulator = new Simulator("EXTARCTED_SIMULATION", "EXTARCTED_SIMULATION");
 
         extractedJavaClasses = classExtrator.extractJavaClasses(jarCollection);
-        HashMap<String, JavaClass> entityJavaClassHasMap = getEntitiesInHashMap(classFilter.extractClassesWithHierarchie(collectJavaClasses(), ClassFilter.entityClassNames));
+        HashMap<String, JavaClass> entityJavaClassHasMap = getEntitiesInHashMap(classFilter.extractClassesWithHierarchie(collectJavaClasses(), ClassFilter.classNames));
         HashMap<String, HashMap<String, Field>> fieldAttrHasMap = getAttributeHashMap(entityJavaClassHasMap);
 
-        Collection<Event> eventClasses = extractAllEvents();
-
-        return null;
+        HashMap<String, HashMap<String, HashMap<String, Collection<String>>>>  extractedEventsWithRelation = extractAllEvents();
+        return SimulationGenerator.createSimulator(entityJavaClassHasMap,fieldAttrHasMap,extractedEventsWithRelation);
     }
 
     private Collection<JavaClass> collectJavaClasses(){
@@ -75,11 +74,10 @@ public class EventSimExtractorService implements EventExtractorService{
         return attributeHashMap;
     }
 
-    private Collection<Event> extractAllEvents(){
-        Collection<JavaClass> eventClasses = classFilter.extractClassesWithHierarchie(collectJavaClasses(), ClassFilter.eventClassNames);//getEventClasses(collectJavaClasses());
+    private HashMap<String, HashMap<String, HashMap<String, Collection<String>>>> extractAllEvents(){
+        Collection<JavaClass> eventClasses = classFilter.extractClassesWithHierarchie(collectJavaClasses(), ClassFilter.classNames);//getEventClasses(collectJavaClasses());
         HashMap<String, Method> methodClasses = classFilter.getMethodes(eventClasses, ClassFilter.eventMethodeNames);
-        MethodeDecoder.extractEventsFromMethods(methodClasses);
-        return null;
+        return MethodeDecoder.extractEventsFromMethods(methodClasses);
     }
 
 

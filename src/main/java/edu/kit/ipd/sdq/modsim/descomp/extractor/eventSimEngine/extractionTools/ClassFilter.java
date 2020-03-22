@@ -13,8 +13,7 @@ import java.util.HashMap;
 @Service
 public class ClassFilter  implements IClassFilter {
 
-    public static String[] entityClassNames = {"EventSimEntity.java", "AbstractActiveResource.java"};
-    public static String[] eventClassNames = {"AbstractActiveResource.java"};
+    public static String[] classNames = {"EventSimEntity.java", "AbstractActiveResource.java"};
     public static String[] eventMethodeNames= {"calculateConcreteDemand", "<init>"};
 
 

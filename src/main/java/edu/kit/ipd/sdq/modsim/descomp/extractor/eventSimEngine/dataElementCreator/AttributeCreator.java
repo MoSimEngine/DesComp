@@ -12,4 +12,6 @@ public class AttributeCreator {
         String[] typeStringArray = field.getType().toString().split(Pattern.quote("."));
         return new Attribute(field.getName(), typeStringArray[typeStringArray.length-1]);
     }
+
+
 }

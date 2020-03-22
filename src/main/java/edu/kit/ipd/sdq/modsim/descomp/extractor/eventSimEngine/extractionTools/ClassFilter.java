@@ -1,5 +1,6 @@
 package edu.kit.ipd.sdq.modsim.descomp.extractor.eventSimEngine.extractionTools;
 
+import edu.kit.ipd.sdq.modsim.descomp.extractor.eventSimEngine.dataElementCreator.EntityOperation;
 import org.apache.bcel.classfile.JavaClass;
 import org.apache.bcel.classfile.Method;
 import org.springframework.stereotype.Service;
@@ -7,6 +8,7 @@ import org.springframework.stereotype.Service;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
+import java.util.HashMap;
 
 @Service
 public class ClassFilter  implements IClassFilter {
@@ -15,29 +17,6 @@ public class ClassFilter  implements IClassFilter {
     public static String[] eventClassNames = {"AbstractActiveResource.java"};
     public static String[] eventMethodeNames= {"calculateConcreteDemand"};
 
-//    public Collection<JavaClass> filterEntityClasses(Collection<JavaClass> javaClasses) {
-//        Collection<JavaClass> entityItem = new ArrayList<>();
-//        javaClasses.stream().forEach(s -> {
-//            if(Arrays.asList(entityClassNames).contains(s.getSourceFileName())){
-//                entityItem.add(s);
-//            }
-//        });
-//        return getHierarchie(entityItem, javaClasses);
-//    }
-//
-//    public Collection<JavaClass> getEventClasses(Collection<JavaClass> javaClasses){
-//        Collection<JavaClass> rootElementList = new ArrayList<>();
-//        javaClasses.stream().forEach(s -> {
-//            if(Arrays.asList(eventClassNames).contains(s.getSourceFileName())){
-//                if(!s.getClassName().contains("$")) {
-//                    rootElementList.add(s);
-//                }
-//            }
-//        });
-//        Collection<JavaClass> returnedList = getHierarchie(rootElementList, javaClasses);
-//        return returnedList;
-//    }
-//
 
     public Collection<JavaClass> extractClassesWithHierarchie(Collection<JavaClass> javaClasses, String[] classNames){
         Collection<JavaClass> rootElementList = new ArrayList<>();
@@ -54,12 +33,13 @@ public class ClassFilter  implements IClassFilter {
 
 
 
-    public Collection<Method> getMethodes (Collection<JavaClass> javaClasses){
-        Collection<Method> methodCollection = new ArrayList<>();
+    public HashMap<String, Method> getMethodes (Collection<JavaClass> javaClasses, String[] methodeNames){
+
+        HashMap<String, Method> methodCollection = new HashMap<>();
         for (JavaClass jc :javaClasses) {
             for (Method currentMethod:jc.getMethods()) {
-                if(Arrays.asList(eventMethodeNames).contains(currentMethod.getName())){
-                    methodCollection.add(currentMethod);
+                if(Arrays.asList(methodeNames).contains(currentMethod.getName())){
+                    methodCollection.put(EntityOperation.getJavaClassName(jc)+ "_" +currentMethod.getName(), currentMethod);
                 }
             }
         }

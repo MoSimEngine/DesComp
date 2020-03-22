@@ -1,12 +1,9 @@
 package edu.kit.ipd.sdq.modsim.descomp.extractor.eventSimEngine;
 
-import edu.kit.ipd.sdq.modsim.descomp.data.simulator.Attribute;
-import edu.kit.ipd.sdq.modsim.descomp.data.simulator.Entity;
 import edu.kit.ipd.sdq.modsim.descomp.data.simulator.Event;
 import edu.kit.ipd.sdq.modsim.descomp.data.simulator.Simulator;
-import edu.kit.ipd.sdq.modsim.descomp.extractor.eventSimEngine.dataElementCreator.AttributeCreator;
-import edu.kit.ipd.sdq.modsim.descomp.extractor.eventSimEngine.dataElementCreator.EntityCreator;
-import edu.kit.ipd.sdq.modsim.descomp.extractor.eventSimEngine.dataElementCreator.MethodeCreator;
+import edu.kit.ipd.sdq.modsim.descomp.extractor.eventSimEngine.dataElementCreator.EntityOperation;
+import edu.kit.ipd.sdq.modsim.descomp.extractor.eventSimEngine.dataElementCreator.MethodeDecoder;
 import edu.kit.ipd.sdq.modsim.descomp.extractor.eventSimEngine.extractionTools.ClassFilter;
 import edu.kit.ipd.sdq.modsim.descomp.extractor.eventSimEngine.extractionTools.IClassFilter;
 import edu.kit.ipd.sdq.modsim.descomp.extractor.eventSimEngine.extractionTools.JavaClassExtraction;
@@ -41,17 +38,13 @@ public class EventSimExtractorService implements EventExtractorService{
 
         Simulator simulator = new Simulator("EXTARCTED_SIMULATION", "EXTARCTED_SIMULATION");
 
-
-        //get all java classes of available jar files
         extractedJavaClasses = classExtrator.extractJavaClasses(jarCollection);
-        //filter jar classes for available entity classes and add entities to simulator
-        Collection<JavaClass> extractedEnitiesClasses = classFilter.extractClassesWithHierarchie(collectJavaClasses(), ClassFilter.entityClassNames);//filterEntityClasses(collectJavaClasses());
-        Collection<Entity> entityCollection = getEntityObjects(extractedEnitiesClasses);
-        entityCollection.forEach( entity -> simulator.addEntities(entity));
+        HashMap<String, JavaClass> entityJavaClassHasMap = getEntitiesInHashMap(classFilter.extractClassesWithHierarchie(collectJavaClasses(), ClassFilter.entityClassNames));
+        HashMap<String, HashMap<String, Field>> fieldAttrHasMap = getAttributeHashMap(entityJavaClassHasMap);
 
         Collection<Event> eventClasses = extractAllEvents();
 
-        return simulator;
+        return null;
     }
 
     private Collection<JavaClass> collectJavaClasses(){
@@ -62,31 +55,30 @@ public class EventSimExtractorService implements EventExtractorService{
         return javaClasses;
     }
 
-    private Collection<Entity> getEntityObjects(Collection<JavaClass> javaClassCollection){
-        Collection<Entity> entityCollection = new ArrayList<>();
+    private HashMap<String, JavaClass> getEntitiesInHashMap(Collection<JavaClass> javaClassCollection){
+        HashMap<String, JavaClass> classHashMap = new HashMap<>();
         for (JavaClass jc: javaClassCollection) {
-            Entity entity = EntityCreator.createEntity(jc);
-            for (Attribute attr: getAttributes(jc)) {
-                entity.addAttribute(attr);
+            classHashMap.put(EntityOperation.getJavaClassName(jc), jc);
+        }
+        return classHashMap;
+    }
+
+    private HashMap<String,HashMap<String, Field>> getAttributeHashMap(HashMap<String, JavaClass> jclassesHasMap){
+        HashMap<String, HashMap<String, Field>> attributeHashMap = new HashMap<>();
+        for (String key:jclassesHasMap.keySet()) {
+            HashMap<String, Field> attributes = new HashMap<>();
+            for (Field field : jclassesHasMap.get(key).getFields()) {
+                attributes.put(field.getName(),field);
             }
-            entityCollection.add(entity);
+            attributeHashMap.put(key,attributes);
         }
-        return entityCollection;
+        return attributeHashMap;
     }
 
-    private Collection<Attribute> getAttributes(JavaClass jc){
-        Collection<Attribute> attributes = new ArrayList<>();
-        Field[] fieldArray = jc.getFields();
-        for (Field field: fieldArray) {
-            attributes.add(AttributeCreator.createAttributes(field));
-        }
-        return attributes;
-    }
-
-    public Collection<Event> extractAllEvents(){
+    private Collection<Event> extractAllEvents(){
         Collection<JavaClass> eventClasses = classFilter.extractClassesWithHierarchie(collectJavaClasses(), ClassFilter.eventClassNames);//getEventClasses(collectJavaClasses());
-        Collection<Method> methodClasses = classFilter.getMethodes(eventClasses);
-        MethodeCreator.extractEventsFromMethods(methodClasses);
+        HashMap<String, Method> methodClasses = classFilter.getMethodes(eventClasses, ClassFilter.eventMethodeNames);
+        MethodeDecoder.extractEventsFromMethods(methodClasses);
         return null;
     }
 

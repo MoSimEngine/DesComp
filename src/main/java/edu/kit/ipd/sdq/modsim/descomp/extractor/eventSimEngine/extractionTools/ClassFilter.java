@@ -13,8 +13,8 @@ import java.util.HashMap;
 @Service
 public class ClassFilter  implements IClassFilter {
 
-    public static String[] classNames = {"EventSimEntity.java", "AbstractActiveResource.java"};
-    public static String[] eventMethodeNames= {"calculateConcreteDemand", "<init>"};
+    public static String[] classNames = {"EventSimEntity.java", "AbstractActiveResource.java", "StartSimulationJob.java"};
+    public static String[] eventMethodeNames= {"calculateConcreteDemand", "<init>", "execute","loadInstrumentationDesciptionFromXML"};
 
 
     public Collection<JavaClass> extractClassesWithHierarchie(Collection<JavaClass> javaClasses, String[] classNames){

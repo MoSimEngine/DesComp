@@ -36,8 +36,6 @@ public class EventSimExtractorService implements EventExtractorService{
     @Override
     public Simulator extractEventSim(Collection<File> jarCollection) {
 
-        Simulator simulator = new Simulator("EXTARCTED_SIMULATION", "EXTARCTED_SIMULATION");
-
         extractedJavaClasses = classExtrator.extractJavaClasses(jarCollection);
         HashMap<String, JavaClass> entityJavaClassHasMap = getEntitiesInHashMap(classFilter.extractClassesWithHierarchie(collectJavaClasses(), ClassFilter.classNames));
         HashMap<String, HashMap<String, Field>> fieldAttrHasMap = getAttributeHashMap(entityJavaClassHasMap);

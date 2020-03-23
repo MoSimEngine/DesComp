@@ -107,12 +107,14 @@ public class MethodeDecoder {
             else if(methodeCode[0][i][1].startsWith("put")){
                 HashMap<String, Collection<String>> writeMap = effectSpecification.get("write");
                 String[] effectiveCode = methodeCode[0][i][2].split(Pattern.quote("."));
-                if(!writeMap.keySet().contains(effectiveCode[effectiveCode.length-2])){
-                    Collection<String> attrCollection = new HashSet<>();
-                    writeMap.put(effectiveCode[effectiveCode.length-2], attrCollection);
-                }
                 String attributeType =  getVarType(methodeCode[1], effectiveCode[effectiveCode.length-1]);
-                writeMap.get(effectiveCode[effectiveCode.length-2]).add(attributeType + "_" + effectiveCode[effectiveCode.length-1]);
+                if (!attributeType.equals("unknown")) {
+                    if(!writeMap.keySet().contains(effectiveCode[effectiveCode.length-2])){
+                        Collection<String> attrCollection = new HashSet<>();
+                        writeMap.put(effectiveCode[effectiveCode.length-2], attrCollection);
+                    }
+                    writeMap.get(effectiveCode[effectiveCode.length-2]).add(attributeType + "_" + effectiveCode[effectiveCode.length-1]);
+                }
             }
             else if(methodeCode[0][i][1].contains("load")){
                 int localVar = getVarNr(methodeCode[0][i]);
@@ -168,12 +170,14 @@ public class MethodeDecoder {
 
                         for (int locationInt:storeMethodePlaces) {
                             String writesTo = getLocalVar(methodeCode[1], Integer.toString(getVarNr(methodeCode[0][locationInt])));
-                            HashMap<String, Collection<String>> writeMap = effectSpecification.get("write");
-                            if (!writeMap.containsKey("called_" + callingName[1])) {
-                                Collection<String> attrCollection = new HashSet<>();
-                                writeMap.put("called_" + callingName[0] + "_"+calledMethodName, attrCollection);
+                            if(!writesTo.equals("empty")){
+                                HashMap<String, Collection<String>> writeMap = effectSpecification.get("write");
+                                if (!writeMap.containsKey("called_" + callingName[1])) {
+                                    Collection<String> attrCollection = new HashSet<>();
+                                    writeMap.put("called_" + callingName[0] + "_"+calledMethodName, attrCollection);
+                                }
+                                writeMap.get("called_" + callingName[0]+ "_"+calledMethodName).add(writesTo);
                             }
-                            writeMap.get("called_" + callingName[0]+ "_"+calledMethodName).add(writesTo);
                         }
                     }
 
@@ -211,7 +215,11 @@ public class MethodeDecoder {
                 localVarNr=3;
             }
         } else{
+            try{
             localVarNr = Integer.parseInt(methodeCode[2].substring(1));
+            }catch(Exception e){
+
+            }
         }
         return localVarNr;
     }

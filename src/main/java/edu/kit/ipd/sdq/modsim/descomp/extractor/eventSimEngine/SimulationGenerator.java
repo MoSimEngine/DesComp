@@ -5,6 +5,7 @@ import edu.kit.ipd.sdq.modsim.descomp.extractor.eventSimEngine.dataElementCreato
 import edu.kit.ipd.sdq.modsim.descomp.extractor.eventSimEngine.dataElementCreator.EntityOperation;
 import edu.kit.ipd.sdq.modsim.descomp.extractor.eventSimEngine.dataElementCreator.MethodeDecoder;
 import edu.kit.ipd.sdq.modsim.descomp.extractor.eventSimEngine.extractionTools.ClassFilter;
+import fj.Hash;
 import io.github.lukehutch.fastclasspathscanner.classloaderhandler.Java9ClassLoaderHandler;
 import org.apache.bcel.classfile.Field;
 import org.apache.bcel.classfile.JavaClass;
@@ -17,124 +18,36 @@ public class SimulationGenerator {
     public static Simulator createSimulator(HashMap<String, JavaClass> entityJavaClassHashMap, HashMap<String, HashMap<String, Field>> fieldAttrHasMap, HashMap<String, HashMap<String, HashMap<String, Collection<String>>>>  extractedEventsWithRelation){
         HashMap<String, Entity> allEntityHashMap = getAllEntities(entityJavaClassHashMap);
         HashMap<String, HashMap<String, Attribute>> allAttributesHashMap = getAllAttributes(fieldAttrHasMap);
+        HashMap<String, Event> allEventsMap = new HashMap<>();
 
         Simulator sim = new Simulator("extractedSimulator", "Simulator extracted from EvenSim");
 
+
+        //adding read and write relations
         for (String keyEvents : extractedEventsWithRelation.keySet()){
-            Set<String> entityKeys = new HashSet<>(allEntityHashMap.keySet());
-            for (String keyEntity: entityKeys) {
-                if(keyEvents.startsWith(keyEntity)){
-                    HashMap<String, HashMap<String, Collection<String>>> currEvent= extractedEventsWithRelation.get(keyEvents);
-                    Event event = new Event(keyEvents);
+                HashMap<String, HashMap<String, Collection<String>>> currEvent= extractedEventsWithRelation.get(keyEvents);
+                Event event = new Event(keyEvents);
 
-                    //reading objects
-                    HashMap<String, Collection<String>> eventReadRelation = currEvent.get(MethodeDecoder.read);
-                    for (String objectReadAt: eventReadRelation.keySet()) {
-                        if(allEntityHashMap.containsKey(objectReadAt)) {
-                            //reading from known enitty object
-                            for (String attrRead : eventReadRelation.get(objectReadAt)) {
-                                if (allAttributesHashMap.get(objectReadAt).containsKey(attrRead)) {
-                                    if(!allEntityHashMap.containsKey(objectReadAt)){
-                                        allEntityHashMap.put(objectReadAt, new Entity(objectReadAt));
-                                        allAttributesHashMap.put(objectReadAt, new HashMap<String,Attribute>());
-                                    }
-                                    Entity entity = allEntityHashMap.get(objectReadAt);
-                                    if(!allAttributesHashMap.get(objectReadAt).containsKey(attrRead)){
-                                        allAttributesHashMap.get(objectReadAt).put(attrRead, new Attribute(attrRead, "unknown"));
-                                    }
-                                    Attribute attribute = allAttributesHashMap.get(objectReadAt).get(attrRead);
+                //reading objects
+                HashMap<String, Collection<String>> eventReadRelation = currEvent.get(MethodeDecoder.read);
+                for (String objectReadAt: eventReadRelation.keySet()) {
+                    if(allEntityHashMap.containsKey(objectReadAt)) {
+                        //reading from known enitty object
+                        for (String attrRead : eventReadRelation.get(objectReadAt)) {
+                            if (allAttributesHashMap.get(objectReadAt).containsKey(attrRead)) {
+                                if(!allEntityHashMap.containsKey(objectReadAt)){
+                                    allEntityHashMap.put(objectReadAt, new Entity(objectReadAt));
+                                    allAttributesHashMap.put(objectReadAt, new HashMap<String,Attribute>());
+                                }
+                                Entity entity = allEntityHashMap.get(objectReadAt);
+                                if(!allAttributesHashMap.get(objectReadAt).containsKey(attrRead)){
+                                    allAttributesHashMap.get(objectReadAt).put(attrRead, new Attribute(attrRead, "unknown"));
+                                }
+                                Attribute attribute = allAttributesHashMap.get(objectReadAt).get(attrRead);
 
+                                event.addReadAttribute(attribute);
+                                if (!event.getReadAttribute().contains(attribute)) {
                                     event.addReadAttribute(attribute);
-                                    if (!event.getReadAttribute().contains(attribute)) {
-                                        event.addReadAttribute(attribute);
-                                    }
-                                    if (!entity.getAttributes().contains(attribute)) {
-                                        entity.addAttribute(attribute);
-                                    }
-                                    if (!sim.getEntities().contains(entity)) {
-                                        sim.addEntities(entity);
-                                    }
-                                    if (!sim.getEvents().contains(event)) {
-                                        sim.addEvents(event);
-                                    }
-                                }
-                            }
-                        }
-                            //reading value from the caller
-                        if(objectReadAt.equals("caller")){
-                            for (String callerDescriptionString:eventReadRelation.get("caller")) {
-                                String[] callerDescription = callerDescriptionString.split("_");
-
-                                HashMap<String, Collection<String>> readCallerWithAttr = getReadCallerWithAttr(entityJavaClassHashMap, allEntityHashMap, allAttributesHashMap, extractedEventsWithRelation, callerDescription);
-                                for (String callerEntityName : readCallerWithAttr.keySet()) {
-                                    if(!allEntityHashMap.containsKey(callerEntityName)){
-                                        // entität und attribut hinzufügen
-                                        allEntityHashMap.put(callerEntityName,  new Entity(callerEntityName));
-                                        allAttributesHashMap.put(callerEntityName, new HashMap<String, Attribute>());
-                                        for (String callerAttrName: readCallerWithAttr.get(callerEntityName)) {
-                                            String[] callerAttrNameArray = callerAttrName.split("_");
-                                            allAttributesHashMap.get(callerEntityName).put(callerAttrNameArray[callerAttrNameArray.length-1] , new Attribute(callerAttrNameArray[callerAttrNameArray.length-1], callerAttrNameArray[callerAttrNameArray.length-2]));
-                                        }
-                                    } else {
-                                        for (String callerAttrName : readCallerWithAttr.get(callerEntityName)) {
-                                            //ggf. attribute hinzufügen
-                                            String[] callerAttrNameArray = callerAttrName.split("_");
-                                            if(!allAttributesHashMap.get(callerEntityName).containsKey(callerAttrNameArray[callerAttrNameArray.length-1])) {
-                                                allAttributesHashMap.get(callerEntityName).put(callerAttrNameArray[callerAttrNameArray.length-1] , new Attribute(callerAttrNameArray[callerAttrNameArray.length-1], callerAttrNameArray[callerAttrNameArray.length-2]));
-                                            }
-                                        }
-                                    }
-                                    //TODO adding all entitys/attributes to the simulator
-                                    Entity entity = allEntityHashMap.get(callerEntityName);
-                                    for (String callerAttrName: readCallerWithAttr.get(callerEntityName)) {
-                                        String[] callerAttrNameArray = callerAttrName.split("_");
-                                        Attribute attribute = allAttributesHashMap.get(callerEntityName).get(callerAttrNameArray[callerAttrNameArray.length-1]);
-                                        if(!entity.getAttributes().contains(attribute)){
-                                            entity.addAttribute(attribute);
-                                        }
-                                        if(!event.getReadAttribute().contains(attribute)){
-                                            event.addReadAttribute(attribute);
-                                        }
-                                    }
-                                    if(!sim.getEvents().contains(event)){
-                                        sim.addEvents(event);
-                                    }
-                                    if(!sim.getEntities().contains(entity)){
-                                        sim.addEntities(entity);
-                                    }
-
-                                }
-                            }
-                        }
-                    }
-
-
-                    HashMap<String, Collection<String>> eventWriteRelation = currEvent.get(MethodeDecoder.write);
-                    for (String objectWriteAt:eventWriteRelation.keySet()) {
-                        //next key kann entity name sein
-                        if(allEntityHashMap.containsKey(objectWriteAt)){
-                            for (String attributeNameComposed :eventWriteRelation.get(objectWriteAt)) {
-                                String attributeType = attributeNameComposed.split("_")[0];
-                                String attributeName = attributeNameComposed.split("_")[1];
-//                                objectWriteAt;
-                                if(!allEntityHashMap.containsKey(objectWriteAt)){
-                                    allEntityHashMap.put(objectWriteAt, new Entity(objectWriteAt));
-                                    allAttributesHashMap.put(objectWriteAt, new HashMap<String, Attribute>());
-                                }
-                                if(!allAttributesHashMap.get(objectWriteAt).containsKey(attributeName)){
-                                    allAttributesHashMap.get(objectWriteAt).put(attributeName, new Attribute(attributeName, attributeType));
-                                }
-
-                                Entity entity = allEntityHashMap.get(objectWriteAt);
-                                Attribute attribute = allAttributesHashMap.get(objectWriteAt).get(attributeName);
-                                boolean notFound = true;
-                                for (WritesAttribute wrAttr: event.getWriteAttribute()) {
-                                    if (wrAttr.getAttribute().equals(attribute)) {
-                                        notFound = false;
-                                    }
-                                }
-                                if (notFound) {
-                                    event.addWriteAttribute(attribute, "noCond","noFkt");
                                 }
                                 if (!entity.getAttributes().contains(attribute)) {
                                     entity.addAttribute(attribute);
@@ -147,63 +60,185 @@ public class SimulationGenerator {
                                 }
                             }
                         }
-                        //alternativ caller/called
-                        if(objectWriteAt.startsWith("caller")){
-                            for (String callerDescriptionString:eventWriteRelation.get("caller")) {
-                                String[] callerDescription = callerDescriptionString.split("_");
+                    }
+                        //reading value from the caller
+                    if(objectReadAt.equals("caller")){
+                        for (String callerDescriptionString:eventReadRelation.get("caller")) {
+                            String[] callerDescription = callerDescriptionString.split("_");
 
-                                HashMap<String, Collection<String>> writeRelations = getWriteCallerWithAttr(entityJavaClassHashMap, allEntityHashMap, allAttributesHashMap, extractedEventsWithRelation, callerDescription);
-                                for (String callerEntityName : writeRelations.keySet()) {
-                                    if (!allEntityHashMap.containsKey(callerEntityName)) {
-                                        // entität und attribut hinzufügen
-                                        allEntityHashMap.put(callerEntityName, new Entity(callerEntityName));
-                                        allAttributesHashMap.put(callerEntityName, new HashMap<String, Attribute>());
-                                        for (String callerAttrName : writeRelations.get(callerEntityName)) {
-                                            String[] callerAttrNameArray = callerAttrName.split("_");
-                                            allAttributesHashMap.get(callerEntityName).put(callerAttrNameArray[callerAttrNameArray.length - 1], new Attribute(callerAttrNameArray[callerAttrNameArray.length - 1], callerAttrNameArray[callerAttrNameArray.length - 2]));
-                                        }
-                                    } else {
-                                        for (String callerAttrName : writeRelations.get(callerEntityName)) {
-                                            //ggf. attribute hinzufügen
-                                            String[] callerAttrNameArray = callerAttrName.split("_");
-                                            if (!allAttributesHashMap.get(callerEntityName).containsKey(callerAttrNameArray[callerAttrNameArray.length - 1])) {
-                                                allAttributesHashMap.get(callerEntityName).put(callerAttrNameArray[callerAttrNameArray.length - 1], new Attribute(callerAttrNameArray[callerAttrNameArray.length - 1], callerAttrNameArray[callerAttrNameArray.length - 2]));
-                                            }
-                                        }
-                                    }
-                                    Entity entity = allEntityHashMap.get(callerEntityName);
-                                    for (String callerAttrName: writeRelations.get(callerEntityName)) {
+                            HashMap<String, Collection<String>> readCallerWithAttr = getReadCallerWithAttr(entityJavaClassHashMap, allEntityHashMap, allAttributesHashMap, extractedEventsWithRelation, callerDescription);
+                            for (String callerEntityName : readCallerWithAttr.keySet()) {
+                                if(!allEntityHashMap.containsKey(callerEntityName)){
+                                    // entität und attribut hinzufügen
+                                    allEntityHashMap.put(callerEntityName,  new Entity(callerEntityName));
+                                    allAttributesHashMap.put(callerEntityName, new HashMap<String, Attribute>());
+                                    for (String callerAttrName: readCallerWithAttr.get(callerEntityName)) {
                                         String[] callerAttrNameArray = callerAttrName.split("_");
-                                        Attribute attribute = allAttributesHashMap.get(callerEntityName).get(callerAttrNameArray[callerAttrNameArray.length-1]);
-                                        if(!entity.getAttributes().contains(attribute)){
-                                            entity.addAttribute(attribute);
-                                        }
-                                        boolean attrExist = false;
-                                        for (WritesAttribute wrAttr:event.getWriteAttribute()) {
-                                            if(wrAttr.getAttribute().equals(attribute)){
-                                                attrExist = true;
-                                            }
-                                        }
-                                        if(!attrExist){
-                                            event.addWriteAttribute(attribute, "noCond", "noFkt");
+                                        allAttributesHashMap.get(callerEntityName).put(callerAttrNameArray[callerAttrNameArray.length-1] , new Attribute(callerAttrNameArray[callerAttrNameArray.length-1], callerAttrNameArray[callerAttrNameArray.length-2]));
+                                    }
+                                } else {
+                                    for (String callerAttrName : readCallerWithAttr.get(callerEntityName)) {
+                                        //ggf. attribute hinzufügen
+                                        String[] callerAttrNameArray = callerAttrName.split("_");
+                                        if(!allAttributesHashMap.get(callerEntityName).containsKey(callerAttrNameArray[callerAttrNameArray.length-1])) {
+                                            allAttributesHashMap.get(callerEntityName).put(callerAttrNameArray[callerAttrNameArray.length-1] , new Attribute(callerAttrNameArray[callerAttrNameArray.length-1], callerAttrNameArray[callerAttrNameArray.length-2]));
                                         }
                                     }
-                                    if(!sim.getEvents().contains(event)){
-                                        sim.addEvents(event);
-                                    }
-                                    if(!sim.getEntities().contains(entity)){
-                                        sim.addEntities(entity);
-                                    }
-
                                 }
+                                //TODO adding all entitys/attributes to the simulator
+                                Entity entity = allEntityHashMap.get(callerEntityName);
+                                for (String callerAttrName: readCallerWithAttr.get(callerEntityName)) {
+                                    String[] callerAttrNameArray = callerAttrName.split("_");
+                                    Attribute attribute = allAttributesHashMap.get(callerEntityName).get(callerAttrNameArray[callerAttrNameArray.length-1]);
+                                    if(!entity.getAttributes().contains(attribute)){
+                                        entity.addAttribute(attribute);
+                                    }
+                                    if(!event.getReadAttribute().contains(attribute)){
+                                        event.addReadAttribute(attribute);
+                                    }
+                                }
+                                if(!sim.getEvents().contains(event)){
+                                    sim.addEvents(event);
+                                }
+                                if(!sim.getEntities().contains(entity)){
+                                    sim.addEntities(entity);
+                                }
+
                             }
                         }
                     }
                 }
-            }
+
+                HashMap<String, Collection<String>> eventWriteRelation = currEvent.get(MethodeDecoder.write);
+                for (String objectWriteAt:eventWriteRelation.keySet()) {
+                    //next key kann entity name sein
+                    if(allEntityHashMap.containsKey(objectWriteAt)){
+                        for (String attributeNameComposed :eventWriteRelation.get(objectWriteAt)) {
+                            String attributeType = attributeNameComposed.split("_")[0];
+                            String attributeName = attributeNameComposed.split("_")[1];
+//                                objectWriteAt;
+                            if(!allEntityHashMap.containsKey(objectWriteAt)){
+                                allEntityHashMap.put(objectWriteAt, new Entity(objectWriteAt));
+                                allAttributesHashMap.put(objectWriteAt, new HashMap<String, Attribute>());
+                            }
+                            if(!allAttributesHashMap.get(objectWriteAt).containsKey(attributeName)){
+                                allAttributesHashMap.get(objectWriteAt).put(attributeName, new Attribute(attributeName, attributeType));
+                            }
+
+                            Entity entity = allEntityHashMap.get(objectWriteAt);
+                            Attribute attribute = allAttributesHashMap.get(objectWriteAt).get(attributeName);
+                            boolean notFound = true;
+                            for (WritesAttribute wrAttr: event.getWriteAttribute()) {
+                                if (wrAttr.getAttribute().equals(attribute)) {
+                                    notFound = false;
+                                }
+                            }
+                            if (notFound) {
+                                event.addWriteAttribute(attribute, "noCond","noFkt");
+                            }
+                            if (!entity.getAttributes().contains(attribute)) {
+                                entity.addAttribute(attribute);
+                            }
+                            if (!sim.getEntities().contains(entity)) {
+                                sim.addEntities(entity);
+                            }
+                            if (!sim.getEvents().contains(event)) {
+                                sim.addEvents(event);
+                            }
+                        }
+                    }
+                    //alternativ caller/called
+                    if(objectWriteAt.startsWith("caller")){
+                        for (String callerDescriptionString:eventWriteRelation.get("caller")) {
+                            String[] callerDescription = callerDescriptionString.split("_");
+
+                            HashMap<String, Collection<String>> writeRelations = getWriteCallerWithAttr(entityJavaClassHashMap, allEntityHashMap, allAttributesHashMap, extractedEventsWithRelation, callerDescription);
+                            for (String callerEntityName : writeRelations.keySet()) {
+                                if (!allEntityHashMap.containsKey(callerEntityName)) {
+                                    // entität und attribut hinzufügen
+                                    allEntityHashMap.put(callerEntityName, new Entity(callerEntityName));
+                                    allAttributesHashMap.put(callerEntityName, new HashMap<String, Attribute>());
+                                    for (String callerAttrName : writeRelations.get(callerEntityName)) {
+                                        String[] callerAttrNameArray = callerAttrName.split("_");
+                                        allAttributesHashMap.get(callerEntityName).put(callerAttrNameArray[callerAttrNameArray.length - 1], new Attribute(callerAttrNameArray[callerAttrNameArray.length - 1], callerAttrNameArray[callerAttrNameArray.length - 2]));
+                                    }
+                                } else {
+                                    for (String callerAttrName : writeRelations.get(callerEntityName)) {
+                                        //ggf. attribute hinzufügen
+                                        String[] callerAttrNameArray = callerAttrName.split("_");
+                                        if (!allAttributesHashMap.get(callerEntityName).containsKey(callerAttrNameArray[callerAttrNameArray.length - 1])) {
+                                            allAttributesHashMap.get(callerEntityName).put(callerAttrNameArray[callerAttrNameArray.length - 1], new Attribute(callerAttrNameArray[callerAttrNameArray.length - 1], callerAttrNameArray[callerAttrNameArray.length - 2]));
+                                        }
+                                    }
+                                }
+                                Entity entity = allEntityHashMap.get(callerEntityName);
+                                for (String callerAttrName: writeRelations.get(callerEntityName)) {
+                                    String[] callerAttrNameArray = callerAttrName.split("_");
+                                    Attribute attribute = allAttributesHashMap.get(callerEntityName).get(callerAttrNameArray[callerAttrNameArray.length-1]);
+                                    if(!entity.getAttributes().contains(attribute)){
+                                        entity.addAttribute(attribute);
+                                    }
+                                    boolean attrExist = false;
+                                    for (WritesAttribute wrAttr:event.getWriteAttribute()) {
+                                        if(wrAttr.getAttribute().equals(attribute)){
+                                            attrExist = true;
+                                        }
+                                    }
+                                    if(!attrExist){
+                                        event.addWriteAttribute(attribute, "noCond", "noFkt");
+                                    }
+                                }
+                                if(!sim.getEvents().contains(event)){
+                                    sim.addEvents(event);
+                                }
+                                if(!sim.getEntities().contains(entity)){
+                                    sim.addEntities(entity);
+                                }
+
+                            }
+                        }
+                    }
+                }
+
+            allEventsMap.put(keyEvents, event);
         }
 
+        //adding scheduling relations
+        for (String keyEvent : extractedEventsWithRelation.keySet()) {
+            HashMap<String, Collection<String>> currScheduledEvent= extractedEventsWithRelation.get(keyEvent).get(MethodeDecoder.schedule);
+            Event consideredEvent = allEventsMap.get(keyEvent);
+            for (String scheduledEventKey:currScheduledEvent.keySet()) {
+                for (String calledMethode : currScheduledEvent.get(scheduledEventKey)) {
+                    String methodeReferenze = scheduledEventKey +"_"+calledMethode;
+                    boolean scheduledEventFound = false;
+                    for (String eventKey: allEventsMap.keySet()) {
+                        if(methodeReferenze.contains(eventKey)){
+                            scheduledEventFound = true;
+                            consideredEvent.addSchedulesEvent(allEventsMap.get(eventKey), "noCond", "noDelay");
+                        }
+                    }
 
+                    if (!scheduledEventFound){
+                        boolean containsEvent = false;
+                        Event dummyEvent = null;
+                        for (Event event:sim.getEvents()) {
+                            if(event.getName().equals("dummyEvent_"+methodeReferenze)){
+                                containsEvent = true;
+                                dummyEvent = event;
+                                break;
+                            }
+                        }
+                        if(!containsEvent){
+                            dummyEvent = new Event("dummyCall_"+methodeReferenze);
+                            sim.addEvents(dummyEvent);
+                        }
+                        consideredEvent.addSchedulesEvent(dummyEvent, "noCond", "noDelay");
+                    }
+                }
+            }
+
+
+        }
         return sim;
     }
 

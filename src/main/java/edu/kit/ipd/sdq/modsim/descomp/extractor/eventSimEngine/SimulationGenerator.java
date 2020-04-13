@@ -3,15 +3,10 @@ package edu.kit.ipd.sdq.modsim.descomp.extractor.eventSimEngine;
 import edu.kit.ipd.sdq.modsim.descomp.data.simulator.*;
 import edu.kit.ipd.sdq.modsim.descomp.extractor.eventSimEngine.dataElementCreator.AttributeCreator;
 import edu.kit.ipd.sdq.modsim.descomp.extractor.eventSimEngine.dataElementCreator.EntityOperation;
-import edu.kit.ipd.sdq.modsim.descomp.extractor.eventSimEngine.dataElementCreator.MethodeDecoder;
-import edu.kit.ipd.sdq.modsim.descomp.extractor.eventSimEngine.extractionTools.ClassFilter;
-import fj.Hash;
-import io.github.lukehutch.fastclasspathscanner.classloaderhandler.Java9ClassLoaderHandler;
+import edu.kit.ipd.sdq.modsim.descomp.extractor.eventSimEngine.methodDecodingElements.MethodDecoder;
 import org.apache.bcel.classfile.Field;
 import org.apache.bcel.classfile.JavaClass;
-import polyglot.util.ConcatenatedIterator;
 
-import java.io.StringReader;
 import java.util.*;
 
 public class SimulationGenerator {
@@ -29,7 +24,7 @@ public class SimulationGenerator {
                 Event event = new Event(keyEvents);
 
                 //reading objects
-                HashMap<String, Collection<String>> eventReadRelation = currEvent.get(MethodeDecoder.read);
+                HashMap<String, Collection<String>> eventReadRelation = currEvent.get(MethodDecoder.read);
                 for (String objectReadAt: eventReadRelation.keySet()) {
                     if(allEntityHashMap.containsKey(objectReadAt)) {
                         //reading from known enitty object
@@ -109,7 +104,7 @@ public class SimulationGenerator {
                     }
                 }
 
-                HashMap<String, Collection<String>> eventWriteRelation = currEvent.get(MethodeDecoder.write);
+                HashMap<String, Collection<String>> eventWriteRelation = currEvent.get(MethodDecoder.write);
                 for (String objectWriteAt:eventWriteRelation.keySet()) {
                     //next key kann entity name sein
                     if(allEntityHashMap.containsKey(objectWriteAt)){
@@ -171,6 +166,7 @@ public class SimulationGenerator {
                                         }
                                     }
                                 }
+
                                 Entity entity = allEntityHashMap.get(callerEntityName);
                                 for (String callerAttrName: writeRelations.get(callerEntityName)) {
                                     String[] callerAttrNameArray = callerAttrName.split("_");
@@ -205,7 +201,7 @@ public class SimulationGenerator {
 
         //adding scheduling relations
         for (String keyEvent : extractedEventsWithRelation.keySet()) {
-            HashMap<String, Collection<String>> currScheduledEvent= extractedEventsWithRelation.get(keyEvent).get(MethodeDecoder.schedule);
+            HashMap<String, Collection<String>> currScheduledEvent= extractedEventsWithRelation.get(keyEvent).get(MethodDecoder.schedule);
             Event consideredEvent = allEventsMap.get(keyEvent);
             for (String scheduledEventKey:currScheduledEvent.keySet()) {
                 for (String calledMethode : currScheduledEvent.get(scheduledEventKey)) {
@@ -276,14 +272,14 @@ public class SimulationGenerator {
             for (String possibleName:allClassNames) {
                 for (String eventSavedName : extractedEventsWithRelation.keySet()) {
                     HashMap<String, HashMap<String, Collection<String>>> maps = extractedEventsWithRelation.get(eventSavedName);
-                    for (HashMap<String, Collection<String>> scheduleEvent: Arrays.asList(maps.get(MethodeDecoder.schedule))){
+                    for (HashMap<String, Collection<String>> scheduleEvent: Arrays.asList(maps.get(MethodDecoder.schedule))){
                         for (String keyOfScheduledEvent : scheduleEvent.keySet()){
                             if(keyOfScheduledEvent.endsWith(possibleName) && scheduleEvent.get(keyOfScheduledEvent).contains(callerDescription[1])){
                                 // etwas gefunden, was die mehtode aufruft
-                                for (String allReadkeys : maps.get(MethodeDecoder.read).keySet()) {
+                                for (String allReadkeys : maps.get(MethodDecoder.read).keySet()) {
                                     if(allReadkeys.startsWith("called_") && allReadkeys.contains(possibleName) && allReadkeys.endsWith(callerDescription[1])){//
                                         foundSth = true;
-                                        callerMap.put(eventSavedName.split("_")[0], maps.get(MethodeDecoder.read).get(allReadkeys));
+                                        callerMap.put(eventSavedName.split("_")[0], maps.get(MethodDecoder.read).get(allReadkeys));
                                     }
                                 }
                             }
@@ -297,6 +293,11 @@ public class SimulationGenerator {
             attributes.add(callerDescription[2]+"_"+callerDescription[3]);
             callerMap.put(callerDescription[1] + "_Caller", attributes);
         }
+
+        if(foundSth && callerMap.size()>1){
+            callerMap =removeDerivedMethodes(callerMap, entityJavaClassHashMap, callerDescription);
+        }
+
         return callerMap;
     }
 
@@ -308,20 +309,18 @@ public class SimulationGenerator {
             Collection<String> allClassNames = new ArrayList<>();
             allClassNames.add(callerDescription[0]);
             allClassNames.add(jc.getSuperclassName());
-            //TODO rekursion
-            allClassNames.addAll(Arrays.asList(jc.getInterfaceNames()));
 
             for (String possibleName:allClassNames) {
                 for (String eventSavedName : extractedEventsWithRelation.keySet()) {
                     HashMap<String, HashMap<String, Collection<String>>> maps = extractedEventsWithRelation.get(eventSavedName);
-                    for (HashMap<String, Collection<String>> scheduleEvent: Arrays.asList(maps.get(MethodeDecoder.schedule))){
+                    for (HashMap<String, Collection<String>> scheduleEvent: Arrays.asList(maps.get(MethodDecoder.schedule))){
                         for (String keyOfScheduledEvent : scheduleEvent.keySet()){
                             if(keyOfScheduledEvent.endsWith(possibleName) && scheduleEvent.get(keyOfScheduledEvent).contains(callerDescription[1])) {
                                 // etwas gefunden, was die mehtode aufruft
-                                for(String allWritekeys : maps.get(MethodeDecoder.write).keySet()) {
+                                for(String allWritekeys : maps.get(MethodDecoder.write).keySet()) {
                                     if(allWritekeys.startsWith("called_") && allWritekeys.contains(possibleName) && allWritekeys.endsWith(callerDescription[1])){//
                                         foundSth = true;
-                                        callerMap.put(eventSavedName.split("_")[0], maps.get(MethodeDecoder.write).get(allWritekeys));
+                                        callerMap.put(eventSavedName.split("_")[0], maps.get(MethodDecoder.write).get(allWritekeys));
                                     }
                                 }
                             }
@@ -337,7 +336,40 @@ public class SimulationGenerator {
             attributes.add("Attribute_Affected_By_"+callerDescription[1]);
             callerMap.put(callerDescription[1] + "_Caller", attributes);
         }
+
+        if(foundSth && callerMap.size()>1){
+            callerMap =removeDerivedMethodes(callerMap, entityJavaClassHashMap, callerDescription);
+        }
+
         return callerMap;
     }
 
+    private static HashMap<String, Collection<String>> removeDerivedMethodes(HashMap<String, Collection<String>> oldCallerMap, HashMap<String, JavaClass> entityJavaClassHashMap, String[] callerDescription){
+        if(entityJavaClassHashMap.get(callerDescription[0]).isSuper()){
+            JavaClass originalJavaClass = entityJavaClassHashMap.get(callerDescription[0]);
+            Set<String> oldCallerMapKeySet = new HashSet<>(oldCallerMap.keySet());
+            for (String callerKey :oldCallerMapKeySet){
+                JavaClass currentJavaClass = entityJavaClassHashMap.get(callerKey);
+                if(methodeFromSameSuperClass(currentJavaClass, originalJavaClass, entityJavaClassHashMap)){
+                    oldCallerMap.remove(callerKey);
+                }
+            }
+        }
+        return oldCallerMap;
     }
+
+    private static boolean methodeFromSameSuperClass(JavaClass classA, JavaClass classB, HashMap<String, JavaClass> entityJavaClassHashMap) {
+        boolean directRelation =  (classA.getSuperclassName().equals(classB.getSuperclassName()) || classA.getClassName().equals(classB.getSuperclassName()) ||classA.getSuperclassName().equals(classB.getClassName())) && !classA.equals(classB);
+        boolean superRelation = false;
+        if (!directRelation) {
+            for (JavaClass classParrent: entityJavaClassHashMap.values()) {
+                if(classA.getSuperclassName().equals(classParrent.getClassName())){
+                    superRelation = methodeFromSameSuperClass(classParrent, classB, entityJavaClassHashMap);
+                } else if(classB.getSuperclassName().equals(classParrent.getClassName())){
+                    superRelation = methodeFromSameSuperClass(classA, classParrent, entityJavaClassHashMap);
+                }
+            }
+        }
+        return directRelation || superRelation;
+    }
+}

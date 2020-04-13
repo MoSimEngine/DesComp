@@ -38,7 +38,6 @@ public class JavaClassesExtractor implements JavaClassExtraction {
                     (filePath, fileAttr) -> fileAttr.isRegularFile())
                     .forEach(this::getJavaClasses);
         }catch(Exception e){
-
         }
     }
 

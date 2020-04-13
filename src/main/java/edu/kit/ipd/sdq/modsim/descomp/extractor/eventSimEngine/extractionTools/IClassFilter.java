@@ -10,7 +10,8 @@ import java.util.HashMap;
 public interface IClassFilter {
 //    Collection<JavaClass> filterEntityClasses(Collection<JavaClass> javaClasses);
 //    Collection<JavaClass> getEventClasses(Collection<JavaClass> javaClasses);
-    Collection<JavaClass> extractClassesWithHierarchie(Collection<JavaClass> javaClasses, String[] classNames);
-    HashMap<String, Method> getMethodes(Collection<JavaClass> javaClasses, String[] methodeNames);
+Collection<JavaClass> extractClassesWithHierarchie(Collection<JavaClass> javaClasses, String[] classNames);
+    Collection<JavaClass> extractClassesAbstractParents(Collection<JavaClass> javaClasses, String[] classNames);
+    HashMap<String, Method> getMethodes(Collection<JavaClass> javaClasses, Collection<JavaClass> abstractClasses, String[] methodeNames);
 
 }

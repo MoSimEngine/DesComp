@@ -77,7 +77,6 @@ public class ClassVisitor extends EmptyVisitor {
             if (constant.getTag() == 7) {
                 String referencedClass =
                         constantPool.constantToString(constant);
-                //System.out.println(String.format(classReferenceFormat, referencedClass));
             }
         }
     }
@@ -91,34 +90,6 @@ public class ClassVisitor extends EmptyVisitor {
     public ClassVisitor start() {
         visitJavaClass(clazz);
         return this;
-    }
-
-    public List<String> methodCalls() {
-        return this.methodCalls;
-    }
-
-    public List<DataClass> classes(String moduleName) {
-        List<DataClass> jc = new ArrayList<>();
-        DataClass mc = new DataClass(clazz.getClassName());
-        mc.setClassName(moduleName);
-
-        jc.add(mc);
-        return jc;
-    }
-
-    public void parents(List<DataClass> classes) {
-        final DataClass[] superClass = new DataClass[1];
-        classes.forEach(clas -> {
-            if(clas.getName().equals(clazz.getSuperclassName())){
-                superClass[0] = clas;
-            }
-        });
-
-        classes.forEach(clas -> {
-            if(clas.getName().equals(clazz.getClassName())){
-                clas.setParent(superClass[0]);
-            }
-        });
     }
 
     public List<JavaClass> javaClass(){

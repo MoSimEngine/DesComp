@@ -1,6 +1,6 @@
 package edu.kit.ipd.sdq.modsim.descomp.extractor.eventSimEngine.methodDecodingElements;
 
-import edu.kit.ipd.sdq.modsim.descomp.extractor.eventSimEngine.EventSimHierarchyService;
+import edu.kit.ipd.sdq.modsim.descomp.extractor.eventSimEngine.IEventSimHierarchyService;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -47,7 +47,7 @@ class CodeElementMapper {
      * @param eventSimHierarchyService service class, that delivers the class hierarchy of the sy
      * @return either the starting name or the name of an super class that matches with the requested one
      */
-    static String getAbstractSuperName(String oldName, String potentialName, EventSimHierarchyService eventSimHierarchyService) {
+    static String getAbstractSuperName(String oldName, String potentialName, IEventSimHierarchyService eventSimHierarchyService) {
         //receive classHierarchie of a class
         Collection<String> allDerivedClassNames = eventSimHierarchyService.getDerivedClasses(oldName);
         //check if methode is derivced from class

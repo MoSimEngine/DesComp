@@ -1,7 +1,6 @@
-package edu.kit.ipd.sdq.modsim.descomp.extractor.eventSimEngine.dataElementCreator;
+package edu.kit.ipd.sdq.modsim.descomp.extractor.eventSimEngine.dataElementOperation;
 
 import edu.kit.ipd.sdq.modsim.descomp.data.simulator.Entity;
-import fj.data.Java;
 import org.apache.bcel.classfile.JavaClass;
 
 import java.util.regex.Pattern;

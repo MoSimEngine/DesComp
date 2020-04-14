@@ -7,6 +7,6 @@ import java.util.Collection;
 import java.util.List;
 import java.util.Map;
 
-public interface JavaClassExtraction {
+public interface IJavaClassExtractor {
     Map<String, List<JavaClass>> extractJavaClasses(Collection<File> jarCollection);
 }

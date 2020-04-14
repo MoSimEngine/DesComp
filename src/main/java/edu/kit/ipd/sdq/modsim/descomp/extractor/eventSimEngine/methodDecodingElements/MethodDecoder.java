@@ -1,6 +1,6 @@
 package edu.kit.ipd.sdq.modsim.descomp.extractor.eventSimEngine.methodDecodingElements;
 
-import edu.kit.ipd.sdq.modsim.descomp.extractor.eventSimEngine.EventSimHierarchyService;
+import edu.kit.ipd.sdq.modsim.descomp.extractor.eventSimEngine.IEventSimHierarchyService;
 import org.apache.bcel.classfile.Code;
 import org.apache.bcel.classfile.Method;
 
@@ -18,7 +18,7 @@ public class MethodDecoder {
     public static String write = "write";
     public static String read = "read";
     public static String schedule = "schedule";
-    private static EventSimHierarchyService eventSimExtractorService;
+    private static IEventSimHierarchyService eventSimExtractorService;
 
     /**
      * Decodes the information for in the structural graph to model objects
@@ -29,7 +29,7 @@ public class MethodDecoder {
      * @param service class that provides functionality to work on original class hierarchy
      * @return decoded Methods; Format: <MethodName, <RelationType(Read/Write/Schedule), <AffectedObjName(EntityName/EventName), Collection<AttrNames(Event.Attribute/scheduledEvent)>>>>
      */
-    public static HashMap<String, HashMap<String, HashMap<String, Collection<String>>>> extractEventsFromMethods(HashMap<String, Method> methodCollection, EventSimHierarchyService service){
+    public static HashMap<String, HashMap<String, HashMap<String, Collection<String>>>> extractEventsFromMethods(HashMap<String, Method> methodCollection, IEventSimHierarchyService service){
         eventSimExtractorService = service;
 
         //1)preparing the methodCollection, extracting String representation of those methods

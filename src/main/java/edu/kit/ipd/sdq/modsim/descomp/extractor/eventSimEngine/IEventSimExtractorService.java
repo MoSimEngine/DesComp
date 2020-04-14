@@ -5,6 +5,6 @@ import edu.kit.ipd.sdq.modsim.descomp.data.simulator.Simulator;
 import java.io.File;
 import java.util.Collection;
 
-public interface EventExtractorService {
+public interface IEventSimExtractorService {
     Simulator extractEventSim(Collection<File> FileCollection);
 }

@@ -1,7 +1,6 @@
 package edu.kit.ipd.sdq.modsim.descomp.extractor.eventSimEngine.extractionTools;
 
-import edu.kit.ipd.sdq.modsim.descomp.extractor.eventSimEngine.dataElementCreator.EntityOperation;
-import fj.data.Stream;
+import edu.kit.ipd.sdq.modsim.descomp.extractor.eventSimEngine.dataElementOperation.EntityOperation;
 import org.apache.bcel.classfile.JavaClass;
 import org.apache.bcel.classfile.Method;
 import org.springframework.stereotype.Service;
@@ -15,10 +14,9 @@ import java.util.HashMap;
 public class ClassFilter  implements IClassFilter {
 
     public static String[] classNames = {"EventSimEntity.java", "AbstractActiveResource.java", "StartSimulationJob.java"};
-    public static String[] eventMethodeNames= {"calculateConcreteDemand", "execute","loadInstrumentationDesciptionFromXML", "consumeResource"};
+    public static String[] eventMethodNames = {"calculateConcreteDemand", "execute","loadInstrumentationDescriptionFromXML", "consumeResource"};
 
-
-    public Collection<JavaClass> extractClassesWithHierarchie(Collection<JavaClass> javaClasses, String[] classNames){
+    public Collection<JavaClass> extractClassesWithHierarchy(Collection<JavaClass> javaClasses, String[] classNames){
         Collection<JavaClass> rootElementList = new ArrayList<>();
         javaClasses.stream().forEach(s -> {
             if(Arrays.asList(classNames).contains(s.getSourceFileName())){
@@ -44,17 +42,14 @@ public class ClassFilter  implements IClassFilter {
         return returnedList;
     }
 
-    public HashMap<String, Method> getMethodes (Collection<JavaClass> javaClasses, Collection<JavaClass> abstractClasses, String[] methodeNames){
-
+    public HashMap<String, Method> getMethods(Collection<JavaClass> javaClasses, Collection<JavaClass> abstractClasses, String[] methodeNames){
         HashMap<String, Method> methodCollection = new HashMap<>();
         for (JavaClass jc :javaClasses) {
-
             for (Method currentMethod:jc.getMethods()) {
                 if(Arrays.asList(methodeNames).contains(currentMethod.getName())){
                     methodCollection.put(EntityOperation.getJavaClassName(jc)+ "_" +currentMethod.getName(), currentMethod);
                 }
             }
-
             JavaClass parentJavaClass = jc;
             while(parentJavaClass.isSuper()){
                 boolean foundSuperClass = false;
@@ -93,8 +88,6 @@ public class ClassFilter  implements IClassFilter {
         return methodCollection;
     }
 
-
-
     private Collection<JavaClass> lookChildClassesUp(Collection<JavaClass> currentFoundClasses, Collection<JavaClass> allClasses){
         Collection<JavaClass> newClasses = new ArrayList<>();
         for (JavaClass jc: currentFoundClasses) {
@@ -116,8 +109,6 @@ public class ClassFilter  implements IClassFilter {
         }
         return newClasses;
     }
-
-
 
     private Collection<JavaClass> getHierarchie(Collection<JavaClass> rootList, Collection<JavaClass> javaClasses, boolean allowAbstract){
         Collection<JavaClass> newItems = rootList;

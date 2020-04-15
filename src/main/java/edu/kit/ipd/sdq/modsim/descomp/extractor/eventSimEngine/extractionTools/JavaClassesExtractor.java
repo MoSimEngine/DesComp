@@ -19,9 +19,12 @@ import java.util.stream.Stream;
 @Service
 public class JavaClassesExtractor implements IJavaClassExtractor {
 
-    private Map<String, List<JavaClass>> extractedJavaClasses;
-
-
+    /**
+     * takes a collection of jar files and reads out all java classes
+     *
+     * @param jarCollection collection of considered jar files
+     * @return data structure containing all bcel.JavaClass files
+     */
     public Map<String, List<JavaClass>> extractJavaClasses(Collection<File> jarCollection) {
         extractedJavaClasses = new HashMap<>();
         for (File file: jarCollection) {
@@ -30,6 +33,7 @@ public class JavaClassesExtractor implements IJavaClassExtractor {
         return extractedJavaClasses;
     }
 
+    private Map<String, List<JavaClass>> extractedJavaClasses;
 
     private void extractAllJavaClasses(String rootPath)  {
         try {
@@ -37,7 +41,7 @@ public class JavaClassesExtractor implements IJavaClassExtractor {
                     Integer.MAX_VALUE,
                     (filePath, fileAttr) -> fileAttr.isRegularFile())
                     .forEach(this::getJavaClasses);
-        }catch(Exception e){
+        }catch(Exception ignored){
         }
     }
 

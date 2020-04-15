@@ -14,7 +14,7 @@ import java.util.HashMap;
 public class ClassFilter  implements IClassFilter {
 
     public static String[] classNames = {"EventSimEntity.java", "AbstractActiveResource.java", "StartSimulationJob.java"};
-    public static String[] eventMethodNames = {"calculateConcreteDemand", "execute","loadInstrumentationDescriptionFromXML", "consumeResource"};
+    public static String[] eventMethodNames = {"calculateConcreteDemand","<init>", "execute","loadInstrumentationDesciptionFromXML"};
 
     public Collection<JavaClass> extractClassesWithHierarchy(Collection<JavaClass> javaClasses, String[] classNames){
         Collection<JavaClass> rootElementList = new ArrayList<>();

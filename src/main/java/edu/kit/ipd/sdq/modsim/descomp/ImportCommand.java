@@ -1,11 +1,13 @@
 package edu.kit.ipd.sdq.modsim.descomp;
 
 import java.io.File;
-import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.Collection;
 
-import edu.kit.ipd.sdq.modsim.descomp.extractor.eventSimEngine.EventExtractorService;
+import edu.kit.ipd.sdq.modsim.descomp.data.simulator.Attribute;
+import edu.kit.ipd.sdq.modsim.descomp.data.simulator.Entity;
+import edu.kit.ipd.sdq.modsim.descomp.data.simulator.Event;
+import edu.kit.ipd.sdq.modsim.descomp.extractor.eventSimEngine.IEventSimExtractorService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.shell.standard.ShellCommandGroup;
 import org.springframework.shell.standard.ShellComponent;
@@ -26,7 +28,7 @@ public class ImportCommand {
 	private SimulatorRepository repository;
 
 	@Autowired
-	private EventExtractorService eventExtractorService;
+	private IEventSimExtractorService eventExtractorService;
 
 
 	@ShellMethod("Extract structural Information from existing Simulation")
@@ -71,7 +73,33 @@ public class ImportCommand {
         repository.save(extractedSimulator);
     }
 
+    @ShellMethod("Extract Event Sim from Directory with specified filters. Separate with \";\"")
+    public void extractEventSimAndSpecifyFilter(String simulationName, File dir, String classFilterNames, String methodFilterNames){
+		Collection<File> fileList = new ArrayList<File>();
+		dfsForJar(fileList, dir);
+		Simulator extractedSimulator = eventExtractorService.extractEventSimForSpecifiedClassesAndMethods(fileList, classFilterNames.split(";"), methodFilterNames.split(";"));
+		extractedSimulator.setName(simulationName);
+		repository.save(extractedSimulator);
+	}
 
+    @ShellMethod("Creating Helpful example")
+	public void createExample(){
+		Simulator sim = new Simulator("ExampleSimulator","Created as Example");
+
+		Entity world = new Entity("HelloWorld");
+		Event event = new Event("printName");
+		Attribute attr = new Attribute("worldName", "String");
+		Event scheduledEvent = new Event("System.out.prinln");
+
+		world.addAttribute(attr);
+		event.addReadAttribute(attr);
+		event.addSchedulesEvent(scheduledEvent, "noCond", "noDelay");
+
+		sim.addEvents(event);
+		sim.addEvents(scheduledEvent);
+		sim.addEntities(world);
+		repository.save(sim);
+	}
 
 
     private Collection<File> dfsForJar(Collection<File> fileList, File dir) {

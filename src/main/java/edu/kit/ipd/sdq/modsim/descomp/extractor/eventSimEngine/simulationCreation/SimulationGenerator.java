@@ -21,7 +21,7 @@ public class SimulationGenerator {
      * @param mapContainer Container-Object for the simulation describing data structures
      * @return the extracted simulation, described by the mapContainer
      */
-    public static Simulator createSimulator(IMapContainer mapContainer){
+    public static Simulator extractSimulator(IMapContainer mapContainer){
         HashMap<String, Entity> allEntityHashMap = GeneratorMappingServices.createEntityObjectsForJavaClasses(mapContainer.getEntityJavaClassHashMap());
         HashMap<String, HashMap<String, Attribute>> allAttributesHashMap = GeneratorMappingServices.createAttributeObjectsForFieldClasses(mapContainer.getFieldAttrHasMap());
         ISimulationConstructContainer simulationConstructContainer = new SimulationConstructContainer(allEntityHashMap, allAttributesHashMap);

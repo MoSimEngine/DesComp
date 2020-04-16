@@ -9,8 +9,14 @@ import org.apache.bcel.classfile.JavaClass;
 
 import java.util.*;
 
-public class GeneratorMappingServices {
+class GeneratorMappingServices {
 
+    /**
+     * takes java classes and creates for each class a Entity object, represented in the simulator
+     *
+     * @param entityJavaClassHashMap map of all bcel.JavaClass objects to create Entity objects for
+     * @return HashMap containing pairs with key entityName, value Entity pair for all passed JavaClasses
+     */
     static HashMap<String, Entity> createEntityObjectsForJavaClasses(HashMap<String, JavaClass> entityJavaClassHashMap){
         HashMap<String, Entity> entityMap= new HashMap<>();
         for (String key:entityJavaClassHashMap.keySet()) {
@@ -19,6 +25,12 @@ public class GeneratorMappingServices {
         return entityMap;
     }
 
+    /**
+     * Takes HashMap containing fields as values and transforms those fields into Attribute Objects, represented in the simulator
+     *
+     * @param fieldAttrHasMap m,ap of all bcel.Field objects to create attributes for
+     * @return HashMap containing pair with key entityName, of the attribute having entity, and value HashMap with key attributeName and value Attribute object
+     */
     static HashMap<String, HashMap<String, Attribute>> createAttributeObjectsForFieldClasses(HashMap<String, HashMap<String, Field>> fieldAttrHasMap){
         HashMap<String, HashMap<String, Attribute>> attributeHashMap = new HashMap<>();
         for (String key:fieldAttrHasMap.keySet()) {

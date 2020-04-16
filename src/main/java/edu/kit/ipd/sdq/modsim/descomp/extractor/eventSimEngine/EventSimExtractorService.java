@@ -37,21 +37,39 @@ public class EventSimExtractorService implements IEventSimExtractorService, IEve
     }
 
     @Override
+    public Simulator extractEventSimForSpecifiedClassesAndMethods(Collection<File> jarCollection, String[] expectedClassFilterNames, String[] expectedMethodFilterNames){
+        String[] currentClassNames = classFilter.getClassFilterNames();
+        String[] currentMethodNames = classFilter.getEventFilterMethodNames();
+
+        //set to expected filter reference names
+        classFilter.setClassFilterNames(expectedClassFilterNames);
+        classFilter.setEventFilterMethodNames(expectedMethodFilterNames);
+
+        Simulator sim = extractEventSim(jarCollection);
+
+        //reset expected filter reference names
+        classFilter.setClassFilterNames(currentClassNames);
+        classFilter.setEventFilterMethodNames(currentMethodNames);
+
+        return sim;
+    }
+
+    @Override
     public Simulator extractEventSim(Collection<File> jarCollection) {
         extractedJavaClasses = classExtractor.extractJavaClasses(jarCollection);
         javaClassesCollection = collectJavaClasses();
-        HashMap<String, JavaClass> entityJavaClassHashMap = getEntitiesInHashMap(classFilter.extractClassesWithHierarchy(javaClassesCollection, ClassFilter.classNames));
+        HashMap<String, JavaClass> entityJavaClassHashMap = getEntitiesInHashMap(classFilter.extractClassesWithHierarchy(javaClassesCollection, classFilter.getClassFilterNames(), false));
         HashMap<String, HashMap<String, Field>> fieldAttrHashMap = getAttributeHashMap(entityJavaClassHashMap);
         HashMap<String, HashMap<String, HashMap<String, Collection<String>>>>  extractedEventsWithRelation = extractAllEvents();
 
         IMapContainer mapContainer = new MapContainer(entityJavaClassHashMap, fieldAttrHashMap, extractedEventsWithRelation);
 
-        return SimulationGenerator.createSimulator(mapContainer);
+        return SimulationGenerator.extractSimulator(mapContainer);
     }
 
     public Collection<String> getDerivedClasses(String parentClass){
         String[] newStringArray = {parentClass.split(Pattern.quote("."))[parentClass.split(Pattern.quote(".")).length -1] + ".java"};
-        Collection<JavaClass> derivedClasses = classFilter.extractClassesAbstractParents(javaClassesCollection , newStringArray);
+        Collection<JavaClass> derivedClasses = classFilter.extractClassesWithHierarchy(javaClassesCollection , newStringArray, true);
         Collection<String> allDerivedNames = new ArrayList<>();
         derivedClasses.stream().forEach(jc -> allDerivedNames.add(jc.getClassName()));
         return allDerivedNames;
@@ -86,9 +104,9 @@ public class EventSimExtractorService implements IEventSimExtractorService, IEve
     }
 
     private HashMap<String, HashMap<String, HashMap<String, Collection<String>>>> extractAllEvents(){
-        Collection<JavaClass> eventClasses = classFilter.extractClassesWithHierarchy(javaClassesCollection, ClassFilter.classNames);//getEventClasses(collectJavaClasses());
-        Collection<JavaClass> abstractClasses = classFilter.extractClassesAbstractParents(javaClassesCollection, ClassFilter.classNames);//getEventClasses(collectJavaClasses());
-        HashMap<String, Method> methodClasses = classFilter.getMethods(eventClasses, abstractClasses,  ClassFilter.eventMethodNames);
+        Collection<JavaClass> eventClasses = classFilter.extractClassesWithHierarchy(javaClassesCollection, classFilter.getClassFilterNames(), false);
+        Collection<JavaClass> abstractClasses = classFilter.extractClassesWithHierarchy(javaClassesCollection, classFilter.getClassFilterNames(), true);
+        HashMap<String, Method> methodClasses = classFilter.getMethods(eventClasses, abstractClasses,  classFilter.getEventFilterMethodNames());
         return MethodDecoder.extractEventsFromMethods(methodClasses, this);
     }
 

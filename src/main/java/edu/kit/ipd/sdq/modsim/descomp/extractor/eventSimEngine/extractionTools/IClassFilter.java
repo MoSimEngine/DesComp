@@ -8,10 +8,11 @@ import java.util.Collection;
 import java.util.HashMap;
 
 public interface IClassFilter {
-//    Collection<JavaClass> filterEntityClasses(Collection<JavaClass> javaClasses);
-//    Collection<JavaClass> getEventClasses(Collection<JavaClass> javaClasses);
-    Collection<JavaClass> extractClassesWithHierarchy(Collection<JavaClass> javaClasses, String[] classNames);
-    Collection<JavaClass> extractClassesAbstractParents(Collection<JavaClass> javaClasses, String[] classNames);
-    HashMap<String, Method> getMethods(Collection<JavaClass> javaClasses, Collection<JavaClass> abstractClasses, String[] methodeNames);
+    Collection<JavaClass> extractClassesWithHierarchy(Collection<JavaClass> javaClasses, String[] classNames, boolean allowAbstract);
+    HashMap<String, Method> getMethods(Collection<JavaClass> javaClasses, Collection<JavaClass> abstractClasses, String[] methodNames);
 
+    String[] getClassFilterNames();
+    String[] getEventFilterMethodNames();
+    void setClassFilterNames(String[] classFilterNames);
+    void setEventFilterMethodNames(String[] eventFilterMethodNames);
 }
